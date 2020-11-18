@@ -85,7 +85,7 @@
 - (id)_unboostingRemoteObjectProxy;
 - (id)_xpcConnection;
 - (void)addBarrierBlock:(CDUnknownBlockType)arg1;
-- (CDStruct_6ad76789)auditToken;
+- (CDStruct_4c969caf)auditToken;
 - (void)dealloc;
 - (id)delegate;
 - (id)description;

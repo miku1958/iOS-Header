@@ -80,6 +80,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToNumber:(id)arg1;
 - (BOOL)isNSNumber__;
+- (id)redactedDescription;
 
 @end
 

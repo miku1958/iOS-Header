@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 + (id)dataForBundle:(id)arg1 createIfRequired:(BOOL)arg2;
 - (void)accessSandboxExtension:(id)arg1;
 - (void)dealloc;
+- (void)hostApplicationAssetPacksBecameAvailable:(id)arg1;
+- (void)hostApplicationAssetPacksBecameUnavailable:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end

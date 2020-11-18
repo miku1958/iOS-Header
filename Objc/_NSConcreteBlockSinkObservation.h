@@ -7,22 +7,23 @@
 #import <Foundation/NSObservation.h>
 
 @class NSObject;
-@protocol NSObservable, NSObserver;
+@protocol NSObservable;
 
 __attribute__((visibility("hidden")))
-@interface _NSConcreteObservation : NSObservation
+@interface _NSConcreteBlockSinkObservation : NSObservation
 {
     NSObject<NSObservable> *_LHSobservable;
-    NSObject<NSObserver> *_RHSobserver;
-    id _observers[4];
+    CDUnknownBlockType _block;
+    int _tag;
 }
 
+- (id *)_observerStorage;
 - (void *)_observerStorageOfSize:(unsigned long long)arg1;
 - (void)_receiveBox:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (void)finishObserving;
-- (id)initWithObservable:(id)arg1 observer:(id)arg2;
+- (id)initWithObservable:(id)arg1 blockSink:(CDUnknownBlockType)arg2 tag:(int)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)remove;
 

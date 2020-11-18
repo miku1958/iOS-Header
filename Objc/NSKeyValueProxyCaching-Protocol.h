@@ -7,7 +7,6 @@
 @class NSHashTable, NSObject;
 
 @protocol NSKeyValueProxyCaching
-+ (CDStruct_7c9a8e9f *)_proxyNonGCPoolPointer;
 + (NSHashTable *)_proxyShare;
 - (id)_proxyInitWithContainer:(NSObject *)arg1 getter:(id)arg2;
 - (CDStruct_a70f6672)_proxyLocator;

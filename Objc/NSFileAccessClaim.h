@@ -8,7 +8,7 @@
 
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSCountedSet, NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection;
+@class NSArray, NSCountedSet, NSError, NSFileAccessProcessManager, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
     id _originatingReactorQueueID;
 }
 
+@property (readonly, copy) NSArray *allURLs;
 @property (readonly) NSObject<OS_dispatch_semaphore> *claimerWaiter; // @synthesize claimerWaiter=_claimerWaiter;
 
 + (BOOL)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
@@ -50,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(CDUnknownBlockType)arg3;
 - (void)addPendingClaim:(id)arg1;
-- (id)allURLs;
 - (void)block;
 - (void)blockClaimerForReason:(id)arg1;
 - (BOOL)cameFromSuperarbiter;
@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)didWait;
 - (void)disavowed;
 - (void)encodeWithCoder:(id)arg1;
+- (void)ensureProvidersOfItemsAtReadingLocations:(id)arg1 writingLocations:(id)arg2 thenContinue:(CDUnknownBlockType)arg3;
 - (void)evaluateNewClaim:(id)arg1;
 - (BOOL)evaluateSelfWithRootNode:(id)arg1 checkSubarbitrability:(BOOL)arg2;
 - (void)finished;

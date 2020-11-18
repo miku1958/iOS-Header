@@ -6,16 +6,15 @@
 
 #import <Foundation/NSFormatter.h>
 
-@class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSObject, NSString, NSTimeZone;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSString, NSTimeZone;
 
 @interface NSDateFormatter : NSFormatter
 {
     NSMutableDictionary *_attributes;
     struct __CFDateFormatter *_formatter;
     unsigned long long _counter;
-    NSObject<OS_dispatch_semaphore> *_lock;
     long long _cacheGeneration;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (copy) NSString *AMSymbol;

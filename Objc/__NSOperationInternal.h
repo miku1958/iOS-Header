@@ -35,10 +35,12 @@ __attribute__((visibility("hidden")))
     } __wait_cond;
     char *__nameBuffer;
     id __activity;
+    CDUnknownBlockType __schedule;
     _Atomic unsigned char __isExecutingObserverCount;
     _Atomic unsigned char __isFinishedObserverCount;
     _Atomic unsigned char __isReadyObserverCount;
     _Atomic unsigned char __isCancelledObserverCount;
+    BOOL _shouldRemoveDependenciesAfterFinish;
 }
 
 + (void)_observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 changeKind:(unsigned long long)arg3 oldValue:(id)arg4 newValue:(id)arg5 indexes:(id)arg6 context:(void *)arg7;
@@ -55,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isReady;
 - (id)_name;
 - (long long)_queuePriority;
+- (void)_removeAllDependencies:(id)arg1;
 - (void)_removeDependency:(id)arg1 outer:(id)arg2;
 - (void)_setCompletionBlock:(CDUnknownBlockType)arg1 outer:(id)arg2;
 - (void)_setName:(id)arg1 outer:(id)arg2;

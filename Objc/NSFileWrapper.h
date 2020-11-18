@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDictionary, NSString, NSURL;
 
-@interface NSFileWrapper : NSObject <NSCoding>
+@interface NSFileWrapper : NSObject <NSSecureCoding>
 {
     NSDictionary *_fileAttributes;
     NSString *_preferredFileName;
@@ -41,6 +41,7 @@
 + (id)_temporaryDirectoryURLForWritingToURL:(id)arg1 error:(id *)arg2;
 + (void)_writeAttributes:(id)arg1 toURL:(id)arg2;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (id)_addChild:(id)arg1 forUniqueFileName:(id)arg2;
 - (void)_addParent:(id)arg1;
 - (id)_attributesToWrite;

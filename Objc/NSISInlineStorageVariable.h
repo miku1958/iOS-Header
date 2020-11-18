@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)markedConstraint;
 - (id)nsis_descriptionOfVariable:(id)arg1;
-- (BOOL)nsis_shouldIntegralizeVariable:(id)arg1;
+- (int)nsis_orientationHintForVariable:(id)arg1;
 - (void)nsis_valueOfVariable:(id)arg1 didChangeInEngine:(id)arg2;
 - (BOOL)nsis_valueOfVariableIsUserObservable:(id)arg1;
 

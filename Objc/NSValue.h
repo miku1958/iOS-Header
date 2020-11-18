@@ -29,6 +29,7 @@
 + (id)valueWithSize:(struct CGSize)arg1;
 + (id)valueWithWeakObject:(id)arg1;
 - (BOOL)_matchType:(const char *)arg1 size:(unsigned long long)arg2;
+- (BOOL)_matchType:(const char *)arg1 size:(unsigned long long)arg2 strict:(BOOL)arg3;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

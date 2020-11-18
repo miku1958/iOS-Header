@@ -31,6 +31,7 @@
 }
 
 - (void)_checkForInvalidMutationWithSelector:(SEL)arg1;
+- (BOOL)_copyDataFrom:(id)arg1 range:(struct _NSRange)arg2;
 - (BOOL)_copyStorage:(struct __CFStorage **)arg1 encoding:(unsigned long long *)arg2;
 - (id)_createSubstringWithRange:(struct _NSRange)arg1;
 - (BOOL)_getData:(id *)arg1 encoding:(unsigned long long *)arg2;

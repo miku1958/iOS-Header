@@ -6,8 +6,10 @@
 
 #import <Foundation/NSHashTable.h>
 
+#import <Foundation/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface NSConcreteHashTable : NSHashTable
+@interface NSConcreteHashTable : NSHashTable <NSSecureCoding>
 {
     struct NSSlice slice;
     unsigned long long count;
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
     unsigned long long mutations;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)addObject:(id)arg1;
 - (id)allObjects;
 - (void)assign:(unsigned long long)arg1 key:(const void *)arg2;

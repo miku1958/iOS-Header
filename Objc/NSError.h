@@ -29,8 +29,10 @@
 @property (readonly) id recoveryAttempter;
 @property (readonly, copy) NSDictionary *userInfo;
 
++ (id)_readCorruptErrorWithFormat:(id)arg1;
 + (void)_registerBuiltInFormatters;
 + (void)_registerFormatter:(CDUnknownFunctionPointerType)arg1 forErrorKey:(id)arg2 parameters:(const char *)arg3;
++ (void)_setFileNameLocalizationEnabled:(BOOL)arg1;
 + (void)_web_addErrorsWithCodesAndDescriptions:(id)arg1 inDomain:(id)arg2;
 + (id)_web_errorWithDomain:(id)arg1 code:(long long)arg2 URL:(id)arg3;
 + (id)_web_errorWithDomain:(id)arg1 code:(long long)arg2 failingURL:(id)arg3;
@@ -43,8 +45,8 @@
 - (id)_cocoaErrorString:(id)arg1 fromBundle:(id)arg2 tableName:(id)arg3;
 - (id)_cocoaErrorStringWithKind:(id)arg1;
 - (id)_cocoaErrorStringWithKind:(id)arg1 variant:(id)arg2;
-- (long long)_collectApplicableUserInfoFormatters:(struct **)arg1 max:(long long)arg2;
-- (id)_formatCocoaErrorString:(id)arg1 parameters:(const char *)arg2 applicableFormatters:(struct **)arg3 count:(long long)arg4;
+- (long long)_collectApplicableUserInfoFormatters:(CDStruct_183601bc **)arg1 max:(long long)arg2;
+- (id)_formatCocoaErrorString:(id)arg1 parameters:(const char *)arg2 applicableFormatters:(CDStruct_183601bc **)arg3 count:(long long)arg4;
 - (struct __CFString *)_retainedUserInfoCallBackForKey:(id)arg1;
 - (BOOL)_web_errorIsInDomain:(id)arg1;
 - (id)_web_failingURL;
@@ -60,6 +62,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDomain:(id)arg1 code:(long long)arg2 userInfo:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)redactedDescription;
 - (id)replacementObjectForPortCoder:(id)arg1;
 
 @end

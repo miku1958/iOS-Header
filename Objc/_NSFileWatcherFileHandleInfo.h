@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)close;
 - (void)dealloc;
 - (id)description;
-- (BOOL)verifyAccessByProcessIdentifier:(int)arg1;
+- (BOOL)verifyAccessByAuditToken:(CDStruct_4c969caf)arg1;
 
 @end
 

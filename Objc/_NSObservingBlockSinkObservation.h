@@ -4,24 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/_NSConcreteBlockSinkObservation.h>
 
-#import <Foundation/NSObservable-Protocol.h>
+#import <Foundation/NSObserver-Protocol.h>
 
 @class NSString;
 
-@interface NSObservationSource : NSObject <NSObservable>
+__attribute__((visibility("hidden")))
+@interface _NSObservingBlockSinkObservation : _NSConcreteBlockSinkObservation <NSObserver>
 {
-    id _observers[4];
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-
-- (void *)_observerStorageOfSize:(unsigned long long)arg1;
-- (void)dealloc;
 
 @end
 

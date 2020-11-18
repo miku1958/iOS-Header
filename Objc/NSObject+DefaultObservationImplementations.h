@@ -7,8 +7,11 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (DefaultObservationImplementations)
+- (void)_destroyObserverList;
 - (BOOL)_isToManyChangeInformation;
 - (id *)_observerStorage;
+- (void *)_observerStorageOfSize:(unsigned long long)arg1;
+- (BOOL)_overrideUseFastBlockObservers;
 - (void)_receiveBox:(id)arg1;
 - (id)addChainedObservers:(id)arg1;
 - (id)addObservationTransformer:(CDUnknownBlockType)arg1;

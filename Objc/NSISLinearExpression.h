@@ -7,37 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <Foundation/NSFastEnumeration-Protocol.h>
-#import <Foundation/NSISRowBody-Protocol.h>
 
-@class NSString;
+@class NSISEngine;
 
-@interface NSISLinearExpression : NSObject <NSISRowBody, NSFastEnumeration>
+@interface NSISLinearExpression : NSObject <NSFastEnumeration>
 {
-    unsigned int inline_capacity;
-    unsigned int var_count;
-    double constant;
-    union {
-        struct {
-            id stored_extern_marker;
-            struct *slab;
-            unsigned long long capacity;
-        } extern_data;
-        struct {
-            unsigned long long aligner;
-        } inline_slab;
-        unsigned char padding[48];
-    } data;
+    NSISEngine *engine;
+    CDStruct_9ac54d62 linExp;
 }
 
 @property double constant;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly) NSISEngine *engine;
 
 + (id)acquireFromPoolForUseCase:(long long)arg1;
++ (id)acquireFromPoolForUseCase:(long long)arg1 engine:(id)arg2;
 + (void)initialize;
 + (id)newExpressionWithCapacity:(unsigned long long)arg1;
++ (id)newExpressionWithCapacity:(unsigned long long)arg1 engine:(id)arg2;
 - (void)addExpression:(id)arg1 times:(double)arg2;
 - (void)addExpression:(id)arg1 times:(double)arg2 processVariableNewToReceiver:(CDUnknownBlockType)arg3 processVariableDroppedFromReceiver:(CDUnknownBlockType)arg4;
 - (void)addVariable:(id)arg1 coefficient:(double)arg2;
@@ -47,12 +33,15 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
+- (id)description;
 - (void)enumerateVariables:(CDUnknownBlockType)arg1;
 - (void)enumerateVariablesAndCoefficients:(CDUnknownBlockType)arg1;
 - (BOOL)enumerateVariablesAndCoefficientsUntil:(CDUnknownBlockType)arg1;
+- (unsigned long long)hash;
 - (double)incrementConstant:(double)arg1;
 - (id)init;
-- (id)initWithInlineCapacity:(unsigned long long)arg1;
+- (id)initWithEngine:(id)arg1;
+- (id)initWithInlineCapacity:(unsigned long long)arg1 engine:(id)arg2;
 - (BOOL)isConstant;
 - (BOOL)isEqual:(id)arg1;
 - (void)removeVariable:(id)arg1;

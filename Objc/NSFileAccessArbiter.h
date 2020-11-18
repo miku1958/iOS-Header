@@ -36,8 +36,8 @@
 
 + (void)_gainedBirdProvider:(id)arg1;
 + (void)_lostBirdProvider:(id)arg1;
-+ (void)_wakeUpBirdWithUID:(unsigned int)arg1 queue:(id)arg2 thenContinue:(CDUnknownBlockType)arg3;
-+ (void)ensureProvidersIfNecessaryForClaim:(id)arg1 readingAtLocation:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
++ (void)_wakeUpBirdWithUID:(unsigned int)arg1 urls:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
++ (void)ensureProvidersIfNecessaryForClaim:(id)arg1 atLocation:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (BOOL)_addPresenter:(id)arg1 ofItemAtURL:(id)arg2 watchingFile:(BOOL)arg3 withLastEventID:(id)arg4;
 - (BOOL)_addProvider:(id)arg1 ofItemsAtURL:(id)arg2;
 - (void)_enumerateSubarbitersUsingBlock:(CDUnknownBlockType)arg1;

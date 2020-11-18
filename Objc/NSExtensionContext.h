@@ -27,12 +27,14 @@
     id __processAssertion;
     id __principalObject;
     NSObject<OS_os_transaction> *__transaction;
+    CDStruct_4c969caf __extensionHostAuditToken;
 }
 
 @property (copy, nonatomic) NSUUID *_UUID; // @synthesize _UUID=__UUID;
 @property (strong, nonatomic, setter=_setAuxiliaryConnection:) NSXPCConnection *_auxiliaryConnection; // @synthesize _auxiliaryConnection=__auxiliaryConnection;
 @property (strong, nonatomic, setter=_setAuxiliaryListener:) NSXPCListener *_auxiliaryListener; // @synthesize _auxiliaryListener=__auxiliaryListener;
 @property (nonatomic, getter=_isDummyExtension, setter=_setDummyExtension:) BOOL _dummyExtension; // @synthesize _dummyExtension=__dummyExtension;
+@property (setter=_setExtensionHostAuditToken:) CDStruct_4c969caf _extensionHostAuditToken; // @synthesize _extensionHostAuditToken=__extensionHostAuditToken;
 @property (strong, setter=_setExtensionHostProxy:) id<_NSExtensionContextHosting> _extensionHostProxy; // @synthesize _extensionHostProxy=__extensionHostProxy;
 @property (strong, nonatomic, setter=_setExtensionVendorProxy:) id<_NSExtensionContextVending> _extensionVendorProxy; // @synthesize _extensionVendorProxy=__extensionVendorProxy;
 @property (nonatomic, setter=_setPrincipalObject:) id _principalObject; // @synthesize _principalObject=__principalObject;
@@ -54,7 +56,6 @@
 + (id)_extensionContextHostProtocolAllowedClassesForItems;
 + (id)_extensionContextHostProtocolWithAllowedErrorClasses:(id)arg1;
 + (id)_extensionContextVendorProtocolWithAllowedErrorClasses:(id)arg1;
-+ (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void)___nsx_pingHost:(CDUnknownBlockType)arg1;
 - (void)_completeRequestReturningItemsSecondHalf:(CDUnknownBlockType)arg1;
