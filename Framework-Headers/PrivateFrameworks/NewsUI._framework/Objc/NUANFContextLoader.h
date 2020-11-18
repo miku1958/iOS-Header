@@ -8,8 +8,8 @@
 
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
-@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSString, NUANFAssetLoader, SXContext;
-@protocol NUArticleResourceURLTranslator, OS_dispatch_queue, SXHost;
+@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
+@protocol NUArticleResourceURLTranslator, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
@@ -20,7 +20,7 @@
     id<NUArticleResourceURLTranslator> _resourceURLTranslator;
     NUANFAssetLoader *_assetLoader;
     FCAsyncOnceOperation *_asyncOnceOperation;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_imageDecodingQueue;
 }
 
 @property (strong, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSOperationQueue *imageDecodingQueue; // @synthesize imageDecodingQueue=_imageDecodingQueue;
 @property (readonly, nonatomic) id<NUArticleResourceURLTranslator> resourceURLTranslator; // @synthesize resourceURLTranslator=_resourceURLTranslator;
 @property (readonly) Class superclass;
 

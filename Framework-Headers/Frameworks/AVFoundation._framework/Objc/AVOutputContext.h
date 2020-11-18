@@ -51,14 +51,14 @@
 - (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (id)outgoingCommunicationChannel;
+- (void)outputContextImpl:(id)arg1 didChangeOutputDeviceWithInitiator:(id)arg2;
+- (void)outputContextImpl:(id)arg1 didChangeOutputDevicesWithInitiator:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didCloseCommunicationChannel:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didExpireWithReplacement:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didInitiateDestinationChange:(id)arg2;
 - (void)outputContextImpl:(id)arg1 didReceiveData:(id)arg2 fromCommunicationChannel:(id)arg3;
 - (void)outputContextImplDidChangeCanSetVolume:(id)arg1;
 - (void)outputContextImplDidChangeGlobalOutputDeviceConfiguration:(id)arg1;
-- (void)outputContextImplDidChangeOutputDevice:(id)arg1;
-- (void)outputContextImplDidChangeOutputDevices:(id)arg1;
 - (void)outputContextImplDidChangeProvidesControlForAllVolumeFeatures:(id)arg1;
 - (void)outputContextImplDidChangeVolume:(id)arg1;
 - (void)outputContextImplOutgoingCommunicationChannelDidBecomeAvailable:(id)arg1;
@@ -75,6 +75,7 @@
 - (void)setOutputDevice:(id)arg1 options:(id)arg2;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
+- (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setVolume:(float)arg1;
 - (BOOL)supportsMultipleOutputDevices;
 - (float)volume;

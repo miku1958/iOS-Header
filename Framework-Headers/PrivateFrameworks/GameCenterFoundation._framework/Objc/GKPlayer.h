@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSString *firstName; // @dynamic firstName;
 @property (readonly, nonatomic) NSString *friendLevel; // @dynamic friendLevel;
 @property (strong, nonatomic) NSArray *friends; // @synthesize friends=_friends;
+@property (readonly, strong, nonatomic) NSString *gamePlayerID; // @dynamic gamePlayerID;
 @property (readonly, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (strong) GKPlayerInternal *internal; // @synthesize internal=_internal;
@@ -46,6 +47,7 @@
 @property (nonatomic) int source; // @dynamic source;
 @property (readonly, nonatomic) CDStruct_c6d350ec stats;
 @property (copy, nonatomic) NSString *status; // @dynamic status;
+@property (readonly, strong, nonatomic) NSString *teamPlayerID; // @dynamic teamPlayerID;
 @property (strong, nonatomic) NSAttributedString *whenString; // @synthesize whenString=_whenString;
 
 + (void)_loadPlayersForIdentifiers:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

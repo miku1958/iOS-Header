@@ -24,8 +24,10 @@
     UIFont *_footnoteFont;
     UIFont *_caption1Font;
     UIFont *_caption2Font;
+    UIFont *_appAgeRatingFont;
 }
 
+@property (copy, nonatomic) UIFont *appAgeRatingFont; // @synthesize appAgeRatingFont=_appAgeRatingFont;
 @property (copy, nonatomic) UIFont *bodyFont; // @synthesize bodyFont=_bodyFont;
 @property (copy, nonatomic) UIFont *calloutFont; // @synthesize calloutFont=_calloutFont;
 @property (copy, nonatomic) UIFont *caption1Font; // @synthesize caption1Font=_caption1Font;

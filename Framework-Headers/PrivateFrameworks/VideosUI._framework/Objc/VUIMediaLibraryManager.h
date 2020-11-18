@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUIHomeShareMediaLibraryManagerDelegate-Protocol.h>
 
-@class NSArray, NSString, VUIDeviceMediaLibrary, VUIMediaLibrary;
+@class NSArray, NSString, VUIAggregateMediaLibrary, VUIDeviceMediaLibrary, VUIMediaLibrary, VUISidebandMediaLibrary;
 @protocol OS_dispatch_queue, VUIHomeShareMediaLibraryManager;
 
 @interface VUIMediaLibraryManager : NSObject <VUIHomeShareMediaLibraryManagerDelegate>
@@ -16,11 +16,14 @@
     VUIMediaLibrary *_activeMediaLibrary;
     NSObject<OS_dispatch_queue> *_completionDispatchQueue;
     VUIDeviceMediaLibrary *_deviceMediaLibrary;
+    VUISidebandMediaLibrary *_sidebandMediaLibrary;
+    VUIAggregateMediaLibrary *_aggregateMediaLibrary;
     NSObject<OS_dispatch_queue> *_serialProcessingDispatchQueue;
     NSObject<VUIHomeShareMediaLibraryManager> *_homeShareManager;
 }
 
-@property (strong) VUIMediaLibrary *activeMediaLibrary; // @synthesize activeMediaLibrary=_activeMediaLibrary;
+@property (strong, nonatomic) VUIMediaLibrary *activeMediaLibrary; // @synthesize activeMediaLibrary=_activeMediaLibrary;
+@property (strong, nonatomic) VUIAggregateMediaLibrary *aggregateMediaLibrary; // @synthesize aggregateMediaLibrary=_aggregateMediaLibrary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue; // @synthesize completionDispatchQueue=_completionDispatchQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,17 +32,20 @@
 @property (strong, nonatomic) NSObject<VUIHomeShareMediaLibraryManager> *homeShareManager; // @synthesize homeShareManager=_homeShareManager;
 @property (readonly, copy, nonatomic) NSArray *homeShareMediaLibraries;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue; // @synthesize serialProcessingDispatchQueue=_serialProcessingDispatchQueue;
+@property (strong, nonatomic) VUISidebandMediaLibrary *sidebandMediaLibrary; // @synthesize sidebandMediaLibrary=_sidebandMediaLibrary;
 @property (readonly) Class superclass;
 
 + (id)defaultManager;
++ (void)setDeleteAllVideosAndKeysOnInitializationForAppRemoval:(BOOL)arg1;
 - (void).cxx_destruct;
-- (void)_configureGlobalMediaPlayerOptions;
 - (id)_deviceMediaLibrary;
 - (void)_enqueueCompletionQueueBlock:(CDUnknownBlockType)arg1;
 - (void)_enqueueStrongSelfCompletionQueueBlock:(CDUnknownBlockType)arg1;
 - (id)_homeShareMediaLibraryManager;
 - (id)_mediaLibraryForIdentifier:(id)arg1;
 - (void)_postHomeShareMediaLibrariesDidChangeNotificationWithMediaLibraries:(id)arg1 andChangeSet:(id)arg2;
+- (void)beginDiscoveringHomeShareMediaLibraries;
+- (void)endDiscoveringHomeShareMediaLibraries;
 - (void)homeShareManager:(id)arg1 mediaLibrariesDidUpdate:(id)arg2 withChangeSet:(id)arg3;
 - (id)init;
 - (id)mediaLibraryForIdentifier:(id)arg1;

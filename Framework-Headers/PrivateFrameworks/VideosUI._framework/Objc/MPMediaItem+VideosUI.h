@@ -6,7 +6,7 @@
 
 #import <MediaPlayer/MPMediaItem.h>
 
-@class NSDate, NSNumber, NSObject, NSString, NSURL, VUIContentRating, VUIMediaEntityType, VUIMediaItemCredits;
+@class HSHomeSharingLibrary, NSDate, NSNumber, NSObject, NSString, NSURL, VUIContentRating, VUIMediaEntityType, VUIMediaItemCredits;
 @protocol VUIMediaEntityIdentifier;
 
 @interface MPMediaItem (VideosUI)
@@ -21,6 +21,8 @@
 @property (readonly, nonatomic) NSString *vui_coverArtImageIdentifier;
 @property (readonly, nonatomic) VUIMediaItemCredits *vui_credits;
 @property (readonly, nonatomic) NSURL *vui_extrasURL;
+@property (readonly, nonatomic) HSHomeSharingLibrary *vui_homeSharingLibrary;
+@property (readonly, nonatomic) BOOL vui_isHomeSharingMediaItem;
 @property (readonly, nonatomic) NSNumber *vui_isLocal;
 @property (readonly, nonatomic) NSNumber *vui_isPlayable;
 @property (readonly, nonatomic) VUIMediaEntityType *vui_mediaEntityType;

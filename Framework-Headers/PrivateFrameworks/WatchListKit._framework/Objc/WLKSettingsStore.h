@@ -54,12 +54,14 @@
 - (id)_dictionaryOnDisk;
 - (void)_dictionaryOnDisk:(CDUnknownBlockType)arg1;
 - (id)_dictionaryRepresentation;
+- (id)_dictionaryRepresentationCopyingItems:(BOOL)arg1;
 - (id)_dictionaryRepresentationDataOnly;
 - (void)_readFromDisk;
 - (void)_removeWatchListApp:(id)arg1;
 - (id)_supportPath;
 - (void)_tickleKVO;
 - (void)_updateDisplayNamesForUI:(CDUnknownBlockType)arg1;
+- (id)_watchListAppsFiltered;
 - (void)_writeToDisk;
 - (void)_writeToDisk:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginIgnoringChanges;

@@ -26,9 +26,10 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)footerTextForSection:(unsigned long long)arg1;
 - (void)groupViewDidChangeFrontmostPassView:(id)arg1 withContext:(id)arg2;
 - (void)groupViewDidUpdatePassView:(id)arg1;
-- (id)initWithGroupView:(id)arg1;
+- (id)initWithGroupView:(id)arg1 context:(id)arg2;
 - (id)itemAtIndexPath:(id)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;

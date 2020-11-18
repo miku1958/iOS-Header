@@ -9,7 +9,7 @@
 @interface NSURL (NSSAdditions)
 + (id)nss_MarketingPageURL;
 + (id)nss_NewsURLForArticleID:(id)arg1;
-+ (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2 targetIsVideo:(BOOL)arg3;
++ (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2 targetIsVideo:(BOOL)arg3 hardPaywall:(BOOL)arg4;
 + (id)nss_NewsURLForArticleID:(id)arg1 targetIsVideo:(BOOL)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 title:(id)arg2;
 + (id)nss_NewsURLForFavoritesPicker;
@@ -29,6 +29,7 @@
 - (id)nss_URLWithCampaignID:(id)arg1;
 - (id)nss_URLWithVideoTarget:(BOOL)arg1;
 - (id)nss_campaignID;
+- (BOOL)nss_hasRefreshParameter;
 - (BOOL)nss_isFollowNewsTagURL;
 - (BOOL)nss_isNewsArticleURL;
 - (BOOL)nss_isNewsArticleVideoURL;

@@ -6,34 +6,58 @@
 
 #import <PassKitCore/PDCloudStoreContainer.h>
 
-@class NSObject, PKPaymentTransactionProcessor, PKPaymentWebService, PKPeerPaymentAccount;
-@protocol OS_dispatch_queue;
+#import <PassKitCore/PDAccountManagerObserver-Protocol.h>
 
-@interface PDApplePayCloudStoreContainer : PDCloudStoreContainer
+@class NSMutableSet, NSString, PDAccountManager, PDPaymentWebServiceCoordinator, PKPaymentTransactionProcessor, PKPeerPaymentAccount;
+
+@interface PDApplePayCloudStoreContainer : PDCloudStoreContainer <PDAccountManagerObserver>
 {
-    NSObject<OS_dispatch_queue> *_proactiveFetchQueue;
+    struct os_unfair_lock_s _fetchLock;
+    BOOL _proactiveFetchInProgress;
+    NSMutableSet *_fetchingTransactionsForUniqueIDs;
     PKPaymentTransactionProcessor *_transactionProcessor;
     PKPeerPaymentAccount *_peerPaymentAccount;
-    PKPaymentWebService *_paymentWebService;
+    PDPaymentWebServiceCoordinator *_paymentWebServiceCoordinator;
+    PDAccountManager *_accountManager;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)invalidateServerChangeTokens;
 - (void).cxx_destruct;
+- (id)_accountEventRecordsFromArray:(id)arg1;
 - (BOOL)_canFormTransactionFromCloudStoreRecord:(id)arg1;
 - (BOOL)_canSyncTransactionToCloudKit:(id)arg1;
 - (id)_cloudStoreSpecificKeysForItem:(id)arg1 paymentPass:(id)arg2;
-- (void)_fetchMissingRecordsFromModifiedRecords:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_fetchAndParseAccountEventRecordsForRecords:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 shouldUpdateLocalDatabase:(BOOL)arg4 userInfo:(id)arg5 updateReasons:(unsigned long long)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_fetchMissingRecordsFromModifiedRecords:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 userInfo:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_fetchTransactionsFailedForPassUniqueIdentifier:(id)arg1;
 - (void)_handlePeerPaymentAccountChanged:(id)arg1;
 - (id)_insertOrUpdatePaymentTransaction:(id)arg1 withOriginDeviceID:(id)arg2 forPassUniqueIdentifier:(id)arg3 paymentApplication:(id)arg4 withInsertionMode:(unsigned long long)arg5 performTruncation:(BOOL)arg6;
+- (BOOL)_isAccountEventAssociatedObjectFromRecordType:(id)arg1;
+- (BOOL)_isAccountEventFromRecordType:(id)arg1;
 - (BOOL)_isTransactionItemFromRecordType:(id)arg1;
 - (id)_originDeviceIDForCloudStoreRecord:(id)arg1;
-- (id)_parseModifiedRecords:(id)arg1 counterpartRecords:(id)arg2 shouldUpdateLocalDatabase:(BOOL)arg3 updateReasons:(unsigned long long)arg4;
+- (void)_parseAccountEventsFromRecords:(id)arg1 shouldUpdateLocalDatabase:(BOOL)arg2 updateReasons:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_parseTransactionRecords:(id)arg1 counterpartRecords:(id)arg2 shouldUpdateLocalDatabase:(BOOL)arg3 userInfo:(id)arg4 updateReasons:(unsigned long long)arg5;
 - (id)_passUniqueIdentifierForCloudStoreRecord:(id)arg1;
 - (id)_paymentApplicationForPassUniqueIdentifier:(id)arg1;
+- (id)_recordTypeForAssociatedRecordForAccountEvent:(id)arg1;
+- (id)_recordTypesForAccountEvents;
+- (id)_recordsFromAccountEvent:(id)arg1;
+- (void)_resetFetchTransactionsForPassUniqueIdentifier:(id)arg1;
+- (void)_saveTransactionFetchRetries:(id)arg1;
 - (id)_serviceIdentfierToRecordDictionaryFromArray:(id)arg1;
 - (id)_serviceIdentifierForRecord:(id)arg1;
 - (id)_serviceIdentifierForRecordType:(id)arg1 recordID:(id)arg2;
+- (BOOL)_shouldFetchTransactionsForPassUniqueIdentifier:(id)arg1;
 - (id)_strippedRecordName:(id)arg1;
+- (id)_transactionFetchRetries;
+- (void)accountManager:(id)arg1 didAddAccount:(id)arg2;
+- (void)accountManager:(id)arg1 didRemoveAccount:(id)arg2;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)allRecordNamesAssociatedWithRecordName:(id)arg1 inZone:(id)arg2;
@@ -46,8 +70,10 @@
 - (void)createZones:(id)arg1 operationGroupNameSuffix:(id)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithDataSource:(id)arg1 transactionProcessor:(id)arg2 paymentWebService:(id)arg3;
+- (id)initWithDataSource:(id)arg1 transactionProcessor:(id)arg2 paymentWebServiceCoordinator:(id)arg3 accountManager:(id)arg4;
 - (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1;
+- (void)passWithUniqueIdentifierDidDisappear:(id)arg1;
+- (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)processResultWithError:(id)arg1 nextExpectedState:(unsigned long long)arg2 operationGroupNameSuffix:(id)arg3 retryCount:(unsigned long long)arg4 shouldRetry:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)readCachedContainerValues;
@@ -55,6 +81,7 @@
 - (void)requestUpdatesForPassUniqueIdentifier:(id)arg1;
 - (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)uploadTransaction:(id)arg1 forPassWithUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

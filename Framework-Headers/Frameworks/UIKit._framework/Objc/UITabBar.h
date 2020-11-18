@@ -115,6 +115,7 @@
 - (void)_customizeDoneButtonAction:(id)arg1;
 - (void)_customizeWithAvailableItems:(id)arg1;
 - (double)_defaultAutolayoutSpacing;
+- (id)_defaultUnselectedTintColorForFloating;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_dismissCustomizeSheet:(BOOL)arg1;

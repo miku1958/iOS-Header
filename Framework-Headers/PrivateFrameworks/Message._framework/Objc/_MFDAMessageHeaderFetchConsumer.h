@@ -8,7 +8,7 @@
 
 #import <Message/MFDASyncResponseConsumer-Protocol.h>
 
-@class MFDAMessageStore, MFError, NSData;
+@class MFDAMessageStore, MFError, NSData, NSString;
 
 @interface _MFDAMessageHeaderFetchConsumer : NSObject <MFDASyncResponseConsumer>
 {
@@ -19,9 +19,13 @@
 }
 
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MFError *error; // @synthesize error=_error;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MFDAMessageStore *store; // @synthesize store=_store;
 @property (readonly, nonatomic) BOOL succeeded; // @synthesize succeeded=_succeeded;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (void)handleResponse:(id)arg1 error:(id)arg2;

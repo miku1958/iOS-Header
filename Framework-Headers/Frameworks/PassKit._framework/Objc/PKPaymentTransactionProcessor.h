@@ -8,7 +8,7 @@
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
-@class CLGeocoder, CLLocationManager, NSDictionary, NSMutableArray, NSMutableSet, NSString, PKUsageNotificationServer;
+@class CLGeocoder, CLLocationManager, NSMutableArray, NSMutableSet, NSString, PKMerchantCategoryCodeMap, PKUsageNotificationServer;
 @protocol OS_dispatch_source, PKPaymentTransactionProcessorDelegate;
 
 @interface PKPaymentTransactionProcessor : NSObject <CLLocationManagerDelegate>
@@ -21,7 +21,7 @@
     CLGeocoder *_geocoder;
     NSObject<OS_dispatch_source> *_locationUpdateTimeoutTimer;
     BOOL _active;
-    NSDictionary *_mccCodeToMerchantCategory;
+    PKMerchantCategoryCodeMap *_categoryCodeMap;
     id<PKPaymentTransactionProcessorDelegate> _delegate;
     PKUsageNotificationServer *_usageNotificationServer;
 }
@@ -44,11 +44,12 @@
 - (id)_pendingReverseGeocodeUpdateItemForTransaction:(id)arg1;
 - (id)_pendingStationsUpdateItemForTransaction:(id)arg1;
 - (void)_processForLocalMCCLookup:(id)arg1;
-- (void)_processItemForMerchantCleanup:(id)arg1;
+- (void)_processItemForMerchantCleanup:(id)arg1 clearingAttempt:(BOOL)arg2;
 - (void)_processItemForStationsCleanup:(id)arg1;
 - (void)_processPaymentTransactionForLocationUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
-- (void)_processPaymentTransactionForMerchantCleanup:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_processPaymentTransactionForMerchantCleanup:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 clearingAttempt:(BOOL)arg4;
 - (void)_processPaymentTransactionForStationsUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_processTransactionPostLocation:(id)arg1 withPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (void)_startUpdatingLocationIfPossible;
 - (void)_stopUpdatingLocationIfPossible;
 - (void)_updateActiveState;

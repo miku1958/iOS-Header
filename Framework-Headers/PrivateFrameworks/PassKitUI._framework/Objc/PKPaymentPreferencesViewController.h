@@ -13,7 +13,7 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UITableView, UITextField;
+@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
 
 @interface PKPaymentPreferencesViewController : UIViewController <CNContactPickerDelegate, UITextFieldDelegate, PKAddressSearcherViewControllerDelegate, PKAddressEditorViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -23,6 +23,7 @@
     PKPaymentPreferenceButtonCell *_sizingButtonCell;
     PKPaymentPass *_paymentPassForBillingErrors;
     PKPaymentPass *_currentlySelectedPaymentPass;
+    UISwitch *_peerPaymentAccountPaymentSwitch;
     NSArray *_latestPreferences;
     NSArray *_preferences;
     long long _style;
@@ -49,10 +50,12 @@
 - (id)_cellOfClass:(Class)arg1;
 - (void)_cleanupInlineEdits;
 - (void)_editPreferenceAtIndexPath:(id)arg1;
+- (id)_hyperlinkFooterViewForPreference:(id)arg1;
 - (BOOL)_isPaymentStyle;
 - (BOOL)_isViewTranslucent;
 - (void)_keyboardDidShow:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
+- (id)_peerPaymentAccountPaymentSwitch;
 - (void)_presentMeCardAlertControllerWithContact:(id)arg1 contactKey:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_requiredKeysForPreference:(id)arg1 contact:(id)arg2;
 - (void)_savePickedContact:(id)arg1 inPreference:(id)arg2;
@@ -70,6 +73,7 @@
 - (void)addressEditorViewControllerDidCancel:(id)arg1;
 - (void)addressSearcherViewController:(id)arg1 selectedContact:(id)arg2;
 - (void)addressSearcherViewControllerDidCancel:(id)arg1;
+- (void)applePayCashSwitchValueChanged:(id)arg1;
 - (void)clearErrorsForPreference:(Class)arg1;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
@@ -96,6 +100,7 @@
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;

@@ -102,6 +102,7 @@
 + (unsigned long long)defaultUnverifiedFaceCountThreshold;
 + (void)delayedRefreshCachedCountsInAlbumIDs:(id)arg1;
 + (void)deleteCPLDownloadFinishedMarkerFilePath;
++ (void)deleteITunesSyncedContentForEnablingiCPL;
 + (id)deletedMemoryUUIDsFilePath;
 + (id)disableICloudPhotosFilePath;
 + (void)disableOpportunisticTasks;
@@ -114,6 +115,7 @@
 + (id)forceSoftResetSyncPath;
 + (void)handlePossibleCoreDataError:(id)arg1;
 + (BOOL)hasITunesSyncedContent;
++ (id)iTunesSyncedContentInfo;
 + (BOOL)isAlbumSynced:(id)arg1;
 + (BOOL)isApplicationWildcat;
 + (BOOL)isAudioFileExtension:(id)arg1;
@@ -194,7 +196,6 @@
 - (id)_dataMigrationInfo;
 - (unsigned long long)_dbFileSizes;
 - (void)_deleteEmptyImportAlbumsWithAddedAlbums:(id)arg1;
-- (void)_deleteITunesSyncedContentWithReason:(id)arg1;
 - (void)_deleteObsoleteMetadataFiles;
 - (void)_doFilesystemImportIfNeededWithMOC:(id)arg1 reason:(id)arg2;
 - (void)_enumerateFilesAtURL:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -276,7 +277,6 @@
 - (struct NSObject *)iPadAllPhotosAlbum;
 - (struct NSObject *)iPadAllPhotosAlbumIfExists;
 - (id)iTunesSyncedAssetsDCIMDirectory;
-- (id)iTunesSyncedContentInfo;
 - (id)imageForFormat:(int)arg1 forAsset:(id)arg2;
 - (id)incompleteRestoreProcesses;
 - (id)init;

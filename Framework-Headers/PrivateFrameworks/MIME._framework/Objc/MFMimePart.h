@@ -38,6 +38,7 @@
 - (id)_fullMimeTypeEvenInsideAppleDouble;
 - (BOOL)_hasCompleteBodyDataToOffset:(unsigned long long)arg1;
 - (id)_partThatIsAttachment;
+- (SEL)_selectorForCString:(char *)arg1;
 - (void)_setDecryptedMessageBody:(id)arg1 isEncrypted:(BOOL)arg2 isSigned:(BOOL)arg3;
 - (void)_setRFC822DecodedMessageBody:(id)arg1;
 - (BOOL)_shouldContinueDecodingProcess;

@@ -12,11 +12,11 @@
 
 @interface VUIMediaEntityFetchResponse : NSObject <NSCopying>
 {
-    unsigned long long _mediaEntitySubtype;
     NSArray *_mediaEntities;
     NSArray *_sortIndexes;
     NSArray *_grouping;
     NSArray *_groupingSortIndexes;
+    unsigned long long _mediaEntitySubtype;
 }
 
 @property (copy, nonatomic) NSArray *grouping; // @synthesize grouping=_grouping;

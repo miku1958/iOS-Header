@@ -14,10 +14,12 @@
 @interface MPMediaControls : NSObject <MPMediaControlsProtocol, NSXPCListenerDelegate>
 {
     BOOL _shouldObserveRoutingContextUIDChanges;
+    unsigned long long _dismissalReason;
     CDUnknownBlockType _dismissHandler;
     NSXPCListener *_listener;
     NSXPCConnection *_connection;
     MPMediaControlsConfiguration *_configuration;
+    CDUnknownBlockType _dismissHandlerWithReason;
 }
 
 @property (readonly, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -25,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
+@property (copy, nonatomic) CDUnknownBlockType dismissHandlerWithReason; // @synthesize dismissHandlerWithReason=_dismissHandlerWithReason;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 @property (readonly) Class superclass;
@@ -32,8 +35,10 @@
 - (void).cxx_destruct;
 - (unsigned long long)_MPRouteSharingPolicyToAVRouteSharingPolicy:(unsigned long long)arg1;
 - (void)_audioSessionRoutingContextDidChangeNotification;
+- (id)_dismissalReasonString:(unsigned long long)arg1;
 - (long long)_mediaControlsStyleForRouteSharingPolicy:(unsigned long long)arg1;
 - (void)_reset;
+- (BOOL)_shouldUpdateStyleForCurrentConfigurationStyle:(long long)arg1;
 - (void)_updateAudioSessionRoutingContext;
 - (void)dealloc;
 - (void)dismiss;
@@ -44,6 +49,7 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)openConnection;
 - (void)present;
+- (void)setDismissalReason:(unsigned long long)arg1;
 - (void)startPrewarming;
 - (void)stopPrewarming;
 

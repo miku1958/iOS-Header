@@ -104,6 +104,7 @@
 - (void)_addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_connectivityInfoForAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_declineInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_determineCacheDirectory;
@@ -176,6 +177,7 @@
 - (void)addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)connectivityInfoForAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;

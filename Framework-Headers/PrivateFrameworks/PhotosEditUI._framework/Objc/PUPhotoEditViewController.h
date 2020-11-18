@@ -115,6 +115,10 @@
     BOOL _isStageLightDisabled;
     CAMLightingControl *_lightingControl;
     CAMLightingNameBadge *_lightingNameBadge;
+    double _entryStartTime;
+    BOOL _hasLoggedEntryTime;
+    double _exitStartTime;
+    BOOL _hasLoggedExitTime;
     BOOL _previewViewHidden;
     BOOL __hasLoadedRaw;
     BOOL __penultimateAvailable;
@@ -244,6 +248,10 @@
 - (id)_defaultInitialEditingTool;
 - (id)_depthButtonIcon;
 - (id)_depthButtonTitle;
+- (void)_didEndEnterEdit;
+- (void)_didEndExitAction;
+- (void)_didStartEnterEdit;
+- (void)_didStartExitAction;
 - (void)_editPluginSession:(id)arg1 checkVideoEnabled:(BOOL)arg2 loadVideoComplementURLWithHandler:(CDUnknownBlockType)arg3;
 - (void)_handleAssetChangeTimeoutWithAsset:(id)arg1;
 - (void)_handleAutoEnhanceButton:(id)arg1;

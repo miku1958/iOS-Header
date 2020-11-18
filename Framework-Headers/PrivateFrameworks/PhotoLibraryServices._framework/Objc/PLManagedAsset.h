@@ -165,6 +165,7 @@
 @property (strong, nonatomic) NSData *imageRequestHints; // @dynamic imageRequestHints;
 @property (nonatomic) struct CGSize imageSize;
 @property (strong, nonatomic) PLImportSession *importSession; // @dynamic importSession;
+@property (nonatomic) short importedBy;
 @property (readonly, strong, nonatomic) UIImage *inflightImage;
 @property (strong, nonatomic) UIImage *inflightImageInMemory; // @synthesize inflightImageInMemory;
 @property (strong, nonatomic) NSString *inflightImagePath; // @synthesize inflightImagePath;

@@ -8,11 +8,11 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSPredicate, NSSet, NSString, VUIMediaEntityType;
+@class NSArray, NSDictionary, NSPredicate, NSSet, NSString;
 
 @interface VUIMediaEntityFetchRequest : NSObject <NSCopying>
 {
-    VUIMediaEntityType *_mediaEntityType;
+    NSSet *_mediaEntityTypes;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSSet *_properties;
@@ -30,7 +30,7 @@
 @property (copy, nonatomic) NSString *groupingKeyPath; // @synthesize groupingKeyPath=_groupingKeyPath;
 @property (copy, nonatomic) CDUnknownBlockType groupingSortComparator; // @synthesize groupingSortComparator=_groupingSortComparator;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) VUIMediaEntityType *mediaEntityType; // @synthesize mediaEntityType=_mediaEntityType;
+@property (copy, nonatomic) NSSet *mediaEntityTypes; // @synthesize mediaEntityTypes=_mediaEntityTypes;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (copy, nonatomic) NSSet *properties; // @synthesize properties=_properties;
@@ -48,6 +48,8 @@
 + (id)_finalizedSortDescriptorsFromSortDescriptors:(id)arg1 mediaEntityKind:(id)arg2;
 + (id)_identifierPredicateWithIdentifier:(id)arg1;
 + (id)_includeSortIndexesOptions;
++ (id)_isEqualPredicateWithAdamId:(id)arg1;
++ (id)_isInPredicateWithAdamId:(id)arg1;
 + (id)_isLocalPredicate;
 + (id)_minimalMovieRentalsPropertiesFetchRequest;
 + (id)_minimalMoviesPropertiesFetchRequest;
@@ -83,6 +85,9 @@
 - (BOOL)_shouldGenerateSortIndexes;
 - (id)_sortIndexPropertyKeyWithMediaEntityKind:(id)arg1;
 - (void)add4KResolutionPredicate;
+- (void)addAdamIdPredicate:(id)arg1;
+- (void)addAdamIdsPredicate:(id)arg1;
+- (void)addDownloadStatePredicateForStates:(unsigned long long)arg1;
 - (void)addGroupingSortIndexesOption;
 - (void)addHDRColorCapabilityOr4KResolutionPredicate;
 - (void)addHDRColorCapabilityPredicate;
@@ -94,6 +99,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithMediaEntityType:(id)arg1;
+- (id)initWithMediaEntityTypes:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

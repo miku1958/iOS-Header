@@ -48,7 +48,7 @@
 + (id)keyPathDictionaryWithWorkerType:(short)arg1 workerFlags:(int)arg2 analysisState:(int)arg3 lastIgnoredDate:(id)arg4 ignoreUntilDate:(id)arg5;
 + (BOOL)markStatesProcessedForWorkerType:(short)arg1 error:(id *)arg2;
 + (void)removeAnalysisRecordsForDeletedAssetUUIDs:(id)arg1 forWorkerType:(short)arg2;
-+ (void)removeAnalysisRecordsWithNoAssetUUID;
++ (void)removeAnalysisRecordsWithNoAssetOrUUIDUseMaintenanceMode:(BOOL)arg1;
 + (void)requestAnalysisCountsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)requestCountOfAnalysisRecordsForDeletedAssetsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)requestTotalProgressCountsForWorkerType:(short)arg1 states:(id)arg2 completion:(CDUnknownBlockType)arg3;

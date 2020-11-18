@@ -43,6 +43,7 @@
 - (void)handleActions:(id)arg1 source:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1;
 - (void)isPasscodeLockedOrBlockedWithResult:(CDUnknownBlockType)arg1;
+- (void)prepareDisplaysForExit;
 - (void)prepareForExitAndRelaunch:(BOOL)arg1;
 - (void)setPendingExit:(BOOL)arg1;
 - (void)setSystemIdleSleepDisabled:(BOOL)arg1 forReason:(id)arg2;

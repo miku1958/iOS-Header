@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSData *_nanoRegistryData;
     unsigned int _version;
     BOOL _autoUpdateEnabled;
+    BOOL _didSeeTrueTonePane;
     BOOL _findMyiPhoneOptIn;
     BOOL _locationServicesOptIn;
     BOOL _screenTimeEnabled;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
         unsigned int deviceAnalyticsOptIn:1;
         unsigned int homeButtonHapticKind:1;
         unsigned int autoUpdateEnabled:1;
+        unsigned int didSeeTrueTonePane:1;
         unsigned int findMyiPhoneOptIn:1;
         unsigned int locationServicesOptIn:1;
         unsigned int screenTimeEnabled:1;
@@ -38,10 +40,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
 @property (nonatomic) BOOL autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property (nonatomic) unsigned int deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
+@property (nonatomic) BOOL didSeeTrueTonePane; // @synthesize didSeeTrueTonePane=_didSeeTrueTonePane;
 @property (nonatomic) BOOL findMyiPhoneOptIn; // @synthesize findMyiPhoneOptIn=_findMyiPhoneOptIn;
 @property (nonatomic) BOOL hasAppAnalyticsOptIn;
 @property (nonatomic) BOOL hasAutoUpdateEnabled;
 @property (nonatomic) BOOL hasDeviceAnalyticsOptIn;
+@property (nonatomic) BOOL hasDidSeeTrueTonePane;
 @property (nonatomic) BOOL hasFindMyiPhoneOptIn;
 @property (nonatomic) BOOL hasHomeButtonHapticKind;
 @property (nonatomic) BOOL hasLocationServicesOptIn;

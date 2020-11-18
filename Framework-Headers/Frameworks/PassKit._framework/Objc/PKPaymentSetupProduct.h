@@ -8,16 +8,14 @@
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, PKPaymentSetupProductImageAssetURLs, PKPaymentSetupProductImageAssets;
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL, PKPaymentSetupProductConfiguration, PKPaymentSetupProductImageAssetURLs, PKPaymentSetupProductImageAssets;
 
 @interface PKPaymentSetupProduct : NSObject <NSCopying>
 {
     BOOL _suppressPendingPurchases;
-    NSString *_displayName;
-    unsigned long long _type;
+    BOOL _hasAccount;
+    PKPaymentSetupProductConfiguration *_configuration;
     NSSet *_regions;
-    NSString *_productIdentifier;
-    NSString *_partnerIdentifier;
     NSArray *_requiredFields;
     NSArray *_supportedProtocols;
     NSURL *_termsURL;
@@ -33,26 +31,29 @@
     NSArray *_supportedCameraCaptureTypes;
     NSArray *_supportedInAppTypes;
     NSArray *_supportedTransitNetworkIdentifiers;
+    NSArray *_featureApplications;
+    NSArray *_onboardingItems;
     NSArray *_paymentOptions;
     NSDictionary *_rawDictionary;
-    NSString *_identifier;
     NSDictionary *_minimumOSVersion;
     NSMutableDictionary *_requestedProvisioningMethods;
+    NSString *_displayName;
 }
 
 @property (copy, nonatomic) NSURL *appLaunchURL; // @synthesize appLaunchURL=_appLaunchURL;
 @property (copy, nonatomic) NSArray *associatedStoreIdentifiers; // @synthesize associatedStoreIdentifiers=_associatedStoreIdentifiers;
+@property (readonly, copy, nonatomic) PKPaymentSetupProductConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) unsigned long long flags; // @synthesize flags=_flags;
-@property (readonly, nonatomic) long long hsa2Requirement; // @synthesize hsa2Requirement=_hsa2Requirement;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSArray *featureApplications; // @synthesize featureApplications=_featureApplications;
+@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
+@property (nonatomic) BOOL hasAccount; // @synthesize hasAccount=_hasAccount;
+@property (nonatomic) long long hsa2Requirement; // @synthesize hsa2Requirement=_hsa2Requirement;
 @property (readonly, nonatomic) PKPaymentSetupProductImageAssetURLs *imageAssetURLs; // @synthesize imageAssetURLs=_imageAssetURLs;
 @property (readonly, nonatomic) PKPaymentSetupProductImageAssets *imageAssets; // @synthesize imageAssets=_imageAssets;
 @property (strong, nonatomic) NSDictionary *minimumOSVersion; // @synthesize minimumOSVersion=_minimumOSVersion;
-@property (copy, nonatomic) NSString *partnerIdentifier; // @synthesize partnerIdentifier=_partnerIdentifier;
+@property (strong, nonatomic) NSArray *onboardingItems; // @synthesize onboardingItems=_onboardingItems;
 @property (readonly, copy, nonatomic) NSString *partnerName;
 @property (readonly, copy, nonatomic) NSArray *paymentOptions; // @synthesize paymentOptions=_paymentOptions;
-@property (copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (copy, nonatomic) NSDictionary *rawDictionary; // @synthesize rawDictionary=_rawDictionary;
 @property (readonly, copy, nonatomic) NSDictionary *readerModeMetadata; // @synthesize readerModeMetadata=_readerModeMetadata;
 @property (copy, nonatomic) NSSet *regions; // @synthesize regions=_regions;
@@ -66,17 +67,20 @@
 @property (readonly, copy, nonatomic) NSArray *supportedTransitNetworkIdentifiers; // @synthesize supportedTransitNetworkIdentifiers=_supportedTransitNetworkIdentifiers;
 @property (readonly, nonatomic) BOOL suppressPendingPurchases; // @synthesize suppressPendingPurchases=_suppressPendingPurchases;
 @property (copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (id)_displayNameForCardType:(id)arg1;
 + (id)_inAppProvisioningURLWthScheme:(id)arg1 path:(id)arg2;
++ (void)_updateProduct:(id)arg1 withDebugConfigurationForState:(unsigned long long)arg2;
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
 + (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 onboardingItems:(id)arg14 actionBaseURL:(id)arg15 productState:(id)arg16;
 - (long long)allSupportedProtocols;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithFeatureIdentifier:(unsigned long long)arg1;
 - (id)initWithProductDictionary:(id)arg1;
+- (id)partnerIdentifier;
+- (id)productIdentifier;
 - (id)provisioningMethodMetadataForType:(id)arg1;
 - (id)provisioningMethodTypes;
 - (void)setProvisioningMethodMetadata:(id)arg1 forType:(id)arg2;

@@ -62,6 +62,7 @@
 + (void)deleteFromFilesystem:(id)arg1;
 + (BOOL)excludeFromBackup:(id)arg1 error:(id *)arg2;
 + (BOOL)includeInBackup:(id)arg1 error:(id *)arg2;
++ (BOOL)migrateBackupExclusionFlag:(id)arg1;
 - (void).cxx_destruct;
 - (id)_calculateComposedFragments;
 - (double)_composedDuration;

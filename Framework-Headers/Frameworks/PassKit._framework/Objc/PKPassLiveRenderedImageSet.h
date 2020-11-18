@@ -23,6 +23,7 @@
     PKImage *_selfIlluminationMaterialPropertyImage;
     PKImage *_metalnessMaterialPropertyImage;
     PKImage *_roughnessMaterialPropertyImage;
+    PKImage *_overlayMaterialPropertyImage;
 }
 
 @property (strong, nonatomic) PKImage *ambientMaterialPropertyImage; // @synthesize ambientMaterialPropertyImage=_ambientMaterialPropertyImage;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) PKImage *metalnessMaterialPropertyImage; // @synthesize metalnessMaterialPropertyImage=_metalnessMaterialPropertyImage;
 @property (strong, nonatomic) PKImage *multiplyMaterialPropertyImage; // @synthesize multiplyMaterialPropertyImage=_multiplyMaterialPropertyImage;
 @property (strong, nonatomic) PKImage *normalMaterialPropertyImage; // @synthesize normalMaterialPropertyImage=_normalMaterialPropertyImage;
+@property (strong, nonatomic) PKImage *overlayMaterialPropertyImage; // @synthesize overlayMaterialPropertyImage=_overlayMaterialPropertyImage;
 @property (strong, nonatomic) PKImage *reflectiveMaterialPropertyImage; // @synthesize reflectiveMaterialPropertyImage=_reflectiveMaterialPropertyImage;
 @property (strong, nonatomic) PKImage *roughnessMaterialPropertyImage; // @synthesize roughnessMaterialPropertyImage=_roughnessMaterialPropertyImage;
 @property (strong, nonatomic) PKImage *selfIlluminationMaterialPropertyImage; // @synthesize selfIlluminationMaterialPropertyImage=_selfIlluminationMaterialPropertyImage;

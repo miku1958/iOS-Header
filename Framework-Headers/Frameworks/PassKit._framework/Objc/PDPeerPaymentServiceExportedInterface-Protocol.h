@@ -19,7 +19,7 @@
 - (void)lastUsedAlternateFundingSourcePassUniqueIdentifier:(void (^)(NSString *))arg1;
 - (void)noteAccountDeletedWithCompletion:(void (^)(void))arg1;
 - (void)presentIdentityVerificationFlowWithResponseData:(NSData *)arg1 orientation:(NSNumber *)arg2 completion:(void (^)(BOOL))arg3;
-- (void)presentPeerPaymentTermsAndConditionsWithTermsURL:(NSURL *)arg1 termsIdentifier:(NSString *)arg2 orientation:(NSNumber *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)presentPeerPaymentTermsAndConditionsWithTermsURL:(NSURL *)arg1 termsIdentifier:(NSString *)arg2 passUniqueID:(NSString *)arg3 orientation:(NSNumber *)arg4 completion:(void (^)(BOOL))arg5;
 - (void)presentRegistrationFlowWithAccount:(PKPeerPaymentAccount *)arg1 amount:(PKCurrencyAmount *)arg2 state:(unsigned long long)arg3 senderAddress:(NSString *)arg4 orientation:(NSNumber *)arg5 completion:(void (^)(BOOL))arg6;
 - (void)receivedPeerPaymentMessageData:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)registerDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;

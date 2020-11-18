@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
-@protocol FCChannelProviding;
+@protocol FCBundleSubscriptionProviderType, FCChannelProviding, FCPurchaseProviderType;
 
 @protocol FCPaidAccessCheckerType
+
+@property (readonly, nonatomic) id<FCBundleSubscriptionProviderType> bundleSubscriptionProvider;
+@property (readonly, nonatomic) id<FCPurchaseProviderType> purchaseProvider;
+
 - (BOOL)canGetAccessToItemPaid:(BOOL)arg1 bundlePaid:(BOOL)arg2 channel:(id<FCChannelProviding>)arg3;
+- (BOOL)canGetBundleSubscriptionToChannel:(id<FCChannelProviding>)arg1;
 - (BOOL)canGetSubscriptionToChannel:(id<FCChannelProviding>)arg1;
-- (BOOL)hasAccessToItemPaid:(BOOL)arg1 bundlePaid:(BOOL)arg2 channelID:(NSString *)arg3;
 - (BOOL)isPreparedForUse;
 - (void)prepareForUseWithCompletion:(void (^)(void))arg1;
 @end

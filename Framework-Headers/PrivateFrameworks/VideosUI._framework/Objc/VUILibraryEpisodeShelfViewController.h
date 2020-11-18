@@ -12,15 +12,13 @@
 #import <VideosUI/VUIDialogInteractionControllerDelegate-Protocol.h>
 #import <VideosUI/VUIEpisodeDetailViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDownloadPopoverViewControllerDelegate-Protocol.h>
-#import <VideosUI/VUILibraryEpisodeListCellDelegate-Protocol.h>
 #import <VideosUI/VUILocalContentProtocol-Protocol.h>
-#import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, VUIDialogInteractionController, VUIEpisodeDetailViewController, VUILibraryEpisodeListCell;
 @protocol VUILibraryEpisodeShelfViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryEpisodeShelfViewController : VUIShelfViewController <UICollectionViewDataSource, UICollectionViewDelegate, TVShelfViewLayoutDelegate, VUIEpisodeDetailViewControllerDelegate, VUIMediaEntityAssetControllerDelegate, VUILibraryEpisodeListCellDelegate, VUIDialogInteractionControllerDelegate, VUILibraryDownloadPopoverViewControllerDelegate, VUILocalContentProtocol>
+@interface VUILibraryEpisodeShelfViewController : VUIShelfViewController <UICollectionViewDataSource, UICollectionViewDelegate, TVShelfViewLayoutDelegate, VUIEpisodeDetailViewControllerDelegate, VUIDialogInteractionControllerDelegate, VUILibraryDownloadPopoverViewControllerDelegate, VUILocalContentProtocol>
 {
     VUILibraryEpisodeListCell *_sizingCell;
     VUIDialogInteractionController *_dialogInteractionController;
@@ -44,12 +42,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_assetControllerForCell:(id)arg1;
 - (BOOL)_canRemoveEpisodeAtIndexPath:(id)arg1;
 - (void)_configureShelfLayout:(id)arg1;
 - (id)_episodeViewModelsWithFetchedEpisodes:(id)arg1;
 - (id)_episodeWithIdentifier:(id)arg1;
-- (void)_updateCell:(id)arg1 withAssetController:(id)arg2;
 - (void)_updateHeaderView;
 - (void)_updateViewWithFetchedEpisodes:(id)arg1 andChangeSet:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -62,10 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)dialogInteractionController:(id)arg1 interactionDidEndForIndexPath:(id)arg2;
 - (BOOL)dialogInteractionController:(id)arg1 shouldBeginInteractionForIndexPath:(id)arg2;
 - (void)episodeDetailViewControllerWasDismissed:(id)arg1;
-- (void)episodeListCellDidRequestCancelDownload:(id)arg1;
-- (void)episodeListCellDidRequestStartDownload:(id)arg1;
 - (id)initWithEpisodes:(id)arg1;
-- (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 - (void)removeDownloadDismissed;
 - (void)removeDownloadPressed;
 - (void)traitCollectionDidChange:(id)arg1;

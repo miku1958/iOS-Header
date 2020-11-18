@@ -68,6 +68,7 @@
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2 withTransition:(int)arg3;
+- (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (void)shakePassView;
 - (void)updateAccountValues;
 - (void)updateFirstResponder;

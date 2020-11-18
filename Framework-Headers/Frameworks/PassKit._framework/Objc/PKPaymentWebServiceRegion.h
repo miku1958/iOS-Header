@@ -13,6 +13,8 @@
 @interface PKPaymentWebServiceRegion : NSObject <NSSecureCoding>
 {
     BOOL _hasPeerPaymentAccount;
+    BOOL _hasAccounts;
+    BOOL _hasApplications;
     NSString *_lastUpdatedTag;
     NSArray *_certificates;
     NSURL *_brokerURL;
@@ -25,19 +27,35 @@
     long long _consistencyCheckBackoffLevel;
     NSString *_userNotificationPushTopic;
     NSURL *_peerPaymentServiceURL;
+    long long _outstandingCheckInAction;
+    NSString *_lastDeviceCheckInBuildVersion;
     NSString *_deviceCheckInPushTopic;
+    NSURL *_accountServiceURL;
+    NSString *_accountServicePushTopic;
+    NSURL *_applyServiceURL;
+    NSString *_applyServicePushTopic;
+    NSString *_productsPushTopic;
 }
 
+@property (strong, nonatomic) NSString *accountServicePushTopic; // @synthesize accountServicePushTopic=_accountServicePushTopic;
+@property (strong, nonatomic) NSURL *accountServiceURL; // @synthesize accountServiceURL=_accountServiceURL;
+@property (strong, nonatomic) NSString *applyServicePushTopic; // @synthesize applyServicePushTopic=_applyServicePushTopic;
+@property (strong, nonatomic) NSURL *applyServiceURL; // @synthesize applyServiceURL=_applyServiceURL;
 @property (strong, nonatomic) NSURL *brokerURL; // @synthesize brokerURL=_brokerURL;
 @property (strong, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (nonatomic) long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
-@property (strong, nonatomic) NSString *deviceCheckInPushTopic; // @synthesize deviceCheckInPushTopic=_deviceCheckInPushTopic;
+@property (copy, nonatomic) NSString *deviceCheckInPushTopic; // @synthesize deviceCheckInPushTopic=_deviceCheckInPushTopic;
+@property (nonatomic) BOOL hasAccounts; // @synthesize hasAccounts=_hasAccounts;
+@property (nonatomic) BOOL hasApplications; // @synthesize hasApplications=_hasApplications;
 @property (nonatomic) BOOL hasPeerPaymentAccount; // @synthesize hasPeerPaymentAccount=_hasPeerPaymentAccount;
 @property (strong, nonatomic) NSURL *inAppPaymentServicesURL; // @synthesize inAppPaymentServicesURL=_inAppPaymentServicesURL;
+@property (copy, nonatomic) NSString *lastDeviceCheckInBuildVersion; // @synthesize lastDeviceCheckInBuildVersion=_lastDeviceCheckInBuildVersion;
 @property (strong, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
+@property (nonatomic) long long outstandingCheckInAction; // @synthesize outstandingCheckInAction=_outstandingCheckInAction;
 @property (strong, nonatomic) NSURL *paymentServicesMerchantURL; // @synthesize paymentServicesMerchantURL=_paymentServicesMerchantURL;
 @property (strong, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
 @property (strong, nonatomic) NSURL *peerPaymentServiceURL; // @synthesize peerPaymentServiceURL=_peerPaymentServiceURL;
+@property (copy, nonatomic) NSString *productsPushTopic; // @synthesize productsPushTopic=_productsPushTopic;
 @property (strong, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 @property (strong, nonatomic) NSString *trustedServiceManagerPushTopic; // @synthesize trustedServiceManagerPushTopic=_trustedServiceManagerPushTopic;
 @property (strong, nonatomic) NSURL *trustedServiceManagerURL; // @synthesize trustedServiceManagerURL=_trustedServiceManagerURL;

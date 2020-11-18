@@ -163,6 +163,7 @@
 - (void)dismissWindowsWithOptions:(id)arg1;
 - (void)dispatchGlobalEventWithName:(id)arg1 payload:(id)arg2;
 - (void)dispatchXEvent:(id)arg1;
+- (void)fetchAppleCardMetadata:(id)arg1 callback:(id)arg2;
 - (void)fetchWalletCardData:(id)arg1;
 - (void)fetchWalletCardMetadata:(id)arg1 callback:(id)arg2;
 - (void)financeInterruptionResolved:(id)arg1;
@@ -240,6 +241,7 @@
 - (void)openURL:(id)arg1;
 - (void)openWallet;
 - (id)parentViewController;
+- (void)paymentSetupFeatureSupported:(id)arg1 callback:(id)arg2;
 - (void)perfLog:(id)arg1;
 - (void)performPurchaseAnimationForIdentifier:(id)arg1 style:(id)arg2;
 - (void)pingURL:(id)arg1;
@@ -300,6 +302,7 @@
 - (id)showPromptWithMessage:(id)arg1 initialValue:(id)arg2 title:(id)arg3 okButtonTitle:(id)arg4 cancelButtonTitle:(id)arg5;
 - (void)showSafariViewControllerWithURLString:(id)arg1 identifier:(id)arg2 animated:(BOOL)arg3;
 - (void)signOutPrimaryAccount;
+- (void)signupInWallet:(id)arg1 callback:(id)arg2;
 - (id)softwareApplicationWithAdamID:(id)arg1;
 - (id)softwareApplicationWithBundleID:(id)arg1;
 - (void)startListeningForAuthenticationTokenWithCallback:(id)arg1;

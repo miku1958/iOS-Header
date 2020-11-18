@@ -28,6 +28,7 @@
 @property (strong, nonatomic) MTMediaTimeTracker *timeTracker; // @synthesize timeTracker=_timeTracker;
 @property (weak, nonatomic) MTVPAFKit *vpafKit; // @synthesize vpafKit=_vpafKit;
 
++ (CDUnknownBlockType)playlistItemComparator;
 - (void).cxx_destruct;
 - (id)combineEventData:(id)arg1 withPlaylistDataForItem:(id)arg2;
 - (void)generatePlaylistTransitionsIfNecessary:(unsigned long long)arg1;

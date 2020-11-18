@@ -8,26 +8,34 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class NSError, NSURL;
+@class ICAgeVerifier, NSError, NSURL;
 
 @interface ICAgeVerificationState : NSObject <NSCopying>
 {
-    long long _treatment;
     long long _status;
+    long long _treatment;
     NSURL *_verificationURL;
     NSError *_error;
+    ICAgeVerifier *_ageVerifier;
 }
 
+@property (readonly, copy, nonatomic) ICAgeVerifier *ageVerifier; // @synthesize ageVerifier=_ageVerifier;
+@property (readonly, nonatomic, getter=isDynamic) BOOL dynamic;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isExplicitContentAllowed) BOOL explicitContentAllowed;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, nonatomic) long long treatment; // @synthesize treatment=_treatment;
 @property (readonly, copy, nonatomic) NSURL *verificationURL; // @synthesize verificationURL=_verificationURL;
 
++ (id)ageVerificationStateNotRequired;
++ (id)ageVerificationStateNotRequiredWithError:(id)arg1;
++ (id)ageVerificationStateNotRequiredWithTreatment:(long long)arg1;
++ (id)ageVerificationStateNotRequiredWithTreatment:(long long)arg1 verificationURL:(id)arg2;
 - (void).cxx_destruct;
+- (id)_initWithStatus:(long long)arg1 treatment:(long long)arg2 verificationURL:(id)arg3 error:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithStatus:(long long)arg1 treatment:(long long)arg2 verificationURL:(id)arg3 error:(id)arg4;
+- (id)initWithAgeVerifier:(id)arg1 treatment:(long long)arg2 verificationURL:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

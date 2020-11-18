@@ -36,6 +36,7 @@
 
 + (id)sharedInstance;
 - (BOOL)_analyticZoneCreated;
+- (BOOL)_canSubmitCloudKitAnalytic;
 - (BOOL)_canSubmitCloudKitMetric;
 - (void)_evalToggleiCloudSettingsSwitch;
 - (void)_fetchExitRecordDateWithCompletion:(CDUnknownBlockType)arg1;

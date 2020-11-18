@@ -30,6 +30,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)allowsVideo;
++ (BOOL)isAddPersonEnabled;
 + (long long)memorySize;
 + (BOOL)supportsConversations;
 + (BOOL)supportsEffects;

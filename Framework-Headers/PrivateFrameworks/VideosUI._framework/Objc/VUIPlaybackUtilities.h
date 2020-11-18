@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (long long)playedStateForDuration:(double)arg1 elapsedTime:(double)arg2 hasBeenPlayed:(BOOL)arg3 playCount:(unsigned long long)arg4;
 + (long long)playedStateForDuration:(double)arg1 elapsedTime:(double)arg2 hasBeenPlayed:(BOOL)arg3 playCount:(unsigned long long)arg4 respectPlayCount:(BOOL)arg5;
 + (double)playedThresholdTimeForDuration:(double)arg1;
++ (BOOL)playerIsLive:(id)arg1;
 + (double)suggestedBookmarkTimeForElapsedTime:(double)arg1 duration:(double)arg2;
 
 @end

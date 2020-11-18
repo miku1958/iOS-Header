@@ -35,6 +35,7 @@
 - (id)description;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 homeKitDispatcher:(id)arg2;
+- (id)valueForParameter:(id)arg1;
 
 @end
 

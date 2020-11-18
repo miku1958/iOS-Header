@@ -61,6 +61,9 @@
 - (void)_denyPrivacyAccess;
 - (void)_grantPrivacyAccess;
 - (void)_updatePrivacyState;
+- (id)appAdamIDs;
+- (id)appBundleIDs;
+- (id)appIconURLForSize:(struct CGSize)arg1;
 - (void)applicationsDidFailToInstall:(id)arg1;
 - (void)applicationsDidFailToUninstall:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
@@ -75,6 +78,7 @@
 - (id)initWithBundle:(struct __CFBundle *)arg1 restrictionsCenter:(id)arg2 privacyFacade:(id)arg3;
 - (void)installApp;
 - (void)launchApp;
+- (id)name;
 - (void)revokeVoucher;
 
 @end

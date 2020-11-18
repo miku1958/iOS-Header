@@ -19,11 +19,15 @@
 - (id)_downloadOptionsWithUserInitiation:(BOOL)arg1;
 - (void)_queryAssetsWithAssetType:(id)arg1 predicate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_retrieveAssetWithAssetType:(id)arg1 userInitiated:(BOOL)arg2 predicate:(id)arg3 sortDescriptors:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)fetchEducationVideoWithPeerPaymentCard:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchNeededAssetsForThisDeviceWithPeerPaymentCard:(BOOL)arg1;
+- (id)_sortDescriptorWithPreferredFeatureKey:(id)arg1 isFeaturePreferred:(BOOL)arg2 keyPath:(id)arg3;
+- (void)fetchAssetsForMarketWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchEducationVideoWithPreferredFeatures:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchNeededAssetsForThisDeviceWithPreferredFeatures:(unsigned long long)arg1;
 - (id)init;
 - (id)predicateForEducationVideo;
-- (id)sortDescriptorsForEducationVideoWithPeerPaymentCard:(BOOL)arg1;
+- (id)predicateForMarketIdentifier:(id)arg1;
+- (id)sortDescriptorsForEducationVideoWithPreferredFeatures:(unsigned long long)arg1;
+- (id)sortDescriptorsForMarkets;
 
 @end
 

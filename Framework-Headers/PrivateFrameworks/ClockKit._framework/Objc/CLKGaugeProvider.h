@@ -32,7 +32,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
-- (id)_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finalize;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <LoginKit/LKLoginControllerProtocol-Protocol.h>
+#import <LoginKit/LKLoginDaemonProtocol-Protocol.h>
 
 @class NSXPCConnection;
 
-@interface LKLoginController : NSObject <LKLoginControllerProtocol>
+@interface LKLoginController : NSObject <LKLoginDaemonProtocol>
 {
     NSXPCConnection *_connection;
     CDUnknownBlockType _completionHandler;
@@ -21,9 +21,13 @@
 
 + (id)sharedController;
 - (void).cxx_destruct;
+- (void)checkInWithCurrentEnvironment:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)chooseUserWithIdentifier:(id)arg1 inClassWithID:(id)arg2 password:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
+- (void)isReadyToLoginWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)isReadyToLogoutWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loginAppleID:(id)arg1 password:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)logoutWithLogoutType:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)proxy;
 - (id)recentUsers;
 - (void)saveClassConfiguration:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

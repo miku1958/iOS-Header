@@ -4,14 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@interface WLKContinueWatchingRequestOperation : WLKNetworkRequestOperation
+@class WLKContinueWatchingResponse;
+
+@interface WLKContinueWatchingRequestOperation : WLKUTSNetworkRequestOperation
 {
+    WLKContinueWatchingResponse *_response;
 }
 
+@property (strong, nonatomic) WLKContinueWatchingResponse *response; // @synthesize response=_response;
+
+- (void).cxx_destruct;
+- (void)_donateMediaItems:(id)arg1;
 - (id)init;
-- (id)responseProcessor;
+- (id)initWithCaller:(id)arg1 options:(long long)arg2;
+- (id)initWithQueryParameters:(id)arg1;
+- (void)processResponse;
 
 @end
 

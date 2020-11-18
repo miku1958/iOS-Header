@@ -12,7 +12,7 @@
 #import <CoreHAP/HMFNetMonitorDelegate-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPAccessory, HAPAccessoryProtocolInfo, HAPAccessoryServerBrowserIP, HAPAuthSession, HAPHTTPClient, HAPWACClient, HMFBlockOperation, HMFNetMonitor, HMFTimer, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class HAPAccessory, HAPAccessoryProtocolInfo, HAPAccessoryServerBrowserIP, HAPAuthSession, HAPHTTPClient, HAPWACClient, HMFBlockOperation, HMFMACAddress, HMFNetMonitor, HMFTimer, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
 
 @interface HAPAccessoryServerIP : HAPAccessoryServer <HAPHTTPClientDelegate, HAPHTTPClientDebugDelegate, HMFTimerDelegate, HAPAuthSessionDelegate, HMFNetMonitorDelegate>
 {
@@ -41,6 +41,7 @@
     NSArray *_ipServices;
     NSMutableArray *_queuedOperations;
     HAPAccessory *_primaryAccessoryForServer;
+    HMFMACAddress *_bluetoothAddress;
     HAPHTTPClient *_httpClient;
     HAPAuthSession *_authSession;
     HAPAccessoryProtocolInfo *_authenticatedProtocolInfo;
@@ -59,6 +60,7 @@
 @property (readonly, nonatomic) HAPAuthSession *authSession; // @synthesize authSession=_authSession;
 @property (nonatomic) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (strong, nonatomic) HAPAccessoryProtocolInfo *authenticatedProtocolInfo; // @synthesize authenticatedProtocolInfo=_authenticatedProtocolInfo;
+@property (copy, nonatomic) HMFMACAddress *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSDictionary *bonjourDeviceInfo; // @synthesize bonjourDeviceInfo=_bonjourDeviceInfo;
 @property (strong, nonatomic) HMFTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
 @property (weak, nonatomic) HAPAccessoryServerBrowserIP *browser; // @synthesize browser=_browser;

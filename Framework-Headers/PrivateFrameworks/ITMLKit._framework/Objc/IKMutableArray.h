@@ -22,6 +22,7 @@
 - (void)removeObject:(id)arg1;
 - (void)removeObjectAtIndex:(long long)arg1;
 - (void)removeObjectsAtIndexes:(id)arg1;
+- (void)setObject:(id)arg1 atIndexedSubscript:(long long)arg2;
 
 @end
 

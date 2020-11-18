@@ -8,7 +8,7 @@
 
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKBankAccountInformation, PKFindBankAccountInformationFooterView, PKTableHeaderView, UIButton;
+@class NSArray, NSMutableDictionary, NSString, PKAccount, PKBankAccountInformation, PKFindBankAccountInformationFooterView, PKTableHeaderView, UIButton;
 @protocol PKAddBankAccountInformationViewControllerDelegate;
 
 @interface PKAddBankAccountInformationViewController : PKPaymentSetupTableViewController <UITextFieldDelegate>
@@ -26,6 +26,7 @@
     BOOL _isEditingBankInformation;
     BOOL _hasInteractedWithCell;
     BOOL _prefilledFromKeychain;
+    PKAccount *_featureAccount;
     BOOL _offerKeychainPreFill;
     id<PKAddBankAccountInformationViewControllerDelegate> _delegate;
 }
@@ -38,6 +39,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addPaymentFundingSourceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_bankInformationTextForRow:(unsigned long long)arg1;
 - (BOOL)_cellValuesAreValid;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
@@ -68,15 +70,18 @@
 - (void)_showHowToFindAccountInformationViewController:(id)arg1;
 - (id)_textForRow:(unsigned long long)arg1;
 - (void)_updateBankAccountInformationWithValues:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateHeaderAndNavigationItems;
 - (id)_userEnteredTextForCellAtRow:(unsigned long long)arg1;
 - (void)cancel:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 bankInformation:(id)arg2 accountCountryCode:(id)arg3;
-- (id)initWithState:(unsigned long long)arg1 delegate:(id)arg2 bankInformation:(id)arg3 accountCountryCode:(id)arg4;
+- (id)initWithDelegate:(id)arg1 bankInformation:(id)arg2 accountCountryCode:(id)arg3 featureAccount:(id)arg4;
+- (id)initWithState:(unsigned long long)arg1 delegate:(id)arg2 bankInformation:(id)arg3 accountCountryCode:(id)arg4 featureAccount:(id)arg5;
 - (void)loadView;
 - (void)next:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (id)pkui_navigationBarTintColor;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;

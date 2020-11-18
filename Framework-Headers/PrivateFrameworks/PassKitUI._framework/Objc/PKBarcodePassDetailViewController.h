@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPassHeaderViewDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class BluetoothManager, NSArray, NSMutableDictionary, NSObject, NSString, PKBarcodeTableViewCell, PKLinkedAppView, PKPass, PKPassColorProfile, PKPassDisplayProfile, PKPassHeaderView, PKSettingTableCell, UIRefreshControl, UISegmentedControl, UITableViewCell, UIView, UIVisualEffectView;
+@class BluetoothManager, NSArray, NSMutableDictionary, NSObject, NSString, PKBarcodeTableViewCell, PKLinkedAppView, PKPass, PKPassColorProfile, PKPassDisplayProfile, PKPassHeaderView, PKSettingTableCell, UIRefreshControl, UISegmentedControl, UITableViewCell, UIView;
 @protocol OS_dispatch_source, PKPassDeleteHandler;
 
 @interface PKBarcodePassDetailViewController : PKSectionTableViewController <UITextViewDelegate, PKPassHeaderViewDelegate>
@@ -45,11 +45,10 @@
     BOOL _navigationControllerHidesShadow;
     UIView *_headerView;
     PKPassHeaderView *_passHeaderView;
-    UIVisualEffectView *_blurView;
     UISegmentedControl *_tabBar;
-    UIView *_keyLine;
     BOOL _didRampScreenBrightness;
     unsigned char _visiblityState;
+    BOOL _navigationBarVisible;
     BOOL _showDoneButton;
     PKPass *_pass;
     unsigned long long _suppressedContent;
@@ -111,6 +110,7 @@
 - (id)linkedApp;
 - (void)loadView;
 - (void)passHeaderViewDidChangePass:(id)arg1;
+- (double)pkui_preferredNavigationBarBackgroundOpacity;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)pushSettingsFromViewToModel;
 - (void)refreshControlValueChanged:(id)arg1;
@@ -120,6 +120,7 @@
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setShowsLinks:(BOOL)arg1;
 - (BOOL)shouldAllowRefresh;

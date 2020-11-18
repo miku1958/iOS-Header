@@ -77,6 +77,7 @@
 - (void)invalidate;
 - (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;
+- (void)passFooterContentViewDidAuthenticate:(id)arg1;
 - (void)passFooterContentViewDidChangeCoachingState:(id)arg1;
 - (void)passFooterContentViewDidChangePileSuppressionRequirement:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;

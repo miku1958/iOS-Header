@@ -19,12 +19,10 @@
 - (BOOL)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (BOOL)_deviceConditionsAllowsMessageSyncIgnoreFeatureEnabled:(BOOL)arg1;
 - (BOOL)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (long long)_numberOfMetadataBatchesOfAttachmentsToFetchInInitialSync;
 - (id)ckUtilities;
 - (void)dealloc;
 - (id)latestSyncToken;
 - (void)setLatestSyncToken:(id)arg1;
-- (void)syncAttachmentsWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 
 @end
 

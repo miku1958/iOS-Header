@@ -11,6 +11,7 @@
 
 @protocol PKPaymentMarketGeoFence <NSObject, NSSecureCoding>
 - (BOOL)containsLocation:(CLLocation *)arg1;
+- (double)distanceFromLocation:(CLLocation *)arg1;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 @end
 

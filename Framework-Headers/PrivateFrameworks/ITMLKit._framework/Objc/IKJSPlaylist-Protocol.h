@@ -12,6 +12,7 @@
 
 @property (nonatomic) long long endAction;
 @property (readonly, nonatomic) unsigned long long length;
+@property (nonatomic) long long repeatMode;
 
 - (id)init;
 - (IKJSMediaItem *)item:(long long)arg1;

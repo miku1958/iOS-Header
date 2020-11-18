@@ -26,6 +26,7 @@
     PKRemotePaymentInstrument *_defaultRemotePaymentInstrument;
     NSString *_uniqueID;
     NSUUID *_bluetoothUUID;
+    NSArray *_supportedSetupFeatures;
 }
 
 @property (strong, nonatomic) NSUUID *bluetoothUUID; // @synthesize bluetoothUUID=_bluetoothUUID;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property (nonatomic) long long proximityState; // @synthesize proximityState=_proximityState;
 @property (strong, nonatomic) NSArray *remotePaymentInstruments; // @synthesize remotePaymentInstruments=_remotePaymentInstruments;
+@property (strong, nonatomic) NSArray *supportedSetupFeatures; // @synthesize supportedSetupFeatures=_supportedSetupFeatures;
 @property (nonatomic) BOOL supportsFaceID; // @synthesize supportsFaceID=_supportsFaceID;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;

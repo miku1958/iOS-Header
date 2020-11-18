@@ -8,13 +8,14 @@
 
 #import <SetupAssistantSupport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface SASProximityInformation : NSObject <NSSecureCoding>
 {
     BOOL _usesSameAccountForiTunes;
     BOOL _automaticTimeZoneEnabled;
     BOOL _restoring;
+    BOOL _backupEnabled;
     BOOL _locationServicesOptIn;
     NSArray *_keyboards;
     NSString *_appleID;
@@ -28,26 +29,36 @@
     NSString *_deviceClass;
     NSString *_deviceName;
     NSString *_backupUUID;
+    NSDate *_dateOfLastBackup;
     NSData *_backupMetadata;
     NSNumber *_findMyDeviceOptIn;
     NSNumber *_deviceAnalyticsOptIn;
     NSNumber *_appAnalyticsOptIn;
     NSNumber *_siriOptIn;
+    NSData *_siriVoiceProfileAvailabilityMetadata;
     NSNumber *_deviceTermsIdentifier;
     NSString *_productVersion;
+    NSNumber *_supportsDeviceToDeviceMigration;
+    NSNumber *_deviceToDeviceMigrationVersion;
+    NSNumber *_storageAvailable;
+    NSNumber *_storageCapacity;
+    NSNumber *_storageUsedByAppContainers;
 }
 
 @property (strong) NSNumber *appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
 @property (copy) NSString *appleID; // @synthesize appleID=_appleID;
 @property BOOL automaticTimeZoneEnabled; // @synthesize automaticTimeZoneEnabled=_automaticTimeZoneEnabled;
+@property (nonatomic, getter=isBackupEnabled) BOOL backupEnabled; // @synthesize backupEnabled=_backupEnabled;
 @property (strong) NSData *backupMetadata; // @synthesize backupMetadata=_backupMetadata;
 @property (copy) NSString *backupUUID; // @synthesize backupUUID=_backupUUID;
 @property (strong) NSNumber *connectedToWiFi; // @synthesize connectedToWiFi=_connectedToWiFi;
+@property (copy) NSDate *dateOfLastBackup; // @synthesize dateOfLastBackup=_dateOfLastBackup;
 @property (strong) NSNumber *deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
 @property (copy) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (copy) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (copy) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (strong) NSNumber *deviceTermsIdentifier; // @synthesize deviceTermsIdentifier=_deviceTermsIdentifier;
+@property (strong) NSNumber *deviceToDeviceMigrationVersion; // @synthesize deviceToDeviceMigrationVersion=_deviceToDeviceMigrationVersion;
 @property (strong) NSNumber *findMyDeviceOptIn; // @synthesize findMyDeviceOptIn=_findMyDeviceOptIn;
 @property (copy) NSString *firstName; // @synthesize firstName=_firstName;
 @property (copy) NSArray *keyboards; // @synthesize keyboards=_keyboards;
@@ -58,6 +69,11 @@
 @property (strong) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (getter=isRestoring) BOOL restoring; // @synthesize restoring=_restoring;
 @property (strong) NSNumber *siriOptIn; // @synthesize siriOptIn=_siriOptIn;
+@property (strong) NSData *siriVoiceProfileAvailabilityMetadata; // @synthesize siriVoiceProfileAvailabilityMetadata=_siriVoiceProfileAvailabilityMetadata;
+@property (strong) NSNumber *storageAvailable; // @synthesize storageAvailable=_storageAvailable;
+@property (strong) NSNumber *storageCapacity; // @synthesize storageCapacity=_storageCapacity;
+@property (strong) NSNumber *storageUsedByAppContainers; // @synthesize storageUsedByAppContainers=_storageUsedByAppContainers;
+@property (strong) NSNumber *supportsDeviceToDeviceMigration; // @synthesize supportsDeviceToDeviceMigration=_supportsDeviceToDeviceMigration;
 @property (copy) NSString *timeZone; // @synthesize timeZone=_timeZone;
 @property BOOL usesSameAccountForiTunes; // @synthesize usesSameAccountForiTunes=_usesSameAccountForiTunes;
 

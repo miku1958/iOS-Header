@@ -26,6 +26,7 @@
     ADWebViewGestureRecognizer *_gestureRecognizer;
     NSString *_creativeIdentifier;
     ADHomeButtonHandler *_homeButtonHandler;
+    id _notificationObserver;
     struct CGSize _maximumExpandedSize;
 }
 
@@ -40,6 +41,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
 @property (nonatomic) struct CGSize maximumExpandedSize; // @synthesize maximumExpandedSize=_maximumExpandedSize;
+@property (strong, nonatomic) id notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 @property (strong, nonatomic) _WKRemoteObjectInterface *remoteObjectInterface; // @synthesize remoteObjectInterface=_remoteObjectInterface;
 @property (nonatomic) BOOL shouldBlockNavigation; // @synthesize shouldBlockNavigation=_shouldBlockNavigation;
 @property (readonly) Class superclass;

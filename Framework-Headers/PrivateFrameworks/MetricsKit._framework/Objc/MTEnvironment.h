@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <MetricsKit/MTObject.h>
 
 @protocol MTEnvironmentDelegate;
 
-@interface MTEnvironment : NSObject
+@interface MTEnvironment : MTObject
 {
     id<MTEnvironmentDelegate> _delegate;
 }

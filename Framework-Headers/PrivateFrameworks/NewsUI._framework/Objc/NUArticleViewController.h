@@ -61,7 +61,9 @@
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
 
++ (id)_parentOrPresentingViewControllerFor:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)accessibilityShouldScrollForScrollViewController:(id)arg1 defaultValue:(BOOL)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
 - (void)dynamicTypeDidChange:(id)arg1;
@@ -73,6 +75,7 @@
 - (void)restoreScrollPositionIfNeeded;
 - (void)scrollToTopAnimated:(BOOL)arg1;
 - (void)scrollViewController:(id)arg1 enableNavigation:(BOOL)arg2;
+- (BOOL)scrollViewController:(id)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 - (void)scrollViewControllerDidLayoutContent:(id)arg1;
 - (void)scrollViewControllerDismissFullscreen:(id)arg1;
 - (void)scrollViewControllerRequestsFullscreen:(id)arg1;
@@ -85,6 +88,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewportDebuggingEnabled:(BOOL)arg1;
 

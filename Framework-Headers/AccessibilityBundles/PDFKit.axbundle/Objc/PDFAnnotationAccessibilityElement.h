@@ -32,6 +32,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)description;
 - (id)initWithPage:(id)arg1 annotation:(id)arg2 withParent:(id)arg3;
 - (BOOL)isAccessibilityElement;
 

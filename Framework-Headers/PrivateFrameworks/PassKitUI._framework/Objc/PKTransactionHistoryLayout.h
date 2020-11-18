@@ -15,6 +15,7 @@
     NSIndexPath *_headerIndexPath;
     BOOL _needsCustomLocation;
     BOOL _useStickyHeader;
+    BOOL _useCompactInsetForTitle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,7 @@
 @property (nonatomic) BOOL fade;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useCompactInsetForTitle; // @synthesize useCompactInsetForTitle=_useCompactInsetForTitle;
 @property (nonatomic) BOOL useStickyHeader; // @synthesize useStickyHeader=_useStickyHeader;
 
 - (void).cxx_destruct;

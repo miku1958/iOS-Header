@@ -12,6 +12,8 @@
 @interface PKPaymentWebServiceContext : PKWebServiceContext
 {
     NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _cacheLock;
+    NSMutableDictionary *_featureSupportedLangaugeCache;
     BOOL _devSigned;
     BOOL _transactionServiceDisabled;
     BOOL _messageServiceDisabled;
@@ -23,7 +25,6 @@
     NSString *_companionSerialNumber;
     NSDate *_registrationDate;
     NSDate *_configurationDate;
-    NSString *_lastDeviceCheckInBuildVersion;
     PKPaymentWebServiceConfiguration *_configuration;
     NSDictionary *_regions;
     NSString *_primaryRegionIdentifier;
@@ -42,7 +43,6 @@
 @property BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
-@property (copy) NSString *lastDeviceCheckInBuildVersion; // @synthesize lastDeviceCheckInBuildVersion=_lastDeviceCheckInBuildVersion;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
 @property (readonly, weak) PKPaymentWebServiceRegion *primaryRegion;
@@ -62,11 +62,16 @@
 - (void).cxx_destruct;
 - (id)TSMPushTopics;
 - (double)_contextProvisioningEnablementValue;
+- (void)_localizationUpdated;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
+- (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
+- (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServicePreferredLangaugeForFeatureIdentifier:(unsigned long long)arg1;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
 - (BOOL)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
-- (BOOL)deviceCheckInRequired;
+- (void)dealloc;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

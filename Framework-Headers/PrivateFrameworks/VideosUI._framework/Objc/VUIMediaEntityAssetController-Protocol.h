@@ -18,10 +18,9 @@
 @property (readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state;
 @property (readonly, nonatomic) BOOL supportsStartingDownload;
 
-- (void)cancelDownload;
+- (void)cancelAndRemoveDownload;
 - (void)invalidate;
 - (void)pauseDownload;
-- (void)removeDownloadWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)resumeDownload;
 - (void)startDownloadWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end

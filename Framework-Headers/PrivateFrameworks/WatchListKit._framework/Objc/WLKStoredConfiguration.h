@@ -16,9 +16,9 @@
 }
 
 @property (nonatomic) BOOL activeUser; // @synthesize activeUser=_activeUser;
-@property (readonly, copy, nonatomic) NSString *ek;
 @property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairs; // @synthesize requiredRequestKeyValuePairs=_requiredRequestKeyValuePairs;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) NSString *utsk;
 
 - (void).cxx_destruct;
 - (id)description;

@@ -38,6 +38,7 @@
 @property (readonly, nonatomic, getter=isUserRemotelyManagedAndLocallyRestricted) BOOL userRemotelyManagedAndLocallyRestricted;
 
 + (long long)accessLevel;
++ (BOOL)shouldOfferVirtualCards;
 + (id)webui_sharedFeatureManager;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;

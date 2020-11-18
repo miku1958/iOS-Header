@@ -12,6 +12,7 @@
 {
     NSDictionary *_context;
     BOOL _didUpgrade;
+    unsigned int _userDataDisposition;
 }
 
 @property (strong, nonatomic) NSDictionary *context; // @synthesize context=_context;
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) BOOL didRestoreFromCloudBackup;
 @property (nonatomic) BOOL didUpgrade; // @synthesize didUpgrade=_didUpgrade;
 @property (readonly, nonatomic) BOOL shouldPreserveSettingsAfterRestore;
+@property (nonatomic) unsigned int userDataDisposition; // @synthesize userDataDisposition=_userDataDisposition;
 @property (readonly, nonatomic) BOOL wasPasscodeSetInBackup;
 
 + (id)dataClassMigratorForBundleAtPath:(id)arg1;

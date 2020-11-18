@@ -37,6 +37,7 @@
 - (id)init;
 - (void)recalculatePushTopics;
 - (void)registerConsumer:(id)arg1;
+- (void)simulatePushForTopic:(id)arg1;
 - (void)unregisterAllConsumers;
 - (void)unregisterConsumer:(id)arg1;
 

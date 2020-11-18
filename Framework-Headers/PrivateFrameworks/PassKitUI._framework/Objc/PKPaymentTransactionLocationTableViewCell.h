@@ -13,13 +13,17 @@
     UILabel *_titleLabel;
     PKTransactionMapView *_mapView;
     UIImageView *_disclosureView;
+    BOOL _shouldRoundCorners;
     PKPaymentTransaction *_transaction;
 }
 
+@property (nonatomic) BOOL shouldRoundCorners; // @synthesize shouldRoundCorners=_shouldRoundCorners;
 @property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (nonatomic) BOOL usesDarkMapAppearance;
 
 - (void).cxx_destruct;
 - (id)_disclosureView;
+- (BOOL)_shouldShowDisclosureIndicator;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)setTitleLabelColor:(id)arg1;

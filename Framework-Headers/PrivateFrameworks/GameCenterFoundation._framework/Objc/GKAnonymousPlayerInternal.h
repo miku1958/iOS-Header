@@ -12,9 +12,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (id)alias;
+- (id)gamePlayerID;
 - (BOOL)isAnonymousPlayer;
 - (BOOL)isEqual:(id)arg1;
 - (id)playerID;
+- (id)teamPlayerID;
 
 @end
 

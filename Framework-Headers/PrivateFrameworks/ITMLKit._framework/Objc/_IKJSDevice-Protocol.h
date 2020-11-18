@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL isInRetailDemoMode;
 @property (readonly, nonatomic) double lastNetworkChangedTime;
 @property (readonly, nonatomic) NSString *networkType;
+@property (readonly, nonatomic) NSString *osBuildNumber;
 @property (readonly, nonatomic) NSNumber *pixelRatio;
 @property (readonly, nonatomic) BOOL runningAnInternalBuild;
 @property (readonly, nonatomic) NSString *vendorID;

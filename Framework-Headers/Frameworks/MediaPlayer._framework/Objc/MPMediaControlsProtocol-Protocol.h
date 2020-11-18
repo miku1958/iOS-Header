@@ -8,5 +8,6 @@
 
 @protocol MPMediaControlsProtocol <NSObject>
 - (void)openConnection;
+- (void)setDismissalReason:(unsigned long long)arg1;
 @end
 

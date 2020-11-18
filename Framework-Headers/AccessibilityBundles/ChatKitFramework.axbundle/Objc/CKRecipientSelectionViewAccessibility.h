@@ -10,8 +10,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityElements;
 - (void)setFrame:(struct CGRect)arg1;
 
 @end

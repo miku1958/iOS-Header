@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (int)reportConnectionTimeout;
 - (int)reportFailedToStartAudio;
 - (int)reportFailedToStartVideo;
+- (int)reportHighConsecutiveAudioErasures;
 - (int)reportIDSDataChannelEventUsageError;
 - (int)reportKeyFrameNotSpreading;
 - (int)reportKeyIndexNotReceived;

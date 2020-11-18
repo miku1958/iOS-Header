@@ -16,9 +16,11 @@
 
 @property (readonly) id<SLWebClient> webClient; // @synthesize webClient=_webClient;
 
++ (id)emailAddressFromIdToken:(id)arg1;
 - (void).cxx_destruct;
 - (void)_exchangeAuthCode:(id)arg1 usingRedirect:(id)arg2 codeVerifier:(id)arg3 forTokensWithCompletion:(CDUnknownBlockType)arg4;
-- (void)_fetchNamesForToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchNamesForToken:(id)arg1 idToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchNamesForToken:(id)arg1 usingFallbackURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)exchangeAuthCode:(id)arg1 usingRedirect:(id)arg2 codeVerifier:(id)arg3 forTokensAndUsernameWithCompletion:(CDUnknownBlockType)arg4;
 - (id)initWithWebClient:(id)arg1;
 

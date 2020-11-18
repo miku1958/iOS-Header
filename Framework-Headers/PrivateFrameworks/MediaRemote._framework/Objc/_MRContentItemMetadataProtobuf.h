@@ -34,6 +34,7 @@
     NSString *_artworkURL;
     NSData *_artworkURLTemplatesData;
     NSString *_assetURLString;
+    NSString *_brandIdentifier;
     int _chapterCount;
     NSString *_collectionIdentifier;
     NSData *_collectionInfoData;
@@ -154,6 +155,7 @@
 @property (strong, nonatomic) NSString *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property (strong, nonatomic) NSData *artworkURLTemplatesData; // @synthesize artworkURLTemplatesData=_artworkURLTemplatesData;
 @property (strong, nonatomic) NSString *assetURLString; // @synthesize assetURLString=_assetURLString;
+@property (strong, nonatomic) NSString *brandIdentifier; // @synthesize brandIdentifier=_brandIdentifier;
 @property (nonatomic) int chapterCount; // @synthesize chapterCount=_chapterCount;
 @property (strong, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property (strong, nonatomic) NSData *collectionInfoData; // @synthesize collectionInfoData=_collectionInfoData;
@@ -184,6 +186,7 @@
 @property (readonly, nonatomic) BOOL hasArtworkURL;
 @property (readonly, nonatomic) BOOL hasArtworkURLTemplatesData;
 @property (readonly, nonatomic) BOOL hasAssetURLString;
+@property (readonly, nonatomic) BOOL hasBrandIdentifier;
 @property (nonatomic) BOOL hasChapterCount;
 @property (readonly, nonatomic) BOOL hasCollectionIdentifier;
 @property (readonly, nonatomic) BOOL hasCollectionInfoData;

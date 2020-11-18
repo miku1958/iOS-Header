@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/PSStateRestoration-Protocol.h>
 #import <StoreKit/SKUIRedeemViewCameraOverrideDelegate-Protocol.h>
 
 @class ACAccount, NSString, NSURL, SKInvocationQueueProxy, SKRemoteAccountPageViewController, _UIAsyncInvocation;
 @protocol SKAccountPageViewControllerDelegate, SKUIServiceAccountPageViewController;
 
-@interface SKAccountPageViewController : UIViewController <SKUIRedeemViewCameraOverrideDelegate>
+@interface SKAccountPageViewController : UIViewController <SKUIRedeemViewCameraOverrideDelegate, PSStateRestoration>
 {
     NSURL *_accountURL;
     _UIAsyncInvocation *_cancelRequest;
@@ -42,6 +43,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (void)isCommerceUIURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_bridgedRightButtonPressed:(id)arg1;
@@ -67,6 +69,7 @@
 - (void)_setupRemoteViewController:(BOOL)arg1;
 - (void)_sk_applicationDidEnterBackground:(id)arg1;
 - (void)_sk_applicationWillEnterForeground:(id)arg1;
+- (BOOL)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithAccountURL:(id)arg1;

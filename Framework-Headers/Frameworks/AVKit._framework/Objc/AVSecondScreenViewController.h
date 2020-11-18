@@ -22,6 +22,7 @@
 @property (strong, nonatomic) AVSecondScreenPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
 @property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property (weak, nonatomic) AVPlayerLayer *sourcePlayerLayer; // @synthesize sourcePlayerLayer=_sourcePlayerLayer;
+@property (readonly, nonatomic) struct CGSize videoDisplaySize;
 
 - (void).cxx_destruct;
 - (void)_updateContentViewIfNeeded;

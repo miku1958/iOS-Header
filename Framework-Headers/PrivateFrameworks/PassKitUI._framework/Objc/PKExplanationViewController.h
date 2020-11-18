@@ -17,6 +17,7 @@
     UIBarButtonItem *_hiddenRightBarButtonItem;
     UIActivityIndicatorView *_activityIndicatorView;
     BOOL _showingSpinner;
+    BOOL _wasBackHidden;
     BOOL _showCancelButton;
     BOOL _showDoneButton;
     id<PKExplanationViewControllerDelegate> _explanationViewControllerDelegate;

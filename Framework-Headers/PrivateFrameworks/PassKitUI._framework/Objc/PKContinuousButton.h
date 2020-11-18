@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, UIActivityIndicatorView, UIColor;
+@class CAFilter, CAShapeLayer, UIActivityIndicatorView, UIColor, _UIBackdropView;
 
 @interface PKContinuousButton : UIButton
 {
@@ -20,21 +20,29 @@
     UIColor *_disabledInputColor;
     UIColor *_appliedInputColor;
     CAShapeLayer *_layer;
+    _UIBackdropView *_backdropView;
+    long long _backdropStyle;
+    BOOL _updatingBackdropSettings;
     BOOL _highlighted;
     BOOL _selected;
     BOOL _enabled;
     struct CGSize _boundsSize;
     UIActivityIndicatorView *_activityIndicatorView;
+    long long _activityIndicatorViewStyle;
+    BOOL _blurDisabled;
     struct UIEdgeInsets _touchMargins;
 }
 
+@property (nonatomic) BOOL blurDisabled; // @synthesize blurDisabled=_blurDisabled;
 @property (nonatomic) struct UIEdgeInsets touchMargins; // @synthesize touchMargins=_touchMargins;
 
 + (id)_filterInputColorForEffect:(long long)arg1;
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_createHighlightFilterIfNecessary;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_updateBackdropSettings;
 - (void)_updateFilter;
 - (void)_updateTintColorWithColor:(id)arg1;
 - (void)dealloc;
@@ -52,6 +60,7 @@
 - (void)setSelected:(BOOL)arg1;
 - (void)showSpinner:(BOOL)arg1;
 - (void)tintColorDidChange;
+- (void)updateSpinnerViewStyleWithStyle:(long long)arg1;
 - (void)updateTitleColorWithColor:(id)arg1;
 - (void)updateWithImage:(id)arg1;
 

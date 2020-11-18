@@ -26,6 +26,8 @@
     unsigned long long _featureFlags;
     NSString *_identifier;
     NSString *_idsDeviceID;
+    NSString *_mediaRemoteID;
+    NSString *_mediaRouteID;
     NSString *_model;
     NSString *_name;
     NSDate *_dateAcknowledged;
@@ -45,6 +47,8 @@
 @property (nonatomic) unsigned long long featureFlags; // @synthesize featureFlags=_featureFlags;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsDeviceID; // @synthesize idsDeviceID=_idsDeviceID;
+@property (copy, nonatomic) NSString *mediaRemoteID; // @synthesize mediaRemoteID=_mediaRemoteID;
+@property (copy, nonatomic) NSString *mediaRouteID; // @synthesize mediaRouteID=_mediaRouteID;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;

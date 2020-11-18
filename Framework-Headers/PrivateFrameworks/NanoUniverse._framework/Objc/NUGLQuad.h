@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (void)encodeGLforSize:(struct CLKUIQuadSize)arg1;
 - (id)initWithResources:(id)arg1;
-- (void)prepare;
+- (void)prepareForQuadView:(id)arg1;
 
 @end
 

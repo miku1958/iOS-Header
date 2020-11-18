@@ -235,7 +235,7 @@
 - (id)displayedSectionIdentifierForSectionIndex:(unsigned long long)arg1;
 - (void)endDisableExternalUpdatesWithReason:(id)arg1;
 - (void)endSuppressingUpdatesForCharacteristicsWithReason:(id)arg1 updateAffectedItems:(BOOL)arg2;
-- (void)fixSession:(id)arg1 didChangeState:(long long)arg2;
+- (void)fixSessionDidChangeForAccessory:(id)arg1;
 - (id)footerTitleForSection:(unsigned long long)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;

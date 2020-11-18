@@ -6,12 +6,10 @@
 
 #import <MetricsKit/MTObject.h>
 
-#import <MetricsKit/MTSystemJSExports-Protocol.h>
-
 @class MTEnvironment, MTEventRecorder;
 @protocol MTEventFilter;
 
-@interface MTSystem : MTObject <MTSystemJSExports>
+@interface MTSystem : MTObject
 {
     MTEnvironment *_environment;
     MTEventRecorder *_eventRecorder;
@@ -23,6 +21,7 @@
 @property (strong, nonatomic) MTEventRecorder *eventRecorder; // @synthesize eventRecorder=_eventRecorder;
 
 - (void).cxx_destruct;
+- (id)initWithMetricsKit:(id)arg1;
 - (void)setEventFilterWithJavaScriptFunction:(id)arg1 context:(id)arg2 operationQueue:(id)arg3;
 
 @end

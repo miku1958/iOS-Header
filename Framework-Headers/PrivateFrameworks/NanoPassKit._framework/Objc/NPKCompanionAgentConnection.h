@@ -68,6 +68,8 @@
 - (void)defaultCardUniqueID:(CDUnknownBlockType)arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 fromDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)handleDeviceUnlockedForPendingProvisioningRequestFromGizmo;
+- (void)handlePeerPaymentTermsAndConditionsRequestFromGizmo;
 - (void)handlePendingUnpairingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -85,6 +87,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)peerPaymentAccountForDevice:(id)arg1;
+- (void)provisionPassForAccountIdentifier:(id)arg1 makeDefault:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2 waitForConfirmation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -99,7 +102,7 @@
 - (id)sharedPeerPaymentWebServiceContextForDevice:(id)arg1;
 - (void)shouldShowApplePaySettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)shouldShowWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 orderedByDate:(long long)arg6 limit:(long long)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(id)arg1 sessionData:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;

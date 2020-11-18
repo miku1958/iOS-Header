@@ -78,6 +78,7 @@
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _eventMessageHandler;
     CDUnknownBlockType _requestMessageHandler;
+    NSData *_authTagOverride;
     CDUnknownBlockType _pairSetupCompletionHandler;
     CDUnknownBlockType _peerDisconnectedHandler;
     unsigned long long _problemFlags;
@@ -90,6 +91,7 @@
 }
 
 @property (nonatomic) long long advertiseRate; // @synthesize advertiseRate=_advertiseRate;
+@property (copy, nonatomic) NSData *authTagOverride; // @synthesize authTagOverride=_authTagOverride;
 @property (nonatomic) BOOL autoUnlockEnabled; // @synthesize autoUnlockEnabled=_autoUnlockEnabled;
 @property (nonatomic) BOOL autoUnlockWatch; // @synthesize autoUnlockWatch=_autoUnlockWatch;
 @property (nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;

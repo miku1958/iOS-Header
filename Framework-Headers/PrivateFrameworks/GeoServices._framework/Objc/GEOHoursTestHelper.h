@@ -17,6 +17,7 @@
 + (id)testBusinessHoursWithPermanentlyClosedHoursTypeForMKLocalizedHoursBuilderTest;
 + (id)testBusinessHoursWithTemporaryClosedHoursTypeForMKLocalizedHoursBuilderTest;
 + (id)testDateForMKLocalizedHoursBuilderTest;
++ (id)testTimeZoneForGEOPlaceDailyHoursTest;
 + (id)testTimeZoneForMKLocalizedHoursBuilderTest;
 + (id)testingDictionaryForIsWeekdayInRange;
 

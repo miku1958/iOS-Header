@@ -12,10 +12,12 @@
 {
     ADAdSpace *_adSpace;
     ADHomeButtonHandler *_homeButtonHandler;
+    id _notificationObserver;
 }
 
 @property (strong, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
 @property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
+@property (strong, nonatomic) id notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 
 - (void)cancelAndDismiss;
 - (void)dealloc;

@@ -133,6 +133,7 @@
 
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
+- (BOOL)accessibilityShouldScrollForScrollView:(id)arg1 defaultValue:(BOOL)arg2;
 - (void)addComponentView:(id)arg1;
 - (BOOL)addInteractivityFocusForComponent:(id)arg1;
 - (BOOL)allowInteractivityFocusForComponent:(id)arg1;
@@ -169,6 +170,7 @@
 - (id)scrollPositionForComponentViews:(id)arg1;
 - (id)scrollPositionForPlayingVideoComponentInComponentViews:(id)arg1;
 - (void)scrollToRect:(struct CGRect)arg1 animated:(BOOL)arg2;
+- (BOOL)scrollView:(id)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 - (id)scrollViewForFullscreenGalleryWithComponentIdentifier:(id)arg1;
 - (id)scrollViewForStripGalleryWithComponentIdentifier:(id)arg1;
 - (id)sectionHostingView;
@@ -200,6 +202,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)willEndPreviewingForPreviewViewControllerManager:(id)arg1;

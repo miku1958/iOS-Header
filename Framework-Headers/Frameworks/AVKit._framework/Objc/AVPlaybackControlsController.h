@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <AVKit/AVPlayerViewControllerContentViewDelegate-Protocol.h>
-#import <AVKit/AVRoutePickerViewDelegate-Protocol.h>
+#import <AVKit/AVRoutePickerViewInternalDelegate-Protocol.h>
 #import <AVKit/AVScrollViewObserverDelegate-Protocol.h>
 #import <AVKit/AVTransportControlsViewDelegate-Protocol.h>
 
 @class AVNowPlayingInfoController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsView, AVPlaybackControlsVisibilityControllerItem, AVPlayerController, AVPlayerControllerTimeResolver, AVPlayerViewController, AVRouteDetectorCoordinator, AVScrollViewObserver, AVSecondScreenContentViewConnection, AVTimeFormatter, AVTurboModePlaybackControlsPlaceholderView, AVVolumeController, NSArray, NSString, NSTimer, UIAlertController, UIViewPropertyAnimator;
 
-@interface AVPlaybackControlsController : NSObject <AVTransportControlsViewDelegate, AVRoutePickerViewDelegate, AVScrollViewObserverDelegate, AVPlayerViewControllerContentViewDelegate>
+@interface AVPlaybackControlsController : NSObject <AVTransportControlsViewDelegate, AVRoutePickerViewInternalDelegate, AVScrollViewObserverDelegate, AVPlayerViewControllerContentViewDelegate>
 {
     BOOL _playerViewControllerIsBeingTransitionedWithResizing;
     BOOL _playerViewControllerIsPresentingFullScreen;
@@ -43,12 +43,14 @@
     BOOL _coveringWindow;
     BOOL _contentViewBeingScrolledOrOffScreen;
     BOOL _hasPlaybackBegunSincePlayerControllerBecameReadyToPlay;
+    BOOL _hasBecomeReadyToPlay;
     BOOL _multipleRoutesDetected;
     BOOL _resumingUpdates;
     BOOL _playbackSuspendedForScrubbing;
     BOOL _hasSeekableLiveStreamingContent;
     BOOL _scrubbingOrSeeking;
     BOOL _shouldIgnoreTimeResolverUpdates;
+    BOOL _videoScaled;
     AVPlayerController *_playerController;
     long long _preferredUnobscuredArea;
     CDUnknownBlockType _playButtonHandlerForLazyPlayerLoading;
@@ -96,6 +98,7 @@
 @property (nonatomic) BOOL entersFullScreenWhenPlaybackBegins; // @synthesize entersFullScreenWhenPlaybackBegins=_entersFullScreenWhenPlaybackBegins;
 @property (readonly, nonatomic) BOOL entersFullScreenWhenTapped;
 @property (readonly, nonatomic, getter=isFullScreen) BOOL fullScreen;
+@property (nonatomic) BOOL hasBecomeReadyToPlay; // @synthesize hasBecomeReadyToPlay=_hasBecomeReadyToPlay;
 @property (nonatomic) BOOL hasPlaybackBegunSincePlayerControllerBecameReadyToPlay; // @synthesize hasPlaybackBegunSincePlayerControllerBecameReadyToPlay=_hasPlaybackBegunSincePlayerControllerBecameReadyToPlay;
 @property (nonatomic) BOOL hasSeekableLiveStreamingContent; // @synthesize hasSeekableLiveStreamingContent=_hasSeekableLiveStreamingContent;
 @property (nonatomic) BOOL hasStartedUpdates; // @synthesize hasStartedUpdates=_hasStartedUpdates;
@@ -169,6 +172,7 @@
 @property (readonly, nonatomic) NSString *uniqueIdentifer; // @synthesize uniqueIdentifer=_uniqueIdentifer;
 @property (nonatomic) BOOL updatesNowPlayingInfoCenter; // @synthesize updatesNowPlayingInfoCenter=_updatesNowPlayingInfoCenter;
 @property (nonatomic) long long videoGravityButtonType; // @synthesize videoGravityButtonType=_videoGravityButtonType;
+@property (nonatomic, getter=isVideoScaled) BOOL videoScaled; // @synthesize videoScaled=_videoScaled;
 @property (readonly, nonatomic) AVVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property (nonatomic) BOOL volumeControlsCanShowSlider; // @synthesize volumeControlsCanShowSlider=_volumeControlsCanShowSlider;
 @property (readonly, nonatomic) AVPlaybackControlsVisibilityControllerItem *volumeControlsContainerVisibilityItem; // @synthesize volumeControlsContainerVisibilityItem=_volumeControlsContainerVisibilityItem;
@@ -212,6 +216,7 @@
 - (void)_updatePrefersInspectionSuspended;
 - (void)_updateScrubberAndTimeLabels;
 - (void)_updateSecondScreenConnectionReadyToConnect;
+- (void)_updateSkipButtonsEnableLongPress;
 - (void)_updateVideoGravityButtonType;
 - (void)_updateVolumeButtonGlyph;
 - (void)_updateVolumeSliderValueWithSystemVolume:(float)arg1 animated:(BOOL)arg2;
@@ -220,6 +225,8 @@
 - (void)handleCurrentRouteSupportsVolumeControlChanged:(id)arg1;
 - (void)handleVolumeChange:(id)arg1;
 - (id)initWithPlayerViewController:(id)arg1;
+- (unsigned long long)overrideRouteSharingPolicyForRoutePickerView:(id)arg1;
+- (id)overrideRoutingContextUIDForRoutePickerView:(id)arg1;
 - (void)playbackControlsViewDidLoad:(id)arg1;
 - (void)playerViewControllerContentView:(id)arg1 willLoadPlaybackControlsView:(id)arg2;
 - (void)playerViewControllerContentView:(id)arg1 willLoadTurboModePlaceholderView:(id)arg2;

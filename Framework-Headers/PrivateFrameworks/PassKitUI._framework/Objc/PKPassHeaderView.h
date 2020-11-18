@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class PKPass, PKPassView, PKPeerPaymentAccount, PKRemoteDataAccessor, PKTransitBalanceModel, UIColor, UIImageView, UILabel;
+@class PKPass, PKPassFaceViewRendererState, PKPassView, PKPeerPaymentAccount, PKRemoteDataAccessor, PKTransitBalanceModel, UIColor, UIImageView, UILabel;
 @protocol PKPassHeaderViewDelegate, PKPassLibraryDataProvider;
 
 @interface PKPassHeaderView : UIView
@@ -17,11 +17,13 @@
     UILabel *_title;
     UILabel *_subtitle;
     double passImageHeight;
+    BOOL _small;
     BOOL _showModificationDate;
     PKPass *_pass;
     PKPassView *_passView;
     PKTransitBalanceModel *_transitBalanceModel;
     PKPeerPaymentAccount *_peerPaymentAccount;
+    PKPassFaceViewRendererState *_rendererState;
     unsigned long long _suppressedContent;
     UIColor *_primaryTextColor;
     UIColor *_secondaryTextColor;
@@ -35,23 +37,28 @@
 @property (readonly, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 @property (strong, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 @property (strong, nonatomic) UIColor *primaryTextColor; // @synthesize primaryTextColor=_primaryTextColor;
+@property (strong, nonatomic) PKPassFaceViewRendererState *rendererState; // @synthesize rendererState=_rendererState;
 @property (strong, nonatomic) UIColor *secondaryTextColor; // @synthesize secondaryTextColor=_secondaryTextColor;
 @property (nonatomic) BOOL showModificationDate; // @synthesize showModificationDate=_showModificationDate;
+@property (nonatomic, getter=isSmall) BOOL small; // @synthesize small=_small;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 @property (strong, nonatomic) PKTransitBalanceModel *transitBalanceModel; // @synthesize transitBalanceModel=_transitBalanceModel;
 
 - (void).cxx_destruct;
 - (void)_passLibraryDidChange:(id)arg1;
 - (id)_primaryTextColor;
+- (void)_resetFonts;
 - (id)_secondaryTextColor;
 - (void)_updateContent;
 - (void)_updateTextContent;
 - (void)dealloc;
 - (id)initWithPass:(id)arg1;
+- (id)initWithPass:(id)arg1 rendererState:(id)arg2;
 - (void)layoutSubviews;
 - (CDStruct_bc00259c)passSizeInfoForHeight:(double)arg1;
 - (struct CGSize)passViewSizeForHeight:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateModifiedDate;
 - (void)updateShadow:(double)arg1;
 

@@ -85,6 +85,7 @@
 - (void)_dispatchNextCallbackParam;
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueCallbackOfKind:(long long)arg1 withObject:(id)arg2;
+- (void)_enqueueDidAuthorizeAccountServicePaymentRequestWithApplePayTrustSignature:(id)arg1;
 - (void)_enqueueDidAuthorizeDisbursementWithVoucher:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithByPassPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithPayment:(id)arg1;
@@ -98,6 +99,7 @@
 - (void)_enqueueDidSelectRemotePaymentInstrument:(id)arg1;
 - (void)_enqueueDidSelectRemotePaymentInstrument:(id)arg1 paymentApplication:(id)arg2;
 - (void)_enqueueDidSelectShippingContact:(id)arg1;
+- (void)_enqueueDidUpdateAccountServicePaymentMethod:(id)arg1;
 - (void)_enqueueInitialCallbacks;
 - (void)_handleStateMachineWillStartNotification:(id)arg1;
 - (id)_pendingTransactionOnAlternateFundingSourceForAutorizedPeerPaymentQuote:(id)arg1;
@@ -155,9 +157,11 @@
 - (void)didReceiveShippingContactCompleteWithUpdate:(id)arg1;
 - (void)didReceiveShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
 - (void)didReceiveShippingMethodCompleteWithUpdate:(id)arg1;
+- (void)didReceiveUpdateAccountServicePaymentMethodCompleteWithUpdate:(id)arg1 signatureRequest:(id)arg2;
 - (void)didRequestMerchantSession;
 - (void)didResignActive:(BOOL)arg1;
 - (void)didResolveError;
+- (void)didSelectBankAccount:(id)arg1;
 - (void)didSelectBillingAddress:(id)arg1;
 - (void)didSelectPaymentPass:(id)arg1;
 - (void)didSelectPaymentPass:(id)arg1 paymentApplication:(id)arg2;
@@ -168,6 +172,7 @@
 - (void)didSelectShippingMethod:(id)arg1;
 - (void)didSelectShippingName:(id)arg1;
 - (void)didSelectShippingPhoneNumber:(id)arg1;
+- (void)didUpdatePeerPaymentBalance:(id)arg1;
 - (void)endDelayingAuthorizedState;
 - (BOOL)hasPendingCallbacks;
 - (id)init;

@@ -4,37 +4,83 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <VideosUI/VUIButton.h>
 
-@class VUIOfferButton;
-@protocol VUIDownloadButtonDelegate;
+@class UIAlertController, UIImage, UIViewController, VUICircleProgressIndicator, VUIDownloadButtonViewModel;
 
 __attribute__((visibility("hidden")))
-@interface VUIDownloadButton : UIView
+@interface VUIDownloadButton : VUIButton
 {
-    BOOL _supportsStartingDownload;
-    id<VUIDownloadButtonDelegate> _delegate;
-    long long _progressType;
-    double _progress;
-    VUIOfferButton *_offerButton;
+    BOOL _showsTextInDownloadedState;
+    BOOL _observingDownloadProgress;
+    BOOL _wasDeleted;
+    BOOL _wasCanceled;
+    BOOL _isForLibrary;
+    UIViewController *_presentingViewController;
+    CDUnknownBlockType _downloadStateChangeHandler;
+    UIImage *_notDownloadedImage;
+    UIImage *_connectingImage;
+    UIImage *_downloadingImage;
+    UIImage *_downloadedImage;
+    VUIDownloadButtonViewModel *_viewModel;
+    VUICircleProgressIndicator *_progressIndicator;
+    UIAlertController *_deleteConfirmationAlertController;
 }
 
-@property (weak, nonatomic) id<VUIDownloadButtonDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) VUIOfferButton *offerButton; // @synthesize offerButton=_offerButton;
-@property (nonatomic) double progress; // @synthesize progress=_progress;
-@property (nonatomic) long long progressType; // @synthesize progressType=_progressType;
-@property (nonatomic) BOOL supportsStartingDownload; // @synthesize supportsStartingDownload=_supportsStartingDownload;
+@property (strong, nonatomic) UIImage *connectingImage; // @synthesize connectingImage=_connectingImage;
+@property (strong, nonatomic) UIAlertController *deleteConfirmationAlertController; // @synthesize deleteConfirmationAlertController=_deleteConfirmationAlertController;
+@property (copy, nonatomic) CDUnknownBlockType downloadStateChangeHandler; // @synthesize downloadStateChangeHandler=_downloadStateChangeHandler;
+@property (strong, nonatomic) UIImage *downloadedImage; // @synthesize downloadedImage=_downloadedImage;
+@property (strong, nonatomic) UIImage *downloadingImage; // @synthesize downloadingImage=_downloadingImage;
+@property (nonatomic) BOOL isForLibrary; // @synthesize isForLibrary=_isForLibrary;
+@property (strong, nonatomic) UIImage *notDownloadedImage; // @synthesize notDownloadedImage=_notDownloadedImage;
+@property (nonatomic) BOOL observingDownloadProgress; // @synthesize observingDownloadProgress=_observingDownloadProgress;
+@property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (strong, nonatomic) VUICircleProgressIndicator *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
+@property (nonatomic) BOOL showsTextInDownloadedState; // @synthesize showsTextInDownloadedState=_showsTextInDownloadedState;
+@property (strong, nonatomic) VUIDownloadButtonViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property (nonatomic) BOOL wasCanceled; // @synthesize wasCanceled=_wasCanceled;
+@property (nonatomic) BOOL wasDeleted; // @synthesize wasDeleted=_wasDeleted;
 
-+ (long long)_downloadButtonProgressTypeFromOfferButtonProgressType:(long long)arg1;
-+ (long long)_offerButtonProgressTypeFromDownloadButtonProgressType:(long long)arg1;
++ (id)defaultLayout;
 - (void).cxx_destruct;
-- (BOOL)_canAnimate;
-- (void)_handleOfferButtonAction:(id)arg1;
-- (void)_setupOfferButton;
-- (void)_updateOfferButton;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setProgressType:(long long)arg1 andProgress:(double)arg2;
+- (void)_askUserAndDeleteIfNeeded;
+- (id)_buttonPropertiesForState:(unsigned long long)arg1;
+- (void)_configureProgressIndicatorWithProperties:(id)arg1;
+- (id)_connectingImage;
+- (void)_dismissConfirmationAlertController;
+- (void)_downloadButtonTapped:(id)arg1;
+- (id)_downloadedImage;
+- (id)_downloadingImage;
+- (void)_handleAppDidEnterBackgroundNotification:(id)arg1;
+- (id)_imageForDownloadState:(unsigned long long)arg1;
+- (struct CGSize)_imageSizeThatFits:(struct CGSize)arg1;
+- (void)_insertProgressIndicatorWithFrame:(struct CGRect)arg1;
+- (void)_layoutProgressIndicator;
+- (id)_notDownloadedImage;
+- (id)_pausedImage;
+- (void)_setImage:(id)arg1;
+- (void)_setTitleWithProperties:(id)arg1;
+- (void)_startDownloadIfPossible;
+- (void)_startObservingDownloadProgress:(id)arg1;
+- (void)_startObservingViewModel:(id)arg1;
+- (void)_stopObservingDownloadProgress:(id)arg1;
+- (void)_stopObservingViewModel:(id)arg1;
+- (void)_updateButtonToConnectingWithProperties:(id)arg1;
+- (void)_updateButtonToDownloadedWithProperties:(id)arg1;
+- (void)_updateButtonToDownloadingWithProperties:(id)arg1;
+- (void)_updateButtonToNotDownloadedWithProperties:(id)arg1;
+- (void)_updateButtonToState:(unsigned long long)arg1;
+- (void)_updateButtonToState:(unsigned long long)arg1 oldState:(unsigned long long)arg2;
+- (void)_updateDownloadProgress:(double)arg1 animated:(BOOL)arg2;
+- (void)dealloc;
+- (id)initWithAssetController:(id)arg1 layout:(id)arg2;
+- (id)initWithPlayable:(id)arg1 layout:(id)arg2;
+- (void)layoutSubviews;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateWithAssetController:(id)arg1;
+- (void)updateWithElement:(id)arg1;
 
 @end
 

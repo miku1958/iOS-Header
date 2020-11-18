@@ -47,6 +47,7 @@
 - (void)userRejectedCapturedID;
 - (void)userWantsToCancelFromViewController:(id)arg1;
 - (void)userWantsToContinue;
+- (void)userWantsToWithdraw;
 
 @end
 

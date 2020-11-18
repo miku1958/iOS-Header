@@ -9,7 +9,7 @@
 #import <NewsUI/NUArticleViewControllerFactory-Protocol.h>
 
 @class NSHashTable, NSString;
-@protocol NFResolver, NUArticleAdManagerFactory, NUArticleDataProviderFactory, NUArticleKeyCommandManager, NUDocumentSectionBlueprintProvider, NUDynamicTypeProviding, SXAppStateMonitor, SXURLHandling;
+@protocol NFResolver, NUArticleAdManagerFactory, NUArticleDataProviderFactory, NUArticleKeyCommandManager, NUArticlePrefetcherType, NUDocumentSectionBlueprintProvider, NUDynamicTypeProviding, SXAppStateMonitor, SXURLHandling;
 
 @interface NUArticleViewControllerFactory : NSObject <NUArticleViewControllerFactory>
 {
@@ -22,12 +22,14 @@
     id<NUArticleKeyCommandManager> _keyCommandManager;
     id<NFResolver> _resolver;
     id<NUDocumentSectionBlueprintProvider> _headerBlueprintProvider;
+    id<NUArticlePrefetcherType> _articlePrefetcher;
 }
 
 @property (readonly, nonatomic) id<SXURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, nonatomic) id<SXAppStateMonitor> appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
 @property (readonly, nonatomic) id<NUArticleAdManagerFactory> articleAdManagerFactory; // @synthesize articleAdManagerFactory=_articleAdManagerFactory;
 @property (readonly, nonatomic) id<NUArticleDataProviderFactory> articleDataProviderFactory; // @synthesize articleDataProviderFactory=_articleDataProviderFactory;
+@property (readonly, nonatomic) id<NUArticlePrefetcherType> articlePrefetcher; // @synthesize articlePrefetcher=_articlePrefetcher;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUDynamicTypeProviding> dynamicTypeProviding; // @synthesize dynamicTypeProviding=_dynamicTypeProviding;
@@ -43,8 +45,8 @@
 - (id)createArticleViewControllerWithArticle:(id)arg1;
 - (id)createArticleViewControllerWithArticle:(id)arg1 issue:(id)arg2;
 - (id)createArticleWebViewControllerWithArticle:(id)arg1;
-- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 URLHandler:(id)arg5 keyCommandManager:(id)arg6 headerBlueprintProvider:(id)arg7 resolver:(id)arg8;
-- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 headerBlueprintProvider:(id)arg6 resolver:(id)arg7;
+- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 URLHandler:(id)arg5 keyCommandManager:(id)arg6 headerBlueprintProvider:(id)arg7 articlePrefetcher:(id)arg8 resolver:(id)arg9;
+- (id)initWithArticleDataProviderFactory:(id)arg1 articleAdManagerFactory:(id)arg2 dynamicTypeProviding:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 headerBlueprintProvider:(id)arg6 articlePrefetcher:(id)arg7 resolver:(id)arg8;
 
 @end
 

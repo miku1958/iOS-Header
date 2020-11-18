@@ -30,6 +30,7 @@
     int _passwordType;
     int _passwordTypeActual;
     unsigned int _flags;
+    unsigned int _clientID;
     unsigned int _internalAuthFlags;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
@@ -42,6 +43,7 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    NSString *_serviceType;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
     CDUnknownBlockType _deviceChangedHandler;
@@ -54,6 +56,7 @@
 @property (readonly) RPCompanionLinkDevice *activePersonalCompanion;
 @property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
 @property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
+@property (nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
 @property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (strong, nonatomic) RPCompanionLinkDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
@@ -73,6 +76,7 @@
 @property (nonatomic) int passwordType; // @synthesize passwordType=_passwordType;
 @property (readonly, nonatomic) int passwordTypeActual; // @synthesize passwordTypeActual=_passwordTypeActual;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
+@property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (copy, nonatomic) CDUnknownBlockType showPasswordHandler; // @synthesize showPasswordHandler=_showPasswordHandler;
 @property (copy, nonatomic) NSDictionary *siriInfo; // @synthesize siriInfo=_siriInfo;
 
@@ -111,11 +115,14 @@
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)launchAppWithBundleID:(id)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)launchAppWithURL:(id)arg1 destinationID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerEventID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)registerProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)sendEventID:(id)arg1 event:(id)arg2 destinationID:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendEventID:(id)arg1 event:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
+- (void)sendRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldReportDevice:(id)arg1;
 - (void)tryPassword:(id)arg1;
 

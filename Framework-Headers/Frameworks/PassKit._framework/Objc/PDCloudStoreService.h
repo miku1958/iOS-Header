@@ -24,19 +24,25 @@
 
 - (void).cxx_destruct;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cloudStoreStatusForContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConnection:(id)arg1;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)noteAccountDeletedWithHandler:(CDUnknownBlockType)arg1;
 - (void)noteCloudSyncPassesSwitchChangedWithHandler:(CDUnknownBlockType)arg1;
+- (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithHandler:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)uploadTransaction:(id)arg1 forPassWithUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

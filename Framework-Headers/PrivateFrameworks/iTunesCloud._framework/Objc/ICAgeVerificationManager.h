@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (BOOL)_bagHasValidKeys:(id)arg1;
 - (id)_init;
-- (BOOL)_processPotentialStateChangesWithStatus:(long long)arg1 treatment:(long long)arg2 verificationURL:(id)arg3 error:(id)arg4;
+- (BOOL)_processAgeVerificationState:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_runAgeVerificationForUserIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateAgeVerificationStateAndSendNotification:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

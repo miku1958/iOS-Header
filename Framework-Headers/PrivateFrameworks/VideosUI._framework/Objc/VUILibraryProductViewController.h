@@ -8,28 +8,25 @@
 
 #import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntityDownloadViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
 #import <VideosUI/VUIRoundButtonDelegate-Protocol.h>
 
-@class NSString, VUILibraryProductInfoView, VUIMediaEntitiesFetchController, VUIMediaEntityDownloadViewController, VUIMediaItem, VUIMetricsController, VUIProductLockupView;
+@class NSString, VUIDownloadButton, VUILibraryProductInfoView, VUIMediaEntitiesFetchController, VUIMediaItem, VUIProductLockupView;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryProductViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUIMediaEntityDownloadViewControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIProductLockupViewDelegate, VUIRoundButtonDelegate>
+@interface VUILibraryProductViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUIMediaEntitiesFetchControllerDelegate, VUIProductLockupViewDelegate, VUIRoundButtonDelegate>
 {
     VUIMediaItem *_mediaItem;
     VUIMediaEntitiesFetchController *_fetchController;
     VUIProductLockupView *_productLockupView;
     VUILibraryProductInfoView *_productInfoView;
-    VUIMediaEntityDownloadViewController *_downloadViewController;
-    VUIMetricsController *_metricsController;
+    VUIDownloadButton *_downloadButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) VUIMediaEntityDownloadViewController *downloadViewController; // @synthesize downloadViewController=_downloadViewController;
+@property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) VUIMetricsController *metricsController; // @synthesize metricsController=_metricsController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -45,12 +42,13 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)didSelectButton:(id)arg1;
-- (void)downloadViewController:(id)arg1 didRemoveDownloadForAssetController:(id)arg2;
 - (id)initWithMediaItem:(id)arg1;
 - (id)initWithMediaLibrary:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)reportMetricsPageEvent;
 - (void)start;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

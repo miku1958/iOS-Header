@@ -38,9 +38,11 @@
 - (void).cxx_destruct;
 - (id)_attributedStringWithText:(id)arg1 strikethrough:(BOOL)arg2;
 - (double)_prepareViewForReuse:(id)arg1;
+- (CDStruct_9c0b9312)_titleFontMetrics;
 - (void)_updateAlignmentAnimated:(BOOL)arg1;
 - (void)_updateSubviewsAnimated:(BOOL)arg1;
 - (CDStruct_c7197326)boundingMetricForWidth:(double)arg1;
+- (double)headerPadding;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyle:(long long)arg1;

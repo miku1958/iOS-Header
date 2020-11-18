@@ -12,8 +12,11 @@
 {
 }
 
+@property (copy, nonatomic) NSString *adamIdentifier;
+@property (copy, nonatomic) NSString *brandIdentifier;
 @property (strong, nonatomic) SACalendar *dateAdded;
 @property (nonatomic) BOOL explicit;
+@property (copy, nonatomic) NSString *externalIdentifier;
 @property (copy, nonatomic) NSString *mediaType;
 @property (strong, nonatomic) SAMPPlaybackInfo *playbackInfo;
 @property (copy, nonatomic) NSString *rawPlaybackInfo;

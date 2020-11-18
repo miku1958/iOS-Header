@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) BOOL appliesOneTimeUserInitiatedActionPolicy;
 @property (readonly, nonatomic) LSApplicationProxy *externalApplication; // @synthesize externalApplication=_externalApplication;
 @property (readonly, nonatomic) long long externalApplicationCategory; // @synthesize externalApplicationCategory=_externalApplicationCategory;
-@property (readonly, nonatomic) BOOL isRedirectToAppStore;
+@property (readonly, nonatomic) BOOL isRedirectToAppleServices;
 @property (nonatomic) BOOL loadWasUserDriven; // @synthesize loadWasUserDriven=_loadWasUserDriven;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 

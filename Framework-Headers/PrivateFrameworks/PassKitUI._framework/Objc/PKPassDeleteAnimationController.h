@@ -21,7 +21,7 @@
 @property (readonly, strong, nonatomic) PKPassGroupView *groupView; // @synthesize groupView=_groupView;
 @property (readonly, strong, nonatomic) PKPassView *passView; // @synthesize passView=_passView;
 
-+ (void)performPassbookDeleteWithView:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)performPassbookDeleteWithView:(id)arg1 inSuperview:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_registerForEnterBackgroundNotification;

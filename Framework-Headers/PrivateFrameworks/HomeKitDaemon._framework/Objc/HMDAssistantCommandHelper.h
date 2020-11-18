@@ -50,6 +50,7 @@
 - (void).cxx_destruct;
 - (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
 - (void)_register;
+- (void)_reportOperationStartedForAccessory:(id)arg1;
 - (void)_reportResponses;
 - (void)_resetActionTimer;
 - (void)_startActionSetTimer;

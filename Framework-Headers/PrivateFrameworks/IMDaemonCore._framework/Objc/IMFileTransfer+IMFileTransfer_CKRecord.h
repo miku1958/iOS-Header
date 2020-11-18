@@ -27,5 +27,6 @@
 - (id)initWithCKRecord:(id)arg1 writeAssetToDisk:(BOOL)arg2;
 - (id)md5HashForTransfer;
 - (id)md5HashForURL:(id)arg1;
+- (void)moveTransferAssertFromRecord:(id)arg1;
 @end
 

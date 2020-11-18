@@ -66,6 +66,7 @@
     BOOL _disablingAutomaticTermination;
     BOOL _deviceBatteryChargingOrFull;
     AVPlayer *_player;
+    long long _status;
     AVObservationController *_observationController;
     AVAsset *_currentAssetIfReady;
     NSObject<OS_dispatch_queue> *_assetInspectionQueue;
@@ -117,7 +118,7 @@
 @property (nonatomic, getter=isSeeking) BOOL seeking; // @synthesize seeking=_seeking;
 @property (getter=isSeekingInternal) BOOL seekingInternal; // @synthesize seekingInternal=_seekingInternal;
 @property (readonly, nonatomic) BOOL shouldPreventIdleDisplaySleep;
-@property (readonly, nonatomic) long long status;
+@property (nonatomic) long long status; // @synthesize status=_status;
 @property (strong, nonatomic) AVValueTiming *timing; // @synthesize timing=_timing;
 @property (readonly, nonatomic) BOOL usesExternalPlaybackWhileExternalScreenIsActive;
 
@@ -171,14 +172,15 @@
 + (id)keyPathsForValuesAffectingReversePlaybackEndTime;
 + (id)keyPathsForValuesAffectingSeekableTimeRanges;
 + (id)keyPathsForValuesAffectingShouldPreventIdleDisplaySleep;
-+ (id)keyPathsForValuesAffectingStatus;
 + (id)keyPathsForValuesAffectingStreaming;
 + (id)keyPathsForValuesAffectingTimeControlStatus;
 + (id)keyPathsForValuesAffectingUsesExternalPlaybackWhileExternalScreenIsActive;
 - (void).cxx_destruct;
 - (void)_cancelPendingSeeksIfNeeded;
 - (void)_disableLegibleMediaSelectionOptions:(id)arg1;
+- (void)_disableLegibleMediaSelectionOptions:(id)arg1 shouldUpdateUserPreference:(BOOL)arg2;
 - (void)_enableAutoMediaSelection:(id)arg1;
+- (void)_enableAutoMediaSelection:(id)arg1 shouldUpdateUserPreference:(BOOL)arg2;
 - (void)_handleSeekTimerEvent;
 - (BOOL)_isMarkedNotSerializablePlayerItem:(id)arg1;
 - (BOOL)_isRestrictedFromSavingPlayerItem:(id)arg1;
@@ -193,6 +195,7 @@
 - (void)_updateRateForScrubbingAndSeeking;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
+- (void)_updateStatus;
 - (void)actuallySeekToTime;
 - (BOOL)allowsExternalPlayback;
 - (BOOL)allowsIdleSleepPrevention;

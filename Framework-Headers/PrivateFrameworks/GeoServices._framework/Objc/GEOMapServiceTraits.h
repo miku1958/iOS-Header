@@ -61,6 +61,8 @@
     BOOL _deviceInVehicle;
     BOOL _isAPICall;
     BOOL _isRedoSearch;
+    BOOL _isRefund;
+    BOOL _isSettlement;
     BOOL _navigating;
     BOOL _supportDirectionIntentAutocomplete;
     BOOL _supportDirectionIntentSearch;
@@ -94,6 +96,8 @@
         unsigned int deviceInVehicle:1;
         unsigned int isAPICall:1;
         unsigned int isRedoSearch:1;
+        unsigned int isRefund:1;
+        unsigned int isSettlement:1;
         unsigned int navigating:1;
         unsigned int supportDirectionIntentAutocomplete:1;
         unsigned int supportDirectionIntentSearch:1;
@@ -153,6 +157,8 @@
 @property (nonatomic) BOOL hasHttpRequestPriority;
 @property (nonatomic) BOOL hasIsAPICall;
 @property (nonatomic) BOOL hasIsRedoSearch;
+@property (nonatomic) BOOL hasIsRefund;
+@property (nonatomic) BOOL hasIsSettlement;
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (nonatomic) BOOL hasMapZoomLevel;
 @property (nonatomic) BOOL hasMode;
@@ -182,6 +188,8 @@
 @property (nonatomic) unsigned int httpRequestPriority; // @synthesize httpRequestPriority=_httpRequestPriority;
 @property (nonatomic) BOOL isAPICall; // @synthesize isAPICall=_isAPICall;
 @property (nonatomic) BOOL isRedoSearch; // @synthesize isRedoSearch=_isRedoSearch;
+@property (nonatomic) BOOL isRefund; // @synthesize isRefund=_isRefund;
+@property (nonatomic) BOOL isSettlement; // @synthesize isSettlement=_isSettlement;
 @property (readonly, nonatomic) int *knownClientResolvedTypes;
 @property (readonly, nonatomic) unsigned long long knownClientResolvedTypesCount;
 @property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;

@@ -45,6 +45,7 @@
 - (void)loadView;
 - (double)pkui_preferredNavigationBarBackgroundOpacity;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
+- (long long)preferredStatusBarStyle;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

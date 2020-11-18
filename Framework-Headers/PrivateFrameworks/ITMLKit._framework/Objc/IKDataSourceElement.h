@@ -6,20 +6,18 @@
 
 #import <ITMLKit/IKViewElement.h>
 
-@class IKElementChangeSet, NSArray;
+@class IKChangeSet, NSArray, NSDictionary;
 @protocol IKDataSourceElementImplementing;
 
 @interface IKDataSourceElement : IKViewElement
 {
-    struct {
-        BOOL hasDidLoadBinding;
-        BOOL hasDoKeysAffectingChildren;
-        BOOL hasDoKeysAffectingSubtree;
-        BOOL hasAdditionalKeysToResolve;
-        BOOL hasApplyValueForKey;
-        BOOL hasDidResolveKeys;
-    } _implFlags;
     BOOL _areItemsBound;
+    struct {
+        BOOL hasResetImplicitUpdates;
+        BOOL hasProxyElementForLoadedChildElement;
+        BOOL hasCanProxyUnloadedChildElement;
+    } _implFlags;
+    NSDictionary *_indexTitles;
     NSArray *_autoHighlightedChildElements;
     long long _autoHighlightIndex;
     id<IKDataSourceElementImplementing> _impl;
@@ -28,31 +26,32 @@
 @property (nonatomic) long long autoHighlightIndex; // @synthesize autoHighlightIndex=_autoHighlightIndex;
 @property (copy, nonatomic) NSArray *autoHighlightedChildElements; // @synthesize autoHighlightedChildElements=_autoHighlightedChildElements;
 @property (readonly, nonatomic) id<IKDataSourceElementImplementing> impl; // @synthesize impl=_impl;
-@property (readonly, nonatomic) IKElementChangeSet *itemsChangeset;
+@property (copy, nonatomic) NSDictionary *indexTitles; // @synthesize indexTitles=_indexTitles;
+@property (readonly, nonatomic, getter=areItemsBound) BOOL itemsBound;
+@property (readonly, nonatomic) IKChangeSet *itemsChangeSet;
 @property (readonly, nonatomic) NSArray *prototypes;
+@property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 
 + (unsigned long long)updateTypeForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 - (void).cxx_destruct;
-- (id)actualElementForProxyElement:(id)arg1 jsContext:(id)arg2;
-- (id)additionalKeysToResolveForDOMBindingController:(id)arg1;
+- (id)_parsedIndexTitlesFromString:(id)arg1;
 - (void)appDocumentDidMarkStylesDirty;
 - (id)applyUpdatesWithElement:(id)arg1;
-- (BOOL)areItemsBound;
+- (BOOL)canProxyUnloadedChildElement:(id)arg1;
 - (void)configureUpdatesWithElement:(id)arg1;
 - (void)dealloc;
-- (BOOL)domBindingController:(id)arg1 applyValue:(id)arg2 forKey:(id)arg3;
-- (void)domBindingController:(id)arg1 didLoadBinding:(id)arg2;
-- (void)domBindingController:(id)arg1 didResolveKeys:(id)arg2;
-- (BOOL)domBindingController:(id)arg1 doKeysAffectChildren:(id)arg2;
-- (BOOL)domBindingController:(id)arg1 doKeysAffectSubtree:(id)arg2;
+- (id)debugDescription;
 - (id)elementForItemAtIndex:(long long)arg1;
 - (void)enumerateItemElementsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)firstItemElement;
+- (long long)indexOfItemForElement:(id)arg1;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)lastItemElement;
 - (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
+- (id)proxyElementForLoadedChildElement:(id)arg1;
+- (void)resetImplicitUpdates;
 - (void)resetProperty:(unsigned long long)arg1;
 - (void)resetUpdates;
 - (void)unloadIndex:(long long)arg1;

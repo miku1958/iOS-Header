@@ -35,6 +35,7 @@
 - (BOOL)hasCoordinate:(struct CLLocationCoordinate2D)arg1 withAccuracy:(double)arg2;
 - (id)initWithDiskCacheName:(id)arg1;
 - (void)insertBatchesOfPlacemarks:(id)arg1 forLocationCoordinates:(id)arg2;
+- (void)invalidateCacheForGeoServiceProviderChangeTo:(id)arg1;
 - (void)invalidateCacheForLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)invalidateCacheForMUID:(unsigned long long)arg1;
 - (void)invalidateCacheItemsBeforeDateWithTimestamp:(double)arg1;

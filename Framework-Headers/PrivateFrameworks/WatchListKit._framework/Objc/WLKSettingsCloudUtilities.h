@@ -20,7 +20,8 @@
 + (void)deleteAllHistoryWithCompletion:(CDUnknownBlockType)arg1;
 + (void)forceUpdateWithCompletion:(CDUnknownBlockType)arg1;
 + (void)resetAccountWithCompletion:(CDUnknownBlockType)arg1;
-+ (BOOL)synchronizeSettingsFromCloudIfNeeded;
++ (BOOL)synchronizeSettingsFromCloudIfNeeded:(id *)arg1;
++ (void)synchronizeSettingsFromCloudIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 + (void)updateCloudStoreAccountLevelSetting:(id)arg1 value:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)updateCloudStoreAppSettings:(id)arg1 deleteHistory:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)updateCloudStoreAppSettings:(id)arg1 deleteHistory:(BOOL)arg2 removeEntry:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;

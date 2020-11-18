@@ -6,73 +6,54 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKDOMBindingControllerDelegate-Protocol.h>
 #import <ITMLKit/IKDataSourceElementImplementing-Protocol.h>
-#import <ITMLKit/IKJSDataItemObserver-Protocol.h>
 
-@class IKAppDataSet, IKDOMBindingController, IKDataSourceElement, IKElementChangeSet, NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSString;
+@class IKAppDataSet, IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface IKDSEBoundItemsImpl : NSObject <IKJSDataItemObserver, IKDataSourceElementImplementing, IKDOMBindingControllerDelegate>
+@interface IKDSEBoundItemsImpl : NSObject <IKDataSourceElementImplementing>
 {
-    NSMutableDictionary *_instantiatedDOMElementsByItemID;
     BOOL _visibleIndexRangeIsDirty;
     IKDataSourceElement *_dataSourceElement;
-    IKDOMBindingController *_bindingController;
     NSArray *_prototypes;
-    IKElementChangeSet *_itemsChangeset;
+    IKChangeSet *_itemsChangeSet;
     IKAppDataSet *_dataSet;
-    NSDictionary *_usedPrototypeMappingsByType;
+    NSDictionary *_usedPrototypesByType;
     NSDictionary *_childrenByItemID;
     NSMutableIndexSet *_visibleIndexSet;
-    NSMutableDictionary *_proxyChildrenByItemID;
+    NSMutableDictionary *_proxiedItemElementsByItemID;
 }
 
-@property (readonly, nonatomic) IKDOMBindingController *bindingController; // @synthesize bindingController=_bindingController;
 @property (copy, nonatomic) NSDictionary *childrenByItemID; // @synthesize childrenByItemID=_childrenByItemID;
 @property (strong, nonatomic) IKAppDataSet *dataSet; // @synthesize dataSet=_dataSet;
 @property (readonly, weak, nonatomic) IKDataSourceElement *dataSourceElement; // @synthesize dataSourceElement=_dataSourceElement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) IKElementChangeSet *itemsChangeset; // @synthesize itemsChangeset=_itemsChangeset;
+@property (readonly, copy, nonatomic) NSDictionary *indexTitles;
+@property (strong, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
 @property (strong, nonatomic) NSArray *prototypes; // @synthesize prototypes=_prototypes;
-@property (strong, nonatomic) NSMutableDictionary *proxyChildrenByItemID; // @synthesize proxyChildrenByItemID=_proxyChildrenByItemID;
+@property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
+@property (strong, nonatomic) NSMutableDictionary *proxiedItemElementsByItemID; // @synthesize proxiedItemElementsByItemID=_proxiedItemElementsByItemID;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSDictionary *usedPrototypeMappingsByType; // @synthesize usedPrototypeMappingsByType=_usedPrototypeMappingsByType;
+@property (copy, nonatomic) NSDictionary *usedPrototypesByType; // @synthesize usedPrototypesByType=_usedPrototypesByType;
 @property (strong, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
 
-+ (id)_prototypeMappingForDataItem:(id)arg1 inDictionary:(id)arg2;
-+ (void)_traversePrototypeMappings:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-+ (BOOL)areItemsBoundForBinding:(id)arg1;
++ (BOOL)_canProxiedItemElementsBeUpdatedWithLoadedElements;
 - (void).cxx_destruct;
-- (id)_appDataItemFromJSDataItem:(id)arg1 prototype:(id)arg2;
-- (void)_appendAutoHighlightedIndexesWithIndex:(long long)arg1;
-- (void)_appendUpdatedIndexesWithIndex:(long long)arg1;
 - (void)_appendVisibleIndexSetWithIndex:(long long)arg1;
-- (void)_applyAutoHighlightedIndexesValueWithIndexes:(id)arg1 domBindingController:(id)arg2;
-- (void)_applyItemsValueWithItems:(id)arg1 domBindingController:(id)arg2;
-- (void)_applyUpdatedIndexesValueWithIndexes:(id)arg1 domBindingController:(id)arg2;
-- (void)_applyVisibleIndexRangeValueWithRange:(struct _NSRange)arg1 domBindingController:(id)arg2;
-- (id)_instantiateItemAtIndex:(long long)arg1 domBindingController:(id)arg2;
-- (id)_itemsPropertyPath;
-- (id)actualElementForProxyElement:(id)arg1;
-- (id)additionalKeysToResolveForDOMBindingController:(id)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;
+- (BOOL)canProxyUnloadedChildElement:(id)arg1;
 - (void)configureUpdatesWithImplementation:(id)arg1;
-- (void)dataItem:(id)arg1 didChangeSubPropertyPathWithString:(id)arg2 forPropertyPathWithString:(id)arg3 subscriptIndex:(long long)arg4;
-- (BOOL)domBindingController:(id)arg1 applyValue:(id)arg2 forKey:(id)arg3;
-- (void)domBindingController:(id)arg1 didLoadBinding:(id)arg2;
-- (void)domBindingController:(id)arg1 didResolveKeys:(id)arg2;
-- (BOOL)domBindingController:(id)arg1 doKeysAffectChildren:(id)arg2;
-- (BOOL)domBindingController:(id)arg1 doKeysAffectSubtree:(id)arg2;
 - (id)elementForItemAtIndex:(long long)arg1;
-- (long long)indexOfItemForChildElement:(id)arg1;
+- (long long)indexOfItemForElement:(id)arg1;
 - (id)initWithDataSourceElement:(id)arg1;
 - (void)initializeWithElementFactory:(id)arg1;
 - (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
+- (id)proxyElementForLoadedChildElement:(id)arg1;
+- (void)resetImplicitUpdates;
 - (void)resetUpdates;
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;

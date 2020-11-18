@@ -6,12 +6,15 @@
 
 #import <IMDaemonCore/IMDCKAbstractSyncController.h>
 
+#import <IMDaemonCore/IMDCKAbstractSyncControllerDelegate-Protocol.h>
 #import <IMDaemonCore/IMDXPCEventStreamHandlerDelegate-Protocol.h>
+#import <IMDaemonCore/IMSystemMonitorListener-Protocol.h>
 
 @class CKFetchRecordZonesOperation, IMTimer, NSDate, NSString, NSTimer;
 
-@interface IMDCKSyncController : IMDCKAbstractSyncController <IMDXPCEventStreamHandlerDelegate>
+@interface IMDCKSyncController : IMDCKAbstractSyncController <IMDXPCEventStreamHandlerDelegate, IMSystemMonitorListener, IMDCKAbstractSyncControllerDelegate>
 {
+    BOOL _shouldReloadConversations;
     NSDate *_syncStartDate;
     NSTimer *_longRunningSyncTimer;
     IMTimer *_nightlySyncTimer;
@@ -19,6 +22,7 @@
     CKFetchRecordZonesOperation *_cloudKitMetricsFetchOp;
     NSDate *_lastLogDumpDate;
     NSDate *_lastRestoreFailureLogDumpDate;
+    NSTimer *_reloadTimer;
 }
 
 @property (strong, nonatomic) CKFetchRecordZonesOperation *cloudKitMetricsFetchOp; // @synthesize cloudKitMetricsFetchOp=_cloudKitMetricsFetchOp;
@@ -30,6 +34,8 @@
 @property (strong, nonatomic) NSDate *lastRestoreFailureLogDumpDate; // @synthesize lastRestoreFailureLogDumpDate=_lastRestoreFailureLogDumpDate;
 @property (strong, nonatomic) NSTimer *longRunningSyncTimer; // @synthesize longRunningSyncTimer=_longRunningSyncTimer;
 @property (strong, nonatomic) IMTimer *nightlySyncTimer; // @synthesize nightlySyncTimer=_nightlySyncTimer;
+@property (strong) NSTimer *reloadTimer; // @synthesize reloadTimer=_reloadTimer;
+@property BOOL shouldReloadConversations; // @synthesize shouldReloadConversations=_shouldReloadConversations;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDate *syncStartDate; // @synthesize syncStartDate=_syncStartDate;
 
@@ -75,8 +81,11 @@
 - (id)_periodicSyncStateDictionary;
 - (void)_postMetricsToCloudKitOnAutomaticHistoryDeletionAgentLaunch;
 - (id)_recordManager;
+- (void)_refreshUIWhileSyncing;
 - (void)_reloadChatRegistryOnMainThread;
 - (id)_retryError;
+- (BOOL)_serverAllowsUIRefreshTimerWhileSyncing;
+- (BOOL)_serverAllowsUIRefreshWhileSyncing;
 - (BOOL)_serverDeniesDailySyncStateAnalytics;
 - (BOOL)_serverDeniesPeriodicSyncAnalytics;
 - (BOOL)_serverDoesNotAllowComingBackOnlineChatSync;
@@ -117,14 +126,19 @@
 - (void)performOneTimeAccountUpgradeCheckIfNeeded;
 - (id)rampManager;
 - (void)recordMetricIsCloudKitEnabled;
+- (void)refreshUIIfApplicableWithBatchCount:(unsigned long long)arg1;
 - (void)registerForAccountNotifications;
+- (double)reloadTimeInterval;
 - (void)sendRestoreFailuresLogDumps;
 - (void)sendRestoreFailuresLogDumpsIfNeeded;
 - (id)statsCollector;
+- (void)syncAttachmentMetadataFirstSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)syncChatsWithMessageContext:(id)arg1;
+- (void)syncController:(id)arg1 syncBatchCompleted:(unsigned long long)arg2;
 - (long long)syncControllerRecordType;
 - (void)syncDeletesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (id)syncStateDebuggingInfo:(id)arg1;
+- (void)systemDidUnlock;
 - (void)updateSecurityLevelDowngradedIfNeeded:(CDUnknownBlockType)arg1;
 
 @end

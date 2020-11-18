@@ -60,6 +60,7 @@
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
+- (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setRightBarButtonEnabled:(BOOL)arg1;
 - (void)shakeCard;

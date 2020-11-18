@@ -6,22 +6,78 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class MTMetricsKit, NSDictionary, NSHashTable, NSString, VUIMetricsPageEventData;
+@protocol OS_dispatch_queue;
+
 @interface VUIMetricsController : NSObject
 {
+    BOOL _isInternalBuild;
+    BOOL _isAppJustLaunched;
+    BOOL _isAppJustDeepLinkOpened;
+    BOOL _isGDPRConsented;
+    BOOL _shouldPostAppLaunchData;
+    NSDictionary *_baseFields;
+    NSString *_currentTabIdentifier;
+    NSString *_exitEventDestinationUrl;
+    VUIMetricsPageEventData *_lastRecordedPageEventData;
+    MTMetricsKit *_activeMetricsKit;
+    MTMetricsKit *_metricsKitMain;
+    MTMetricsKit *_loggerKit;
+    MTMetricsKit *_metricsKitUnidentified;
+    MTMetricsKit *_perfMetricsKit;
+    NSObject<OS_dispatch_queue> *_metricsDataDispatchSQ;
+    NSHashTable *_savedRecentEvents;
 }
 
-- (id)_createMetricsController;
-- (id)_getClientIDForAccount:(id)arg1;
-- (id)_getClientIDFromCookies:(id)arg1;
-- (id)_getMediaEntityTypeStringForMediaItem:(id)arg1 setPageType:(id *)arg2;
-- (id)_getMediaLibraryTypeStringForMediaItem:(id)arg1;
-- (BOOL)_isAllowedToSubmit;
-- (void)_populateBaseFieldsAndSendEvent:(id)arg1 thatOccuredAt:(id)arg2;
-- (void)_submitLibraryMediaPlayEventForMediaItem:(id)arg1 withDate:(id)arg2;
-- (void)_submitLibraryPageEventWithDate:(id)arg1;
-- (void)submitLibraryMediaPlayEventForMediaItem:(id)arg1;
-- (void)submitLibraryPageEvent;
+@property (strong, nonatomic) MTMetricsKit *activeMetricsKit; // @synthesize activeMetricsKit=_activeMetricsKit;
+@property (copy, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
+@property (readonly, copy, nonatomic) NSDictionary *baseFieldsForVPAF;
+@property (readonly, copy, nonatomic) NSString *currentTabIdentifier; // @synthesize currentTabIdentifier=_currentTabIdentifier;
+@property (strong, nonatomic) NSString *exitEventDestinationUrl; // @synthesize exitEventDestinationUrl=_exitEventDestinationUrl;
+@property (readonly, copy, nonatomic) NSDictionary *iTunesVPAF;
+@property (strong, nonatomic) VUIMetricsPageEventData *lastRecordedPageEventData; // @synthesize lastRecordedPageEventData=_lastRecordedPageEventData;
+@property (strong, nonatomic) MTMetricsKit *loggerKit; // @synthesize loggerKit=_loggerKit;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsDataDispatchSQ; // @synthesize metricsDataDispatchSQ=_metricsDataDispatchSQ;
+@property (strong, nonatomic) MTMetricsKit *metricsKitMain; // @synthesize metricsKitMain=_metricsKitMain;
+@property (strong, nonatomic) MTMetricsKit *metricsKitUnidentified; // @synthesize metricsKitUnidentified=_metricsKitUnidentified;
+@property (strong, nonatomic) MTMetricsKit *perfMetricsKit; // @synthesize perfMetricsKit=_perfMetricsKit;
+@property (strong, nonatomic) NSHashTable *savedRecentEvents; // @synthesize savedRecentEvents=_savedRecentEvents;
+@property (nonatomic) BOOL shouldPostAppLaunchData; // @synthesize shouldPostAppLaunchData=_shouldPostAppLaunchData;
+
++ (id)_baseToVPAFMapping;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)_createDataAddingBaseAndPageFieldsToEventData:(id)arg1;
+- (id)_createMetricsKitForTopic:(id)arg1;
+- (void)_flushMetricsOnExit;
+- (void)_flushUnreportedEvents:(id)arg1;
+- (void)_handleServerConfigChange:(id)arg1;
+- (void)_handleTabBarChange:(id)arg1;
+- (void)_handleWLKAppLibChange:(id)arg1;
+- (void)_handleWLKSettingsDidChange:(id)arg1;
+- (void)_initializeBaseFields;
+- (void)_recordEnter:(id)arg1;
+- (void)_recordEvent:(id)arg1 withEventData:(id)arg2;
+- (void)_recordExit:(id)arg1;
+- (void)_saveRecentEvents:(id)arg1;
+- (void)_updateBaseFieldsWithData:(id)arg1;
+- (void)flushMetrics;
+- (id)getRecentEventsForDebuggerUI;
+- (id)init;
+- (void)jsDelegateRecordEvent:(id)arg1;
+- (void)jsDelegateRecordLogEvent:(id)arg1;
+- (void)jsDelegateRecordPerfEvent:(id)arg1;
+- (void)recordAppBecameActive;
+- (void)recordAppLaunched;
+- (void)recordAppWillBackground;
+- (void)recordAppWillTerminate;
+- (void)recordClick:(id)arg1;
+- (void)recordMedia:(id)arg1;
+- (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
+- (void)recordPage:(id)arg1;
+- (void)registerForBaseFieldChanges;
+- (void)setupMetricsController;
+- (void)updateGDPRConsentStatus;
 
 @end
 

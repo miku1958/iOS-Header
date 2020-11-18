@@ -7,16 +7,21 @@
 #import <objc/NSObject.h>
 
 @class IMDCKSyncState;
+@protocol IMDCKAbstractSyncControllerDelegate;
 
 @interface IMDCKAbstractSyncController : NSObject
 {
     BOOL _isSyncing;
+    id<IMDCKAbstractSyncControllerDelegate> _delegate;
 }
 
+@property (weak) id<IMDCKAbstractSyncControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isSyncing; // @synthesize isSyncing=_isSyncing;
 @property (readonly, nonatomic) BOOL isUsingStingRay;
 @property (readonly, nonatomic) IMDCKSyncState *syncState;
 
+- (void).cxx_destruct;
+- (BOOL)_fetchedAllChangesFromCloudKit;
 - (void)addSyncDebuggingInfoToDictionary:(id)arg1;
 - (id)ckUtilities;
 - (void)setBroadcastedSyncStateStateToFinished;
@@ -26,6 +31,7 @@
 - (void)setBroadcastedSyncStateToStartingInitialSync;
 - (void)setBroadcastedSyncStateToStartingPeriodicSync;
 - (void)setBroadcastedSyncStateToUploading;
+- (void)syncBatchCompleted:(unsigned long long)arg1;
 - (long long)syncControllerRecordType;
 - (id)syncStateDebuggingInfo:(id)arg1;
 

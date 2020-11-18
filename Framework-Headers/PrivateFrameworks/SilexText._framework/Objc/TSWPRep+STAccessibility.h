@@ -18,6 +18,7 @@
 - (id)_STAXColumnForStorageRelativeCharIndex:(unsigned long long)arg1;
 - (struct CGRect)_accessibilityFrameForRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityHasTextOperations;
+- (BOOL)_accessibilityIsSpeakThisElement;
 - (long long)_accessibilityLineEndPosition;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;

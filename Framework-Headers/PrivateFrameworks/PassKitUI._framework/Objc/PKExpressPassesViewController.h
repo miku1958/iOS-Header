@@ -9,12 +9,14 @@
 #import <PassKitUI/PKExpressPassCategoryViewControllerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, PKExpressPassController, PKPassSnapshotter;
+@protocol PKPaymentDataProvider;
 
 @interface PKExpressPassesViewController : PKSectionTableViewController <PKExpressPassCategoryViewControllerDelegate>
 {
     PKExpressPassController *_expressPassController;
     NSMutableArray *_paymentPasses;
     NSMutableArray *_transitPassCategories;
+    id<PKPaymentDataProvider> _paymentDataProvider;
     long long _style;
     long long _selectedPaymentPassIndex;
     BOOL _selectedPaymentPassIsInPendingState;
@@ -40,16 +42,19 @@
 - (void)_sendExpressPassDidChangeNotification;
 - (void)_setUserInteractionsEnabled:(BOOL)arg1;
 - (id)_transformState:(id)arg1;
+- (void)_updateCardImageForCell:(id)arg1 withPass:(id)arg2 inCategory:(id)arg3;
 - (void)_updateExpressState:(id)arg1;
 - (void)_updatePasses:(id)arg1;
+- (void)_updatePaymentCardCellWithIndex:(long long)arg1 statusString:(id)arg2;
 - (void)_updateUIWithExpressState;
+- (void)_upgradeExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)categoryIdentifierForPass:(id)arg1;
 - (long long)categoryIndexForPass:(id)arg1;
 - (id)createCategoryForPass:(id)arg1;
 - (void)dealloc;
 - (void)expressPassCategoryViewController:(id)arg1 didUpdateExpressState:(id)arg2;
 - (double)heightForRowAtIndexPath:(id)arg1;
-- (id)initWithPasses:(id)arg1 controller:(id)arg2 style:(long long)arg3;
+- (id)initWithPasses:(id)arg1 paymentDataProvider:(id)arg2 controller:(id)arg3 style:(long long)arg4;
 - (id)paymentCardCellForRow:(long long)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

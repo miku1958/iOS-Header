@@ -15,6 +15,7 @@
 {
     BOOL _didReceiveResponse;
     NSString *_name;
+    NSString *_confirmationCode;
     unsigned long long _consentType;
     BOOL _requireAdditionalConsent;
     id<TSSIMSetupFlowDelegate> _delegate;
@@ -31,6 +32,7 @@
 - (void)_acceptButtonTapped;
 - (void)_cancelButtonTapped;
 - (void)_declineButtonTapped;
+- (id)initWithConfirmationCode:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(BOOL)arg3 confirmationCode:(id)arg4;
 - (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(BOOL)arg3;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

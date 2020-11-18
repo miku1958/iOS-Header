@@ -8,39 +8,55 @@
 
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSDate, NSString, PKMerchant, PKPaymentDefaultDataProvider, PKPaymentPass;
-@protocol OS_dispatch_queue, PKDashboardTransactionFetcherDelegate;
+@class NSDate, NSDictionary, NSString, PKMerchant, PKPaymentPass;
+@protocol OS_dispatch_queue, PKDashboardTransactionFetcherDelegate, PKPaymentDataProvider;
 
 @interface PKDashboardTransactionFetcher : NSObject <PKPaymentDataProviderDelegate>
 {
     PKPaymentPass *_pass;
     NSString *_passUniqueID;
-    PKPaymentDefaultDataProvider *_paymentDataProvider;
+    id<PKPaymentDataProvider> _paymentDataProvider;
     id<PKDashboardTransactionFetcherDelegate> _delegate;
-    unsigned long long _type;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_replyQueue;
     struct os_unfair_lock_s _lockUpdate;
     BOOL _pendingUpdate;
+    BOOL _hasMoreUpdates;
     PKMerchant *_merchant;
     NSString *_counterpartHandle;
+    long long _merchantCategory;
+    long long _transactionType;
     unsigned long long _limit;
+    NSString *_cashbackPassUniqueID;
+    PKPaymentPass *_cashbackPass;
+    BOOL _needsCashbackUniqueID;
+    NSDictionary *_cashbackGroups;
+    unsigned long long _type;
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PKDashboardTransactionFetcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (void)_commonSetup;
 - (void)_sendUpdatedTransactions;
 - (id)_sortedTransactions:(id)arg1 ascending:(BOOL)arg2;
-- (id)initWithCounterpartHandle:(id)arg1 paymentPass:(id)arg2 delegate:(id)arg3;
-- (id)initWithMerchant:(id)arg1 paymentPass:(id)arg2 delegate:(id)arg3;
-- (id)initWithPaymentPass:(id)arg1 delegate:(id)arg2;
+- (id)cashbackGroupForDateComponents:(id)arg1;
+- (id)cashbackGroupForTransactionWithIdentifier:(id)arg1;
+- (id)cashbackPass;
+- (id)initWithCounterpartHandle:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithMerchant:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithMerchantCategory:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;
+- (id)initWithTransactionType:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;

@@ -18,6 +18,9 @@
 @property (readonly, nonatomic) BOOL hf_fakeICloudSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeITunesSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeInternetFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkNotShareableSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkProfileFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkProfileInstallSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeShouldDisplayManualFixOption;
 @property (readonly, nonatomic) BOOL hf_fakeUnreachableError;
 @property (readonly, nonatomic) BOOL hf_fakeVPNProfileExpired;

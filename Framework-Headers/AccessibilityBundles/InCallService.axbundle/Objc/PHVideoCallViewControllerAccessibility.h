@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityExpandControls;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadFullScreenVideoView;
 - (void)_accessibilityLoadInfoOnPipVideoViews;
@@ -24,7 +25,7 @@
 - (void)loadView;
 - (void)setControlsState:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)toggleLocalCameraType;
-- (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 controlsBar:(BOOL)arg3 animated:(BOOL)arg4;
 - (void)videoOverlayViewController:(id)arg1 isShowingOverlay:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

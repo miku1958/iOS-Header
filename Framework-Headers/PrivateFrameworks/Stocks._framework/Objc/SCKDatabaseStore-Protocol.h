@@ -9,7 +9,7 @@
 
 @protocol SCKDatabaseStore
 
-@property (nonatomic, getter=isBackupEnabled) BOOL backupEnabled;
+@property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled;
 @property (copy, nonatomic) NSDate *lastDirtyDate;
 @property (copy, nonatomic) NSDate *lastSyncDate;
 @property (copy, nonatomic) CKServerChangeToken *serverChangeToken;

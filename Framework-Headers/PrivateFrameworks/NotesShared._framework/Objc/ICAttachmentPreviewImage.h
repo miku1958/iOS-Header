@@ -86,9 +86,9 @@
 - (void)setImageData:(id)arg1 withSize:(struct CGSize)arg2 scale:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)shouldSyncToCloud;
 - (struct CGSize)size;
-- (void)updateFlagToExcludeFromBackup;
-- (void)updateFlagToExcludeFromBackupForURL:(id)arg1 touchFileIfNecessary:(BOOL)arg2;
-- (void)updateFlagToExcludeFromBackupTouchFileIfNecessary:(BOOL)arg1;
+- (void)updateFlagToExcludeFromCloudBackup;
+- (void)updateFlagToExcludeFromCloudBackupForURL:(id)arg1;
+- (void)updateFlagToExcludeFromCloudBackupForURLs:(id)arg1;
 - (void)willTurnIntoFault;
 - (BOOL)writeEncryptedImageFromData:(id)arg1;
 

@@ -4,34 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKFace.h>
+#import <NanoTimeKitCompanion/NTKPrideDigitalFace.h>
 
-@interface NTKPrideFace : NTKFace
+@interface NTKPrideFace : NTKPrideDigitalFace
 {
 }
-
-+ (id)_debugReleaseDate;
-+ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
-+ (void)_setWasAvailable;
-+ (BOOL)_wasAvailable;
-+ (void)callBlockWhenFaceBecomesAvailable:(CDUnknownBlockType)arg1;
-+ (unsigned long long)enabledState;
-+ (BOOL)isAvailableForDevice:(id)arg1;
-+ (BOOL)isRestrictedForDevice:(id)arg1;
-+ (id)releaseDate;
-+ (BOOL)releaseImminent;
-+ (void)setEnabledState:(unsigned long long)arg1;
-- (id)_complicationSlotDescriptors;
-- (long long)_customEditModeForUniqueConfiguration;
-- (id)_customEditModes;
-- (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (BOOL)_hasOptionsForCustomEditMode:(long long)arg1;
-- (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (id)_localizedNameForComplicationSlot:(id)arg1;
-- (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (Class)_optionClassForCustomEditMode:(long long)arg1;
-- (id)_orderedComplicationSlots;
 
 @end
 

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL hasMediaContainer;
 @property (nonatomic) BOOL hasPlayShuffled;
 @property (nonatomic) BOOL hasPlaybackRepeatMode;
+@property (readonly, nonatomic) BOOL hasProxiedBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasRecoID;
 @property (nonatomic) BOOL hasResumePlayback;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) unsigned long long mediaItemsCount;
 @property (nonatomic) BOOL playShuffled;
 @property (nonatomic) int playbackRepeatMode;
+@property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (nonatomic) BOOL resumePlayback;
 

@@ -16,13 +16,16 @@
 {
     TSCellularPlanTableViewCell *_confirmationCodeCell;
     NSString *_fauxCardData;
+    NSString *_confirmationCode;
     long long _userConsentResponse;
+    BOOL _isMidOperation;
     id<TSSIMSetupFlowDelegate> _delegate;
     UILabel *_confirmationCodeTitleLabel;
     UITableView *_infoTableView;
     NSLayoutConstraint *_infoTableViewHeightConstraint;
 }
 
+@property (readonly, nonatomic) NSString *confirmationCode; // @synthesize confirmationCode=_confirmationCode;
 @property (weak, nonatomic) UILabel *confirmationCodeTitleLabel; // @synthesize confirmationCodeTitleLabel=_confirmationCodeTitleLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (void)confirm:(id)arg1;
+- (id)initAsMidOperation;
 - (id)initWithCardData:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;

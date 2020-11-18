@@ -6,24 +6,23 @@
 
 #import <MetricsKit/MTObject.h>
 
-#import <MetricsKit/MTEventRecorderJSExports-Protocol.h>
-
-@class NSString;
 @protocol MTEventRecorderDelegate;
 
-@interface MTEventRecorder : MTObject <MTEventRecorderJSExports>
+@interface MTEventRecorder : MTObject
 {
     id<MTEventRecorderDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<MTEventRecorderDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly) NSString *sendMethod;
+@property (nonatomic) BOOL monitorsLifecycleEvents;
 
 - (void).cxx_destruct;
+- (id)_amsDelegate;
 - (id)flushUnreportedEvents;
 - (id)recordEvent:(id)arg1;
 - (id)recordEvent:(id)arg1 shouldSkipValidation:(BOOL)arg2;
 - (id)recordEvent:(id)arg1 toTopic:(id)arg2;
+- (id)sendMethod;
 
 @end
 

@@ -30,6 +30,7 @@
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
 - (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)popToViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)popViewControllerAnimated:(BOOL)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;

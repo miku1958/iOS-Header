@@ -15,11 +15,11 @@
     PKStackedTextItemGroup *_displayItem;
     PKStackedTextItemGroupView *_headerView;
     PKStackedTextItemGroupView *_contentView;
+    UIView *_separatorView;
+    PKStackedTextItemGroupView *_footerView;
     UIImageView *_disclosureView;
     PKContinuousButton *_actionButton;
     PKPaymentPassAction *_action;
-    double _footerHeight;
-    double _currentHeightAdjustment;
     UIImageView *_imageView;
     BOOL _animated;
     unsigned long long _deferUpdateCounter;
@@ -52,7 +52,6 @@
 
 - (void).cxx_destruct;
 - (void)_actionButtonTapped:(id)arg1;
-- (void)_computeSizeForFooter;
 - (BOOL)_deemphasizeAmount;
 - (id)_firstRenewActionForPass:(id)arg1;
 - (id)_image;

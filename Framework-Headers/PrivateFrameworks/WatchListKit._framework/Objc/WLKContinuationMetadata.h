@@ -6,36 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, WLKBasicContentMetadata, WLKPlayEvent, WLKPlayable;
+@class NSArray, NSNumber, NSString, NSURL, WLKBasicContentMetadata, WLKPlayable;
 
 @interface WLKContinuationMetadata : NSObject
 {
     BOOL _isRental;
     BOOL _isPurchase;
-    WLKPlayEvent *_playEvent;
     WLKPlayable *_playable;
     WLKBasicContentMetadata *_movieOrShowContent;
-    WLKBasicContentMetadata *_currentEpisode;
-    WLKBasicContentMetadata *_showParent;
+    NSURL *_contentTVAppDeeplinkURL;
+    long long _contextEnum;
     NSString *_context;
     NSString *_localizedContext;
     NSString *_deleteID;
+    NSNumber *_siriActionsExpirationEpochMillis;
+    NSArray *_siriActionsCategories;
 }
 
+@property (readonly, nonatomic) NSURL *contentTVAppDeeplinkURL; // @synthesize contentTVAppDeeplinkURL=_contentTVAppDeeplinkURL;
 @property (readonly, copy, nonatomic) NSString *context; // @synthesize context=_context;
-@property (readonly, nonatomic) WLKBasicContentMetadata *currentEpisode; // @synthesize currentEpisode=_currentEpisode;
+@property (readonly, nonatomic) long long contextEnum; // @synthesize contextEnum=_contextEnum;
 @property (readonly, copy, nonatomic) NSString *deleteID; // @synthesize deleteID=_deleteID;
 @property (readonly, nonatomic) BOOL isPurchase; // @synthesize isPurchase=_isPurchase;
 @property (readonly, nonatomic) BOOL isRental; // @synthesize isRental=_isRental;
 @property (readonly, copy, nonatomic) NSString *localizedContext; // @synthesize localizedContext=_localizedContext;
 @property (readonly, nonatomic) WLKBasicContentMetadata *movieOrShowContent; // @synthesize movieOrShowContent=_movieOrShowContent;
-@property (readonly, nonatomic) WLKPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property (readonly, nonatomic) WLKPlayable *playable; // @synthesize playable=_playable;
-@property (readonly, nonatomic) WLKBasicContentMetadata *showParent; // @synthesize showParent=_showParent;
+@property (readonly, copy, nonatomic) NSArray *siriActionsCategories; // @synthesize siriActionsCategories=_siriActionsCategories;
+@property (readonly, copy, nonatomic) NSNumber *siriActionsExpirationEpochMillis; // @synthesize siriActionsExpirationEpochMillis=_siriActionsExpirationEpochMillis;
 
++ (long long)_contextForString:(id)arg1;
 - (void).cxx_destruct;
+- (id)description;
 - (id)init;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 context:(id)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 @protocol PKDashboardDataSourceDelegate, PKDashboardItem;
 
 @protocol PKDashboardDataSource <NSObject>
+- (NSString *)footerTextForSection:(unsigned long long)arg1;
 - (id<PKDashboardItem>)itemAtIndexPath:(NSIndexPath *)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;

@@ -16,6 +16,7 @@
 {
     BOOL _requireSetup;
     BOOL _isPreinstallingViewControllerActive;
+    BOOL _confirmationCodeRequired;
     NSError *_planInstallError;
     NSMutableArray *_danglingPlanItems;
     NSString *_name;

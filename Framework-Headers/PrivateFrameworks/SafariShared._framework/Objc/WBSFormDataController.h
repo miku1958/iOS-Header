@@ -47,6 +47,7 @@
 + (id)fieldToFocusBeforeSubmittingForm:(id)arg1;
 + (BOOL)formContainsCreditCardData:(id)arg1;
 + (BOOL)formContainsCreditCardNumberField:(id)arg1;
++ (BOOL)formContainsCreditCardNumberOrCardSecurityCodeField:(id)arg1;
 + (BOOL)formContainsDateFields:(id)arg1 matchingAddressBookMatch:(id)arg2;
 + (BOOL)isFieldUnidentified:(id)arg1;
 + (BOOL)isNameProperty:(id)arg1;

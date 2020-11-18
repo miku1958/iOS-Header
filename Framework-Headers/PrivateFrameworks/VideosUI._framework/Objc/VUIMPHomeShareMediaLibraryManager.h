@@ -36,7 +36,9 @@ __attribute__((visibility("hidden")))
 - (id)_homeShareMediaLibraries;
 - (void)_notifyDelegateHomeShareMediaLibrariesDidUpdate:(id)arg1 withChangeSet:(id)arg2;
 - (void)_updateMediaLibrariesWithSharedMPMediaLibraries:(id)arg1;
+- (void)beginDiscoveringMediaLibraries;
 - (void)dealloc;
+- (void)endDiscoveringMediaLibraries;
 - (id)initWithManager:(id)arg1;
 
 @end

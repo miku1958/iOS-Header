@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class CALayer, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
+@class CALayer, PKPassFaceViewRendererState, PKPassView, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
 @protocol PKPaymentPassTableCellDelegate;
 
 @interface PKPaymentPassTableCell : PSTableCell
@@ -18,6 +18,7 @@
     BOOL _snapshotLoaded;
     UIActivityIndicatorView *_spinner;
     BOOL _showState;
+    PKPassView *_passView;
     BOOL _showSubTitle;
     BOOL _showAddButton;
     PKPaymentPass *_pass;
@@ -31,6 +32,7 @@
 @property (nonatomic) id<PKPaymentPassTableCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UILabel *mainLabel; // @synthesize mainLabel=_mainLabel;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (nonatomic) BOOL showAddButton; // @synthesize showAddButton=_showAddButton;
 @property (nonatomic) BOOL showSubTitle; // @synthesize showSubTitle=_showSubTitle;
 @property (readonly, nonatomic) UILabel *subTextLabel; // @synthesize subTextLabel=_subTextLabel;
@@ -41,6 +43,7 @@
 - (void).cxx_destruct;
 - (void)_addButtonPressed:(id)arg1;
 - (id)_stringForPassState:(unsigned long long)arg1;
+- (void)_updateSubtitleColorWithSpecifier:(id)arg1;
 - (void)_verifyButtonPressed:(id)arg1;
 - (void)dealloc;
 - (void)disableAddButton;
@@ -48,8 +51,10 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
+- (void)setSpecifier:(id)arg1;
 - (void)showActivitySpinner:(BOOL)arg1;
 - (void)tintColorDidChange;
+- (void)updateSubtitle;
 - (void)updateSubtitleForTransitProperties;
 
 @end

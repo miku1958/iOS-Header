@@ -6,15 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class AVPlayerLayer;
+@class AVObservationController, AVPlayerLayer;
 
 @interface AVSecondScreenPlayerLayerView : UIView
 {
     AVPlayerLayer *_activeSourcePlayerLayer;
+    AVObservationController *_observationController;
 }
 
 @property (weak, nonatomic) AVPlayerLayer *activeSourcePlayerLayer; // @synthesize activeSourcePlayerLayer=_activeSourcePlayerLayer;
 @property (readonly, nonatomic) AVPlayerLayer *layer; // @dynamic layer;
+@property (strong, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 
 + (Class)layerClass;
 - (void).cxx_destruct;

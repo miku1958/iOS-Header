@@ -61,6 +61,7 @@
 - (void)getBluetoothDeviceWithUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getConnectedBluetoothDeviceInfoArrayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getDevicesWithAvailablePHSAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getDevicesWithAvailablePHSAssetsOnDeviceCheck:(CDUnknownBlockType)arg1;
 - (void)getHorsemanSupplementalLanguageDictionary:(CDUnknownBlockType)arg1;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPairedBluetoothDeviceInfoArrayWithCompletion:(CDUnknownBlockType)arg1;

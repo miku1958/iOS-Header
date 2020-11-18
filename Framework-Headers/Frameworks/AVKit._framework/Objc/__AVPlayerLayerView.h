@@ -12,14 +12,17 @@
 {
     AVPlayerController *_playerController;
     AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;
+    AVPlayerLayer *_pictureInPicturePlayerLayer;
 }
 
+@property (strong, nonatomic) AVPlayerLayer *pictureInPicturePlayerLayer; // @synthesize pictureInPicturePlayerLayer=_pictureInPicturePlayerLayer;
 @property (readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView;
 @property (copy, nonatomic) NSDictionary *pixelBufferAttributes;
 @property (strong, nonatomic) AVPlayerController *playerController;
 @property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (readonly, nonatomic) struct CGRect videoBounds;
+@property (readonly, nonatomic) struct CGSize videoDisplaySize;
 @property (nonatomic) long long videoGravity;
 @property (nonatomic, getter=isVideoScaled) BOOL videoScaled;
 
@@ -27,6 +30,7 @@
 + (id)keyPathsForValuesAffectingPlayerLayer;
 + (id)keyPathsForValuesAffectingReadyForDisplay;
 + (id)keyPathsForValuesAffectingVideoBounds;
++ (id)keyPathsForValuesAffectingVideoDisplaySize;
 + (id)keyPathsForValuesAffectingVideoLayerGravity;
 + (id)keyPathsForValuesAffectingVideoScaled;
 + (Class)layerClass;

@@ -6,22 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSURL;
+@class NSData, NSDictionary, NSError, NSString, NSURL;
 
 @interface RPFileTransferItem : NSObject
 {
+    BOOL _completed;
+    long long _fileSize;
     CDUnknownBlockType _completionHandler;
+    NSString *_filename;
     NSURL *_itemURL;
     NSDictionary *_metadata;
+    NSData *_sha256HashData;
+    NSError *_error;
+    unsigned long long _estimatedSize;
+    NSData *_fileData;
+    unsigned long long _fileID;
+    unsigned long long _metadataSize;
 }
 
+@property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) unsigned long long estimatedSize; // @synthesize estimatedSize=_estimatedSize;
+@property (strong, nonatomic) NSData *fileData; // @synthesize fileData=_fileData;
+@property (nonatomic) unsigned long long fileID; // @synthesize fileID=_fileID;
+@property (nonatomic) long long fileSize; // @synthesize fileSize=_fileSize;
+@property (copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (copy, nonatomic) NSURL *itemURL; // @synthesize itemURL=_itemURL;
 @property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) unsigned long long metadataSize; // @synthesize metadataSize=_metadataSize;
+@property (copy, nonatomic) NSData *sha256HashData; // @synthesize sha256HashData=_sha256HashData;
 
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
+- (id)init;
 
 @end
 

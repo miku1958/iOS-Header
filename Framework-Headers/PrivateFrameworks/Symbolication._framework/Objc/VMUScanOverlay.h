@@ -19,7 +19,7 @@
 + (id)defaultOverlayWithScanner:(id)arg1;
 - (void).cxx_destruct;
 - (void)addMetadataRefinementRule:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithScanner:(id)arg1;
 
 @end
 

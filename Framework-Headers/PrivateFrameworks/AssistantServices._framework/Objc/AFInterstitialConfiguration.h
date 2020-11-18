@@ -20,6 +20,7 @@
     NSString *_languageCode;
     long long _gender;
     NSString *_recordRoute;
+    unsigned long long _speechEndHostTime;
 }
 
 @property (readonly, nonatomic) long long gender; // @synthesize gender=_gender;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isVoiceTrigger; // @synthesize isVoiceTrigger=_isVoiceTrigger;
 @property (readonly, copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (readonly, copy, nonatomic) NSString *recordRoute; // @synthesize recordRoute=_recordRoute;
+@property (readonly, nonatomic) unsigned long long speechEndHostTime; // @synthesize speechEndHostTime=_speechEndHostTime;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
@@ -39,7 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStyle:(long long)arg1 languageCode:(id)arg2 gender:(long long)arg3 recordRoute:(id)arg4 isVoiceTrigger:(BOOL)arg5 isDucking:(BOOL)arg6 isTwoShot:(BOOL)arg7;
+- (id)initWithStyle:(long long)arg1 languageCode:(id)arg2 gender:(long long)arg3 recordRoute:(id)arg4 isVoiceTrigger:(BOOL)arg5 isDucking:(BOOL)arg6 isTwoShot:(BOOL)arg7 speechEndHostTime:(unsigned long long)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

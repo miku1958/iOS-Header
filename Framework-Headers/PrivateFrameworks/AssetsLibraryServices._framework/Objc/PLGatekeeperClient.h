@@ -57,6 +57,7 @@
 - (void)dealloc;
 - (id)debugSidecarFileURLsForAsset:(id)arg1;
 - (void)deleteAssetWithURL:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)deleteiTunesSyncedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)deviceSpecificReplyQueue;
 - (id)dictionaryWithContentsOfMediaFilePath:(id)arg1;
 - (void)downloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 trackCPLDownload:(BOOL)arg4 downloadIsTransient:(BOOL)arg5 proposedTaskIdentifier:(id)arg6 completion:(CDUnknownBlockType)arg7;
@@ -115,7 +116,6 @@
 - (void)noteInterestingMemoryNotificationViewedForColletionID:(id)arg1;
 - (void)noteSuggestedCMMNotificationForColletionID:(id)arg1 notificationDeliveryDate:(id)arg2;
 - (void)noteSuggestedCMMViewedForColletionID:(id)arg1;
-- (void)noteUserRespondedToMemoriesNotification;
 - (void)overrideSystemBudgetsForSyncSession:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pauseICloudPhotos:(BOOL)arg1 reason:(short)arg2;
 - (void)pauseICloudPhotos:(BOOL)arg1 reason:(short)arg2 waitForReply:(BOOL)arg3;

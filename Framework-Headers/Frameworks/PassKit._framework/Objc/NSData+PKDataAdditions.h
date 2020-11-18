@@ -11,6 +11,7 @@
 - (id)SHA1Hash;
 - (id)SHA256Hash;
 - (id)fileSafeBase64Encoding;
+- (BOOL)hasPDFMIMEType;
 - (id)hexEncoding;
 @end
 

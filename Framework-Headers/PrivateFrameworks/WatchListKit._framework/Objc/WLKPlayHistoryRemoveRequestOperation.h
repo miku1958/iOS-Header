@@ -4,14 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@interface WLKPlayHistoryRemoveRequestOperation : WLKNetworkRequestOperation
+@class WLKContinueWatchingResponse;
+
+@interface WLKPlayHistoryRemoveRequestOperation : WLKUTSNetworkRequestOperation
 {
+    WLKContinueWatchingResponse *_response;
 }
 
-- (id)initWithChannelID:(id)arg1 externalID:(id)arg2;
-- (id)responseProcessor;
+@property (readonly, nonatomic) WLKContinueWatchingResponse *response; // @synthesize response=_response;
+
+- (void).cxx_destruct;
+- (id)initWithChannelID:(id)arg1 externalID:(id)arg2 caller:(id)arg3;
+- (void)processResponse;
 
 @end
 

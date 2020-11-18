@@ -38,6 +38,7 @@
 - (void)getBehaviorOptionForKey:(NSString *)arg1 isContainerOption:(BOOL)arg2 completionHandler:(void (^)(id))arg3;
 - (void)getNewWebSharingIdentityDataWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSData *, NSError *))arg2;
 - (void)getNewWebSharingIdentityWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(CKEncryptedData *, NSError *))arg2;
+- (void)getOutstandingOperationCountWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(unsigned long long, NSError *))arg2;
 - (void)getPCSDiagnosticsForZonesWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(CKPCSDiagnosticInformation *))arg2;
 - (void)getRecordPCSDiagnosticsForZonesWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)getSandboxExtensionsWithSetupInfo:(CKContainerSetupInfo *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;

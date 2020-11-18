@@ -76,6 +76,7 @@
     unsigned long long _overrideRouteSharingPolicy;
     NSString *_overrideRoutingContextUID;
     NSArray *_customControlItems;
+    struct CGSize _secondScreenConnectionDisplaySize;
 }
 
 @property (nonatomic) BOOL _hasBegunObservation; // @synthesize _hasBegunObservation=__hasBegunObservation;
@@ -133,6 +134,7 @@
 @property (readonly, nonatomic, getter=isPresentingFullScreenFromInline) BOOL presentingFullScreenFromInline;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (nonatomic) BOOL requiresLinearPlayback;
+@property (nonatomic) struct CGSize secondScreenConnectionDisplaySize; // @synthesize secondScreenConnectionDisplaySize=_secondScreenConnectionDisplaySize;
 @property (nonatomic) BOOL shouldUseNetworkingResourcesForLiveStreamingWhilePaused; // @synthesize shouldUseNetworkingResourcesForLiveStreamingWhilePaused=_shouldUseNetworkingResourcesForLiveStreamingWhilePaused;
 @property (nonatomic) BOOL showsExitFullScreenButton;
 @property (nonatomic) BOOL showsMinimalPlaybackControlsWhenEmbeddedInline;
@@ -142,6 +144,8 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL updatesNowPlayingInfoCenter; // @synthesize updatesNowPlayingInfoCenter=_updatesNowPlayingInfoCenter;
 @property (readonly, nonatomic) struct CGRect videoBounds;
+@property (readonly, nonatomic) double videoDisplayScale;
+@property (readonly, nonatomic) struct CGSize videoDisplaySize;
 @property (copy, nonatomic) NSString *videoGravity;
 @property (readonly, nonatomic) UIViewController *viewControllerForFullScreenPresentation;
 @property (nonatomic) BOOL volumeControlsCanShowSlider;
@@ -153,6 +157,7 @@
 + (id)keyPathsForValuesAffectingPixelBufferAttributes;
 + (id)keyPathsForValuesAffectingReadyForDisplay;
 + (id)keyPathsForValuesAffectingVideoBounds;
++ (id)keyPathsForValuesAffectingVideoDisplaySize;
 + (id)keyPathsForValuesAffectingVideoGravity;
 - (void).cxx_destruct;
 - (void)_addObservers;

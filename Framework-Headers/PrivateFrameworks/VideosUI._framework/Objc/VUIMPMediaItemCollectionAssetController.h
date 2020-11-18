@@ -48,21 +48,19 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueAsyncProcessingQueueStrongSelfBlock:(CDUnknownBlockType)arg1;
 - (void)_enqueueCompletionQueueBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyDelegateStateDidChange:(id)arg1;
-- (void)_onProcessingQueue_cancelDownload;
+- (void)_onProcessingQueue_cancelAndRemoveDownload;
 - (void)_onProcessingQueue_invalidate;
 - (void)_onProcessingQueue_pauseDownload;
-- (void)_onProcessingQueue_removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_resumeDownload;
 - (void)_onProcessingQueue_setState:(id)arg1 andNotifyDelegate:(BOOL)arg2;
 - (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_updateStateAndNotifyDelegate:(BOOL)arg1;
-- (void)cancelDownload;
+- (void)cancelAndRemoveDownload;
 - (id)init;
 - (id)initWithMediaItemCollection:(id)arg1 mediaEntityIdentifier:(id)arg2 serialProcessingDispatchQueue:(id)arg3;
 - (void)invalidate;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
-- (void)removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeDownload;
 - (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 

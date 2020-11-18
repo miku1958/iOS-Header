@@ -41,6 +41,7 @@
 - (void)_axHandleReusedView:(id)arg1;
 - (id)_axIndexPathForGlobalRow:(long long)arg1;
 - (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
+- (void)_moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)_resetAXData;
 - (BOOL)_reuseCell:(id)arg1 notifyDidEndDisplaying:(BOOL)arg2;
 - (void)_reuseSupplementaryView:(id)arg1;
@@ -61,7 +62,6 @@
 - (void)insertItemsAtIndexPaths:(id)arg1;
 - (void)insertSections:(id)arg1;
 - (BOOL)isAccessibilityOpaqueElementProvider;
-- (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)moveSection:(long long)arg1 toSection:(long long)arg2;
 - (void)reloadData;
 - (void)reloadItemsAtIndexPaths:(id)arg1;

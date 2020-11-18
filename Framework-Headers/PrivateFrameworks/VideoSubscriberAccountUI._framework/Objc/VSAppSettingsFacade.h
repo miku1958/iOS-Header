@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSOperation, NSOperationQueue, VSIdentityProvider, VSOptional, VSPersistentStorage, VSRestrictionsCenter;
+@class NSArray, NSOperation, NSOperationQueue, UIViewController, VSAppSettingsViewModel, VSIdentityProvider, VSOptional, VSPersistentStorage, VSRestrictionsCenter;
 
 @interface VSAppSettingsFacade : NSObject
 {
     BOOL _needsUpdateApps;
+    BOOL _needsPresentationOfMVPDAppInstallPromptIfAvailable;
     int _registrationToken;
     VSIdentityProvider *_identityProvider;
     NSArray *_decidedApps;
@@ -23,6 +24,8 @@
     NSArray *_featuredAdamIDs;
     NSArray *_knownAppBundles;
     NSArray *_unredeemedVouchers;
+    VSAppSettingsViewModel *_mvpdAppSettingsViewModel;
+    UIViewController *_mvpdInstallPromptPresentingViewController;
 }
 
 @property (strong, nonatomic) NSOperation *currentPresentationOperation; // @synthesize currentPresentationOperation=_currentPresentationOperation;
@@ -31,6 +34,9 @@
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property (copy, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
 @property (copy, nonatomic) NSArray *knownAppBundles; // @synthesize knownAppBundles=_knownAppBundles;
+@property (strong, nonatomic) VSAppSettingsViewModel *mvpdAppSettingsViewModel; // @synthesize mvpdAppSettingsViewModel=_mvpdAppSettingsViewModel;
+@property (strong, nonatomic) UIViewController *mvpdInstallPromptPresentingViewController; // @synthesize mvpdInstallPromptPresentingViewController=_mvpdInstallPromptPresentingViewController;
+@property (nonatomic) BOOL needsPresentationOfMVPDAppInstallPromptIfAvailable; // @synthesize needsPresentationOfMVPDAppInstallPromptIfAvailable=_needsPresentationOfMVPDAppInstallPromptIfAvailable;
 @property (nonatomic) BOOL needsUpdateApps; // @synthesize needsUpdateApps=_needsUpdateApps;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (nonatomic) int registrationToken; // @synthesize registrationToken=_registrationToken;
@@ -47,8 +53,11 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithStorage:(id)arg1 restrictionsCenter:(id)arg2;
+- (void)presentMVPDAppInstallPromptFromViewController:(id)arg1;
 - (oneway void)release;
 - (id)retain;
+- (BOOL)shouldShowMVPDAppInstallPrompt;
+- (BOOL)shouldShowMVPDAppInstallPromptFromViewController:(id)arg1;
 
 @end
 

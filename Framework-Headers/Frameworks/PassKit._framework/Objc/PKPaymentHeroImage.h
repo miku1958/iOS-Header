@@ -36,7 +36,7 @@
 - (id)imageForPreferredLanguages:(id)arg1 scale:(double)arg2;
 - (id)imageWithScale:(double)arg1;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 imageData:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 imageData:(id)arg2 credentialType:(long long)arg3;
 - (id)initWithLegacyDictionary:(id)arg1 identifier:(id)arg2;
 - (BOOL)isSupportedByDevice:(id)arg1 deviceVersion:(id)arg2 deviceClass:(id)arg3;
 

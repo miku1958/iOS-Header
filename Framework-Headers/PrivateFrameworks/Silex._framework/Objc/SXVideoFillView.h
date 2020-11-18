@@ -8,7 +8,7 @@
 
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SXClippingView, SXImageResource, SXVideoFill, SXVideoFillPlayerView;
+@class NSString, SXClippingView, SXImageResource, SXImageView, SXVideoFill, SXVideoFillPlayerView;
 
 @interface SXVideoFillView : SXFillView <SXViewportChangeListener>
 {
@@ -16,6 +16,7 @@
     SXClippingView *_clippingView;
     SXVideoFillPlayerView *_playerView;
     SXImageResource *_imageResource;
+    SXImageView *_imageView;
 }
 
 @property (strong, nonatomic) SXClippingView *clippingView; // @synthesize clippingView=_clippingView;
@@ -23,15 +24,18 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXImageResource *imageResource; // @synthesize imageResource=_imageResource;
+@property (readonly, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) SXVideoFillPlayerView *playerView; // @synthesize playerView=_playerView;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXVideoFill *videoFill; // @synthesize videoFill=_videoFill;
 
 - (void).cxx_destruct;
 - (struct CGRect)contentFrame;
+- (void)dealloc;
 - (struct CGRect)fillFrameWithBoundingSize:(struct CGSize)arg1;
 - (id)initWithVideoFill:(id)arg1 DOMObjectProvider:(id)arg2 imageViewFactory:(id)arg3;
 - (void)layoutSubviews;
+- (void)load;
 - (void)pause;
 - (void)play;
 - (void)reset;

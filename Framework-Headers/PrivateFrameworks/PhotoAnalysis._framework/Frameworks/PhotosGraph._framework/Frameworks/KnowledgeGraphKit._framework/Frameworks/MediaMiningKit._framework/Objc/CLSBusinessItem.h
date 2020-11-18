@@ -19,14 +19,18 @@
     unsigned long long _muid;
     long long _venueCapacity;
     NSArray *_businessCategories;
+    NSString *_isoCountryCode;
+    NSString *_providerID;
 }
 
 @property (copy, nonatomic) NSArray *businessCategories; // @synthesize businessCategories=_businessCategories;
 @property (nonatomic) BOOL cached; // @synthesize cached=_cached;
 @property (copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (readonly, nonatomic) BOOL isEnriched;
+@property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
 @property (strong, nonatomic) CLCircularRegion *region; // @synthesize region=_region;
 @property (nonatomic) long long venueCapacity; // @synthesize venueCapacity=_venueCapacity;
 
@@ -38,7 +42,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initFromMapItem:(id)arg1;
+- (id)initFromMapItem:(id)arg1 isoCountryCode:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 region:(id)arg2 categories:(id)arg3;
 

@@ -12,8 +12,10 @@
 @protocol GEOMapItemPhoto <NSObject>
 
 @property (readonly, nonatomic) NSString *author;
+@property (readonly, nonatomic) BOOL businessProvided;
 @property (readonly, nonatomic) NSString *caption;
 @property (readonly, nonatomic) BOOL displayFullPhotoInline;
+@property (readonly, nonatomic) BOOL highQuality;
 @property (readonly, nonatomic) NSString *licenseDescription;
 @property (readonly, nonatomic) NSURL *licenseURL;
 @property (readonly, nonatomic) double sizeRatio;

@@ -45,6 +45,7 @@
     NSString *_lastSeenConfiguredName;
     NSNumber *_lastKnownDiscoveryMode;
     NSMutableDictionary *_deviceLastRequestPresenceDateMap;
+    NSString *_logID;
     NSString *_providedName;
 }
 
@@ -72,6 +73,7 @@
 @property (strong, nonatomic) NSNumber *lastKnownDiscoveryMode; // @synthesize lastKnownDiscoveryMode=_lastKnownDiscoveryMode;
 @property (copy, nonatomic) NSString *lastSeenConfiguredName; // @synthesize lastSeenConfiguredName=_lastSeenConfiguredName;
 @property (copy, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
+@property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (strong, nonatomic) NSArray *mediaSourceDisplayOrder; // @synthesize mediaSourceDisplayOrder=_mediaSourceDisplayOrder;
 @property (strong, nonatomic) NSNumber *mediaSourceIdentifier; // @synthesize mediaSourceIdentifier=_mediaSourceIdentifier;
 @property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
@@ -92,6 +94,7 @@
 
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateProvidedName:(id)arg1;
 - (void).cxx_destruct;
@@ -104,9 +107,11 @@
 - (void)_readRequiredBTLECharacteristicValuesForceReadFWVersion:(BOOL)arg1;
 - (void)_recalculateUUID;
 - (void)_registerForMessages;
+- (id)_sanitizeNameToWriteToAccessory:(id)arg1;
 - (void)_saveCurrentNameAsExpectedAndLastSeen:(id)arg1;
 - (void)_saveForExpectedConfiguredNameUpdate;
 - (void)_saveForLastSeenConfiguredNameUpdate;
+- (void)_saveLastSeenAndExpectedConfiguredName:(id)arg1;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (BOOL)_supportsBulletinNotification;
@@ -125,7 +130,7 @@
 - (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
-- (id)configureWithService:(id)arg1 accessory:(id)arg2 shouldRead:(BOOL)arg3;
+- (id)configureWithService:(id)arg1 accessory:(id)arg2 shouldRead:(BOOL)arg3 added:(BOOL)arg4;
 - (id)configuredNameChangedMessage;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
@@ -142,11 +147,13 @@
 - (BOOL)isEmptyConfiguredNameAllowed;
 - (BOOL)isReadingRequiredForBTLEServiceCharacteristic:(id)arg1;
 - (BOOL)listsEqual:(id)arg1 to:(id)arg2;
+- (id)logIdentifier;
 - (id)messagesForUpdatedRoom:(id)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)nameChangedMessage;
 - (void)persistLastKnownDiscoveryMode;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
+- (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
 - (BOOL)processInitialUpdate:(id)arg1 forCharacteristicType:(id)arg2 serviceTransaction:(id)arg3 changed:(BOOL *)arg4;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (BOOL)shouldIncludePresenceForDeviceWithDestination:(id)arg1;
@@ -154,6 +161,7 @@
 - (BOOL)shouldUpdateLastSeenConfiguredName:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 - (BOOL)updateAssociatedServiceType:(id)arg1 error:(id *)arg2;
 - (BOOL)updateCharacteristics:(id)arg1;
 - (void)updateLastKnownValues;

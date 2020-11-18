@@ -62,7 +62,7 @@
 @property (readonly, nonatomic) BOOL hasInterest;
 @property (readonly, nonatomic) BOOL hasLoadedImage;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *highQualityImage; // @synthesize highQualityImage=_highQualityImage;
+@property (weak, nonatomic) UIImage *highQualityImage; // @synthesize highQualityImage=_highQualityImage;
 @property (copy, nonatomic) CDUnknownBlockType highQualityImageRequestCancelHandler; // @synthesize highQualityImageRequestCancelHandler=_highQualityImageRequestCancelHandler;
 @property (nonatomic) unsigned long long highQualityInterest; // @synthesize highQualityInterest=_highQualityInterest;
 @property (readonly, nonatomic) SXImageResource *imageResource; // @synthesize imageResource=_imageResource;
@@ -73,7 +73,7 @@
 @property (readonly, nonatomic) BOOL paused;
 @property (nonatomic) unsigned long long playCount; // @synthesize playCount=_playCount;
 @property (nonatomic) struct CGSize preferredImageSize; // @synthesize preferredImageSize=_preferredImageSize;
-@property (strong, nonatomic) UIImage *preferredQualityImage; // @synthesize preferredQualityImage=_preferredQualityImage;
+@property (weak, nonatomic) UIImage *preferredQualityImage; // @synthesize preferredQualityImage=_preferredQualityImage;
 @property (copy, nonatomic) CDUnknownBlockType preferredQualityImageRequestCancelHandler; // @synthesize preferredQualityImageRequestCancelHandler=_preferredQualityImageRequestCancelHandler;
 @property (nonatomic) unsigned long long preferredQualityInterest; // @synthesize preferredQualityInterest=_preferredQualityInterest;
 @property (nonatomic) struct CGSize preferredQualityLoadingImageSize; // @synthesize preferredQualityLoadingImageSize=_preferredQualityLoadingImageSize;

@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)_contactForKeychainKey:(id)arg1;
 - (void)_deleteKeychainDataForKey:(id)arg1;
+- (void)_deleteKeychainDataForKey:(id)arg1 localOnly:(BOOL)arg2;
 - (void)_hardDeleteDefaultBillingAddress;
 - (id)_keychainDataForKey:(id)arg1;
 - (id)_lastUpdatedDatesForBillingAddresses;
@@ -52,6 +53,7 @@
 - (id)defaultBillingAddressForPrimaryAccountIdentifier:(id)arg1;
 - (id)defaultBillingAddressForRemotePaymentInstrument:(id)arg1;
 - (void)deleteAllDefaults;
+- (void)deleteAllLocalDefaults;
 - (void)deleteDefaultBillingAddress:(id)arg1;
 - (void)deleteDefaultContactEmail;
 - (void)deleteDefaultContactName;

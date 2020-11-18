@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface WLKUserEnvironment : NSObject
 {
     BOOL _consented;
-    NSString *_DSID;
+    BOOL _internalBuild;
+    NSNumber *_DSID;
     NSString *_storeFrontIdentifier;
     NSString *_localeIdentifier;
     NSDictionary *_entitlements;
@@ -19,14 +20,19 @@
     NSArray *_consentedBrands;
     NSDictionary *_location;
     unsigned long long _protocolVersion;
+    NSArray *_deniedBrands;
+    NSString *_platform;
 }
 
-@property (strong, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
+@property (strong, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (nonatomic) BOOL consented; // @synthesize consented=_consented;
 @property (strong, nonatomic) NSArray *consentedBrands; // @synthesize consentedBrands=_consentedBrands;
+@property (strong, nonatomic) NSArray *deniedBrands; // @synthesize deniedBrands=_deniedBrands;
 @property (strong, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
+@property (nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (readonly, nonatomic) NSDictionary *location; // @synthesize location=_location;
+@property (strong, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (strong, nonatomic) NSString *restrictions; // @synthesize restrictions=_restrictions;
 @property (strong, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
@@ -34,7 +40,10 @@
 + (id)currentEnvironment;
 + (void)setCurrentEnvironmentForTesting:(id)arg1;
 - (void).cxx_destruct;
-- (unsigned long long)_hashForStoreStuff;
+- (id)_consentQuery;
+- (id)_entitlementsQuery;
+- (id)_locationQueryParameters;
+- (id)_queryParameters;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

@@ -40,6 +40,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *timestamps;
 
++ (id)impressionsMapForViewElements:(id)arg1 appContext:(id)arg2 timestamp:(long long)arg3;
++ (id)impressionsMapForViewElements:(id)arg1 appContext:(id)arg2 timestamp:(long long)arg3 existingImpressionsMap:(id)arg4;
 - (void).cxx_destruct;
 - (void)addChild:(id)arg1;
 - (void)addTimestamp:(long long)arg1;

@@ -9,25 +9,28 @@
 #import <WatchListKit/NSCopying-Protocol.h>
 #import <WatchListKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface WLKServerConfigurationResponse : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_responseDictionary;
     NSDate *_expirationDate;
     unsigned long long _environmentHash;
+    NSDictionary *_endpointsDictionary;
 }
 
 @property (readonly, nonatomic, getter=isActiveUser) BOOL activeUser;
-@property (readonly, copy, nonatomic) NSString *ek;
-@property (readonly, nonatomic) NSDictionary *endpointsDictionary;
+@property (readonly, nonatomic) NSDictionary *endpointsDictionary; // @synthesize endpointsDictionary=_endpointsDictionary;
 @property (readonly, nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (readonly, nonatomic) NSArray *orderedChannels;
+@property (readonly, nonatomic) NSDictionary *features;
+@property (readonly, nonatomic) NSURL *playActivityURL;
 @property (readonly, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary;
 @property (readonly, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
-@property (readonly, nonatomic) NSDictionary *serverRoutesDictionary;
-@property (readonly, nonatomic) NSString *vppaStatus;
+@property (readonly, copy, nonatomic) NSString *utsk;
+@property (readonly, copy, nonatomic) NSNumber *vppaSessionDurationInMillis;
+@property (readonly, nonatomic) long long vppaStatus;
+@property (readonly, nonatomic) NSString *vppaStatusString;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -41,6 +44,7 @@
 - (id)initWithServerResponseDictionary:(id)arg1 expirationDate:(id)arg2 environmentHash:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
+- (id)utsc;
 
 @end
 

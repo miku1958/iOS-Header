@@ -83,6 +83,7 @@
 - (void)logErrorGettingChangedRecordsContentForIdentifiers:(NSString *)arg1 error:(NSString *)arg2;
 - (void)logErrorLoadingTemplates:(NSString *)arg1;
 - (void)logErrorMergingCopiedAsideContent:(NSString *)arg1;
+- (void)logErrorMigratingBackupInclusionStatus:(NSString *)arg1;
 - (void)logErrorMitigatingDuplicates:(NSString *)arg1;
 - (void)logErrorPinningContextToCurrentQueryGenerationToken:(NSString *)arg1;
 - (void)logErrorProcessingChangeTransactionsToUpdateThumbnails:(NSString *)arg1;

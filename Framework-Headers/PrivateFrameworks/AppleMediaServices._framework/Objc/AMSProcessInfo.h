@@ -30,6 +30,7 @@
 + (id)currentProcess;
 + (BOOL)isBuddyRunning;
 + (id)stringForEntitlement:(id)arg1;
++ (id)valueForEntitlement:(id)arg1;
 - (void).cxx_destruct;
 - (id)generateConfiguration;
 - (id)generateConfigurationFromBagContract:(id)arg1;

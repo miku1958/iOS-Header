@@ -9,7 +9,7 @@
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPaymentService, UIImage, UIImageView, UIView;
+@class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPassFaceViewRendererState, PKPaymentService, PKTransactionDataOverlayCardFaceView, UIImage, UIImageView, UIView;
 
 @interface PKPassFaceView : WLEasyToHitCustomView <PKPaymentServiceDelegate, PKForegroundActiveArbiterObserver>
 {
@@ -34,6 +34,7 @@
     NSMutableArray *_bodyBucketViews;
     NSMutableArray *_delayedAnimations;
     PKLiveRenderedCardFaceView *_liveBackgroundView;
+    PKTransactionDataOverlayCardFaceView *_transactionDataOverlayView;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
     BOOL _showsLiveRendering;
@@ -69,8 +70,9 @@
 @property (nonatomic) BOOL liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
 @property (readonly, nonatomic) PKPass *pass;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowInsets;
-@property (nonatomic) BOOL showsLiveRendering;
+@property (nonatomic) BOOL showsLiveRendering; // @synthesize showsLiveRendering=_showsLiveRendering;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long visibleRegions; // @synthesize visibleRegions=_visibleRegions;
@@ -101,6 +103,7 @@
 - (void)createHeaderContentViews;
 - (void)createHeaderInvariantViews;
 - (void)dealloc;
+- (void)didAuthenticate;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
@@ -112,6 +115,7 @@
 - (void)removeContentView:(id)arg1 ofType:(long long)arg2;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
 - (void)setPass:(id)arg1 colorProfile:(id)arg2;
+- (void)setShowsLiveRendering:(BOOL)arg1 rendererState:(id)arg2;
 - (struct UIEdgeInsets)shadowBackgroundInsets;
 - (void)updateShadow:(double)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
 

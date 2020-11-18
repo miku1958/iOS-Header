@@ -26,6 +26,7 @@
     NSString *_ocean;
     NSArray *_areasOfInterest;
     NSString *_administrativeAreaCode;
+    NSString *_providerID;
 }
 
 @property (strong, nonatomic) NSString *ISOcountryCode; // @synthesize ISOcountryCode=_ISOcountryCode;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *ocean; // @synthesize ocean=_ocean;
+@property (strong, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
 @property (strong, nonatomic) CLCircularRegion *region; // @synthesize region=_region;
 @property (strong, nonatomic) NSString *subAdministrativeArea; // @synthesize subAdministrativeArea=_subAdministrativeArea;
 @property (strong, nonatomic) NSString *subLocality; // @synthesize subLocality=_subLocality;

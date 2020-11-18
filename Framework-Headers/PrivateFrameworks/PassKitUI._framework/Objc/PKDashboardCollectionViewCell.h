@@ -15,16 +15,23 @@
     unsigned long long _maskType;
     struct CGRect _previousMaskBounds;
     unsigned long long _previousMaskType;
+    BOOL _customHorizontalInset;
+    double _horizontalInset;
     BOOL _wantsCustomAppearance;
+    BOOL _wantsDefaultHighlightBehavior;
 }
 
+@property (nonatomic) double horizontalInset;
 @property (nonatomic) unsigned long long maskType;
 @property (nonatomic) BOOL showsBottomSeparator; // @synthesize showsBottomSeparator=_showsBottomSeparator;
 @property (nonatomic) BOOL wantsCustomAppearance; // @synthesize wantsCustomAppearance=_wantsCustomAppearance;
+@property (nonatomic) BOOL wantsDefaultHighlightBehavior; // @synthesize wantsDefaultHighlightBehavior=_wantsDefaultHighlightBehavior;
 
 + (double)defaultHorizontalInset;
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)setBottomSeparatorVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)updateMask;
 

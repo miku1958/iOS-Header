@@ -43,6 +43,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 forDeviceClass:(id)arg2 version:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (double)shortestDistanceFromLocation:(id)arg1;
 
 @end
 

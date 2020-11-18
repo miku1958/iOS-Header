@@ -13,8 +13,8 @@
     BOOL _complete;
     BOOL _manuallyTriggered;
     PKPeerPaymentAccount *_account;
-    NSString *_contextLocalizedTitle;
-    NSString *_contextLocalizedDescription;
+    NSString *_title;
+    NSString *_subtitle;
     NSString *_localizedTitle;
     NSString *_localizedDescription;
     NSArray *_requiredFieldsByPage;
@@ -26,14 +26,14 @@
 @property (readonly, nonatomic) NSArray *acceptableDocuments; // @synthesize acceptableDocuments=_acceptableDocuments;
 @property (readonly, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property (readonly, nonatomic) BOOL complete; // @synthesize complete=_complete;
-@property (readonly, copy, nonatomic) NSString *contextLocalizedDescription; // @synthesize contextLocalizedDescription=_contextLocalizedDescription;
-@property (readonly, copy, nonatomic) NSString *contextLocalizedTitle; // @synthesize contextLocalizedTitle=_contextLocalizedTitle;
 @property (readonly, copy, nonatomic) NSArray *encryptionCertificates; // @synthesize encryptionCertificates=_encryptionCertificates;
 @property (readonly, copy, nonatomic) NSString *encryptionVersion; // @synthesize encryptionVersion=_encryptionVersion;
 @property (readonly, copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
 @property (readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (nonatomic) BOOL manuallyTriggered; // @synthesize manuallyTriggered=_manuallyTriggered;
 @property (readonly, copy, nonatomic) NSArray *requiredFieldsByPage; // @synthesize requiredFieldsByPage=_requiredFieldsByPage;
+@property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;

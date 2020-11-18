@@ -98,6 +98,7 @@
 - (BOOL)_lockedHasTCCAuthorization;
 - (void)_lockedSetHasTCCAuthorizationTernary:(long long)arg1;
 - (id)_locked_eligiblePendingContextForSetupInfo:(id)arg1;
+- (unsigned long long)_outstandingOperationCount;
 - (void)_performFetchCurrentUserRecordOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_reallyPerformFetchRecordsOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_setApplicationPermission:(unsigned long long)arg1 enabled:(BOOL)arg2 setupInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -113,6 +114,7 @@
 - (void)accountsWillDeleteAccount:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)applicationIdentifier;
 - (id)apsEnvironmentEntitlement;
+- (BOOL)canOpenFileAtURL:(id)arg1;
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (BOOL)canUsePackagesWithError:(id *)arg1;
 - (void)cancelAllOperations;
@@ -143,6 +145,7 @@
 - (id)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 error:(id *)arg3;
 - (void)getNewWebSharingIdentityDataWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getNewWebSharingIdentityWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getOutstandingOperationCountWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecordPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSandboxExtensionsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

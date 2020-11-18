@@ -82,6 +82,7 @@
 - (void)resetForVoiceTriggerTwoShotWithSampleRate:(unsigned long long)arg1;
 - (void)setActiveChannel:(unsigned long long)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
+- (double)trailingSilenceDurationAtEndpoint;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 

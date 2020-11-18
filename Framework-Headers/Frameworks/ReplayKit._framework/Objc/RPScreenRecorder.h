@@ -81,8 +81,6 @@
 - (void)_startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 captureEnabled:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)applicationWindow;
 - (id)audioQueue;
-- (void)clientDidBecomeActive;
-- (void)clientWillResignActive;
 - (void)controlCenterDidDismiss;
 - (void)controlCenterWillPresent;
 - (unsigned int)currentWindowLayerContextID;
@@ -94,7 +92,9 @@
 - (void)notifyDelegateOfRecorderAvailability;
 - (void)notifyDelegateOfUpdatedState;
 - (void)pauseRecording;
+- (void)recordingDidPause;
 - (void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;
+- (void)recordingShouldResume;
 - (void)recordingTimerDidUpdate:(id)arg1;
 - (void)resumeRecording;
 - (BOOL)screenRecordingAllowed;

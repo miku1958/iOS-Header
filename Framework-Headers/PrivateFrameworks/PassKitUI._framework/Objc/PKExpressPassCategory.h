@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitUI/NSCopying-Protocol.h>
+
 @class NSArray, NSString, UIImage;
 
-@interface PKExpressPassCategory : NSObject
+@interface PKExpressPassCategory : NSObject <NSCopying>
 {
     UIImage *_categoryImage;
     NSString *_categoryTitle;
@@ -26,6 +28,7 @@
 @property (nonatomic) long long selectedPassIndex; // @synthesize selectedPassIndex=_selectedPassIndex;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

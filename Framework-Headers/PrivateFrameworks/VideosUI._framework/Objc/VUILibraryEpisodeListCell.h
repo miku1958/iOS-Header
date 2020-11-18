@@ -6,21 +6,15 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-#import <VideosUI/VUIDownloadButtonDelegate-Protocol.h>
-
-@class NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView;
-@protocol VUILibraryEpisodeListCellDelegate;
+@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView;
+@protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryEpisodeListCell : VUIListCollectionViewCell <VUIDownloadButtonDelegate>
+@interface VUILibraryEpisodeListCell : VUIListCollectionViewCell
 {
-    BOOL _supportsStartingDownload;
-    id<VUILibraryEpisodeListCellDelegate> _delegate;
     NSString *_title;
     NSString *_releaseDate;
     NSString *_duration;
-    long long _downloadProgressType;
-    double _downloadProgress;
     VUILibraryEpisodeFrameView *_imageFrameView;
     VUISeparatorView *_separatorView;
     UIStackView *_episodeInfoStackView;
@@ -29,42 +23,32 @@ __attribute__((visibility("hidden")))
     VUILabel *_durationLabel;
     VUIDownloadButton *_downloadButton;
     VUILabel *_dotSeparatorLabel;
+    NSObject<VUIMediaEntityAssetController> *_assetController;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<VUILibraryEpisodeListCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
 @property (strong, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
 @property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
-@property (nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
-@property (nonatomic) long long downloadProgressType; // @synthesize downloadProgressType=_downloadProgressType;
 @property (copy, nonatomic) NSString *duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) VUILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
 @property (strong, nonatomic) UIStackView *episodeInfoStackView; // @synthesize episodeInfoStackView=_episodeInfoStackView;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUILibraryEpisodeFrameView *imageFrameView; // @synthesize imageFrameView=_imageFrameView;
 @property (copy, nonatomic) NSString *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (strong, nonatomic) VUILabel *releaseDateLabel; // @synthesize releaseDateLabel=_releaseDateLabel;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
-@property (readonly) Class superclass;
-@property (nonatomic) BOOL supportsStartingDownload; // @synthesize supportsStartingDownload=_supportsStartingDownload;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (id)_metadataLabelWithString:(id)arg1 existingLabel:(id)arg2;
-+ (void)configureVUILibraryEpisodeListCell:(id)arg1 withMedia:(id)arg2;
++ (void)configureVUILibraryEpisodeListCell:(id)arg1 withMedia:(id)arg2 andAssetController:(id)arg3;
 - (void).cxx_destruct;
-- (void)_addDownloadButtonIfRequired;
+- (void)_addDownloadButtonIfRequired:(id)arg1;
 - (void)_configureDotSeparator;
 - (BOOL)_contentSizeCategoryIsAccessibility;
 - (double)_metadataHeightToBaselineNonAXContentSizeCategory;
 - (double)_metadataScaledTopMarginForNonAXContentSizeCategory;
-- (void)_removeDownloadButtonIfRequired;
-- (void)_updateDownloadButtonWithProgressType:(long long)arg1 andProgress:(double)arg2;
-- (void)didSelectDownloadButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setDownloadProgressType:(long long)arg1 andProgress:(double)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

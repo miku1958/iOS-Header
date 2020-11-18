@@ -10,7 +10,7 @@
 #import <VideosUI/VUIEpisodeDetailViewDelegate-Protocol.h>
 #import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem, VUIMetricsController;
+@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem;
 @protocol VUIEpisodeDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     id<VUIEpisodeDetailViewControllerDelegate> _delegate;
     VUIEpisodeDetailView *_detailView;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    VUIMetricsController *_metricsController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIEpisodeDetailView *detailView; // @synthesize detailView=_detailView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
-@property (strong, nonatomic) VUIMetricsController *metricsController; // @synthesize metricsController=_metricsController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
@@ -43,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithMediaItem:(id)arg1;
 - (id)initWithMediaLibrary:(id)arg1;
+- (void)reportMetricsPageEvent;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

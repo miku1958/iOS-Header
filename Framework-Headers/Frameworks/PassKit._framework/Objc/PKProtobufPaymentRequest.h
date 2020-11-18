@@ -12,6 +12,7 @@
 
 @interface PKProtobufPaymentRequest : PBRequest <NSCopying>
 {
+    unsigned int _apiType;
     NSData *_applicationData;
     NSData *_billingContact;
     NSString *_countryCode;
@@ -32,6 +33,7 @@
     NSMutableArray *_thumbnailURLs;
     BOOL _expectsMerchantSession;
     struct {
+        unsigned int apiType:1;
         unsigned int merchantCapabilities:1;
         unsigned int requiredBillingAddressFields:1;
         unsigned int requiredShippingAddressFields:1;
@@ -39,11 +41,13 @@
     } _has;
 }
 
+@property (nonatomic) unsigned int apiType; // @synthesize apiType=_apiType;
 @property (strong, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (strong, nonatomic) NSData *billingContact; // @synthesize billingContact=_billingContact;
 @property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (strong, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
+@property (nonatomic) BOOL hasApiType;
 @property (readonly, nonatomic) BOOL hasApplicationData;
 @property (readonly, nonatomic) BOOL hasBillingContact;
 @property (readonly, nonatomic) BOOL hasCountryCode;

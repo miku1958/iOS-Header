@@ -18,7 +18,6 @@
     BOOL _uploaded;
     BOOL _downloaded;
     BOOL _shouldReadRawEncryptedData;
-    NSURL *_fileURL;
     NSString *_downloadURLTemplate;
     CKRecord *_record;
     NSString *_recordKey;
@@ -34,12 +33,14 @@
     NSURL *_constructedAssetDownloadURL;
     NSString *_constructedAssetDownloadURLTemplate;
     unsigned long long _constructedAssetEstimatedSize;
+    NSURL *_realPathURL;
     NSData *_signature;
     unsigned long long _size;
     unsigned long long _paddedFileSize;
     NSNumber *_deviceID;
     NSNumber *_fileID;
     NSNumber *_generationCountToSave;
+    NSURL *_fileURL;
     NSData *_assetContent;
     NSString *_itemTypeHint;
     CKAssetCopyInfo *_assetCopyInfo;
@@ -100,6 +101,7 @@
 @property (copy, nonatomic) NSURL *nullableFileURL;
 @property (strong, nonatomic) NSString *owner; // @synthesize owner=_owner;
 @property (nonatomic) unsigned long long paddedFileSize; // @synthesize paddedFileSize=_paddedFileSize;
+@property (copy, nonatomic) NSURL *realPathURL; // @synthesize realPathURL=_realPathURL;
 @property (weak, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (copy, nonatomic) NSString *recordKey; // @synthesize recordKey=_recordKey;

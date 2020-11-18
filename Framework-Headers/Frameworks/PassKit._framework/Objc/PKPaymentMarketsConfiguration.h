@@ -24,6 +24,7 @@
 + (void)paymentMarketsConfigurationWithURL:(id)arg1 forDeviceClass:(id)arg2 version:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)closestMarketForLocation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)expressCredentialTypesForLocation:(id)arg1;
 - (id)expressTransitNetworksForLocation:(id)arg1;

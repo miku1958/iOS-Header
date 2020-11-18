@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)_netInterfaceMonitorStop;
 - (void)_powerUnlimitedMonitorStart;
 - (void)_powerUnlimitedMonitorStop;
+- (id)_primaryAppleIDAccount;
 - (void)_primaryAppleIDChanged:(id)arg1;
 - (void)_primaryAppleIDMonitorStart;
 - (void)_primaryAppleIDMonitorStop;

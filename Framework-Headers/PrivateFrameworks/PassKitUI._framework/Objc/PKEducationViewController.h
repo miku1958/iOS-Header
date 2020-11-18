@@ -31,14 +31,20 @@
     AVPlayerItem *_playerItem;
     BOOL _playerStarted;
     BOOL _invalidated;
+    BOOL _offerAddToWatch;
     CDUnknownBlockType _continueHandler;
+    NSString *_titleOverride;
+    NSString *_bodyAddition;
 }
 
+@property (copy, nonatomic) NSString *bodyAddition; // @synthesize bodyAddition=_bodyAddition;
 @property (copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL offerAddToWatch; // @synthesize offerAddToWatch=_offerAddToWatch;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *titleOverride; // @synthesize titleOverride=_titleOverride;
 
 + (id)assetBackgroundColor;
 + (id)assetBackgroundColorPad;

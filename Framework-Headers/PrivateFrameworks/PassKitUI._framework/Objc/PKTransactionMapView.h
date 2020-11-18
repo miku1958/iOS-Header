@@ -15,6 +15,7 @@
     MKMapView *_internalMapView;
     struct CGRect _lastLaidBounds;
     BOOL _showsMerchantName;
+    BOOL _usesDarkAppearance;
     PKPaymentTransaction *_transaction;
 }
 
@@ -24,12 +25,11 @@
 @property (nonatomic) BOOL showsMerchantName; // @synthesize showsMerchantName=_showsMerchantName;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (nonatomic) BOOL usesDarkAppearance; // @synthesize usesDarkAppearance=_usesDarkAppearance;
 
 - (void).cxx_destruct;
 - (id)_annotationsForTransaction:(id)arg1;
 - (void)_centerOnTransactionAnimated:(BOOL)arg1;
-- (id)_locationForTransaction:(id)arg1;
-- (BOOL)_locationIsValid:(id)arg1;
 - (CDStruct_90e2a262)_mapRectForTransaction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

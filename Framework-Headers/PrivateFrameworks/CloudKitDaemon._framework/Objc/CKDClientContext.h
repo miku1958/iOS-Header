@@ -190,6 +190,7 @@
 - (void)_reloadAccount:(BOOL)arg1;
 - (BOOL)_setupDirectoriesWithClientProxy:(id)arg1 sandboxExtensions:(id *)arg2 error:(id *)arg3;
 - (void)addClientProxy:(id)arg1;
+- (unsigned long long)aggregatedOutstandingOperationCount;
 - (id)assetDirectoryContext;
 - (void)checkAccountAccessWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearAssetCache;

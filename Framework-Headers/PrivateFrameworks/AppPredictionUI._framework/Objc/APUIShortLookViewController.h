@@ -15,12 +15,13 @@
 #import <AppPredictionUI/PLPreviewInteractionPresenting-Protocol.h>
 #import <AppPredictionUI/SearchUIResultShortLook-Protocol.h>
 
-@class APUIIntentHandlingViewController, APUILongLookViewController, ATXAction, CRKCardPresentation, INIntent, INInteraction, NSString, NSUserActivity, NSUserDefaults, PLPreviewInteractionManager, SFSearchResult, UIView;
+@class APUIIntentHandlingViewController, APUILongLookViewController, APUITVIntentHandler, ATXAction, CRKCardPresentation, INIntent, INInteraction, NSString, NSUserActivity, NSUserDefaults, PLPreviewInteractionManager, SFSearchResult, UIView;
 @protocol APUIShortLookViewControllerDelegate, CRKCardViewControllerDelegate, CRKCardViewControlling, PLPreviewInteractionPresentable;
 
 @interface APUIShortLookViewController : UIViewController <APUIIntentHandlingViewControllerDelegate, CRKCardPresentationDelegate, CRKCardViewControllerDelegate, PLPreviewInteractionPresenting, PLPreviewInteractionManagerDelegate, APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, SearchUIResultShortLook>
 {
     APUILongLookViewController<PLPreviewInteractionPresentable> *_presentableViewController;
+    APUITVIntentHandler *_tvIntentHandler;
     BOOL _safeToReleaseLongLookViewController;
     double _preferredPlatterContentHeight;
     BOOL _acceptPlatterTaps;
@@ -83,6 +84,7 @@
 - (void)cardViewControllerDidLoad:(id)arg1;
 - (id)containerViewForPreviewInteractionManager:(id)arg1;
 - (BOOL)fetchViewControllerForContentViewInLongLook:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handOverIntentHandlingToApp;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)intentHandlingViewController:(id)arg1 didComplete:(BOOL)arg2;
 - (void)intentHandlingViewController:(id)arg1 requiresConfirmationWithResponse:(id)arg2 confirmationActionTitle:(id)arg3;

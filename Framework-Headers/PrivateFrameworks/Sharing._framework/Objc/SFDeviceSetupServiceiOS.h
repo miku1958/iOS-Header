@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, SFClient, SFService, SFSession;
+@class NSData, NSString, NSUUID, RPFileTransferSession, SFClient, SFService, SFSession;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupServiceiOS : NSObject
@@ -18,11 +18,16 @@
     NSUUID *_peer;
     BOOL _pinShowing;
     SFClient *_preventExitForLocaleClient;
+    NSData *_resumeAuthTag;
+    NSString *_resumePassword;
+    int _resumeState;
     SFService *_sfService;
     BOOL _sfServiceActivated;
     SFSession *_sfSession;
+    BOOL _suspendPending;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    RPFileTransferSession *_fileTransferSessionTemplate;
     CDUnknownBlockType _showPINHandlerEx;
     CDUnknownBlockType _showPINHandler;
     CDUnknownBlockType _hidePINHandler;
@@ -32,6 +37,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly, nonatomic) RPFileTransferSession *fileTransferSessionTemplate; // @synthesize fileTransferSessionTemplate=_fileTransferSessionTemplate;
 @property (copy, nonatomic) CDUnknownBlockType hidePINHandler; // @synthesize hidePINHandler=_hidePINHandler;
 @property (copy, nonatomic) CDUnknownBlockType progressHandlerEx; // @synthesize progressHandlerEx=_progressHandlerEx;
 @property (copy, nonatomic) CDUnknownBlockType receivedObjectHandler; // @synthesize receivedObjectHandler=_receivedObjectHandler;
@@ -41,13 +47,18 @@
 - (void).cxx_destruct;
 - (void)_cleanup;
 - (void)_completed:(int)arg1;
+- (void)_handleAppEventReceived:(id)arg1;
 - (void)_handleConfigRequestReceived:(id)arg1;
 - (void)_handleSessionEnded:(id)arg1;
 - (void)_handleSessionSecured:(id)arg1;
 - (void)_handleSessionStarted:(id)arg1;
+- (void)_handleSetupActionRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleSetupActionResume;
+- (void)_handleSetupActionSuspend;
 - (void)_invalidated;
 - (void)_receivedObject:(id)arg1 flags:(unsigned int)arg2;
 - (void)_run;
+- (int)_runResumeIfNeeded;
 - (void)_sfServiceStart;
 - (void)activate;
 - (void)dealloc;

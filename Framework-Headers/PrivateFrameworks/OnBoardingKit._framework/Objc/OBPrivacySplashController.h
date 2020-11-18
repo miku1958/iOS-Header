@@ -6,13 +6,15 @@
 
 #import <OnBoardingKit/OBSplashController.h>
 
+#import <OnBoardingKit/OBNavigationBarTitleTransistor-Protocol.h>
 #import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, OBPrivacyFlow, UIButton, UILabel;
+@class NSString, OBNavigationBarDisplayState, OBPrivacyFlow, UIButton, UILabel, UINavigationController;
 
-@interface OBPrivacySplashController : OBSplashController <UIScrollViewDelegate>
+@interface OBPrivacySplashController : OBSplashController <UIScrollViewDelegate, OBNavigationBarTitleTransistor>
 {
     OBPrivacyFlow *_flow;
+    UINavigationController *_nav;
     BOOL _suppressPerPageAnalyticsLogging;
     BOOL _allowsOpeningSafari;
     BOOL _showLinkToPrivacyGateway;
@@ -27,17 +29,17 @@
     UILabel *_privacyGatewayDescription;
     UILabel *_linkToPrivacyGateway;
     UIButton *_unifiedAboutButton;
-    double _incomingNavigationBarOpacity;
+    OBNavigationBarDisplayState *_cachedBarState;
 }
 
 @property BOOL allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
+@property (strong, nonatomic) OBNavigationBarDisplayState *cachedBarState; // @synthesize cachedBarState=_cachedBarState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property unsigned long long displayDeviceType; // @synthesize displayDeviceType=_displayDeviceType;
 @property (strong) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property BOOL forceLargeMargins; // @synthesize forceLargeMargins=_forceLargeMargins;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double incomingNavigationBarOpacity; // @synthesize incomingNavigationBarOpacity=_incomingNavigationBarOpacity;
 @property (nonatomic) BOOL isCombined; // @synthesize isCombined=_isCombined;
 @property (strong) UILabel *linkToPrivacyGateway; // @synthesize linkToPrivacyGateway=_linkToPrivacyGateway;
 @property (strong) UIButton *linkToPrivacyGatewayButton; // @synthesize linkToPrivacyGatewayButton=_linkToPrivacyGatewayButton;
@@ -56,9 +58,12 @@
 - (void)_initializeFromBundle;
 - (id)initWithFlow:(id)arg1;
 - (id)initWithPrivacyIdentifier:(id)arg1;
+- (void)restoreNavigationBarAppearance;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setCurrentNavigationBarDisplayState:(id)arg1;
 - (void)setDarkMode:(BOOL)arg1;
 - (void)setDismissHandlerForDefaultButton:(CDUnknownBlockType)arg1;
+- (void)setRestoreState:(id)arg1;
 - (BOOL)shouldUseTiledTextViews;
 - (void)showPrivacyGateway:(id)arg1;
 - (void)showUnifiedAbout:(id)arg1;

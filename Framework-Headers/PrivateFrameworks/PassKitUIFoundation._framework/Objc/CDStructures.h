@@ -71,3 +71,45 @@ typedef struct {
     MISSING_TYPE *columns[4];
 } CDStruct_14d5dc5e;
 
+typedef struct {
+    float position__velocity__radius;
+    float scale;
+    float scaleTarget;
+    float created;
+    CDStruct_14d5dc5e color__matrix;
+} CDStruct_5cb32230;
+
+typedef struct {
+    double startTime;
+    unsigned long long bucketCount;
+    double *magnitudeForBucket;
+    void *colorForBucket;
+    struct {
+        CDStruct_14d5dc5e projectionMatrix;
+        CDStruct_14d5dc5e motionMatrix;
+        MISSING_TYPE *data;
+    } uniforms;
+    CDStruct_5cb32230 singleCircle;
+    unsigned long long circleCount;
+    CDStruct_5cb32230 circles[88];
+    unsigned long long categoryCount;
+    unsigned int gravity__framesToRender;
+    BOOL isAnimating;
+} CDStruct_f50b3c6f;
+
+typedef struct {
+    double _field1;
+    unsigned long long _field2;
+    double *_field3;
+    struct {
+        CDStruct_14d5dc5e _field1;
+        CDStruct_14d5dc5e _field2;
+    } *_field4;
+    CDStruct_5cb32230 _field5;
+    unsigned long long _field6;
+    CDStruct_5cb32230 _field7[88];
+    unsigned long long _field8;
+    unsigned int _field9;
+    BOOL _field10;
+} CDStruct_2418b6b9;
+

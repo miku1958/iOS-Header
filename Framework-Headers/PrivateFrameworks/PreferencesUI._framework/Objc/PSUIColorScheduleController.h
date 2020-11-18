@@ -32,7 +32,7 @@
 - (id)datePickerForSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)endTime;
-- (void)handleBlueLightStatusChanged:(CDStruct_f4084295 *)arg1;
+- (void)handleBlueLightStatusChanged:(CDStruct_a90444bf *)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)showPickerSpecifierForSpecifier:(id)arg1;
 - (void)showScheduleSpecifiers:(BOOL)arg1 animated:(BOOL)arg2;

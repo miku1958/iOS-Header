@@ -19,10 +19,12 @@
     DEDBugSessionConfiguration *_config;
     id<DEDSeedingClientDelegate> _uploadDelegate;
     NSURLSession *_foregroundSession;
+    NSString *_bugSessionIdentifier;
     NSURLSession *_backgroundSession;
 }
 
 @property (strong) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
+@property (strong) NSString *bugSessionIdentifier; // @synthesize bugSessionIdentifier=_bugSessionIdentifier;
 @property (strong) DEDBugSessionConfiguration *config; // @synthesize config=_config;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

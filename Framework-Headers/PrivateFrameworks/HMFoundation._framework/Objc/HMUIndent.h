@@ -4,27 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HMFoundation/HMFObject.h>
+#import <HMFoundation/HMFStringIndentation.h>
 
-@class NSString;
-
-@interface HMUIndent : HMFObject
+@interface HMUIndent : HMFStringIndentation
 {
-    NSString *_level;
-    NSString *_step;
-    unsigned long long _factor;
 }
 
-@property (readonly, nonatomic) unsigned long long factor; // @synthesize factor=_factor;
-@property (readonly, nonatomic) NSString *level; // @synthesize level=_level;
-@property (readonly, nonatomic) NSString *step; // @synthesize step=_step;
-
 + (id)indentWithLevel:(id)arg1;
-+ (id)indentWithLevel:(id)arg1 step:(id)arg2 factor:(unsigned long long)arg3;
-- (void).cxx_destruct;
-- (id)description;
++ (id)level;
 - (id)indentByFactor:(unsigned long long)arg1;
-- (id)initWithLevel:(id)arg1 step:(id)arg2 factor:(unsigned long long)arg3;
 
 @end
 

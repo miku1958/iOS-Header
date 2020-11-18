@@ -17,17 +17,21 @@
     NSMutableArray *_subscribedChannelIds;
     NSString *_userId;
     NSString *_userStorefrontId;
+    BOOL _isStoreDemoModeEnabled;
     struct {
         unsigned int startTimestamp:1;
         unsigned int bundleSubscriptionStatus:1;
+        unsigned int isStoreDemoModeEnabled:1;
     } _has;
 }
 
 @property (nonatomic) int bundleSubscriptionStatus; // @synthesize bundleSubscriptionStatus=_bundleSubscriptionStatus;
 @property (nonatomic) BOOL hasBundleSubscriptionStatus;
+@property (nonatomic) BOOL hasIsStoreDemoModeEnabled;
 @property (nonatomic) BOOL hasStartTimestamp;
 @property (readonly, nonatomic) BOOL hasUserId;
 @property (readonly, nonatomic) BOOL hasUserStorefrontId;
+@property (nonatomic) BOOL isStoreDemoModeEnabled; // @synthesize isStoreDemoModeEnabled=_isStoreDemoModeEnabled;
 @property (nonatomic) long long startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 @property (strong, nonatomic) NSMutableArray *subscribedChannelIds; // @synthesize subscribedChannelIds=_subscribedChannelIds;
 @property (strong, nonatomic) NSString *userId; // @synthesize userId=_userId;

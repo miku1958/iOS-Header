@@ -9,7 +9,7 @@
 #import <AccountsDaemon/ACDAccountStoreDelegate-Protocol.h>
 #import <AccountsDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class ACDAccessPluginManager, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDDataclassOwnersManager, ACRemoteDeviceProxy, NSMutableArray, NSMutableDictionary, NSString, NSXPCListener;
+@class ACDAccessPluginManager, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACRemoteDeviceProxy, NSMutableArray, NSMutableDictionary, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ACDServer : NSObject <NSXPCListenerDelegate, ACDAccountStoreDelegate>
@@ -29,11 +29,13 @@
     ACDDataclassOwnersManager *_dataclassOwnersManager;
     ACDAuthenticationDialogManager *_authenticationDialogManager;
     ACRemoteDeviceProxy *_remoteDeviceProxy;
+    ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
 @property (strong, nonatomic) ACDAccessPluginManager *accessPluginManager; // @synthesize accessPluginManager=_accessPluginManager;
 @property (strong, nonatomic) ACDAuthenticationDialogManager *authenticationDialogManager; // @synthesize authenticationDialogManager=_authenticationDialogManager;
 @property (strong, nonatomic) ACDAuthenticationPluginManager *authenticationPluginManager; // @synthesize authenticationPluginManager=_authenticationPluginManager;
+@property (strong, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
 @property (strong, nonatomic) ACDDataclassOwnersManager *dataclassOwnersManager; // @synthesize dataclassOwnersManager=_dataclassOwnersManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

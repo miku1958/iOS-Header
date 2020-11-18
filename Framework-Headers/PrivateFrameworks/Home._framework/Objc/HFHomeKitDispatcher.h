@@ -11,6 +11,7 @@
 #import <Home/HFMediaObjectObserver-Protocol.h>
 #import <Home/HFMediaSessionObserver-Protocol.h>
 #import <Home/HFStateRestorationSettingsObserver-Protocol.h>
+#import <Home/HFSymptomFixSessionObserver-Protocol.h>
 #import <Home/HMAccessoryDelegatePrivate-Protocol.h>
 #import <Home/HMAccessorySettingsDelegate-Protocol.h>
 #import <Home/HMCameraSnapshotControlDelegate-Protocol.h>
@@ -21,7 +22,6 @@
 #import <Home/HMResidentDeviceDelegate-Protocol.h>
 #import <Home/HMSoftwareUpdateControllerDelegate-Protocol.h>
 #import <Home/HMSoftwareUpdateDelegate-Protocol.h>
-#import <Home/HMSymptomFixSessionDelegate-Protocol.h>
 #import <Home/HMSymptomsHandlerDelegate-Protocol.h>
 #import <Home/HMTelevisionProfileDelegate-Protocol.h>
 #import <Home/HMUserDelegatePrivate-Protocol.h>
@@ -29,7 +29,7 @@
 
 @class HFLocationSensingCoordinator, HMHome, HMHomeManager, NAFuture, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSTimer;
 
-@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMMediaProfileDelegate, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, HMSymptomsHandlerDelegate, HMUserDelegatePrivate, HMTelevisionProfileDelegate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HFMediaObjectObserver, HFMediaSessionObserver, HMSymptomFixSessionDelegate>
+@interface HFHomeKitDispatcher : NSObject <HFLocationSensingCoordinatorDelegate, HFHomeAppInstallStateArbiterObserver, _HFSettingsObserverTupleOwning, HFStateRestorationSettingsObserver, HMResidentDeviceDelegate, HMCameraSnapshotControlDelegate, HMCameraStreamControlDelegate, HMMediaProfileDelegate, HMSoftwareUpdateControllerDelegate, HMAccessorySettingsDelegate, HMSoftwareUpdateDelegate, HMSymptomsHandlerDelegate, HMUserDelegatePrivate, HMTelevisionProfileDelegate, HMHomeManagerDelegatePrivate, HMHomeDelegatePrivate, HMAccessoryDelegatePrivate, HFMediaObjectObserver, HFMediaSessionObserver, HFSymptomFixSessionObserver>
 {
     BOOL _hasLoadedHomes;
     int _homeKitPreferencesChangedNotifyToken;
@@ -179,7 +179,7 @@
 - (void)dispatchSymptomFixSessionObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchSymptomsHandlerMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
 - (void)dispatchUserObserverMessage:(CDUnknownBlockType)arg1 sender:(id)arg2;
-- (void)fixSession:(id)arg1 didChangeState:(long long)arg2;
+- (void)fixSessionDidChangeForAccessory:(id)arg1;
 - (BOOL)hasRequestedUpdate:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;

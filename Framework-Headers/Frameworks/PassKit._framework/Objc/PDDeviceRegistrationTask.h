@@ -10,12 +10,14 @@
 
 @interface PDDeviceRegistrationTask : NSObject
 {
+    BOOL _shouldForce;
     NSMutableArray *_completionHandlers;
     NSString *_reason;
 }
 
 @property (strong, nonatomic) NSMutableArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property (nonatomic) BOOL shouldForce; // @synthesize shouldForce=_shouldForce;
 
 - (void).cxx_destruct;
 - (id)init;

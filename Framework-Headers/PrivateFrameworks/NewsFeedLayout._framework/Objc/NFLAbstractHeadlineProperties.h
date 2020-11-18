@@ -29,10 +29,9 @@
 - (id)bylineFontColorWithTemplate:(id)arg1;
 - (id)bylineFontNameWithTemplate:(id)arg1;
 - (id)bylineFontWithTemplate:(id)arg1;
-- (double)bylineLineHeight;
 - (id)excerptFontNameWithTemplate:(id)arg1;
 - (id)excerptFontWithTemplate:(id)arg1;
-- (double)excerptLineHeightWithTemplate:(id)arg1;
+- (double)excerptLineHeightWithTemplate:(id)arg1 font:(id)arg2;
 - (double)excerptToAccessorySpacing;
 - (double)excerptToAccessorySpacingWithTemplate:(id)arg1;
 - (double)imageToTitleSpacing;
@@ -42,7 +41,7 @@
 - (double)segmentViewHeight;
 - (id)titleFontNameWithTemplate:(id)arg1;
 - (id)titleFontWithTemplate:(id)arg1;
-- (double)titleLineHeightWithTemplate:(id)arg1;
+- (double)titleLineHeightWithTemplate:(id)arg1 font:(id)arg2;
 - (double)titleToAccessorySpacingWithTemplate:(id)arg1;
 - (double)titleToExcerptSpacing;
 - (double)titleToExcerptSpacingWithTemplate:(id)arg1;

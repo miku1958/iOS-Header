@@ -12,7 +12,7 @@
 #import <MediaControls/MediaControlsCollectionViewDelegate-Protocol.h>
 #import <MediaControls/MediaControlsEndpointsManagerDelegate-Protocol.h>
 
-@class MPAVEndpointRoute, MPAVOutputDeviceRoutingDataSource, MPAVRoutingViewController, MPMediaControlsConfiguration, MediaControlsEndpointsManager, NSString;
+@class AVExternalPlaybackMonitor, MPAVEndpointRoute, MPAVOutputDeviceRoutingDataSource, MPAVRoutingViewController, MPMediaControlsConfiguration, MediaControlsEndpointsManager, NSString;
 
 @interface MediaControlsEndpointsViewController : MediaControlsCollectionViewController <MRPlatterViewControllerDelegate, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate, MediaControlsEndpointsManagerDelegate, CCUIContentModuleContentViewController>
 {
@@ -32,6 +32,7 @@
     MPAVRoutingViewController *_routingViewController;
     MPAVEndpointRoute *_selectedRoute;
     NSString *_routingContextUID;
+    AVExternalPlaybackMonitor *_externalPlaybackMonitor;
 }
 
 @property (strong, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
 @property (strong, nonatomic) MediaControlsEndpointsManager *endpointsManager; // @synthesize endpointsManager=_endpointsManager;
+@property (strong, nonatomic) AVExternalPlaybackMonitor *externalPlaybackMonitor; // @synthesize externalPlaybackMonitor=_externalPlaybackMonitor;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType homeGestureDismissalAllowedBlock; // @synthesize homeGestureDismissalAllowedBlock=_homeGestureDismissalAllowedBlock;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
@@ -52,6 +54,7 @@
 @property (nonatomic) BOOL shouldPresentUsingViewService; // @synthesize shouldPresentUsingViewService=_shouldPresentUsingViewService;
 @property (readonly) Class superclass;
 
++ (BOOL)_shouldTransitionEarlyOnSystemRoute;
 - (void).cxx_destruct;
 - (void)_assignRouteViewControllerToSelectedPanelViewController;
 - (BOOL)_isReadyForAppearanceTransition;

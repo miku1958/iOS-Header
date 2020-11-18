@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, WLKServerConfiguration;
+@class NSArray, NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface WLKChannelUtilities : NSObject
 {
-    BOOL _offLineMode;
-    WLKServerConfiguration *_config;
     NSObject<OS_dispatch_queue> *_accessQueue;
+    BOOL _filtered;
     NSDictionary *_channelsByBundleID;
 }
 
@@ -23,16 +22,16 @@
 
 + (id)_validiTunesBundles;
 + (BOOL)isItunesBundleID:(id)arg1;
-+ (BOOL)isItunesOrFirstPartyBundleID:(id)arg1;
 + (id)sharedInstance;
++ (id)sharedInstanceFiltered;
 - (void).cxx_destruct;
-- (id)_init;
-- (id)_serverConfiguration;
+- (id)_configuration;
 - (id)channelForBundleID:(id)arg1;
 - (id)channelForID:(id)arg1;
 - (id)channelIDForBundleID:(id)arg1;
 - (id)init;
-- (id)initOffline;
+- (id)initFiltered:(BOOL)arg1;
+- (BOOL)isItunesOrFirstPartyBundleID:(id)arg1;
 
 @end
 

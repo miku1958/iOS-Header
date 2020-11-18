@@ -24,6 +24,7 @@
     NSDictionary *_additionalSelfInfo;
     NSArray *_allowedMACAddresses;
     unsigned long long _selfAppFlags;
+    NSDictionary *_appInfoSelf;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_fixedPIN;
     NSString *_label;
@@ -50,6 +51,8 @@
 @property (copy, nonatomic) NSDictionary *additionalPeerInfo; // @synthesize additionalPeerInfo=_additionalPeerInfo;
 @property (copy, nonatomic) NSDictionary *additionalSelfInfo; // @synthesize additionalSelfInfo=_additionalSelfInfo;
 @property (copy, nonatomic) NSArray *allowedMACAddresses; // @synthesize allowedMACAddresses=_allowedMACAddresses;
+@property (readonly, copy, nonatomic) NSDictionary *appInfoPeer;
+@property (copy, nonatomic) NSDictionary *appInfoSelf; // @synthesize appInfoSelf=_appInfoSelf;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *fixedPIN; // @synthesize fixedPIN=_fixedPIN;
@@ -90,6 +93,7 @@
 - (id)init;
 - (void)invalidate;
 - (id)openStreamWithName:(id)arg1 error:(id *)arg2;
+- (id)openStreamWithName:(id)arg1 type:(int)arg2 error:(id *)arg3;
 - (void)receivedData:(id)arg1;
 - (void)tryPIN:(id)arg1;
 

@@ -20,6 +20,7 @@
 - (unsigned long long)whitelistLevelForTagID:(NSString *)arg1;
 
 @optional
+- (NSArray *)bestOfGroupFromItems:(NSArray *)arg1 configurationSet:(long long)arg2;
 - (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2 baselineClicksMultiplier:(double)arg3;
 - (void)prepareFavorites:(void (^)(void))arg1;
 - (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 configurationSet:(long long)arg2;

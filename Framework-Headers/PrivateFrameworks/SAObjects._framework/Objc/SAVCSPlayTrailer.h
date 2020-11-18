@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSURL *hiresTrailerUri;
 @property (strong, nonatomic) SAUIImageResource *image;
 @property (copy, nonatomic) NSURL *lowresTrailerUri;
+@property (copy, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *utsId;
 
 + (id)playTrailer;

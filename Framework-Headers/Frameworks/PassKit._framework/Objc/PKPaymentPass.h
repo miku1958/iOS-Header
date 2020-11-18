@@ -28,6 +28,7 @@
     NSSet *_associatedApplicationIdentifiers;
     NSSet *_associatedWebDomains;
     NSString *_sanitizedPrimaryAccountNumber;
+    NSString *_associatedAccountServiceAccountIdentifier;
     NSString *_issuerCountryCode;
     NSSet *_paymentApplications;
     NSSet *_devicePaymentApplications;
@@ -47,6 +48,7 @@
 
 @property (readonly, nonatomic) unsigned long long activationState;
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
+@property (copy, nonatomic) NSString *associatedAccountServiceAccountIdentifier; // @synthesize associatedAccountServiceAccountIdentifier=_associatedAccountServiceAccountIdentifier;
 @property (copy, nonatomic) NSSet *associatedApplicationIdentifiers; // @synthesize associatedApplicationIdentifiers=_associatedApplicationIdentifiers;
 @property (copy, nonatomic) NSSet *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property (copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
@@ -82,6 +84,7 @@
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
 @property (readonly, copy, nonatomic) PKTransitPassProperties *transitProperties;
+@property (readonly, nonatomic) NSArray *upgradeRequests;
 
 + (unsigned long long)defaultSettings;
 + (id)displayableErrorForAction:(id)arg1 andReason:(unsigned long long)arg2;
@@ -106,6 +109,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
 - (BOOL)isAccessPass;
+- (BOOL)isContactlessPaymentSupportedForTransitNetworks:(id)arg1;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
 - (BOOL)isSuicaPass;
 - (BOOL)isTransitPass;
@@ -115,6 +119,7 @@
 - (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;
 - (void)sanitizePaymentApplications;
 - (id)sanitizedDeviceAccountNumber;
+- (BOOL)shouldIgnoreTransactionUpdatesSwitch;
 - (BOOL)shouldSuppressNoChargeAmount;
 - (id)sortedPaymentApplications:(id)arg1 ascending:(BOOL)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;

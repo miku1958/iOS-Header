@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@class NSDictionary;
+@class NSDictionary, WLKSiriSearchResponse;
 
-@interface WLKSiriSearchRequestOperation : WLKNetworkRequestOperation
+@interface WLKSiriSearchRequestOperation : WLKUTSNetworkRequestOperation
 {
-    NSDictionary *_options;
+    NSDictionary *_query;
+    WLKSiriSearchResponse *_response;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (readonly, copy, nonatomic) NSDictionary *query; // @synthesize query=_query;
+@property (readonly, nonatomic) WLKSiriSearchResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;
-- (id)initWithOptions:(id)arg1;
-- (id)responseProcessor;
+- (id)initWithQuery:(id)arg1 caller:(id)arg2;
+- (void)processResponse;
 
 @end
 

@@ -323,8 +323,8 @@ struct Display {
     struct DisplayShmemInfo _field26;
     unsigned int _field27;
     unsigned int _field28;
-    int _field29;
-    BOOL _field30;
+    unsigned int _field29;
+    int _field30;
     BOOL _field31;
     BOOL _field32;
     BOOL _field33;
@@ -334,6 +334,7 @@ struct Display {
     BOOL _field37;
     BOOL _field38;
     BOOL _field39;
+    BOOL _field40;
 };
 
 struct DisplayLink;
@@ -375,6 +376,7 @@ struct EDIDAttributes {
     int pqEOTF;
     int bt2020YCC;
     int hdrStaticMetadataType1;
+    BOOL legacyHDMI;
 };
 
 struct Ext;

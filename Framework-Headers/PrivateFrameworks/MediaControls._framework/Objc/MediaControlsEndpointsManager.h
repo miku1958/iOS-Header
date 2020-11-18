@@ -39,6 +39,7 @@
 @property (nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MediaControlsHomeObserver *homeObserver; // @synthesize homeObserver=_homeObserver;
+@property (readonly, nonatomic) BOOL isActiveSystemEndpointEqualToLocalEndpoint;
 @property (readonly, copy, nonatomic) NSString *pendingActiveSystemRouteUID; // @synthesize pendingActiveSystemRouteUID=_pendingActiveSystemRouteUID;
 @property (readonly, copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;

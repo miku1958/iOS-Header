@@ -6,13 +6,31 @@
 
 #import <objc/NSObject.h>
 
+@class NSURLSessionConfiguration, WLKServerConfigurationResponse;
+@protocol OS_dispatch_queue;
+
 @interface WLKConfigurationManager : NSObject
 {
+    NSObject<OS_dispatch_queue> *_fetchQueue;
+    WLKServerConfigurationResponse *_config;
+    NSURLSessionConfiguration *_sharedCacheSessionConfiguration;
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)_config;
+- (id)_configuration;
+- (id)_configurationWithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 queryParameters:(id)arg3;
+- (void)_handleLibraryDidChangeNotification:(id)arg1;
 - (id)_init;
+- (void)_invalidateCache;
+- (void)_invalidateNetworkCache;
+- (void)_setConfig:(id)arg1;
+- (void)_setUtsk:(id)arg1;
+- (id)_stringForCachePolicy:(unsigned long long)arg1;
+- (id)_utsk;
 - (void)fetchConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchConfigurationWithOptions:(long long)arg1 cachePolicy:(unsigned long long)arg2 queryParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 
 @end

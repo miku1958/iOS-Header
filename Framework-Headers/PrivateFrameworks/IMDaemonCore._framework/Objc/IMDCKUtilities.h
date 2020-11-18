@@ -88,6 +88,7 @@
 - (id)accountWithDSID:(id)arg1;
 - (void)broadcastCloudKitState;
 - (void)broadcastCloudKitStateAfterClearingErrors;
+- (void)broadcastCloudKitStateAfterFetchingAccountStatus;
 - (BOOL)cacheDeleteEnabled;
 - (void)checkCloudkitEnabledStatusAndToggleiCloudSwitchIfNeeded;
 - (void)checkiCloudQuota:(CDUnknownBlockType)arg1;

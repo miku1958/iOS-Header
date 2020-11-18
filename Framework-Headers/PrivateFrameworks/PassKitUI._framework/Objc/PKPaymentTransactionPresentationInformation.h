@@ -17,11 +17,13 @@
     NSString *_secondaryString;
     NSString *_tertiaryString;
     UIColor *_customSecondaryColor;
+    NSString *_rewardsString;
     NSString *_valueString;
 }
 
 @property (strong, nonatomic) UIColor *customSecondaryColor; // @synthesize customSecondaryColor=_customSecondaryColor;
 @property (strong, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
+@property (strong, nonatomic) NSString *rewardsString; // @synthesize rewardsString=_rewardsString;
 @property (strong, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
 @property (nonatomic) BOOL shouldGrayValue; // @synthesize shouldGrayValue=_shouldGrayValue;
 @property (nonatomic) BOOL shouldShowDisclosure; // @synthesize shouldShowDisclosure=_shouldShowDisclosure;

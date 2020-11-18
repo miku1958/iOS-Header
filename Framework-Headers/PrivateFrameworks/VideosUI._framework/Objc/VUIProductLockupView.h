@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString, TVFocusableTextView, TVImageProxy, UIImage, UIImageView, UIStackView, VUIContentRating, VUILabel, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView, _TVImageView;
+@class NSArray, NSNumber, NSString, TVFocusableTextView, TVImageProxy, UIImage, VUIContentRating, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView, _TVImageView;
 @protocol VUILibraryProductLockupViewLayout, VUIProductLockupViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     UIImage *_coverArtPlaceholderImage;
     VUIRoundButton *_leftButton;
     UIView *_downloadView;
-    NSString *_title;
     NSString *_subtitle;
     NSString *_contentDescription;
     VUIContentRating *_contentRating;
@@ -34,30 +33,21 @@ __attribute__((visibility("hidden")))
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
     _TVImageView *_coverArtImageView;
-    VUILabel *_titleLabel;
     VUILabel *_subtitleLabel;
     TVFocusableTextView *_descriptionTextView;
-    UIImageView *_contentRatingImageView;
-    VUILabel *_genreLabel;
-    VUILabel *_durationLabel;
-    VUILabel *_releaseYearLabel;
-    VUILabel *_availabilityLabel;
-    VUILabel *_genreReleaseDotSeparator;
-    UIStackView *_badgesStackView;
     VUIRentalExpirationLabel *_expirationLabel;
     UIImage *_contentRatingImage;
+    VUIMediaTagsView *_mediaInfoTagsView;
+    VUIMediaTagsView *_mediaBadgeTagsView;
 }
 
-@property (strong, nonatomic) VUILabel *availabilityLabel; // @synthesize availabilityLabel=_availabilityLabel;
 @property (copy, nonatomic) NSString *availabilityText; // @synthesize availabilityText=_availabilityText;
 @property (copy, nonatomic) NSArray *badgeResources; // @synthesize badgeResources=_badgeResources;
-@property (strong, nonatomic) UIStackView *badgesStackView; // @synthesize badgesStackView=_badgesStackView;
 @property (strong, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (copy, nonatomic) NSString *contentDescription; // @synthesize contentDescription=_contentDescription;
 @property (nonatomic) BOOL contentDescriptionExpanded; // @synthesize contentDescriptionExpanded=_contentDescriptionExpanded;
 @property (copy, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (strong, nonatomic) UIImage *contentRatingImage; // @synthesize contentRatingImage=_contentRatingImage;
-@property (strong, nonatomic) UIImageView *contentRatingImageView; // @synthesize contentRatingImageView=_contentRatingImageView;
 @property (readonly, nonatomic) TVImageProxy *coverArtImageProxy; // @synthesize coverArtImageProxy=_coverArtImageProxy;
 @property (strong, nonatomic) _TVImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;
 @property (readonly, nonatomic) UIImage *coverArtPlaceholderImage; // @synthesize coverArtPlaceholderImage=_coverArtPlaceholderImage;
@@ -68,28 +58,21 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didSetUpViews; // @synthesize didSetUpViews=_didSetUpViews;
 @property (strong, nonatomic) UIView *downloadView; // @synthesize downloadView=_downloadView;
 @property (strong, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
-@property (strong, nonatomic) VUILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
 @property (strong, nonatomic) VUIRentalExpirationLabel *expirationLabel; // @synthesize expirationLabel=_expirationLabel;
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
-@property (strong, nonatomic) VUILabel *genreLabel; // @synthesize genreLabel=_genreLabel;
-@property (strong, nonatomic) VUILabel *genreReleaseDotSeparator; // @synthesize genreReleaseDotSeparator=_genreReleaseDotSeparator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<VUILibraryProductLockupViewLayout> layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) VUIRoundButton *leftButton; // @synthesize leftButton=_leftButton;
+@property (strong, nonatomic) VUIMediaTagsView *mediaBadgeTagsView; // @synthesize mediaBadgeTagsView=_mediaBadgeTagsView;
+@property (strong, nonatomic) VUIMediaTagsView *mediaInfoTagsView; // @synthesize mediaInfoTagsView=_mediaInfoTagsView;
 @property (copy, nonatomic) NSNumber *releaseYear; // @synthesize releaseYear=_releaseYear;
-@property (strong, nonatomic) VUILabel *releaseYearLabel; // @synthesize releaseYearLabel=_releaseYearLabel;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 
 + (id)productLockupViewWithMedia:(id)arg1;
 - (void).cxx_destruct;
-- (void)_configureBadgeStackView;
-- (void)_configureDotSeparator;
-- (void)_configureViewElementsForAX;
 - (id)_contentDescriptionAttributedString;
 - (double)_descriptionBottomMarginWithBaselineMargin:(double)arg1;
 - (double)_descriptionTopMarginWithBaselineMargin:(double)arg1 otherFont:(id)arg2;

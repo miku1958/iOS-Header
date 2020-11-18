@@ -9,9 +9,11 @@
 @interface IKCSSDeclarationEdgeInsets : IKCSSDeclaration
 {
     BOOL _insetsFound;
+    unsigned long long _edgeFlag;
     struct UIEdgeInsets _insets;
 }
 
+@property unsigned long long edgeFlag; // @synthesize edgeFlag=_edgeFlag;
 @property struct UIEdgeInsets insets; // @synthesize insets=_insets;
 @property BOOL insetsFound; // @synthesize insetsFound=_insetsFound;
 

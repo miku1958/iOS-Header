@@ -10,15 +10,16 @@
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPurchaseAmountViewDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
 @class NSDecimalNumber, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKPaymentSetupRequiresPreflightProtocol>
+@interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKViewControllerPreflightable>
 {
+    BOOL _snapshotNeedsCorners;
     BOOL _fieldsVerified;
     BOOL _acceptedTerms;
     PKPaymentSetupProduct *_product;

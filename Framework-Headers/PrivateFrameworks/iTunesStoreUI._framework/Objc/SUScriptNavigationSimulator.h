@@ -38,6 +38,7 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
 - (void).cxx_destruct;
+- (void)_callCallbackWithWithTransition:(id)arg1;
 - (id)_className;
 - (void)_enqueueLoadingState:(id)arg1;
 - (void)_handlePopFromIndex:(long long)arg1 toIndex:(long long)arg2;

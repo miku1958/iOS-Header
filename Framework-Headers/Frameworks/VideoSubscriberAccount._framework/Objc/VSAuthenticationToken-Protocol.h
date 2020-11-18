@@ -15,6 +15,7 @@
 @property (readonly, copy, nonatomic) NSData *serializedData;
 
 - (id)initWithSerializedData:(NSData *)arg1;
+- (BOOL)isFromUnsupportedProvider;
 - (BOOL)isOpaque;
 - (BOOL)isValid;
 @end

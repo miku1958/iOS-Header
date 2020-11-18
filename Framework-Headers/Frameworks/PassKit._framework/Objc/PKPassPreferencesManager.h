@@ -21,11 +21,13 @@
 - (id)_stringForKey:(id)arg1 passUniqueID:(id)arg2;
 - (void)_synchronize;
 - (double)commutePlanRenewalReminderTimeIntervalForPassWithUniqueID:(id)arg1;
+- (BOOL)hasDoneExpressUpgrade;
 - (id)lowBalanceReminderAmountForPassWithUniqueID:(id)arg1;
 - (id)lowBalanceReminderCurrencyForPassWithUniqueID:(id)arg1;
 - (void)removeAllPreferences;
 - (void)removeAllPreferencesForPassWithUniqueID:(id)arg1;
 - (void)setCommutePlanRenewalReminderTimeInterval:(double)arg1 forPassWithUniqueID:(id)arg2;
+- (void)setHasDoneExpressUpgrade:(BOOL)arg1;
 - (void)setLowBalanceReminderAmount:(id)arg1 currency:(id)arg2 forPassWithUniqueID:(id)arg3;
 
 @end

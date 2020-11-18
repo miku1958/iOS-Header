@@ -8,63 +8,57 @@
 
 #import <ITMLKit/IKJSPlayer-Protocol.h>
 
-@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSDate, NSMutableDictionary, NSNumber, NSString;
+@class IKAppPlayerBridge, IKDOMDocument, IKJSMediaItem, IKJSPlaylist, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString;
 
 @interface IKJSPlayer : IKJSEventListenerObject <IKJSPlayer>
 {
     IKJSPlaylist *_playlist;
     long long _playerState;
     BOOL _holdingSelfReference;
-    NSMutableDictionary *_observedMetadataKeys;
+    NSMutableDictionary *_timedMetadataListeners;
     NSMutableDictionary *_timeListeners;
     NSMutableDictionary *_boundaryListeners;
     IKAppPlayerBridge *_bridge;
 }
 
 @property (readonly, nonatomic) IKAppPlayerBridge *bridge; // @synthesize bridge=_bridge;
+@property (copy, nonatomic) NSDictionary *contextMenuData;
 @property (readonly, nonatomic) IKJSMediaItem *currentMediaItem;
+@property (readonly, nonatomic) NSArray *currentMediaItemAccessLogs;
 @property (readonly, nonatomic) NSDate *currentMediaItemDate;
 @property (readonly, nonatomic) NSNumber *currentMediaItemDuration;
+@property (readonly, nonatomic) NSArray *currentMediaItemErrorLogs;
 @property (nonatomic) BOOL interactiveOverlayDismissable;
 @property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument;
+@property (nonatomic) BOOL muted;
 @property (readonly, nonatomic) IKJSMediaItem *nextMediaItem;
 @property (strong, nonatomic) IKDOMDocument *overlayDocument;
 @property (nonatomic) double playbackRate;
 @property (readonly, nonatomic) NSString *playbackState;
 @property (strong, nonatomic) IKJSPlaylist *playlist;
 @property (readonly, nonatomic) IKJSMediaItem *previousMediaItem;
+@property (nonatomic) BOOL showsResumeMenu;
+@property (strong, nonatomic) NSDictionary *userInfo;
 
 - (void).cxx_destruct;
 - (void)_addManagedReference;
 - (void)_removeManagedReference;
+- (BOOL)_timedMetadataDidChangeWithExtraInfo:(id)arg1;
 - (void)addEventListener:(id)arg1:(id)arg2:(id)arg3;
 - (void)changeToMediaAtIndex:(unsigned long long)arg1;
-- (void)currentMediaItemDurationDidChange:(double)arg1;
 - (void)dealloc;
+- (BOOL)dispatchEvent:(id)arg1 userInfo:(id)arg2;
 - (id)init;
 - (id)initWithAppContext:(id)arg1 bridge:(id)arg2;
-- (void)mediaItemDidChange:(long long)arg1;
-- (void)mediaItemWillChange:(long long)arg1;
 - (void)next;
 - (void)pause;
 - (void)play;
-- (void)playbackDidStall:(double)arg1;
-- (void)playbackError:(id)arg1 shouldStopDueToError:(BOOL)arg2;
 - (void)present;
 - (void)previous;
 - (void)removeEventListener:(id)arg1:(id)arg2;
-- (BOOL)requestSeekToTime:(double *)arg1 currentTime:(double)arg2;
 - (void)seekToTime:(double)arg1;
-- (BOOL)shouldChangeToMediaAtIndex:(unsigned long long)arg1;
-- (BOOL)shouldHandleStateEvent:(id)arg1;
 - (long long)state;
-- (void)stateDidChange:(id)arg1;
-- (void)stateWillChange:(id)arg1;
 - (void)stop;
-- (void)timeBoundaryDidCross:(double)arg1;
-- (void)timeIntervalElapsed:(double)arg1 time:(double)arg2;
-- (void)timedMetadataDidChange:(id)arg1 value:(id)arg2;
-- (void)transportBarVisibilityDidChange:(BOOL)arg1;
 
 @end
 

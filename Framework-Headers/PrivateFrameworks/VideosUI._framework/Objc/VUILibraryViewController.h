@@ -8,6 +8,7 @@
 
 #import <VideosUI/UICollectionViewDataSource-Protocol.h>
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <VideosUI/VUIDownloadDataSourceDelegate-Protocol.h>
 #import <VideosUI/VUILibraryPopoverDataSource-Protocol.h>
 #import <VideosUI/VUILibraryPopoverDelegate-Protocol.h>
 #import <VideosUI/VUILibraryShelfCollectionViewControllerDelegate-Protocol.h>
@@ -15,20 +16,19 @@
 #import <VideosUI/VUIMediaItemEntityTypesFetchControllerDelegate-Protocol.h>
 #import <VideosUI/VUIMediaLibraryFetchControllerQueueDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIBarButtonItem, VUILibraryBannerCollectionViewCell, VUILibraryDownloadViewController, VUILibraryListPopoverViewCell, VUILibraryMediaEntityShelvesViewModel, VUILibraryMenuItemViewCell, VUILibraryPopoverViewController, VUIMediaLibrary, VUIMetricsController, _VUILibrarySeeAllController;
+@class NSArray, NSDictionary, NSString, UIBarButtonItem, VUIDownloadDataSource, VUIDownloadViewController, VUILibraryBannerCollectionViewCell, VUILibraryListPopoverViewCell, VUILibraryMediaEntityShelvesViewModel, VUILibraryMenuItemViewCell, VUILibraryPopoverViewController, VUIMediaLibrary, _VUILibrarySeeAllController;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, VUIMediaItemEntityTypesFetchControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIMediaLibraryFetchControllerQueueDelegate, VUILibraryPopoverDataSource, VUILibraryPopoverDelegate, UIGestureRecognizerDelegate>
+@interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, VUIMediaItemEntityTypesFetchControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIMediaLibraryFetchControllerQueueDelegate, VUILibraryPopoverDataSource, VUILibraryPopoverDelegate, UIGestureRecognizerDelegate, VUIDownloadDataSourceDelegate>
 {
-    id _isNetworkTypeChangedToken;
-    id _networkReachabilityChangedToken;
-    BOOL _lastNetworkReachableStatus;
-    VUILibraryDownloadViewController *_presentedDownloadViewController;
+    VUIDownloadViewController *_presentedDownloadViewController;
     BOOL _ppt_isLoaded;
     BOOL _appliedNavigationItem;
     BOOL _hasMenuItemFetchCompleted;
     BOOL _areLocalMediaItemsAvailable;
     BOOL _hasMediaEntitiesFetchCompleted;
+    BOOL _isUpdatingRentals;
+    BOOL _hasDownloadFetchCompleted;
     BOOL _doesDeviceSupportHDR;
     BOOL _isIpad;
     UIBarButtonItem *_libraryBarButton;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
     VUILibraryMediaEntityShelvesViewModel *_shelvesViewModel;
     NSDictionary *_shelfTypeByFetchRequestIdentifier;
     _VUILibrarySeeAllController *_currentSeeAllController;
-    VUIMetricsController *_metricsController;
+    VUIDownloadDataSource *_downloadDataSource;
 }
 
 @property (nonatomic) BOOL appliedNavigationItem; // @synthesize appliedNavigationItem=_appliedNavigationItem;
@@ -57,16 +57,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL doesDeviceSupportHDR; // @synthesize doesDeviceSupportHDR=_doesDeviceSupportHDR;
+@property (strong, nonatomic) VUIDownloadDataSource *downloadDataSource; // @synthesize downloadDataSource=_downloadDataSource;
+@property (nonatomic) BOOL hasDownloadFetchCompleted; // @synthesize hasDownloadFetchCompleted=_hasDownloadFetchCompleted;
 @property (nonatomic) BOOL hasMediaEntitiesFetchCompleted; // @synthesize hasMediaEntitiesFetchCompleted=_hasMediaEntitiesFetchCompleted;
 @property (nonatomic) BOOL hasMenuItemFetchCompleted; // @synthesize hasMenuItemFetchCompleted=_hasMenuItemFetchCompleted;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *homeShares; // @synthesize homeShares=_homeShares;
 @property (nonatomic) BOOL isIpad; // @synthesize isIpad=_isIpad;
+@property (nonatomic) BOOL isUpdatingRentals; // @synthesize isUpdatingRentals=_isUpdatingRentals;
 @property (strong, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
 @property (strong, nonatomic) NSArray *menuCells; // @synthesize menuCells=_menuCells;
 @property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
 @property (strong, nonatomic) NSArray *menuMediaItemEntityTypes; // @synthesize menuMediaItemEntityTypes=_menuMediaItemEntityTypes;
-@property (strong, nonatomic) VUIMetricsController *metricsController; // @synthesize metricsController=_metricsController;
 @property (strong, nonatomic) NSArray *popoverDropdownCells; // @synthesize popoverDropdownCells=_popoverDropdownCells;
 @property (strong, nonatomic) VUILibraryPopoverViewController *popoverViewController; // @synthesize popoverViewController=_popoverViewController;
 @property (strong, nonatomic) NSDictionary *shelfTypeByFetchRequestIdentifier; // @synthesize shelfTypeByFetchRequestIdentifier=_shelfTypeByFetchRequestIdentifier;
@@ -77,27 +79,28 @@ __attribute__((visibility("hidden")))
 + (id)_localizedTitleForShelfType:(long long)arg1;
 + (CDUnknownBlockType)shelfTypesSortComparator;
 - (void).cxx_destruct;
+- (void)_accountsChanged:(id)arg1;
 - (void)_addMediaLibraryNotificationObservers;
 - (void)_addNotificationObserversWithDeviceLibrary:(id)arg1;
+- (void)_addRentalsUpdateNotificationObserver;
 - (void)_configureShelfViewController:(id)arg1 withShelfType:(long long)arg2;
 - (void)_constructLibraryDataSourceAndUpdateActiveView;
 - (id)_deviceMediaLibrary;
 - (void)_deviceMediaLibraryUpdateStateDidChange:(id)arg1;
 - (id)_fetchRequestsWithMediaLibrary:(id)arg1 shelfTypeMap:(id *)arg2;
-- (void)_handleApplicationBecomingActive:(id)arg1;
 - (BOOL)_haveAllInitialFetchesCompleted;
 - (void)_homeShareMediaLibrariesDidChange:(id)arg1;
 - (BOOL)_isDeviceMediaLibraryInitialUpdateInProgress;
-- (BOOL)_isNetworkReachable;
 - (id)_leftNavigationButtonWithTitle:(id)arg1;
 - (void)_libraryPopoverPressed;
 - (id)_localizedTitleForCellType:(long long)arg1;
 - (id)_menuItemsAndPopoverMenuItems:(id *)arg1;
-- (void)_networkStatusChanged;
+- (void)_networkReachabilityDidChange:(id)arg1;
 - (id)_popoverTitleForIndexPath:(id)arg1;
 - (void)_reloadPopoverViewController;
 - (void)_removeMediaLibraryNotificationObservers;
 - (void)_removeNotificationObserversWithDeviceLibrary:(id)arg1;
+- (void)_removeRentalsUpdateNotificationObserver;
 - (void)_reparentNavigationItem:(id)arg1;
 - (void)_selectLibraryCellType:(long long)arg1 fromPopover:(BOOL)arg2;
 - (BOOL)_shouldAutomaticallySelectHomeVideos;
@@ -110,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateNavigationTitle;
 - (void)_updatePopoverSelectedItem;
 - (void)_updatePopoverStateWithCellType:(long long)arg1;
+- (void)_updateRentals;
 - (void)_updateViewIfFetchComplete;
 - (id)_viewControllerWithCellType:(long long)arg1 forPopover:(BOOL)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -122,6 +126,8 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)dealloc;
+- (void)downloadManager:(id)arg1 downloadedFetchDidFinishWithEntities:(id)arg2;
+- (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;
 - (void)fetchDidCompleteForMediaLibraryFetchControllerQueue:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithMediaLibrary:(id)arg1;
@@ -132,7 +138,6 @@ __attribute__((visibility("hidden")))
 - (void)popoverView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)popoverView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (struct CGSize)popoverView:(id)arg1 sizeForItemAtIndexPath:(id)arg2;
-- (BOOL)ppt_isLoading;
 - (void)seeAllButtonPressed:(id)arg1;
 - (void)shelfCollectionViewController:(id)arg1 collectionView:(id)arg2 didSelectMediaEntity:(id)arg3 atIndexPath:(id)arg4;
 - (void)start;
@@ -140,8 +145,8 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (BOOL)vui_ppt_isLoading;
 
 @end
 

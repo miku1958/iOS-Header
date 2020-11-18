@@ -14,13 +14,11 @@ __attribute__((visibility("hidden")))
     long long _layoutType;
     long long _gridStyle;
     long long _gridType;
-    long long _overlayType;
 }
 
 @property (nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
 @property (nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property (nonatomic) long long layoutType; // @synthesize layoutType=_layoutType;
-@property (nonatomic) long long overlayType; // @synthesize overlayType=_overlayType;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isEqual:(id)arg1;

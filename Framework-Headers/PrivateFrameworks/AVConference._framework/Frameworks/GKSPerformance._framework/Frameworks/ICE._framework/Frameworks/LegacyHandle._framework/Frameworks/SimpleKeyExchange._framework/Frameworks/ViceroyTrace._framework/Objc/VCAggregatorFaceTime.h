@@ -31,6 +31,11 @@ __attribute__((visibility("hidden")))
     double _callAverageTargetBitrate;
     double _callAverageSendBitrate;
     double _callAverageReceiveBitrate;
+    double _callAverageTotalVideoSendBitrate;
+    double _callAverageVideoMediaSendBitrate;
+    double _callAverageVideoHeaderSendBitrate;
+    double _callAverageVideoFECSendBitrate;
+    double _callAverageTotalVideoRecvBitrate;
     double _callAverageRTT;
     double _callPoorConnectionTotalLength;
     double _callPoorConnectionMaxLength;
@@ -71,6 +76,8 @@ __attribute__((visibility("hidden")))
     unsigned int _videoFrameImcompleteNextTSCounter;
     unsigned int _videoFrameTotalIncompleteCounter;
     unsigned int _decodedVideoFrameEnqueueCounter;
+    unsigned int _encodedVideoFrameCounter;
+    unsigned int _captureVideoFrameCounter;
     VCHistogram *_callVideoSwitchPeriodHistogram;
     VCAdaptiveLearning *_adaptiveLearning;
 }

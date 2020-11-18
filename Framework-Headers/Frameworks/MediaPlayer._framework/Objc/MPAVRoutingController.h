@@ -67,6 +67,7 @@
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setActiveRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)setActiveRoute:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)systemRoute;
 + (id)systemRouteWithContextUID:(id)arg1;
 - (void).cxx_destruct;
@@ -123,6 +124,7 @@
 - (void)selectRoute:(id)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)speakerRouteIsPicked;
 - (void)unpickAirPlayScreenRouteWithCompletion:(CDUnknownBlockType)arg1;
+- (void)unpickTVRoutes;
 - (id)videoRouteForRoute:(id)arg1;
 - (BOOL)wirelessDisplayRouteIsPicked;
 - (BOOL)wirelessDisplayRoutesAvailable;

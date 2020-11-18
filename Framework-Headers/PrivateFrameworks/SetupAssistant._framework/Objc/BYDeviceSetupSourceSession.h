@@ -8,7 +8,7 @@
 
 #import <SetupAssistant/BYBuddyDaemonProximitySourceProtocol-Protocol.h>
 
-@class BYBuddyDaemonProximitySourceClient, CUMessageSession, NSString;
+@class BYBuddyDaemonMigrationSourceClient, BYBuddyDaemonProximitySourceClient, CUMessageSession, NSString, RPFileTransferSession;
 
 @interface BYDeviceSetupSourceSession : NSObject <BYBuddyDaemonProximitySourceProtocol>
 {
@@ -17,7 +17,9 @@
     CDUnknownBlockType _sendObjectHandler;
     CDUnknownBlockType _progressHandler;
     CUMessageSession *_messageSession;
+    RPFileTransferSession *_fileTransferSessionTemplate;
     BYBuddyDaemonProximitySourceClient *_client;
+    BYBuddyDaemonMigrationSourceClient *_migrationSourceClient;
     double _backupProgress;
     double _syncProgress;
     double _timeRemaining;
@@ -29,10 +31,12 @@
 @property unsigned long long currentPhase; // @synthesize currentPhase=_currentPhase;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) RPFileTransferSession *fileTransferSessionTemplate; // @synthesize fileTransferSessionTemplate=_fileTransferSessionTemplate;
 @property BOOL hasBackupCompleted; // @synthesize hasBackupCompleted=_hasBackupCompleted;
 @property BOOL hasSyncCompleted; // @synthesize hasSyncCompleted=_hasSyncCompleted;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CUMessageSession *messageSession; // @synthesize messageSession=_messageSession;
+@property (strong, nonatomic) BYBuddyDaemonMigrationSourceClient *migrationSourceClient; // @synthesize migrationSourceClient=_migrationSourceClient;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (copy, nonatomic) CDUnknownBlockType sendObjectHandler; // @synthesize sendObjectHandler=_sendObjectHandler;
 @property (readonly) Class superclass;

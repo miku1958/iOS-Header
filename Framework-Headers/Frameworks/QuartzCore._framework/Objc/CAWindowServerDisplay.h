@@ -33,8 +33,10 @@
 @property float idealRefreshRate;
 @property BOOL invertsColors;
 @property float maximumBrightness;
+@property (readonly) float maximumLuminance;
 @property (getter=isMirroringEnabled) BOOL mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
 @property (readonly) NSString *name;
+@property float nits;
 @property (copy) NSString *orientation;
 @property double overscanAmount;
 @property struct CGSize overscanAmounts;
@@ -69,7 +71,6 @@
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (void)setMaximumRefreshRate:(float)arg1;
 - (void)setMinimumRefreshRate:(float)arg1;
-- (void)setNits:(float)arg1;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
 - (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;

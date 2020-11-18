@@ -8,31 +8,32 @@
 
 #import <ITMLKit/IKDataSourceElementImplementing-Protocol.h>
 
-@class IKDataSourceElement, IKElementChangeSet, NSArray, NSString;
+@class IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface IKDSEUnboundItemsImpl : NSObject <IKDataSourceElementImplementing>
 {
     IKDataSourceElement *_dataSourceElement;
     NSArray *_itemElements;
-    IKElementChangeSet *_itemsChangeset;
+    IKChangeSet *_itemsChangeSet;
 }
 
 @property (readonly, weak, nonatomic) IKDataSourceElement *dataSourceElement; // @synthesize dataSourceElement=_dataSourceElement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDictionary *indexTitles;
 @property (copy, nonatomic) NSArray *itemElements; // @synthesize itemElements=_itemElements;
-@property (strong, nonatomic) IKElementChangeSet *itemsChangeset; // @synthesize itemsChangeset=_itemsChangeset;
+@property (strong, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
 @property (readonly, nonatomic) NSArray *prototypes;
+@property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)actualElementForProxyElement:(id)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;
 - (void)configureUpdatesWithImplementation:(id)arg1;
 - (id)elementForItemAtIndex:(long long)arg1;
-- (long long)indexOfItemForChildElement:(id)arg1;
+- (long long)indexOfItemForElement:(id)arg1;
 - (id)initWithDataSourceElement:(id)arg1;
 - (void)initializeWithElementFactory:(id)arg1;
 - (void)loadIndex:(long long)arg1;

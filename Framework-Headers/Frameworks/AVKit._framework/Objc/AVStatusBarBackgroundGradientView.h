@@ -6,15 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+@class AVStatusBarBackgroundGradientViewSubview, CABackdropLayer;
+
 @interface AVStatusBarBackgroundGradientView : UIView
 {
-    double _gradientOpacity;
+    AVStatusBarBackgroundGradientViewSubview *_gradientView;
 }
 
-@property (nonatomic) double gradientOpacity; // @synthesize gradientOpacity=_gradientOpacity;
+@property (strong, nonatomic) AVStatusBarBackgroundGradientViewSubview *gradientView; // @synthesize gradientView=_gradientView;
+@property (readonly, nonatomic) CABackdropLayer *layer; // @dynamic layer;
 
 + (Class)layerClass;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void).cxx_destruct;
+- (double)alpha;
+- (void)layoutSubviews;
+- (void)setAlpha:(double)arg1;
 
 @end
 

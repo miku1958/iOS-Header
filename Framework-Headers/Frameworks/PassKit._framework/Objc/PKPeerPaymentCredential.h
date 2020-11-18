@@ -20,6 +20,7 @@
 
 @property (readonly, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) PKCurrencyAmount *amount; // @synthesize amount=_amount;
+@property (readonly, copy, nonatomic) NSString *ownershipTokenIdentifier;
 @property (strong, nonatomic) PKPeerPaymentPassDetailsResponse *passDetailsResponse; // @synthesize passDetailsResponse=_passDetailsResponse;
 @property (copy, nonatomic) NSString *pendingPaymentSenderAddress; // @synthesize pendingPaymentSenderAddress=_pendingPaymentSenderAddress;
 @property (readonly, copy, nonatomic) NSString *pendingPaymentSenderName;

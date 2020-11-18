@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)initWithType:(long long)arg1 playlistItem:(id)arg2 vpafKit:(id)arg3;
 - (BOOL)isStopped;
+- (unsigned long long)positionFromOverallPosition:(unsigned long long)arg1;
 - (id)startEventHandler;
 - (void)startedAtOverallPosition:(unsigned long long)arg1 type:(id)arg2 reason:(id)arg3 eventData:(id)arg4;
 - (id)stopEventHandler;

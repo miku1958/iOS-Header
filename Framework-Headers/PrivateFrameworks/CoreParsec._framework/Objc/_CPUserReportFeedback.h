@@ -18,6 +18,7 @@
     _CPSearchResultForFeedback *_result;
     _CPPunchoutForFeedback *_userSelection;
     _CPCardSectionForFeedback *_cardSection;
+    NSData *_uuidBytes;
 }
 
 @property (strong, nonatomic) _CPCardSectionForFeedback *cardSection; // @synthesize cardSection=_cardSection;
@@ -37,6 +38,7 @@
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) unsigned long long timestamp;
 @property (strong, nonatomic) _CPPunchoutForFeedback *userSelection; // @synthesize userSelection=_userSelection;
+@property (copy, nonatomic) NSData *uuidBytes; // @synthesize uuidBytes=_uuidBytes;
 
 - (void).cxx_destruct;
 - (id)init;

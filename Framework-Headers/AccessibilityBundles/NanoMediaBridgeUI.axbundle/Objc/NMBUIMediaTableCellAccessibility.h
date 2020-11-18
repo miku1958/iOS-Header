@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_axIsShowingControl;
-- (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

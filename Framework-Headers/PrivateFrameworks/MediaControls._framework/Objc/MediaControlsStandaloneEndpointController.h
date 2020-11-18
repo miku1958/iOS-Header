@@ -10,7 +10,7 @@
 #import <MediaControls/MediaControlsEndpointControllerConnectionDelegate-Protocol.h>
 #import <MediaControls/MediaControlsEndpointObserverDelegate-Protocol.h>
 
-@class MPAVRoutingController, MPCFuture, MPMRAVEndpointObserverWrapper, MSVTimer, NSString;
+@class MPAVRoutingController, MPCFuture, MPMRAVEndpointObserverWrapper, MSVPersistentTimer, NSString;
 
 @interface MediaControlsStandaloneEndpointController : MediaControlsEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
 {
@@ -21,7 +21,7 @@
     MPMRAVEndpointObserverWrapper *_endpointObserver;
     MPCFuture *_deferredPlayerPathFuture;
     id _deferredPlayerPathInvalidationToken;
-    MSVTimer *_deferredPlayerPathTimer;
+    MSVPersistentTimer *_deferredPlayerPathTimer;
     NSString *_activeEndpointUID;
 }
 
@@ -29,7 +29,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) MPCFuture *deferredPlayerPathFuture; // @synthesize deferredPlayerPathFuture=_deferredPlayerPathFuture;
 @property (strong, nonatomic) id deferredPlayerPathInvalidationToken; // @synthesize deferredPlayerPathInvalidationToken=_deferredPlayerPathInvalidationToken;
-@property (strong, nonatomic) MSVTimer *deferredPlayerPathTimer; // @synthesize deferredPlayerPathTimer=_deferredPlayerPathTimer;
+@property (strong, nonatomic) MSVPersistentTimer *deferredPlayerPathTimer; // @synthesize deferredPlayerPathTimer=_deferredPlayerPathTimer;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MPMRAVEndpointObserverWrapper *endpointObserver; // @synthesize endpointObserver=_endpointObserver;
 @property (readonly) unsigned long long hash;
@@ -45,10 +45,12 @@
 - (void)_activeSystemRouteDidChangeWithChangeType:(long long)arg1;
 - (void)_fetchActiveSystemRoute:(CDUnknownBlockType)arg1;
 - (void)_maybeRestoreDeferredPlayerPath;
+- (void)_maybeUpdateActiveSystemRoute;
 - (void)_resetDeferredPlayerPath;
 - (void)_restoreDeferredPlayerPath;
 - (void)_updateActiveSystemRoute;
 - (void)beginObserving;
+- (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)dealloc;
 - (void)endObserving;
 - (void)endpointController:(id)arg1 willAttemptToConnectToRoute:(id)arg2;

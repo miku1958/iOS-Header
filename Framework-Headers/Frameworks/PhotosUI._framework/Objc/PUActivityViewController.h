@@ -42,7 +42,7 @@
 + (BOOL)needsConfidentialityCheckForActivityType:(id)arg1;
 + (id)photosApplicationActivities;
 - (void).cxx_destruct;
-- (void)_activity:(id)arg1 didComplete:(BOOL)arg2;
+- (void)_activity:(id)arg1 category:(long long)arg2 didComplete:(BOOL)arg3;
 - (void)_cancel;
 - (void)_cleanUpActivityState;
 - (void)_handlePostReadyToInteractUpdatesIfNeeded;

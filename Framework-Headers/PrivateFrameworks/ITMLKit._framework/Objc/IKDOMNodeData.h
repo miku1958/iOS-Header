@@ -14,18 +14,23 @@
     BOOL _childrenUpdated;
     BOOL _subtreeUpdated;
     BOOL _autoHighlightRead;
-    BOOL _bindingUpdated;
-    BOOL _dataUpdated;
+    BOOL _bindingParsed;
+    BOOL _rulesParsed;
+    BOOL _prototypesResolved;
+    BOOL _dataResolved;
     IKDOMNode *_ownerJSNode;
     NSMutableDictionary *_featuresMap;
 }
 
 @property (nonatomic, getter=isAutoHighlightRead) BOOL autoHighlightRead; // @synthesize autoHighlightRead=_autoHighlightRead;
-@property (nonatomic, getter=isBindingUpdated) BOOL bindingUpdated; // @synthesize bindingUpdated=_bindingUpdated;
+@property (nonatomic, getter=isBindingParsed) BOOL bindingParsed; // @synthesize bindingParsed=_bindingParsed;
 @property (nonatomic, getter=isChildrenUpdated) BOOL childrenUpdated; // @synthesize childrenUpdated=_childrenUpdated;
-@property (nonatomic, getter=isDataUpdated) BOOL dataUpdated; // @synthesize dataUpdated=_dataUpdated;
+@property (readonly, nonatomic) BOOL containsUpdates;
+@property (nonatomic, getter=isDataResolved) BOOL dataResolved; // @synthesize dataResolved=_dataResolved;
 @property (strong, nonatomic) NSMutableDictionary *featuresMap; // @synthesize featuresMap=_featuresMap;
 @property (weak, nonatomic) IKDOMNode *ownerJSNode; // @synthesize ownerJSNode=_ownerJSNode;
+@property (nonatomic, getter=arePrototypesResolved) BOOL prototypesResolved; // @synthesize prototypesResolved=_prototypesResolved;
+@property (nonatomic, getter=areRulesParsed) BOOL rulesParsed; // @synthesize rulesParsed=_rulesParsed;
 @property (nonatomic, getter=isSubtreeUpdated) BOOL subtreeUpdated; // @synthesize subtreeUpdated=_subtreeUpdated;
 @property (nonatomic, getter=isUpdated) BOOL updated; // @synthesize updated=_updated;
 

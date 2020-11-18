@@ -102,6 +102,7 @@
 - (void)logErrorGettingChangedRecordsContentForIdentifiers:(id)arg1 error:(id)arg2;
 - (void)logErrorLoadingTemplates:(id)arg1;
 - (void)logErrorMergingCopiedAsideContent:(id)arg1;
+- (void)logErrorMigratingBackupInclusionStatus:(id)arg1;
 - (void)logErrorMitigatingDuplicates:(id)arg1;
 - (void)logErrorPinningContextToCurrentQueryGenerationToken:(id)arg1;
 - (void)logErrorProcessingChangeTransactionsToUpdateThumbnails:(id)arg1;

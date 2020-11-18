@@ -26,6 +26,7 @@
 - (struct CGRect)fillFrameWithBoundingSize:(struct CGSize)arg1;
 - (id)initWithRepeatableImageFill:(id)arg1 imageView:(id)arg2;
 - (void)layoutSubviews;
+- (void)load;
 - (void)pause;
 - (void)play;
 - (void)setContentFrame:(struct CGRect)arg1;

@@ -19,6 +19,8 @@
 @property (nonatomic) double _CDPortraitMetadataKey__decayRate; // @dynamic _CDPortraitMetadataKey__decayRate;
 @property (copy, nonatomic) NSString *_CDPortraitMetadataKey__osBuild; // @dynamic _CDPortraitMetadataKey__osBuild;
 @property (nonatomic) double _CDPortraitMetadataKey__score; // @dynamic _CDPortraitMetadataKey__score;
+@property (copy, nonatomic) NSString *_DKAirPlayPredictionMetadataKey__outputDeviceID; // @dynamic _DKAirPlayPredictionMetadataKey__outputDeviceID;
+@property (copy, nonatomic) NSString *_DKAirPlayPredictionMetadataKey__subtype; // @dynamic _DKAirPlayPredictionMetadataKey__subtype;
 @property (copy, nonatomic) NSNumber *_DKAppInstallMetadataKey__isInstall; // @dynamic _DKAppInstallMetadataKey__isInstall;
 @property (copy, nonatomic) NSString *_DKAppInstallMetadataKey__primaryCategory; // @dynamic _DKAppInstallMetadataKey__primaryCategory;
 @property (strong, nonatomic) NSData *_DKAppInstallMetadataKey__subCategories; // @dynamic _DKAppInstallMetadataKey__subCategories;

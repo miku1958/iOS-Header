@@ -61,7 +61,9 @@
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (double)_accessibilityZoomScale;
 - (void)_announceDelayedStatus;
+- (double)_axAllowedPagingOverlap;
 - (id)_axHorizontalScrollBar;
+- (BOOL)_axScrollViewPagingEnabled;
 - (void)_axSetHorizontalScrollBar:(id)arg1;
 - (void)_axSetVerticalScrollBar:(id)arg1;
 - (BOOL)_axShouldScrollToAlignWithPage;

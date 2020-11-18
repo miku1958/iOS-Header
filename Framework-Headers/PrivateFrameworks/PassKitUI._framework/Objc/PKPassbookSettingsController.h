@@ -12,7 +12,7 @@
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKSwitchSpinnerTableCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
+@class NSArray, NSMutableDictionary, NSString, PKAccountService, PKExpressPassController, PKPaymentPreference, PKPaymentPreferenceCard, PKPaymentPreferencesViewController, PKPaymentSetupAboutViewController, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentWebService, PSSpecifier;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDelegate, PKPassbookSettingsDataSource, PKPassbookSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol;
 
 @interface PKPassbookSettingsController : NSObject <PKPaymentServiceDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPaymentDataProviderDelegate, PKSwitchSpinnerTableCellDelegate, PKPaymentPassTableCellDelegate>
@@ -33,6 +33,7 @@
     NSArray *_paymentPassSpecifiers;
     NSArray *_otherPassSpecifiers;
     NSArray *_companionPasses;
+    NSArray *_hiddenCompanionPasses;
     NSArray *_companionPassSpecifiers;
     NSArray *_lockscreenSwitchSpecifiers;
     NSArray *_handoffSwitchSpecifiers;
@@ -51,11 +52,13 @@
     PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _registeringForPeerPayment;
     PKExpressPassController *_expressPassController;
+    PKAccountService *_accountService;
+    NSMutableDictionary *_pairedDeviceSupportsFeatureByAccountID;
     BOOL _hasExpressCapablePass;
     NSString *_expressTransitSubtitleText;
     NSString *_expressTransitSectionFooterText;
     PSSpecifier *_defaultExpressTransitSpecifier;
-    NSMutableDictionary *_lastestTransitBalanceModel;
+    NSMutableDictionary *_latestTransitBalanceModel;
     id<PKPaymentDataProvider> _companionPaymentDataProvider;
     int _notifyToken;
     id<PKPassbookSettingsDelegate> _delegate;
@@ -68,7 +71,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_accountServiceAccountDidChangeNotification:(id)arg1;
 - (id)_bridgeSpecifiers;
+- (void)_checkPairedDeviceSupportOfHiddenPassesAndRefreshUIIfNecessary;
 - (id)_companionPassSpecifiers;
 - (id)_currentDefaultPaymentPass;
 - (id)_defaultContactEmailSpecifier;
@@ -110,6 +115,7 @@
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1;
 - (void)_presentPeerPaymentSetupFlowForSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentPeerPaymentSetupFlowWithAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_refreshPasses;
 - (void)_regionConfigurationDidChangeNotification;
 - (void)_registerForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_reloadPassData;
@@ -130,6 +136,7 @@
 - (void)_unregisterForPeerPaymentWithSpecifier:(id)arg1;
 - (void)_updateAddButtonSpecifier;
 - (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPassWithUniqueIdentifier:(id)arg3;
+- (void)_updateCardSpecifier:(id)arg1 withAccountStateForPaymentPass:(id)arg2;
 - (void)_updateCardsGroupSpecifier;
 - (void)_updateCompanionGroupSpecifier;
 - (void)_updateCompanionPassesAddButton;
@@ -143,7 +150,7 @@
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 context:(long long)arg3;
 - (void)openExpressTransitSettings:(id)arg1;
-- (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2;
+- (void)openPaymentSetupWithMode:(long long)arg1 referrerIdentifier:(id)arg2 allowedFeatureIdentifiers:(id)arg3;
 - (void)openPeerPaymentSetupWithCurrenyAmount:(id)arg1 state:(unsigned long long)arg2 senderAddress:(id)arg3;
 - (id)passWithUniqueIdentifier:(id)arg1;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
@@ -155,6 +162,7 @@
 - (void)refreshPasses;
 - (void)refreshPeerPaymentStatus;
 - (void)removeFooterForSpecifier:(id)arg1;
+- (id)rendererStateForPaymentPass:(id)arg1;
 - (id)specifiers;
 - (void)switchSpinnerCell:(id)arg1 hasToggledSwitch:(BOOL)arg2;
 

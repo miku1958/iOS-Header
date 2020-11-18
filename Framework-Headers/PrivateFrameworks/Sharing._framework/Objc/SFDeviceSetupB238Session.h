@@ -121,13 +121,14 @@
     BOOL _pauseAfterPreAuth;
     unsigned char _stereoCounterpartColor;
     BOOL _touchRemoteEnabled;
-    unsigned int _testFlags;
+    int _bonjourTestState;
     NSDictionary *_additionalMetrics;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     SFDevice *_peerDevice;
     unsigned long long _peerFeatureFlags;
     NSDictionary *_preAuthResponse;
     UIViewController *_presentingViewController;
+    unsigned long long _testFlags;
     CDUnknownBlockType _preAuthHandler;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _promptForAppleMusicHandler;
@@ -148,6 +149,7 @@
 }
 
 @property (copy, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
+@property (readonly, nonatomic) int bonjourTestState; // @synthesize bonjourTestState=_bonjourTestState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -179,7 +181,7 @@
 @property (readonly, nonatomic) NSString *selectedSiriLanguage;
 @property (readonly, nonatomic) unsigned char stereoCounterpartColor; // @synthesize stereoCounterpartColor=_stereoCounterpartColor;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned int testFlags; // @synthesize testFlags=_testFlags;
+@property (nonatomic) unsigned long long testFlags; // @synthesize testFlags=_testFlags;
 @property (nonatomic) BOOL touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
 
 - (void).cxx_destruct;

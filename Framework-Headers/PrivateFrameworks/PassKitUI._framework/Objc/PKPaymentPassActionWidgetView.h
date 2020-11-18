@@ -11,28 +11,33 @@
 
 @interface PKPaymentPassActionWidgetView : UIView
 {
-    PKPaymentPass *_pass;
-    id<PKPaymentPassActionWidgetViewDelegate> _delegate;
-    PKPeerPaymentAccount *_peerPaymentAccount;
     NSArray *_displayableWidgets;
     NSString *_phoneNumber;
     NSString *_website;
     NSString *_email;
-    unsigned long long _widgetLayout;
+    unsigned long long _widgetViewStyle;
+    BOOL _usesAccessibilityLayout;
+    unsigned long long _numberOfWidgetsPerRow;
+    PKPeerPaymentAccount *_peerPaymentAccount;
+    PKPaymentPass *_paymentPass;
+    id<PKPaymentPassActionWidgetViewDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<PKPaymentPassActionWidgetViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
+@property (strong, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
 
 - (void).cxx_destruct;
 - (id)_createButtonForTitle:(id)arg1 image:(id)arg2;
 - (void)_determineWidgetContentWithAvailableWidgets;
 - (void)cleanUpExistingWidgets;
-- (BOOL)hasWidgets;
-- (id)initWithPass:(id)arg1 delegate:(id)arg2;
-- (id)initWithPass:(id)arg1 delegate:(id)arg2 peerPaymentAccount:(id)arg3;
+- (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
-- (void)setPeerPaymentAccount:(id)arg1;
+- (unsigned long long)numberOfRows;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateDesiredLayout;
+- (void)updateNumberOfWidgetsPerRow;
+- (void)updateUseAccessibilityLayout;
 
 @end
 

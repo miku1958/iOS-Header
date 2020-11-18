@@ -14,6 +14,7 @@
 
 + (id)ams_unescapedStringForString:(id)arg1;
 - (id)ams_URLByAppendingQueryParameters:(id)arg1;
+- (id)ams_URLByDeletingTrailingSlash;
 - (id)ams_URLByReplaceingQueryParameters:(id)arg1;
 - (id)ams_URLByReplacingSchemeWithScheme:(id)arg1;
 - (id)ams_schemeSwizzledURL;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOAbstractMapServiceTicket : GEOAbstractTicket <GEOMapServiceTicket>
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSArray *_retainedSearchMetadata;
     unsigned int _dymSuggestionVisibleTime;
     BOOL _showDymSuggestionCloseButton;
+    GEOPDMerchantLookupResult *_merchantLookupResult;
 }
 
 @property (readonly, nonatomic) NSArray *browseCategories; // @synthesize browseCategories=_browseCategories;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *displayHeaderSubstitutes; // @synthesize displayHeaderSubstitutes=_displayHeaderSubstitutes;
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime; // @synthesize dymSuggestionVisibleTime=_dymSuggestionVisibleTime;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult; // @synthesize merchantLookupResult=_merchantLookupResult;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion; // @synthesize resultBoundingRegion=_resultBoundingRegion;

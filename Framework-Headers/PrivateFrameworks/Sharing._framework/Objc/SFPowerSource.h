@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface SFPowerSource : NSObject <NSSecureCoding>
 {
@@ -26,7 +26,9 @@
     unsigned int _changes;
     NSString *_accessoryCategory;
     NSString *_accessoryID;
+    NSData *_batteryCaseAddress;
     double _chargeLevel;
+    long long _color;
     long long _familyCode;
     NSString *_groupID;
     NSArray *_LEDs;
@@ -58,9 +60,11 @@
 @property (nonatomic) BOOL adapterSharedSource; // @synthesize adapterSharedSource=_adapterSharedSource;
 @property (nonatomic) long long adapterSourceID; // @synthesize adapterSourceID=_adapterSourceID;
 @property (nonatomic) BOOL added; // @synthesize added=_added;
+@property (copy, nonatomic) NSData *batteryCaseAddress; // @synthesize batteryCaseAddress=_batteryCaseAddress;
 @property (nonatomic) unsigned int changes; // @synthesize changes=_changes;
 @property (nonatomic) double chargeLevel; // @synthesize chargeLevel=_chargeLevel;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
+@property (nonatomic) long long color; // @synthesize color=_color;
 @property (nonatomic) long long familyCode; // @synthesize familyCode=_familyCode;
 @property (copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic, getter=isInternal) BOOL internal;

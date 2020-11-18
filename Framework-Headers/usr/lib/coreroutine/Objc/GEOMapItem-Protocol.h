@@ -156,6 +156,7 @@
 - (GEOMapRegion *)_arrivalMapRegionForTransportType:(int)arg1;
 - (GEOMapItemAdditionalPlaceInfo *)_asPlaceInfo;
 - (NSURL *)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (NSURL *)_bestHeroBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (NSURL *)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (NSArray *)_localizedCategoryNamesForType:(unsigned int)arg1;

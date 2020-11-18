@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) double lastNetworkChangedTime;
 @property (readonly, nonatomic) NSString *model;
 @property (readonly, nonatomic) NSString *networkType;
+@property (readonly, nonatomic) NSString *osBuildNumber;
 @property (readonly, nonatomic) NSNumber *pixelRatio;
 @property (readonly, nonatomic) NSString *productType;
 @property (readonly, nonatomic) BOOL runningAnInternalBuild;

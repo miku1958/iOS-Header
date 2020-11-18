@@ -11,7 +11,8 @@
 #import <VideosUI/VUILocalContentProtocol-Protocol.h>
 #import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UICollectionView, VUILibraryCollectionHeaderView, VUILibraryLockupViewCell, VUIMediaEntityFetchRequest;
+@class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UICollectionView, VUICollectionHeaderView, VUILibraryLockupViewCell, VUIMediaEntityFetchRequest;
+@protocol VUILibraryGridCollectionViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryGridCollectionViewController : VUILibraryFetchControllerViewController <VUIMediaEntitiesFetchControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, VUILocalContentProtocol>
@@ -20,10 +21,15 @@ __attribute__((visibility("hidden")))
     BOOL _displaySortFilter;
     struct CGSize _cellSize;
     NSMutableDictionary *_cellMetrics;
-    VUILibraryCollectionHeaderView *_sizingHeaderView;
+    VUICollectionHeaderView *_sizingHeaderView;
+    BOOL _hideLockupTitles;
     BOOL _forceBackButton;
+    id<VUILibraryGridCollectionViewControllerDelegate> _delegate;
     long long _gridFilter;
+    long long _gridStyle;
+    long long _gridType;
     UIBarButtonItem *_libraryBarButton;
+    NSString *_pageType;
     VUIMediaEntityFetchRequest *_fetchRequest;
     UICollectionView *_collectionView;
     NSArray *_totalResults;
@@ -37,14 +43,19 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (strong, nonatomic) UIBarButtonItem *currentNavBarButtonItem; // @synthesize currentNavBarButtonItem=_currentNavBarButtonItem;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<VUILibraryGridCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUIMediaEntityFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property (nonatomic) BOOL forceBackButton; // @synthesize forceBackButton=_forceBackButton;
 @property (strong, nonatomic) NSArray *genreGroupedResults; // @synthesize genreGroupedResults=_genreGroupedResults;
 @property (nonatomic) long long gridFilter; // @synthesize gridFilter=_gridFilter;
+@property (nonatomic) long long gridStyle; // @synthesize gridStyle=_gridStyle;
+@property (nonatomic) long long gridType; // @synthesize gridType=_gridType;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideLockupTitles; // @synthesize hideLockupTitles=_hideLockupTitles;
 @property (strong, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
 @property (nonatomic) BOOL onlyShowLocalContent;
+@property (strong, nonatomic) NSString *pageType; // @synthesize pageType=_pageType;
 @property (strong, nonatomic) VUILibraryLockupViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *totalResults; // @synthesize totalResults=_totalResults;
@@ -73,7 +84,9 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)setTitle:(id)arg1 withLargeTitleDisplayEnabled:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithLatestMediaEntities:(id)arg1;
 - (void)updateWithLatestMediaEntities:(id)arg1 andChangeSet:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

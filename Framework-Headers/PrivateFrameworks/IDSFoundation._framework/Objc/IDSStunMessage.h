@@ -37,7 +37,7 @@
 - (void)_addUUIDAttribute:(long long)arg1 value:(id)arg2;
 - (void)_addXORAddressAttribute:(long long)arg1 value:(struct sockaddr *)arg2;
 - (BOOL)addAttribute:(struct IDSStunAttribute *)arg1;
-- (BOOL)dataIndicationToBuffer:(char *)arg1 outputLength:(int *)arg2 data:(char *)arg3 dataLen:(int)arg4 keyData:(id)arg5;
+- (BOOL)dataIndicationToBuffer:(char *)arg1 outputLength:(int *)arg2 data:(char *)arg3 dataLen:(int)arg4 keyData:(id)arg5 remainingLength:(unsigned long long)arg6;
 - (void)dealloc;
 - (BOOL)decryptAES128CTRStunAttributes:(id)arg1;
 - (id)description;
@@ -50,11 +50,11 @@
 - (void)setAttributes:(id)arg1;
 - (void)setTransactionID:(id)arg1;
 - (void)setTransactionID:(id)arg1 attributes:(id)arg2;
-- (BOOL)stunRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 reqCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8;
-- (BOOL)stunResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 reqCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7;
+- (BOOL)stunRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 reqCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8 remainingLength:(unsigned long long)arg9;
+- (BOOL)stunResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 reqCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7 remainingLength:(unsigned long long)arg8;
 - (BOOL)verifyMessageIntegrityWithKey:(id)arg1 inputBuffer:(char *)arg2 inputLength:(int)arg3;
-- (BOOL)write:(char *)arg1 outputLength:(int *)arg2;
-- (BOOL)write:(char *)arg1 outputLength:(int *)arg2 internal:(BOOL)arg3;
+- (BOOL)write:(char *)arg1 outputLength:(int *)arg2 remainingLength:(unsigned long long)arg3;
+- (BOOL)write:(char *)arg1 outputLength:(int *)arg2 remainingLength:(unsigned long long)arg3 internal:(BOOL)arg4;
 
 @end
 

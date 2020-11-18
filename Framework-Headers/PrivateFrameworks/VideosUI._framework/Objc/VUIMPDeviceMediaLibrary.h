@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)_isInitialUpdateInProgress;
 + (BOOL)_isUpdateInProgress;
 - (void).cxx_destruct;
+- (void)_handleApplicationDidBecomeActiveNotification:(id)arg1;
+- (void)_handleApplicationWillResignActiveNotification:(id)arg1;
 - (void)_handleMediaLibraryContentsDidChangeNotification:(id)arg1;
 - (void)_handleMediaLibraryIsUpdateInProgressDidChangeNotification:(id)arg1;
 - (id)_imageLoadOperationWithParams:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(BOOL)arg3;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isUpdating;
 - (id)saveMediaEntity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)title;
+- (void)updateFromCloudWithReason:(long long)arg1;
 - (void)updateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -14,6 +14,7 @@
 {
     BOOL _isActive;
     BOOL _supportsCinnamonHW;
+    BOOL _supportsCinnamonAntimonyGloryF;
     NSUUID *_nanoRegistryPairingID;
     NSUUID *_nsuuid;
     NSString *_uniqueIDOverride;
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (copy, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 @property (copy, nonatomic) NSString *service; // @synthesize service=_service;
+@property (nonatomic) BOOL supportsCinnamonAntimonyGloryF; // @synthesize supportsCinnamonAntimonyGloryF=_supportsCinnamonAntimonyGloryF;
 @property (nonatomic) BOOL supportsCinnamonHW; // @synthesize supportsCinnamonHW=_supportsCinnamonHW;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSString *uniqueIDOverride; // @synthesize uniqueIDOverride=_uniqueIDOverride;

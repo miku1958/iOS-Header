@@ -97,6 +97,7 @@
 @property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) AXElement *remoteParent;
 @property (readonly, nonatomic) BOOL representsScannerGroup; // @synthesize representsScannerGroup=_representsScannerGroup;
+@property (readonly, nonatomic) NSString *roleDescription;
 @property (readonly, nonatomic) struct _NSRange rowRange;
 @property (readonly, nonatomic) long long scannerActivateBehavior;
 @property (readonly, nonatomic) unsigned long long scanningBehaviorTraits;

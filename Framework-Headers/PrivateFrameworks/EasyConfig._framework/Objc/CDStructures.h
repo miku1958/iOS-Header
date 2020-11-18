@@ -92,6 +92,7 @@ struct HTTPMessagePrivate {
     char *_field35;
     int _field36;
     unsigned long long _field37;
+    unsigned int _field38;
 };
 
 struct iovec {

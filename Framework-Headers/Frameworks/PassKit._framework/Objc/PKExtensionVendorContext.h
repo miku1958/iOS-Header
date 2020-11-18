@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
@@ -33,6 +34,7 @@
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
+- (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(id)arg1 signatureRequest:(id)arg2;
 - (id)entitlementWhitelist;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidBecomeActive;

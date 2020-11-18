@@ -6,41 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class NSShadow, UIColor, VUIImageLayout, VUITextLayout;
-@protocol VUIOverlayLayoutProtocol;
+@class NSShadow, TVImageLayout, UIColor, VUIButtonLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUICardViewLayout : NSObject
 {
-    BOOL _shouldLayoutImageFirst;
+    BOOL _hideFloatingBackground;
     NSShadow *_shadow;
     UIColor *_backgroundColor;
+    UIColor *_darkBackgroundColor;
     UIColor *_highlightColor;
-    VUIImageLayout *_imageLayout;
+    UIColor *_darkHighlightColor;
+    long long _imagePosition;
+    TVImageLayout *_imageLayout;
     VUITextLayout *_secondaryTextLayout;
     VUITextLayout *_titleTextLayout;
     VUITextLayout *_subtitleTextLayout;
-    VUIImageLayout *_appImageLayout;
-    id<VUIOverlayLayoutProtocol> _overlayLayout;
-    struct CGSize _imageSize;
+    TVImageLayout *_appImageLayout;
+    VUIButtonLayout *_buttonLayout;
     struct TVCornerRadii _borderRadii;
 }
 
-@property (strong, nonatomic) VUIImageLayout *appImageLayout; // @synthesize appImageLayout=_appImageLayout;
+@property (strong, nonatomic) TVImageLayout *appImageLayout; // @synthesize appImageLayout=_appImageLayout;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) struct TVCornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property (strong, nonatomic) VUIButtonLayout *buttonLayout; // @synthesize buttonLayout=_buttonLayout;
+@property (strong, nonatomic) UIColor *darkBackgroundColor; // @synthesize darkBackgroundColor=_darkBackgroundColor;
+@property (strong, nonatomic) UIColor *darkHighlightColor; // @synthesize darkHighlightColor=_darkHighlightColor;
+@property (nonatomic) BOOL hideFloatingBackground; // @synthesize hideFloatingBackground=_hideFloatingBackground;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
-@property (strong, nonatomic) VUIImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
-@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (strong, nonatomic) id<VUIOverlayLayoutProtocol> overlayLayout; // @synthesize overlayLayout=_overlayLayout;
+@property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
+@property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 @property (strong, nonatomic) VUITextLayout *secondaryTextLayout; // @synthesize secondaryTextLayout=_secondaryTextLayout;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
-@property (nonatomic) BOOL shouldLayoutImageFirst; // @synthesize shouldLayoutImageFirst=_shouldLayoutImageFirst;
 @property (strong, nonatomic) VUITextLayout *subtitleTextLayout; // @synthesize subtitleTextLayout=_subtitleTextLayout;
 @property (strong, nonatomic) VUITextLayout *titleTextLayout; // @synthesize titleTextLayout=_titleTextLayout;
 
++ (double)cardHeightForElementType:(unsigned long long)arg1;
++ (double)cardHeightForElementType:(unsigned long long)arg1 width:(double)arg2;
 - (void).cxx_destruct;
-- (struct CGSize)imageSizeWithWidth:(double)arg1;
 - (id)init;
 
 @end

@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)removeOutputDevice:(id)arg1;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
+- (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setVolume:(float)arg1;
 
 @end

@@ -17,20 +17,23 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     BOOL _updating;
+    BOOL _infraDisabledChanged;
     BOOL _trafficPeerChanged;
     BOOL _wakeOnWirelessEnabledChanged;
+    BOOL _infraDisabled;
     BOOL _wakeOnWirelessEnabled;
     unsigned int _wifiFlags;
     int _wifiState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    NSString *_label;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    NSString *_label;
     NSArray *_trafficPeers;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) BOOL infraDisabled; // @synthesize infraDisabled=_infraDisabled;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;

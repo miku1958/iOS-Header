@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString, NSURL, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
+@class NSMutableDictionary, NSObject, NSString, NSURL, PKPaymentDevice, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
 @protocol OS_dispatch_queue, PKPeerPaymentWebServiceArchiver, PKPeerPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPeerPaymentWebService : PKWebService <NSURLSessionTaskDelegate>
@@ -16,6 +16,7 @@
     PKSecureElement *_secureElement;
     NSMutableDictionary *_prewarmedDeviceScorers;
     NSObject<OS_dispatch_queue> *_prewarmedDeviceScorersQueue;
+    PKPaymentDevice *_paymentDevice;
     BOOL _sharedService;
     PKPeerPaymentWebServiceContext *_context;
     id<PKPeerPaymentWebServiceArchiver> _archiver;
@@ -41,12 +42,12 @@
 - (void)_archiveContext;
 - (id)_createDeviceScorerForEndpoint:(id)arg1 recipientAddress:(id)arg2;
 - (id)_deviceIdentifier;
-- (id)_deviceMetadata;
 - (void)_deviceRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deviceScoreForEndpoint:(id)arg1 recipientAddress:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_deviceScoreForEndpoint:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleRetryAfterRegisterWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_isValidResponse:(id)arg1 error:(id)arg2;
+- (void)_peerPaymentDeviceMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateRequestWithCurrentTargetDevice:(id)arg1;
 - (id)badRequestErrorWithResponse:(id)arg1;

@@ -4,31 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <TVMLKit/TVViewLayout.h>
 
-#import <VideosUI/VUIOverlayLayoutProtocol-Protocol.h>
-
-@class NSString, VUIImageLayout, VUIProgressBarLayout;
+@class TVImageLayout, VUIProgressBarLayout, VUITextBadgeLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIOverlayLayout : NSObject <VUIOverlayLayoutProtocol>
+@interface VUIOverlayLayout : TVViewLayout
 {
-    VUIImageLayout *_appImageLayout;
+    BOOL _isDarkTheme;
+    long long _overlayType;
+    VUITextLayout *_titleLayout;
+    VUITextBadgeLayout *_textBadgeLayout;
+    TVImageLayout *_badgeLayout;
     VUIProgressBarLayout *_progressBarLayout;
-    struct UIEdgeInsets _padding;
 }
 
-@property (strong, nonatomic) VUIImageLayout *appImageLayout; // @synthesize appImageLayout=_appImageLayout;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property (strong, nonatomic) TVImageLayout *badgeLayout; // @synthesize badgeLayout=_badgeLayout;
+@property (nonatomic) long long overlayType; // @synthesize overlayType=_overlayType;
 @property (strong, nonatomic) VUIProgressBarLayout *progressBarLayout; // @synthesize progressBarLayout=_progressBarLayout;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) long long type;
+@property (strong, nonatomic) VUITextBadgeLayout *textBadgeLayout; // @synthesize textBadgeLayout=_textBadgeLayout;
+@property (strong, nonatomic) VUITextLayout *titleLayout; // @synthesize titleLayout=_titleLayout;
 
-+ (id)overlayLayoutForInterfaceIdiom:(long long)arg1;
++ (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 element:(id)arg3;
 - (void).cxx_destruct;
+- (id)_editorialTitleLayout;
+- (id)_navBrickTitleLayout;
+- (id)_ribbonTitleLayout;
+- (id)_spotlightTitleLayout;
+- (void)_updateLayoutWithElement:(id)arg1 andType:(long long)arg2;
 
 @end
 

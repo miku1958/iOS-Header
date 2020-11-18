@@ -11,11 +11,14 @@
 
 @interface PKNumberPadSuggestionsView : UIStackView
 {
+    NSArray *_suggestionButtons;
     id<PKNumberPadSuggestionsViewDelegate> _delegate;
     NSArray *_suggestions;
     UIColor *_buttonTextColor;
+    UIColor *_buttonBackgroundColor;
 }
 
+@property (copy, nonatomic) UIColor *buttonBackgroundColor; // @synthesize buttonBackgroundColor=_buttonBackgroundColor;
 @property (copy, nonatomic) UIColor *buttonTextColor; // @synthesize buttonTextColor=_buttonTextColor;
 @property (weak, nonatomic) id<PKNumberPadSuggestionsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;

@@ -51,7 +51,6 @@
 - (void)_startXPCActivity;
 - (void)_xpcTimerFired:(id)arg1;
 - (void)dealloc;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1;
 - (void)invalidate;
 - (void)start;

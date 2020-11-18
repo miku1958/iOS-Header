@@ -7,8 +7,14 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (HUAdditions)
+
+@property (readonly, nonatomic) BOOL hu_isHomeKnowledgeBasedArticleURL;
+
++ (id)_localeString;
 + (id)hu_allowAccessWhileLockedSettingsURL;
 + (id)hu_applePrivacyURL;
++ (id)hu_learnAboutNetworksRequiringProfilesURL;
++ (id)hu_learnAboutUnshareableNetworksURL;
 + (id)hu_learnToAddAccessoriesURL;
 + (id)hu_locationDeviceSettingsURL;
 + (id)hu_locationServicesSettingsURL;

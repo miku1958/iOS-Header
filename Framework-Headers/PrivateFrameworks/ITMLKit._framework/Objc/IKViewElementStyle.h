@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ITMLKit/NSCopying-Protocol.h>
+
 @class IKCSSRule, IKColor, IKFourTuple, NSArray, NSMutableDictionary, NSNumber, NSShadow, NSString, NSURL, UIColor;
 
-@interface IKViewElementStyle : NSObject
+@interface IKViewElementStyle : NSObject <NSCopying>
 {
     BOOL _filterBlockedStyles;
     NSString *_classDescriptorString;
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) NSString *itemWidth;
 @property (readonly, nonatomic) NSString *labelsState;
 @property (readonly, nonatomic) NSNumber *letterSpacing;
+@property (readonly, nonatomic) NSNumber *lineHeight;
 @property (readonly, nonatomic) NSString *lockupType;
 @property (readonly, nonatomic) NSString *maxHeight;
 @property (readonly, nonatomic) long long maxTextLines;
@@ -95,12 +98,15 @@
 - (void)_addDeclaration:(id)arg1;
 - (void)_addElementStyle:(id)arg1;
 - (void)_addParentStyle:(id)arg1;
-- (struct UIEdgeInsets)_edgeInsetsForStyleKey:(id)arg1;
+- (id)_declarationForStyleName:(id)arg1 expectedClass:(Class)arg2;
+- (struct UIEdgeInsets)_edgeInsetsForStyleName:(id)arg1;
 - (id)_gradientFromString:(id)arg1;
 - (id)_newColorFromString:(id)arg1;
 - (id)_styleNameForAlias:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;
+- (unsigned long long)edgeFlagForStyle:(id)arg1;
 - (id)initWithCSSRule:(id)arg1 filterBlockedStyles:(BOOL)arg2 selStr:(id)arg3;
 - (id)initWithClassSelector:(id)arg1;
 - (id)initWithStyle:(id)arg1 classSelector:(id)arg2;

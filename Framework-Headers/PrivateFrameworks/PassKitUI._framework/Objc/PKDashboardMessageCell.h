@@ -26,6 +26,8 @@
 @property (copy, nonatomic) CDUnknownBlockType actionOnDismiss; // @synthesize actionOnDismiss=_actionOnDismiss;
 @property (strong, nonatomic) UIImage *dismissImage; // @synthesize dismissImage=_dismissImage;
 @property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
+@property (readonly, nonatomic) UILabel *labelMessage; // @synthesize labelMessage=_labelMessage;
+@property (readonly, nonatomic) UILabel *labelTitle; // @synthesize labelTitle=_labelTitle;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) BOOL smallDevice; // @synthesize smallDevice=_smallDevice;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -36,9 +38,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (void)resetFonts;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

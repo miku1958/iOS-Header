@@ -4,17 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@interface WLKWatchListModificationRequestOperation : WLKNetworkRequestOperation
+@class NSString, WLKWatchListModificationResponse;
+
+@interface WLKWatchListModificationRequestOperation : WLKUTSNetworkRequestOperation
 {
+    unsigned long long _action;
+    NSString *_itemID;
+    WLKWatchListModificationResponse *_response;
 }
 
-- (id)initWithAction:(unsigned long long)arg1 canonicalID:(id)arg2;
-- (id)initWithAction:(unsigned long long)arg1 channelID:(id)arg2 externalID:(id)arg3;
-- (id)initWithAction:(unsigned long long)arg1 identifier:(id)arg2;
-- (id)initWithAction:(unsigned long long)arg1 statsID:(id)arg2;
-- (id)responseProcessor;
+@property (readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
+@property (readonly, copy, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
+@property (readonly, nonatomic) WLKWatchListModificationResponse *response; // @synthesize response=_response;
+
+- (void).cxx_destruct;
+- (id)initWithAction:(unsigned long long)arg1 canonicalID:(id)arg2 caller:(id)arg3;
+- (id)initWithAction:(unsigned long long)arg1 channelID:(id)arg2 externalID:(id)arg3 caller:(id)arg4;
+- (id)initWithAction:(unsigned long long)arg1 identifier:(id)arg2 caller:(id)arg3;
+- (id)initWithAction:(unsigned long long)arg1 statsID:(id)arg2 caller:(id)arg3;
+- (void)processResponse;
 
 @end
 

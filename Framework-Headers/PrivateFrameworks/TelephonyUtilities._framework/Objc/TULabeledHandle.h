@@ -13,11 +13,13 @@
 
 @interface TULabeledHandle : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _isSuggested;
     TUHandle *_handle;
     NSString *_label;
 }
 
 @property (readonly, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) BOOL isSuggested; // @synthesize isSuggested=_isSuggested;
 @property (readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
 
 + (BOOL)supportsSecureCoding;
@@ -28,7 +30,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithHandle:(id)arg1 label:(id)arg2;
+- (id)initWithHandle:(id)arg1 label:(id)arg2 isSuggested:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLabeledHandle:(id)arg1;
 

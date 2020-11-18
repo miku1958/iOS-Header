@@ -10,7 +10,8 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSOrderedSet, NSString, PKDashboardMessageCell, UIImage, UIScrollView, UITableViewCell;
+@class NSMutableDictionary, NSOrderedSet, NSString, PKDashboardMessageCell, UIImage, UIPageControl, UIScrollView, UITableViewCell;
+@protocol PKDashboardMessagesViewDelegate;
 
 @interface PKDashboardMessagesView : UIView <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 {
@@ -24,22 +25,35 @@
     UIImage *_dismissImage;
     unsigned long long _primaryIndex;
     struct UIEdgeInsets _insets;
+    double _widthForLastSizeCache;
+    double _maxTableViewHeight;
+    double _actionCellHeight;
+    UIPageControl *_pageControl;
+    NSString *_lastReportedDiscoveryIdentifier;
+    id<PKDashboardMessagesViewDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PKDashboardMessagesViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSOrderedSet *messages; // @synthesize messages=_messages;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (double)_actionCellHeightForSize:(struct CGSize)arg1;
 - (void)_configureActionCell:(id)arg1 withMessage:(id)arg2;
 - (void)_configureMessageCell:(id)arg1 withMessage:(id)arg2;
 - (double)_endOfItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexAtContentOffset:(struct CGPoint)arg1;
+- (double)_maxHeightForSize:(struct CGSize)arg1;
 - (id)_messageForTableView:(id)arg1;
+- (void)_pageControlChanged:(id)arg1;
 - (unsigned long long)_primaryIndexAtOffset:(struct CGPoint)arg1;
+- (void)_reportCurrentMessageToDiscoveryService;
 - (double)_startOfItemAtIndex:(unsigned long long)arg1;
 - (void)_switchPrimaryIndexToIndex:(unsigned long long)arg1;
+- (void)_updateSizeCacheIfNecessary;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithInsets:(struct UIEdgeInsets)arg1;
 - (void)layoutSubviews;
@@ -52,7 +66,8 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (void)updateWithMessages:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithMessages:(id)arg1 currentIndex:(unsigned long long)arg2;
 
 @end
 

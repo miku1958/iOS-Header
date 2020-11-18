@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NTPBIssueData;
 
 @interface NTPBPaidSubscriptionResult : PBCodable <NSCopying>
 {
@@ -20,6 +20,7 @@
     NSString *_groupFeedId;
     int _groupType;
     NSString *_iadQtoken;
+    NTPBIssueData *_issueData;
     int _paidSubscriptionConversionPointType;
     NSString *_parentFeedId;
     int _parentFeedType;
@@ -59,6 +60,7 @@
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
+@property (readonly, nonatomic) BOOL hasIssueData;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
 @property (readonly, nonatomic) BOOL hasParentFeedId;
 @property (nonatomic) BOOL hasParentFeedType;
@@ -70,6 +72,7 @@
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
+@property (strong, nonatomic) NTPBIssueData *issueData; // @synthesize issueData=_issueData;
 @property (nonatomic) int paidSubscriptionConversionPointType; // @synthesize paidSubscriptionConversionPointType=_paidSubscriptionConversionPointType;
 @property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;

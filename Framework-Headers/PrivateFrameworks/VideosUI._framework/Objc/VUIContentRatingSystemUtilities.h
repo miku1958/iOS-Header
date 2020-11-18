@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_cleanedRatingSystem:(id)arg1;
 + (BOOL)_isRatingSystemForMovies:(long long)arg1;
 + (BOOL)_isRatingSystemForMusic:(long long)arg1;
 + (BOOL)_isRatingSystemForTV:(long long)arg1;

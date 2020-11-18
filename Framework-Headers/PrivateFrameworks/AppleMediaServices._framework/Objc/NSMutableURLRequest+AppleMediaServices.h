@@ -26,6 +26,7 @@
 - (void)ams_addParameters:(id)arg1 encoding:(long long)arg2 compressBody:(BOOL)arg3 error:(id *)arg4;
 - (void)ams_addPrimaryiCloudIdentifierHeader;
 - (void)ams_addRequestingProcessWithClient:(id)arg1;
+- (void)ams_addSilentEnrollmentHeadersForAccount:(id)arg1;
 - (void)ams_addStoreFrontHeaderFromAccount:(id)arg1 bagContract:(id)arg2;
 - (void)ams_addTimezoneOffsetHeader;
 - (void)ams_addUserAgentHeaderFromClient:(id)arg1 additionalComponents:(id)arg2;

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FCIssueBookmark, NSDate, NSString;
+@class FCIssueBookmark, NSArray, NSDate, NSString;
 @protocol FCIssueReadingHistoryObserving;
 
 @protocol FCIssueReadingHistoryType
 
+@property (readonly, nonatomic) NSArray *allVisitedIssueIDs;
 @property (readonly, nonatomic) NSString *mostRecentlyVisitedIssueID;
+@property (readonly, nonatomic) NSArray *recentlyVisitedIssueIDs;
 
 - (void)addObserver:(id<FCIssueReadingHistoryObserving>)arg1;
 - (FCIssueBookmark *)bookmarkForLastVisitToIssueWithID:(NSString *)arg1;

@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) unsigned int connectionSeed;
 @property (readonly, nonatomic) NSString *containerId;
 @property (strong, nonatomic) CADisplayMode *currentMode;
+@property (readonly, nonatomic) NSString *currentOrientation;
 @property (readonly, nonatomic) NSString *deviceName;
 @property (readonly, nonatomic) unsigned int displayId;
 @property (readonly, nonatomic, getter=isExternal) BOOL external;

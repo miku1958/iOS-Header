@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_handleMessage:(id)arg1;
 - (void)handleMessage:(id)arg1;
+- (BOOL)hasEntitlement:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 - (id)initWithServiceName:(id)arg1;
 - (void)invalidate;

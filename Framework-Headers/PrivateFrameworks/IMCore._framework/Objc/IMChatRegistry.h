@@ -158,6 +158,7 @@
 - (void)_registerChatDictionary:(id)arg1 forChat:(id)arg2 isIncoming:(BOOL)arg3 newGUID:(id)arg4;
 - (void)_registerChatDictionary:(id)arg1 forChat:(id)arg2 isIncoming:(BOOL)arg3 newGUID:(id)arg4 shouldPostNotification:(BOOL)arg5;
 - (void)_registerCompletion:(CDUnknownBlockType)arg1 forQueryID:(id)arg2;
+- (void)_removeChatIdFromChatIdToLastMessageItemMap:(id)arg1;
 - (void)_removeFromGroupParticipantToChatsMap:(id)arg1;
 - (void)_resetChatReconstructionGroupMaps;
 - (void)_resetChatRegistry;

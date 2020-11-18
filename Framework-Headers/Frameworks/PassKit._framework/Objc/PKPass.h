@@ -19,6 +19,7 @@
     BOOL _voided;
     BOOL _hasStoredValue;
     BOOL _liveRenderedBackground;
+    BOOL _supportsCategoryVisualization;
     BOOL _revoked;
     unsigned long long _passType;
     NSString *_serialNumber;
@@ -53,6 +54,7 @@
 @property (copy, nonatomic) NSString *authenticationToken; // @dynamic authenticationToken;
 @property (readonly, nonatomic) NSArray *backFieldBuckets;
 @property (readonly, nonatomic) PKBarcode *barcode;
+@property (readonly, nonatomic) NSString *businessChatIdentifier;
 @property (readonly, nonatomic) PKImage *cardHolderPicture;
 @property (copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
 @property (copy, nonatomic) PKPassDisplayProfile *displayProfile; // @dynamic displayProfile;
@@ -110,6 +112,7 @@
 @property (readonly, nonatomic) NSArray *storeIdentifiers;
 @property (readonly, nonatomic) struct CGRect stripRect;
 @property (readonly, nonatomic) long long style;
+@property (nonatomic) BOOL supportsCategoryVisualization; // @synthesize supportsCategoryVisualization=_supportsCategoryVisualization;
 @property (copy, nonatomic) NSString *teamID; // @synthesize teamID=_teamID;
 @property (readonly, nonatomic) struct CGRect thumbnailRect;
 @property (readonly, nonatomic) long long transitType;

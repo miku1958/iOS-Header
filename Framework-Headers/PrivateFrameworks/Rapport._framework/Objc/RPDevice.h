@@ -26,6 +26,7 @@
     NSString *_contactID;
     NSString *_identifier;
     NSString *_idsDeviceIdentifier;
+    NSString *_model;
     NSString *_name;
     CURangingMeasurement *_relativeLocation;
     CUMobileDevice *_mobileDevice;
@@ -33,7 +34,6 @@
     NSData *_bleAdvertisementData;
     NSData *_bleDeviceAddress;
     NSUUID *_identifierUUID;
-    NSString *_model;
     CUPairedPeer *_pairedPeer;
     NSUUID *_pairingIdentifier;
     NSData *_txtData;
@@ -68,7 +68,7 @@
 @property (copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
 @property (readonly, nonatomic) int rawRSSI; // @synthesize rawRSSI=_rawRSSI;
-@property (readonly) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
+@property (strong) CURangingMeasurement *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 @property (readonly, nonatomic) int smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;
 @property (readonly, copy, nonatomic) NSData *txtData; // @synthesize txtData=_txtData;

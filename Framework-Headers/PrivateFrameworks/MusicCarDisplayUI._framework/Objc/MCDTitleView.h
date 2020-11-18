@@ -11,6 +11,7 @@
 @interface MCDTitleView : UIView
 {
     NSLayoutConstraint *_titlePaddingConstraint;
+    NSLayoutConstraint *_titleRightEdgeConstraint;
     BOOL _explicitTrack;
     BOOL _shouldUseMusicExplicitGlyph;
     UILabel *_titleLabel;

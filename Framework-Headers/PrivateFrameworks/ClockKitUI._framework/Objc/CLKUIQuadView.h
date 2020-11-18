@@ -16,10 +16,12 @@
     struct {
         unsigned int quadViewWillDisplay:1;
     } _delegateRespondsTo;
+    unsigned long long _frameNum;
     id<CLKUIQuadViewDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<CLKUIQuadViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) unsigned long long frameNum;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (nonatomic) long long preferredFramesPerSecond;
 @property (readonly, nonatomic) NSArray *quads;
@@ -27,19 +29,20 @@
 + (id)quadViewWithFrame:(struct CGRect)arg1;
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (void)_discardContents;
-- (void)_display;
+- (BOOL)_displayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleQuadArrayChange:(id)arg1;
-- (void)_prepareAndRenderForTime:(double)arg1;
+- (BOOL)_prepareAndRenderForTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_prerenderForTime:(double)arg1;
 - (id)_snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (void)addQuad:(id)arg1;
 - (void)addQuadsFromArray:(id)arg1;
 - (void)dealloc;
+- (void)discardContents;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)removeAllQuads;
 - (void)removeQuad:(id)arg1;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (BOOL)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (BOOL)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 
 @end

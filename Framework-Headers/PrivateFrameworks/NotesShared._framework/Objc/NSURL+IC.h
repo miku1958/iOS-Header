@@ -22,5 +22,6 @@
 
 + (id)ic_urlFromWeblocFileAtURL:(id)arg1;
 - (id)dedupedURLWithProhibitedNames:(id)arg1;
+- (void)ic_updateFlagToExcludeFromCloudBackup:(BOOL)arg1;
 @end
 

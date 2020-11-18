@@ -11,6 +11,7 @@
 @interface ISTouchIDDialog : ISDialog
 {
     NSLock *_lock;
+    BOOL _isDualAction;
     BOOL _isFree;
     SSPaymentSheet *_paymentSheet;
     NSString *_body;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property (copy) NSString *fallbackExplanation;
 @property (copy) NSString *fallbackMessage;
+@property (readonly) BOOL isDualAction; // @synthesize isDualAction=_isDualAction;
 @property (nonatomic) BOOL isFree; // @synthesize isFree=_isFree;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 

@@ -20,6 +20,7 @@
 - (BOOL)__accessibilitySupportsSecondaryActivateAction;
 - (void)__accessibilityUnregister:(void *)arg1 shouldRelease:(BOOL)arg2;
 - (struct CGPoint)__accessibilityVisibleScrollArea:(BOOL)arg1;
+- (id)_accessibililtyLabelForTabBarButton:(id)arg1;
 - (id)_accessibilityAXAttributedHint;
 - (id)_accessibilityAXAttributedLabel;
 - (id)_accessibilityAXAttributedValue;
@@ -40,6 +41,7 @@
 - (BOOL)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (double)_accessibilityAllowedGeometryOverlapX;
+- (id)_accessibilityAllowedPagingOverlap;
 - (BOOL)_accessibilityAllowsAlternativeCharacterActivation;
 - (BOOL)_accessibilityAlternateActionForURL:(id)arg1;
 - (BOOL)_accessibilityAlwaysNo;
@@ -341,6 +343,7 @@
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
 - (id)_accessibilityPageTextMarkerRange;
+- (id)_accessibilityPagingEnabled;
 - (id)_accessibilityParentForFindingScrollParent;
 - (id)_accessibilityParentTableView;
 - (id)_accessibilityParentView;
@@ -457,6 +460,7 @@
 - (BOOL)_accessibilityServesAsFirstResponder;
 - (void)_accessibilitySetAdditionalElements:(id)arg1;
 - (void)_accessibilitySetAllowedGeometryOverlap:(double)arg1;
+- (void)_accessibilitySetAllowedPagingOverlap:(double)arg1;
 - (void)_accessibilitySetAnimationsInProgress:(BOOL)arg1;
 - (void)_accessibilitySetApplicationOrientation:(long long)arg1;
 - (void)_accessibilitySetAuditIssueForType:(unsigned long long)arg1;
@@ -475,17 +479,21 @@
 - (void)_accessibilitySetObscuredScreenAllowedWindows:(id)arg1;
 - (void)_accessibilitySetOpaqueElementScrollsContentIntoView:(BOOL)arg1;
 - (void)_accessibilitySetOverridesInvisibility:(BOOL)arg1;
+- (void)_accessibilitySetPagingEnabled:(BOOL)arg1;
 - (void)_accessibilitySetRoleDescription:(id)arg1;
 - (void)_accessibilitySetRowRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetScrollAcrossPageBoundaries:(BOOL)arg1;
+- (void)_accessibilitySetScrollingEnabled:(BOOL)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetShouldHitTestFallBackToNearestChild:(BOOL)arg1;
 - (void)_accessibilitySetShouldPreventOpaqueScrolling:(BOOL)arg1;
 - (void)_accessibilitySetSortPriority:(long long)arg1;
 - (void)_accessibilitySetSupportsMediaAnalysis:(BOOL)arg1;
+- (void)_accessibilitySetTextViewIgnoresValueChanges:(BOOL)arg1;
 - (void)_accessibilitySetTextViewShouldBreakUpParagraphs:(BOOL)arg1;
 - (void)_accessibilitySetUserDefinedAdditionalElements:(id)arg1;
 - (void)_accessibilitySetUserDefinedIsGuideElement:(BOOL)arg1;
+- (void)_accessibilitySetUserDefinedScrollingEnabled:(id)arg1;
 - (void)_accessibilitySetUsesScrollParentForOrdering:(BOOL)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
 - (void)_accessibilitySetVisibleContentInset:(struct UIEdgeInsets)arg1;
@@ -552,6 +560,7 @@
 - (BOOL)_accessibilityTextOperationAction:(id)arg1;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityTextViewIgnoresValueChanges;
 - (BOOL)_accessibilityTextViewShouldBreakUpParagraphs;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (id)_accessibilityTouchContainer;
@@ -573,6 +582,7 @@
 - (id)_accessibilityUserDefinedGuideElementHeaderText;
 - (BOOL)_accessibilityUserDefinedIsGuideElement;
 - (id)_accessibilityUserDefinedLinkedUIElements;
+- (id)_accessibilityUserDefinedScrollingEnabled;
 - (id)_accessibilityUserTestingActionIdentifiers;
 - (id)_accessibilityUserTestingActions;
 - (id)_accessibilityUserTestingVisibleAncestor;
@@ -588,6 +598,7 @@
 - (double)_accessibilityViewAlpha;
 - (id)_accessibilityViewAncestorIsKindOf:(Class)arg1;
 - (id)_accessibilityViewController;
+- (BOOL)_accessibilityViewControllerShouldPreventScrollToVisibleForElement:(id)arg1;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (id)_accessibilityVisibleElements;
 - (struct CGRect)_accessibilityVisibleFrame;

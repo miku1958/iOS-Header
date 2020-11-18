@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableDictionary, NSString, _MRNowPlayingPlayerPathProtobuf;
+@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, NSString, _MRNowPlayingPlayerPathProtobuf;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     _MRNowPlayingPlayerPathProtobuf *_activePlayerPath;
     int _notifyRestoreClientStateForLaunch;
     NSString *_preparedBundleID;
-    NSMutableDictionary *_playerPathInvalidationHandlers;
+    NSMutableSet *_playerPathInvalidationHandlers;
     MRNotificationServiceClient *_notificationService;
     MRMediaRemoteService *_service;
     MRNotificationClient *_notificationClient;
@@ -45,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOriginRegistered:(id)arg1;
 - (void)processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)processPlayerPathInvalidationHandlersWithInvalidOrigin:(id)arg1;
-- (void)registerCallbacks;
 - (void)registerOrigin:(id)arg1 withDeviceInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeInvalidationHandler:(id)arg1;
 - (void)unregisterAllOriginsWithCompletion:(CDUnknownBlockType)arg1;

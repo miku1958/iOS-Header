@@ -162,6 +162,7 @@
 - (void)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getNewWebSharingIdentity:(CDUnknownBlockType)arg1;
 - (void)getNewWebSharingIdentityDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getOutstandingOperationCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2;

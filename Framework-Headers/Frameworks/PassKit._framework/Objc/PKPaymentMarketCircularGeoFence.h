@@ -25,6 +25,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)containsLocation:(id)arg1;
+- (double)distanceFromLocation:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

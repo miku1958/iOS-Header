@@ -24,9 +24,11 @@
     BOOL _scannerStartCalled;
     CUSystemMonitor *_systemMonitor;
     struct LogCategory *_ucat;
+    int _bluetoothState;
     unsigned int _changeFlags;
     unsigned int _scanFlags;
     int _scanRate;
+    CDUnknownBlockType _bluetoothStateChangedHandler;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
     CDUnknownBlockType _deviceChangedHandler;
@@ -35,6 +37,8 @@
     NSString *_label;
 }
 
+@property (nonatomic) int bluetoothState; // @synthesize bluetoothState=_bluetoothState;
+@property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -89,6 +89,7 @@
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
 - (void)_willAppearInRemoteViewController;
+- (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;
@@ -98,6 +99,7 @@
 - (void)authorizationDidSelectPaymentMethod:(id)arg1;
 - (void)authorizationDidSelectShippingAddress:(id)arg1;
 - (void)authorizationDidSelectShippingMethod:(id)arg1;
+- (void)authorizationDidUpdateAccountServicePaymentMethod:(id)arg1;
 - (void)authorizationViewController:(id)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;
 - (void)authorizationViewControllerDidChangeCoachingState:(id)arg1;
 - (void)authorizationViewControllerDidChangeUserIntentRequirement:(id)arg1;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable;
+@class NSArray, NSMapTable, PKVirtualCardManager;
 @protocol OS_dispatch_queue;
 
 @interface WBSCreditCardDataController : NSObject
 {
     NSMapTable *_creditCardDataKeychainReferences;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    PKVirtualCardManager *_virtualCardManager;
 }
 
 @property (readonly, nonatomic) NSArray *creditCardData;
@@ -20,20 +21,29 @@
 + (BOOL)hasCreditCardData;
 - (void).cxx_destruct;
 - (id)_creditCardData;
+- (id)_deduplicatedVirtualCardDataArray:(id)arg1 andCreditCardDataArray:(id)arg2;
 - (id)_neverSavedCreditCardSuffixFromCard:(id)arg1;
 - (id)_neverSavedCreditCardSuffixFromCardNumber:(id)arg1;
 - (void)_removeNeverSaveCreditCardData:(id)arg1;
+- (BOOL)_shouldOfferVirtualCards;
 - (void)_sortCreditCardDataArray:(id)arg1;
+- (id)_testVirtualCard;
 - (id)_uniqueCardNameForCardName:(id)arg1;
+- (id)_virtualCardDataFromPKVirtualCards:(id)arg1;
+- (BOOL)authenticationRequiredForVirtualCard:(id)arg1;
 - (void)clearCreditCardData;
 - (void)creditCardDataDidChange;
 - (id)defaultNameForCardOfType:(unsigned long long)arg1 cardholderName:(id)arg2;
 - (id)existingCardWithNumber:(id)arg1;
 - (void)getCreditCardDataToFill:(id)arg1 externalizedContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getCreditCardDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getVirtualCardCredentialsFromKeychainWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getVirtualCardsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)hasUsedNonVirtualCard;
 - (id)init;
 - (void)invalidateCreditCardData;
 - (BOOL)isCreditCardDataSaved:(id)arg1;
+- (void)isVirtualCard:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markCreditCardDataAsMostRecentlyUsed:(id)arg1;
 - (void)neverSaveCreditCardData:(id)arg1;
 - (void)removeCreditCardData:(id)arg1;
@@ -42,8 +52,11 @@
 - (void)saveCreditCardData:(id)arg1;
 - (void)saveCreditCardDataIfAllowed:(id)arg1;
 - (void)savePendingChangesBeforeTermination;
+- (void)setHasUsedNonVirtualCard;
 - (BOOL)shouldAddCardWithNumber:(id)arg1;
 - (BOOL)shouldNeverSaveCardWithNumber:(id)arg1;
+- (id)urlForVirtualCard:(id)arg1;
+- (unsigned long long)virtualCardFieldsToRequest;
 
 @end
 

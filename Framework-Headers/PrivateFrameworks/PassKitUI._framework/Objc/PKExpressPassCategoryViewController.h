@@ -6,20 +6,29 @@
 
 #import <PassKitUI/PKSectionTableViewController.h>
 
-@class PKExpressPassCategory, PKExpressPassController, PKPassSnapshotter;
-@protocol PKExpressPassCategoryViewControllerDelegate;
+#import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@interface PKExpressPassCategoryViewController : PKSectionTableViewController
+@class NSMutableDictionary, NSString, PKExpressPassCategory, PKExpressPassController, PKPassSnapshotter;
+@protocol PKExpressPassCategoryViewControllerDelegate, PKPaymentDataProvider;
+
+@interface PKExpressPassCategoryViewController : PKSectionTableViewController <PKPaymentDataProviderDelegate>
 {
     PKExpressPassCategory *_category;
     PKExpressPassController *_expressPassController;
     long long _style;
     PKPassSnapshotter *_passSnapshotter;
+    id<PKPaymentDataProvider> _paymentDataProvider;
+    NSMutableDictionary *_passUniqueIDToCell;
+    NSMutableDictionary *_passUniqueIDToTransitBalanceModels;
     BOOL _isUserInteractionsEnabled;
     id<PKExpressPassCategoryViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKExpressPassCategoryViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_acquireUserAuthForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -27,13 +36,18 @@
 - (void)_didSelectPassAtIndexPath:(id)arg1;
 - (void)_disableExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_enableExpressModeForPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_fetchBalancesAndTransitPassPropertiesForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_invalidateUserAuth;
 - (void)_promptUserAboutConflicts:(id)arg1 forPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setUserInteractionsEnabled:(BOOL)arg1;
 - (id)_transformState:(id)arg1;
+- (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPass:(id)arg3;
+- (void)_updateBalancesWithServerBalances:(id)arg1 transitPassProperties:(id)arg2 forPassWithUniqueIdentifier:(id)arg3;
 - (void)_updateCategoryWithState:(id)arg1;
 - (double)heightForRowAtIndexPath:(id)arg1;
-- (id)initWithCategory:(id)arg1 controller:(id)arg2 style:(long long)arg3;
+- (id)initWithCategory:(id)arg1 paymentDataProvider:(id)arg2 controller:(id)arg3 style:(long long)arg4;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

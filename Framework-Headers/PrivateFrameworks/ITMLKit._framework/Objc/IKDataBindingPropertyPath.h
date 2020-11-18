@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_initWithAccessorSequence:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithAccessorSequence:(id)arg1;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)propertyPathByCombiningAccesserSequence:(id)arg1;
+- (id)propertyPathByCombiningAccessorSequence:(id)arg1;
+- (id)propertyPathByRemovingFirstAccessor;
 
 @end
 

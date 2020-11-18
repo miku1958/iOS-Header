@@ -52,6 +52,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGEOStyleAttributes:(id)arg1;
 - (id)initWithPlaceDataStyleAttributes:(id)arg1;
+- (id)initWithPlaceStyleAttributes:(id)arg1;
 - (id)initWithSharedStyleAttributes:(id)arg1 extAttributes:(const CDStruct_d008d4b8 *)arg2 extAttributeCount:(unsigned char)arg3;
 - (id)initWithStyleAttributes:(id)arg1;
 - (BOOL)isBorder;

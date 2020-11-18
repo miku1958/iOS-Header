@@ -71,6 +71,7 @@
 - (void)_updateState;
 - (void)connectAllowingAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
+- (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)dealloc;
 - (id)initWithEndpoint:(id)arg1;
 - (void)launchNowPlayingApp;

@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSString *providedName; // @dynamic providedName;
 @property (strong, nonatomic) NSString *roomUUID; // @dynamic roomUUID;
 @property (strong, nonatomic) NSString *serialNumber; // @dynamic serialNumber;
+@property (strong, nonatomic) NSNumber *suspendCapable; // @dynamic suspendCapable;
 
 + (id)properties;
 - (id)dependentUUIDs;

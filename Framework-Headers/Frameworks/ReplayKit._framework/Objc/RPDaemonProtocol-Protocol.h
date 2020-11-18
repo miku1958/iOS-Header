@@ -9,8 +9,6 @@
 @class NSArray, NSData, NSDictionary, NSString, NSURL, NSXPCListenerEndpoint;
 
 @protocol RPDaemonProtocol <NSObject>
-- (oneway void)clientDidBecomeActive;
-- (oneway void)clientDidResignActive;
 - (oneway void)discardRecordingWithHandler:(void (^)(void))arg1;
 - (oneway void)getCurrentBroadcastImages:(void (^)(UIImage *, UIImage *))arg1;
 - (oneway void)getSystemBroadcastExtensionInfo:(void (^)(NSArray *, NSError *))arg1;

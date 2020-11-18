@@ -39,7 +39,6 @@
 @property (readonly) Class superclass;
 
 + (id)directionsButtonImage;
-+ (BOOL)regionIsBlocked;
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;

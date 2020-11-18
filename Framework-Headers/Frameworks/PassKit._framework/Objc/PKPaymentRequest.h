@@ -8,11 +8,14 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSArray, NSData, NSSet, NSString, NSURL, PKContact, PKPaymentMerchantSession;
+@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentMerchantSession;
 
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
     BOOL _expectsMerchantSession;
+    BOOL _accountPaymentSupportsPeerPayment;
+    BOOL _accountPaymentUsePeerPaymentBalance;
+    BOOL _deviceSupportsPeerPaymentAccountPayment;
     BOOL _suppressTotal;
     BOOL _shippingEditable;
     BOOL _requiresAddressPrecision;
@@ -38,6 +41,11 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_CTDataConnectionServiceType;
+    PKApplePayTrustSignatureRequest *_applePayTrustSignatureRequest;
+    NSArray *_bankAccounts;
+    long long _paymentFrequency;
+    NSDate *_paymentDate;
+    NSTimeZone *_paymentTimeZone;
     unsigned long long _APIType;
     unsigned long long _requestType;
     unsigned long long _requestor;
@@ -61,14 +69,19 @@
 @property (nonatomic) unsigned long long APIType; // @synthesize APIType=_APIType;
 @property (strong, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
 @property (nonatomic) struct __SecAccessControl *accesssControlRef; // @synthesize accesssControlRef=_accesssControlRef;
+@property (nonatomic) BOOL accountPaymentSupportsPeerPayment; // @synthesize accountPaymentSupportsPeerPayment=_accountPaymentSupportsPeerPayment;
+@property (nonatomic) BOOL accountPaymentUsePeerPaymentBalance; // @synthesize accountPaymentUsePeerPaymentBalance=_accountPaymentUsePeerPaymentBalance;
 @property (strong, nonatomic) AKAppleIDAuthenticationContext *appleIDAuthenticationContext; // @synthesize appleIDAuthenticationContext=_appleIDAuthenticationContext;
+@property (strong, nonatomic) PKApplePayTrustSignatureRequest *applePayTrustSignatureRequest; // @synthesize applePayTrustSignatureRequest=_applePayTrustSignatureRequest;
 @property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
+@property (strong, nonatomic) NSArray *bankAccounts; // @synthesize bankAccounts=_bankAccounts;
 @property (nonatomic) const void *billingAddress; // @synthesize billingAddress=_billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
 @property (nonatomic) double clientCallbackTimeout; // @synthesize clientCallbackTimeout=_clientCallbackTimeout;
 @property (nonatomic) unsigned long long confirmationStyle; // @synthesize confirmationStyle=_confirmationStyle;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (nonatomic) BOOL deviceSupportsPeerPaymentAccountPayment; // @synthesize deviceSupportsPeerPaymentAccountPayment=_deviceSupportsPeerPaymentAccountPayment;
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
 @property (copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
 @property (copy, nonatomic) NSString *localizedBiometricConfirmationTitle; // @synthesize localizedBiometricConfirmationTitle=_localizedBiometricConfirmationTitle;
@@ -83,7 +96,10 @@
 @property (copy, nonatomic) NSString *passSerialNumber; // @synthesize passSerialNumber=_passSerialNumber;
 @property (copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property (copy, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
+@property (copy, nonatomic) NSDate *paymentDate; // @synthesize paymentDate=_paymentDate;
+@property (nonatomic) long long paymentFrequency; // @synthesize paymentFrequency=_paymentFrequency;
 @property (copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
+@property (copy, nonatomic) NSTimeZone *paymentTimeZone; // @synthesize paymentTimeZone=_paymentTimeZone;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
 @property (nonatomic) unsigned long long requiredBillingAddressFields;

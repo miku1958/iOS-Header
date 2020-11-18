@@ -39,6 +39,7 @@
     PKPaymentPreferencesViewController *_shippingAddressPreferencesController;
     PKPaymentPreferencesViewController *_shippingContactPreferencesController;
     PKPaymentPreferencesViewController *_paymentCardPreferencesController;
+    PKPaymentPreferencesViewController *_bankAccountPreferencesController;
     BOOL _viewAppeared;
     BOOL _visible;
     BOOL _authenticating;
@@ -104,7 +105,6 @@
 - (void)_handleModelUpdate;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
-- (int)_iconVariantForScale:(double)arg1;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_payWithPasswordPressed:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
@@ -118,6 +118,7 @@
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setUserIntentRequired:(BOOL)arg1 shouldIgnorePhysicalButton:(BOOL)arg2;
 - (void)_setVisible:(BOOL)arg1;
+- (void)_setupBankAccounts;
 - (void)_setupPaymentPassAndBillingAddress;
 - (void)_setupShippingAddress;
 - (void)_setupShippingContact;
@@ -133,6 +134,7 @@
 - (id)_unavailablePasses;
 - (void)_updateAvailableCardsPreferences;
 - (void)_updateBackgroundedState:(BOOL)arg1;
+- (void)_updateBankAccounts;
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_updateCoachingInstruction;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
@@ -150,6 +152,7 @@
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeCashDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
@@ -158,6 +161,7 @@
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
+- (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(id)arg1 signatureRequest:(id)arg2;
 - (void)authorizationFooterViewDidChangeConstraints:(id)arg1;
 - (void)authorizationFooterViewPasscodeButtonPressed:(id)arg1;
 - (void)authorizationFooterViewWillChangeConstraints:(id)arg1;

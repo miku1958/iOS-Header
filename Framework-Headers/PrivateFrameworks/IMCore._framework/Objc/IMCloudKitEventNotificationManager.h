@@ -56,6 +56,7 @@
 - (void)fetchSyncState;
 - (void)fetchSyncStateAfterClearingErrors;
 - (void)fetchSyncStateAfterClearingErrorsWithRepairSuccess:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchSyncStateAfterFetchingAccountStatus;
 - (void)fetchSyncStateStatistics;
 - (void)fetchSyncStateStatisticsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSyncStateWithCompletion:(CDUnknownBlockType)arg1;
@@ -66,7 +67,6 @@
 - (void)removeEventHandler:(id)arg1;
 - (void)setCloudKitSyncEnabled:(BOOL)arg1;
 - (void)setCloudKitSyncEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)startFetchingSyncProgress;
 - (void)startInitialSync;
 - (void)startPeriodicSync;
 - (id)syncStateWithDictionary:(id)arg1;

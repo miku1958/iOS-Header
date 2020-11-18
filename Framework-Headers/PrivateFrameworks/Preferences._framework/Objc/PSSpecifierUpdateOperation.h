@@ -12,6 +12,7 @@
 
 @interface PSSpecifierUpdateOperation : NSObject <NSCopying>
 {
+    BOOL _removingGroupSpecifierRemovesEntireGroup;
     long long _operation;
     PSSpecifier *_specifier;
     NSNumber *_index;
@@ -20,9 +21,11 @@
 
 @property (strong, nonatomic) NSNumber *index; // @synthesize index=_index;
 @property (readonly, nonatomic) long long operation; // @synthesize operation=_operation;
+@property (nonatomic) BOOL removingGroupSpecifierRemovesEntireGroup; // @synthesize removingGroupSpecifierRemovesEntireGroup=_removingGroupSpecifierRemovesEntireGroup;
 @property (strong, nonatomic) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 @property (strong, nonatomic) NSNumber *toIndex; // @synthesize toIndex=_toIndex;
 
++ (id)_removeOneSpecifierOnlyOperationWithSpecifier:(id)arg1 atIndex:(unsigned long long)arg2;
 + (id)insertOperationWithSpecifier:(id)arg1 atIndex:(unsigned long long)arg2;
 + (id)moveOperationWithSpecifier:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 + (id)reloadOperationWithSpecifier:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -32,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithOperation:(long long)arg1 specifier:(id)arg2 fromIndex:(id)arg3 toIndex:(id)arg4;
+- (id)initWithOperation:(long long)arg1 specifier:(id)arg2 fromIndex:(id)arg3 toIndex:(id)arg4 removingGroupSpecifierRemovesEntireGroup:(BOOL)arg5;
 - (id)initWithOperation:(long long)arg1 specifier:(id)arg2 index:(id)arg3;
 
 @end

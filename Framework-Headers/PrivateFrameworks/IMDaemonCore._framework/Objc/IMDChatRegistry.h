@@ -138,6 +138,7 @@
 - (id)personCentricGroupedChatsArrayWithMaximumNumberOfChats:(long long)arg1 skipsLastMessageLoading:(BOOL)arg2;
 - (void)processMessageUsingCKRecord:(id)arg1;
 - (void)processMessageUsingCKRecord:(id)arg1 updatedLastMessageCount:(int)arg2;
+- (void)refreshUIWhileSyncing;
 - (void)removeChat:(id)arg1;
 - (void)removeIMDHandleFromRegistry:(id)arg1;
 - (void)removeItem:(id)arg1 fromChat:(id)arg2;

@@ -17,6 +17,7 @@
     NSArray *_metadata;
     NSString *_summaryMetadataDescription;
     NSString *_statusDescription;
+    NSString *_ownershipTokenIdentifier;
     PKPaymentPass *_paymentPass;
     unsigned long long _rank;
     NSString *_productIdentifier;
@@ -24,6 +25,7 @@
 
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSArray *metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy, nonatomic) NSString *ownershipTokenIdentifier; // @synthesize ownershipTokenIdentifier=_ownershipTokenIdentifier;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;

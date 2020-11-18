@@ -9,6 +9,7 @@
 @interface NSObject (UIStorage)
 - (void)_accessibilityActionBlock:(CDUnknownBlockType *)arg1 andValue:(id *)arg2 forKey:(unsigned int)arg3;
 - (BOOL)_accessibilityActivateDragWithDescriptorDictionary:(id)arg1 forAssistiveTechnology:(id)arg2;
+- (BOOL)_accessibilityAllowsActivationWithoutBeingNativeFocused;
 - (id)_accessibilityAncestorFocusParcel;
 - (BOOL)_accessibilityApplicationHandleButtonAction:(int)arg1;
 - (BOOL)_accessibilityCanBecomeNativeFocused;

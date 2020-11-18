@@ -8,31 +8,26 @@
 
 #import <ITMLKit/NSCopying-Protocol.h>
 
-@class IKDataBinding, NSDictionary, NSString;
+@class IKAppDataItemType, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface IKAppDataItem : NSObject <NSCopying>
 {
-    NSString *_type;
-    NSString *_selector;
+    IKAppDataItemType *_type;
     NSString *_identifier;
-    IKDataBinding *_binding;
-    NSDictionary *_properties;
+    NSDictionary *_dataDictionary;
 }
 
-@property (readonly, nonatomic) IKDataBinding *binding; // @synthesize binding=_binding;
-@property (readonly, nonatomic, getter=isDisabled) BOOL disabled;
+@property (readonly, copy, nonatomic) NSDictionary *dataDictionary; // @synthesize dataDictionary=_dataDictionary;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
-@property (readonly, nonatomic) NSString *selector; // @synthesize selector=_selector;
-@property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
+@property (readonly, nonatomic) IKAppDataItemType *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dataItemByUpdatingProperties:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithType:(id)arg1 selector:(id)arg2 identifier:(id)arg3 binding:(id)arg4;
+- (id)initWithType:(id)arg1 identifier:(id)arg2 dataDictionary:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)valueForPropertyPath:(id)arg1;
 
 @end
 

@@ -14,7 +14,7 @@
 #import <PassKitUI/PKPassGroupViewReceiver-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSTimer, PKBackdropView, PKNavigationDashboardPassViewController, PKPGSVSectionHeaderContext, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView, _UIDynamicValueAnimation;
+@class NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString, NSTimer, PKBackdropView, PKDiscoveryDataSource, PKNavigationDashboardPassViewController, PKPGSVSectionHeaderContext, PKPGSVTransitionInterstitialView, PKPass, PKPassDeleteAnimationController, PKPassFooterView, PKPassGroupView, PKPassthroughView, PKPaymentService, PKReusablePassViewQueue, PKSecureElement, UIColor, UIImageView, UIView, _UIDynamicValueAnimation;
 @protocol OS_dispatch_source, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate><UIScrollViewDelegate;
 
 @interface PKPassGroupStackView : UIScrollView <PKPassGroupViewDelegate, PKPassDeleteAnimationControllerDelegate, PKPaymentServiceDelegate, PKPassFooterViewDelegate, PKDashboardPassViewControllerDelegate, PKPassDeleteHandler, PKPassGroupViewReceiver>
@@ -122,6 +122,7 @@
     BOOL _staggerPileAnimations;
     BOOL _paused;
     id<PKPassGroupStackViewDatasource> _datasource;
+    PKDiscoveryDataSource *_discoveryDatasource;
     long long _coachingState;
     UIColor *_pageIndicatorTintColor;
     UIColor *_currentPageIndicatorTintColor;
@@ -134,6 +135,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKPassGroupStackViewDelegate><UIScrollViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PKDiscoveryDataSource *discoveryDatasource; // @synthesize discoveryDatasource=_discoveryDatasource;
 @property (nonatomic) BOOL externalFooterSuppressed; // @synthesize externalFooterSuppressed=_externalFooterSuppressed;
 @property (nonatomic) BOOL footerSuppressed; // @synthesize footerSuppressed=_footerSuppressed;
 @property (readonly) unsigned long long hash;
@@ -224,7 +226,7 @@
 - (struct CGPoint)_positionForGroupView:(id)arg1 atIndex:(unsigned long long)arg2 forState:(long long)arg3;
 - (void)_presentBackdropViewAnimated:(BOOL)arg1 delay:(double)arg2;
 - (void)_presentGroupStackViewWithAnimation:(BOOL)arg1 priorBounds:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_presentModalGroupView:(id)arg1 withState:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_presentModalGroupView:(id)arg1 withState:(long long)arg2 animated:(BOOL)arg3 context:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_presentModalGroupViewPostAnimationActions;
 - (void)_presentOffscreenAnimated:(BOOL)arg1 split:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_presentPassIngestionWithAnimation:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -241,7 +243,8 @@
 - (void)_resumeSuspendedTransition;
 - (void)_reverseEnumerateLoadedGroupViews:(CDUnknownBlockType)arg1;
 - (double)_scaleForGroupView:(id)arg1 atIndex:(unsigned long long)arg2 forState:(long long)arg3;
-- (double)_scaleForNonModalGroupInExternalPresentation;
+- (double)_scaleForModalPileGroupInExternalPresentation;
+- (double)_scaleForStackGroupInExternalPresentation;
 - (id)_separatorGroup;
 - (void)_setDefaultPaymentPassFromGroupView:(id)arg1 reorderedGroupView:(id)arg2;
 - (void)_setModalGroupView:(id)arg1;
@@ -314,6 +317,7 @@
 - (void)deleteGroup:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)didDeletePass:(id)arg1;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
+- (CDStruct_d8808cea)discoveryGalleryLayoutStateForCurrentLayoutState;
 - (void)evaluateBrightness;
 - (void)gotoBaseTestState;
 - (BOOL)groupView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;

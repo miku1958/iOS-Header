@@ -41,6 +41,7 @@
 - (void)removeOutputDevice:(AVOutputDevice *)arg1;
 - (void)setOutputDevice:(AVOutputDevice *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(AVOutputContextDestinationChange *))arg3;
 - (void)setOutputDevices:(NSArray *)arg1;
+- (void)setOutputDevices:(NSArray *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(AVOutputContextDestinationChange *))arg3;
 - (void)setVolume:(float)arg1;
 @end
 

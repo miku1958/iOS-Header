@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class UIViewController;
+@class PKPGSVSectionSubheaderView, UIViewController;
 
 @protocol PKPGSVSectionSubheaderDelegate <NSObject>
+- (void)shouldUpdateSectionSubheaderView:(PKPGSVSectionSubheaderView *)arg1;
 - (void)transitionToViewController:(UIViewController *)arg1;
 @end
 

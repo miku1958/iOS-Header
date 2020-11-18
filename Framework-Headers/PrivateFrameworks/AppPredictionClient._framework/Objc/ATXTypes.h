@@ -16,6 +16,8 @@
 + (unsigned long long)consumerTypeForString:(id)arg1 found:(BOOL *)arg2;
 + (unsigned long long)consumerTypeForSubType:(unsigned char)arg1;
 + (unsigned long long)engagementTypeForString:(id)arg1 found:(BOOL *)arg2;
++ (id)inverseConsumerSubtypeMapping;
++ (BOOL)isActionSpotlightConsumerSubType:(unsigned char)arg1;
 + (void)iterConsumerSubTypesWithBlock:(CDUnknownBlockType)arg1;
 + (void)iterConsumerTypesWithBlock:(CDUnknownBlockType)arg1;
 + (id)stringForConsumerSubtype:(unsigned char)arg1;

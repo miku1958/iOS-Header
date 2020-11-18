@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)getBehaviorOptionForKey:(id)arg1 isContainerOption:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getNewWebSharingIdentityDataWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getNewWebSharingIdentityWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getOutstandingOperationCountWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecordPCSDiagnosticsForZonesWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSandboxExtensionsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

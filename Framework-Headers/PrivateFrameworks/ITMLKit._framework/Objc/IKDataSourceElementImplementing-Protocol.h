@@ -6,19 +6,20 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
-@class IKElementChangeSet, IKViewElement, IKViewElementFactory, NSArray;
+@class IKChangeSet, IKViewElement, IKViewElementFactory, NSArray, NSDictionary;
 @protocol IKDataSourceElementImplementing;
 
 @protocol IKDataSourceElementImplementing <NSObject>
 
-@property (readonly, nonatomic) IKElementChangeSet *itemsChangeset;
+@property (readonly, copy, nonatomic) NSDictionary *indexTitles;
+@property (readonly, nonatomic) IKChangeSet *itemsChangeSet;
 @property (readonly, nonatomic) NSArray *prototypes;
+@property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 
-- (IKViewElement *)actualElementForProxyElement:(IKViewElement *)arg1;
 - (void)applyUpdatesWithImplementation:(id<IKDataSourceElementImplementing>)arg1 usingUpdater:(IKDataSourceElement * (^)(void))arg2;
 - (void)configureUpdatesWithImplementation:(id<IKDataSourceElementImplementing>)arg1;
 - (IKViewElement *)elementForItemAtIndex:(long long)arg1;
-- (long long)indexOfItemForChildElement:(IKViewElement *)arg1;
+- (long long)indexOfItemForElement:(IKViewElement *)arg1;
 - (void)initializeWithElementFactory:(IKViewElementFactory *)arg1;
 - (void)loadIndex:(long long)arg1;
 - (long long)numberOfItems;
@@ -27,5 +28,10 @@
 - (void)teardown;
 - (void)unloadIndex:(long long)arg1;
 - (void)updateStylesUsingUpdater:(void (^)(void))arg1;
+
+@optional
+- (BOOL)canProxyUnloadedChildElement:(IKViewElement *)arg1;
+- (IKViewElement *)proxyElementForLoadedChildElement:(IKViewElement *)arg1;
+- (void)resetImplicitUpdates;
 @end
 

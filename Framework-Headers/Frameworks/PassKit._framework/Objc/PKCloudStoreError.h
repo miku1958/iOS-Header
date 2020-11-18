@@ -24,6 +24,7 @@
 - (BOOL)isPCSError;
 - (BOOL)isPartialError;
 - (BOOL)isUnrecoverableDecryptionError;
+- (BOOL)isZoneNotFoundError;
 
 @end
 

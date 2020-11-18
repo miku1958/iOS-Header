@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSNumber, NSString, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKLocale, WLKPlayEvent;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSString, NSURL, SSLookupItem, SSLookupItemOffer, WLKBasicContentMetadata, WLKChannelDetails, WLKLocale, WLKPlayEvent, WLKStoreOffer;
 
 @interface WLKPlayable : NSObject
 {
     BOOL _entitled;
+    BOOL _entitledAnywhere;
     BOOL _appInstalled;
     BOOL _itunes;
     BOOL _subtitled;
@@ -37,10 +38,16 @@
     NSDate *_endAirTime;
     NSDate *_startAirTime;
     WLKPlayEvent *_playEvent;
-    NSDictionary *_itsData;
-    SSLookupItem *_lookupItem;
+    NSURL *_tvAppDeeplinkURL;
     NSDictionary *_punchoutUrls;
     NSArray *_movieClips;
+    NSArray *_storeOffers;
+    NSArray *_subscriptionOffers;
+    NSDictionary *_itsData;
+    SSLookupItem *_lookupItem;
+    NSArray *_offers;
+    SSLookupItemOffer *_bestBuyOffer;
+    SSLookupItemOffer *_bestRentalOffer;
 }
 
 @property (readonly, copy, nonatomic) NSArray *SDHLocales; // @synthesize SDHLocales=_SDHLocales;
@@ -49,8 +56,11 @@
 @property (readonly, nonatomic, getter=isAppInstalled) BOOL appInstalled; // @synthesize appInstalled=_appInstalled;
 @property (readonly, copy, nonatomic) NSArray *audioTrackFormats; // @synthesize audioTrackFormats=_audioTrackFormats;
 @property (readonly, copy, nonatomic) NSArray *audioTrackLocales; // @synthesize audioTrackLocales=_audioTrackLocales;
-@property (readonly, copy, nonatomic) SSLookupItemOffer *bestBuyOffer;
-@property (readonly, copy, nonatomic) SSLookupItemOffer *bestRentalOffer;
+@property (readonly, copy, nonatomic) SSLookupItemOffer *bestBuyOffer; // @synthesize bestBuyOffer=_bestBuyOffer;
+@property (readonly, copy, nonatomic) SSLookupItemOffer *bestRentalOffer; // @synthesize bestRentalOffer=_bestRentalOffer;
+@property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreBuyOffer;
+@property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreRentalOffer;
+@property (readonly, copy, nonatomic) WLKStoreOffer *bestStoreSubscriptionOffer;
 @property (readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property (readonly, copy, nonatomic) WLKChannelDetails *channelDetails; // @synthesize channelDetails=_channelDetails;
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
@@ -62,33 +72,39 @@
 @property (readonly, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
 @property (readonly, copy, nonatomic) NSDate *endAirTime; // @synthesize endAirTime=_endAirTime;
 @property (readonly, nonatomic, getter=isEntitled) BOOL entitled; // @synthesize entitled=_entitled;
+@property (readonly, nonatomic, getter=isEntitledAnywhere) BOOL entitledAnywhere; // @synthesize entitledAnywhere=_entitledAnywhere;
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property (readonly, copy, nonatomic) NSString *externalServiceID; // @synthesize externalServiceID=_externalServiceID;
 @property (readonly, copy, nonatomic) NSDictionary *itsData; // @synthesize itsData=_itsData;
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
 @property (readonly, copy, nonatomic) SSLookupItem *lookupItem; // @synthesize lookupItem=_lookupItem;
 @property (readonly, copy, nonatomic) NSArray *movieClips; // @synthesize movieClips=_movieClips;
-@property (readonly, copy, nonatomic) NSArray *offers;
+@property (readonly, copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property (readonly, nonatomic) WLKPlayEvent *playEvent; // @synthesize playEvent=_playEvent;
 @property (readonly, copy, nonatomic) NSString *playableID; // @synthesize playableID=_playableID;
 @property (readonly, copy, nonatomic) WLKLocale *primaryLocale; // @synthesize primaryLocale=_primaryLocale;
 @property (readonly, copy, nonatomic) NSDictionary *punchoutUrls; // @synthesize punchoutUrls=_punchoutUrls;
 @property (readonly, copy, nonatomic) NSDate *startAirTime; // @synthesize startAirTime=_startAirTime;
+@property (readonly, copy, nonatomic) NSArray *storeOffers; // @synthesize storeOffers=_storeOffers;
+@property (readonly, copy, nonatomic) NSArray *subscriptionOffers; // @synthesize subscriptionOffers=_subscriptionOffers;
 @property (readonly, nonatomic, getter=isSubtitled) BOOL subtitled; // @synthesize subtitled=_subtitled;
 @property (readonly, copy, nonatomic) NSArray *subtitledLocales; // @synthesize subtitledLocales=_subtitledLocales;
+@property (readonly, copy, nonatomic) NSURL *tvAppDeeplinkURL; // @synthesize tvAppDeeplinkURL=_tvAppDeeplinkURL;
 @property (readonly, copy, nonatomic) NSString *videoQuality; // @synthesize videoQuality=_videoQuality;
 
-+ (id)playablesWithDictionaries:(id)arg1 canonicalID:(id)arg2;
++ (id)playablesWithDictionaries:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
-- (id)_filteredContentSource:(id)arg1;
+- (id)_filteredStoreContentSource:(id)arg1;
 - (id)_localesArrayForDictionary:(id)arg1 andKey:(id)arg2;
 - (BOOL)_supportsHD;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithDictionary:(id)arg1 canonicalID:(id)arg2;
+- (id)initWithDictionary:(id)arg1 context:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)openPunchoutURL;
+- (id)playPunchoutURL;
 
 @end
 

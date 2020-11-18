@@ -45,7 +45,6 @@
 @property (readonly, nonatomic, getter=isAppleTVRoute) BOOL appleTVRoute;
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
 @property (readonly, nonatomic) NSDictionary *avRouteDescription;
-@property (readonly, nonatomic, getter=isB238Route) BOOL b238Route;
 @property (readonly, nonatomic, getter=isB444Route) BOOL b444Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;
@@ -63,6 +62,7 @@
 @property (readonly, nonatomic, getter=_externalDevice) void *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (readonly, nonatomic) NSString *groupLeaderAirplayIdentifier;
 @property (readonly, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
+@property (readonly, nonatomic, getter=isH1Route) BOOL h1Route;
 @property (readonly, nonatomic, getter=isHearingDeviceRoute) BOOL hearingDeviceRoute;
 @property (readonly, nonatomic, getter=isHomePodRoute) BOOL homePodRoute; // @synthesize homePodRoute=_homePodRoute;
 @property (readonly, nonatomic) BOOL isDeviceRoute;

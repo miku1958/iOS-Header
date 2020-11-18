@@ -37,6 +37,7 @@
 - (void)didFavoriteMemory;
 - (void)didFinishViewingDetailsWithCurrentContext:(id)arg1;
 - (void)didFinishViewingMemoriesFeedView;
+- (void)didNavigateInOneUpFromOrigin:(long long)arg1;
 - (void)didPlayMiroMovieForAssetCollection:(id)arg1;
 - (void)didPresentOneUpFromOrigin:(long long)arg1;
 - (void)didViewDetailsForAssetCollection:(id)arg1;

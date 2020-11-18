@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithConnection:(id)arg1;
-- (void)performDeviceRegistrationForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performDeviceRegistrationForReason:(id)arg1 actionType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

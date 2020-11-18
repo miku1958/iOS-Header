@@ -10,6 +10,7 @@
 
 @protocol PKPassFooterContentViewDelegate <NSObject>
 - (BOOL)isPassFooterContentViewInGroup:(PKPassFooterContentView *)arg1;
+- (void)passFooterContentViewDidAuthenticate:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentViewDidChangeCoachingState:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentViewDidChangePileSuppressionRequirement:(PKPassFooterContentView *)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(PKPassFooterContentView *)arg1;

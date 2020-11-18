@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSData, NSError, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
+@class NSData, NSDate, NSError, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
 
 @protocol NPKCompanionServerProtocol <NSObject>
 - (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
@@ -15,6 +15,8 @@
 - (void)defaultCard:(void (^)(NSString *))arg1;
 - (void)defaultPaymentApplicationForPassWithUniqueID:(NSString *)arg1 completion:(void (^)(PKPaymentApplication *))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 passUniqueIdentifier:(NSString *)arg2 fromDeviceWithPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)handleDeviceUnlockedForPendingProvisioningRequestFromGizmo;
+- (void)handlePeerPaymentTermsAndConditionsRequestFromGizmo;
 - (void)handlePendingUnpairingWithCompletion:(void (^)(void))arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(void (^)(void))arg1;
 - (void)initiateConsistencyCheckWithCompletion:(void (^)(void))arg1;
@@ -27,6 +29,7 @@
 - (void)paymentPassWithUniqueID:(NSString *)arg1 reply:(void (^)(PKPaymentPass *))arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)peerPaymentAccountForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentAccount *))arg2;
+- (void)provisionPassForAccountIdentifier:(NSString *)arg1 makeDefault:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)redownloadAllPaymentPassesWithCompletion:(void (^)(void))arg1;
 - (void)registerDeviceWithCompletion:(void (^)(unsigned long long, unsigned long long, NSError *))arg1;
 - (void)removePaymentPassWithUniqueID:(NSString *)arg1 forPairingID:(NSUUID *)arg2 waitForConfirmation:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
@@ -38,7 +41,7 @@
 - (void)setSharedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 forPairingID:(NSUUID *)arg2 completion:(void (^)(void))arg3;
 - (void)sharedPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPaymentWebServiceContext *))arg2;
 - (void)sharedPeerPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentWebServiceContext *))arg2;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 orderedByDate:(long long)arg6 limit:(long long)arg7 completion:(void (^)(NSSet *))arg8;
 - (void)transitStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKTransitAppletState *))arg3;
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
 - (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(NSString *)arg2;

@@ -25,6 +25,7 @@
 + (id)sharedInstance;
 + (BOOL)shouldUseAutoEnrollment;
 + (BOOL)shouldUseExtendedEnrollment;
++ (BOOL)shouldUseUpsellEnrollment;
 + (BOOL)shouldUseX509;
 + (void)tokenUpdateDidFinishWithLogKey:(id)arg1;
 + (BOOL)tokenUpdateShouldStartWithLogKey:(id)arg1;

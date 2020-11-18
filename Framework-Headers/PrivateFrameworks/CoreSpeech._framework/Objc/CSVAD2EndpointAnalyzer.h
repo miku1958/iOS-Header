@@ -48,6 +48,7 @@
     double _previousSamplesSeen;
     NSObject<OS_dispatch_queue> *_apQueue;
     unsigned long long _vtEndInSampleCount;
+    double _trailingSilenceDurationAtEndpoint;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
@@ -92,6 +93,7 @@
 @property (nonatomic) double startWaitTime; // @synthesize startWaitTime=_startWaitTime;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDictionary *topLevelParameterDict; // @synthesize topLevelParameterDict=_topLevelParameterDict;
+@property (nonatomic) double trailingSilenceDurationAtEndpoint; // @synthesize trailingSilenceDurationAtEndpoint=_trailingSilenceDurationAtEndpoint;
 @property (nonatomic) unsigned long long vtEndInSampleCount; // @synthesize vtEndInSampleCount=_vtEndInSampleCount;
 
 - (void).cxx_destruct;

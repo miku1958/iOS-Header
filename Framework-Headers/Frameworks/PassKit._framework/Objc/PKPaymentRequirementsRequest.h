@@ -14,9 +14,11 @@
     NSString *_cardholderName;
     NSString *_primaryAccountNumber;
     NSString *_referrerIdentifier;
+    NSString *_passOwnershipToken;
 }
 
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
+@property (copy, nonatomic) NSString *passOwnershipToken; // @synthesize passOwnershipToken=_passOwnershipToken;
 @property (strong, nonatomic) PKPaymentCredential *paymentCredential; // @synthesize paymentCredential=_paymentCredential;
 @property (copy, nonatomic) NSString *primaryAccountNumber; // @synthesize primaryAccountNumber=_primaryAccountNumber;
 @property (copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;

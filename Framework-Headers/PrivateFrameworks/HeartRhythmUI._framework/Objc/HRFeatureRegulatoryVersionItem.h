@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithProductName:(id)arg1 deviceType:(long long)arg2;
+- (id)shortVersionNumberFromString:(id)arg1;
 
 @end
 

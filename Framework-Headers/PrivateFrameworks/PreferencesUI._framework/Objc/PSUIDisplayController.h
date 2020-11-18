@@ -37,7 +37,7 @@
 - (id)controllerForSpecifier:(id)arg1;
 - (void)dealloc;
 - (id)getAutoWhiteBalanceEnabled:(id)arg1;
-- (void)handleBlueLightStatusChanged:(CDStruct_f4084295 *)arg1;
+- (void)handleBlueLightStatusChanged:(CDStruct_a90444bf *)arg1;
 - (void)handleBrightnessChangedNotification:(id)arg1;
 - (void)handlePSUIExternalDisplayManagerCurrentModeDidChangeNotification:(id)arg1;
 - (id)init;

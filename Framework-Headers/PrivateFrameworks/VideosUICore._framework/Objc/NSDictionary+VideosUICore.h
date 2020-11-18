@@ -14,6 +14,7 @@
 - (id)vui_dataForKey:(id)arg1;
 - (id)vui_dateForKey:(id)arg1;
 - (id)vui_dictionaryForKey:(id)arg1;
+- (id)vui_errorForKey:(id)arg1;
 - (id)vui_numberForKey:(id)arg1;
 - (id)vui_stringForKey:(id)arg1;
 @end

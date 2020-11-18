@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     id<PUDisplayAsset> __streamedVideo;
     double __streamedVideoBeginTime;
     long long __streamedVideoStallCount;
+    long long __oneUpPresentationOrigin;
+    id<PUDisplayAsset> __lastViewedAssetPerOrigin;
 }
 
 @property (nonatomic, setter=_setAssetPlayCount:) long long _assetPlayCount; // @synthesize _assetPlayCount=__assetPlayCount;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setLastPlayStartDate:) NSDate *_lastPlayStartDate; // @synthesize _lastPlayStartDate=__lastPlayStartDate;
 @property (weak, nonatomic, setter=_setLastPlayedAsset:) id<PUDisplayAsset> _lastPlayedAsset; // @synthesize _lastPlayedAsset=__lastPlayedAsset;
 @property (weak, nonatomic, setter=_setLastViewedAsset:) id<PUDisplayAsset> _lastViewedAsset; // @synthesize _lastViewedAsset=__lastViewedAsset;
+@property (strong, nonatomic) id<PUDisplayAsset> _lastViewedAssetPerOrigin; // @synthesize _lastViewedAssetPerOrigin=__lastViewedAssetPerOrigin;
+@property (nonatomic) long long _oneUpPresentationOrigin; // @synthesize _oneUpPresentationOrigin=__oneUpPresentationOrigin;
 @property (weak, nonatomic, setter=_setStreamedVideo:) id<PUDisplayAsset> _streamedVideo; // @synthesize _streamedVideo=__streamedVideo;
 @property (nonatomic, setter=_setStreamedVideoBeginTime:) double _streamedVideoBeginTime; // @synthesize _streamedVideoBeginTime=__streamedVideoBeginTime;
 @property (nonatomic, setter=_setStreamedVideoDidStartPlaying:) BOOL _streamedVideoDidStartPlaying; // @synthesize _streamedVideoDidStartPlaying=__streamedVideoDidStartPlaying;
@@ -44,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)streamedVideoPlaybackStalled:(id)arg1;
 - (void)streamedVideoPlaybackStartedActuallyPlaying:(id)arg1;
 - (void)userBrowsedOneUpFor:(double)arg1;
+- (void)userDidEnterOneUpFromOrigin:(long long)arg1;
 - (void)userDidPlayAssetInOneUp:(id)arg1;
 - (void)userStartedViewingCollection:(id)arg1 withListViewItemSelectionTrackerKey:(struct __CFString *)arg2;
 - (void)userStartedViewingCurrentAssetOfBrowsingViewModel:(id)arg1 inContext:(id)arg2;

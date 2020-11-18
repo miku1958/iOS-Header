@@ -6,36 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class MKMapItem, MKWalletMerchantStylingInfo, NSString;
+@class GEOPDMerchantLookupResult, MKMapItem, MKWalletMerchantStylingInfo, NSString;
 @protocol GEOMapItem;
 
 @interface MKWalletMerchantResponse : NSObject
 {
     id<GEOMapItem> _mapItem;
-    NSString *_localizedPlaceName;
-    NSString *_localizedPlaceLanguage;
-    MKWalletMerchantStylingInfo *_walletCategoryStyling;
-    NSString *_localizedWalletCategoryName;
-    NSString *_localizedWalletCategoryLanguage;
+    GEOPDMerchantLookupResult *_merchantLookupResult;
 }
 
-@property (readonly, nonatomic) NSString *localizedPlaceLanguage; // @synthesize localizedPlaceLanguage=_localizedPlaceLanguage;
-@property (readonly, nonatomic) NSString *localizedPlaceName; // @synthesize localizedPlaceName=_localizedPlaceName;
-@property (readonly, nonatomic) NSString *localizedWalletCategoryLanguage; // @synthesize localizedWalletCategoryLanguage=_localizedWalletCategoryLanguage;
-@property (readonly, nonatomic) NSString *localizedWalletCategoryName; // @synthesize localizedWalletCategoryName=_localizedWalletCategoryName;
+@property (readonly, nonatomic) NSString *heroImageProviderName;
+@property (readonly, nonatomic) NSString *localizedPlaceLanguage;
+@property (readonly, nonatomic) NSString *localizedPlaceName;
+@property (readonly, nonatomic) NSString *localizedWalletCategoryLanguage;
+@property (readonly, nonatomic) NSString *localizedWalletCategoryName;
 @property (readonly, nonatomic) MKMapItem *mapItem;
 @property (readonly, nonatomic) NSString *mapsCategoryIdentifier;
 @property (readonly, nonatomic) MKWalletMerchantStylingInfo *placeStyling;
 @property (readonly, nonatomic) NSString *walletCategoryIdentifier;
-@property (readonly, nonatomic) MKWalletMerchantStylingInfo *walletCategoryStyling; // @synthesize walletCategoryStyling=_walletCategoryStyling;
+@property (readonly, nonatomic) MKWalletMerchantStylingInfo *walletCategoryStyling;
 
 - (void).cxx_destruct;
-- (id)categoryLocalizedString;
-- (id)categoryLocalizedStringLocale;
-- (id)categoryStyling;
+- (BOOL)_validHeroImageForPhoto:(id)arg1;
+- (id)bestHeroImageForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)initWithGEOMapItem:(id)arg1;
-- (id)placeLocalizedString;
-- (id)placeLocalizedStringLocale;
+- (id)initWithMerchantLookupResult:(id)arg1;
 
 @end
 

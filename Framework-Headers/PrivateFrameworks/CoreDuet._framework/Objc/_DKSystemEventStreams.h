@@ -10,6 +10,7 @@
 {
 }
 
++ (id)airplayPredictionStream;
 + (id)appActivityStream;
 + (id)appBulletinStream;
 + (id)appInFocusStream;

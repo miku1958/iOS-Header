@@ -6,20 +6,18 @@
 
 #import <WatchListKit/WLKBasicContentMetadata.h>
 
-@class NSArray, NSDate, NSString, WLKShowContentRating;
+@class NSDate, NSString, WLKShowContentRating;
 
 @interface WLKBasicShowMetadata : WLKBasicContentMetadata
 {
     WLKShowContentRating *_contentRating;
     NSDate *_releaseDate;
     NSDate *_finaleDate;
-    NSArray *_genres;
     NSString *_network;
 }
 
 @property (readonly, nonatomic) WLKShowContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (readonly, nonatomic) NSDate *finaleDate; // @synthesize finaleDate=_finaleDate;
-@property (readonly, copy, nonatomic) NSArray *genres; // @synthesize genres=_genres;
 @property (readonly, copy, nonatomic) NSString *network; // @synthesize network=_network;
 @property (readonly, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 

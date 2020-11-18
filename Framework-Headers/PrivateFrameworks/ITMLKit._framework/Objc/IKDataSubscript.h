@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) long long subscriptIndex; // @synthesize subscriptIndex=_subscriptIndex;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)initWithSubscriptIndex:(long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

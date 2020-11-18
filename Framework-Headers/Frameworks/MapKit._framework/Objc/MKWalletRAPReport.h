@@ -13,8 +13,10 @@
     GEORPProblem *_problem;
 }
 
+@property (copy, nonatomic) NSString *correlationId;
 @property (copy, nonatomic) NSString *merchantAdamId;
 @property (readonly, nonatomic) GEORPProblem *problem; // @synthesize problem=_problem;
+@property (copy, nonatomic) NSString *reportersComment;
 
 - (void).cxx_destruct;
 - (id)initForMerchantIssue:(unsigned long long)arg1 merchantIndustryCode:(long long)arg2 mapsIdentifier:(unsigned long long)arg3 merchantName:(id)arg4 merchantRawName:(id)arg5 merchantIndustryCategory:(id)arg6 merchantURL:(id)arg7 merchantFormattedAddress:(id)arg8 transactionTime:(double)arg9 transactionType:(id)arg10 transactionLocation:(CDStruct_c3b9c2ee)arg11;

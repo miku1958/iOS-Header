@@ -14,11 +14,11 @@ __attribute__((visibility("hidden")))
 {
     BOOL _didCalculatedSize;
     BOOL _delegateRespondsToBackgroundImageForScorecardViewMaterial;
-    BOOL _delegateRespondsToBackgroundBlendModeForElementInRowAtIndex;
+    BOOL _delegateRespondsToBackgroundBlendModeForScoreValueInRowAtIndex;
     id<VUIScorecardViewDelegate> _delegate;
     VUIScoreboardLayout *_scoreboardLayout;
     double _interitemSpacing;
-    NSArray *_rowElementSizes;
+    NSArray *_rowScoreValueSizes;
     NSArray *_columnWidths;
     NSArray *_rowHeights;
     UIImage *_darkMaterialImage;
@@ -28,12 +28,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *columnWidths; // @synthesize columnWidths=_columnWidths;
 @property (strong, nonatomic) UIImage *darkMaterialImage; // @synthesize darkMaterialImage=_darkMaterialImage;
 @property (weak, nonatomic) id<VUIScorecardViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL delegateRespondsToBackgroundBlendModeForElementInRowAtIndex; // @synthesize delegateRespondsToBackgroundBlendModeForElementInRowAtIndex=_delegateRespondsToBackgroundBlendModeForElementInRowAtIndex;
+@property (nonatomic) BOOL delegateRespondsToBackgroundBlendModeForScoreValueInRowAtIndex; // @synthesize delegateRespondsToBackgroundBlendModeForScoreValueInRowAtIndex=_delegateRespondsToBackgroundBlendModeForScoreValueInRowAtIndex;
 @property (nonatomic) BOOL delegateRespondsToBackgroundImageForScorecardViewMaterial; // @synthesize delegateRespondsToBackgroundImageForScorecardViewMaterial=_delegateRespondsToBackgroundImageForScorecardViewMaterial;
 @property (nonatomic) BOOL didCalculatedSize; // @synthesize didCalculatedSize=_didCalculatedSize;
 @property (nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
-@property (strong, nonatomic) NSArray *rowElementSizes; // @synthesize rowElementSizes=_rowElementSizes;
 @property (strong, nonatomic) NSArray *rowHeights; // @synthesize rowHeights=_rowHeights;
+@property (strong, nonatomic) NSArray *rowScoreValueSizes; // @synthesize rowScoreValueSizes=_rowScoreValueSizes;
 @property (strong, nonatomic) VUIScoreboardLayout *scoreboardLayout; // @synthesize scoreboardLayout=_scoreboardLayout;
 @property (nonatomic) struct CGSize scorecardSize; // @synthesize scorecardSize=_scorecardSize;
 

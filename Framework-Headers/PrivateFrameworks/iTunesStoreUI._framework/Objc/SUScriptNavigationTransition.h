@@ -13,9 +13,9 @@
     long long _status;
     NSString *_title;
     SUNavigationContainerViewController *_container;
-    NSString *_rightBarButton;
     long long _fromIndex;
     long long _toIndex;
+    NSString *_rightBarButton;
     NSMutableArray *_finishBlocks;
 }
 

@@ -63,6 +63,7 @@
 - (BOOL)_databaseFileExists;
 - (id)_databaseFilePaths;
 - (BOOL)_databaseFilesAreWritable;
+- (int)_distrustQueriesDuringBlock:(CDUnknownBlockType)arg1;
 - (void)_ensureConnectionIsOpen;
 - (void)_enumerateTableColumnNamesAndDefinitionsFromTable:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)_executeStatement:(id)arg1 withError:(id *)arg2;

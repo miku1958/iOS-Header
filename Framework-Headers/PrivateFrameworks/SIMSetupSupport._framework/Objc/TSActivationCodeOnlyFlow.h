@@ -15,6 +15,7 @@
 @interface TSActivationCodeOnlyFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
     BOOL _isPreinstallingViewControllerActive;
+    BOOL _confirmationCodeRequired;
     NSError *_planInstallError;
     NSString *_carrierName;
     unsigned long long _userConsentType;

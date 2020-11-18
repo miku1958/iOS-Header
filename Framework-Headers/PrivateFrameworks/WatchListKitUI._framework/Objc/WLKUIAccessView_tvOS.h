@@ -9,7 +9,7 @@
 #import <WatchListKitUI/TVCarouselViewDataSource-Protocol.h>
 #import <WatchListKitUI/TVCarouselViewDelegate-Protocol.h>
 
-@class NSArray, NSString, TVCarouselView, UIButton, UILabel, UILayoutGuide, UIStackView;
+@class NSArray, NSString, UIButton, UILabel, UILayoutGuide, UIStackView, _TVCarouselView;
 
 @interface WLKUIAccessView_tvOS : UIView <TVCarouselViewDataSource, TVCarouselViewDelegate>
 {
@@ -24,7 +24,7 @@
     UIButton *_disallowButton;
     UIButton *_nackButton;
     UIButton *_seeAllButton;
-    TVCarouselView *_carouselView;
+    _TVCarouselView *_carouselView;
     BOOL _didLayout;
     UIView *_privacyView;
 }

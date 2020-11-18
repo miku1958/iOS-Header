@@ -47,8 +47,8 @@
 @property (readonly, nonatomic) BOOL allowEditMenuToAppear;
 @property (readonly, nonatomic) BOOL allowTextEditingToBegin;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
-@property (readonly, nonatomic) id<SXComponentController> componentController; // @synthesize componentController=_componentController;
-@property (readonly, nonatomic) id<SXComponentInteractionManager> componentInteractionManager; // @synthesize componentInteractionManager=_componentInteractionManager;
+@property (readonly, weak, nonatomic) id<SXComponentController> componentController; // @synthesize componentController=_componentController;
+@property (readonly, weak, nonatomic) id<SXComponentInteractionManager> componentInteractionManager; // @synthesize componentInteractionManager=_componentInteractionManager;
 @property (readonly, nonatomic) STTextTangierCanvasViewController *cvc; // @synthesize cvc=_cvc;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SXTangierControllerDelegate> delegate; // @synthesize delegate=_delegate;

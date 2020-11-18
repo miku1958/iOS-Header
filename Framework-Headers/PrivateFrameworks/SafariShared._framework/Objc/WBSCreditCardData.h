@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, PKVirtualCard, UIImage;
 
 @interface WBSCreditCardData : NSObject
 {
@@ -15,21 +15,30 @@
     NSString *_cardNumber;
     NSDate *_expirationDate;
     NSDate *_lastUsedDate;
+    NSString *_cardSecurityCode;
+    PKVirtualCard *_virtualCard;
 }
 
 @property (copy, nonatomic) NSString *cardName; // @synthesize cardName=_cardName;
 @property (copy, nonatomic) NSString *cardNumber; // @synthesize cardNumber=_cardNumber;
+@property (readonly, copy, nonatomic) NSString *cardSecurityCode; // @synthesize cardSecurityCode=_cardSecurityCode;
 @property (copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
+@property (readonly, nonatomic) PKVirtualCard *virtualCard; // @synthesize virtualCard=_virtualCard;
+@property (readonly, nonatomic) UIImage *virtualCardIcon;
 
 - (void).cxx_destruct;
+- (id)_expirationDateFromPKVirtualCard:(id)arg1;
 - (id)creditCardDataByMergingCardholderNameAndExpirationDateFromCard:(id)arg1;
 - (id)creditCardDataByUpdatingLastUsedDate:(id)arg1;
 - (id)description;
 - (BOOL)hasSameCreditCardInformationAs:(id)arg1;
 - (id)initWithCardName:(id)arg1 number:(id)arg2 cardholderName:(id)arg3 expirationDate:(id)arg4;
+- (id)initWithCardName:(id)arg1 number:(id)arg2 cardholderName:(id)arg3 expirationDate:(id)arg4 securityCode:(id)arg5;
 - (id)initWithKeychainRepresentation:(id)arg1;
+- (id)initWithVirtualCard:(id)arg1;
+- (id)initWithVirtualCardCredentials:(id)arg1 virtualCard:(id)arg2;
 - (id)keychainRepresentation;
 
 @end

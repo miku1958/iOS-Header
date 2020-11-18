@@ -20,6 +20,7 @@
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;
 - (void)recordingStoppedForReason:(unsigned long long)arg1;
 - (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(NSDictionary *)arg2;
+- (double)trailingSilenceDurationAtEndpoint;
 
 @optional
 - (void)handleVoiceTriggerWithActivationInfo:(NSDictionary *)arg1;

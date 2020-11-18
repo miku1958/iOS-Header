@@ -8,19 +8,18 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf, _MRNowPlayingPlayerPathProtobuf;
+@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRNowPlayingPlayerProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingClient : NSObject <MRNowPlayingClientState>
 {
-    _MRNowPlayingClientProtobuf *_client;
+    _MRNowPlayingPlayerProtobuf *_activePlayer;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableArray *_playerClients;
-    _MRNowPlayingPlayerPathProtobuf *_activePlayer;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
 
-@property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayer; // @synthesize activePlayer=_activePlayer;
+@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayerPath;
 @property (strong, nonatomic) _MRNowPlayingClientProtobuf *client;
 @property (readonly, nonatomic) NSArray *playerClients;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
@@ -29,10 +28,11 @@
 - (id)debugDescription;
 - (id)description;
 - (id)initWithPlayerPath:(id)arg1;
+- (void)mergeClient:(id)arg1;
 - (id)nowPlayingPlayerClientForPlayerPath:(id)arg1;
 - (void)removePlayer:(id)arg1;
 - (void)restoreNowPlayingClientState;
-- (void)updateClient:(id)arg1;
+- (BOOL)updateActivePlayerPath:(id)arg1;
 
 @end
 

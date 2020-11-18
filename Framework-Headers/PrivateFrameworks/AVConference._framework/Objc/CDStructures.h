@@ -263,6 +263,7 @@ struct _RTCP_SEND_CONTROL_PARAMETERS {
 struct _VCAudioEndpointData {
     struct SoundDec_t *converter;
     struct opaqueVCAudioBufferList *converterBuffer;
+    BOOL isLastHostTimeValid;
     double lastHostTime;
     unsigned int lastTimestamp;
     unsigned int timestampOffset;

@@ -19,7 +19,6 @@
     int _state;
     BOOL _stepDone;
     NSError *_stepError;
-    NSString *_bonjourTestID;
     BOOL _reachabilityEnabled;
     unsigned int _repairFlags;
     unsigned int _setupFlags;
@@ -42,9 +41,9 @@
 - (void)_activate;
 - (void)_completeError:(id)arg1;
 - (void)_handleRequestBonjourTestDone:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleRequestBonjourTestStart:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_handleWiFiSetupRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_run;
-- (void)_runBonjourTestStart;
 - (void)_runJoinStart:(int)arg1;
 - (void)_runReachabilityStart;
 - (void)_runScanResults:(id)arg1 error:(id)arg2 channel:(int)arg3;

@@ -64,7 +64,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAudioRouteButtonFor:(id)arg1;
 - (void)updateControlsVisibilityForExpandedState:(BOOL)arg1;
-- (void)updateWithLegacyCall:(id)arg1;
+- (void)updateToRepresentLegacyCall:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

@@ -14,6 +14,7 @@
 {
     long long _merchantIndustryCode;
     double _transactionTime;
+    NSString *_correlationId;
     NSString *_merchantAdamId;
     NSString *_merchantFormattedAddress;
     GEOPDMapsIdentifier *_merchantId;
@@ -29,6 +30,8 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *correlationId; // @synthesize correlationId=_correlationId;
+@property (readonly, nonatomic) BOOL hasCorrelationId;
 @property (readonly, nonatomic) BOOL hasMerchantAdamId;
 @property (readonly, nonatomic) BOOL hasMerchantFormattedAddress;
 @property (readonly, nonatomic) BOOL hasMerchantId;

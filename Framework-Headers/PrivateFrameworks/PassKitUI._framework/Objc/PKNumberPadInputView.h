@@ -6,14 +6,16 @@
 
 #import <UIKit/UIInputView.h>
 
-@class UIStackView;
+@class UIColor, UIStackView;
 
 @interface PKNumberPadInputView : UIInputView
 {
     UIStackView *_verticalStackView;
     BOOL _showsDecimalPointButton;
+    UIColor *_numberPadColor;
 }
 
+@property (copy, nonatomic) UIColor *numberPadColor; // @synthesize numberPadColor=_numberPadColor;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 
 + (struct CGSize)defaultSize;

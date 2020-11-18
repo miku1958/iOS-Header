@@ -14,7 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFrameDelegate;
+- (id)_accessibilityLabelIncludingFallbackPlaceholder:(BOOL)arg1;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
+- (BOOL)_accessibilityShouldReverseComponents:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

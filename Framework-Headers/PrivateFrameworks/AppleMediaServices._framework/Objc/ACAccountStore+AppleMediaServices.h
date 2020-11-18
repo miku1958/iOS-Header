@@ -10,6 +10,7 @@
 
 @interface ACAccountStore (AppleMediaServices)
 
+@property (readonly, nonatomic, getter=ams_isActiveAccountCombined) BOOL ams_activeAccountCombined;
 @property (readonly, nonatomic) ACAccount *ams_activeiCloudAccount;
 @property (readonly, nonatomic) ACAccount *ams_activeiTunesAccount;
 @property (readonly, nonatomic) NSArray *ams_iTunesAccounts;

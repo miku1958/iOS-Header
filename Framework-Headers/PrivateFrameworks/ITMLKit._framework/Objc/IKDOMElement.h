@@ -26,6 +26,7 @@
 }
 
 @property (weak, nonatomic, setter=_setAliasOf:) IKDOMElement *_aliasOf; // @synthesize _aliasOf=__aliasOf;
+@property (readonly, nonatomic) BOOL _isPartOfPrototypeElement;
 @property (readonly, nonatomic) BOOL _isPrototypeElement;
 @property (readonly, copy, nonatomic) IKDOMNamedNodeMap *attributes;
 @property (readonly, nonatomic) unsigned long long childElementCount;
@@ -52,26 +53,36 @@
 - (id)childElements;
 - (id)childElementsByTagName:(id)arg1;
 - (void)childrenUpdatedWithUpdatedChildNodes:(id)arg1 notify:(BOOL)arg2;
+- (id)domb_boundCSSRule;
 - (id)domb_dataBinding;
+- (id)domb_domBindingController;
+- (id)domb_mutationRules;
+- (void)domb_setBoundCSSRule:(id)arg1;
+- (void)domb_setDOMBindingController:(id)arg1;
 - (void)domb_setDataBinding:(id)arg1;
+- (void)domb_setMutationRules:(id)arg1;
+- (id)dombs_items;
+- (void)dombs_setItems:(id)arg1;
+- (id)domib_appDataSet;
+- (id)domib_itemsChangeSet;
+- (void)domib_setAppDataSet:(id)arg1;
+- (void)domib_setItemsChangeSet:(id)arg1;
+- (void)domib_setVisibleIndexRange:(struct _NSRange)arg1;
+- (struct _NSRange)domib_visibleIndexRange;
 - (id)domp_derivativeDOMElementsBySelector;
 - (id)domp_prototype;
 - (void)domp_setDerivativeDOMElementsBySelector:(id)arg1;
 - (void)domp_setPrototype:(id)arg1;
-- (id)dse_appDataSet;
-- (id)dse_filteredJSDataItemIndexes;
-- (id)dse_jsDataItems;
-- (void)dse_setAppDataSet:(id)arg1;
-- (void)dse_setFilteredJSDataItemIndexes:(id)arg1;
-- (void)dse_setJSDataItems:(id)arg1;
-- (void)dse_setUsedPrototypeMappingsByType:(id)arg1;
-- (id)dse_usedPrototypeMappingsByType;
 - (id)getAttribute:(id)arg1;
 - (id)getElementsByTagName:(id)arg1;
 - (BOOL)hasAttribute:(id)arg1;
 - (BOOL)hasAttributes;
 - (id)ik_templateElementCSSSelectorList;
 - (id)ik_templateName;
+- (id)ikve_prototypesID;
+- (id)ikve_rulesID;
+- (void)ikve_setPrototypesID:(id)arg1;
+- (void)ikve_setRulesID:(id)arg1;
 - (void)insertAdjacentHTML:(id)arg1:(id)arg2;
 - (id)nodeName;
 - (long long)nodeType;
@@ -82,16 +93,6 @@
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)setTextContent:(id)arg1;
 - (id)textContent;
-- (BOOL)ve_arePrototypesUpdated;
-- (id)ve_filteredJSDataItemIndexes;
-- (id)ve_jsDataItems;
-- (id)ve_prototypesID;
-- (void)ve_setFilteredJSDataItemIndexes:(id)arg1;
-- (void)ve_setJSDataItems:(id)arg1;
-- (void)ve_setPrototypesID:(id)arg1;
-- (void)ve_setPrototypesUpdated:(BOOL)arg1;
-- (void)ve_setUsedPrototypesByType:(id)arg1;
-- (id)ve_usedPrototypesByType;
 
 @end
 

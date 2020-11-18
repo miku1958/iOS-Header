@@ -34,6 +34,8 @@
 - (id)pkDictionaryForProperty:(id)arg1;
 - (id)pkFormattedContactAddress;
 - (id)pkFormattedContactAddressIncludingPhoneticName:(BOOL)arg1;
+- (id)pkFormattedContactAddressIncludingPhoneticName:(BOOL)arg1 showName:(BOOL)arg2;
+- (id)pkFormattedContactAddressWithoutName;
 - (id)pkFullAndPhoneticName;
 - (id)pkFullName;
 - (id)pkFullyQualifiedName;

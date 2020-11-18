@@ -50,6 +50,7 @@
 - (void)groupsController:(id)arg1 didInsertGroup:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)groupsController:(id)arg1 didMoveGroup:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)groupsController:(id)arg1 didRemoveGroup:(id)arg2 atIndex:(unsigned long long)arg3;
+- (BOOL)hasDiscoveryContent;
 - (unsigned long long)indexOfGroup:(id)arg1;
 - (unsigned long long)indexOfSeparationGroup;
 - (id)initWithPasses:(id)arg1 passDataArray:(id)arg2 presentationSource:(unsigned long long)arg3;

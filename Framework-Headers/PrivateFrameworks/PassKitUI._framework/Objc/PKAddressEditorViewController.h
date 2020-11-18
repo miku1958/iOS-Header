@@ -22,6 +22,7 @@
     BOOL _displayGivenNameFirst;
     BOOL _displayPhoneticName;
     BOOL _readOnly;
+    BOOL _countryIsEditable;
     BOOL _requirementsMet;
     id<PKAddressEditorViewControllerDelegate> _delegate;
     NSString *_givenName;
@@ -52,6 +53,7 @@
 }
 
 @property (strong, nonatomic) CNPostalAddressFormattingSpecification *addressFormatter; // @synthesize addressFormatter=_addressFormatter;
+@property (nonatomic) BOOL countryIsEditable; // @synthesize countryIsEditable=_countryIsEditable;
 @property (strong, nonatomic) PKAddressTextField *currentlySelectedField; // @synthesize currentlySelectedField=_currentlySelectedField;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKAddressEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -92,6 +94,7 @@
 - (void)_validateAddressRequirements;
 - (void)addressTextField:(id)arg1 textDidChange:(id)arg2;
 - (void)assignErrorToField:(id)arg1;
+- (BOOL)canChangeCountry;
 - (void)cancel;
 - (void)completer:(id)arg1 didFailWithError:(id)arg2;
 - (void)completerDidUpdateResults:(id)arg1;

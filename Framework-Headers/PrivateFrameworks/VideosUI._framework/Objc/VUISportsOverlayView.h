@@ -6,76 +6,88 @@
 
 #import <UIKit/UIView.h>
 
-#import <VideosUI/VUIOverlayViewProtocol-Protocol.h>
+#import <VideosUI/VUIOverlayWithMaterialRendering-Protocol.h>
 #import <VideosUI/VUIScorecardViewDelegate-Protocol.h>
+#import <VideosUI/VUISportsScoreboardManagerDelegate-Protocol.h>
 
-@class NSArray, NSOperationQueue, NSString, TVImageElement, TVViewElement, UIImage, VUIScorecardView, VUISportsOverlayLayout, VUITextBadgeView, _TVImageView;
+@class IKImageElement, IKViewElement, NSOperation, NSString, UICollectionReusableView, UIImage, VUIScorecardView, VUISportsOverlayLayout, VUISportsScoreboardViewModel, VUITextBadgeView, _TVImageView;
 
 __attribute__((visibility("hidden")))
-@interface VUISportsOverlayView : UIView <VUIScorecardViewDelegate, VUIOverlayViewProtocol>
+@interface VUISportsOverlayView : UIView <VUIScorecardViewDelegate, VUIOverlayWithMaterialRendering, VUISportsScoreboardManagerDelegate>
 {
     BOOL _textBadgeHasMaterial;
     BOOL _backgroundImageHasChanged;
+    BOOL _isHostSetup;
     UIImage *_backgroundImageForMaterialRendering;
     VUISportsOverlayLayout *_overlayLayout;
-    TVViewElement *_viewElement;
-    NSArray *_scorecardData;
-    TVViewElement *_scorecardElement;
+    VUISportsScoreboardViewModel *_scoreboardViewModel;
+    IKViewElement *_viewElement;
     VUIScorecardView *_scorecardView;
     VUITextBadgeView *_textBadge;
-    _TVImageView *_logo;
-    TVImageElement *_logoElement;
-    NSOperationQueue *_backgroundImageOperationQueue;
+    _TVImageView *_logoView;
+    IKImageElement *_logoElement;
+    NSOperation *_pendingOperation;
     UIImage *_scorecardViewBackgroundImage;
+    UICollectionReusableView *_containingCell;
+    struct CGSize _logoSize;
 }
 
 @property (strong, nonatomic) UIImage *backgroundImageForMaterialRendering; // @synthesize backgroundImageForMaterialRendering=_backgroundImageForMaterialRendering;
 @property (nonatomic) BOOL backgroundImageHasChanged; // @synthesize backgroundImageHasChanged=_backgroundImageHasChanged;
-@property (strong, nonatomic) NSOperationQueue *backgroundImageOperationQueue; // @synthesize backgroundImageOperationQueue=_backgroundImageOperationQueue;
+@property (weak, nonatomic) UICollectionReusableView *containingCell; // @synthesize containingCell=_containingCell;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _TVImageView *logo; // @synthesize logo=_logo;
-@property (strong, nonatomic) TVImageElement *logoElement; // @synthesize logoElement=_logoElement;
+@property (nonatomic) BOOL isHostSetup; // @synthesize isHostSetup=_isHostSetup;
+@property (strong, nonatomic) IKImageElement *logoElement; // @synthesize logoElement=_logoElement;
+@property (nonatomic) struct CGSize logoSize; // @synthesize logoSize=_logoSize;
+@property (strong, nonatomic) _TVImageView *logoView; // @synthesize logoView=_logoView;
 @property (strong, nonatomic) VUISportsOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
-@property (copy, nonatomic) NSArray *scorecardData; // @synthesize scorecardData=_scorecardData;
-@property (strong, nonatomic) TVViewElement *scorecardElement; // @synthesize scorecardElement=_scorecardElement;
+@property (strong, nonatomic) NSOperation *pendingOperation; // @synthesize pendingOperation=_pendingOperation;
+@property (strong, nonatomic) VUISportsScoreboardViewModel *scoreboardViewModel; // @synthesize scoreboardViewModel=_scoreboardViewModel;
 @property (strong, nonatomic) VUIScorecardView *scorecardView; // @synthesize scorecardView=_scorecardView;
 @property (strong, nonatomic) UIImage *scorecardViewBackgroundImage; // @synthesize scorecardViewBackgroundImage=_scorecardViewBackgroundImage;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VUITextBadgeView *textBadge; // @synthesize textBadge=_textBadge;
 @property (nonatomic) BOOL textBadgeHasMaterial; // @synthesize textBadgeHasMaterial=_textBadgeHasMaterial;
-@property (strong, nonatomic) TVViewElement *viewElement; // @synthesize viewElement=_viewElement;
+@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (id)_sharedDrawQueue;
 + (BOOL)_viewBackgroundImageNeedsUpdatingWithFrame:(struct CGRect)arg1 currentBackgroundImage:(id)arg2;
 + (id)sportsOverlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
-- (void)_layoutWithElement:(id)arg1;
 - (void)_redrawScorecardViewWithDuration:(double)arg1;
 - (void)_redrawTextBadgeWithDuration:(double)arg1;
 - (void)_redrawView:(id)arg1 withDuration:(double)arg2;
+- (void)_registerOverlayView;
 - (BOOL)_scorecardViewBackgroundImageNeedsUpdating;
 - (BOOL)_scorecardViewRequiresBackgroundImage;
+- (void)_setupHosting;
+- (void)_teardownHosting;
 - (BOOL)_textBadgeBackgroundImageNeedsUpdating;
 - (BOOL)_textBadgeRequiresBackgroundImage;
+- (void)_unregisterOverlayView;
 - (void)_updateBackgroundImagesWithCompletedOperation:(id)arg1;
 - (void)_updateBackgroundMaterialImagesWithBackgroundImageSize:(struct CGSize)arg1 performSynchronously:(BOOL)arg2;
 - (void)_updateBadgePosition;
-- (void)_updateLogo:(id)arg1;
-- (void)_updateLogoPosition;
 - (BOOL)_updateScoreView:(id)arg1;
 - (BOOL)_updateTextBadge:(id)arg1;
-- (int)backgroundBlendModeForElementInRow:(long long)arg1 atIndex:(long long)arg2;
+- (int)backgroundBlendModeForScoreValueInRow:(long long)arg1 atIndex:(long long)arg2;
 - (id)backgroundImageForScorecardViewMaterial:(id)arg1;
 - (void)backgroundImageSizeDidChange:(struct CGSize)arg1;
+- (void)dealloc;
+- (id)getJSContextDictionary;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)maximumWidthForScorecardView:(id)arg1;
-- (long long)numberOfElementsForScorecardView:(id)arg1 inRow:(long long)arg2;
 - (long long)numberOfRowsInScorecardView:(id)arg1;
+- (long long)numberOfScoreValuesForScorecardView:(id)arg1 inRow:(long long)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reset;
+- (id)scoreValue:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
 - (long long)styleForScorecardView:(id)arg1;
-- (id)viewElementForScorecard:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
+- (void)updateScoreboard:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

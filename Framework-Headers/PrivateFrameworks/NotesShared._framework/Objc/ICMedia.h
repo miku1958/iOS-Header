@@ -71,6 +71,7 @@
 - (void)mergeDataFromRecord:(id)arg1;
 - (BOOL)needsToBePushedToCloud;
 - (id)newlyCreatedRecord;
+- (void)objectWasPushedToCloudWithOperation:(id)arg1 serverRecord:(id)arg2;
 - (id)objectsToBeDeletedBeforeThisObject;
 - (id)parentCloudObject;
 - (id)parentEncryptableObject;
@@ -81,8 +82,7 @@
 - (void)saveAndClearDecryptedData;
 - (BOOL)shouldFallBackToCheckAllCryptoKeys;
 - (BOOL)supportsDeletionByTTL;
-- (void)updateFlagToExcludeFromBackup;
-- (void)updateFlagToExcludeFromBackupTouchFileIfNecessary:(BOOL)arg1;
+- (void)updateFlagToExcludeFromCloudBackup;
 - (BOOL)writeData:(id)arg1 error:(id *)arg2;
 - (BOOL)writeDataFromAsset:(id)arg1 isArchivedDirectory:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)writeDataFromFileURL:(id)arg1 error:(id *)arg2;

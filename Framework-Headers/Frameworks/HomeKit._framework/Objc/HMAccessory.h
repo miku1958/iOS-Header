@@ -33,6 +33,7 @@
     BOOL _supportsTargetControl;
     BOOL _supportsTargetController;
     BOOL _targetControllerHardwareSupport;
+    BOOL _suspendCapable;
     BOOL _paired;
     BOOL _needsReprovisioning;
     NSUUID *_uniqueIdentifier;
@@ -125,6 +126,7 @@
 @property (nonatomic) BOOL supportsMediaAccessControl; // @synthesize supportsMediaAccessControl=_supportsMediaAccessControl;
 @property (nonatomic) BOOL supportsTargetControl; // @synthesize supportsTargetControl=_supportsTargetControl;
 @property (nonatomic) BOOL supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
+@property (readonly, nonatomic) BOOL suspendCapable; // @synthesize suspendCapable=_suspendCapable;
 @property (copy) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (nonatomic) BOOL targetControllerHardwareSupport; // @synthesize targetControllerHardwareSupport=_targetControllerHardwareSupport;
 @property (readonly, copy, nonatomic) NSArray *televisionProfiles;
@@ -213,6 +215,7 @@
 - (BOOL)isAdditionalSetupRequired;
 - (BOOL)isCurrentAccessory;
 - (BOOL)isFirmwareUpdateAvailable;
+- (BOOL)isSuspendCapable;
 - (id)logIdentifier;
 - (id)mediaProfile;
 - (void)notifyDelegateOfAppDataUpdateForService:(id)arg1;
@@ -229,6 +232,7 @@
 - (void)setSettings:(id)arg1;
 - (void)setSoftwareUpdateController:(id)arg1;
 - (void)setSupportsIdentify:(BOOL)arg1;
+- (void)setSuspendCapable:(BOOL)arg1;
 - (id)softwareUpdateController;
 - (id)targetControllers;
 - (void)updateAccessoryInfo:(id)arg1;

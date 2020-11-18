@@ -12,13 +12,12 @@
 #import <VideosUI/VUILibraryEpisodeFooterCellDelegate-Protocol.h>
 #import <VideosUI/VUILibraryEpisodeShelfViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
-#import <VideosUI/VUIMediaEntityDownloadViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, VUILibraryMediaCollectionViewModel, VUIMediaCollection;
 
 __attribute__((visibility("hidden")))
-@interface VUILibraryMediaCollectionViewController : VUILibraryStackViewController <UICollectionViewDataSource, UICollectionViewDelegate, VUIMediaEntityDownloadViewControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIProductLockupViewDelegate, TVShelfViewLayoutDelegate, VUILibraryEpisodeFooterCellDelegate, VUILibraryEpisodeShelfViewControllerDelegate>
+@interface VUILibraryMediaCollectionViewController : VUILibraryStackViewController <UICollectionViewDataSource, UICollectionViewDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIProductLockupViewDelegate, TVShelfViewLayoutDelegate, VUILibraryEpisodeFooterCellDelegate, VUILibraryEpisodeShelfViewControllerDelegate>
 {
     BOOL _canShowMultipleSeasons;
     VUIMediaCollection *_mediaCollection;
@@ -26,14 +25,14 @@ __attribute__((visibility("hidden")))
     NSArray *_episodes;
     NSArray *_episodeGroups;
     VUILibraryMediaCollectionViewModel *_mediaCollectionViewModel;
-    NSMutableDictionary *_downloadViewControllerBySeasonIdentifier;
+    NSMutableDictionary *_downloadButtonBySeasonIdentifier;
     NSString *_showTitle;
 }
 
 @property (nonatomic) BOOL canShowMultipleSeasons; // @synthesize canShowMultipleSeasons=_canShowMultipleSeasons;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableDictionary *downloadViewControllerBySeasonIdentifier; // @synthesize downloadViewControllerBySeasonIdentifier=_downloadViewControllerBySeasonIdentifier;
+@property (strong, nonatomic) NSMutableDictionary *downloadButtonBySeasonIdentifier; // @synthesize downloadButtonBySeasonIdentifier=_downloadButtonBySeasonIdentifier;
 @property (strong, nonatomic) NSArray *episodeGroups; // @synthesize episodeGroups=_episodeGroups;
 @property (strong, nonatomic) NSArray *episodes; // @synthesize episodes=_episodes;
 @property (readonly) unsigned long long hash;
@@ -55,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateProductLockupView:(id)arg1 withSeason:(id)arg2;
 - (void)_updateProductLockupViewWithSeasonIdentifier:(id)arg1;
 - (BOOL)_usingEpisodesGroupFetch;
-- (void)addDownloadViewControllerToProductLockupView:(id)arg1 forSeason:(id)arg2;
+- (void)addDownloadButtonToProductLockupView:(id)arg1 forSeason:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
@@ -65,12 +64,12 @@ __attribute__((visibility("hidden")))
 - (void)contentDescriptionExpanded;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
-- (void)downloadViewController:(id)arg1 didRemoveDownloadForAssetController:(id)arg2;
 - (id)initWithMediaCollection:(id)arg1 showMultipleSeasons:(BOOL)arg2;
 - (void)libraryEpisodesShelfViewController:(id)arg1 didRemoveDownloadForAssetController:(id)arg2;
 - (void)start;
 - (void)titleButtonPressedForStoreId:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

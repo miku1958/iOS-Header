@@ -39,7 +39,7 @@
 - (void)applyAdditionsOnTextTangierStorage:(id)arg1;
 - (void)applyListStylingOnTextTangierStorage:(id)arg1 usingAttributesMap:(id)arg2;
 - (void)applyStylingOnTextTangierStorage:(id)arg1;
-- (id)attributesForTextStyle:(id)arg1 baseTextStyle:(id)arg2 onParagraphStyle:(id)arg3 forRange:(struct _NSRange)arg4 resultingDropCapStyle:(id *)arg5 textResizer:(id)arg6 fontFace:(id)arg7;
+- (id)attributesForTextStyle:(id)arg1 onParagraphStyle:(id)arg2 forRange:(struct _NSRange)arg3 resultingDropCapStyle:(id *)arg4 textResizer:(id)arg5 fontFace:(id)arg6;
 - (id)characterStyleFromAttributes:(id)arg1 context:(id)arg2;
 - (id)cleanString:(id)arg1;
 - (id)description;

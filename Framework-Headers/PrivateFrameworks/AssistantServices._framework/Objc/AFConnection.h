@@ -33,6 +33,8 @@
     BOOL _activeRequestHasSpeechRecognition;
     BOOL _activeRequestIsDucking;
     BOOL _activeRequestIsTwoShot;
+    unsigned long long _activeRequestSpeechEndHostTime;
+    unsigned long long _activeRequestNumberOfPresentedInterstitials;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
     unsigned int _shouldSpeak:1;
@@ -156,6 +158,7 @@
 - (void)_tellSpeechDelegateSpeechRecognizedPartialResult:(id)arg1;
 - (void)_tellSpeechDelegateToPerformTwoShotPromptWithType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_updateClientConfiguration;
+- (void)_updateSpeechEndHostTime:(unsigned long long)arg1;
 - (void)_updateState;
 - (void)_updateStateIfNotInSync;
 - (void)_willCancelRequest;

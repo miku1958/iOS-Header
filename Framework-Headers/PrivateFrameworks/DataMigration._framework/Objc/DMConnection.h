@@ -15,9 +15,11 @@
 
 + (id)connection;
 - (void).cxx_destruct;
+- (void)cancelDeferredExitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)changeVisibility:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)forceMigrationOnNextRebootWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deferExitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forceMigrationOnNextRebootWithUserDataDisposition:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)isMigrationNeeded:(CDUnknownBlockType)arg1;
 - (void)migrateCheckingNecessity:(BOOL)arg1 lastRelevantPlugin:(id)arg2 testMigrationInfrastructureOnly:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;

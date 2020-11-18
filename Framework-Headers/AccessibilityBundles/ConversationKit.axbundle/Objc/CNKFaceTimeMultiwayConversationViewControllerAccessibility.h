@@ -13,6 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityExpandControls;
+- (BOOL)_axGetDidExpandControls;
+- (long long)_axGetExpectedExpandedState;
+- (void)_axSetDidExpandControls:(BOOL)arg1;
+- (void)_axSetExpectedExpandedState:(long long)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (void)restartAutoHideInCallControlsDrawerTimer;
 - (void)setControlsState:(long long)arg1 animated:(BOOL)arg2;

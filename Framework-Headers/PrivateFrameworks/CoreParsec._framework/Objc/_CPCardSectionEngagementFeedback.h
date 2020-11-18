@@ -17,6 +17,7 @@
     BOOL _destinationWasPARPunchout;
     int _triggerEvent;
     int _actionCardType;
+    int _actionTarget;
     unsigned long long _timestamp;
     _CPPunchoutForFeedback *_destination;
     _CPCardSectionForFeedback *_cardSection;
@@ -26,6 +27,7 @@
 }
 
 @property (nonatomic) int actionCardType; // @synthesize actionCardType=_actionCardType;
+@property (nonatomic) int actionTarget; // @synthesize actionTarget=_actionTarget;
 @property (strong, nonatomic) _CPCardSectionForFeedback *cardSection; // @synthesize cardSection=_cardSection;
 @property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
 @property (readonly, copy) NSString *debugDescription;

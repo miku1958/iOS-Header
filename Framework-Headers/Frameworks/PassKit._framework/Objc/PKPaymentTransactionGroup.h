@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, PKCurrencyAmount, PKMapsBrand, PKMapsMerchant, PKMerchant;
+@class NSArray, NSDate, PKCurrencyAmount, PKMerchant;
 
 @interface PKPaymentTransactionGroup : NSObject <NSSecureCoding>
 {
@@ -17,16 +17,12 @@
     NSDate *_endDate;
     long long _merchantCategory;
     PKMerchant *_merchant;
-    PKMapsMerchant *_mapsMerchant;
-    PKMapsBrand *_mapsBrand;
     unsigned long long _transactionCount;
     PKCurrencyAmount *_totalAmount;
     NSArray *_transactions;
 }
 
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) PKMapsBrand *mapsBrand; // @synthesize mapsBrand=_mapsBrand;
-@property (strong, nonatomic) PKMapsMerchant *mapsMerchant; // @synthesize mapsMerchant=_mapsMerchant;
 @property (strong, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
 @property (nonatomic) long long merchantCategory; // @synthesize merchantCategory=_merchantCategory;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -39,7 +35,9 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

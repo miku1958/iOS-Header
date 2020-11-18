@@ -164,6 +164,7 @@
 - (id)_arrivalMapRegionForTransportType:(int)arg1;
 - (id)_asPlaceInfo;
 - (id)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestHeroBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasTravelTimeForTransportType:(int)arg1;

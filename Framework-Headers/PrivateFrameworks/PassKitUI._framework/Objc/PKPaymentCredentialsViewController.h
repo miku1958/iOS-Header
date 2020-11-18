@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
+@class NSMutableArray, NSString, PKPaymentCredentialCache, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentCredentialsViewController : PKPaymentSetupTableViewController <PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupPresentationProtocol>
@@ -18,6 +18,7 @@
     PKPaymentProvisioningController *_provisioningController;
     id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     NSMutableArray *_credentialCaches;
+    PKPaymentCredentialCache *_peerPaymentCredentialCache;
     NSMutableArray *_refundedCredentialCaches;
     PKTableHeaderView *_tableHeader;
     PKPaymentSetupFooterView *_tableFooter;
@@ -38,9 +39,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canSelectCredential:(id)arg1;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_numberOfSelectedCredentials;
 - (void)_presentManualAddController;
+- (void)_presentSecurityCapabilitiesFlowWithFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
 - (void)_setUserInteractionEnabled:(BOOL)arg1;
 - (void)_showRefund:(id)arg1;
@@ -57,6 +60,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (id)paymentSetupMarker;
+- (void)performSecurityCheckForCredentials:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

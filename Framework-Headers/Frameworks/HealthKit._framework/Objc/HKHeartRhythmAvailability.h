@@ -44,8 +44,10 @@
 + (BOOL)_isAtrialFibrillationDetectionDisabledWithDataSource:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnWatch:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionSupportedOnPhone:(id)arg1;
++ (BOOL)_isDeviceRunningSeed:(id)arg1;
 + (BOOL)_isElectrocardiogramDisabledWithDataSource:(id)arg1;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1;
++ (BOOL)_isRunningSeed;
 + (id)activePairedDevice;
 + (BOOL)atrialFibrillationDetectionSupportedForDevice:(id)arg1;
 + (unsigned long long)atrialFibrillationDetectionSupportedState;

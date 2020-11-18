@@ -7,17 +7,20 @@
 #import <UIKit/UICollectionViewController.h>
 
 #import <PassKitUI/PKDashboardDataSourceDelegate-Protocol.h>
-#import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import <PassKitUI/PKDashboardViewControllerDelegateFlowLayout-Protocol.h>
+#import <PassKitUI/UICollectionViewDataSourcePrefetching-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSSet, NSString, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
+@class NSArray, NSMutableDictionary, NSSet, NSString, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKUISpringAnimationFactory, UICollectionViewLayout;
 @protocol PKDashboardDataSource, PKDashboardDelegate, PKDashboardLayout;
 
-@interface PKDashboardViewController : UICollectionViewController <PKDashboardDataSourceDelegate, UICollectionViewDelegateFlowLayout>
+@interface PKDashboardViewController : UICollectionViewController <UICollectionViewDataSourcePrefetching, PKDashboardDataSourceDelegate, PKDashboardViewControllerDelegateFlowLayout>
 {
     NSArray *_presenters;
     NSMutableDictionary *_presentersPerItemClassName;
     PKDashboardTitleHeaderView *_sampleHeaderView;
     NSMutableDictionary *_titlesForSection;
+    PKDashboardFooterTextView *_sampleFooterView;
+    NSMutableDictionary *_footersForSection;
     double _lastScrollOffset;
     BOOL _inScrollViewDidScroll;
     NSSet *_visibleCellsExcludingSafeArea;
@@ -56,15 +59,19 @@
 - (void)_hideAllContentAnimated:(BOOL)arg1;
 - (id)_internalIndexPathForItemIndexPath:(id)arg1;
 - (BOOL)_isCellVisibleAtIndexPath:(id)arg1 withTopSafeArea:(double)arg2 contentOffset:(double)arg3;
+- (BOOL)_isIndexPathAFooter:(id)arg1;
 - (BOOL)_isIndexPathAHeader:(id)arg1;
 - (void)_presentAllContent;
 - (void)_updateNavigationBarForVisible;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -73,7 +80,10 @@
 - (id)initWithDataSource:(id)arg1 presenters:(id)arg2 layout:(id)arg3;
 - (void)insertSections:(id)arg1;
 - (void)itemChanged:(id)arg1 atIndexPath:(id)arg2;
+- (BOOL)itemIsIndependentInCollectionView:(id)arg1 atIndexPath:(id)arg2;
+- (BOOL)itemIsStackableInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (double)pkui_preferredNavigationBarBackgroundOpacity;
 - (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (long long)preferredStatusBarStyle;

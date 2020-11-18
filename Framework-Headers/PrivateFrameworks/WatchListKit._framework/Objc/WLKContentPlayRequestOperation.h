@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@class NSString;
+@class NSString, WLKContentPlayResponse;
 
-@interface WLKContentPlayRequestOperation : WLKNetworkRequestOperation
+@interface WLKContentPlayRequestOperation : WLKUTSNetworkRequestOperation
 {
     NSString *_canonicalID;
+    WLKContentPlayResponse *_response;
 }
 
 @property (readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
+@property (strong, nonatomic) WLKContentPlayResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;
-- (id)initWithCanonicalID:(id)arg1;
-- (id)responseProcessor;
+- (id)initWithCanonicalID:(id)arg1 caller:(id)arg2;
+- (void)processResponse;
 
 @end
 

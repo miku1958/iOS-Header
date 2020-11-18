@@ -16,6 +16,7 @@
 }
 
 + (id)sharedInstance;
++ (id)sharedMetalInstance;
 - (void).cxx_destruct;
 - (id)_newAtlasForUuid:(id)arg1;
 - (void)_purgeAllUnconditionally;

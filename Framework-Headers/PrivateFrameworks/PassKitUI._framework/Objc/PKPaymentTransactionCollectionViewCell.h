@@ -6,14 +6,16 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class PKDashboardPaymentTransactionItem, PKPaymentTransactionView;
+@class PKDashboardPaymentTransactionItem, PKPaymentTransactionGroupItem, PKPaymentTransactionView;
 
 @interface PKPaymentTransactionCollectionViewCell : PKDashboardCollectionViewCell
 {
     PKDashboardPaymentTransactionItem *_item;
+    PKPaymentTransactionGroupItem *_groupItem;
     PKPaymentTransactionView *_transactionView;
 }
 
+@property (strong, nonatomic) PKPaymentTransactionGroupItem *groupItem; // @synthesize groupItem=_groupItem;
 @property (strong, nonatomic) PKDashboardPaymentTransactionItem *item; // @synthesize item=_item;
 @property (readonly, nonatomic) PKPaymentTransactionView *transactionView; // @synthesize transactionView=_transactionView;
 
@@ -22,6 +24,7 @@
 - (void)layoutSubviews;
 - (double)maxWidthForTransactionCellInWidth:(double)arg1;
 - (void)prepareForReuse;
+- (void)setShowsBottomSeparator:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

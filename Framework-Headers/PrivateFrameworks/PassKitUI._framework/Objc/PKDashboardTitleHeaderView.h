@@ -6,19 +6,27 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class UILabel;
+@class NSString, UIButton, UILabel;
 
 @interface PKDashboardTitleHeaderView : PKDashboardCollectionViewCell
 {
     UILabel *_titleLabel;
+    UIButton *_actionButton;
     BOOL _isTemplateLayout;
-    double _horizontalInset;
+    BOOL _isCompactUI;
+    BOOL _useCompactTopInset;
+    NSString *_actionTitle;
+    CDUnknownBlockType _action;
 }
 
-@property (nonatomic) double horizontalInset; // @synthesize horizontalInset=_horizontalInset;
+@property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
+@property (copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property (readonly, nonatomic) UILabel *titleLabel;
+@property (nonatomic) BOOL useCompactTopInset; // @synthesize useCompactTopInset=_useCompactTopInset;
 
++ (double)defaultHorizontalInset;
 - (void).cxx_destruct;
+- (void)_buttonPressed:(id)arg1;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)createSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;

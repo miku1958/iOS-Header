@@ -32,11 +32,13 @@
 - (void).cxx_destruct;
 - (void)_createLegacyPropertiesIfNecessary;
 - (void)_createModernPropertiesIfNecessary;
+- (id)_initForPaymentPass:(id)arg1 configuration:(id)arg2;
 - (id)criteriaForPaymentApplicationIdentifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateCriteriaWithHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initDummyExpressInfoForAutomaticSelectionCriteriaUpgradeRequest:(id)arg1 paymentPass:(id)arg2 withTechologyTest:(CDUnknownBlockType)arg3;
 - (id)initForExpressMode:(id)arg1 withPassUniqueIdentifier:(id)arg2 paymentApplicationIdentifier:(id)arg3;
 - (id)initForPaymentPass:(id)arg1 withTechologyTest:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;

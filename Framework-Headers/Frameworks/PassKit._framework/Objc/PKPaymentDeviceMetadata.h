@@ -8,26 +8,36 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CLLocation, NSNumber, NSString;
 
 @interface PKPaymentDeviceMetadata : NSObject <NSSecureCoding>
 {
+    NSString *_deviceName;
+    NSNumber *_primaryJSBLSequenceCounter;
     NSString *_secureElementIdentifier;
     NSString *_uniqueDeviceIdentifier;
     NSString *_serialNumber;
     NSString *_phoneNumber;
-    NSString *_deviceName;
+    NSString *_signedPhoneNumber;
+    NSString *_signedPhoneNumberVersion;
+    CLLocation *_location;
 }
 
 @property (copy, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property (readonly, weak, nonatomic) NSString *extensiveLatitude;
+@property (readonly, weak, nonatomic) NSString *extensiveLongitude;
+@property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (copy, nonatomic) NSNumber *primaryJSBLSequenceCounter; // @synthesize primaryJSBLSequenceCounter=_primaryJSBLSequenceCounter;
 @property (copy, nonatomic) NSString *secureElementIdentifier; // @synthesize secureElementIdentifier=_secureElementIdentifier;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (copy, nonatomic) NSString *signedPhoneNumber; // @synthesize signedPhoneNumber=_signedPhoneNumber;
+@property (copy, nonatomic) NSString *signedPhoneNumberVersion; // @synthesize signedPhoneNumberVersion=_signedPhoneNumberVersion;
 @property (copy, nonatomic) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
 
-+ (id)deviceMetadataForCurrentDevice;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;

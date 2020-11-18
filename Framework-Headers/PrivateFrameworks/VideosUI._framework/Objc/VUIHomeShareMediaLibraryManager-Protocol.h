@@ -14,6 +14,8 @@
 @property (weak, nonatomic) id<VUIHomeShareMediaLibraryManagerDelegate> delegate;
 @property (readonly, copy, nonatomic) NSArray *homeShareMediaLibraries;
 
+- (void)beginDiscoveringMediaLibraries;
+- (void)endDiscoveringMediaLibraries;
 - (id)initWithManager:(VUIMediaLibraryManager *)arg1;
 @end
 

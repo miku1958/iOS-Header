@@ -11,5 +11,10 @@
 @protocol STScrollViewDelegate <NSObject>
 - (void)didTouchScrollView:(STScrollView *)arg1 withEvent:(UIEvent *)arg2;
 - (BOOL)shouldPreventDraggingForScrollView:(STScrollView *)arg1;
+
+@optional
+- (BOOL)accessibilityShouldScrollForScrollView:(STScrollView *)arg1;
+- (BOOL)accessibilityShouldScrollForScrollView:(STScrollView *)arg1 defaultValue:(BOOL)arg2;
+- (BOOL)scrollView:(STScrollView *)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 @end
 

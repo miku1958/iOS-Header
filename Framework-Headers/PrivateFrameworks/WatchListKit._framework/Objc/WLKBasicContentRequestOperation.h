@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@class NSArray, WLKBasicContentMetadata;
+@class NSArray, WLKBasicContentMetadata, WLKBasicContentRequestResponse;
 
-@interface WLKBasicContentRequestOperation : WLKNetworkRequestOperation
+@interface WLKBasicContentRequestOperation : WLKUTSNetworkRequestOperation
 {
     NSArray *_contentIDs;
+    WLKBasicContentRequestResponse *_response;
 }
 
 @property (readonly, nonatomic) WLKBasicContentMetadata *basicContentMetadata;
 @property (readonly, copy, nonatomic) NSArray *contentIDs; // @synthesize contentIDs=_contentIDs;
+@property (readonly, nonatomic) WLKBasicContentRequestResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;
-- (id)initWithContentID:(id)arg1;
-- (id)initWithContentIDs:(id)arg1;
-- (id)responseProcessor;
+- (id)initWithContentID:(id)arg1 caller:(id)arg2;
+- (id)initWithContentIDs:(id)arg1 caller:(id)arg2;
+- (void)processResponse;
 
 @end
 

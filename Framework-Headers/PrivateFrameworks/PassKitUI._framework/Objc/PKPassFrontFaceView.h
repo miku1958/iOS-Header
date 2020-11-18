@@ -14,6 +14,7 @@
     UIImageView *_contactlessLogoView;
     UIView *_bottomRightItemView;
     UILabel *_logoLabel;
+    BOOL _showsLinkedApp;
     BOOL _showsBarcodeView;
     BOOL _showsLiveBalance;
     long long _bottomRightItem;
@@ -24,6 +25,7 @@
 @property (nonatomic) long long bottomRightItem; // @synthesize bottomRightItem=_bottomRightItem;
 @property (readonly, nonatomic) PKLinkedAppIconView *linkedApp; // @synthesize linkedApp=_linkedApp;
 @property (nonatomic) BOOL showsBarcodeView; // @synthesize showsBarcodeView=_showsBarcodeView;
+@property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 @property (nonatomic) BOOL showsLiveBalance; // @synthesize showsLiveBalance=_showsLiveBalance;
 
 - (void).cxx_destruct;

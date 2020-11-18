@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSError, NSString, RPCompanionLinkDevice;
+@class NSDictionary, NSError, NSString, RPCompanionLinkDevice, RPEndpoint, RPSession;
 
 @protocol RPCompanionLinkXPCClientInterface
+
+@optional
 - (void)companionLinkAuthCompleted:(NSError *)arg1;
 - (void)companionLinkChangedDevice:(RPCompanionLinkDevice *)arg1 changes:(unsigned int)arg2;
 - (void)companionLinkFoundDevice:(RPCompanionLinkDevice *)arg1;
@@ -15,5 +17,9 @@
 - (void)companionLinkPromptForPasswordType:(int)arg1 flags:(unsigned int)arg2 throttleSeconds:(int)arg3;
 - (void)companionLinkReceivedEventID:(NSString *)arg1 event:(NSDictionary *)arg2 options:(NSDictionary *)arg3;
 - (void)companionLinkReceivedRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 options:(NSDictionary *)arg3 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg4;
+- (void)xpcDiscoveryChangedEndpoint:(RPEndpoint *)arg1;
+- (void)xpcDiscoveryFoundEndpoint:(RPEndpoint *)arg1;
+- (void)xpcDiscoveryLostEndpoint:(RPEndpoint *)arg1;
+- (void)xpcServerAcceptSession:(RPSession *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

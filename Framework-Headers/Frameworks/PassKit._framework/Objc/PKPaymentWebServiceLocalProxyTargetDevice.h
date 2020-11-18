@@ -31,6 +31,7 @@
 - (id)_synchronousProxy;
 - (id)_synchronousProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)appleAccountInformation;
+- (void)applePayTrustKeyForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
 - (id)bridgedClientInfo;
@@ -38,13 +39,16 @@
 - (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (id)context;
 - (void)contextWithCompletion:(CDUnknownBlockType)arg1;
+- (void)createApplePayTrustKeyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)deleteApplePayTrustKeyWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)deviceClass;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
 - (id)deviceRegion;
 - (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
@@ -56,27 +60,37 @@
 - (BOOL)paymentWebService:(id)arg1 canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg2;
 - (void)paymentWebService:(id)arg1 configurationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 deleteApplicationWithAID:(id)arg2;
+- (void)paymentWebService:(id)arg1 deviceMetadataWithFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 didRegisterWithRegionMap:(id)arg2 primaryRegionTopic:(id)arg3;
 - (id)paymentWebService:(id)arg1 filterVerificationChannels:(id)arg2;
 - (void)paymentWebService:(id)arg1 handlePotentialExpressPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)paymentWebService:(id)arg1 hasPassesOfType:(unsigned long long)arg2;
+- (void)paymentWebService:(id)arg1 passOwnershipTokenWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)paymentWebService:(id)arg1 setDefaultPaymentPassUniqueIdentifier:(id)arg2;
 - (void)paymentWebService:(id)arg1 setNewAuthRandom:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 signData:(id)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)paymentWebService:(id)arg1 storePassOwnershipToken:(id)arg2 withIdentifier:(id)arg3;
+- (void)paymentWebService:(id)arg1 updateAccountWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg2;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
+- (BOOL)paymentWebServiceSupportsAccounts:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
+- (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)renewAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
+- (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
+- (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

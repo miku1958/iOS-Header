@@ -32,6 +32,7 @@
 - (oneway void)getBluetoothDeviceWithUID:(NSUUID *)arg1 completion:(void (^)(AFBluetoothDeviceInfo *))arg2;
 - (oneway void)getConnectedBluetoothDeviceInfoArrayWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)getDevicesWithAvailablePHSAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
+- (oneway void)getDevicesWithAvailablePHSAssetsOnDeviceCheck:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getPairedBluetoothDeviceInfoArrayWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)getPeerIdentifiers:(void (^)(NSArray *))arg1;

@@ -14,8 +14,10 @@
 {
     PKDashboardBalanceView *_sampleBalanceView;
     UICollectionView *_collectionView;
+    long long _cellStyle;
 }
 
+@property (nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (id)_identifierForItem:(id)arg1;
+- (BOOL)_shouldInset;
 - (void)_updateMessageView:(id)arg1 withItem:(id)arg2;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;

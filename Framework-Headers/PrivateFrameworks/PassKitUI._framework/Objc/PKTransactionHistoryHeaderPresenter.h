@@ -8,12 +8,15 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSDateFormatter, NSString, PKFileDownloader, UICollectionViewCell;
+@class NSDateFormatter, NSString, PKFileDownloader, UICollectionViewCell, UIImage;
 
 @interface PKTransactionHistoryHeaderPresenter : NSObject <PKDashboardItemPresenter>
 {
     PKFileDownloader *_fileDownloader;
     UICollectionViewCell *_templateCell;
+    UIImage *_logoImage;
+    UIImage *_logoBackgroundImage;
+    UIImage *_heroImage;
     NSDateFormatter *_formatterMonth;
 }
 
@@ -23,12 +26,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_backgroundImageFromLogoImage:(id)arg1;
 - (void)_configureCategoryHeaderCell:(id)arg1 forITem:(id)arg2;
 - (void)_configureMerchantHeaderCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
 - (void)_configurePeerPaymentHeaderCell:(id)arg1 forITem:(id)arg2;
+- (void)_configureTransactionTypeHeaderCell:(id)arg1 forItem:(id)arg2;
 - (id)_merchantHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)_peerPaymentHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)_transactionGroupHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (id)_transactionTypeHeaderCellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)_updateMerchantHeaderImagesOnCell:(id)arg1 item:(id)arg2;
 - (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;

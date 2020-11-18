@@ -7,11 +7,10 @@
 #import <NewsUI/NSObject-Protocol.h>
 
 @class FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
-@protocol FCClearableReadingHistory, FCPrivateDataContextInternal, FCPushNotificationHandling;
+@protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
 
-@property (readonly, nonatomic) id<FCClearableReadingHistory> clearReadingHistoryManager;
 @property (readonly, nonatomic) id<FCPrivateDataContextInternal> internalPrivateDataContext;
 @property (readonly, nonatomic) FCIssueReadingHistory *issueReadingHistory;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;

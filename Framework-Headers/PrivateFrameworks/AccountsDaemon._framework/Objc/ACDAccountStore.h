@@ -8,7 +8,7 @@
 
 #import <AccountsDaemon/ACDAccountStoreProtocol-Protocol.h>
 
-@class ACDAccessPluginManager, ACDAccountStoreFilter, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDClient, ACDClientAuthorizationManager, ACDDatabase, ACDDataclassOwnersManager, ACDFakeRemoteAccountStoreSession, ACRemoteDeviceProxy, NSMutableArray, NSString;
+@class ACDAccessPluginManager, ACDAccountStoreFilter, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDClient, ACDClientAuthorizationManager, ACDDatabase, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACDFakeRemoteAccountStoreSession, ACRemoteDeviceProxy, NSMutableArray, NSString;
 @protocol ACDAccountStoreDelegate;
 
 @interface ACDAccountStore : ACAccountStore <ACDAccountStoreProtocol>
@@ -27,6 +27,7 @@
     ACDAccessPluginManager *_accessPluginManager;
     ACDDataclassOwnersManager *_dataclassOwnersManager;
     ACDAuthenticationDialogManager *_authenticationDialogManager;
+    ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
 @property (strong, nonatomic) ACDAccessPluginManager *accessPluginManager; // @synthesize accessPluginManager=_accessPluginManager;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) ACDAuthenticationPluginManager *authenticationPluginManager; // @synthesize authenticationPluginManager=_authenticationPluginManager;
 @property (readonly, nonatomic) ACDClientAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property (weak, nonatomic) ACDClient *client; // @synthesize client=_client;
+@property (strong, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
 @property (strong, nonatomic) ACDDataclassOwnersManager *dataclassOwnersManager; // @synthesize dataclassOwnersManager=_dataclassOwnersManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ACDAccountStoreDelegate> delegate; // @synthesize delegate=_delegate;

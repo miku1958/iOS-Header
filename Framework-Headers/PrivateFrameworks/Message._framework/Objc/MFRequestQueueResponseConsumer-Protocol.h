@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Message/NSObject-Protocol.h>
+
 @class MFError;
 
-@protocol MFRequestQueueResponseConsumer
+@protocol MFRequestQueueResponseConsumer <NSObject>
 - (void)handleResponse:(id)arg1 error:(MFError *)arg2;
 @end
 

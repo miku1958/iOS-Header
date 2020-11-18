@@ -15,6 +15,8 @@
 
 @property (readonly, nonatomic) unsigned long long lifecycleState;
 
++ (id)startApplePayTrustSessionWithCompletion:(CDUnknownBlockType)arg1;
++ (id)startApplePayTrustSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)startContactlessInterfaceSessionWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 + (id)startInAppSessionWithCompletion:(CDUnknownBlockType)arg1;

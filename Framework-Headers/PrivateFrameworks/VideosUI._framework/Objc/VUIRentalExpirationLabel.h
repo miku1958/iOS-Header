@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 @interface VUIRentalExpirationLabel : VUILabel
 {
     NSDate *_expirationDate;
-    NSString *_formatString;
     id<VUIRentalExpirationLabelDelegate> _delegate;
+    NSString *_formatString;
     NSTimer *_expiryUpdateTimer;
 }
 
@@ -23,9 +23,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
 @property (copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 
++ (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(BOOL *)arg2 updateInterval:(long long *)arg3 formatString:(id)arg4;
++ (id)calculateExpirationStringForDate:(id)arg1 updateInterval:(long long *)arg2 formatString:(id)arg3;
 + (id)labelWithExpirationDate:(id)arg1 textLayout:(id)arg2 existingLabel:(id)arg3 formatString:(id)arg4;
 - (void).cxx_destruct;
-- (id)_calculateExpirationStringForDate:(id)arg1 displayWarningColor:(BOOL *)arg2 updateInterval:(long long *)arg3 formatString:(id)arg4;
 - (void)_computeExpirationLabel:(id)arg1;
 - (void)dealloc;
 - (void)invalidateTimer;

@@ -6,13 +6,17 @@
 
 #import <CoreData/NSXPCStoreServer.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface RCXPCStoreServer : NSXPCStoreServer
 {
-    CDUnknownBlockType _didCreateDatabaseConnection;
+    NSString *_databaseServiceName;
+    CDUnknownBlockType _shouldAcceptDatabaseConnection;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType didCreateDatabaseConnection; // @synthesize didCreateDatabaseConnection=_didCreateDatabaseConnection;
+@property (copy, nonatomic) NSString *databaseServiceName; // @synthesize databaseServiceName=_databaseServiceName;
+@property (copy, nonatomic) CDUnknownBlockType shouldAcceptDatabaseConnection; // @synthesize shouldAcceptDatabaseConnection=_shouldAcceptDatabaseConnection;
 
 - (void).cxx_destruct;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

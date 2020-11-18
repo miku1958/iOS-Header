@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <PassKitUI/PKDashboardCollectionViewCell.h>
 
 @class NSString, UIButton, UILabel;
 
-@interface PKDashboardBalanceView : UIView
+@interface PKDashboardBalanceView : PKDashboardCollectionViewCell
 {
     BOOL _isTemplateLayout;
     UILabel *_titleLabel;
     UILabel *_detailLabel;
+    UILabel *_availableCreditLabel;
+    NSString *_title;
     UIButton *_actionButton;
     BOOL _topUpEnabled;
-    NSString *_title;
     NSString *_balance;
+    NSString *_availableCredit;
     NSString *_topUpTitle;
     CDUnknownBlockType _topUpAction;
 }
 
+@property (copy, nonatomic) NSString *availableCredit; // @synthesize availableCredit=_availableCredit;
 @property (copy, nonatomic) NSString *balance; // @synthesize balance=_balance;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (copy, nonatomic) CDUnknownBlockType topUpAction; // @synthesize topUpAction=_topUpAction;
 @property (nonatomic) BOOL topUpEnabled; // @synthesize topUpEnabled=_topUpEnabled;
 @property (copy, nonatomic) NSString *topUpTitle; // @synthesize topUpTitle=_topUpTitle;
@@ -34,6 +37,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)resetFonts;
+- (void)setTitle:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

@@ -14,6 +14,7 @@
 @property (readonly) long long bt2020YCC;
 @property (readonly) long long dolbyVision;
 @property (readonly) long long hdrStaticMetadataType1;
+@property (readonly) BOOL legacyHDMIEDID;
 @property (readonly) long long pqEOTF;
 
 - (id).cxx_construct;

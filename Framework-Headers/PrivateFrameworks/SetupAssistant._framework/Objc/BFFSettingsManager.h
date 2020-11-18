@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSMutableArray, NSMutableDictionary, NSNumber;
+@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSNumber;
 
 @interface BFFSettingsManager : NSObject
 {
@@ -21,6 +21,7 @@
     NSArray *_stashedFlowSkipIdentifiers;
     NSNumber *_stashedScreenTimeEnabled;
     NSNumber *_stashedAutoUpdateEnabled;
+    NSDictionary *_stashedDeviceToDeviceMigrationSuccessInfo;
 }
 
 + (id)sharedManager;
@@ -66,6 +67,7 @@
 - (void)setScreenTimeEnabled:(BOOL)arg1;
 - (id)stashBuildVersion;
 - (long long)stashConfigurationType;
+- (void)stashDeviceToDeviceMigrationSuccessInfo:(id)arg1;
 - (void)stashFlowSkipIdentifiers:(id)arg1;
 - (void)stashHapticType:(long long)arg1 forButtonKind:(long long)arg2;
 - (void)stashLocationServicesChoice:(BOOL)arg1;

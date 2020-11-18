@@ -14,7 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)didMoveToWindow;
 - (id)initWithPassType:(unsigned long long)arg1 delegate:(id)arg2;
+- (void)setShowActivityIndicator:(BOOL)arg1;
 
 @end
 

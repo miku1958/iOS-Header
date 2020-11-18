@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class CLKUIQuadView;
+
 @interface CLKUIQuad : NSObject
 {
     BOOL _opaque;
+    CLKUIQuadView *_quadView;
 }
 
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;
+@property (weak, nonatomic) CLKUIQuadView *quadView; // @synthesize quadView=_quadView;
 
+- (void).cxx_destruct;
 - (void)encodeGLforSize:(struct CLKUIQuadSize)arg1;
-- (void)encodeMetalForSize:(struct CLKUIQuadSize)arg1 encoder:(id)arg2;
 - (id)init;
-- (void)prepare;
+- (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
+- (void)prepareForQuadView:(id)arg1;
+- (BOOL)prepareForTime:(double)arg1;
 - (void)purge;
+- (void)renderForDisplayWithEncoder:(id)arg1;
 
 @end
 

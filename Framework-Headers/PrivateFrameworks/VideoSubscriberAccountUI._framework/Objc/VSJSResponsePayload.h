@@ -23,14 +23,18 @@ __attribute__((visibility("hidden")))
     NSString *_authenticationScheme;
     NSString *_statusCode;
     NSNumber *_expectedAction;
+    NSArray *_subscriptions;
+    NSArray *_clearSubscriptions;
 }
 
 @property (copy, nonatomic) NSString *authN; // @synthesize authN=_authN;
 @property (copy, nonatomic) NSString *authenticationScheme; // @synthesize authenticationScheme=_authenticationScheme;
+@property (copy, nonatomic) NSArray *clearSubscriptions; // @synthesize clearSubscriptions=_clearSubscriptions;
 @property (copy, nonatomic) NSNumber *expectedAction; // @synthesize expectedAction=_expectedAction;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (copy, nonatomic) NSString *logout; // @synthesize logout=_logout;
 @property (copy, nonatomic) NSString *statusCode; // @synthesize statusCode=_statusCode;
+@property (copy, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property (copy, nonatomic) NSArray *userChannelList; // @synthesize userChannelList=_userChannelList;
 @property (copy, nonatomic) NSString *userMetadata; // @synthesize userMetadata=_userMetadata;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;

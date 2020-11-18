@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSMutableArray;
+#import <NewsUI/NUFontRegistrator-Protocol.h>
+
+@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSMutableArray, NSString;
 @protocol NUFontRegistration;
 
-@interface NUANFFontLoader : NSObject
+@interface NUANFFontLoader : NSObject <NUFontRegistrator>
 {
     long long _relativePriority;
     FCFlintManifest *_flintManifest;
@@ -21,12 +23,16 @@
 }
 
 @property (readonly, nonatomic) FCAsyncOnceOperation *asyncOnceOperation; // @synthesize asyncOnceOperation=_asyncOnceOperation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly, nonatomic) NSMutableArray *fontResourcesRegistered; // @synthesize fontResourcesRegistered=_fontResourcesRegistered;
 @property (readonly, nonatomic) NSMutableArray *fontResourcesToRegister; // @synthesize fontResourcesToRegister=_fontResourcesToRegister;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)asyncLoadFontsOnceWithCompletion:(CDUnknownBlockType)arg1;

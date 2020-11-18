@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithAMSBag:(id)arg1;
 - (id)initWithAMSBag:(id)arg1 containerId:(id)arg2 pageURLBlock:(CDUnknownBlockType)arg3 resourceRevNumBlock:(CDUnknownBlockType)arg4 hostAppBlock:(CDUnknownBlockType)arg5;
 
 @end

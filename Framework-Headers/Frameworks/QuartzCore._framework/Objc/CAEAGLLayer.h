@@ -27,6 +27,7 @@
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (id)defaultValueForKey:(id)arg1;
 - (BOOL)_defersDidBecomeVisiblePostCommit;
+- (void)_didCommitLayer:(struct Transaction *)arg1;
 - (void)_display;
 - (void)dealloc;
 - (void)didChangeValueForKey:(id)arg1;

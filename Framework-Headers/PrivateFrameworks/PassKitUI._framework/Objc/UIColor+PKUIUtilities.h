@@ -9,5 +9,6 @@
 @interface UIColor (PKUIUtilities)
 + (id)colorWithPKColor:(id)arg1;
 + (id)pkui_osloErrorColor;
+- (id)pkui_linearColor;
 @end
 

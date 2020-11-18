@@ -6,12 +6,13 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class UIColor;
+@class PDFThumbnailView, UIColor;
 @protocol PDFCollectionViewDataSource, PDFCollectionViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFCollectionView : UICollectionView
 {
+    PDFThumbnailView *_thumbnailView;
     id<PDFCollectionViewDelegate> _pdfDelegate;
     id<PDFCollectionViewDataSource> _pdfDataSource;
     UIColor *_pdfBackgroundColor;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)instanceForPlatform;
 - (void).cxx_destruct;
 - (void)reloadDataAndRecenter;
+- (void)setThumbnailView:(id)arg1;
 - (void)setup;
 
 @end

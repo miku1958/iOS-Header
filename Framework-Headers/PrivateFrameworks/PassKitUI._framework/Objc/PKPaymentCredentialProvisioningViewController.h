@@ -9,11 +9,11 @@
 #import <PassKitUI/PKPaymentProvisioningControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
 
-@interface PKPaymentCredentialProvisioningViewController : PKPaymentSetupProvisioningFieldsViewController <PKPaymentSetupRequiresPreflightProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentSetupPresentationProtocol>
+@interface PKPaymentCredentialProvisioningViewController : PKPaymentSetupProvisioningFieldsViewController <PKViewControllerPreflightable, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentSetupPresentationProtocol>
 {
     UIImage *_passSnapshotPlaceHolder;
     unsigned long long _credentialProvisioningType;
@@ -23,14 +23,14 @@
     PKPaymentSetupProduct *_setupProduct;
     BOOL _allowsManualEntry;
     BOOL _previouslyAcceptedTerms;
-    BOOL _shouldAutoProvision;
+    BOOL _snapshotNeedsCorners;
     UIImage *_passSnapshot;
+    BOOL _shouldAutoProvision;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) UIImage *passSnapshot; // @synthesize passSnapshot=_passSnapshot;
 @property (nonatomic) BOOL shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 @property (readonly) Class superclass;
 
@@ -64,6 +64,7 @@
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (id)readonlyFieldIdentifiers;
+- (void)setPassSnapshot:(id)arg1 needsCorners:(BOOL)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (id)visibleFieldIdentifiers;

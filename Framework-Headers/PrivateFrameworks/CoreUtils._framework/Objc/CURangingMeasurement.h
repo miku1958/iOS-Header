@@ -12,6 +12,7 @@
 
 @interface CURangingMeasurement : NSObject <NSSecureCoding>
 {
+    unsigned int _flags;
     double _distanceMeters;
     double _distanceError;
     NSError *_error;
@@ -19,14 +20,17 @@
     double _horizontalError;
     double _verticalAngle;
     double _verticalError;
+    double _ptsScore;
     unsigned long long _timestampTicks;
 }
 
 @property (nonatomic) double distanceError; // @synthesize distanceError=_distanceError;
 @property (nonatomic) double distanceMeters; // @synthesize distanceMeters=_distanceMeters;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (nonatomic) double horizontalAngle; // @synthesize horizontalAngle=_horizontalAngle;
 @property (nonatomic) double horizontalError; // @synthesize horizontalError=_horizontalError;
+@property (nonatomic) double ptsScore; // @synthesize ptsScore=_ptsScore;
 @property (nonatomic) unsigned long long timestampTicks; // @synthesize timestampTicks=_timestampTicks;
 @property (nonatomic) double verticalAngle; // @synthesize verticalAngle=_verticalAngle;
 @property (nonatomic) double verticalError; // @synthesize verticalError=_verticalError;

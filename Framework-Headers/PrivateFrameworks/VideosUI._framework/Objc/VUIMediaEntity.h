@@ -26,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSDate *addedDate;
 @property (readonly, copy, nonatomic) NSNumber *audioCapability;
 @property (nonatomic) BOOL cachesPropertiesOnFirstAccess; // @synthesize cachesPropertiesOnFirstAccess=_cachesPropertiesOnFirstAccess;
+@property (readonly, copy, nonatomic) NSString *canonicalID;
 @property (readonly, copy, nonatomic) NSNumber *colorCapability;
 @property (readonly, copy, nonatomic) NSString *contentDescription;
 @property (readonly, copy, nonatomic) VUIContentRating *contentRating;
@@ -36,9 +37,10 @@
 @property (copy, nonatomic) NSObject<VUIMediaEntityIdentifierInternal> *identifierInternal; // @synthesize identifierInternal=_identifierInternal;
 @property (readonly, copy, nonatomic) NSNumber *isLocal;
 @property (readonly, nonatomic) VUIMediaEntityKind *kind; // @synthesize kind=_kind;
-@property (readonly, nonatomic, getter=hasLocalChanges) BOOL localChanges; // @synthesize localChanges=_localChanges;
+@property (nonatomic, getter=hasLocalChanges) BOOL localChanges; // @synthesize localChanges=_localChanges;
 @property (strong, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (copy, nonatomic) NSNumber *playedState;
+@property (readonly, copy, nonatomic) NSNumber *purchaseHistoryID;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
 @property (readonly, copy, nonatomic) NSNumber *releaseYear;
 @property (readonly, nonatomic) NSSet *requestedProperties; // @synthesize requestedProperties=_requestedProperties;

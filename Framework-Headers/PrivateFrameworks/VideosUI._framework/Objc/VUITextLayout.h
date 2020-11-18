@@ -12,14 +12,21 @@
 
 @interface VUITextLayout : NSObject <NSCopying>
 {
+    BOOL _alwaysFocusable;
     unsigned int _fontTraits;
     int _blendMode;
     long long _textStyle;
     NSString *_maximumContentSizeCategory;
+    NSString *_fontFamily;
     long long _fontWeight;
     double _fontSize;
+    long long _fontFeature;
     UIColor *_color;
+    UIColor *_darkColor;
     UIColor *_highlightOrSelectedColor;
+    UIColor *_darkHighlightOrSelectedColor;
+    UIColor *_seeMoreTextColor;
+    UIColor *_darkSeeMoreTextColor;
     long long _textTransform;
     long long _alignment;
     unsigned long long _numberOfLines;
@@ -28,32 +35,46 @@
     double _minimumScaleFactor;
     NSShadow *_shadow;
     NSNumber *_letterSpacing;
+    long long _lineBreakMode;
     struct UIEdgeInsets _margin;
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property (nonatomic) BOOL alwaysFocusable; // @synthesize alwaysFocusable=_alwaysFocusable;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (strong, nonatomic) UIColor *darkColor; // @synthesize darkColor=_darkColor;
+@property (strong, nonatomic) UIColor *darkHighlightOrSelectedColor; // @synthesize darkHighlightOrSelectedColor=_darkHighlightOrSelectedColor;
+@property (strong, nonatomic) UIColor *darkSeeMoreTextColor; // @synthesize darkSeeMoreTextColor=_darkSeeMoreTextColor;
+@property (strong, nonatomic) NSString *fontFamily; // @synthesize fontFamily=_fontFamily;
+@property (nonatomic) long long fontFeature; // @synthesize fontFeature=_fontFeature;
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (nonatomic) unsigned int fontTraits; // @synthesize fontTraits=_fontTraits;
 @property (nonatomic) long long fontWeight; // @synthesize fontWeight=_fontWeight;
 @property (strong, nonatomic) UIColor *highlightOrSelectedColor; // @synthesize highlightOrSelectedColor=_highlightOrSelectedColor;
 @property (strong, nonatomic) NSNumber *letterSpacing; // @synthesize letterSpacing=_letterSpacing;
+@property (nonatomic) long long lineBreakMode; // @synthesize lineBreakMode=_lineBreakMode;
 @property (nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
 @property (strong, nonatomic) NSString *maximumContentSizeCategory; // @synthesize maximumContentSizeCategory=_maximumContentSizeCategory;
 @property (nonatomic) double minimumScaleFactor; // @synthesize minimumScaleFactor=_minimumScaleFactor;
 @property (nonatomic) unsigned long long numberOfLines; // @synthesize numberOfLines=_numberOfLines;
 @property (nonatomic) unsigned long long numberOfLinesAXLarge; // @synthesize numberOfLinesAXLarge=_numberOfLinesAXLarge;
 @property (nonatomic) unsigned long long numberOfLinesAXSmall; // @synthesize numberOfLinesAXSmall=_numberOfLinesAXSmall;
+@property (strong, nonatomic) UIColor *seeMoreTextColor; // @synthesize seeMoreTextColor=_seeMoreTextColor;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
 @property (nonatomic) long long textStyle; // @synthesize textStyle=_textStyle;
 @property (nonatomic) long long textTransform; // @synthesize textTransform=_textTransform;
 
 - (void).cxx_destruct;
+- (id)_defaultParagraphStyle;
+- (id)attributedStringWithAttributedString:(id)arg1 view:(id)arg2;
 - (id)attributedStringWithString:(id)arg1;
 - (id)attributedStringWithString:(id)arg1 view:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)defaultAttributesForLabel:(id)arg1;
 - (id)init;
+- (unsigned long long)numberOfLinesForTraitCollection:(id)arg1;
+- (void)setColorWithOpacityType:(long long)arg1;
 
 @end
 

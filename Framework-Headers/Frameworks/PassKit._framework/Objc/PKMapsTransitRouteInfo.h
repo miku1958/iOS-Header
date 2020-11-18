@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSSet, PKCurrencyAmount;
 
-@interface PKMapsTransitRouteInfo : NSObject <NSCopying>
+@interface PKMapsTransitRouteInfo : NSObject <NSCopying, NSSecureCoding>
 {
     NSSet *_transitNetworkIdentifiers;
     PKCurrencyAmount *_cost;
@@ -19,8 +20,11 @@
 @property (readonly, nonatomic) PKCurrencyAmount *cost; // @synthesize cost=_cost;
 @property (readonly, nonatomic) NSSet *transitNetworkIdentifiers; // @synthesize transitNetworkIdentifiers=_transitNetworkIdentifiers;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTransitNetworkIdentifiers:(id)arg1 cost:(id)arg2;
 
 @end

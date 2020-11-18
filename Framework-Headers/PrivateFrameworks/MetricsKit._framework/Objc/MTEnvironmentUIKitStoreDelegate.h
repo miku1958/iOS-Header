@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_ams_cookiesForURL:(id)arg1;
 - (id)_cookies;
 - (id)_diskUsage;
 - (id)capacityData;

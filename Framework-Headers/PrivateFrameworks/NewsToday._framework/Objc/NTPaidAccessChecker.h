@@ -8,21 +8,23 @@
 
 #import <NewsToday/FCPaidAccessCheckerType-Protocol.h>
 
-@class NSSet;
+@protocol FCBundleSubscriptionProviderType, FCPurchaseProviderType;
 
 @interface NTPaidAccessChecker : NSObject <FCPaidAccessCheckerType>
 {
-    NSSet *_purchasedTagIDs;
+    id<FCBundleSubscriptionProviderType> _bundleSubscriptionProvider;
+    id<FCPurchaseProviderType> _purchaseProvider;
 }
 
-@property (readonly, copy, nonatomic) NSSet *purchasedTagIDs; // @synthesize purchasedTagIDs=_purchasedTagIDs;
+@property (readonly, nonatomic) id<FCBundleSubscriptionProviderType> bundleSubscriptionProvider; // @synthesize bundleSubscriptionProvider=_bundleSubscriptionProvider;
+@property (readonly, nonatomic) id<FCPurchaseProviderType> purchaseProvider; // @synthesize purchaseProvider=_purchaseProvider;
 
 - (void).cxx_destruct;
 - (BOOL)canGetAccessToItemPaid:(BOOL)arg1 bundlePaid:(BOOL)arg2 channel:(id)arg3;
+- (BOOL)canGetBundleSubscriptionToChannel:(id)arg1;
 - (BOOL)canGetSubscriptionToChannel:(id)arg1;
-- (BOOL)hasAccessToItemPaid:(BOOL)arg1 bundlePaid:(BOOL)arg2 channelID:(id)arg3;
 - (id)init;
-- (id)initWithPurchasedTagIDs:(id)arg1;
+- (id)initWithBundleSubscriptionProvider:(id)arg1 purchaseProvider:(id)arg2;
 - (BOOL)isPreparedForUse;
 - (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;
 

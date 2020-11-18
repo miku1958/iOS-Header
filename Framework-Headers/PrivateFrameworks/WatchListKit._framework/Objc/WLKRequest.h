@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSString *caller; // @synthesize caller=_caller;
 
 - (void).cxx_destruct;
-- (void)_configureOperation:(id)arg1;
 
 @end
 

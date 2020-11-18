@@ -18,8 +18,9 @@
 @property (nonatomic) BOOL usesAccessibilityLayout; // @synthesize usesAccessibilityLayout=_usesAccessibilityLayout;
 
 + (double)glyphImageHeight;
++ (double)widgetHeightWithAccessibilityLayout:(BOOL)arg1;
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 

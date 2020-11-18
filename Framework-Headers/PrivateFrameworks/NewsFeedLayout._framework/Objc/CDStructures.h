@@ -40,12 +40,6 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    double headlineStyle1Scale;
-    double headlineStyle2Scale;
-    double headlineStyle3Scale;
-} CDStruct_3d2913aa;
-
-typedef struct {
     long long typeACellType;
     long long typeAColumnSpan;
     long long typeARowSpan;

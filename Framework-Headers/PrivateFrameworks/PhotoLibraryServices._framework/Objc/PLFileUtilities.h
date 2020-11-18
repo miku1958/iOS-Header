@@ -6,8 +6,11 @@
 
 #import <objc/NSObject.h>
 
+@protocol PLUnixFileServices;
+
 @interface PLFileUtilities : NSObject
 {
+    id<PLUnixFileServices> _unixFileServices;
 }
 
 + (BOOL)_isFileExistsError:(id)arg1;
@@ -25,8 +28,13 @@
 + (BOOL)ingestItemAtURL:(id)arg1 toURL:(id)arg2 type:(long long)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
 + (id)realPathForPath:(id)arg1 error:(id *)arg2;
 + (BOOL)secureMoveItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
++ (id)sharedFileUtilities;
 + (BOOL)stripExtendedAttributesFromFileAtURL:(id)arg1 inDomain:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsClone;
+- (BOOL)filePath:(id)arg1 hasPrefix:(id)arg2;
+- (id)init;
+- (id)initWithUnixFileServices:(id)arg1;
+- (id)realPathForPath:(id)arg1 error:(id *)arg2;
 
 @end
 

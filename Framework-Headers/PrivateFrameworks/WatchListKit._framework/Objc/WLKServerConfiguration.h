@@ -6,73 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection, WLKServerConfigurationResponse, WLKUserEnvironment;
-@protocol OS_dispatch_queue;
-
 @interface WLKServerConfiguration : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSOperationQueue *_fetchQueue;
-    NSOperationQueue *_operationQueue;
-    NSArray *_orderedChannels;
-    NSDictionary *_channelsByID;
-    long long _vppaStatus;
-    int _didChangeNotificationToken;
-    NSMutableDictionary *_completions;
-    NSString *_nextEK;
-    WLKUserEnvironment *_inFlightEnvironment;
-    NSXPCConnection *_connection;
-    BOOL _loaded;
-    BOOL _isFetching;
-    CDUnknownBlockType _fetchCompletionHandler;
-    NSDictionary *_requiredRequestKeyValuePairsDictionary;
-    WLKServerConfigurationResponse *_response;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *channels;
-@property (readonly, nonatomic) NSDictionary *dictionary;
-@property (readonly, copy, nonatomic) NSDate *expirationDate;
-@property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property BOOL isFetching; // @synthesize isFetching=_isFetching;
-@property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
-@property (readonly, copy, nonatomic) NSArray *orderedChannels;
-@property (strong, nonatomic) NSDictionary *requiredRequestKeyValuePairsDictionary; // @synthesize requiredRequestKeyValuePairsDictionary=_requiredRequestKeyValuePairsDictionary;
-@property (readonly, nonatomic) WLKServerConfigurationResponse *response; // @synthesize response=_response;
-@property (readonly, copy, nonatomic) NSDictionary *serverRoutesDictionary;
-@property (readonly, nonatomic) long long vppaStatus;
-
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (id)APIBaseURL;
-- (void)_addCompletion:(CDUnknownBlockType)arg1 forEnvironment:(id)arg2;
-- (id)_cacheDir;
-- (id)_cachePath;
-- (void)_clearCompletionsForEnvironment:(id)arg1;
-- (void)_commonInit;
-- (id)_completionsForEnvironment:(id)arg1;
-- (id)_connection;
-- (void)_fetchConfigurationCache:(CDUnknownBlockType)arg1;
-- (void)_fetchConfigurationInProcess:(CDUnknownBlockType)arg1;
-- (void)_handleLibraryDidChangeNotification:(id)arg1;
-- (id)_init;
-- (void)_invalidateCache;
-- (BOOL)_needCacheRefresh;
-- (id)_nextEK;
-- (id)_operationQueue;
-- (id)_readFromDisk;
-- (void)_reloadFromCache:(id)arg1;
-- (void)_setNextEK:(id)arg1;
-- (void)_synchronizeWithCache:(id)arg1 notifySelf:(BOOL)arg2 others:(BOOL)arg3 validate:(BOOL)arg4;
-- (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2 validate:(BOOL)arg3;
-- (BOOL)_writeToDisk:(id)arg1;
-- (void)dealloc;
-- (id)endpointForKey:(id)arg1;
 - (void)fetchConfiguration:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initOffline;
-- (BOOL)isTVEnabled;
-- (id)serverRouteForKey:(id)arg1;
-- (id)utsc;
 
 @end
 

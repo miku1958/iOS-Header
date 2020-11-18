@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CDPContext, CDPStateController, SFDevice, SFSession;
+@class CDPContext, CDPStateController, NSData, NSString, RPFileTransferSession, SFDevice, SFDeviceDiscovery, SFSession;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupSessioniOS : NSObject
 {
     BOOL _activateCalled;
+    unsigned int _appNextID;
     BOOL _buddyComplete;
     BOOL _configRequestSent;
     BOOL _configResponseReceived;
@@ -22,6 +23,10 @@
     int _preAuthPairSetupState;
     BOOL _preAuthRequestSent;
     BOOL _preAuthResponseReceived;
+    NSData *_resumeAuthTag;
+    SFDeviceDiscovery *_resumeDiscovery;
+    NSString *_resumePassword;
+    int _resumeState;
     SFSession *_sfSession;
     BOOL _sfSessionActivated;
     int _cdpState;
@@ -29,6 +34,7 @@
     CDPStateController *_cdpController;
     unsigned int _pairFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    RPFileTransferSession *_fileTransferSessionTemplate;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     SFDevice *_peerDevice;
@@ -38,6 +44,7 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (strong, nonatomic) RPFileTransferSession *fileTransferSessionTemplate; // @synthesize fileTransferSessionTemplate=_fileTransferSessionTemplate;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (nonatomic) unsigned int pairFlags; // @synthesize pairFlags=_pairFlags;
@@ -50,11 +57,15 @@
 - (void)_cleanup;
 - (void)_completedWithError:(id)arg1;
 - (void)_handleSetupActionRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
+- (void)_handleSetupActionSoftwareUpdate;
+- (void)_handleSetupPeerSuspended;
+- (void)_handleSetupResumeFoundDevice:(id)arg1;
 - (void)_receivedConfigResponse:(id)arg1;
 - (void)_receivedObject:(id)arg1 flags:(unsigned int)arg2;
 - (void)_run;
 - (int)_runCoreCDPSetup;
 - (int)_runPreAuthPairSetup;
+- (int)_runResume;
 - (void)_runSFSessionActivated;
 - (void)_runSFSessionStart;
 - (void)_sendConfigInfo;
@@ -64,6 +75,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)sendAppEvent:(id)arg1;
 - (void)tryPIN:(id)arg1;
 
 @end

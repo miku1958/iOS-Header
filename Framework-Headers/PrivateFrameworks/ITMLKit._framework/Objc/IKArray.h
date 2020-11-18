@@ -36,6 +36,7 @@
 - (id)lastObject;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(long long)arg1;
+- (id)objectAtIndexedSubscript:(long long)arg1;
 - (id)objectEnumerator;
 - (id)toNSArray;
 

@@ -12,13 +12,12 @@ __attribute__((visibility("hidden")))
 @interface VUISeparatorView : UIView
 {
     double _lineHeight;
-    UIColor *_tintColor;
     UIView *_line;
 }
 
 @property (strong, nonatomic) UIView *line; // @synthesize line=_line;
+@property (strong, nonatomic) UIColor *lineColor;
 @property (nonatomic) double lineHeight; // @synthesize lineHeight=_lineHeight;
-@property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -21,6 +21,7 @@
 @property (nonatomic) long long endAction;
 @property (readonly, weak, nonatomic) IKJSPlaylist *jsPlaylist; // @synthesize jsPlaylist=_jsPlaylist;
 @property (readonly) unsigned long long length;
+@property (nonatomic) long long repeatMode;
 
 - (void).cxx_destruct;
 - (void)cleanup;

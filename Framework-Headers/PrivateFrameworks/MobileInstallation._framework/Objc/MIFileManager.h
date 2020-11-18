@@ -11,6 +11,7 @@
 }
 
 + (id)defaultManager;
+- (id)_cloneFileToClearExtraFileReferences:(id)arg1 entry:(struct _ftsent *)arg2 usingStagingDir:(id)arg3 clonedReplacementFiles:(id)arg4 error:(id *)arg5;
 - (BOOL)_copyItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(BOOL)arg3 alwaysClone:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)_moveItemAtURL:(id)arg1 toURL:(id)arg2 failIfSrcMissing:(BOOL)arg3 error:(id *)arg4;
 - (id)_realPathForURL:(id)arg1 allowNonExistentPathComponents:(BOOL)arg2;
@@ -43,7 +44,7 @@
 - (BOOL)setOwnerOfURL:(id)arg1 toUID:(unsigned int)arg2 gid:(unsigned int)arg3 error:(id *)arg4;
 - (BOOL)setPermissionsForURL:(id)arg1 toMode:(unsigned short)arg2 error:(id *)arg3;
 - (BOOL)setUniqueInstallID:(id)arg1 onBundle:(id)arg2 error:(id *)arg3;
-- (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 removeACLs:(BOOL)arg4 setProtectionClass:(BOOL)arg5 foundSymlink:(BOOL *)arg6 error:(id *)arg7;
+- (BOOL)standardizeOwnershipAtURL:(id)arg1 toUID:(unsigned int)arg2 GID:(unsigned int)arg3 removeACLs:(BOOL)arg4 setProtectionClass:(BOOL)arg5 foundSymlink:(BOOL *)arg6 clearExtraFileReferencesUsingStagingDir:(id)arg7 error:(id *)arg8;
 - (BOOL)traverseDirectory:(id)arg1 error:(id *)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)uniqueInstallIDForBundle:(id)arg1 error:(id *)arg2;
 - (id)urlsForItemsInDirectoryAtURL:(id)arg1 ignoringSymlinks:(BOOL)arg2 error:(id *)arg3;

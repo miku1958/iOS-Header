@@ -9,17 +9,19 @@
 #import <ITMLKit/IKJSDOMDocumentAppBridgeInternal-Protocol.h>
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
-@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSMapTable, NSMutableDictionary, NSString;
+@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSDictionary, NSError, NSMapTable, NSMutableDictionary, NSString;
 @protocol IKAppDocumentDelegate, IKNetworkRequestLoader;
 
 @interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridgeInternal, IKStyleMediaQueryEvaluator>
 {
     NSMutableDictionary *_mediaQueryCache;
     BOOL _parsingDOM;
+    BOOL _isTrackingImplicitUpdates;
     NSMapTable *_viewElementRegistry;
     BOOL _isViewElementRegistryDirty;
     BOOL _updated;
     BOOL _subtreeUpdated;
+    BOOL _implicitlyUpdated;
     IKAppContext *_appContext;
     IKDOMDocument *_jsDocument;
     NSString *_identifier;
@@ -30,12 +32,15 @@
     NSError *_error;
     id<IKAppDocumentDelegate> _delegate;
     double _impressionThreshold;
+    double _impressionViewablePercentage;
+    NSDictionary *_cachedSnapshotImpressionsMap;
     NSMutableDictionary *_impressions;
     IKJSObject *_owner;
     IKViewElementStyleFactory *_styleFactory;
 }
 
 @property (readonly, weak) IKAppContext *appContext; // @synthesize appContext=_appContext;
+@property (strong, nonatomic) NSDictionary *cachedSnapshotImpressionsMap; // @synthesize cachedSnapshotImpressionsMap=_cachedSnapshotImpressionsMap;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<IKAppDocumentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -43,7 +48,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong) IKHeadElement *headElement; // @synthesize headElement=_headElement;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic, getter=isImplicitlyUpdated) BOOL implicitlyUpdated; // @synthesize implicitlyUpdated=_implicitlyUpdated;
 @property (nonatomic) double impressionThreshold; // @synthesize impressionThreshold=_impressionThreshold;
+@property (nonatomic) double impressionViewablePercentage; // @synthesize impressionViewablePercentage=_impressionViewablePercentage;
 @property (strong, nonatomic) NSMutableDictionary *impressions; // @synthesize impressions=_impressions;
 @property (readonly, weak, nonatomic) IKDOMDocument *jsDocument; // @synthesize jsDocument=_jsDocument;
 @property (strong) IKViewElement *navigationBarElement; // @synthesize navigationBarElement=_navigationBarElement;
@@ -58,7 +65,6 @@
 @property (nonatomic, getter=isUpdated) BOOL updated; // @synthesize updated=_updated;
 
 - (void).cxx_destruct;
-- (BOOL)_clearUpdatesForElement:(id)arg1;
 - (BOOL)_isUpdateAllowed;
 - (void)_setViewElementStylesDirtyForced:(BOOL)arg1;
 - (void)_updateWithXML:(id)arg1;
@@ -67,15 +73,20 @@
 - (BOOL)evaluateStyleMediaQueryList:(id)arg1;
 - (id)impressionsMatching:(id)arg1 reset:(BOOL)arg2;
 - (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3;
+- (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3 extraInfo:(id)arg4;
+- (BOOL)markImplicitlyUpdated;
+- (void)onActive;
 - (void)onAppear;
 - (void)onDisappear;
 - (void)onImpressionsChange:(id)arg1;
+- (void)onInactive;
 - (void)onLoad;
 - (void)onNeedsUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)onPerformanceMetricsChange:(id)arg1;
 - (void)onUnload;
 - (void)onUpdate;
 - (void)onViewAttributesChangeWithArguments:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performImplicitUpdates:(CDUnknownBlockType)arg1;
 - (void)recordImpressionsForViewElements:(id)arg1;
 - (id)recordedImpressions;
 - (id)recordedImpressions:(BOOL)arg1;
@@ -85,6 +96,7 @@
 - (void)setNeedsUpdateForDocument:(id)arg1;
 - (void)setViewElementStylesDirty;
 - (id)snapshotImpressions;
+- (void)snapshotImpressionsForViewElements:(id)arg1;
 - (void)updateForDocument:(id)arg1;
 - (id)viewElementForNodeID:(unsigned long long)arg1;
 

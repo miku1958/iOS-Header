@@ -13,12 +13,14 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_shelfTypes;
     NSDictionary *_shelfViewControllerByShelfType;
+    NSDictionary *_mediaEntitiesByShelfType;
     CDUnknownBlockType _configureShelfViewControllerBlock;
     CDUnknownBlockType _shelfTypeComparator;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType configureShelfViewControllerBlock; // @synthesize configureShelfViewControllerBlock=_configureShelfViewControllerBlock;
 @property (readonly, nonatomic) BOOL hasContent;
+@property (readonly, nonatomic) NSDictionary *mediaEntitiesByShelfType; // @synthesize mediaEntitiesByShelfType=_mediaEntitiesByShelfType;
 @property (copy, nonatomic) CDUnknownBlockType shelfTypeComparator; // @synthesize shelfTypeComparator=_shelfTypeComparator;
 @property (strong, nonatomic) NSArray *shelfTypes; // @synthesize shelfTypes=_shelfTypes;
 @property (strong, nonatomic) NSDictionary *shelfViewControllerByShelfType; // @synthesize shelfViewControllerByShelfType=_shelfViewControllerByShelfType;

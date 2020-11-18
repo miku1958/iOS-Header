@@ -181,6 +181,8 @@
 - (id)_attributionInfoForAttribution:(id)arg1 requirement:(int)arg2;
 - (id)_attributionWithAnnotatedItemList:(id)arg1;
 - (id)_bestAvatarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (id)_bestBrandIconOfType:(int)arg1 size:(struct CGSize)arg2 allowSmaller:(BOOL)arg3;
+- (id)_bestHeroBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_displayNameForAttribution:(id)arg1 requirement:(int)arg2;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
@@ -193,7 +195,6 @@
 - (BOOL)_showAddForAttribution:(id)arg1 requirement:(int)arg2;
 - (BOOL)_showAttributionForAttribution:(id)arg1 requirement:(int)arg2;
 - (id)_spokenAddressForLocale:(id)arg1;
-- (id)_walletCategoryInformationComponent;
 - (id)_wifiFingerprintComponent;
 - (id)addressObject;
 - (id)initWithPlaceData:(id)arg1;

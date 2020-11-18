@@ -9,13 +9,14 @@
 #import <PassKitUI/PKPasscodeLockManagerObserver-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKPass, PKPassColorProfile, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
+@class NSMutableArray, NSString, PKPass, PKPassColorProfile, PKPassFaceViewRendererState, PKPassFrontFaceView, PKPasscodeLockManager, UITapGestureRecognizer;
 @protocol WLCardViewDelegate;
 
 @interface PKPassView : UIView <UIGestureRecognizerDelegate, PKPasscodeLockManagerObserver>
 {
     PKPassFrontFaceView *_frontFace;
     PKPassColorProfile *_colorProfile;
+    PKPassFaceViewRendererState *_rendererState;
     UITapGestureRecognizer *_tapRecognizer;
     long long _priorContentMode;
     PKPasscodeLockManager *_passcodeLockManager;
@@ -43,6 +44,7 @@
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 @property (readonly, nonatomic) NSString *uniqueID;
@@ -59,12 +61,14 @@
 - (BOOL)_visibleFaceShouldClipForCurrentViewMode:(double *)arg1;
 - (BOOL)canShowBarcode;
 - (void)dealloc;
+- (void)didAuthenticate;
 - (struct CGRect)frameOfVisibleFace;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPass:(id)arg1;
 - (id)initWithPass:(id)arg1 content:(long long)arg2;
 - (id)initWithPass:(id)arg1 content:(long long)arg2 suppressedContent:(unsigned long long)arg3;
+- (id)initWithPass:(id)arg1 content:(long long)arg2 suppressedContent:(unsigned long long)arg3 rendererState:(id)arg4;
 - (void)invalidate;
 - (id)item;
 - (void)layoutSubviews;
@@ -74,7 +78,6 @@
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
-- (void)setLiveMotionEnabled:(BOOL)arg1;
 - (void)setModalShadowVisibility:(double)arg1 animated:(BOOL)arg2;
 - (void)setModalShadowVisibility:(double)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
 - (struct CGSize)sizeOfFront;

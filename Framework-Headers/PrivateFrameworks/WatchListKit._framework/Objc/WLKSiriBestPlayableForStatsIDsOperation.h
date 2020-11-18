@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@class NSArray;
+@class NSArray, WLKSiriBestPlayablesResponse;
 
-@interface WLKSiriBestPlayableForStatsIDsOperation : WLKNetworkRequestOperation
+@interface WLKSiriBestPlayableForStatsIDsOperation : WLKUTSNetworkRequestOperation
 {
     NSArray *_statsIDs;
+    WLKSiriBestPlayablesResponse *_response;
 }
 
+@property (readonly, nonatomic) WLKSiriBestPlayablesResponse *response; // @synthesize response=_response;
 @property (readonly, copy, nonatomic) NSArray *statsIDs; // @synthesize statsIDs=_statsIDs;
 
 - (void).cxx_destruct;
-- (id)initWithStatsIDs:(id)arg1;
-- (id)responseProcessor;
+- (id)initWithStatsIDs:(id)arg1 caller:(id)arg2;
+- (void)processResponse;
 
 @end
 

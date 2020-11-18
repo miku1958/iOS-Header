@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSSet, NSString, VSAccountAuthentication;
+@class NSArray, NSNumber, NSSet, NSString, VSAccountAuthentication;
 
 __attribute__((visibility("hidden")))
 @interface VSApplicationControllerResponse : NSObject
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     NSNumber *_expectedAction;
     VSAccountAuthentication *_accountAuthentication;
     NSSet *_accountChannelIDs;
+    NSArray *_subscriptionsToAdd;
+    NSArray *_subscriptionsToRemoveByBundleID;
 }
 
 @property (strong, nonatomic) VSAccountAuthentication *accountAuthentication; // @synthesize accountAuthentication=_accountAuthentication;
@@ -25,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSNumber *expectedAction; // @synthesize expectedAction=_expectedAction;
 @property (copy, nonatomic) NSString *responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (copy, nonatomic) NSString *responseString; // @synthesize responseString=_responseString;
+@property (copy, nonatomic) NSArray *subscriptionsToAdd; // @synthesize subscriptionsToAdd=_subscriptionsToAdd;
+@property (copy, nonatomic) NSArray *subscriptionsToRemoveByBundleID; // @synthesize subscriptionsToRemoveByBundleID=_subscriptionsToRemoveByBundleID;
 
 - (void).cxx_destruct;
 - (id)description;

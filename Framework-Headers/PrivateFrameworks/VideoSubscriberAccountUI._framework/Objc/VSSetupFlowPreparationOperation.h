@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccount/VSAsyncOperation.h>
 
-@class NSOperationQueue, VSOptional, VSStoreURLBag;
+@class NSOperationQueue, VSDevice, VSOptional, VSStoreURLBag;
 
 __attribute__((visibility("hidden")))
 @interface VSSetupFlowPreparationOperation : VSAsyncOperation
@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     VSOptional *_result;
     VSStoreURLBag *_bag;
     NSOperationQueue *_privateQueue;
+    VSDevice *_currentDevice;
 }
 
 @property (strong, nonatomic) VSStoreURLBag *bag; // @synthesize bag=_bag;
+@property (strong, nonatomic) VSDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (strong, nonatomic) VSOptional *preferences; // @synthesize preferences=_preferences;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
@@ -38,9 +40,14 @@ __attribute__((visibility("hidden")))
 - (void)_findBundleIDsForAdamIDs:(id)arg1 withFlow:(id)arg2;
 - (void)_finishWithError:(id)arg1;
 - (void)_finishWithFlow:(id)arg1;
+- (void)_getSTBProviderFromAllProviders:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_loadProviderAppDescriptionWithFlow:(id)arg1;
 - (void)_resolveBundleIDs:(id)arg1 forFlow:(id)arg2;
+- (id)createAppDescriptionFetchOperationForProvider:(id)arg1 withFlow:(id)arg2;
+- (id)createVSImageLoadOperationForProvider:(id)arg1 withFlow:(id)arg2;
 - (void)executionDidBegin;
 - (id)init;
+- (void)prepareSTBSetupForAccount:(id)arg1 forProvider:(id)arg2;
 
 @end
 

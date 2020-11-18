@@ -6,12 +6,13 @@
 
 #import <OnBoardingKit/OBPrivacyCombinedController.h>
 
+#import <OnBoardingKit/OBNavigationBarTitleTransistor-Protocol.h>
 #import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSString, OBBuddyPaneHeaderView, OBPrivacyCombinedTableViewController, OBPrivacySplashController;
 
 __attribute__((visibility("hidden")))
-@interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <UIScrollViewDelegate>
+@interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <OBNavigationBarTitleTransistor, UIScrollViewDelegate>
 {
     OBPrivacySplashController *_initialSplashController;
     OBPrivacyCombinedTableViewController *_tableViewController;
@@ -28,10 +29,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithIdentifiers:(id)arg1;
 - (void)loadView;
+- (void)restoreNavigationBarAppearance;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setCurrentNavigationBarDisplayState:(id)arg1;
 - (void)setDarkMode:(BOOL)arg1;
 - (void)updateBackgroundColor;
 - (void)updateNavigationBarAnimated:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

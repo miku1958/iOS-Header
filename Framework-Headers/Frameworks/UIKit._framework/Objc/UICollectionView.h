@@ -420,7 +420,6 @@
 - (long long)_numberOfSections;
 - (id)_objectInDictionary:(id)arg1 forKind:(id)arg2 indexPath:(id)arg3;
 - (void)_offsetPinnedReorderedItemsWithCurrentContentOffset:(struct CGPoint)arg1;
-- (id)_overridingPreferredFocusEnvironment;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3;
 - (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(BOOL)arg4;

@@ -40,6 +40,7 @@
 - (id)allKeys;
 - (id)changedKeys;
 - (BOOL)checkProperties:(BOOL)arg1 withValueCheckBlock:(CDUnknownBlockType)arg2;
+- (BOOL)checkPropertiesWithModifiedPropertiesOnly:(BOOL)arg1 includingAllArrayItems:(BOOL)arg2 withValueCheckBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

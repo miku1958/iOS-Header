@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <MetricsKit/MTObject.h>
 
 #import <MetricsKit/MTEnvironmentDelegate-Protocol.h>
 
 @class NSString;
 
-@interface MTEnvironmentUIKitDelegate : NSObject <MTEnvironmentDelegate>
+@interface MTEnvironmentUIKitDelegate : MTObject <MTEnvironmentDelegate>
 {
 }
 
@@ -38,6 +38,7 @@
 - (id)osVersion;
 - (id)pageUrl;
 - (id)pixelRatio;
+- (id)primaryWindow;
 - (id)resourceRevNum;
 - (id)screenHeight;
 - (id)screenWidth;

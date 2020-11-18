@@ -9,6 +9,8 @@
 @interface UIImage (VideosUI)
 + (id)imageWithColor:(id)arg1;
 + (id)vui_videosUIImageNamed:(id)arg1;
+- (id)vui_iconImageOfSize:(struct CGSize)arg1;
+- (id)vui_iconImageOfSize:(struct CGSize)arg1 radius:(double)arg2 stroke:(double)arg3;
 - (id)vui_imageWithColor:(id)arg1;
 @end
 

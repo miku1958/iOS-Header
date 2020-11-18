@@ -41,6 +41,8 @@
 @property (readonly, nonatomic, getter=isReadyToConnect) BOOL readyToConnect; // @synthesize readyToConnect=_readyToConnect;
 @property (nonatomic) BOOL requiresTVOutScreen; // @synthesize requiresTVOutScreen=_requiresTVOutScreen;
 @property (strong, nonatomic) AVSecondScreenViewController *secondScreenViewController; // @synthesize secondScreenViewController=_secondScreenViewController;
+@property (readonly, nonatomic) double videoDisplayScale;
+@property (readonly, nonatomic) struct CGSize videoDisplaySize;
 
 - (void).cxx_destruct;
 - (BOOL)_allowsNonAirPlayExternalPlayback;

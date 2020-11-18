@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *authServiceClientToken;
 @property (copy, nonatomic) NSNumber *authServiceClientTokenDSID;
 @property (copy, nonatomic) NSDate *authServiceClientTokenExpiration;
+@property (readonly, copy, nonatomic) NSNumber *authServiceClientTokenTimeToLive;
 @property (nonatomic) BOOL bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
 @property (copy, nonatomic) NSString *cloudMediaLibraryUID;

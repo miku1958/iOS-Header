@@ -21,6 +21,7 @@
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)titleLabelText;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

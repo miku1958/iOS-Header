@@ -30,6 +30,8 @@
 - (void).cxx_destruct;
 - (void)_dismiss;
 - (void)_willAppearInRemoteViewController;
+- (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuote:(id)arg1;

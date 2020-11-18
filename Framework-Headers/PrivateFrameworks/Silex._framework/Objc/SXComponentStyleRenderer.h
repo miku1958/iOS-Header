@@ -27,7 +27,6 @@
     SXImageFillView *_imageFillView;
     SXVideoFillView *_videoFillView;
     SXRepeatableImageFillView *_repeatableImageFillView;
-    UIView *_fillClippingView;
     UIView *_borderContainerView;
 }
 
@@ -38,7 +37,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRegisterForDynamicBounds; // @synthesize didRegisterForDynamicBounds=_didRegisterForDynamicBounds;
-@property (strong, nonatomic) UIView *fillClippingView; // @synthesize fillClippingView=_fillClippingView;
 @property (readonly, nonatomic) id<SXGradientFactory> gradientFactory; // @synthesize gradientFactory=_gradientFactory;
 @property (strong, nonatomic) SXGradientFillView *gradientFillView; // @synthesize gradientFillView=_gradientFillView;
 @property (readonly) unsigned long long hash;
@@ -53,16 +51,20 @@
 
 - (void).cxx_destruct;
 - (void)applyBackgroundColor:(id)arg1;
+- (void)applyBorder:(id)arg1;
 - (void)applyComponentStyle;
 - (void)applyCornerRadius:(double)arg1 cornerMask:(unsigned long long)arg2 onView:(id)arg3;
 - (void)applyFill:(id)arg1;
 - (void)applyMask:(id)arg1;
+- (void)applyOpacity:(double)arg1;
 - (void)componentVisiblityStateDidChange:(long long)arg1;
 - (void)dealloc;
-- (void)drawBorder:(id)arg1;
 - (id)gradientViewForFill:(id)arg1;
 - (id)imageViewForFill:(id)arg1;
 - (id)initWithComponentStyle:(id)arg1 viewport:(id)arg2 imageFillViewFactory:(id)arg3 videoFillViewFactory:(id)arg4 gradientViewFactory:(id)arg5 repeatableImageFillViewFactory:(id)arg6;
+- (void)prepareBackgroundColor:(id)arg1;
+- (void)prepareBorder:(id)arg1;
+- (void)prepareFill:(id)arg1;
 - (void)prepareForComponentView:(id)arg1;
 - (id)repeatableImageFillViewForFill:(id)arg1;
 - (id)videoPlayerViewForFill:(id)arg1;

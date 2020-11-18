@@ -12,6 +12,7 @@
 
 @interface RPFileTransferProgress : NSObject <NSSecureCoding>
 {
+    int _linkType;
     int _type;
     double _bytesPerSecond;
     double _remainingSeconds;
@@ -24,15 +25,16 @@
     long long _totalFileCount;
 }
 
-@property (readonly, nonatomic) double bytesPerSecond; // @synthesize bytesPerSecond=_bytesPerSecond;
-@property (readonly, nonatomic) double compressionRate; // @synthesize compressionRate=_compressionRate;
-@property (readonly, copy, nonatomic) NSString *currentFilename; // @synthesize currentFilename=_currentFilename;
-@property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) double remainingSeconds; // @synthesize remainingSeconds=_remainingSeconds;
-@property (readonly, nonatomic) long long totalByteCount; // @synthesize totalByteCount=_totalByteCount;
-@property (readonly, nonatomic) long long totalFileCount; // @synthesize totalFileCount=_totalFileCount;
-@property (readonly, nonatomic) long long transferredByteCount; // @synthesize transferredByteCount=_transferredByteCount;
-@property (readonly, nonatomic) long long transferredFileCount; // @synthesize transferredFileCount=_transferredFileCount;
+@property (nonatomic) double bytesPerSecond; // @synthesize bytesPerSecond=_bytesPerSecond;
+@property (nonatomic) double compressionRate; // @synthesize compressionRate=_compressionRate;
+@property (copy, nonatomic) NSString *currentFilename; // @synthesize currentFilename=_currentFilename;
+@property (copy, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic) int linkType; // @synthesize linkType=_linkType;
+@property (nonatomic) double remainingSeconds; // @synthesize remainingSeconds=_remainingSeconds;
+@property (nonatomic) long long totalByteCount; // @synthesize totalByteCount=_totalByteCount;
+@property (nonatomic) long long totalFileCount; // @synthesize totalFileCount=_totalFileCount;
+@property (nonatomic) long long transferredByteCount; // @synthesize transferredByteCount=_transferredByteCount;
+@property (nonatomic) long long transferredFileCount; // @synthesize transferredFileCount=_transferredFileCount;
 @property (nonatomic) int type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;

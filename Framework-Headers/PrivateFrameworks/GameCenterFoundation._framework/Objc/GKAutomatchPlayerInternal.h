@@ -15,8 +15,10 @@
 
 + (BOOL)supportsSecureCoding;
 - (id)alias;
+- (id)gamePlayerID;
 - (BOOL)isAutomatchPlayer;
 - (id)playerID;
+- (id)teamPlayerID;
 
 @end
 

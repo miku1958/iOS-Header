@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXDataTableLayouter *layouter; // @synthesize layouter=_layouter;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
+@property (readonly, weak, nonatomic) id<SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
 
 - (void).cxx_destruct;
 - (id)DOMObjectProviderForDataTableComponentController:(id)arg1;

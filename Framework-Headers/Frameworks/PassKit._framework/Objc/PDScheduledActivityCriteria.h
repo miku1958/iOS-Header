@@ -39,6 +39,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

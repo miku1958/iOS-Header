@@ -32,10 +32,12 @@
 + (id)fakeRemoteCredentials;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)accountCredential;
 - (id)contactlessProductCredential;
 - (id)digitalIssuanceProductCredential;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isAccountCredential;
 - (BOOL)isContactlessProductCredential;
 - (BOOL)isDigitalIssuanceProductCredential;
 - (BOOL)isLocalPassCredential;

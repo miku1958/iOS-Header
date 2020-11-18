@@ -71,6 +71,7 @@
 - (unsigned long long)_numberOfAttachmentsToDownload;
 - (unsigned long long)_numberOfAttachmentsToWriteUp;
 - (long long)_numberOfBatchesOfAttachmentsToFetchInInitialSync;
+- (long long)_numberOfMetadataBatchesOfAttachmentsToFetchInInitialSync;
 - (id)_operationErrorForModifyingRecordCompletion:(id)arg1;
 - (void)_processAndValidateAttachmentRecordsEligibleForPurge:(id)arg1 recordIDsToTransfers:(id)arg2 capturedWithABC:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_processAssetFetchOperationCompletionBlock:(id)arg1 operationID:(id)arg2 error:(id)arg3;

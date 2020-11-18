@@ -12,7 +12,7 @@
 #import <CoreSpeech/CSSpeechManagerDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
-@class CSAudioConverter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSPlainAudioFileWriter, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechManager, NSDictionary, NSString;
+@class CSAudioConverter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSPlainAudioFileWriter, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechEndHostTimeEstimator, CSSpeechManager, NSDictionary, NSString;
 @protocol CSEndpointAnalyzer, CSSpIdSpeakerRecognizer, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSAudioRouteChangeMonitorDelegate, CSVoiceTriggerDelegate, CSSpeechManagerDelegate>
@@ -48,6 +48,7 @@
     CSSpIdImplicitTraining *_voiceTriggerImplicitTraining;
     NSDictionary *_spIdUserScores;
     unsigned long long _activeChannel;
+    CSSpeechEndHostTimeEstimator *_speechEndHostTimeEstimator;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
@@ -73,6 +74,7 @@
 @property (strong, nonatomic) CSSpeakerIdRecognizerFactory *spIdFactory; // @synthesize spIdFactory=_spIdFactory;
 @property (strong, nonatomic) id<CSSpIdSpeakerRecognizer> spIdRecognizer; // @synthesize spIdRecognizer=_spIdRecognizer;
 @property (strong, nonatomic) NSDictionary *spIdUserScores; // @synthesize spIdUserScores=_spIdUserScores;
+@property (strong, nonatomic) CSSpeechEndHostTimeEstimator *speechEndHostTimeEstimator; // @synthesize speechEndHostTimeEstimator=_speechEndHostTimeEstimator;
 @property (weak, nonatomic) CSSpeechManager *speechManager; // @synthesize speechManager=_speechManager;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL twoShotNotificationEnabled; // @synthesize twoShotNotificationEnabled=_twoShotNotificationEnabled;
@@ -107,6 +109,7 @@
 - (BOOL)_setupAudioConverter:(BOOL)arg1;
 - (void)_setupDownsamplerIfNeeded;
 - (void)_setupSpeakerId;
+- (BOOL)_shouldEstimateSpeechEndHosttime;
 - (BOOL)_shouldSchedulePhaticAtStartRecording;
 - (BOOL)_shouldSetStartSampleCount;
 - (unsigned long long)alertStartTime;

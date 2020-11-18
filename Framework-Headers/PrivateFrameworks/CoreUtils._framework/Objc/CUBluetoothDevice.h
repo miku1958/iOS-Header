@@ -15,6 +15,8 @@
     BOOL _present;
     unsigned int _connectedServices;
     int _colorCode;
+    int _primaryPlacement;
+    int _secondaryPlacement;
     unsigned int _productIdentifier;
     CDStruct_83abfce7 _address;
     NSString *_addressString;
@@ -34,7 +36,9 @@
 @property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
+@property (nonatomic) int primaryPlacement; // @synthesize primaryPlacement=_primaryPlacement;
 @property (nonatomic) unsigned int productIdentifier; // @synthesize productIdentifier=_productIdentifier;
+@property (nonatomic) int secondaryPlacement; // @synthesize secondaryPlacement=_secondaryPlacement;
 @property (nonatomic) BOOL supportsAACPService; // @synthesize supportsAACPService=_supportsAACPService;
 
 - (void).cxx_destruct;

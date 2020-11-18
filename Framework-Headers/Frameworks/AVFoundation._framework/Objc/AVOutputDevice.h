@@ -6,22 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVOutputDeviceInternal, NSData, NSString;
+@class AVOutputDeviceInternal;
 
 @interface AVOutputDevice : NSObject
 {
     AVOutputDeviceInternal *_outputDevice;
 }
-
-@property (readonly, nonatomic) NSString *deviceID;
-@property (readonly, nonatomic) long long deviceSubType;
-@property (readonly, nonatomic) long long deviceType;
-@property (readonly, nonatomic) NSString *firmwareVersion;
-@property (readonly, nonatomic) NSData *identifyingMACAddress;
-@property (readonly, nonatomic) NSString *manufacturer;
-@property (readonly, nonatomic) NSString *modelID;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSString *serialNumber;
 
 + (void)initialize;
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
@@ -47,12 +37,18 @@
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)deviceFeatures;
+- (id)deviceID;
+- (id)deviceName;
+- (long long)deviceSubType;
+- (long long)deviceType;
 - (id)figEndpointOutputImpl;
+- (id)firmwareVersion;
 - (double)frecencyScore;
 - (BOOL)groupContainsGroupLeader;
 - (id)groupID;
 - (BOOL)hasBatteryLevel;
 - (unsigned long long)hash;
+- (id)identifyingMACAddress;
 - (id)impl;
 - (id)init;
 - (id)initWithOutputDeviceImpl:(id)arg1;
@@ -61,13 +57,17 @@
 - (BOOL)isInUseByPairedDevice;
 - (BOOL)isLogicalDeviceLeader;
 - (id)logicalDeviceID;
+- (id)manufacturer;
+- (id)modelID;
 - (id)modelSpecificInformation;
+- (id)name;
 - (BOOL)onlyAllowsConnectionsFromPeersInHomeGroup;
 - (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
 - (BOOL)participatesInGroupPlayback;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (BOOL)requiresAuthorization;
+- (id)serialNumber;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 - (BOOL)supportsBufferedAirPlay;

@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@interface WLKFavoritesRequestOperation : WLKNetworkRequestOperation
+@class NSArray;
+
+@interface WLKFavoritesRequestOperation : WLKUTSNetworkRequestOperation
 {
+    NSArray *_favorites;
 }
 
-- (id)init;
-- (id)responseProcessor;
+@property (readonly, nonatomic) NSArray *favorites; // @synthesize favorites=_favorites;
+
+- (void).cxx_destruct;
+- (id)initWithCaller:(id)arg1;
+- (void)prepareURLRequest:(CDUnknownBlockType)arg1;
+- (void)processResponse;
 
 @end
 

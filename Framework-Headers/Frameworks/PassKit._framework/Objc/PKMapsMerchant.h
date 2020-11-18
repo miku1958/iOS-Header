@@ -9,13 +9,11 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, CNPostalAddress, NSString, NSURL;
+@class CLLocation, CNPostalAddress, MKWalletMerchantStylingInfo, NSString, NSURL;
 
 @interface PKMapsMerchant : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
-    BOOL _hasPOIType;
     int _resultProviderIdentifier;
-    int _poiType;
     unsigned long long _identifier;
     NSString *_name;
     NSString *_phoneNumber;
@@ -24,13 +22,17 @@
     double _locationLongitude;
     CNPostalAddress *_postalAddress;
     NSURL *_heroImageURL;
+    NSString *_heroImageAttributionName;
     long long _category;
     NSString *_detailedCategory;
+    MKWalletMerchantStylingInfo *_stylingInfo;
+    NSURL *_businessChatURL;
 }
 
+@property (copy, nonatomic) NSURL *businessChatURL; // @synthesize businessChatURL=_businessChatURL;
 @property (nonatomic) long long category; // @synthesize category=_category;
 @property (copy, nonatomic) NSString *detailedCategory; // @synthesize detailedCategory=_detailedCategory;
-@property (nonatomic) BOOL hasPOIType; // @synthesize hasPOIType=_hasPOIType;
+@property (copy, nonatomic) NSString *heroImageAttributionName; // @synthesize heroImageAttributionName=_heroImageAttributionName;
 @property (copy, nonatomic) NSURL *heroImageURL; // @synthesize heroImageURL=_heroImageURL;
 @property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) CLLocation *location;
@@ -38,9 +40,9 @@
 @property (nonatomic) double locationLongitude; // @synthesize locationLongitude=_locationLongitude;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (nonatomic) int poiType; // @synthesize poiType=_poiType;
 @property (copy, nonatomic) CNPostalAddress *postalAddress; // @synthesize postalAddress=_postalAddress;
 @property (nonatomic) int resultProviderIdentifier; // @synthesize resultProviderIdentifier=_resultProviderIdentifier;
+@property (strong, nonatomic) MKWalletMerchantStylingInfo *stylingInfo; // @synthesize stylingInfo=_stylingInfo;
 @property (copy, nonatomic, setter=setURL:) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 

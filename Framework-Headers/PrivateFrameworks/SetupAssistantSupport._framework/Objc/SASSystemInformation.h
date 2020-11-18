@@ -12,6 +12,9 @@
 
 + (long long)compareProductVersion:(id)arg1 toProductVersion:(id)arg2;
 + (id)productVersion;
++ (id)storageAvailable;
++ (id)storageCapacity;
++ (id)storageUsedByAppContainers;
 
 @end
 

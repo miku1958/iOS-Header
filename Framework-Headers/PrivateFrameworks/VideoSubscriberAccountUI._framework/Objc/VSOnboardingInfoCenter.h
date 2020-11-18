@@ -14,8 +14,9 @@
 
 @property (readonly, copy, nonatomic) NSString *localizedButtonTitle;
 
-- (id)buttonViewController;
 - (void)presentDetailsFromViewController:(id)arg1;
+- (id)tvAppPrivacyButtonViewController;
+- (id)tvProviderPrivacyButtonViewController;
 
 @end
 

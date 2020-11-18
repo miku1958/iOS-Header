@@ -47,5 +47,6 @@ typedef struct {
         CDStruct_1ef3fb1f _field2;
     } _field5;
     unsigned long long _field6;
-} CDStruct_f4084295;
+    BOOL _field7;
+} CDStruct_a90444bf;
 

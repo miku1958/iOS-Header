@@ -11,7 +11,7 @@
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
 
-@class MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSNumber, NSString, UIColor, UITableView, UIView;
+@class MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSNumber, NSString, UIColor, UITableView, UIView;
 @protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
 @interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -19,7 +19,6 @@
     UITableView *_tableView;
     UIView *_tableBackgroundView;
     MPAVRoutingTableHeaderView *_tableHeaderView;
-    MPAVRoutingEmptyStateView *_emptyStateView;
     MPAVRoutingViewControllerUpdate *_pendingUpdate;
     BOOL _isAnimatingUpdate;
     MPAVRoute *_displayedEndpointRoute;
@@ -100,7 +99,6 @@
 - (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
 - (void)_registerNotifications;
-- (void)_reloadEmptyStateVisibility;
 - (void)_setNeedsDisplayedRoutesUpdate;
 - (void)_setNeedsRouteDiscoveryModeUpdate;
 - (void)_setRouteDiscoveryMode:(long long)arg1;

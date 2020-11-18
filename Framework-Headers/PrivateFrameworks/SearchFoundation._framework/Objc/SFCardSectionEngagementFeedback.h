@@ -13,9 +13,11 @@
     SFPunchout *_destination;
     unsigned long long _triggerEvent;
     unsigned long long _actionCardType;
+    unsigned long long _actionTarget;
 }
 
 @property (nonatomic) unsigned long long actionCardType; // @synthesize actionCardType=_actionCardType;
+@property (nonatomic) unsigned long long actionTarget; // @synthesize actionTarget=_actionTarget;
 @property (strong, nonatomic) SFPunchout *destination; // @synthesize destination=_destination;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 

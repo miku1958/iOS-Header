@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NPSDomainAccessor, NSDictionary, NSString, TLAccessQueue;
+@protocol NSCopying;
 
 @interface TLToneManager : NSObject
 {
@@ -15,6 +16,7 @@
     NSDictionary *_toneIdentifiersBySyncIdentifier;
     NSDictionary *_alertTonesByIdentifier;
     NSDictionary *_toneIdentifierAliasMap;
+    id<NSCopying> _contentProtectionStateObserverToken;
     BOOL _cachedWatchPrefersSalientNotifications;
     BOOL _hasValidCachedWatchPrefersSalientNotifications;
     BOOL _shouldSkipNextWatchPrefersSalientNotificationsDidChangeNotification;
@@ -61,6 +63,7 @@
 - (id)_fileNameFromToneIdentifier:(id)arg1 withPrefix:(id)arg2;
 - (id)_filePathForToneIdentifier:(id)arg1 isValid:(BOOL *)arg2;
 - (void)_handleDeviceRingtonesChangedNotification;
+- (void)_handleProtectionContentUnlockedEvent;
 - (void)_handleTonePreferencesChangedNotificationForPreferencesKinds:(unsigned long long)arg1;
 - (void)_handleWatchPrefersSalientNotificationDidChange;
 - (id)_importPurchasedToneWithMetadata:(id)arg1 fileName:(id)arg2;

@@ -19,6 +19,7 @@
     HAPMetadata *_hapMetadata;
     NSSet *_hmRequiresDeviceUnlockTuples;
     NSDictionary *_hmAllowableSecuringWrites;
+    NSDictionary *_hmPowerOnWriteFilter;
     NSDictionary *_hmAccessoryCategories;
     NSSet *_hmBlacklistedServices;
     NSSet *_hmBlacklistedCharacteristics;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) NSSet *hmBulletinBoardEnabledTuples; // @synthesize hmBulletinBoardEnabledTuples=_hmBulletinBoardEnabledTuples;
 @property (strong, nonatomic) NSSet *hmCoalesceNotificationsTuples; // @synthesize hmCoalesceNotificationsTuples=_hmCoalesceNotificationsTuples;
 @property (strong, nonatomic) NSSet *hmNotificationAutoEnabledTuples; // @synthesize hmNotificationAutoEnabledTuples=_hmNotificationAutoEnabledTuples;
+@property (strong, nonatomic) NSDictionary *hmPowerOnWriteFilter; // @synthesize hmPowerOnWriteFilter=_hmPowerOnWriteFilter;
 @property (strong, nonatomic) NSSet *hmRequiresDeviceUnlockTuples; // @synthesize hmRequiresDeviceUnlockTuples=_hmRequiresDeviceUnlockTuples;
 @property (nonatomic) BOOL incomplete; // @synthesize incomplete=_incomplete;
 @property (readonly, nonatomic) NSDictionary *rawPlist; // @synthesize rawPlist=_rawPlist;
@@ -85,6 +87,7 @@
 - (BOOL)checkTupleExistsInSet:(id)arg1 forChrType:(id)arg2 svcType:(id)arg3;
 - (id)descriptionForCharacteristicType:(id)arg1;
 - (id)descriptionForServiceType:(id)arg1;
+- (BOOL)generateNotificationOnConfigurationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (id)getAliasedCharacteristicTypes:(id)arg1;
 - (id)getAliasedServiceType:(id)arg1;
 - (id)getCharacteristicTypeAlias:(id)arg1;
@@ -112,6 +115,7 @@
 - (BOOL)parseAndSetAssistantUnits:(id)arg1;
 - (void)parseAndSetHMCategories:(id)arg1;
 - (BOOL)parseAndSetHMMetadataWithHMPlist:(id)arg1;
+- (void)parseAndSetPowerOnWriteFilter:(id)arg1;
 - (id)parseAndSetRawPlist:(id)arg1;
 - (id)parseCharacteristicArray:(id)arg1;
 - (id)parseMetadataTupleSetFromPlist:(id)arg1;
@@ -123,6 +127,7 @@
 - (id)serviceSubtypeForValue:(id)arg1 forServiceType:(id)arg2;
 - (id)serviceTypeFromName:(id)arg1;
 - (BOOL)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
+- (BOOL)shouldAllowWriteToWakeSuspendedAccessoryForService:(id)arg1 characteristicType:(id)arg2 value:(id)arg3;
 - (BOOL)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (BOOL)shouldCoalesceCharacteristicNotifications:(id)arg1 forService:(id)arg2;
 - (BOOL)shouldFilterChangeNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;

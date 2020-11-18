@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewFlowLayout.h>
+#import <UIKit/UICollectionViewLayout.h>
 
 #import <PassKitUI/PKDashboardLayout-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString;
+@class NSMutableDictionary, NSString;
 
-@interface PKDashboardPassFlowLayout : UICollectionViewFlowLayout <UIGestureRecognizerDelegate, PKDashboardLayout>
+@interface PKDashboardPassFlowLayout : UICollectionViewLayout <UIGestureRecognizerDelegate, PKDashboardLayout>
 {
     BOOL _needsCustomLocation;
     BOOL _userIsActivelyDragging;
@@ -22,6 +22,10 @@
     BOOL _showNonPassCells;
     double _revealingContentOffset;
     struct CGSize _passCellSize;
+    NSMutableDictionary *_attributesPerIndexPath;
+    struct CGSize _currentSize;
+    BOOL _isCompactUI;
+    BOOL _preventLayoutComputation;
     BOOL _fade;
 }
 
@@ -31,7 +35,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_adjustFrameForRevealingWithAttributes:(id)arg1;
+- (void).cxx_destruct;
+- (void)_adjustItems:(id)arg1 withLateralMove:(double)arg2;
 - (id)_customAttribuesForPassAtTheTop:(id)arg1;
 - (id)_indexPathForPassGroup;
 - (BOOL)_indexPathIsPassGroupIndexPath:(id)arg1;
@@ -39,9 +44,9 @@
 - (void)finalizeCollectionViewUpdates;
 - (void)hideContent;
 - (id)init;
-- (id)initialLayoutAttributesForAppearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (struct UIEdgeInsets)insetsForSection:(long long)arg1;
+- (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;

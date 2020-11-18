@@ -36,7 +36,6 @@
 @property (copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (nonatomic) double preferredImageScale; // @synthesize preferredImageScale=_preferredImageScale;
 @property (strong, nonatomic) NSString *preferredImageSuffix; // @synthesize preferredImageSuffix=_preferredImageSuffix;
-@property (readonly, nonatomic) BOOL remoteAssetsDownloaded;
 @property (nonatomic) unsigned long long settings; // @synthesize settings=_settings;
 @property (nonatomic) long long shareCount; // @synthesize shareCount=_shareCount;
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
@@ -80,6 +79,7 @@
 - (id)modificationDate;
 - (void)noteShared;
 - (void)reloadDisplayProfileOfType:(long long)arg1;
+- (BOOL)remoteAssetsDownloaded;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serializedFileWrapper;

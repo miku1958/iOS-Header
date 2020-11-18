@@ -6,12 +6,17 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSData, NSDate, NSString;
+@class NSData, NSDate, NSNumber, NSString;
 
 @interface MCCertificatePayload : MCPayload
 {
     NSData *_certificatePersistentID;
     NSString *_installedOnDeviceID;
+    NSNumber *_isIdentity;
+    NSNumber *_isRoot;
+    NSNumber *_expiryInterval;
+    NSString *_certSubject;
+    NSString *_certIssuer;
 }
 
 @property (strong, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
@@ -23,10 +28,12 @@
 @property (readonly, nonatomic) BOOL isSigned;
 
 - (void).cxx_destruct;
+- (id)certificateSubject;
 - (struct __SecCertificate *)copyCertificate;
 - (struct __SecIdentity *)copyIdentityFromKeychain;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+- (id)issuer;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;

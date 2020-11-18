@@ -39,7 +39,6 @@
 @property (nonatomic, getter=isWhitelistedRichLinkSender) BOOL whitelistedRichLinkSender; // @synthesize whitelistedRichLinkSender=_whitelistedRichLinkSender;
 
 + (id)_additionalSupportedRichLinkSchemesForWhitelistedSender:(id)arg1;
-+ (id)_defaultRichLinkSenderWhitelist;
 + (id)_defaultRichLinkWhiteList;
 + (id)_guidForMessage:(id)arg1 url:(id)arg2;
 + (BOOL)_isWhiteListedURL:(id)arg1;

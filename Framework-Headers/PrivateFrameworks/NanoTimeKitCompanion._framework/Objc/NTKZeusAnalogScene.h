@@ -30,6 +30,7 @@
     unsigned long long _style;
     BOOL _isEditing;
     BOOL _isStatusIconVisible;
+    double _bleedZRotation;
     BOOL _scrubbing;
 }
 
@@ -47,6 +48,7 @@
 - (id)_hoursNodeForStyle:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
 - (struct CGPoint)_logoContainerPositionForStyle:(unsigned long long)arg1;
 - (double)_lowerComplicationAlphaForEditing:(BOOL)arg1;
+- (id)_nodeForBleed:(unsigned long long)arg1;
 - (double)_secondHandAlphaForDensity:(unsigned long long)arg1 isEditing:(BOOL)arg2;
 - (void)_significantTimeChanged;
 - (double)_splitAngle;

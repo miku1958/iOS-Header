@@ -6,11 +6,12 @@
 
 #import <PassKitCore/PKPaymentWebServiceRequest.h>
 
-@class NSData, NSString, PKPaymentPass, PKWrappedPayment;
+@class NSData, NSString, PKPaymentApplication, PKPaymentPass, PKWrappedPayment;
 
 @interface PKPaymentRewrapRequestBase : PKPaymentWebServiceRequest
 {
     PKPaymentPass *_pass;
+    PKPaymentApplication *_paymentApplication;
     PKWrappedPayment *_wrappedPayment;
     NSData *_applicationData;
 }
@@ -18,12 +19,12 @@
 @property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, nonatomic) NSString *endpointName;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKWrappedPayment *wrappedPayment; // @synthesize wrappedPayment=_wrappedPayment;
 
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceData:(id)arg2 appleAccountInformation:(id)arg3;
-- (id)bodyDictionaryWithDeviceData:(id)arg1;
-- (id)initWithWrappedPayment:(id)arg1 paymentPass:(id)arg2;
+- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
+- (id)bodyDictionary;
 
 @end
 

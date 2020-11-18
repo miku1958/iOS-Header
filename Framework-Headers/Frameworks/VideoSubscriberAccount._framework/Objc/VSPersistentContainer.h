@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
 @property (strong, nonatomic) NSManagedObjectContext *viewContext; // @synthesize viewContext=_viewContext;
 
-+ (id)defaultDirectoryURL;
++ (id)directoryURL;
++ (id)legacyDirectoryURL;
 - (void).cxx_destruct;
 - (id)developerIdentityProviderFetchRequest;
 - (id)init;
 - (id)initWithModelVersion:(long long)arg1;
 - (id)insertDeveloperIdentityProviderInContext:(id)arg1;
+- (void)migrateContainerIfNecessary;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 
 @end

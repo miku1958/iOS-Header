@@ -4,41 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <TVMLKit/TVViewLayout.h>
 
-#import <VideosUI/VUIOverlayLayoutProtocol-Protocol.h>
-
-@class NSString, VUIImageLayout, VUIScoreboardLayout, VUITextBadgeLayout;
+@class TVImageLayout, VUIScoreboardLayout, VUITextBadgeLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUISportsOverlayLayout : NSObject <VUIOverlayLayoutProtocol>
+@interface VUISportsOverlayLayout : TVViewLayout
 {
     VUIScoreboardLayout *_scoreboardLayout;
     VUITextBadgeLayout *_textBadgeLayout;
-    VUITextBadgeLayout *_timeBadgeLayout;
-    VUITextBadgeLayout *_liveBadgeLayout;
-    VUIImageLayout *_logoImageLayout;
-    struct UIEdgeInsets _padding;
+    TVImageLayout *_logoImageLayout;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) VUITextBadgeLayout *liveBadgeLayout; // @synthesize liveBadgeLayout=_liveBadgeLayout;
-@property (strong, nonatomic) VUIImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
-@property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property (strong, nonatomic) TVImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
 @property (strong, nonatomic) VUIScoreboardLayout *scoreboardLayout; // @synthesize scoreboardLayout=_scoreboardLayout;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) VUITextBadgeLayout *textBadgeLayout; // @synthesize textBadgeLayout=_textBadgeLayout;
-@property (strong, nonatomic) VUITextBadgeLayout *timeBadgeLayout; // @synthesize timeBadgeLayout=_timeBadgeLayout;
-@property (readonly, nonatomic) long long type;
 
-+ (id)_sportsOverlayALayout:(long long)arg1;
-+ (id)_sportsOverlayBLayout:(long long)arg1;
-+ (id)_sportsOverlayCLayout;
-+ (int)_textBlendMode;
-+ (id)_textColorForTextBadge:(long long)arg1;
-+ (id)overlayLayoutForScoreboardType:(long long)arg1 interfaceIdiom:(long long)arg2;
++ (long long)_scoreboardTypeForElement:(id)arg1;
++ (id)_sportsOverlayALayoutWithElement:(id)arg1;
++ (id)_sportsOverlayBLayoutWithElement:(id)arg1;
++ (id)_sportsOverlayCLayoutWithElement:(id)arg1;
++ (id)overlayLayoutForElement:(id)arg1 cardLayoutType:(long long)arg2;
 - (void).cxx_destruct;
 
 @end

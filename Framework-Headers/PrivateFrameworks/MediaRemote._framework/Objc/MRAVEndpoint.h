@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL canModifyGroupMembership;
 @property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
+@property (readonly, nonatomic) NSString *debugName;
 @property (readonly, nonatomic) _MRAVEndpointDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
 @property (readonly, nonatomic) MRExternalDevice *externalDevice;

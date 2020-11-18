@@ -17,6 +17,15 @@
 
 @interface IKDOMDocument : IKDOMNode <NSObject, IKJSDOMDocument, _IKJSDOMDocumentProxy, _IKJSDOMDocument, IKJSDOMXPathEvaluator>
 {
+    struct {
+        BOOL hasSetNeedsUpdate;
+        BOOL hasSnapshotImpressions;
+        BOOL hasRecordedImpressions;
+        BOOL hasImpressionsMatchingTag;
+        BOOL hasScrollToTop;
+        BOOL hasRunTest;
+    } _appBridgeFlags;
+    BOOL _embeddedScriptExecuted;
     id<IKNetworkRequestLoader> __requestLoader;
     id<IKJSDOMDocumentAppBridge> _appBridge;
     unsigned long long _itmlIDSequence;
@@ -30,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) IKDOMElement *documentElement;
 @property (strong, nonatomic) NSString *documentURI;
+@property (nonatomic, getter=isEmbeddedScriptExecuted) BOOL embeddedScriptExecuted; // @synthesize embeddedScriptExecuted=_embeddedScriptExecuted;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) IKDOMImplementation *implementation;
 @property (readonly, strong, nonatomic) NSString *inputEncoding;
@@ -44,6 +54,7 @@
 + (struct _xmlDoc *)_documentWithXMLStr:(id)arg1 lsInput:(id)arg2 error:(id *)arg3;
 + (void)_resetUpdatesForNode:(id)arg1;
 - (void).cxx_destruct;
+- (void)_executeEmbeddedScriptWithExtraInfo:(id)arg1;
 - (void)_updateITMLIDRecursivelyForNodePtr:(struct _xmlNode *)arg1;
 - (id)adoptNode:(id)arg1;
 - (id)asPrivateIKJSDOMDocument;
@@ -65,6 +76,7 @@
 - (id)matchingImpressions:(id)arg1:(id)arg2;
 - (id)nodeName;
 - (long long)nodeType;
+- (void)prepareForPresentationWithExtraInfo:(id)arg1;
 - (id)recordedImpressions:(id)arg1;
 - (void)replace:(id)arg1;
 - (void)runTest:(id)arg1:(id)arg2;

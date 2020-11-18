@@ -8,16 +8,13 @@
 
 @interface PKAnimatedNavigationBarTitleView : UIView
 {
-    BOOL _animatingIn;
-    BOOL _animatingOut;
-    UIView *_viewToAnimate;
+    UIView *_titleView;
 }
 
 - (void).cxx_destruct;
-- (void)animateIn:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)animateOutWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setTitleView:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

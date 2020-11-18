@@ -11,6 +11,7 @@
 @protocol _CPCardSectionEngagementFeedback <NSObject>
 
 @property (nonatomic) int actionCardType;
+@property (nonatomic) int actionTarget;
 @property (strong, nonatomic) _CPCardSectionForFeedback *cardSection;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (strong, nonatomic) _CPPunchoutForFeedback *destination;

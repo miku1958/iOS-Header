@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface VUICollectionView : UICollectionView <UIGestureRecognizerDelegate>
 {
+    struct UIEdgeInsets _gradientBoundsInsets;
     struct {
         unsigned int layoutBelowDisabled:1;
     } _flags;
@@ -20,9 +21,11 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct UIEdgeInsets gradientBoundsInsets; // @synthesize gradientBoundsInsets=_gradientBoundsInsets;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_getGradientMaskBounds:(out struct CGRect *)arg1 startInsets:(out struct UIEdgeInsets *)arg2 endInsets:(out struct UIEdgeInsets *)arg3 intensities:(out struct UIEdgeInsets *)arg4;
 - (void)_performWithoutLayoutBelow:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldFadeCellsForBoundChangeWhileRotating;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

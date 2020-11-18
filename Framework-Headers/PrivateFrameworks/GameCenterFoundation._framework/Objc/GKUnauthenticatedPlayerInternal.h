@@ -14,8 +14,10 @@
 + (BOOL)supportsSecureCoding;
 - (id)alias;
 - (void)encodeWithCoder:(id)arg1;
+- (id)gamePlayerID;
 - (BOOL)isEqual:(id)arg1;
 - (id)playerID;
+- (id)teamPlayerID;
 
 @end
 

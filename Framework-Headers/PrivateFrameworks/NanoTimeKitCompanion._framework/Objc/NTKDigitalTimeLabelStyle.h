@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NTKLayoutRule *layoutRule; // @synthesize layoutRule=_layoutRule;
 
++ (id)defaultRoundedStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 forDevice:(id)arg3;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 forDevice:(id)arg3;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 withBaselineY:(double)arg3 forDevice:(id)arg4;
 + (id)defaultStyleForBounds:(struct CGRect)arg1 withRightSideMargin:(double)arg2 withBaselineY:(double)arg3 withFont:(id)arg4 forDevice:(id)arg5;

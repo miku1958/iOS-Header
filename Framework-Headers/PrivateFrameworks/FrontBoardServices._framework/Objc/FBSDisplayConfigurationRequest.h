@@ -18,6 +18,7 @@
 {
     long long _overscanCompensation;
     struct CGSize _pixelSize;
+    struct CGSize _nativePixelSize;
     double _refreshRate;
     long long _hdrMode;
 }
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
+@property (readonly, nonatomic) struct CGSize nativePixelSize; // @synthesize nativePixelSize=_nativePixelSize;
 @property (readonly, nonatomic) long long overscanCompensation; // @synthesize overscanCompensation=_overscanCompensation;
 @property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property (readonly, nonatomic) double refreshRate; // @synthesize refreshRate=_refreshRate;

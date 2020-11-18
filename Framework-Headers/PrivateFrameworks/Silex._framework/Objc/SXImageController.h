@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)Image2ResourcesForImageIdentifier:(id)arg1;
 - (id)allImageResources;
+- (void)determineOptimalImagesForComponentStyles:(id)arg1;
 - (void)determineOptimalImagesForComponents:(id)arg1;
 - (void)determineOptimalImagesForMetadata;
 - (id)imageResourceForAudioComponent:(id)arg1;
@@ -36,7 +37,7 @@
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)imageResourceForImageComponent:(id)arg1;
 - (id)imageResourceForImageFill:(id)arg1;
-- (id)imageResourceForImageIdentifier:(id)arg1 constrainedToSize:(struct CGSize)arg2 allowsUpscaling:(BOOL)arg3;
+- (id)imageResourceForImageIdentifier:(id)arg1 constrainedToSize:(struct CGSize)arg2;
 - (id)imageResourceForRepeatableImageFill:(id)arg1;
 - (id)imageResourceForScalableImageComponent:(id)arg1;
 - (id)imageResourceForVideoComponent:(id)arg1;

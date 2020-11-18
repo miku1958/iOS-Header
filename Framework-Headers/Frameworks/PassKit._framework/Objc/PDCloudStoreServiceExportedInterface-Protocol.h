@@ -6,19 +6,25 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKPaymentTransaction;
 
 @protocol PDCloudStoreServiceExportedInterface <PDXPCServiceExportedInterface>
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
+- (void)checkTLKsMissingWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)cloudStoreStatusForContainer:(NSString *)arg1 completion:(void (^)(CKAccountInfo *, BOOL, NSError *))arg2;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSError *))arg2;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(NSString *)arg2 completion:(void (^)(PKCloudRecordObject *, NSError *))arg3;
 - (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
 - (void)noteCloudSyncPassesSwitchChangedWithHandler:(void (^)(void))arg1;
+- (void)populateEvents:(NSArray *)arg1 forAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 - (void)removeItemsWithRecordNames:(NSArray *)arg1 itemType:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)resetContainerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)setupCloudDatabaseForContainerName:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(NSString *)arg1 completion:(void (^)(PKCloudRecordArray *, NSArray *, NSError *))arg2;
 - (void)updateCloudStoreWithLocalItems:(NSArray *)arg1 recordSpecificKeys:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)uploadTransaction:(PKPaymentTransaction *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2 completion:(void (^)(PKCloudRecordArray *, NSError *))arg3;
 
 @optional
 - (void)resetContainerWithCompletion:(void (^)(BOOL))arg1;

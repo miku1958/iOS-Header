@@ -25,14 +25,14 @@
 }
 
 - (void).cxx_destruct;
-- (void)_printBlueLightStatus:(CDStruct_f4084295 *)arg1;
+- (void)_printBlueLightStatus:(CDStruct_a90444bf *)arg1;
 - (id)blueLightReductionFooter;
 - (void)colorTemperatureSliderDidChange;
 - (void)dealloc;
 - (id)fromDetailForCell:(id)arg1;
 - (id)getBlueLightReductionEnabled:(id)arg1;
 - (id)getBlueLightReductionScheduleEnabled:(id)arg1;
-- (void)handleBlueLightStatusChanged:(CDStruct_f4084295 *)arg1;
+- (void)handleBlueLightStatusChanged:(CDStruct_a90444bf *)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)localizedTimeForTime:(CDStruct_1ef3fb1f)arg1;
 - (void)setBlueLightReductionEnabled:(id)arg1 forSpecifier:(id)arg2;

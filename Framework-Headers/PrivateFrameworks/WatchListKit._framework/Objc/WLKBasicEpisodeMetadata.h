@@ -35,9 +35,10 @@
 @property (readonly, nonatomic) WLKArtworkVariantListing *showImages; // @synthesize showImages=_showImages;
 @property (readonly, copy, nonatomic) NSString *showTitle; // @synthesize showTitle=_showTitle;
 
-+ (id)episodesWithDictionaries:(id)arg1;
++ (id)episodesWithDictionaries:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 context:(id)arg2;
 
 @end
 

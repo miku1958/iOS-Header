@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithPassLibrary:(id)arg1;
 - (id)passWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (id)passWithUniqueID:(id)arg1;
 - (id)paymentPasses;

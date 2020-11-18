@@ -31,9 +31,18 @@
 - (void)_updateShouldSkipSetupWithNumber:(id)arg1;
 - (void)_updateValue:(id)arg1 forKey:(id)arg2;
 - (BOOL)hasChosenDesiredApp;
+- (BOOL)isInSTBMode;
 - (void)noteDesiredApp:(id)arg1;
 - (void)noteDidSendWelcomeMessage;
+- (void)noteIsInSTBMode:(BOOL)arg1;
 - (void)noteShouldSkipSetup;
+- (void)removeSkipSetupPreset;
+- (id)setTopBoxInfoAppAdamIdOverride;
+- (id)setTopBoxInfoBundleIdentifierOverride;
+- (BOOL)setTopBoxInfoIsSetTopBoxOverride;
+- (id)setTopBoxInfoProviderDisplayNameOverride;
+- (id)setTopBoxInfoProviderIdOverride;
+- (BOOL)shouldIgnoreExtendedValidation;
 
 @end
 

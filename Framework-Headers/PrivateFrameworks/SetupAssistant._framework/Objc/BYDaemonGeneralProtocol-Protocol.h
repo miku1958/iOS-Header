@@ -8,6 +8,8 @@
 
 @protocol BYDaemonGeneralProtocol <NSObject>
 - (void)backupMetadata:(void (^)(NSData *))arg1;
+- (void)cancelDataMigratorDeferredExit:(void (^)(void))arg1;
+- (void)deferDataMigratorExit:(void (^)(void))arg1;
 - (void)ensureSilentLoginUpgrade:(void (^)(void))arg1;
 - (void)observeFinishSetupTriggers:(void (^)(void))arg1;
 - (void)performSilentICDPUpgrade:(void (^)(void))arg1;

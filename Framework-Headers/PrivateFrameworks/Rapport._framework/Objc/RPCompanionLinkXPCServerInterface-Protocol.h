@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString, RPCompanionLinkAssertion, RPCompanionLinkClient;
+@class NSDictionary, NSString, RPCompanionLinkAssertion, RPCompanionLinkClient, RPDiscovery, RPServer, RPSession;
 
 @protocol RPCompanionLinkXPCServerInterface
 - (void)companionLinkActivateAssertion:(RPCompanionLinkAssertion *)arg1 completion:(void (^)(NSError *))arg2;
@@ -20,5 +20,9 @@
 - (void)companionLinkSendRequestID:(NSString *)arg1 request:(NSDictionary *)arg2 destinationID:(NSString *)arg3 options:(NSDictionary *)arg4 responseHandler:(void (^)(NSDictionary *, NSDictionary *, NSError *))arg5;
 - (void)companionLinkTryPassword:(NSString *)arg1;
 - (void)companionLinkUpdateClient:(RPCompanionLinkClient *)arg1;
+- (void)xpcDiscoveryActivate:(RPDiscovery *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)xpcDiscoveryUpdate:(RPDiscovery *)arg1;
+- (void)xpcServerActivate:(RPServer *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)xpcSessionActivate:(RPSession *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

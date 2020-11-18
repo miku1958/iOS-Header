@@ -30,6 +30,7 @@
     NSMutableSet *_unassociatedWACAccessories;
     NSMutableSet *_mediaAccessoryControlConnections;
     NSMutableSet *_browsingConnections;
+    BOOL _btlePowerState;
     BOOL _appIsInForeground;
     BOOL _activeSiriCommand;
     HMDUnassociatedWACAccessory *_accessoryPerformingWAC;
@@ -68,6 +69,7 @@
 @property (nonatomic) BOOL appIsInForeground; // @synthesize appIsInForeground=_appIsInForeground;
 @property (strong, nonatomic) HMDAuthServer *authServer; // @synthesize authServer=_authServer;
 @property (strong, nonatomic) HAPAccessoryServerBrowserBTLE *btleAccessoryServerBrowser; // @synthesize btleAccessoryServerBrowser=_btleAccessoryServerBrowser;
+@property (nonatomic) BOOL btlePowerState; // @synthesize btlePowerState=_btlePowerState;
 @property (strong, nonatomic) NSMutableArray *currentlyPairingAccessories; // @synthesize currentlyPairingAccessories=_currentlyPairingAccessories;
 @property (strong, nonatomic) NSMutableArray *currentlyPairingProgressHandlers; // @synthesize currentlyPairingProgressHandlers=_currentlyPairingProgressHandlers;
 @property (readonly, copy) NSString *debugDescription;

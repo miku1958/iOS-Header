@@ -13,6 +13,7 @@
 @property (readonly, nonatomic, getter=isInitialUpdateInProgress) BOOL initialUpdateInProgress;
 @property (readonly, nonatomic, getter=isUpdating) BOOL updating;
 
+- (void)updateFromCloudWithReason:(long long)arg1;
 - (void)updateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

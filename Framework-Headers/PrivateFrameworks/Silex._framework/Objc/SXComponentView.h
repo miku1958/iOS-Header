@@ -26,6 +26,7 @@
     BOOL _allowViewHierarchyRemoval;
     BOOL _hasAnimation;
     BOOL _hasBehaviors;
+    BOOL _hasRenderedComponentStyle;
     CDStruct_1cc9d0d0 _presentationChanges;
     id<SXComponentLayout> _componentLayout;
     id<SXComponent> _component;
@@ -73,6 +74,7 @@
 @property (weak, nonatomic) SXFillView *fillView; // @synthesize fillView=_fillView;
 @property (nonatomic) BOOL hasAnimation; // @synthesize hasAnimation=_hasAnimation;
 @property (nonatomic) BOOL hasBehaviors; // @synthesize hasBehaviors=_hasBehaviors;
+@property (nonatomic) BOOL hasRenderedComponentStyle; // @synthesize hasRenderedComponentStyle=_hasRenderedComponentStyle;
 @property (readonly, nonatomic) BOOL hasRenderedContents; // @synthesize hasRenderedContents=_hasRenderedContents;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
@@ -108,25 +110,31 @@
 - (void)dealloc;
 - (void)didApplyBehavior:(id)arg1;
 - (void)didMoveToWindow;
+- (void)didReceiveMemoryWarning;
 - (void)discardContents;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureShouldBegin:(id)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4;
+- (void)invalidateComponentStyle;
 - (void)loadComponent:(id)arg1;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
+- (void)prepareComponentStyleRendererForStyle:(id)arg1;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
+- (void)renderComponentStyle;
 - (void)renderContents;
+- (void)renderContentsIfNeeded;
 - (void)restoreBehavior;
+- (void)setupComponentStyleRendererForStyle:(id)arg1;
 - (void)updateAllowHierarchyRemovalWithComponent:(id)arg1 componentStyle:(id)arg2;
 - (BOOL)userInteractable;
 - (BOOL)usesThumbnailWithImageIdentifier:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
-- (void)willPresentComponent;
+- (void)willPresentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 
 @end
 

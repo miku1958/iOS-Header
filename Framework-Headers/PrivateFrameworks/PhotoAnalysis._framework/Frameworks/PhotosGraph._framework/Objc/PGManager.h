@@ -79,6 +79,7 @@
 + (id)assetPropertySetsForCuration;
 + (BOOL)clientIsPhotoAnalysis;
 + (id)dedupedAssetsWithAssets:(id)arg1 precision:(unsigned long long)arg2;
++ (BOOL)geoServiceProviderDidChangeForGraph:(id)arg1;
 + (void)initialize;
 + (id)managerForTestingMakingSureEverythingIsUptodate;
 + (id)matchingWeightToDictionary;
@@ -132,6 +133,7 @@
 - (id)_highlightEstimatesStatistics;
 - (id)_interestingStatistics;
 - (void)_invalidatePersistentCaches;
+- (void)_invalidatePersistentCachesForGeoServiceProviderChange;
 - (void)_invalidateTransientCaches;
 - (BOOL)_isMemoryCategoryTriggered:(unsigned long long)arg1;
 - (id)_keywordsSortedByPriority:(id)arg1;

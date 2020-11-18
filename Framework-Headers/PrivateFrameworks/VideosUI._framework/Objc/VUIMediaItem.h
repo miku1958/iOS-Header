@@ -17,6 +17,7 @@
 @property (readonly, copy, nonatomic) NSNumber *assetType;
 @property (copy, nonatomic) NSNumber *bookmark;
 @property (readonly, copy, nonatomic) VUIMediaItemCredits *credits;
+@property (readonly, copy, nonatomic) NSDate *downloadExpirationDate;
 @property (readonly, copy, nonatomic) NSNumber *duration;
 @property (readonly, copy, nonatomic) NSNumber *episodeNumber;
 @property (readonly, copy, nonatomic) NSURL *extrasURL;

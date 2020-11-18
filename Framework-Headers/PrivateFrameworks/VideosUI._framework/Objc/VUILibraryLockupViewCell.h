@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface VUILibraryLockupViewCell : UICollectionViewCell <VUIRentalExpirationLabelDelegate>
 {
+    BOOL _hideTitleLabel;
     _TVImageView *_imageView;
     double _imageAspectRatio;
     VUILabel *_titleLabel;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUIRentalExpirationLabel *expirationLabel; // @synthesize expirationLabel=_expirationLabel;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideTitleLabel; // @synthesize hideTitleLabel=_hideTitleLabel;
 @property (nonatomic) double imageAspectRatio; // @synthesize imageAspectRatio=_imageAspectRatio;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly) Class superclass;

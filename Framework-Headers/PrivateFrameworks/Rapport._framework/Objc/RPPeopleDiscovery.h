@@ -24,9 +24,11 @@
     unsigned int _changeFlags;
     unsigned int _discoveryFlags;
     int _discoveryMode;
+    int _peopleDensity;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    CDUnknownBlockType _peopleDensityChangedHandler;
     CDUnknownBlockType _personFoundHandler;
     CDUnknownBlockType _personLostHandler;
     CDUnknownBlockType _personChangedHandler;
@@ -39,6 +41,8 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
+@property (readonly, nonatomic) int peopleDensity; // @synthesize peopleDensity=_peopleDensity;
+@property (copy, nonatomic) CDUnknownBlockType peopleDensityChangedHandler; // @synthesize peopleDensityChangedHandler=_peopleDensityChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType personChangedHandler; // @synthesize personChangedHandler=_personChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType personFoundHandler; // @synthesize personFoundHandler=_personFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType personLostHandler; // @synthesize personLostHandler=_personLostHandler;
@@ -53,6 +57,7 @@
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
 - (void)_lostAllPeople;
 - (void)_scheduleRetry;
+- (void)_updatePeopleDensity:(unsigned long long)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)description;

@@ -28,7 +28,9 @@
 @property (readonly, copy, nonatomic) NSAttributedString *valueString;
 
 - (void).cxx_destruct;
+- (void)handleUserInteractionWithItemWithHostViewController:(id)arg1;
 - (id)initWithProductName:(id)arg1 deviceType:(long long)arg2;
+- (id)udiString;
 
 @end
 

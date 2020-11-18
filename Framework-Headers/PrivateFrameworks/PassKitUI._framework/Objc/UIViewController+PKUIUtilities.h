@@ -7,6 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (PKUIUtilities)
+- (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (id)pkui_frontMostViewController;
+- (void)pkui_setNeedsNavigationBarUpdate;
 @end
 

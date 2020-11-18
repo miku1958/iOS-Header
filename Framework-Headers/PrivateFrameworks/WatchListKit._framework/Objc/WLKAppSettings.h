@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (id)JSONDictionary;
 - (id)_statusStrings;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

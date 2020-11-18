@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (unsigned long long)_connectionStateFromMPMediaLibraryStatus:(long long)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_enqueueProcessingBlock:(CDUnknownBlockType)arg1;
 - (void)_handleMediaLibraryContentsDidChangeNotification:(id)arg1;

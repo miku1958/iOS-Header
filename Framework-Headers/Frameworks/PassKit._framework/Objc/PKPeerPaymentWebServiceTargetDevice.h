@@ -34,7 +34,7 @@
 - (id)init;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
-- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)provisionPeerPaymentPassWithProvisioningController:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;

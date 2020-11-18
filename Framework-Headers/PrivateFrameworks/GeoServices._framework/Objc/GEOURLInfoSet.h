@@ -16,6 +16,10 @@
     GEOURLInfo *_abExperimentURL;
     GEOURLInfo *_addressCorrectionInitURL;
     GEOURLInfo *_addressCorrectionUpdateURL;
+    GEOURLInfo *_analyticsCohortSessionURL;
+    GEOURLInfo *_analyticsLongSessionURL;
+    GEOURLInfo *_analyticsSessionlessURL;
+    GEOURLInfo *_analyticsShortSessionURL;
     GEOURLInfo *_announcementsURL;
     GEOURLInfo *_authProxyURL;
     GEOURLInfo *_backgroundDispatcherURL;
@@ -49,6 +53,10 @@
 @property (strong, nonatomic) GEOURLInfo *abExperimentURL; // @synthesize abExperimentURL=_abExperimentURL;
 @property (strong, nonatomic) GEOURLInfo *addressCorrectionInitURL; // @synthesize addressCorrectionInitURL=_addressCorrectionInitURL;
 @property (strong, nonatomic) GEOURLInfo *addressCorrectionUpdateURL; // @synthesize addressCorrectionUpdateURL=_addressCorrectionUpdateURL;
+@property (strong, nonatomic) GEOURLInfo *analyticsCohortSessionURL; // @synthesize analyticsCohortSessionURL=_analyticsCohortSessionURL;
+@property (strong, nonatomic) GEOURLInfo *analyticsLongSessionURL; // @synthesize analyticsLongSessionURL=_analyticsLongSessionURL;
+@property (strong, nonatomic) GEOURLInfo *analyticsSessionlessURL; // @synthesize analyticsSessionlessURL=_analyticsSessionlessURL;
+@property (strong, nonatomic) GEOURLInfo *analyticsShortSessionURL; // @synthesize analyticsShortSessionURL=_analyticsShortSessionURL;
 @property (strong, nonatomic) GEOURLInfo *announcementsURL; // @synthesize announcementsURL=_announcementsURL;
 @property (strong, nonatomic) GEOURLInfo *authProxyURL; // @synthesize authProxyURL=_authProxyURL;
 @property (strong, nonatomic) GEOURLInfo *backgroundDispatcherURL; // @synthesize backgroundDispatcherURL=_backgroundDispatcherURL;
@@ -64,6 +72,10 @@
 @property (readonly, nonatomic) BOOL hasAbExperimentURL;
 @property (readonly, nonatomic) BOOL hasAddressCorrectionInitURL;
 @property (readonly, nonatomic) BOOL hasAddressCorrectionUpdateURL;
+@property (readonly, nonatomic) BOOL hasAnalyticsCohortSessionURL;
+@property (readonly, nonatomic) BOOL hasAnalyticsLongSessionURL;
+@property (readonly, nonatomic) BOOL hasAnalyticsSessionlessURL;
+@property (readonly, nonatomic) BOOL hasAnalyticsShortSessionURL;
 @property (readonly, nonatomic) BOOL hasAnnouncementsURL;
 @property (readonly, nonatomic) BOOL hasAuthProxyURL;
 @property (readonly, nonatomic) BOOL hasBackgroundDispatcherURL;

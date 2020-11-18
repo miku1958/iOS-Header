@@ -22,6 +22,7 @@
     unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
+    double _minimumHeight;
 }
 
 @property (nonatomic) BOOL accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
@@ -30,6 +31,7 @@
 @property (nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic) BOOL shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly, nonatomic) UILabel *subtitleLabel;
@@ -47,8 +49,7 @@
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setImageViewImage:(id)arg1 withSize:(struct CGSize)arg2 animated:(BOOL)arg3;
-- (void)setPassSnapshotUsingDefaultSize:(id)arg1;
-- (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(BOOL)arg2;
+- (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(BOOL)arg2 needsCorners:(BOOL)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;

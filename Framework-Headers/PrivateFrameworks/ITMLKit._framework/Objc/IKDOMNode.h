@@ -12,13 +12,12 @@
 #import <ITMLKit/_IKJSDOMNode-Protocol.h>
 #import <ITMLKit/_IKJSDOMNodeProxy-Protocol.h>
 
-@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, IKJSDataItem, JSManagedValue, JSValue, NSHashTable, NSMutableDictionary, NSString;
+@class IKDOMDocument, IKDOMNodeData, IKDOMNodeList, JSManagedValue, JSValue, NSHashTable, NSMutableDictionary, NSString;
 
 @interface IKDOMNode : IKJSObject <NSObject, IKJSDOMNode, _IKJSDOMNodeProxy, _IKJSDOMNode, IKJSDOMEventTarget>
 {
     struct _xmlNode *_nodePtr;
     JSManagedValue *_managedDataItem;
-    IKJSDataItem *_boxedDataItem;
     JSManagedValue *_managedOwnerDocument;
     JSManagedValue *_managedParent;
     JSManagedValue *_managedChildNodeList;
@@ -30,7 +29,6 @@
 }
 
 @property (nonatomic) long long ITMLID; // @synthesize ITMLID=_ITMLID;
-@property (strong, nonatomic) IKJSDataItem *boxedDataItem;
 @property (readonly, strong, nonatomic) IKDOMNodeList *childNodes;
 @property (weak, nonatomic) JSValue *dataItem;
 @property (readonly, copy) NSString *debugDescription;
@@ -82,6 +80,7 @@
 - (id)childNodesAsArray;
 - (id)children;
 - (void)childrenUpdatedWithUpdatedChildNodes:(id)arg1 notify:(BOOL)arg2;
+- (BOOL)clearUpdates;
 - (id)cloneNode:(BOOL)arg1;
 - (BOOL)contains:(id)arg1;
 - (void)dealloc;
@@ -107,8 +106,8 @@
 - (void)removeDOMObserver:(id)arg1;
 - (void)removeEventListener:(id)arg1:(id)arg2:(BOOL)arg3;
 - (id)replaceChild:(id)arg1:(id)arg2;
+- (id)toStringWithError:(id *)arg1;
 - (void)updatedAndMark:(BOOL)arg1 notify:(BOOL)arg2;
-- (id)writeToStringWithError:(id *)arg1;
 
 @end
 

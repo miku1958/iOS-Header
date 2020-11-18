@@ -20,9 +20,13 @@ __attribute__((visibility("hidden")))
     NSString *_licenseUrl;
     GEOPDPhoto *_photo;
     BOOL _displayFullPhotoInline;
+    BOOL _highQuality;
+    BOOL _isBusinessOwned;
     BOOL _useGallery;
     struct {
         unsigned int displayFullPhotoInline:1;
+        unsigned int highQuality:1;
+        unsigned int isBusinessOwned:1;
         unsigned int useGallery:1;
     } _has;
 }
@@ -33,10 +37,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAuthor;
 @property (readonly, nonatomic) BOOL hasCaption;
 @property (nonatomic) BOOL hasDisplayFullPhotoInline;
+@property (nonatomic) BOOL hasHighQuality;
+@property (nonatomic) BOOL hasIsBusinessOwned;
 @property (readonly, nonatomic) BOOL hasLicenseDescription;
 @property (readonly, nonatomic) BOOL hasLicenseUrl;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (nonatomic) BOOL hasUseGallery;
+@property (nonatomic) BOOL highQuality; // @synthesize highQuality=_highQuality;
+@property (nonatomic) BOOL isBusinessOwned; // @synthesize isBusinessOwned=_isBusinessOwned;
 @property (strong, nonatomic) NSString *licenseDescription; // @synthesize licenseDescription=_licenseDescription;
 @property (strong, nonatomic) NSString *licenseUrl; // @synthesize licenseUrl=_licenseUrl;
 @property (strong, nonatomic) GEOPDPhoto *photo; // @synthesize photo=_photo;

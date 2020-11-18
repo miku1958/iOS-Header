@@ -15,6 +15,7 @@
 @property (strong, nonatomic) _CPSearchResultForFeedback *result;
 @property (nonatomic) unsigned long long timestamp;
 @property (strong, nonatomic) _CPPunchoutForFeedback *userSelection;
+@property (copy, nonatomic) NSData *uuidBytes;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

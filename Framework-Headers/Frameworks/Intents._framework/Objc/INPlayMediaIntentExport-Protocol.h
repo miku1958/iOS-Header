@@ -17,6 +17,7 @@
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (copy, nonatomic) NSNumber *playShuffled;
 @property (nonatomic) long long playbackRepeatMode;
+@property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (copy, nonatomic) NSNumber *resumePlayback;
 

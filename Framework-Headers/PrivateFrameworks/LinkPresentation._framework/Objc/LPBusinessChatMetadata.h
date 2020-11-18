@@ -7,10 +7,11 @@
 #import <LinkPresentation/LPSpecializationMetadata.h>
 
 #import <LinkPresentation/LPLinkMetadataPresentationTransformerAdaptor-Protocol.h>
+#import <LinkPresentation/LPLinkMetadataPreviewTransformerAdaptor-Protocol.h>
 
 @class NSString;
 
-@interface LPBusinessChatMetadata : LPSpecializationMetadata <LPLinkMetadataPresentationTransformerAdaptor>
+@interface LPBusinessChatMetadata : LPSpecializationMetadata <LPLinkMetadataPresentationTransformerAdaptor, LPLinkMetadataPreviewTransformerAdaptor>
 {
     NSString *_subtitle;
 }
@@ -23,6 +24,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)presentationPropertiesForTransformer:(id)arg1;
+- (id)previewImageForTransformer:(id)arg1;
+- (id)previewSummaryForTransformer:(id)arg1;
 
 @end
 

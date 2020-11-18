@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSString *locality; // @dynamic locality;
 @property (nonatomic) double longitude; // @dynamic longitude;
 @property (copy, nonatomic) NSString *ocean; // @dynamic ocean;
+@property (copy, nonatomic) NSString *providerID; // @dynamic providerID;
 @property (copy, nonatomic) NSString *regionIdentifier; // @dynamic regionIdentifier;
 @property (nonatomic) double regionLatitude; // @dynamic regionLatitude;
 @property (nonatomic) double regionLongitude; // @dynamic regionLongitude;

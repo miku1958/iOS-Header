@@ -15,7 +15,9 @@
     NSIndexSet *_shownActionIndices;
     NSIndexSet *_explicitlyDismissedActionIndices;
     NSArray *_shownActionsCache;
+    BOOL _isRoutableInternal;
     unsigned char _consumerSubType;
+    BOOL _isRoutable;
     NSUUID *_uuid;
     NSArray *_scoredActions;
     NSDate *_predictionDate;
@@ -36,6 +38,7 @@
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *explicitlyDismissedActions;
 @property (readonly, nonatomic) unsigned long long feedbackStage; // @synthesize feedbackStage=_feedbackStage;
+@property (readonly, nonatomic) BOOL isRoutable; // @synthesize isRoutable=_isRoutable;
 @property (readonly, nonatomic) ATXAction *matchingIntentDonatedAction; // @synthesize matchingIntentDonatedAction=_matchingIntentDonatedAction;
 @property (readonly, nonatomic) NSDate *predictionDate; // @synthesize predictionDate=_predictionDate;
 @property (readonly, nonatomic) NSArray *scoredActions; // @synthesize scoredActions=_scoredActions;
@@ -55,7 +58,9 @@
 - (id)json;
 - (id)jsonData;
 - (id)jsonDescription;
+- (id)routeDestinationType;
 - (id)sessionId;
+- (void)setRoutableState:(BOOL)arg1;
 - (void)updateConsumerSubType:(unsigned char)arg1 engagedAction:(id)arg2 shownActions:(id)arg3 feedbackStage:(unsigned long long)arg4 explicitlyDismissedActions:(id)arg5;
 - (void)updateWithMatchingIntentDonatedAction:(id)arg1 intentDonationDate:(id)arg2;
 

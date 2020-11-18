@@ -46,7 +46,7 @@
 + (id)_dateWithiTunesTimeInterval:(double)arg1;
 + (BOOL)_deleteAllMemoriesInStore:(id)arg1;
 + (BOOL)_deleteAllMomentsViaSQLFromStore:(id)arg1;
-+ (BOOL)_deleteCloudSharedAndSyncedAssetReferencesInStore:(id)arg1;
++ (BOOL)_deleteCloudSharedAndSynced:(BOOL)arg1 assetReferencesInStore:(id)arg2;
 + (BOOL)_deleteOrphanedUnverifiedPeople:(id)arg1;
 + (BOOL)_deletePersistentHistoryInStore:(id)arg1;
 + (BOOL)_deletePersonsMissingUUIDInStore:(id)arg1;
@@ -342,6 +342,7 @@
 + (BOOL)resetManualOrderForNonFavoritePeopleInManagedObjectContext:(id)arg1;
 + (BOOL)resetManualOrderForNonFavoritePeopleInStore:(id)arg1;
 + (BOOL)resetRejectedFacesOnAllPersonsInStore:(id)arg1;
++ (BOOL)restartingAfterDeviceToDeviceRestoreFromBackup;
 + (BOOL)restartingAfterNonCloudRestoreFromBackup;
 + (BOOL)restartingAfterOTAMigration;
 + (BOOL)restartingAfterRestoreFromBackup;

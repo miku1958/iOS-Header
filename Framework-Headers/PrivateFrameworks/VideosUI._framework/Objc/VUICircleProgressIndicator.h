@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _isAnimating;
     double _progress;
     UIColor *_unhighlightedBackgroundColor;
+    double _totalAutoFillDuration;
 }
 
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct UIEdgeInsets imageInsets; // @synthesize imageInsets=_centerImageInsets;
 @property (nonatomic, getter=isIndeterminate) BOOL indeterminate;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
+@property (nonatomic) double totalAutoFillDuration; // @synthesize totalAutoFillDuration=_totalAutoFillDuration;
 
 + (id)_borderImage;
 + (id)_fillImage;

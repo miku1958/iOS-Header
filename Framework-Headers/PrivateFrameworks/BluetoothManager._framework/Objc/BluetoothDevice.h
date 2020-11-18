@@ -41,6 +41,7 @@
 - (void)endVoiceCommand;
 - (BOOL)featureCapability:(int)arg1;
 - (unsigned int)getConnectingServiceMask;
+- (int)getLowSecurityStatus;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
 - (BOOL)inEarDetectEnabled;
 - (id)initWithDevice:(struct BTDeviceImpl *)arg1 address:(id)arg2;

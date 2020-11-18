@@ -4,32 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <VideosUI/VUIFocusableCollectionViewCell.h>
 
-@class TVViewElement, VUICardView, VUICardViewLayoutFactory;
+@class IKViewElement, VUICardView, VUICardViewLayoutFactory;
 
 __attribute__((visibility("hidden")))
-@interface VUICardCollectionViewCell : UICollectionViewCell
+@interface VUICardCollectionViewCell : VUIFocusableCollectionViewCell
 {
-    BOOL _allowsFocus;
-    TVViewElement *_viewElement;
+    IKViewElement *_viewElement;
     VUICardView *_cardView;
     VUICardViewLayoutFactory *_layoutFactory;
 }
 
-@property (nonatomic) BOOL allowsFocus; // @synthesize allowsFocus=_allowsFocus;
 @property (strong, nonatomic) VUICardView *cardView; // @synthesize cardView=_cardView;
 @property (strong, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;
-@property (strong, nonatomic) TVViewElement *viewElement; // @synthesize viewElement=_viewElement;
+@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (long long)_cardLayoutTypeForElement:(id)arg1;
 + (id)cardCellWithElement:(id)arg1 existingCell:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setCardView:(id)arg1 force:(BOOL)arg2;
-- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

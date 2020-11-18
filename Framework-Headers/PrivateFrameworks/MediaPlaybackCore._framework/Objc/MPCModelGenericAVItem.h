@@ -12,7 +12,7 @@
 #import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
 @interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
@@ -67,6 +67,7 @@
     NSNumber *_siriInitiated;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     long long _stationItemLikedState;
+    NSDictionary *_trackInfo;
 }
 
 @property (strong, nonatomic) id<MPCModelPlaybackAssetCacheProviding> assetCacheProvider; // @synthesize assetCacheProvider=_assetCacheProvider;
@@ -91,6 +92,7 @@
 @property (nonatomic) long long stationItemLikedState; // @synthesize stationItemLikedState=_stationItemLikedState;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRadioTrackActions; // @synthesize supportsRadioTrackActions;
+@property (strong, nonatomic) NSDictionary *trackInfo; // @synthesize trackInfo=_trackInfo;
 
 + (BOOL)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
 + (BOOL)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
@@ -188,6 +190,7 @@
 - (BOOL)mpcReporting_shouldReportPlayEventsToStore;
 - (BOOL)mpcReporting_shouldUseRelativeTimePositions;
 - (id)mpcReporting_siriInitiated;
+- (id)mpcReporting_trackInfo;
 - (void)notePlaybackFinishedByHittingEnd;
 - (void)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)persistentID;

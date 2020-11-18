@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (double)baselineBottomInset;
++ (double)condensedPointSizeForCellularType:(long long)arg1 defaultPointSize:(double)arg2 baselineOffset:(double *)arg3;
 + (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
 + (id)expandedFont;
 + (double)itemSpacing;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)pillFont;
 + (struct CGSize)pillSize;
 + (double)referenceWidth;
+- (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 - (id)styleAttributes;
 
 @end

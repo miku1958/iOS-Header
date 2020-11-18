@@ -55,6 +55,7 @@
 @property (nonatomic) BOOL allowsCollectionInfluencing; // @synthesize allowsCollectionInfluencing=_allowsCollectionInfluencing;
 @property (nonatomic) BOOL allowsYearAccumulation; // @synthesize allowsYearAccumulation=_allowsYearAccumulation;
 
++ (id)_gregorianCalendar;
 + (double)maximumTimeThresholdBetweenMoments;
 - (id)_cachedLocationForMoment:(id)arg1;
 - (void)_createMomentListClusterCacheForMoments:(id)arg1;

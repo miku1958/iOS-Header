@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUILibraryEpisodeFrameViewDelegate-Protocol.h>
 
-@class NSString, TVFocusableTextView, UIFont, UIImageView, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem;
+@class NSString, UIFont, VUIFocusableTextView, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem, VUIMediaTagsView;
 @protocol VUIEpisodeDetailViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,15 +21,14 @@ __attribute__((visibility("hidden")))
     VUILabel *_episodeNumberLabel;
     VUILabel *_releaseDateLabel;
     VUILabel *_dotSeparatorLabel;
-    TVFocusableTextView *_contentDescriptionView;
+    VUIFocusableTextView *_contentDescriptionView;
     UIFont *_contentDescriptionFont;
     VUIMediaItem *_mediaItem;
-    UIImageView *_contentRatingImageView;
+    VUIMediaTagsView *_mediaBadgeTagsView;
 }
 
 @property (strong, nonatomic) UIFont *contentDescriptionFont; // @synthesize contentDescriptionFont=_contentDescriptionFont;
-@property (strong, nonatomic) TVFocusableTextView *contentDescriptionView; // @synthesize contentDescriptionView=_contentDescriptionView;
-@property (strong, nonatomic) UIImageView *contentRatingImageView; // @synthesize contentRatingImageView=_contentRatingImageView;
+@property (strong, nonatomic) VUIFocusableTextView *contentDescriptionView; // @synthesize contentDescriptionView=_contentDescriptionView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VUIEpisodeDetailViewDelegate> episodeViewDelegate; // @synthesize episodeViewDelegate=_episodeViewDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUILibraryEpisodeFrameView *imageFrameView; // @synthesize imageFrameView=_imageFrameView;
+@property (strong, nonatomic) VUIMediaTagsView *mediaBadgeTagsView; // @synthesize mediaBadgeTagsView=_mediaBadgeTagsView;
 @property (strong, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) VUILabel *releaseDateLabel; // @synthesize releaseDateLabel=_releaseDateLabel;
 @property (strong, nonatomic) VUILabel *seasonNumberLabel; // @synthesize seasonNumberLabel=_seasonNumberLabel;

@@ -6,13 +6,13 @@
 
 #import <PassKitUI/PKNavigationController.h>
 
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController;
 @protocol PKPaymentSetupDelegate;
 
-@interface PKPaymentSetupNavigationController : PKNavigationController <PKPaymentSetupViewControllerDelegate, PKPaymentSetupRequiresPreflightProtocol>
+@interface PKPaymentSetupNavigationController : PKNavigationController <PKPaymentSetupViewControllerDelegate, PKViewControllerPreflightable>
 {
     long long _context;
     BOOL _rootViewControllerNeedsConfiguration;
@@ -46,6 +46,7 @@
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidLoad;

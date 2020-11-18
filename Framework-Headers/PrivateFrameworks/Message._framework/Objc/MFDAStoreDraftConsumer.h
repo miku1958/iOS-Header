@@ -17,9 +17,13 @@
     MFError *_error;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) MFError *error; // @synthesize error=_error;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *serverId; // @synthesize serverId=_serverId;
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (void)handleResponse:(id)arg1 error:(id)arg2;

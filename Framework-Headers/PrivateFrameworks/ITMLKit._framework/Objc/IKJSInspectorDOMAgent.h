@@ -43,6 +43,7 @@
 - (void)getEventListenersForNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)getOuterHTMLWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3;
 - (void)getSearchResultsWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 searchId:(id)arg3 fromIndex:(int)arg4 toIndex:(int)arg5;
+- (void)getSupportedEventNamesWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (BOOL)hideHighlight;
 - (void)hideHighlightWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)highlightFrameWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 contentColor:(id *)arg4 contentOutlineColor:(id *)arg5;
@@ -64,12 +65,14 @@
 - (void)redoWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)releaseBackendNodeIdsWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeGroup:(id)arg3;
 - (void)removeAttributeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 name:(id)arg4;
+- (void)removeBreakpointForEventListenerWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 eventListenerId:(int)arg3;
 - (void)removeNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3;
 - (void)requestChildNodesWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 depth:(int *)arg4;
 - (void)requestNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 objectId:(id)arg3;
 - (void)resolveNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
 - (void)setAttributeValueWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 name:(id)arg4 value:(id)arg5;
 - (void)setAttributesAsTextWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3 text:(id)arg4 name:(id *)arg5;
+- (void)setBreakpointForEventListenerWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 eventListenerId:(int)arg3;
 - (void)setEventListenerDisabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 eventListenerId:(int)arg3 disabled:(BOOL)arg4;
 - (void)setInspectModeEnabledWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 enabled:(BOOL)arg3 highlightConfig:(id *)arg4;
 - (void)setInspectedNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3;

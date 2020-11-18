@@ -25,6 +25,7 @@
     BOOL _transitioning;
     BOOL _onScreen;
     BOOL _isListeningForResponse;
+    BOOL _failedToLoadArtwork;
     UIView *_contentView;
     UIView *_backgroundView;
     MPAVRoutingViewController *_routingViewController;
@@ -50,6 +51,7 @@
     FBSDisplayLayoutMonitor *_displayMonitor;
     NSArray *_displayElements;
     NSString *_explicitString;
+    long long _failedArtworkRetryCount;
     NSString *_label;
     unsigned long long _supportedModes;
     long long _selectedMode;
@@ -75,6 +77,8 @@
 @property (readonly, nonatomic) UIView *effectiveHeaderView;
 @property (strong, nonatomic) MediaControlsEndpointController *endpointController; // @synthesize endpointController=_endpointController;
 @property (copy, nonatomic) NSString *explicitString; // @synthesize explicitString=_explicitString;
+@property (readonly, nonatomic) long long failedArtworkRetryCount; // @synthesize failedArtworkRetryCount=_failedArtworkRetryCount;
+@property (nonatomic) BOOL failedToLoadArtwork; // @synthesize failedToLoadArtwork=_failedToLoadArtwork;
 @property (strong, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isListeningForResponse; // @synthesize isListeningForResponse=_isListeningForResponse;
@@ -143,7 +147,8 @@
 - (id)initWithRouteUID:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;
-- (BOOL)lockScreenPresentsAirPlayVideoPicker;
+- (long long)lockScreenInternalRoutePickerOverrideWithDefaultStyle:(long long)arg1;
+- (BOOL)lockScreenPresentsOverrideRoutePicker;
 - (void)presentLanguageOptions;
 - (void)presentRatingActionSheet:(id)arg1 sourceView:(id)arg2;
 - (void)presentTVRemote;

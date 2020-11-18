@@ -25,9 +25,9 @@
 - (void).cxx_destruct;
 - (id)_activeAccountDSID;
 - (void)_handleITunesStoreAccountsChanged;
-- (void)_handleRequestToken;
+- (void)_handleRequestTokenForExternalRequest:(BOOL)arg1;
 - (void)_handleTokenResponse:(id)arg1 tokenRequest:(id)arg2;
-- (CDUnknownBlockType)_requestTokenWithDelay:(long long)arg1;
+- (CDUnknownBlockType)_requestTokenWithDelay:(long long)arg1 forExternalRequest:(BOOL)arg2;
 - (void)_userIdentityStoreDidChangeNotification:(id)arg1;
 - (id)cachedTokenAndResetCache:(BOOL)arg1;
 - (id)init;

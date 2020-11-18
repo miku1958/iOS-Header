@@ -4,25 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKNetworkRequestOperation.h>
+#import <WatchListKit/WLKUTSNetworkRequestOperation.h>
 
-@class NSDictionary, NSString;
+@class NSString;
 
-@interface WLKPlayActivityDecorateLiveOperation : WLKNetworkRequestOperation
+@interface WLKPlayActivityDecorateLiveOperation : WLKUTSNetworkRequestOperation
 {
     NSString *_channelID;
     NSString *_serviceID;
-    NSDictionary *_scheduleDictionary;
 }
 
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
-@property (readonly, copy, nonatomic) NSDictionary *scheduleDictionary; // @synthesize scheduleDictionary=_scheduleDictionary;
 @property (readonly, copy, nonatomic) NSString *serviceID; // @synthesize serviceID=_serviceID;
 
 - (void).cxx_destruct;
-- (void)didFinish;
 - (id)initWithChannelID:(id)arg1 serviceID:(id)arg2;
-- (id)responseProcessor;
 
 @end
 

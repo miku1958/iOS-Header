@@ -21,6 +21,7 @@
     NSString *_appURLScheme;
     NSDictionary *_localizedSuspendedReasonsByAID;
     NSArray *_availableActions;
+    NSArray *_upgradeRequests;
 }
 
 @property (copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL supportsTransitOnly; // @synthesize supportsTransitOnly=_supportsTransitOnly;
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
+@property (copy, nonatomic) NSArray *upgradeRequests; // @synthesize upgradeRequests=_upgradeRequests;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

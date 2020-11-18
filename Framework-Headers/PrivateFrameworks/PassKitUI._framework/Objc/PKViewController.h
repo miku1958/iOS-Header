@@ -18,15 +18,18 @@
     UIColor *_navigationBarTintColor;
     UIColor *_navigationBarBackgroundColor;
     UIImage *_navigationBarBackgroundImage;
+    BOOL _skipRestoringNavigationBarState;
     UIColor *_navigationBarBleedColor;
 }
 
 @property (strong, nonatomic) UIColor *navigationBarBleedColor; // @synthesize navigationBarBleedColor=_navigationBarBleedColor;
+@property (nonatomic) BOOL skipRestoringNavigationBarState; // @synthesize skipRestoringNavigationBarState=_skipRestoringNavigationBarState;
 
 - (void).cxx_destruct;
 - (void)_prepareNavigationBarForBackground;
 - (void)_restoreNavigationBar;
 - (void)_updateNavigationBarBleedView;
+- (void)captureNavigationBarState:(id)arg1;
 - (void)loadView;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

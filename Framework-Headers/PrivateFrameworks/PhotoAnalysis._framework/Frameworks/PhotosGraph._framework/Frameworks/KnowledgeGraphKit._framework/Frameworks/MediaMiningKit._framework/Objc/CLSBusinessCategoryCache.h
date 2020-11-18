@@ -31,6 +31,7 @@
 - (BOOL)hasRegion:(id)arg1;
 - (id)initWithDiskCacheName:(id)arg1;
 - (void)insertBatchesOfBusinessItems:(id)arg1 forRegions:(id)arg2;
+- (void)invalidateCacheForGeoServiceProviderChangeTo:(id)arg1;
 - (void)invalidateCacheItemsBeforeDateWithTimestamp:(double)arg1;
 - (id)nearestItemForRegion:(id)arg1 inItems:(id)arg2;
 - (unsigned long long)numberOfBusinessItemsForRegion:(id)arg1;

@@ -11,6 +11,8 @@
 @interface GKPlayerInternal : GKInternalRepresentation
 {
     NSString *_playerID;
+    NSString *_gamePlayerID;
+    NSString *_teamPlayerID;
     NSString *_alias;
     NSDictionary *_photos;
     NSString *_messagesID;
@@ -44,6 +46,7 @@
 @property (nonatomic) unsigned int flags; // @dynamic flags;
 @property (strong, nonatomic) NSString *friendLevel; // @synthesize friendLevel=_friendLevel;
 @property (strong, nonatomic) NSArray *friends; // @dynamic friends;
+@property (strong, nonatomic) NSString *gamePlayerID; // @synthesize gamePlayerID=_gamePlayerID;
 @property (strong, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (strong, nonatomic) NSNumber *iCloudUserID; // @dynamic iCloudUserID;
 @property (readonly, nonatomic) BOOL isAnonymousPlayer;
@@ -71,6 +74,7 @@
 @property (strong, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property (nonatomic, getter=isPurpleBuddyAccount) BOOL purpleBuddyAccount; // @dynamic purpleBuddyAccount;
 @property (strong, nonatomic) NSString *status; // @dynamic status;
+@property (strong, nonatomic) NSString *teamPlayerID; // @synthesize teamPlayerID=_teamPlayerID;
 @property (nonatomic, getter=isUnderage) BOOL underage; // @dynamic underage;
 
 + (Class)classForFamiliarity:(int)arg1;

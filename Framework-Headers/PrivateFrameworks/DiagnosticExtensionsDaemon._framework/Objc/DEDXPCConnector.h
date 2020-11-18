@@ -9,13 +9,14 @@
 #import <DiagnosticExtensionsDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class DEDXPCInbound, NSString, NSXPCConnection, NSXPCListener;
-@protocol OS_os_log;
+@protocol DEDXPCConnectorDaemonDelegate, OS_os_log;
 
 @interface DEDXPCConnector : NSObject <NSXPCListenerDelegate>
 {
     BOOL _isDaemon;
     BOOL _started;
     NSXPCConnection *_connection;
+    id<DEDXPCConnectorDaemonDelegate> _daemonDelegate;
     NSObject<OS_os_log> *_log;
     DEDXPCInbound *_inbound;
     NSXPCListener *_listener;
@@ -24,6 +25,7 @@
 
 @property unsigned long long connType; // @synthesize connType=_connType;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (weak) id<DEDXPCConnectorDaemonDelegate> daemonDelegate; // @synthesize daemonDelegate=_daemonDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -37,7 +39,7 @@
 - (void).cxx_destruct;
 - (id)_whitelistedXPCInterface;
 - (void)configureConnectionType:(unsigned long long)arg1;
-- (void)configureDaemonMode;
+- (void)configureDaemonModeWithDelegate:(id)arg1;
 - (void)configureXPCInbound:(id)arg1;
 - (id)connectionWithEndpoint:(id)arg1 forMachService:(id)arg2;
 - (id)init;

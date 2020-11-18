@@ -6,9 +6,10 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSError, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
+@class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizeDisbursementWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
@@ -17,6 +18,7 @@
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(PKPaymentRequestShippingContactUpdate *)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(PKPaymentRequestShippingMethodUpdate *)arg1;
+- (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1 signatureRequest:(PKApplePayTrustSignatureRequest *)arg2;
 - (void)handleHostApplicationDidBecomeActive;
 - (void)handleHostApplicationWillResignActive:(BOOL)arg1;
 

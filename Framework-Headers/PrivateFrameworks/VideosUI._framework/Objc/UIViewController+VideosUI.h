@@ -7,6 +7,10 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (VideosUI)
+
+@property (readonly, nonatomic, getter=vui_ppt_isLoading) BOOL vui_ppt_loading;
+
++ (Class)_vui_TVLoadingViewControllerClass;
 - (void)vui_presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 @end
 

@@ -46,6 +46,7 @@
 - (double)_getDistanceOfLastKnownLocationDictionary:(id)arg1 fromLocation:(id)arg2;
 - (BOOL)_isLastKnownLocation:(id)arg1 freshForMaxAge:(double)arg2 fromNewTimestamp:(double)arg3;
 - (BOOL)_isLastKnownLocationFresh:(id)arg1;
+- (BOOL)_locationServicesEnabled;
 - (void)_readFromDisk;
 - (void)_requestActiveLocationChangeUpdates;
 - (void)_requestCLLocationUpdates:(CDUnknownBlockType)arg1;
@@ -63,6 +64,7 @@
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)requestAuthorization;
+- (void)requestAuthorizationWithForcedPrompt:(BOOL)arg1;
 - (void)setLastKnownLocation:(id)arg1;
 - (void)updateLocationIfNeeded;
 

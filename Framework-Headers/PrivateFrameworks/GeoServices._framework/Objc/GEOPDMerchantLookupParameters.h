@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
     NSString *_rawMerchantCode;
     NSString *_terminalId;
     NSString *_transactionCurrencyCode;
+    NSString *_transactionId;
     GEOLocation *_transactionLocation;
+    int _transactionStatus;
     int _transactionType;
     GEOPDWarsawMerchantIdentifier *_warsawMerchantIdentifier;
     BOOL _enableBrandMuidFallback;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
         unsigned int industryCode:1;
         unsigned int transactionLocationAge:1;
         unsigned int transactionTimestamp:1;
+        unsigned int transactionStatus:1;
         unsigned int transactionType:1;
         unsigned int enableBrandMuidFallback:1;
     } _has;
@@ -50,8 +53,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasRawMerchantCode;
 @property (readonly, nonatomic) BOOL hasTerminalId;
 @property (readonly, nonatomic) BOOL hasTransactionCurrencyCode;
+@property (readonly, nonatomic) BOOL hasTransactionId;
 @property (readonly, nonatomic) BOOL hasTransactionLocation;
 @property (nonatomic) BOOL hasTransactionLocationAge;
+@property (nonatomic) BOOL hasTransactionStatus;
 @property (nonatomic) BOOL hasTransactionTimestamp;
 @property (nonatomic) BOOL hasTransactionType;
 @property (readonly, nonatomic) BOOL hasWarsawMerchantIdentifier;
@@ -63,14 +68,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *rawMerchantCode; // @synthesize rawMerchantCode=_rawMerchantCode;
 @property (strong, nonatomic) NSString *terminalId; // @synthesize terminalId=_terminalId;
 @property (strong, nonatomic) NSString *transactionCurrencyCode; // @synthesize transactionCurrencyCode=_transactionCurrencyCode;
+@property (strong, nonatomic) NSString *transactionId; // @synthesize transactionId=_transactionId;
 @property (strong, nonatomic) GEOLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
 @property (nonatomic) double transactionLocationAge; // @synthesize transactionLocationAge=_transactionLocationAge;
+@property (nonatomic) int transactionStatus; // @synthesize transactionStatus=_transactionStatus;
 @property (nonatomic) double transactionTimestamp; // @synthesize transactionTimestamp=_transactionTimestamp;
 @property (nonatomic) int transactionType; // @synthesize transactionType=_transactionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDWarsawMerchantIdentifier *warsawMerchantIdentifier; // @synthesize warsawMerchantIdentifier=_warsawMerchantIdentifier;
 
 - (void).cxx_destruct;
+- (int)StringAsTransactionStatus:(id)arg1;
 - (int)StringAsTransactionType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -80,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transactionStatusAsString:(int)arg1;
 - (id)transactionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

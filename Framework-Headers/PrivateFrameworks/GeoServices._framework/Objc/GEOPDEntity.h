@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     int _displayStyle;
     NSString *_fax;
     NSMutableArray *_localizedCategorys;
+    NSString *_mapsCategoryId;
     NSMutableArray *_names;
     int _placeDisplayType;
     int _searchSection;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSString *_telephone;
     int _type;
     NSString *_url;
+    NSString *_walletCategoryId;
     BOOL _altTelephoneAdsOptOut;
     BOOL _isDisputed;
     BOOL _isPermanentlyClosed;
@@ -69,6 +71,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasIsDisputed;
 @property (nonatomic) BOOL hasIsPermanentlyClosed;
 @property (nonatomic) BOOL hasIsStandaloneBrand;
+@property (readonly, nonatomic) BOOL hasMapsCategoryId;
 @property (nonatomic) BOOL hasPlaceDisplayType;
 @property (nonatomic) BOOL hasSearchSection;
 @property (readonly, nonatomic) BOOL hasSecondaryName;
@@ -78,10 +81,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTelephoneAdsOptOut;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUrl;
+@property (readonly, nonatomic) BOOL hasWalletCategoryId;
 @property (nonatomic) BOOL isDisputed; // @synthesize isDisputed=_isDisputed;
 @property (nonatomic) BOOL isPermanentlyClosed; // @synthesize isPermanentlyClosed=_isPermanentlyClosed;
 @property (nonatomic) BOOL isStandaloneBrand; // @synthesize isStandaloneBrand=_isStandaloneBrand;
 @property (strong, nonatomic) NSMutableArray *localizedCategorys; // @synthesize localizedCategorys=_localizedCategorys;
+@property (strong, nonatomic) NSString *mapsCategoryId; // @synthesize mapsCategoryId=_mapsCategoryId;
 @property (strong, nonatomic) NSMutableArray *names; // @synthesize names=_names;
 @property (nonatomic) int placeDisplayType; // @synthesize placeDisplayType=_placeDisplayType;
 @property (readonly, nonatomic) int *placeLookupCategorys;
@@ -96,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSString *walletCategoryId; // @synthesize walletCategoryId=_walletCategoryId;
 
 + (Class)altFaxType;
 + (Class)altTelephoneType;

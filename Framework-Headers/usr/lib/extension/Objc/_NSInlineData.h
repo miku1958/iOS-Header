@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     unsigned short _length;
 }
 
-+ (BOOL)supportsSecureCoding;
 - (id)_createDispatchData;
 - (BOOL)_isCompact;
 - (BOOL)_providesConcreteBacking;

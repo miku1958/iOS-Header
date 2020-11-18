@@ -12,6 +12,8 @@
 {
     IKTextParser *_textParser;
     NSMutableArray *_textBadges;
+    NSMutableArray *_textBadgeElements;
+    NSMutableArray *_textSpanElements;
     unsigned long long _textStyle;
 }
 
@@ -33,7 +35,10 @@
 - (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 defaultAttributes:(id *)arg2;
 - (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 foregroundColor:(id)arg2 textAlignment:(long long)arg3;
 - (id)attributedStringWithFontHandler:(CDUnknownBlockType)arg1 foregroundColor:(id)arg2 textAlignment:(long long)arg3 defaultAttributes:(id *)arg4;
+- (id)debugDescription;
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
+- (id)initWithOriginalElement:(id)arg1;
+- (id)initWithPrototypeElement:(id)arg1 parent:(id)arg2 appDataItem:(id)arg3;
 
 @end
 

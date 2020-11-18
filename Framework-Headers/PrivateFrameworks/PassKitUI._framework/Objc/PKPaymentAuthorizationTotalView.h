@@ -19,6 +19,7 @@
     NSLayoutConstraint *_labelBaselineConstraint;
     BOOL _isPendingTotal;
     BOOL _processing;
+    BOOL _showsBoldValueText;
     PKPaymentAuthorizationLayout *_layout;
     long long _style;
     long long _labelNumberOfLines;
@@ -28,6 +29,7 @@
 @property (nonatomic) long long labelNumberOfLines; // @synthesize labelNumberOfLines=_labelNumberOfLines;
 @property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic, getter=isProcessing) BOOL processing; // @synthesize processing=_processing;
+@property (nonatomic) BOOL showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;

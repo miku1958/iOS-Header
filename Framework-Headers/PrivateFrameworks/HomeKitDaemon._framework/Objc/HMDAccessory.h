@@ -23,8 +23,11 @@
     BOOL _remotelyReachable;
     NSMutableSet *_accessoryProfiles;
     BOOL _blocked;
+    BOOL _suspendCapable;
     BOOL _remoteAccessEnabled;
     BOOL _unblockPending;
+    BOOL _custom1WoBLE;
+    BOOL _custom1WoWLAN;
     NSString *_identifier;
     HMDRoom *_room;
     NSString *_model;
@@ -61,6 +64,8 @@
 @property (readonly, copy, nonatomic) NSString *contextID;
 @property (readonly, copy, nonatomic) NSUUID *contextSPIUniqueIdentifier;
 @property (readonly, getter=isCurrentAccessory) BOOL currentAccessory;
+@property (nonatomic) BOOL custom1WoBLE; // @synthesize custom1WoBLE=_custom1WoBLE;
+@property (nonatomic) BOOL custom1WoWLAN; // @synthesize custom1WoWLAN=_custom1WoWLAN;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) HMDAccessoryVersion *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
@@ -88,6 +93,7 @@
 @property (readonly, nonatomic) BOOL supportsTargetControl;
 @property (readonly, nonatomic) BOOL supportsTargetController;
 @property (readonly) BOOL supportsUserManagement;
+@property (nonatomic, getter=isSuspendCapable) BOOL suspendCapable; // @synthesize suspendCapable=_suspendCapable;
 @property (strong, nonatomic) HMDAccessoryTransaction *transaction; // @synthesize transaction=_transaction;
 @property (nonatomic) BOOL unblockPending; // @synthesize unblockPending=_unblockPending;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -153,6 +159,7 @@
 - (void)setManufacturer:(id)arg1;
 - (void)setModel:(id)arg1;
 - (void)setSerialNumber:(id)arg1;
+- (void)setSuspendedCapable:(BOOL)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (BOOL)supportsMinimumUserPrivilege;
 - (void)takeOwnershipOfAppData:(id)arg1;

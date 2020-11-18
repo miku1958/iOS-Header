@@ -30,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdr;
+@property (readonly, nonatomic) struct CGSize nativePixelSize;
 @property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) double refreshRate; // @synthesize refreshRate=_refreshRate;
 @property (readonly, nonatomic) double scale;

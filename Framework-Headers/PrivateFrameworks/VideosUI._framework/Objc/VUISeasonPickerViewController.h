@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (id)initWithMediaLibrary:(id)arg1 title:(id)arg2 collectionIdentifier:(id)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

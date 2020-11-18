@@ -8,21 +8,27 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString;
+@class NSString, UIColor;
 
 @interface PKDashboardBalanceItem : NSObject <PKDashboardItem>
 {
     BOOL _topUpEnabled;
     NSString *_balance;
+    NSString *_title;
+    NSString *_availableCredit;
+    UIColor *_titleColor;
     NSString *_topUpTitle;
     CDUnknownBlockType _topUpAction;
 }
 
+@property (strong, nonatomic) NSString *availableCredit; // @synthesize availableCredit=_availableCredit;
 @property (strong, nonatomic) NSString *balance; // @synthesize balance=_balance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 @property (copy, nonatomic) CDUnknownBlockType topUpAction; // @synthesize topUpAction=_topUpAction;
 @property (nonatomic) BOOL topUpEnabled; // @synthesize topUpEnabled=_topUpEnabled;
 @property (strong, nonatomic) NSString *topUpTitle; // @synthesize topUpTitle=_topUpTitle;

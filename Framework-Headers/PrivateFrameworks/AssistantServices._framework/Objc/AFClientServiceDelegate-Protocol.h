@@ -43,7 +43,7 @@
 - (oneway void)speechRecognizedPartialResult:(SASSpeechPartialResult *)arg1;
 - (oneway void)speechRecordingDidBeginOnAVRecordRoute:(NSString *)arg1 audioSessionID:(unsigned int)arg2;
 - (oneway void)speechRecordingDidCancel;
-- (oneway void)speechRecordingDidChangeAVRecordRoute:(NSString *)arg1 isDucking:(BOOL)arg2 isTwoShot:(BOOL)arg3;
+- (oneway void)speechRecordingDidChangeAVRecordRoute:(NSString *)arg1 isDucking:(BOOL)arg2 isTwoShot:(BOOL)arg3 speechEndHostTime:(unsigned long long)arg4;
 - (oneway void)speechRecordingDidEnd;
 - (oneway void)speechRecordingDidFail:(NSError *)arg1;
 - (oneway void)speechRecordingDidFinishRecognitionUpdateWithError:(NSError *)arg1;

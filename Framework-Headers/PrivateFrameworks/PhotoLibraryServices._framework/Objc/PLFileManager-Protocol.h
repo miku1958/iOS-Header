@@ -9,7 +9,11 @@
 @class NSDictionary, NSString;
 
 @protocol PLFileManager <NSObject>
+
+@property (readonly, copy) NSString *currentDirectoryPath;
+
 - (NSDictionary *)attributesOfItemAtPath:(NSString *)arg1 error:(id *)arg2;
+- (BOOL)changeCurrentDirectoryPath:(NSString *)arg1;
 - (BOOL)fileExistsAtPath:(NSString *)arg1;
 - (BOOL)fileExistsAtPath:(NSString *)arg1 isDirectory:(BOOL *)arg2;
 @end

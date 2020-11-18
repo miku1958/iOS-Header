@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSDateFormatter, NSMutableDictionary, NSString, PKPaymentTransactionCollectionViewCell, UIFont, UIImage;
+@class NSCache, NSDateFormatter, NSString, PKPaymentTransactionCollectionViewCell, UIFont, UIImage;
 
 @interface PKTransactionGroupItemPresenter : NSObject <PKDashboardItemPresenter>
 {
@@ -17,9 +17,15 @@
     UIFont *_transactionCellValueLabelFont;
     UIFont *_transactionCellSecondaryLabelFont;
     UIImage *_emptyImage;
-    UIImage *_topUpImage;
+    UIImage *_cashbackImage;
     UIImage *_transactionListImage;
-    NSMutableDictionary *_iconsPerMerchantCategory;
+    UIImage *_interestImage;
+    UIImage *_appleCardImage;
+    UIImage *_refundsImage;
+    NSCache *_iconsPerMerchantCategory;
+    NSCache *_iconsPerMerchant;
+    struct CGSize _groupSize;
+    BOOL _needsSizing;
     NSDateFormatter *_formatterYear;
     NSDateFormatter *_formatterMonth;
     BOOL _useAccessibilityLayout;
@@ -35,11 +41,16 @@
 - (id)_contactKeysToFetch;
 - (struct CGSize)_imageSize;
 - (id)_viewControllerForItem:(id)arg1;
+- (id)appleCardImage;
+- (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (id)cashbackImage;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
 - (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)init;
+- (id)interestImage;
 - (Class)itemClass;
+- (id)refundsImage;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)traitCollectionDidChangeFromTrait:(id)arg1 toTrait:(id)arg2 inCollectionView:(id)arg3;
 - (id)transactionListImage;

@@ -53,6 +53,7 @@
 - (void)_suspendAuthentication;
 - (void)_suspendAuthenticationAndForceReset:(BOOL)arg1;
 - (void)_updateBackgroundedState:(BOOL)arg1;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;

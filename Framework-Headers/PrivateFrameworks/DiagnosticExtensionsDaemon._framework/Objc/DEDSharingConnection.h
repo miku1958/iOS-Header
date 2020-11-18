@@ -49,8 +49,9 @@
 + (void)checkIn;
 - (void).cxx_destruct;
 - (void)_configureService:(id)arg1 withLabel:(id)arg2 needsSetup:(BOOL)arg3 actionType:(unsigned char)arg4 completion:(CDUnknownBlockType)arg5;
-- (BOOL)_distanceWithinRange:(long long)arg1;
 - (id)_existingSharingSessionForDevice:(id)arg1;
+- (void)_handleIncomingPingingDevice:(id)arg1;
+- (void)_handleIncomingPongingDevice:(id)arg1;
 - (void)_saveDevice:(id)arg1;
 - (void)_verifyPairingForSession:(id)arg1 holdForPIN:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addIncomingSFSession:(id)arg1 forIdentifier:(id)arg2;

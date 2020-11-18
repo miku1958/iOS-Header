@@ -14,9 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityEnclosingVUICardCollectionViewCell;
+- (id)accessibilityAttributedValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

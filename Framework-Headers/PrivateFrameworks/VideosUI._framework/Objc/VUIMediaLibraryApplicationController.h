@@ -24,7 +24,6 @@
 - (void)removeRentalMediaItem:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)settingsURL;
 - (BOOL)shouldWarnAboutPlaybackQualityForRentalMediaItem:(id)arg1;
-- (void)startFullScreenPlaybackWithMediaItem:(id)arg1;
 
 @end
 

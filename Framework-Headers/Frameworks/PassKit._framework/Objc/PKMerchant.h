@@ -13,10 +13,11 @@
 
 @interface PKMerchant : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
-    BOOL _hasFallbackPOIType;
-    int _fallbackPOIType;
+    BOOL _useRawMerchantData;
     NSString *_displayName;
     NSURL *_originURL;
+    NSString *_webMerchantIdentifier;
+    NSString *_webMerchantName;
     long long _adamIdentifier;
     long long _industryCode;
     NSString *_industryCategory;
@@ -38,30 +39,36 @@
 }
 
 @property (nonatomic) long long adamIdentifier; // @synthesize adamIdentifier=_adamIdentifier;
+@property (readonly, nonatomic) NSURL *businessChatURL;
 @property (readonly, nonatomic) long long category;
 @property (copy, nonatomic) NSString *city; // @synthesize city=_city;
 @property (nonatomic) long long cleanConfidenceLevel; // @synthesize cleanConfidenceLevel=_cleanConfidenceLevel;
 @property (readonly, nonatomic) NSString *detailedCategory;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *fallbackDetailedCategory; // @synthesize fallbackDetailedCategory=_fallbackDetailedCategory;
-@property (nonatomic) int fallbackPOIType; // @synthesize fallbackPOIType=_fallbackPOIType;
 @property (nonatomic) long long fallbackcategory; // @synthesize fallbackcategory=_fallbackcategory;
-@property (nonatomic) BOOL hasFallbackPOIType; // @synthesize hasFallbackPOIType=_hasFallbackPOIType;
+@property (readonly, nonatomic) BOOL hasMapsMatch;
+@property (readonly, nonatomic) NSString *heroImageAttribution;
+@property (readonly, nonatomic) NSURL *heroImageURL;
 @property (copy, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property (nonatomic) long long industryCode; // @synthesize industryCode=_industryCode;
 @property (readonly, nonatomic) BOOL isValid;
+@property (readonly, nonatomic) NSURL *logoImageURL;
 @property (strong, nonatomic) PKMapsBrand *mapsBrand; // @synthesize mapsBrand=_mapsBrand;
 @property (strong, nonatomic) PKMapsMerchant *mapsMerchant; // @synthesize mapsMerchant=_mapsMerchant;
 @property (copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSURL *originURL; // @synthesize originURL=_originURL;
-@property (readonly, nonatomic) int poiType;
+@property (readonly, nonatomic) NSString *phoneNumber;
 @property (copy, nonatomic) NSString *rawCANL; // @synthesize rawCANL=_rawCANL;
 @property (copy, nonatomic) NSString *rawCity; // @synthesize rawCity=_rawCity;
 @property (copy, nonatomic) NSString *rawCountry; // @synthesize rawCountry=_rawCountry;
 @property (copy, nonatomic) NSString *rawName; // @synthesize rawName=_rawName;
 @property (copy, nonatomic) NSString *rawState; // @synthesize rawState=_rawState;
 @property (copy, nonatomic) NSString *state; // @synthesize state=_state;
+@property (nonatomic) BOOL useRawMerchantData; // @synthesize useRawMerchantData=_useRawMerchantData;
+@property (copy, nonatomic) NSString *webMerchantIdentifier; // @synthesize webMerchantIdentifier=_webMerchantIdentifier;
+@property (copy, nonatomic) NSString *webMerchantName; // @synthesize webMerchantName=_webMerchantName;
 @property (copy, nonatomic) NSString *zip; // @synthesize zip=_zip;
 
 + (BOOL)supportsSecureCoding;
@@ -81,6 +88,7 @@
 - (unsigned long long)itemType;
 - (id)jsonDictionaryRepresentation;
 - (id)recordTypesAndNames;
+- (id)uniqueIdentifier;
 
 @end
 

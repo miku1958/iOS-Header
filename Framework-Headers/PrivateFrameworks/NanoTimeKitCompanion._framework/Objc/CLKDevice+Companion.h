@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) BOOL canCustomize;
 @property (readonly, nonatomic) BOOL isBridgeActive;
+@property (readonly, nonatomic) BOOL isEcgPhoneComplicationEnabled;
 @property (readonly, nonatomic) BOOL isPaired;
 @property (readonly, nonatomic) BOOL isRadioPhoneComplicationEnabled;
 

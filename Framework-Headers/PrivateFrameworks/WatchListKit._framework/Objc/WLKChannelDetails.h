@@ -16,12 +16,14 @@
     BOOL _itunes;
     BOOL _firstParty;
     BOOL _watchListEnabled;
-    BOOL _requiresSubscriptionForConsent;
-    BOOL _requiresAccountLevelConsent;
-    BOOL _shouldPromptForConsentOnSubscriptionChange;
+    BOOL _consented;
+    BOOL _apSubscription;
     BOOL _shouldTrackPlayActivity;
-    BOOL _shouldIncludeInConsent;
     BOOL _appInstalled;
+    BOOL _requiresAccountLevelConsent;
+    BOOL _requiresSubscriptionForConsent;
+    BOOL _shouldPromptForConsentOnSubscriptionChange;
+    BOOL _shouldIncludeInConsent;
     NSString *_channelID;
     NSString *_name;
     NSArray *_appAdamIDs;
@@ -29,9 +31,12 @@
     NSString *_appName;
     WLKArtworkVariantListing *_images;
     NSDictionary *_rateLimit;
+    unsigned long long _channelType;
+    NSString *_minRequiredAppVersion;
     NSString *_appStoreURLString;
 }
 
+@property (readonly, nonatomic, getter=isApSubscription) BOOL apSubscription; // @synthesize apSubscription=_apSubscription;
 @property (readonly, copy, nonatomic) NSArray *appAdamIDs;
 @property (readonly, copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
 @property (readonly, copy, nonatomic) NSArray *appBundleIDs;
@@ -42,12 +47,15 @@
 @property (readonly, copy, nonatomic) NSURL *appStoreURL;
 @property (copy, nonatomic) NSString *appStoreURLString; // @synthesize appStoreURLString=_appStoreURLString;
 @property (readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
+@property (readonly, nonatomic) unsigned long long channelType; // @synthesize channelType=_channelType;
+@property (readonly, nonatomic, getter=isConsented) BOOL consented; // @synthesize consented=_consented;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFirstParty) BOOL firstParty; // @synthesize firstParty=_firstParty;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WLKArtworkVariantListing *images; // @synthesize images=_images;
 @property (readonly, nonatomic, getter=isiTunes) BOOL itunes; // @synthesize itunes=_itunes;
+@property (readonly, nonatomic) NSString *minRequiredAppVersion; // @synthesize minRequiredAppVersion=_minRequiredAppVersion;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSDictionary *rateLimit; // @synthesize rateLimit=_rateLimit;
@@ -64,6 +72,7 @@
 - (id)appIconURLForSize:(struct CGSize)arg1;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (id)sui_channelName;
 
 @end
 

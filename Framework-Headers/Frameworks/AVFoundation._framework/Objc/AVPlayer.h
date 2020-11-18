@@ -95,6 +95,7 @@
 - (void)_detachClosedCaptionLayersFromFigPlayer:(struct OpaqueFigPlayer *)arg1;
 - (void)_detachFigPlayerFromSubtitleLayers;
 - (void)_detachVideoLayersFromFigPlayer:(struct OpaqueFigPlayer *)arg1;
+- (void)_didEnterBackground:(id)arg1;
 - (void)_didFinishSuspension:(id)arg1;
 - (BOOL)_dynamicallyChoosesInitialVariant;
 - (void)_enqueuePlayQueueModification_invokeOnIvarAccessQueue:(id)arg1;

@@ -24,8 +24,7 @@
 
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (void)_discardContents;
-- (void)_display;
+- (BOOL)_displayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleQuadArrayChange:(id)arg1;
 - (void)_resizeFramebuffer;
 - (void)_setupGL;
@@ -33,6 +32,7 @@
 - (void)addQuad:(id)arg1;
 - (void)addQuadsFromArray:(id)arg1;
 - (void)dealloc;
+- (void)discardContents;
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)removeAllQuads;

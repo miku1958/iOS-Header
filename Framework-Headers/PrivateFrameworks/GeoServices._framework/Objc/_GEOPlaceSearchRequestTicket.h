@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchRequestTicket : _GEOPlaceRequestTicket <GEOMapServiceSearchTicket>
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *displayHeaderSubstitutes;
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;

@@ -15,5 +15,6 @@
 - (id)pk_uppercaseFirstStringForLocale:(id)arg1;
 - (id)pk_uppercaseFirstStringForPreferredLocale;
 - (id)pk_uppercaseStringForPreferredLocale;
+- (id)pk_zString;
 @end
 

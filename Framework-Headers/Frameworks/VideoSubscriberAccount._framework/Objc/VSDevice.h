@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
+@class NSOperationQueue;
+
 @interface VSDevice : NSObject
 {
     CDUnknownFunctionPointerType _copyAnswer;
+    NSOperationQueue *_privateQueue;
 }
 
 @property (nonatomic) CDUnknownFunctionPointerType copyAnswer; // @synthesize copyAnswer=_copyAnswer;
 @property (readonly, nonatomic) unsigned long long deviceType;
+@property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (readonly, nonatomic, getter=isRunningACustomerBuild) BOOL runningACustomerBuild;
 @property (readonly, nonatomic, getter=isRunningAnInternalBuild) BOOL runningAnInternalBuild;
 
@@ -21,8 +25,10 @@
 + (BOOL)_runningACustomerBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (BOOL)_runningAnInternalBuildWithCopyAnswer:(CDUnknownFunctionPointerType)arg1;
 + (id)currentDevice;
+- (void).cxx_destruct;
 - (id)accountDeletionConfirmationMessageForIdentityProviderDisplayName:(id)arg1;
 - (id)developerIdentityProviderDeletionConfirmationMessage;
+- (void)fetchSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

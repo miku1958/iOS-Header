@@ -4,29 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <TVMLKit/TVViewLayout.h>
 
-#import <VideosUI/NSCopying-Protocol.h>
-
-@class UIColor, VUITextLayout;
+@class NSArray, TVImageLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUITextBadgeLayout : NSObject <NSCopying>
+@interface VUITextBadgeLayout : TVViewLayout
 {
-    UIColor *_bgColor;
+    unsigned long long _badgeKind;
     double _cornerRadius;
+    NSArray *_gradientBgColors;
     VUITextLayout *_textLayout;
-    unsigned long long _badgeStyle;
-    struct UIEdgeInsets _padding;
+    TVImageLayout *_imageLayout;
 }
 
-@property (nonatomic) unsigned long long badgeStyle; // @synthesize badgeStyle=_badgeStyle;
-@property (strong, nonatomic) UIColor *bgColor; // @synthesize bgColor=_bgColor;
+@property (nonatomic) unsigned long long badgeKind; // @synthesize badgeKind=_badgeKind;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property (strong, nonatomic) NSArray *gradientBgColors; // @synthesize gradientBgColors=_gradientBgColors;
+@property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 
++ (long long)_badgeSizeForElement:(id)arg1;
++ (id)_glyphImageLayoutWithTintColor:(id)arg1 viewElement:(id)arg2;
++ (id)_spotlightBadgeLayoutWithViewElement:(id)arg1;
++ (id)_textBadgeLayoutWithViewElement:(id)arg1 withBadgeType:(unsigned long long)arg2;
++ (id)layoutWithViewElement:(id)arg1;
++ (id)layoutWithViewElement:(id)arg1 withTextBadgeType:(unsigned long long)arg2;
++ (unsigned long long)textBadgeTypeFromString:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updateBgColorWithViewElement:(id)arg1 defaultColor:(id)arg2;
+- (void)_updateTextColorWithViewElement:(id)arg1 defaultColor:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

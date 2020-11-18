@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentAuthorizationStateParam.h>
 
-@class NSString, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentToken, PKServiceProviderPurchase;
+@class NSString, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentToken, PKServiceProviderPurchase;
 
 @interface PKPaymentAuthorizationAuthorizedStateParam : PKPaymentAuthorizationStateParam
 {
@@ -16,8 +16,10 @@
     NSString *_purchaseTransactionIdentifier;
     PKAuthorizedPeerPaymentQuote *_authorizedPeerPaymentQuote;
     PKDisbursementVoucher *_disbursementVoucher;
+    PKApplePayTrustSignature *_applePayTrustSignature;
 }
 
+@property (readonly, nonatomic) PKApplePayTrustSignature *applePayTrustSignature; // @synthesize applePayTrustSignature=_applePayTrustSignature;
 @property (readonly, nonatomic) PKAuthorizedPeerPaymentQuote *authorizedPeerPaymentQuote; // @synthesize authorizedPeerPaymentQuote=_authorizedPeerPaymentQuote;
 @property (readonly, nonatomic) PKDisbursementVoucher *disbursementVoucher; // @synthesize disbursementVoucher=_disbursementVoucher;
 @property (strong, nonatomic) PKPayment *payment; // @synthesize payment=_payment;
@@ -25,6 +27,7 @@
 @property (strong, nonatomic) PKServiceProviderPurchase *purchase; // @synthesize purchase=_purchase;
 @property (copy, nonatomic) NSString *purchaseTransactionIdentifier; // @synthesize purchaseTransactionIdentifier=_purchaseTransactionIdentifier;
 
++ (id)paramWithApplePayTrustSignature:(id)arg1;
 + (id)paramWithAuthorizedPeerPaymentQuote:(id)arg1;
 + (id)paramWithDisbursementVoucher:(id)arg1;
 + (id)paramWithPayment:(id)arg1;

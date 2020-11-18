@@ -11,12 +11,14 @@
 @interface PKPaymentCredentialTableViewCell : PKTableViewCell
 {
     BOOL _showingPlaceholder;
+    BOOL _snapshotImageHasBorder;
     UIImageView *_snapshotImageView;
     UILabel *_credentialDetailLabel;
 }
 
 @property (readonly, nonatomic) UILabel *credentialDetailLabel; // @synthesize credentialDetailLabel=_credentialDetailLabel;
 @property (nonatomic) BOOL showingPlaceholder; // @synthesize showingPlaceholder=_showingPlaceholder;
+@property (nonatomic) BOOL snapshotImageHasBorder; // @synthesize snapshotImageHasBorder=_snapshotImageHasBorder;
 @property (readonly, nonatomic) UIImageView *snapshotImageView; // @synthesize snapshotImageView=_snapshotImageView;
 
 + (struct CGSize)defaultImageViewSize;

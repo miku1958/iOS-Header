@@ -113,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)_switchToCustomInputViewWithMatches:(id)arg1 contact:(id)arg2;
 - (void)_textDidChangeInForm:(id)arg1 textField:(id)arg2;
 - (BOOL)_textFieldIsEmptyPasswordField;
+- (BOOL)_textFieldLooksLikeCardSecurityCodeFieldButNotCardNumberOrCardholderField:(id)arg1;
 - (id)_textSuggestionForCredentialDisplayData:(id)arg1 submitForm:(BOOL)arg2;
 - (id)_textSuggestionForExternalCredentialIdentity:(id)arg1 submitForm:(BOOL)arg2;
 - (void)_updateAutoFillActionToCaptureCreditCardAndFill;

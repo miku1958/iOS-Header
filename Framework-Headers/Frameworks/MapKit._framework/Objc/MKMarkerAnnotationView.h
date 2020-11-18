@@ -6,7 +6,7 @@
 
 #import <MapKit/MKAnnotationView.h>
 
-@class GEOFeatureStyleAttributes, NSString, UIColor, UIImage, UIImageView, UILabel, UIView, _MKBezierPathView;
+@class GEOFeatureStyleAttributes, MKWalletMerchantStylingInfo, NSString, UIColor, UIImage, UIImageView, UILabel, UIView, _MKBezierPathView;
 
 @interface MKMarkerAnnotationView : MKAnnotationView
 {
@@ -20,6 +20,7 @@
     _MKBezierPathView *_selectedDotView;
     UIView *_contentMaskView;
     GEOFeatureStyleAttributes *_customStyleAttributes;
+    MKWalletMerchantStylingInfo *_walletMerchantStylingInfo;
     BOOL _animatesWhenAdded;
     long long _titleVisibility;
     long long _subtitleVisibility;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic, getter=_styleAttributes, setter=_setStyleAttributes:) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_customStyleAttributes;
 @property (nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
 @property (nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
+@property (strong, nonatomic, getter=_walletMerchantStylingInfo, setter=_setWalletMerchantStylingInfo:) MKWalletMerchantStylingInfo *walletMerchantStylingInfo;
 
 + (float)_defaultDisplayPriority;
 - (void).cxx_destruct;

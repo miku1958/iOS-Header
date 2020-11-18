@@ -8,7 +8,7 @@
 
 #import <PassKitCore/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, NSMutableArray, NSString, NSTimer, PKPaymentDeviceConfigurationData, PKPaymentDeviceProvisioningData, PKSecureElement;
+@class CLLocationManager, NSMutableArray, NSString, NSTimer, PKPaymentDeviceConfigurationData, PKSecureElement;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PKPaymentDevice : NSObject <CLLocationManagerDelegate>
@@ -17,9 +17,8 @@
     NSTimer *_timer;
     NSObject<OS_dispatch_source> *_locationFixTimeout;
     PKSecureElement *_secureElement;
-    PKPaymentDeviceProvisioningData *_provisioningData;
     PKPaymentDeviceConfigurationData *_configurationData;
-    NSMutableArray *_provisioningCompletions;
+    NSMutableArray *_metdataFetchTasks;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_queue> *_internalQueue;
     BOOL _skipLocationCheck;
@@ -35,8 +34,9 @@
 + (id)clientInfoHTTPHeader;
 - (void).cxx_destruct;
 - (void)SEPParingInformationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_executeProvisioningCompletionHandlers;
+- (void)_executeDeviceMetadataFetchTasksCompletionHandlers;
 - (void)_finishLocationFixWithLocation:(id)arg1;
+- (void)_populateDeviceMetdata:(id)arg1 withFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)configurationData;
 - (void)configurationDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -46,6 +46,7 @@
 - (id)initWithCallbackQueue:(id)arg1;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)paymentDeviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)primarySecureElementIdentifier;
 - (void)provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

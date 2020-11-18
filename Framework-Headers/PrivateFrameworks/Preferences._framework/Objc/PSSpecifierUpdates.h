@@ -39,6 +39,7 @@
 - (id)_init;
 - (id)_initForCopyWithOriginalSpecifiers:(id)arg1 currentSpecifiers:(id)arg2 updates:(id)arg3;
 - (void)_operationFailed:(id)arg1 reason:(id)arg2;
+- (BOOL)_removeOneSpecifierOnlyAtIndex:(unsigned long long)arg1;
 - (BOOL)appendSpecifier:(id)arg1;
 - (BOOL)appendSpecifier:(id)arg1 toGroup:(id)arg2;
 - (BOOL)appendSpecifier:(id)arg1 toGroupAtGroupIndex:(unsigned long long)arg2;

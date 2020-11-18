@@ -8,82 +8,69 @@
 
 #import <ITMLKit/IKDOMFeature-Protocol.h>
 
-@class IKAppContext, IKAppDocument, IKAppMediaItemBridge, IKAppPlaylistBridge, IKDOMDocument, IKJSPlayer, NSArray, NSDate, NSMutableSet, NSNumber, NSString;
-@protocol IKAppPlayer, IKAppPlaylist;
+@class IKAppContext, IKAppMediaItemBridge, IKAppPlaylistBridge, IKDOMDocument, IKJSPlayer, NSArray, NSDate, NSDictionary, NSNumber, NSString, _IKPlaceholderAppPlayer;
+@protocol IKAppPlayer;
 
 @interface IKAppPlayerBridge : NSObject <IKDOMFeature>
 {
-    id<IKAppPlaylist> _appPlaylist;
-    IKAppDocument *_appOverlayDocument;
-    IKAppDocument *_appInteractiveOverlayDocument;
+    _IKPlaceholderAppPlayer *_placeholderAppPlayer;
     BOOL _interactiveOverlayDismissable;
-    NSMutableSet *_observedTimeIntervals;
-    NSMutableSet *_observedTimeBoundaries;
-    NSArray *_observedMetadataKeys;
+    BOOL _muted;
+    BOOL _showsResumeMenu;
     IKAppContext *_appContext;
     NSString *_featureName;
+    IKAppPlaylistBridge *_playlist;
     id<IKAppPlayer> _appPlayer;
     IKJSPlayer *_jsPlayer;
-    long long _state;
+    IKDOMDocument *_overlayDocument;
+    IKDOMDocument *_interactiveOverlayDocument;
+    NSDictionary *_contextMenuData;
+    NSDictionary *_userInfo;
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (weak, nonatomic) id<IKAppPlayer> appPlayer; // @synthesize appPlayer=_appPlayer;
+@property (copy, nonatomic) NSDictionary *contextMenuData; // @synthesize contextMenuData=_contextMenuData;
 @property (readonly, nonatomic) IKAppMediaItemBridge *currentMediaItem;
+@property (readonly, nonatomic) NSArray *currentMediaItemAccessLogs;
 @property (readonly, nonatomic) NSDate *currentMediaItemDate;
 @property (readonly, nonatomic) NSNumber *currentMediaItemDuration;
+@property (readonly, nonatomic) NSArray *currentMediaItemErrorLogs;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL interactiveOverlayDismissable;
-@property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument;
+@property (nonatomic) BOOL interactiveOverlayDismissable; // @synthesize interactiveOverlayDismissable=_interactiveOverlayDismissable;
+@property (strong, nonatomic) IKDOMDocument *interactiveOverlayDocument; // @synthesize interactiveOverlayDocument=_interactiveOverlayDocument;
 @property (weak, nonatomic) IKJSPlayer *jsPlayer; // @synthesize jsPlayer=_jsPlayer;
+@property (nonatomic) BOOL muted; // @synthesize muted=_muted;
 @property (readonly, nonatomic) IKAppMediaItemBridge *nextMediaItem;
-@property (strong, nonatomic) IKDOMDocument *overlayDocument;
-@property (strong, nonatomic) IKAppPlaylistBridge *playlist;
+@property (strong, nonatomic) IKDOMDocument *overlayDocument; // @synthesize overlayDocument=_overlayDocument;
+@property (strong, nonatomic) IKAppPlaylistBridge *playlist; // @synthesize playlist=_playlist;
 @property (readonly, nonatomic) IKAppMediaItemBridge *previousMediaItem;
 @property (readonly, nonatomic) double scanRate;
-@property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (nonatomic) BOOL showsResumeMenu; // @synthesize showsResumeMenu=_showsResumeMenu;
+@property (readonly, nonatomic) long long state;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
 - (void).cxx_destruct;
-- (void)addTimeIntervalObserver:(unsigned long long)arg1;
-- (void)changeToMediaAtIndex:(unsigned long long)arg1 reason:(id)arg2;
+- (void)changeToMediaAtIndex:(unsigned long long)arg1;
 - (void)cleanup;
-- (void)currentMediaItemDurationDidChange:(double)arg1;
+- (void)dispatchEvent:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithAppContext:(id)arg1 jsPlayer:(id)arg2;
 - (id)initWithDOMNode:(id)arg1 featureName:(id)arg2;
-- (void)mediaItemDidChange:(long long)arg1;
-- (void)mediaItemDidChange:(id)arg1 userInitiated:(BOOL)arg2;
-- (void)mediaItemWillChange:(long long)arg1;
-- (void)mediaItemWillChange:(id)arg1 userInitiated:(BOOL)arg2;
 - (void)next;
-- (void)observeTimeBoundary:(double)arg1;
 - (void)pause;
 - (void)play;
-- (void)playbackDidStall:(double)arg1;
-- (void)playbackError:(id)arg1 shouldStopDueToError:(BOOL)arg2;
 - (void)present;
 - (void)previous;
-- (void)removeTimeIntervalObserver:(unsigned long long)arg1;
-- (BOOL)requestSeekToTime:(double *)arg1 currentTime:(double)arg2;
-- (void)requestSeekToTime:(double)arg1 currentTime:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scan:(double)arg1;
-- (void)setElapsedTime:(double)arg1 precise:(BOOL)arg2;
-- (void)setTimedMetadataKeysToObserve:(id)arg1;
-- (void)shouldChangeToMediaAtIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)shouldHandleStateEvent:(id)arg1;
-- (void)shouldHandleStateEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)stateDidChange:(id)arg1;
-- (void)stateWillChange:(id)arg1;
+- (void)setElapsedTime:(double)arg1;
+- (void)startObservingEvent:(id)arg1 extraInfo:(id)arg2;
 - (void)stop;
-- (void)stopObservingTimeBoundary:(double)arg1;
-- (void)timeBoundaryDidCross:(double)arg1;
-- (void)timeIntervalElapsed:(double)arg1 time:(double)arg2;
-- (void)timedMetadataDidChange:(id)arg1 value:(id)arg2;
-- (void)transportBarVisibilityDidChange:(BOOL)arg1;
+- (void)stopObservingEvent:(id)arg1;
 
 @end
 

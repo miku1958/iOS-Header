@@ -39,6 +39,7 @@
 - (void)snapshotWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)snapshotWithUniqueID:(id)arg1 manifestHash:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)snapshotWithUniqueID:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)snapshotWithUniqueID:(id)arg1 size:(struct CGSize)arg2 suppressedContent:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

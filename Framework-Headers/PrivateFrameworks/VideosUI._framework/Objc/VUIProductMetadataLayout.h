@@ -4,47 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <TVMLKit/TVViewLayout.h>
 
 @class UIColor, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIProductMetadataLayout : NSObject
+@interface VUIProductMetadataLayout : TVViewLayout
 {
-    BOOL _isRTL;
     VUITextLayout *_headerTextLayout;
-    VUITextLayout *_footerTextLayout;
     VUITextLayout *_infoHeaderTextLayout;
     VUITextLayout *_infoBodyTextLayout;
     VUITextLayout *_infoDescriptionTextLayout;
-    double _sectionHeaderBottomSpace;
-    double _sectionDataViewBottomSpace;
-    double _sectionFooterTopSpace;
-    double _sectionFooterBottomSpace;
-    double _sectionInfoViewBottomSpace;
-    double _infoTableMiddleSpacing;
+    VUITextLayout *_footerTextLayout;
+    double _descriptionLineSpacing;
     UIColor *_seeMoreTextColor;
-    struct UIEdgeInsets _mainViewMargin;
+    UIColor *_darkSeeMoreTextColor;
+    UIColor *_highlightedDescriptionText;
+    UIColor *_darkHighlightedDescriptionText;
 }
 
+@property (readonly, nonatomic) UIColor *darkHighlightedDescriptionText; // @synthesize darkHighlightedDescriptionText=_darkHighlightedDescriptionText;
+@property (readonly, nonatomic) UIColor *darkSeeMoreTextColor; // @synthesize darkSeeMoreTextColor=_darkSeeMoreTextColor;
+@property (readonly, nonatomic) double descriptionLineSpacing; // @synthesize descriptionLineSpacing=_descriptionLineSpacing;
 @property (readonly, nonatomic) VUITextLayout *footerTextLayout; // @synthesize footerTextLayout=_footerTextLayout;
 @property (readonly, nonatomic) VUITextLayout *headerTextLayout; // @synthesize headerTextLayout=_headerTextLayout;
+@property (readonly, nonatomic) UIColor *highlightedDescriptionText; // @synthesize highlightedDescriptionText=_highlightedDescriptionText;
 @property (readonly, nonatomic) VUITextLayout *infoBodyTextLayout; // @synthesize infoBodyTextLayout=_infoBodyTextLayout;
 @property (readonly, nonatomic) VUITextLayout *infoDescriptionTextLayout; // @synthesize infoDescriptionTextLayout=_infoDescriptionTextLayout;
 @property (readonly, nonatomic) VUITextLayout *infoHeaderTextLayout; // @synthesize infoHeaderTextLayout=_infoHeaderTextLayout;
-@property (readonly, nonatomic) double infoTableMiddleSpacing; // @synthesize infoTableMiddleSpacing=_infoTableMiddleSpacing;
 @property (readonly, nonatomic) BOOL isDynamicTextEnabled;
 @property (readonly, nonatomic) BOOL isHorizontal;
-@property (nonatomic) BOOL isRTL; // @synthesize isRTL=_isRTL;
-@property (readonly, nonatomic) struct UIEdgeInsets mainViewMargin; // @synthesize mainViewMargin=_mainViewMargin;
-@property (readonly, nonatomic) double sectionDataViewBottomSpace; // @synthesize sectionDataViewBottomSpace=_sectionDataViewBottomSpace;
-@property (readonly, nonatomic) double sectionFooterBottomSpace; // @synthesize sectionFooterBottomSpace=_sectionFooterBottomSpace;
-@property (readonly, nonatomic) double sectionFooterTopSpace; // @synthesize sectionFooterTopSpace=_sectionFooterTopSpace;
-@property (readonly, nonatomic) double sectionHeaderBottomSpace; // @synthesize sectionHeaderBottomSpace=_sectionHeaderBottomSpace;
-@property (readonly, nonatomic) double sectionInfoViewBottomSpace; // @synthesize sectionInfoViewBottomSpace=_sectionInfoViewBottomSpace;
+@property (readonly, nonatomic) BOOL isTVOS;
 @property (readonly, nonatomic) UIColor *seeMoreTextColor; // @synthesize seeMoreTextColor=_seeMoreTextColor;
-@property (readonly, nonatomic) long long type;
 
++ (id)layoutWithLayout:(id)arg1 element:(id)arg2;
 - (void).cxx_destruct;
 - (void)_setupLayouts;
 - (id)init;

@@ -62,7 +62,6 @@
 - (void)resetMigrationState;
 - (void)respondToMigrationCompatibilityChange:(id)arg1;
 - (void)respondToMigrationCompletion;
-- (BOOL)shouldMigrateToCloudKit;
 
 @end
 

@@ -52,17 +52,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isDownloaded;
 - (void)_notifyDelegateStateDidChange:(id)arg1;
 - (void)_onProcessingQueue_calculateStateAndNotify:(BOOL)arg1;
+- (void)_onProcessingQueue_cancelAndRemoveDownload;
 - (id)_onProcessingQueue_downloadController;
 - (void)_onProcessingQueue_invalidate;
 - (void)_onProcessingQueue_invalidateAndSetState;
-- (void)_onProcessingQueue_removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_setDownloadController:(id)arg1;
 - (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_startMonitoringDownload;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 downloadProgress:(double)arg2 bytesDownloaded:(unsigned long long)arg3 bytesToDownload:(unsigned long long)arg4 supportsPausing:(BOOL)arg5 supportsCancellation:(BOOL)arg6 notify:(BOOL)arg7;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 notify:(BOOL)arg2;
 - (void)_postStateDidChangeNotificationWithFromState:(id)arg1 toState:(id)arg2;
-- (void)cancelDownload;
+- (void)cancelAndRemoveDownload;
 - (void)dealloc;
 - (void)downloadManager:(id)arg1 didAddDownloads:(id)arg2 removeDownloads:(id)arg3;
 - (id)init;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)mediaItemDownloadController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
-- (void)removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeDownload;
 - (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 

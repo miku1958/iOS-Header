@@ -16,6 +16,7 @@
     int _nearby;
     NSMutableArray *_paymentInstruments;
     unsigned int _protocolVersion;
+    NSMutableArray *_supportedSetupFeatures;
     BOOL _deviceDisabled;
     BOOL _locked;
     BOOL _supportsFaceID;
@@ -44,14 +45,18 @@
 @property (nonatomic) int nearby; // @synthesize nearby=_nearby;
 @property (strong, nonatomic) NSMutableArray *paymentInstruments; // @synthesize paymentInstruments=_paymentInstruments;
 @property (nonatomic) unsigned int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (strong, nonatomic) NSMutableArray *supportedSetupFeatures; // @synthesize supportedSetupFeatures=_supportedSetupFeatures;
 @property (nonatomic) BOOL supportsFaceID; // @synthesize supportsFaceID=_supportsFaceID;
 @property (nonatomic) BOOL userDisabled; // @synthesize userDisabled=_userDisabled;
 
 + (Class)paymentInstrumentsType;
++ (Class)supportedSetupFeaturesType;
 - (void).cxx_destruct;
 - (int)StringAsNearby:(id)arg1;
 - (void)addPaymentInstruments:(id)arg1;
+- (void)addSupportedSetupFeatures:(id)arg1;
 - (void)clearPaymentInstruments;
+- (void)clearSupportedSetupFeatures;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -63,6 +68,8 @@
 - (id)paymentInstrumentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)paymentInstrumentsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)supportedSetupFeaturesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)supportedSetupFeaturesCount;
 - (void)writeTo:(id)arg1;
 
 @end

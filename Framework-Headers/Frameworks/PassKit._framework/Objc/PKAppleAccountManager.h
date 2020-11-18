@@ -13,11 +13,11 @@
     ACAccountStore *_accountStore;
 }
 
+@property (readonly, nonatomic) ACAccountStore *accountStore;
 @property (readonly, nonatomic) PKAppleAccountInformation *appleAccountInformation;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_accountStore;
 - (id)_aidaAccount;
 - (id)_primaryAppleAccount;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (struct CGRect)fillFrameWithBoundingSize:(struct CGSize)arg1;
 - (id)initWithFill:(id)arg1;
+- (void)load;
 
 @end
 

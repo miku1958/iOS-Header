@@ -12,16 +12,20 @@
 {
     BOOL _isCategoryIncorrect;
     BOOL _isMerchantIncorrect;
+    BOOL _isOtherIssue;
     struct {
         unsigned int isCategoryIncorrect:1;
         unsigned int isMerchantIncorrect:1;
+        unsigned int isOtherIssue:1;
     } _has;
 }
 
 @property (nonatomic) BOOL hasIsCategoryIncorrect;
 @property (nonatomic) BOOL hasIsMerchantIncorrect;
+@property (nonatomic) BOOL hasIsOtherIssue;
 @property (nonatomic) BOOL isCategoryIncorrect; // @synthesize isCategoryIncorrect=_isCategoryIncorrect;
 @property (nonatomic) BOOL isMerchantIncorrect; // @synthesize isMerchantIncorrect=_isMerchantIncorrect;
+@property (nonatomic) BOOL isOtherIssue; // @synthesize isOtherIssue=_isOtherIssue;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

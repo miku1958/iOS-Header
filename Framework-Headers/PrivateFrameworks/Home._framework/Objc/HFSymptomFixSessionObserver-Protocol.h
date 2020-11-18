@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HMSymptomFixSessionDelegate-Protocol.h>
+#import <Home/NSObject-Protocol.h>
 
-@class HMSymptomFixSession;
+@class HMAccessory;
 
-@protocol HFSymptomFixSessionObserver <HMSymptomFixSessionDelegate>
-- (void)fixSession:(HMSymptomFixSession *)arg1 didChangeState:(long long)arg2;
+@protocol HFSymptomFixSessionObserver <NSObject>
+- (void)fixSessionDidChangeForAccessory:(HMAccessory *)arg1;
 @end
 

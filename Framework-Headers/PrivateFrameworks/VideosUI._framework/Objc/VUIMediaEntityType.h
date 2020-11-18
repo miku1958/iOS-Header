@@ -30,11 +30,11 @@
 - (id)_initWithMediaCollectionType:(unsigned long long)arg1 mediaCategoryType:(unsigned long long)arg2;
 - (id)_initWithMediaItemCategoryType:(unsigned long long)arg1 isRental:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)stringDescription;
 
 @end
 

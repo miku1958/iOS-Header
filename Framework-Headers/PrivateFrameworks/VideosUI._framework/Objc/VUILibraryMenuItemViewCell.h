@@ -12,12 +12,14 @@ __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell : VUIListCollectionViewCell
 {
     VUIImageView *_imageView;
+    BOOL _hideChevron;
     VUILabel *_titleLabel;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
 }
 
 @property (readonly, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
+@property (nonatomic) BOOL hideChevron; // @synthesize hideChevron=_hideChevron;
 @property (readonly, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 

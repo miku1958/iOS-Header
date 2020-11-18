@@ -21,6 +21,7 @@
 - (void)beginRecordingMessagesToReplayDatabase:(NSString *)arg1;
 - (void)broadcastCloudKitState;
 - (void)broadcastCloudKitStateAfterClearingErrors;
+- (void)broadcastCloudKitStateAfterFetchingAccountStatus;
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)cancelVCRequestWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 reason:(NSNumber *)arg4 account:(NSString *)arg5;
 - (void)changeGroup:(NSString *)arg1 changes:(NSDictionary *)arg2 account:(NSString *)arg3;
@@ -133,6 +134,7 @@
 - (void)removePersonInfoFromiMessageChat:(NSDictionary *)arg1 chatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)renameGroup:(NSString *)arg1 to:(NSString *)arg2 account:(NSString *)arg3;
 - (void)replayMessagesFromDatabasePath:(NSString *)arg1;
+- (void)reportMetricToCK:(NSString *)arg1 withDict:(NSDictionary *)arg2;
 - (void)requestBuddyPicturesAndPropertiesForAccount:(NSString *)arg1;
 - (void)requestGroupsAccount:(NSString *)arg1;
 - (void)requestLastMessagesForChats;

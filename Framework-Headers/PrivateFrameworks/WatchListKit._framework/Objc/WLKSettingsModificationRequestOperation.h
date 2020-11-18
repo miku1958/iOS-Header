@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WatchListKit/WLKSettingsRequestOperation.h>
+#import <WatchListKit/WLKNetworkRequestOperation.h>
 
 @class NSDictionary;
 
-@interface WLKSettingsModificationRequestOperation : WLKSettingsRequestOperation
+@interface WLKSettingsModificationRequestOperation : WLKNetworkRequestOperation
 {
     NSDictionary *_modifications;
 }
 
-+ (id)URLBagKey;
++ (id)_requestURL:(id *)arg1;
 - (void).cxx_destruct;
 - (id)_postBody;
 - (id)initWithModifications:(id)arg1;
-- (id)requestProperties;
+- (void)prepareURLRequest:(CDUnknownBlockType)arg1;
 
 @end
 

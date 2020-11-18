@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_completeRequestWithResponse:(id)arg1;
 - (void)_completeRequestWithResponse:(id)arg1 fromIdentityProvider:(id)arg2;
 - (void)_didCancelRequest;
+- (void)_didDetermineIdentityProvider:(id)arg1 withPickerViewController:(id)arg2;
 - (void)_dismissInHostIfNecessary;
 - (id)_identityProviderRequestForViewServiceRequest:(id)arg1 withAccount:(id)arg2;
 - (void)_performRequest:(id)arg1 withIdentifier:(id)arg2;

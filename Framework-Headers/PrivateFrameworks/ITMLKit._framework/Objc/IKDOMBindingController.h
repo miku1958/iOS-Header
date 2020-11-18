@@ -6,53 +6,63 @@
 
 #import <objc/NSObject.h>
 
-#import <ITMLKit/IKJSDataItemObserver-Protocol.h>
+#import <ITMLKit/IKJSDataObserving-Protocol.h>
 
-@class IKAppContext, IKDOMElement, IKDataBinding, IKJSDataItem, NSDictionary, NSMutableArray, NSString;
-@protocol IKDOMBindingControllerDelegate;
+@class IKAppContext, IKDOMElement, IKDataBinding, IKJSDataItem, NSDictionary, NSMutableArray, NSString, _IKDOMMutationRules;
+@protocol IKDOMBindingStrategy;
 
 __attribute__((visibility("hidden")))
-@interface IKDOMBindingController : NSObject <IKJSDataItemObserver>
+@interface IKDOMBindingController : NSObject <IKJSDataObserving>
 {
     NSDictionary *_bindingKeysByPathString;
     struct {
-        BOOL hasDidLoadBinding;
-        BOOL hasShouldResolveData;
-        BOOL hasDoKeysAffectChildren;
-        BOOL hasDoKeysAffectSubtree;
-        BOOL hasAdditionalKeysToResolve;
-        BOOL hasApplyValueForKey;
+        BOOL hasKeysAffectingChildren;
+        BOOL hasKeysAffectingSubtree;
+        BOOL hasPrototypeDependentKeys;
+        BOOL hasValueDidChangeForKey;
         BOOL hasDidResolveKeys;
-    } _delegateFlags;
+    } _strategyFlags;
     NSMutableArray *_scheduledUpdaters;
     BOOL _shouldResolveData;
     IKAppContext *_appContext;
     IKDOMElement *_domElement;
     IKDOMBindingController *_parent;
     IKDataBinding *_binding;
-    id<IKDOMBindingControllerDelegate> _delegate;
     IKJSDataItem *_dataItem;
+    id<IKDOMBindingStrategy> _strategy;
+    _IKDOMMutationRules *_mutationRules;
+    NSDictionary *_prototypesByType;
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (readonly, nonatomic) IKDataBinding *binding; // @synthesize binding=_binding;
 @property (readonly, weak, nonatomic) IKJSDataItem *dataItem; // @synthesize dataItem=_dataItem;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<IKDOMBindingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) IKDOMElement *domElement; // @synthesize domElement=_domElement;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _IKDOMMutationRules *mutationRules; // @synthesize mutationRules=_mutationRules;
 @property (readonly, weak, nonatomic) IKDOMBindingController *parent; // @synthesize parent=_parent;
+@property (readonly, nonatomic) NSDictionary *prototypesByType; // @synthesize prototypesByType=_prototypesByType;
 @property (readonly, nonatomic) BOOL shouldResolveData; // @synthesize shouldResolveData=_shouldResolveData;
+@property (readonly, nonatomic) id<IKDOMBindingStrategy> strategy; // @synthesize strategy=_strategy;
 @property (readonly) Class superclass;
 
++ (id)_parsedMutationRulesForDOMElement:(id)arg1;
++ (id)_prototypesByTypeForDOMElement:(id)arg1;
++ (id)domBindingControllerForDOMElement:(id)arg1;
++ (id)instantiateDOMElementForItem:(id)arg1 withPrototype:(id)arg2 parentDOMElement:(id)arg3 existingDOMElement:(id)arg4;
 + (id)parsedBindingForDOMElement:(id)arg1;
++ (void)prepareForDOMElement:(id)arg1;
 - (void).cxx_destruct;
-- (void)_resolve;
-- (void)dataItem:(id)arg1 didChangePropertyPathWithString:(id)arg2;
-- (id)initWithDOMElement:(id)arg1 parent:(id)arg2 delegate:(id)arg3;
+- (BOOL)_canBeReused;
+- (void)_evaluateMutationRules;
+- (void)_resolveBinding;
+- (void)dataObservable:(id)arg1 didChangePropertyPathWithString:(id)arg2 extraInfo:(id)arg3;
+- (void)dealloc;
+- (id)findPrototypeForType:(id)arg1;
+- (id)initWithDOMElement:(id)arg1;
 - (void)scheduleUpdateUsingPreUpdate:(CDUnknownBlockType)arg1 update:(CDUnknownBlockType)arg2;
-- (void)teardown;
 
 @end
 

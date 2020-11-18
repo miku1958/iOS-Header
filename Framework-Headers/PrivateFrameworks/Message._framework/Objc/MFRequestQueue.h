@@ -11,11 +11,12 @@
 @interface MFRequestQueue : NSObject
 {
     NSConditionLock *_condition;
-    NSMutableArray *_requests;
-    NSMutableArray *_consumers;
     unsigned int _waitingOutside;
     unsigned int _waitingInside;
+    NSMutableArray *_requests;
 }
+
+@property (strong, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
 
 - (void)_processRequests:(id)arg1 consumers:(id)arg2;
 - (void)addRequest:(id)arg1 consumer:(id)arg2;

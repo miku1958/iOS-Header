@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IKDOMElement, IKDOMRules, NSString;
+@class IKDOMElement, NSString, _IKDOMPrototypeDerivationRules;
 
 @interface IKDOMPrototype : NSObject
 {
@@ -14,12 +14,12 @@
     NSString *_identifier;
     NSString *_type;
     NSString *_selector;
-    IKDOMRules *_rules;
+    _IKDOMPrototypeDerivationRules *_rules;
 }
 
 @property (readonly, weak, nonatomic) IKDOMElement *domElement; // @synthesize domElement=_domElement;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) IKDOMRules *rules; // @synthesize rules=_rules;
+@property (readonly, copy, nonatomic) _IKDOMPrototypeDerivationRules *rules; // @synthesize rules=_rules;
 @property (readonly, copy, nonatomic) NSString *selector; // @synthesize selector=_selector;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 

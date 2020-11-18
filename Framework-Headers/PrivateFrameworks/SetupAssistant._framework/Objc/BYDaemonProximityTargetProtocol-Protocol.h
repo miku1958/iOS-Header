@@ -11,10 +11,14 @@
 @protocol BYDaemonProximityTargetProtocol <NSObject>
 - (void)beginAdvertisingProximitySetup;
 - (void)endAdvertisingProximitySetup;
+- (void)endDeviceToDeviceMigration;
 - (void)endPairing;
+- (void)fileTransferSessionTemplate:(void (^)(RPFileTransferSession *))arg1;
 - (void)hasConnection:(void (^)(BOOL))arg1;
 - (void)resumeProximitySetup:(void (^)(SASProximityHandshake *, SASProximityInformation *, CUMessageSession *, NSString *, NSString *, BOOL))arg1;
+- (void)showMigrationInterfaceOnSource;
 - (void)storeHandshake:(SASProximityHandshake *)arg1;
 - (void)storeInformation:(SASProximityInformation *)arg1;
+- (void)suspendConnectionForSoftwareUpdate:(void (^)(void))arg1;
 @end
 

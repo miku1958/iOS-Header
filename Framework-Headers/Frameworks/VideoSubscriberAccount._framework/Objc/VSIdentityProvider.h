@@ -16,6 +16,7 @@
     NSString *_displayName;
     BOOL _prohibitedByStore;
     BOOL _developer;
+    BOOL _isSetTopBoxSupported;
     VSOptional *_uniqueID;
     VSOptional *_providerID;
     VSOptional *_providerInfo;
@@ -26,15 +27,23 @@
     NSURL *_authenticationURL;
     NSURL *_appStoreRoomURL;
     NSArray *_appAdamIDs;
+    NSString *_providerArtworkTemplateURL;
+    NSString *_providerAppArtworkTemplateURL;
+    NSNumber *_appPlacementPosition;
+    NSString *_userToken;
 }
 
 @property (copy, nonatomic) NSArray *appAdamIDs; // @synthesize appAdamIDs=_appAdamIDs;
+@property (copy, nonatomic) NSNumber *appPlacementPosition; // @synthesize appPlacementPosition=_appPlacementPosition;
 @property (copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
 @property (copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
 @property (nonatomic, getter=isDeveloper) BOOL developer; // @synthesize developer=_developer;
 @property (readonly, nonatomic) VSOptional *displayName;
+@property (nonatomic) BOOL isSetTopBoxSupported; // @synthesize isSetTopBoxSupported=_isSetTopBoxSupported;
 @property (copy, nonatomic) NSString *nameForSorting; // @synthesize nameForSorting=_nameForSorting;
 @property (nonatomic, getter=isProhibitedByStore) BOOL prohibitedByStore; // @synthesize prohibitedByStore=_prohibitedByStore;
+@property (copy, nonatomic) NSString *providerAppArtworkTemplateURL; // @synthesize providerAppArtworkTemplateURL=_providerAppArtworkTemplateURL;
+@property (copy, nonatomic) NSString *providerArtworkTemplateURL; // @synthesize providerArtworkTemplateURL=_providerArtworkTemplateURL;
 @property (strong, nonatomic) VSOptional *providerID; // @synthesize providerID=_providerID;
 @property (strong, nonatomic) VSOptional *providerInfo; // @synthesize providerInfo=_providerInfo;
 @property (copy, nonatomic) NSNumber *rankForSorting; // @synthesize rankForSorting=_rankForSorting;
@@ -43,6 +52,7 @@
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForCurrentPlatform;
 @property (readonly, nonatomic) BOOL supportsTemplatesSufficientForSomeKnownPlatform;
 @property (strong, nonatomic) VSOptional *uniqueID; // @synthesize uniqueID=_uniqueID;
+@property (copy, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

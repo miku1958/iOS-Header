@@ -11,15 +11,15 @@
 @interface PKPaymentSetupFieldDate : PKPaymentSetupFieldText
 {
     NSDateFormatter *_displayDateFormatter;
-    NSDate *_defaultDate;
     BOOL _showsDay;
     BOOL _showsMonth;
     BOOL _showsYear;
     NSString *_submissionFormat;
+    NSDate *_defaultDate;
 }
 
 @property (copy, nonatomic) NSDate *currentValue; // @dynamic currentValue;
-@property (readonly, copy, nonatomic) NSDate *defaultDate;
+@property (copy, nonatomic) NSDate *defaultDate; // @synthesize defaultDate=_defaultDate;
 @property (nonatomic) BOOL showsDay; // @synthesize showsDay=_showsDay;
 @property (nonatomic) BOOL showsMonth; // @synthesize showsMonth=_showsMonth;
 @property (nonatomic) BOOL showsYear; // @synthesize showsYear=_showsYear;

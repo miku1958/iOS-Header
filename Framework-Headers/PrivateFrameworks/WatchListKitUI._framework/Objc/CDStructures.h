@@ -21,14 +21,7 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
-};
-
-struct UIEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
+    double _field1;
+    double _field2;
 };
 

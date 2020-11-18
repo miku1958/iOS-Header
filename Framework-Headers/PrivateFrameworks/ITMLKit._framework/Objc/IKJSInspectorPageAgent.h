@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dispatchEventWithBlock:(CDUnknownBlockType)arg1;
 - (void)archiveWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)deleteCookieWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 cookieName:(id)arg3 url:(id)arg4;
 - (void)disableWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;

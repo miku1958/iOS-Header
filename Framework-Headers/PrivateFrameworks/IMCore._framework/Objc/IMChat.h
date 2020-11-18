@@ -244,6 +244,7 @@
 - (void)_removeParticipantsFromChat:(id)arg1 reason:(id)arg2 fromiMessageChat:(BOOL)arg3;
 - (id)_renderingDataDictionary;
 - (void)_replaceStaleChatItems;
+- (void)_resetChatIdToLastMessageItemMap;
 - (BOOL)_sanityCheckAccounts;
 - (void)_sendCurrentLocationMessageUsingLocationManager:(id)arg1;
 - (void)_sendMessage:(id)arg1 adjustingSender:(BOOL)arg2 shouldQueue:(BOOL)arg3;
@@ -312,6 +313,7 @@
 - (void)closeSession;
 - (long long)compareChatByDate:(id)arg1;
 - (long long)compareChatByTUDateAndLastFinishedMessageDate:(id)arg1;
+- (BOOL)containsMessageFromContactOrMe;
 - (void)dealloc;
 - (void)declineInvitation;
 - (BOOL)deleteAllHistory;
@@ -334,6 +336,7 @@
 - (BOOL)isDowngraded;
 - (BOOL)isHoldingUpdatesForKey:(id)arg1;
 - (BOOL)isInScrutinyMode;
+- (BOOL)isSMS;
 - (void)join;
 - (void)joinExistingTUConversationWithVideoEnabled:(BOOL)arg1;
 - (id)lastRelatedIncomingFinishedMessageTextContentWithLimit:(long long)arg1;
@@ -360,6 +363,7 @@
 - (id)messageAcknowledgmentSummaryForConversationListWithMessage:(id)arg1;
 - (id)messageForGUID:(id)arg1;
 - (id)messagesToReportAsSpamFromChatItems:(id)arg1;
+- (long long)numberOfTimesRespondedToThread;
 - (id)participantsWithState:(unsigned long long)arg1;
 - (unsigned long long)paymentTypeForMessage:(id)arg1;
 - (void)refreshServiceForSending;

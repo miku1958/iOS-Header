@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     AVCStatisticsCollector *_statisticsCollector;
     BOOL _isAudioStalled;
     unsigned int _sentAudioBytes;
+    unsigned int _encodedBytes;
     unsigned int _totalTxAudioBytes;
     unsigned int _estimateTxAudioBytes;
     unsigned int _audioFrameCounter;
@@ -112,6 +113,7 @@ __attribute__((visibility("hidden")))
 @property id<VCAudioTransmitterDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dtxMetrics;
+@property (readonly, nonatomic) unsigned int encodedBytes;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL ignoreSilence; // @synthesize ignoreSilence=_ignoreSilence;
 @property unsigned char inputMeter; // @synthesize inputMeter=_inputMeter;

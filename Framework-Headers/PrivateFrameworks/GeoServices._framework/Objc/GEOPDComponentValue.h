@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWalletCategoryInformation, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDBusinessHours, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLinkedService, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDComponentValue : PBCodable <NSCopying>
@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
     GEOPDTransitInfoSnippet *_transitInfoSnippet;
     GEOPDTransitSchedule *_transitSchedule;
     GEOPDVenueInfo *_venueInfo;
-    GEOPDWalletCategoryInformation *_walletCategoryInformation;
     GEOPDWifiFingerprint *_wifiFingerprint;
 }
 
@@ -130,7 +129,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasTransitInfoSnippet;
 @property (readonly, nonatomic) BOOL hasTransitSchedule;
 @property (readonly, nonatomic) BOOL hasVenueInfo;
-@property (readonly, nonatomic) BOOL hasWalletCategoryInformation;
 @property (readonly, nonatomic) BOOL hasWifiFingerprint;
 @property (strong, nonatomic) GEOPDHours *hours; // @synthesize hours=_hours;
 @property (strong, nonatomic) GEOPDIcon *icon; // @synthesize icon=_icon;
@@ -162,7 +160,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOPDTransitSchedule *transitSchedule; // @synthesize transitSchedule=_transitSchedule;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) GEOPDVenueInfo *venueInfo; // @synthesize venueInfo=_venueInfo;
-@property (strong, nonatomic) GEOPDWalletCategoryInformation *walletCategoryInformation; // @synthesize walletCategoryInformation=_walletCategoryInformation;
 @property (strong, nonatomic) GEOPDWifiFingerprint *wifiFingerprint; // @synthesize wifiFingerprint=_wifiFingerprint;
 
 - (void).cxx_destruct;

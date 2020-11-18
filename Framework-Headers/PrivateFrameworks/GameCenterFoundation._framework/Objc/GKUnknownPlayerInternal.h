@@ -11,8 +11,10 @@
 }
 
 + (BOOL)supportsSecureCoding;
+- (id)gamePlayerID;
 - (BOOL)isUnknownPlayer;
 - (id)playerID;
+- (id)teamPlayerID;
 
 @end
 

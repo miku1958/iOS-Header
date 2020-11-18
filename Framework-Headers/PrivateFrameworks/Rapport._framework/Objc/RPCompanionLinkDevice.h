@@ -13,15 +13,16 @@
 @interface RPCompanionLinkDevice : RPEndpoint <NSSecureCoding>
 {
     BOOL _personal;
-    BOOL _btPipeConnected;
     BOOL _changed;
     BOOL _daemon;
+    BOOL _uiTriggered;
     unsigned int _flags;
     int _mediaSystemRole;
     int _mediaSystemState;
     int _personalDeviceState;
     int _personalRequestsState;
     int _mediaSystemRoleEffective;
+    int _serversChangedState;
     NSString *_deviceColor;
     NSUUID *_homeKitIdentifier;
     NSString *_idsPersonalDeviceIdentifier;
@@ -36,7 +37,6 @@
     NSString *_password;
 }
 
-@property (nonatomic) BOOL btPipeConnected; // @synthesize btPipeConnected=_btPipeConnected;
 @property (nonatomic) BOOL changed; // @synthesize changed=_changed;
 @property (nonatomic) BOOL daemon; // @synthesize daemon=_daemon;
 @property (copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
@@ -58,7 +58,9 @@
 @property (copy, nonatomic) NSString *publicIdentifier; // @synthesize publicIdentifier=_publicIdentifier;
 @property (copy, nonatomic) NSString *role; // @synthesize role=_role;
 @property (copy, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
+@property (nonatomic) int serversChangedState; // @synthesize serversChangedState=_serversChangedState;
 @property (copy, nonatomic) NSDictionary *siriInfo; // @synthesize siriInfo=_siriInfo;
+@property (nonatomic) BOOL uiTriggered; // @synthesize uiTriggered=_uiTriggered;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -67,6 +69,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned int)updateWithBonjourDevice:(id)arg1;
+- (unsigned int)updateWithSFDevice:(id)arg1;
 
 @end
 

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)buttonForChannelDetails:(id)arg1 punchoutURLs:(id)arg2 isEntitled:(BOOL)arg3 isContinuing:(BOOL)arg4 isContainerItem:(BOOL)arg5 seasonNumber:(id)arg6 episodeNumber:(id)arg7;
+- (id)buttonForChannelOffer:(id)arg1 channel:(id)arg2 episode:(id)arg3;
 - (id)buttonForOffer:(id)arg1 playable:(id)arg2;
 - (id)buttonForPlayable:(id)arg1;
 - (id)buttonWithTitle:(id)arg1 subtitle:(id)arg2 punchoutURL:(id)arg3;

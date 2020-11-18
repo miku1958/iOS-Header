@@ -15,5 +15,6 @@
 - (id)redactedPostalAddress;
 - (id)redactedStreetAddress;
 - (id)suggestedCountryCode;
+- (id)webServiceDictionaryRepresentation;
 @end
 

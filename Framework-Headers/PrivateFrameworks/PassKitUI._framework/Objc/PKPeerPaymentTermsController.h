@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitUI/PKPeerPaymentUpdatedTermsViewControllerDelegate-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
 @class NSString, NSURL, PKPeerPaymentWebService, RemoteUIController, UINavigationController, UIViewController;
 
-@interface PKPeerPaymentTermsController : NSObject <RemoteUIControllerDelegate>
+@interface PKPeerPaymentTermsController : NSObject <PKPeerPaymentUpdatedTermsViewControllerDelegate, RemoteUIControllerDelegate>
 {
+    CDUnknownBlockType _completionHandler;
     NSURL *_termsURL;
     NSString *_termsIdentifier;
+    NSString *_passUniqueID;
     PKPeerPaymentWebService *_webService;
     RemoteUIController *_remoteUIController;
     long long _paymentSetupContext;
@@ -28,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (readonly, copy, nonatomic) NSString *passUniqueID; // @synthesize passUniqueID=_passUniqueID;
 @property (nonatomic) long long paymentSetupContext; // @synthesize paymentSetupContext=_paymentSetupContext;
 @property (readonly, nonatomic) RemoteUIController *remoteUIController; // @synthesize remoteUIController=_remoteUIController;
 @property (readonly) Class superclass;
@@ -36,8 +40,11 @@
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
 - (void).cxx_destruct;
-- (id)initWithTermsURL:(id)arg1 termsIdentifier:(id)arg2 webService:(id)arg3;
-- (void)presentTermsOverController:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_presentRemoteUIController;
+- (void)_presentRemoteUIControllerWithUpdatedTermsViewController:(id)arg1;
+- (id)initWithTermsURL:(id)arg1 termsIdentifier:(id)arg2 passUniqueID:(id)arg3 webService:(id)arg4;
+- (void)peerPaymentUpdatedTermsViewController:(id)arg1 didSelectContinue:(BOOL)arg2;
+- (void)presentTermsOverController:(id)arg1 showInterstitialViewController:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 
 @end

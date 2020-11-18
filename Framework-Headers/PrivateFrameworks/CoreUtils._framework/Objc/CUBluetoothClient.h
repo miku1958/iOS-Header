@@ -19,6 +19,11 @@
     BOOL _btCentralManagerNeeded;
     CBPeripheralManager *_btPeripheralManager;
     BOOL _btPeripheralManagerNeeded;
+    struct {
+        CDUnknownFunctionPointerType accessoryEvent;
+    } _btAccessoryCallbacks;
+    BOOL _btAccessoryEventsNeeded;
+    BOOL _btAccessoryEventsRegistered;
     struct BTAccessoryManagerImpl *_btAccessoryManager;
     BOOL _btConnectionDevicesInitialized;
     BOOL _btConnectionEventsNeeded;
@@ -48,6 +53,7 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     unsigned int _flags;
+    unsigned int _statusFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
     CDUnknownBlockType _bluetoothAddressChangedHandler;
@@ -72,9 +78,11 @@
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) unsigned int statusFlags; // @synthesize statusFlags=_statusFlags;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_btAccessoryPlacementChanged:(struct BTAccessoryManagerImpl *)arg1 device:(struct BTDeviceImpl *)arg2;
 - (void)_btEnsureStarted;
 - (void)_btEnsureStopped;
 - (id)_createCUBluetoothDeviceWithBTDevice:(struct BTDeviceImpl *)arg1;
@@ -96,6 +104,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)peripheralManagerDidUpdateState:(id)arg1;
 - (void)updateDevice:(id)arg1 btDevice:(struct BTDeviceImpl *)arg2;
+- (void)updateStatusFlags;
 
 @end
 

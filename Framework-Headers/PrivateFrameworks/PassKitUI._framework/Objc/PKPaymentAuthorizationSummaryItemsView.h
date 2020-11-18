@@ -14,11 +14,13 @@
     NSMutableArray *_valueViews;
     NSMutableArray *_hasBottomPadding;
     UILabel *_titleLabel;
+    BOOL _showsBoldValueText;
     PKPaymentAuthorizationLayout *_layout;
     NSString *_title;
 }
 
 @property (nonatomic) PKPaymentAuthorizationLayout *layout; // @synthesize layout=_layout;
+@property (nonatomic) BOOL showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

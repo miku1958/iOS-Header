@@ -6,12 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSDictionary, PKPaymentTransaction, UITableViewCell;
+@class NSDictionary, PKPaymentTransaction, UIBarButtonItem, UITableViewCell;
 
 @interface PKTransactionDebugDetailsViewController : UITableViewController
 {
     PKPaymentTransaction *_transaction;
     UITableViewCell *_mapsCell;
+    UIBarButtonItem *_shareButton;
     NSDictionary *_transactionDetails;
     NSDictionary *_merchantDetails;
     NSDictionary *_mapsMerchantDetails;

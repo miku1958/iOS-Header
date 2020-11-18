@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL bypassStorage;
 @property (strong, nonatomic) IDSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property (strong, nonatomic) NSNumber *command;
+@property (strong, nonatomic) NSNumber *commandContext;
 @property (nonatomic) BOOL compressPayload;
 @property (nonatomic) BOOL compressed;
 @property (nonatomic) BOOL daemonDeathResend;

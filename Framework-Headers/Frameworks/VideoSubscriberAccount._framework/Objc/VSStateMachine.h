@@ -13,9 +13,9 @@
 {
     int _mode;
     NSString *_name;
+    VSOptional *_currentState;
     id<VSStateMachineDelegate> _delegate;
     NSOperationQueue *_transitionQueue;
-    VSOptional *_currentState;
     NSMutableArray *_enqueuedTransitions;
     NSMutableDictionary *_transitionTable;
     NSMutableDictionary *_ignoredEventsByState;

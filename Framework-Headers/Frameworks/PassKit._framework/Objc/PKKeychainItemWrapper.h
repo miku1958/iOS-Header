@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
 @interface PKKeychainItemWrapper : NSObject
 {
     NSMutableDictionary *keychainItemData;
     NSMutableDictionary *genericPasswordQuery;
     unsigned long long type;
+    NSString *_label;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *genericPasswordQuery; // @synthesize genericPasswordQuery;
 @property (strong, nonatomic) NSMutableDictionary *keychainItemData; // @synthesize keychainItemData;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned long long type; // @synthesize type;
 
 - (void).cxx_destruct;
+- (void)_resetKeychainItem:(BOOL)arg1;
 - (void)applySynchronizableValueToDictionary:(id)arg1;
 - (id)dictionaryToSecItemFormat:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 accessGroup:(id)arg2 serviceName:(id)arg3 type:(unsigned long long)arg4;
 - (id)objectForKey:(id)arg1;
 - (void)resetKeychainItem;
+- (void)resetLocalKeychainItem;
 - (id)secItemFormatToDictionary:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)writeToKeychain;

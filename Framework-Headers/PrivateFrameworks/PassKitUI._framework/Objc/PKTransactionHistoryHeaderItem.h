@@ -17,6 +17,7 @@
     NSString *_peerPaymentCounterpartHandle;
     CNContact *_contact;
     PKPaymentTransactionGroup *_transactionGroup;
+    long long _transactionType;
 }
 
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *peerPaymentCounterpartHandle; // @synthesize peerPaymentCounterpartHandle=_peerPaymentCounterpartHandle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaymentTransactionGroup *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
+@property (nonatomic) long long transactionType; // @synthesize transactionType=_transactionType;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

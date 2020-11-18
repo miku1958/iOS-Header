@@ -11,17 +11,28 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)VideosBundle;
++ (id)VideosUIBundle;
++ (id)colorFromHexStr:(id)arg1;
++ (id)colorFromRGBStr:(id)arg1;
 + (BOOL)contentSizeCategoryIsAccessibility:(id)arg1;
 + (id)createImageProxyForResourceObject:(id)arg1 imageSize:(struct CGSize)arg2;
++ (void)gradientConfigForCollection:(id)arg1 gradientMask:(long long)arg2 properties:(id)arg3 configuration:(CDStruct_fe9bf7bc *)arg4;
++ (struct TVCornerRadii)imageCornerRadiiWithStyle:(long long)arg1;
++ (double)imageCornerRadiusWithStyle:(long long)arg1;
 + (struct CGSize)imageSizeWithAspectRatio:(double)arg1 scaleToSize:(struct CGSize)arg2;
++ (long long)interfaceStyleFromTheme:(id)arg1 defaultInterfaceStyle:(long long)arg2;
 + (BOOL)isAXLargeEnabled:(id)arg1;
 + (BOOL)isAXSmallEnabled:(id)arg1;
 + (BOOL)isIpadLayout;
++ (double)libraryCategoryListWidth;
++ (double)libraryListMarginToGrid;
 + (unsigned long long)minimumNumberOfItemsToEnableSeeAllButton;
++ (id)placeholderImageResourceName:(long long)arg1;
 + (id)randomColor;
 + (double)scaleContentSizeValue:(double)arg1 forTraitCollection:(id)arg2;
++ (double)scaleContentSizeValue:(double)arg1 forTraitCollection:(id)arg2 maximumContentSizeCategory:(id)arg3;
 + (BOOL)shouldInvalidateLayoutWithPreviousTraitCollection:(id)arg1 newTraitCollection:(id)arg2;
++ (long long)textAlignmentWithSemanticContentAttribute:(long long)arg1;
 
 @end
 

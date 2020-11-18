@@ -30,6 +30,7 @@
     NSString *_nonce;
     long long _source;
     NSString *_referrerIdentifier;
+    NSString *_passOwnershipToken;
 }
 
 @property (copy, nonatomic) NSData *FPInfo; // @synthesize FPInfo=_FPInfo;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic) NSString *hostApplicationVersion; // @synthesize hostApplicationVersion=_hostApplicationVersion;
 @property (copy, nonatomic) NSString *issuerIdentifier; // @synthesize issuerIdentifier=_issuerIdentifier;
 @property (copy, nonatomic) NSString *nonce; // @synthesize nonce=_nonce;
+@property (copy, nonatomic) NSString *passOwnershipToken; // @synthesize passOwnershipToken=_passOwnershipToken;
 @property (strong, nonatomic) PKPaymentCredential *paymentCredential; // @synthesize paymentCredential=_paymentCredential;
 @property (copy, nonatomic) NSString *primaryAccountNumber; // @synthesize primaryAccountNumber=_primaryAccountNumber;
 @property (nonatomic) long long primaryAccountNumberInputMethod; // @synthesize primaryAccountNumberInputMethod=_primaryAccountNumberInputMethod;

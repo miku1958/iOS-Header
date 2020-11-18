@@ -10,7 +10,7 @@
 #import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKAppCache, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
+@class IKAppCache, IKAppReloadContext, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKJSViewModelService, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
 @protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate, IKJSInspectorControllerDelegate>
@@ -47,11 +47,12 @@
     NSMutableArray *_onStartQueue;
     NSString *_responseScript;
     NSError *_responseError;
-    id _reloadData;
+    IKAppReloadContext *_reloadContext;
     NSMutableArray *_pendingQueue;
     NSURL *_resolvedBootURL;
     NSMutableArray *_postEvaluationBlocks;
     IKJSFoundation *_jsFoundation;
+    IKJSViewModelService *_jsViewModelService;
     IKViewElementRegistry *_viewElementRegistry;
     IKJSInspectorController *_webInspectorController;
 }
@@ -70,6 +71,7 @@
 @property BOOL isValid; // @synthesize isValid=_isValid;
 @property (strong, nonatomic) JSContext *jsContext; // @synthesize jsContext=_jsContext;
 @property (strong, nonatomic) IKJSFoundation *jsFoundation; // @synthesize jsFoundation=_jsFoundation;
+@property (strong, nonatomic) IKJSViewModelService *jsViewModelService; // @synthesize jsViewModelService=_jsViewModelService;
 @property (nonatomic) BOOL mescalPrimeEnabledForXHRRequests; // @synthesize mescalPrimeEnabledForXHRRequests=_mescalPrimeEnabledForXHRRequests;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
@@ -80,7 +82,7 @@
 @property (strong, nonatomic) NSMutableArray *pendingQueue; // @synthesize pendingQueue=_pendingQueue;
 @property (strong, nonatomic) NSMutableArray *postEvaluationBlocks; // @synthesize postEvaluationBlocks=_postEvaluationBlocks;
 @property (nonatomic, getter=isPrivileged) BOOL privileged; // @synthesize privileged=_privileged;
-@property (strong, nonatomic) id reloadData; // @synthesize reloadData=_reloadData;
+@property (strong, nonatomic) IKAppReloadContext *reloadContext; // @synthesize reloadContext=_reloadContext;
 @property (nonatomic) BOOL remoteInspectionEnabled; // @synthesize remoteInspectionEnabled=_remoteInspectionEnabled;
 @property (readonly, copy, nonatomic) NSURL *resolvedBootURL; // @synthesize resolvedBootURL=_resolvedBootURL;
 @property (strong, nonatomic) NSError *responseError; // @synthesize responseError=_responseError;

@@ -16,6 +16,7 @@
     UIView *_internalInputAccessoryView;
     BOOL _showsDecimalPointButton;
     BOOL _enabled;
+    BOOL _ignoreIntegralNumber;
     BOOL _clearAmountOnFirstKeyboardInput;
     BOOL _showDecimalPointButton;
     BOOL _isFirstKeyboardInput;
@@ -28,8 +29,8 @@
     id<PKEnterCurrencyAmountViewDelegate> _delegate;
     UILabel *_amountLabel;
     PKNumberPadInputView *_numberPad;
-    NSNumberFormatter *_amountFormatter;
     NSDecimalNumberHandler *_roundingBehavior;
+    NSNumberFormatter *_amountFormatter;
     NSNumberFormatter *_currencySymbolAmountFormatter;
     NSString *_amountString;
     double _labelScaleFactor;
@@ -39,7 +40,7 @@
 @property (copy, nonatomic) UIFont *amountFont; // @synthesize amountFont=_amountFont;
 @property (strong, nonatomic) NSNumberFormatter *amountFormatter; // @synthesize amountFormatter=_amountFormatter;
 @property (strong, nonatomic) UILabel *amountLabel; // @synthesize amountLabel=_amountLabel;
-@property (strong, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
+@property (copy, nonatomic) NSString *amountString; // @synthesize amountString=_amountString;
 @property (readonly, nonatomic) UITextField *amountTextField; // @synthesize amountTextField=_amountTextField;
 @property (nonatomic) BOOL clearAmountOnFirstKeyboardInput; // @synthesize clearAmountOnFirstKeyboardInput=_clearAmountOnFirstKeyboardInput;
 @property (strong, nonatomic) NSString *currency; // @synthesize currency=_currency;
@@ -51,9 +52,11 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreIntegralNumber; // @synthesize ignoreIntegralNumber=_ignoreIntegralNumber;
 @property (strong, nonatomic) UIView *inputAccessoryView;
 @property (nonatomic) BOOL isFirstKeyboardInput; // @synthesize isFirstKeyboardInput=_isFirstKeyboardInput;
 @property (copy, nonatomic) NSNumber *kerning; // @synthesize kerning=_kerning;
+@property (copy, nonatomic) UIColor *keyboardColor;
 @property (nonatomic) double labelScaleFactor; // @synthesize labelScaleFactor=_labelScaleFactor;
 @property (nonatomic) struct CGSize lastLayoutBoundsSize; // @synthesize lastLayoutBoundsSize=_lastLayoutBoundsSize;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
@@ -80,6 +83,7 @@
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
 - (void)showKeyboard;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;

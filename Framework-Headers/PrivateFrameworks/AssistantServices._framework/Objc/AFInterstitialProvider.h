@@ -29,7 +29,7 @@
 - (void)_invalidate;
 - (void)_performNextAction;
 - (void)dealloc;
-- (id)initWithStyle:(long long)arg1 recordRoute:(id)arg2 isVoiceTrigger:(BOOL)arg3 isDucking:(BOOL)arg4 isTwoShot:(BOOL)arg5 context:(id)arg6 delegate:(id)arg7;
+- (id)initWithStyle:(long long)arg1 recordRoute:(id)arg2 isVoiceTrigger:(BOOL)arg3 isDucking:(BOOL)arg4 isTwoShot:(BOOL)arg5 speechEndHostTime:(unsigned long long)arg6 context:(id)arg7 delegate:(id)arg8;
 - (void)invalidate;
 
 @end

@@ -6,47 +6,68 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UIImage, VSFontCenter;
+@class NSString, UIButton, UIFont, UIImage, UIStackView, VSFontCenter;
 @protocol VSSetupViewDelegate;
 
 @interface VSSetupView : UIView
 {
     BOOL _shouldShowAppsButton;
     BOOL _shouldShowAboutButton;
+    BOOL _shouldOverrideSkipButtonStyle;
     id<VSSetupViewDelegate> _delegate;
     UIImage *_image;
-    NSString *_caption;
+    NSString *_appName;
+    NSString *_appAgeRatingBadge;
     NSString *_footnote;
     NSString *_title;
     NSString *_message;
     NSString *_beginButtonTitle;
     NSString *_skipButtonTitle;
     NSString *_appsButtonTitle;
-    UIView *_privacyButtonContainer;
+    UIView *_tvProviderPrivacyButtonContainer;
+    UIView *_tvAppPrivacyButtonContainer;
     NSString *_footer;
     VSFontCenter *_fontCenter;
+    UIFont *_defaultSkipButtonFont;
+    UIFont *_skipButtonFont;
+    double _defaultSkipButtonSpacing;
+    UIStackView *_stackView;
+    UIButton *_beginButton;
+    UIButton *_skipButton;
+    UIButton *_appsButton;
 }
 
+@property (strong, nonatomic) NSString *appAgeRatingBadge; // @synthesize appAgeRatingBadge=_appAgeRatingBadge;
+@property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (strong, nonatomic) UIButton *appsButton; // @synthesize appsButton=_appsButton;
 @property (copy, nonatomic) NSString *appsButtonTitle; // @synthesize appsButtonTitle=_appsButtonTitle;
+@property (strong, nonatomic) UIButton *beginButton; // @synthesize beginButton=_beginButton;
 @property (copy, nonatomic) NSString *beginButtonTitle; // @synthesize beginButtonTitle=_beginButtonTitle;
-@property (strong, nonatomic) NSString *caption; // @synthesize caption=_caption;
+@property (strong, nonatomic) UIFont *defaultSkipButtonFont; // @synthesize defaultSkipButtonFont=_defaultSkipButtonFont;
+@property (nonatomic) double defaultSkipButtonSpacing; // @synthesize defaultSkipButtonSpacing=_defaultSkipButtonSpacing;
 @property (weak, nonatomic) id<VSSetupViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) VSFontCenter *fontCenter; // @synthesize fontCenter=_fontCenter;
 @property (copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
 @property (strong, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
-@property (readonly, nonatomic) UIView *privacyButtonContainer; // @synthesize privacyButtonContainer=_privacyButtonContainer;
+@property (nonatomic) BOOL shouldOverrideSkipButtonStyle; // @synthesize shouldOverrideSkipButtonStyle=_shouldOverrideSkipButtonStyle;
 @property (nonatomic) BOOL shouldShowAboutButton; // @synthesize shouldShowAboutButton=_shouldShowAboutButton;
 @property (nonatomic) BOOL shouldShowAppsButton; // @synthesize shouldShowAppsButton=_shouldShowAppsButton;
+@property (strong, nonatomic) UIButton *skipButton; // @synthesize skipButton=_skipButton;
+@property (strong, nonatomic) UIFont *skipButtonFont; // @synthesize skipButtonFont=_skipButtonFont;
 @property (copy, nonatomic) NSString *skipButtonTitle; // @synthesize skipButtonTitle=_skipButtonTitle;
+@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) UIView *tvAppPrivacyButtonContainer; // @synthesize tvAppPrivacyButtonContainer=_tvAppPrivacyButtonContainer;
+@property (readonly, nonatomic) UIView *tvProviderPrivacyButtonContainer; // @synthesize tvProviderPrivacyButtonContainer=_tvProviderPrivacyButtonContainer;
 
 - (void).cxx_destruct;
 - (void)_appsButtonPressed:(id)arg1;
 - (void)_beginButtonPressed:(id)arg1;
 - (void)_skipButtonPressed:(id)arg1;
 - (void)dealloc;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

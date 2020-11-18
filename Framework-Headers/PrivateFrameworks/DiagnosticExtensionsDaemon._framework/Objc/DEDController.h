@@ -8,12 +8,13 @@
 
 #import <DiagnosticExtensionsDaemon/DEDPairingProtocol-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
 @class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
-@interface DEDController : NSObject <DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
+@interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
 {
     BOOL _isDaemon;
     BOOL _started;
@@ -95,7 +96,7 @@
 - (void)configureForSharing:(BOOL)arg1;
 - (void)configurePairingDelegate:(id)arg1;
 - (void)configureWorkerDelegate:(id)arg1;
-- (id)deviceForIdentifier:(id)arg1;
+- (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
 - (id)devicesWithIdentifier:(id)arg1;
 - (void)didDiscoverDevices:(id)arg1;
 - (void)didStartBugSessionWithInfo:(id)arg1;
@@ -109,7 +110,6 @@
 - (id)idsConnection;
 - (BOOL)induceTimeOutIfNeededAndReturnCanProceedWithDevice:(id)arg1 sessionId:(id)arg2;
 - (id)init;
-- (id)knownDevices;
 - (id)knownSessions;
 - (id)persistence;
 - (void)ping;

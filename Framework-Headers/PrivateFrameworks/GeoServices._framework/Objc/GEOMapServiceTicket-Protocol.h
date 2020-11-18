@@ -6,7 +6,7 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOApplicationAuditToken, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
+@class GEOApplicationAuditToken, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @protocol GEOMapServiceTicket <NSObject>
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (readonly, nonatomic) NSArray *displayHeaderSubstitutes;
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
+@property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;

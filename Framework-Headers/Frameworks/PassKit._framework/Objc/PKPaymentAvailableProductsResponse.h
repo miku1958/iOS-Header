@@ -13,10 +13,12 @@
     NSArray *_availableProducts;
 }
 
-@property (readonly, copy, nonatomic) NSArray *availableProducts; // @synthesize availableProducts=_availableProducts;
+@property (readonly, copy, nonatomic) NSArray *availableProducts;
 
 - (void).cxx_destruct;
+- (id)_generateProducts;
 - (id)initWithData:(id)arg1;
+- (BOOL)supportsSecureCoding;
 
 @end
 

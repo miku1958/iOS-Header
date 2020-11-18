@@ -8,11 +8,12 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSString, NTPBAppConfigurationResource, NTPBCacheCoordinatorHints, NTPBDate, NTPBIssueReadingHistoryItem, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBPrivateDataControllerSyncState, NTPBReadingHistoryItem;
+@class NSData, NSString, NTPBAppConfigurationResource, NTPBAsset, NTPBCacheCoordinatorHints, NTPBDate, NTPBIssueReadingHistoryItem, NTPBNetworkSessionList, NTPBPersonalizationLocalData, NTPBPrivateDataControllerSyncState, NTPBReadingHistoryItem;
 
 @interface NTPBKeyValuePair : PBCodable <NSCopying>
 {
     NTPBAppConfigurationResource *_appConfigurationResource;
+    NTPBAsset *_asset;
     NTPBCacheCoordinatorHints *_cacheCoordinatorHintsValue;
     NSData *_dataValue;
     NTPBDate *_dateValue;
@@ -31,10 +32,12 @@
 }
 
 @property (strong, nonatomic) NTPBAppConfigurationResource *appConfigurationResource; // @synthesize appConfigurationResource=_appConfigurationResource;
+@property (strong, nonatomic) NTPBAsset *asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) NTPBCacheCoordinatorHints *cacheCoordinatorHintsValue; // @synthesize cacheCoordinatorHintsValue=_cacheCoordinatorHintsValue;
 @property (strong, nonatomic) NSData *dataValue; // @synthesize dataValue=_dataValue;
 @property (strong, nonatomic) NTPBDate *dateValue; // @synthesize dateValue=_dateValue;
 @property (readonly, nonatomic) BOOL hasAppConfigurationResource;
+@property (readonly, nonatomic) BOOL hasAsset;
 @property (readonly, nonatomic) BOOL hasCacheCoordinatorHintsValue;
 @property (readonly, nonatomic) BOOL hasDataValue;
 @property (readonly, nonatomic) BOOL hasDateValue;

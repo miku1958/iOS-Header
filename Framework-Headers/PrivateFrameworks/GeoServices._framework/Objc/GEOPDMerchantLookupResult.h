@@ -8,14 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class GEOPDCategoryInformation, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOPDMerchantLookupResult : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    GEOPDCategoryInformation *_categoryInfo;
 }
 
+@property (strong, nonatomic) GEOPDCategoryInformation *categoryInfo; // @synthesize categoryInfo=_categoryInfo;
+@property (readonly, nonatomic) BOOL hasCategoryInfo;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;

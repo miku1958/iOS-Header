@@ -14,7 +14,7 @@
 @property BOOL supported; // @synthesize supported=_supported;
 
 + (BOOL)supportsBlueLightReduction;
-- (BOOL)getBlueLightStatus:(CDStruct_f4084295 *)arg1;
+- (BOOL)getBlueLightStatus:(CDStruct_a90444bf *)arg1;
 - (BOOL)getCCT:(float *)arg1;
 - (BOOL)getCCTRange:(CDStruct_869f9c67 *)arg1;
 - (BOOL)getDefaultCCTRange:(CDStruct_869f9c67 *)arg1;

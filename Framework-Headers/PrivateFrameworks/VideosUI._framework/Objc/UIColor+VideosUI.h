@@ -9,9 +9,14 @@
 @interface UIColor (VideosUI)
 + (id)_vui_darkModeKeyBlueColor;
 + (id)_vui_lightModeKeyBlueColor;
++ (id)vui_backgroundGradientColors;
 + (id)vui_imageBorderColor;
 + (id)vui_imageHighlightColor;
 + (id)vui_keyBlueColor;
 + (id)vui_keyBlueHighlightedColor;
++ (id)vui_opacityColorWithType:(long long)arg1 userInterfaceStyle:(long long)arg2;
++ (id)vui_progressBarFillColor;
++ (id)vui_progressBarGradientColors;
+- (id)vui_blendWithColor:(id)arg1 percentage:(double)arg2;
 @end
 

@@ -24,6 +24,7 @@
 
 @property (strong, nonatomic) PKStackedTextItemGroup *content; // @synthesize content=_content;
 @property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
+@property (readonly, nonatomic) double headerPadding;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;

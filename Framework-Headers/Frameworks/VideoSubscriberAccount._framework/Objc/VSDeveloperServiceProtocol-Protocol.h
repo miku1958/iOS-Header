@@ -6,12 +6,14 @@
 
 #import <VideoSubscriberAccount/NSObject-Protocol.h>
 
-@class NSString, VSIdentityProvider;
+@class NSString, VSDeveloperSettings, VSIdentityProvider;
 
 @protocol VSDeveloperServiceProtocol <NSObject>
 - (void)addDeveloperIdentityProvider:(VSIdentityProvider *)arg1 completionHandler:(void (^)(VSFailable *))arg2;
 - (void)fetchDeveloperIdentityProvidersWithCompletionHandler:(void (^)(VSFailable *))arg1;
+- (void)fetchDeveloperSettingsWithCompletionHandler:(void (^)(VSFailable *))arg1;
 - (void)removeDeveloperIdentityProviderWithUniqueID:(NSString *)arg1 completionHandler:(void (^)(VSFailable *))arg2;
+- (void)updateDeveloperSettings:(VSDeveloperSettings *)arg1 completionHandler:(void (^)(VSFailable *))arg2;
 - (void)updateExistingDeveloperIdentityProvider:(VSIdentityProvider *)arg1 completionHandler:(void (^)(VSFailable *))arg2;
 @end
 

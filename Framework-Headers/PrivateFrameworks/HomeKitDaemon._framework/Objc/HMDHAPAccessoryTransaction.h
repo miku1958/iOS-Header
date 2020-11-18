@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/HMDAccessoryTransaction.h>
 
-@class NSArray, NSData, NSDate, NSNumber, NSString;
+@class HMFConnectivityInfo, NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDHAPAccessoryTransaction : HMDAccessoryTransaction
 {
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString *bridgeUUID; // @dynamic bridgeUUID;
 @property (strong, nonatomic) NSData *broadcastKey; // @dynamic broadcastKey;
 @property (strong, nonatomic) NSNumber *certificationStatus; // @dynamic certificationStatus;
+@property (strong, nonatomic) HMFConnectivityInfo *connectivityInfo; // @dynamic connectivityInfo;
 @property (strong, nonatomic) NSNumber *hardwareSupport; // @dynamic hardwareSupport;
 @property (strong, nonatomic) NSNumber *keyUpdatedStateNumber; // @dynamic keyUpdatedStateNumber;
 @property (strong, nonatomic) NSDate *keyUpdatedTime; // @dynamic keyUpdatedTime;

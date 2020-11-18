@@ -13,6 +13,7 @@
 {
     BOOL _flushCancelled;
     BOOL _disableFlushing;
+    BOOL _monitorsLifecycleEvents;
     BOOL _flushOnForeground;
     id<AMSMetricsBagContract> _bagContract;
     NSString *_containerId;
@@ -46,6 +47,7 @@
 @property (nonatomic) long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
 @property (nonatomic) long long maxRequestCount; // @synthesize maxRequestCount=_maxRequestCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
+@property (nonatomic) BOOL monitorsLifecycleEvents; // @synthesize monitorsLifecycleEvents=_monitorsLifecycleEvents;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSMutableSet *requestPromises; // @synthesize requestPromises=_requestPromises;
 

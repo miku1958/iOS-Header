@@ -59,6 +59,7 @@
     NSDate *_firstAudioPacketTimestamp;
     NSObject<OS_dispatch_queue> *_silencePosteriorGeneratorQueue;
     double _elapsedTimeWithNoSpeech;
+    double _trailingSilenceDurationAtEndpoint;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
@@ -109,6 +110,7 @@
 @property (nonatomic) double startWaitTime; // @synthesize startWaitTime=_startWaitTime;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *stateSerialQueue; // @synthesize stateSerialQueue=_stateSerialQueue;
 @property (readonly) Class superclass;
+@property (nonatomic) double trailingSilenceDurationAtEndpoint; // @synthesize trailingSilenceDurationAtEndpoint=_trailingSilenceDurationAtEndpoint;
 @property (nonatomic) BOOL useDefaultServerFeaturesOnClientLag; // @synthesize useDefaultServerFeaturesOnClientLag=_useDefaultServerFeaturesOnClientLag;
 @property (nonatomic) unsigned long long vtEndInSampleCount; // @synthesize vtEndInSampleCount=_vtEndInSampleCount;
 @property (nonatomic) double vtExtraAudioAtStartInMs; // @synthesize vtExtraAudioAtStartInMs=_vtExtraAudioAtStartInMs;

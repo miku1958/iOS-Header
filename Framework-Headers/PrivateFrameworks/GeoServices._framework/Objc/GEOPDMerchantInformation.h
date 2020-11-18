@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSString *_merchantAdditionalData;
     NSString *_merchantAddress;
+    NSString *_merchantCanl;
     NSString *_merchantCity;
     int _merchantCleanConfidenceLevel;
     NSString *_merchantCountryCode;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL hasMerchantAdditionalData;
 @property (readonly, nonatomic) BOOL hasMerchantAddress;
+@property (readonly, nonatomic) BOOL hasMerchantCanl;
 @property (readonly, nonatomic) BOOL hasMerchantCity;
 @property (nonatomic) BOOL hasMerchantCleanConfidenceLevel;
 @property (readonly, nonatomic) BOOL hasMerchantCountryCode;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasMerchantZip;
 @property (strong, nonatomic) NSString *merchantAdditionalData; // @synthesize merchantAdditionalData=_merchantAdditionalData;
 @property (strong, nonatomic) NSString *merchantAddress; // @synthesize merchantAddress=_merchantAddress;
+@property (strong, nonatomic) NSString *merchantCanl; // @synthesize merchantCanl=_merchantCanl;
 @property (strong, nonatomic) NSString *merchantCity; // @synthesize merchantCity=_merchantCity;
 @property (nonatomic) int merchantCleanConfidenceLevel; // @synthesize merchantCleanConfidenceLevel=_merchantCleanConfidenceLevel;
 @property (strong, nonatomic) NSString *merchantCountryCode; // @synthesize merchantCountryCode=_merchantCountryCode;

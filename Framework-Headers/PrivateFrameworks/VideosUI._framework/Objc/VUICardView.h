@@ -6,36 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, TVImageElement, VUICardViewLayoutFactory, _TVImageView;
-@protocol VUIOverlayViewProtocol;
+@class NSArray, NSString, VUIButton, VUICardViewLayoutFactory, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUICardView : UIView
 {
-    BOOL _hasAppImage;
     VUICardViewLayoutFactory *_layoutFactory;
     _TVImageView *_imageView;
     _TVImageView *_appImageView;
     NSArray *_labelViews;
-    UIView<VUIOverlayViewProtocol> *_overlayView;
+    UIView *_overlayView;
+    VUIButton *_button;
     NSString *_debugString;
-    TVImageElement *_imageElement;
-    TVImageElement *_appImageElement;
+    struct CGSize _imageSize;
 }
 
-@property (strong, nonatomic) TVImageElement *appImageElement; // @synthesize appImageElement=_appImageElement;
 @property (strong, nonatomic) _TVImageView *appImageView; // @synthesize appImageView=_appImageView;
+@property (strong, nonatomic) VUIButton *button; // @synthesize button=_button;
 @property (copy, nonatomic) NSString *debugString; // @synthesize debugString=_debugString;
-@property (nonatomic) BOOL hasAppImage; // @synthesize hasAppImage=_hasAppImage;
-@property (strong, nonatomic) TVImageElement *imageElement; // @synthesize imageElement=_imageElement;
+@property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (copy, nonatomic) NSArray *labelViews; // @synthesize labelViews=_labelViews;
 @property (readonly, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;
-@property (strong, nonatomic) UIView<VUIOverlayViewProtocol> *overlayView; // @synthesize overlayView=_overlayView;
+@property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 
 - (void).cxx_destruct;
 - (void)_mainImageLoaded;
-- (double)_textOffset;
+- (double)_maxTextWidthForImagePosition:(long long)arg1 width:(double)arg2 appImageLayout:(id)arg3 textLayout:(id)arg4;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 layoutFactory:(id)arg2;
 - (void)layoutSubviews;

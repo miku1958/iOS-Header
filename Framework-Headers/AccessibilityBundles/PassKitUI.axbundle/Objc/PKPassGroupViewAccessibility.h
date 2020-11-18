@@ -18,8 +18,12 @@
 - (BOOL)_axIsBackFacing;
 - (BOOL)_axIsCardFirstInPile;
 - (BOOL)_axIsOnlyCardInPile;
+- (BOOL)_axMoveCard:(id)arg1 up:(BOOL)arg2;
+- (BOOL)_axMoveCardDown:(id)arg1;
+- (BOOL)_axMoveCardUp:(id)arg1;
 - (struct CGRect)_axSuperAccessibilityFrame;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityCustomActions;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;

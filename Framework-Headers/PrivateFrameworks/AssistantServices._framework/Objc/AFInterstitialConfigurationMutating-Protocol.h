@@ -15,6 +15,7 @@
 - (void)setIsVoiceTrigger:(BOOL)arg1;
 - (void)setLanguageCode:(NSString *)arg1;
 - (void)setRecordRoute:(NSString *)arg1;
+- (void)setSpeechEndHostTime:(unsigned long long)arg1;
 - (void)setStyle:(long long)arg1;
 @end
 

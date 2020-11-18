@@ -12,14 +12,14 @@
 
 @interface SCKDatabaseMemoryStore : NSObject <SCKDatabaseStore>
 {
-    BOOL _backupEnabled;
+    BOOL _cloudBackupEnabled;
     NSDate *_lastSyncDate;
     NSDate *_lastDirtyDate;
     CKServerChangeToken *_serverChangeToken;
     NSMutableDictionary *_zoneStoresByName;
 }
 
-@property (nonatomic, getter=isBackupEnabled) BOOL backupEnabled; // @synthesize backupEnabled=_backupEnabled;
+@property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled; // @synthesize cloudBackupEnabled=_cloudBackupEnabled;
 @property (copy, nonatomic) NSDate *lastDirtyDate; // @synthesize lastDirtyDate=_lastDirtyDate;
 @property (copy, nonatomic) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
 @property (copy, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;

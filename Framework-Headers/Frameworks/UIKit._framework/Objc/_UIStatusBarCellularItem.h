@@ -7,11 +7,13 @@
 #import <UIKitCore/_UIStatusBarItem.h>
 
 @class NSString, _UIStatusBarCellularSignalView, _UIStatusBarImageView, _UIStatusBarStringView;
+@protocol _UIStatusBarCellularItemTypeStringProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularItem : _UIStatusBarItem
 {
     BOOL _showsDisabledSignalBars;
+    id<_UIStatusBarCellularItemTypeStringProvider> _typeStringProvider;
     _UIStatusBarStringView *_serviceNameView;
     _UIStatusBarCellularSignalView *_signalView;
     _UIStatusBarStringView *_networkTypeView;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsDisabledSignalBars; // @synthesize showsDisabledSignalBars=_showsDisabledSignalBars;
 @property (strong, nonatomic) _UIStatusBarCellularSignalView *signalView; // @synthesize signalView=_signalView;
 @property (strong, nonatomic) _UIStatusBarImageView *sosView; // @synthesize sosView=_sosView;
+@property (weak, nonatomic) id<_UIStatusBarCellularItemTypeStringProvider> typeStringProvider; // @synthesize typeStringProvider=_typeStringProvider;
 @property (strong, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
 
 + (id)callForwardingDisplayIdentifier;

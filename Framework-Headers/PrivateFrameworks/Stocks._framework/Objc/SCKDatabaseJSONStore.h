@@ -16,7 +16,7 @@
 
 @interface SCKDatabaseJSONStore : NSObject <SCKOperationThrottlerDelegate, NSFilePresenter, SCKDatabaseStoreCoordinator, SCKDatabaseStore>
 {
-    BOOL _backupEnabled;
+    BOOL _cloudBackupEnabled;
     BOOL _loadedFromDisk;
     BOOL _havePendingChanges;
     unsigned int _lastKnownStoreChangeTag;
@@ -39,8 +39,8 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property (nonatomic, getter=isBackupEnabled) BOOL backupEnabled; // @synthesize backupEnabled=_backupEnabled;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *changeListenerSource; // @synthesize changeListenerSource=_changeListenerSource;
+@property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled; // @synthesize cloudBackupEnabled=_cloudBackupEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long diskReadCount; // @synthesize diskReadCount=_diskReadCount;
@@ -68,7 +68,7 @@
 
 + (id)preferredFileURLForSchema:(id)arg1 parentDirectoryURL:(id)arg2;
 - (void).cxx_destruct;
-- (void)_applyBackupEnabledPropertyToStoreURL;
+- (void)_applyCloudBackupEnabledPropertyToStoreURL;
 - (id)_decodeCodableObjectOfClass:(Class)arg1 from:(id)arg2 error:(id *)arg3;
 - (id)_decodeDate:(id)arg1;
 - (id)_encodeCodableObject:(id)arg1;

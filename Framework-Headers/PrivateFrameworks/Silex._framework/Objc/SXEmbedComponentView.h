@@ -108,7 +108,7 @@
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
-- (void)willPresentComponent;
+- (void)willPresentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 
 @end
 

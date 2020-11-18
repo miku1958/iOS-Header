@@ -49,11 +49,11 @@ __attribute__((visibility("hidden")))
 - (void)_checkEntitlement;
 - (void)_checkPrivacy;
 - (void)_checkSupportedProviders;
-- (void)_determineProviderDisplayName;
+- (void)_determineProviderDisplayNameWithUI:(BOOL)arg1;
 - (void)_finishWithError:(id)arg1;
 - (void)_finishWithSupportedProviders:(id)arg1;
 - (id)_privacyServiceWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_promptForPrivacyWithDisplayName:(id)arg1 providerID:(id)arg2;
+- (void)_promptForPrivacyWithDisplayNameIfRequired:(id)arg1 providerID:(id)arg2 allowUI:(BOOL)arg3;
 - (void)cancel;
 - (void)dealloc;
 - (void)executionDidBegin;

@@ -58,7 +58,7 @@
 - (oneway void)speechRecognizedPartialResult:(id)arg1;
 - (oneway void)speechRecordingDidBeginOnAVRecordRoute:(id)arg1 audioSessionID:(unsigned int)arg2;
 - (oneway void)speechRecordingDidCancel;
-- (oneway void)speechRecordingDidChangeAVRecordRoute:(id)arg1 isDucking:(BOOL)arg2 isTwoShot:(BOOL)arg3;
+- (oneway void)speechRecordingDidChangeAVRecordRoute:(id)arg1 isDucking:(BOOL)arg2 isTwoShot:(BOOL)arg3 speechEndHostTime:(unsigned long long)arg4;
 - (oneway void)speechRecordingDidEnd;
 - (oneway void)speechRecordingDidFail:(id)arg1;
 - (oneway void)speechRecordingDidFinishRecognitionUpdateWithError:(id)arg1;

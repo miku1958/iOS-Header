@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError;
+@class ICAgeVerificationState, NSError;
 @protocol MPCExplicitContentAuthorizationDelegate;
 
 @interface MPCExplicitContentAuthorizationManager : NSObject
@@ -14,19 +14,23 @@
     id<MPCExplicitContentAuthorizationDelegate> _delegate;
     long long _status;
     NSError *_authorizationError;
+    ICAgeVerificationState *_lastKnownAgeVerificationState;
 }
 
-@property (strong, nonatomic) NSError *authorizationError; // @synthesize authorizationError=_authorizationError;
+@property (copy, nonatomic) NSError *authorizationError; // @synthesize authorizationError=_authorizationError;
 @property (readonly, nonatomic) long long authorizationReason;
 @property (weak, nonatomic) id<MPCExplicitContentAuthorizationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) ICAgeVerificationState *lastKnownAgeVerificationState; // @synthesize lastKnownAgeVerificationState=_lastKnownAgeVerificationState;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (BOOL)_askPlaybackAuthorizationForItem:(id)arg1 reason:(long long)arg2;
 - (id)_explicitContentErrorWithUnderlyingError:(id)arg1 message:(id)arg2;
+- (void)_handleAgeVerificationStateDidChangeNotification:(id)arg1;
 - (id)_init;
 - (id)_retrieveAgeVerificationState;
+- (void)_setupNotifications;
 - (void)_setupWithAgeGateForItem:(id)arg1;
 - (void)_setupWithAgeVerificationState:(id)arg1;
 - (BOOL)_shouldAskPlaybackAuthorizationForItem:(id)arg1 reason:(long long)arg2;

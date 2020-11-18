@@ -15,10 +15,12 @@
 @property (strong, nonatomic) NSString *businessCategories; // @dynamic businessCategories;
 @property (nonatomic) unsigned int categories; // @dynamic categories;
 @property (strong, nonatomic) CLSBusinessCacheEntry *entry; // @dynamic entry;
+@property (strong, nonatomic) NSString *isoCountryCode; // @dynamic isoCountryCode;
 @property (nonatomic) double latitude; // @dynamic latitude;
 @property (nonatomic) double longitude; // @dynamic longitude;
 @property (nonatomic) unsigned long long muid; // @dynamic muid;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (strong, nonatomic) NSString *providerID; // @dynamic providerID;
 @property (nonatomic) double radius; // @dynamic radius;
 @property (nonatomic) long long venueCapacity;
 @property (strong, nonatomic) NSNumber *venueCapacityAsNumber; // @dynamic venueCapacityAsNumber;
