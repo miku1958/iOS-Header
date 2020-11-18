@@ -15,6 +15,7 @@
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)amperes;
 + (id)baseUnit;
++ (void)initialize;
 + (id)kiloamperes;
 + (id)megaamperes;
 + (id)microamperes;

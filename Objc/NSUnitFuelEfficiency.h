@@ -13,6 +13,7 @@
 }
 
 + (id)baseUnit;
++ (void)initialize;
 + (id)litersPer100Kilometers;
 + (id)milesPerGallon;
 + (id)milesPerImperialGallon;

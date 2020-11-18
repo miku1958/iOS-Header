@@ -23,6 +23,7 @@
 + (id)furlongs;
 + (id)hectometers;
 + (id)inches;
++ (void)initialize;
 + (id)kilometers;
 + (id)lightyears;
 + (id)megameters;

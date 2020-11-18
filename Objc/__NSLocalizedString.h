@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)fastestEncoding;
 - (id)formatConfiguration;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (id)initWithCoder:(id)arg1;
