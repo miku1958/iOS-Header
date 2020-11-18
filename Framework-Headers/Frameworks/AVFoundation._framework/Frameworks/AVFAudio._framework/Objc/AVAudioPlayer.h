@@ -45,6 +45,7 @@
 - (void)finishedPlaying:(id)arg1;
 - (void)handleInterruption:(id)arg1;
 - (id)impl;
+- (id)init;
 - (id)initBase;
 - (id)initWithContentsOfURL:(id)arg1 error:(id *)arg2;
 - (id)initWithContentsOfURL:(id)arg1 fileTypeHint:(id)arg2 error:(id *)arg3;

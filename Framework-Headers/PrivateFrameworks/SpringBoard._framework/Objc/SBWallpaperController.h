@@ -19,7 +19,7 @@
 #import <SpringBoard/_UISettingsKeyObserver-Protocol.h>
 
 @class NSHashTable, NSMapTable, NSMutableSet, NSString, PTSingleTestRecipe, SBFWallpaperConfigurationManager, SBFWallpaperView, SBRootSettings, SBWallpaperAggdLogger, SBWallpaperStyleInfo, UIGestureRecognizer, UIScreen, UITraitCollection, UIView, UIWindow;
-@protocol SBFIrisWallpaperView, SBUIWallpaperOverlay;
+@protocol BSInvalidatable, SBFIrisWallpaperView, SBUIWallpaperOverlay;
 
 @interface SBWallpaperController : NSObject <SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewInternalObserver, SBUIActiveOrientationObserver, _UISettingsKeyObserver, SBFWallpaperConfigurationManagerDelegate, BSDescriptionProviding, SBWallpaperServerDelegate, SBFWallpaperViewDelegate, SBWallpaperWindowDelegate, UIWindowDelegate, CSWallpaperOverlayHosting>
 {
@@ -32,9 +32,9 @@
     SBFWallpaperView *_sharedWallpaperView;
     NSHashTable *_lockscreenObservers;
     NSHashTable *_homescreenObservers;
-    NSMutableSet *_suspendColorSamplingReasons;
-    NSMutableSet *_suspendWallpaperAnimationReasons;
-    NSMutableSet *_requireWallpaperReasons;
+    NSHashTable *_suspendColorSamplingAssertions;
+    NSHashTable *_suspendWallpaperAnimationAssertions;
+    NSHashTable *_requireWallpaperAssertions;
     NSMutableSet *_hideHomescreenWallpaperReasons;
     NSMutableSet *_hideLockscreenWallpaperReasons;
     long long _displayedVariant;
@@ -44,7 +44,6 @@
     long long _disallowRasterizationBlockCount;
     NSMutableSet *_disallowRasterizationReasonsHomeVariant;
     NSMutableSet *_disallowRasterizationReasonsLockVariant;
-    BOOL _isSuspendingMotionEffectsForStyle;
     NSMutableSet *_homescreenStyleChangeDelayReasons;
     SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
     UIView<SBUIWallpaperOverlay> *_wallpaperOverlay;
@@ -61,10 +60,13 @@
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
     SBRootSettings *_rootSettings;
     UITraitCollection *_fakeBlurViewOverrideTraitCollection;
+    id<BSInvalidatable> _batterySaverAnimationAssertion;
+    id<BSInvalidatable> _wallpaperStyleAnimationAssertion;
 }
 
 @property (readonly, nonatomic, getter=_WallpaperOrientationNotForYou) long long _orientation; // @synthesize _orientation;
 @property (readonly, nonatomic) long long activeOrientationSource;
+@property (strong, nonatomic) id<BSInvalidatable> batterySaverAnimationAssertion; // @synthesize batterySaverAnimationAssertion=_batterySaverAnimationAssertion;
 @property (readonly, copy, nonatomic) NSString *cachingIdentifier; // @synthesize cachingIdentifier=_cachingIdentifier;
 @property (readonly, nonatomic) CDStruct_059c2b36 currentHomescreenStyleTransitionState;
 @property (readonly, copy) NSString *debugDescription;
@@ -86,6 +88,7 @@
 @property (strong, nonatomic) SBWallpaperAggdLogger *wallpaperAggdLogger; // @synthesize wallpaperAggdLogger=_wallpaperAggdLogger;
 @property (readonly, nonatomic) SBFWallpaperConfigurationManager *wallpaperConfigurationManager; // @synthesize wallpaperConfigurationManager=_wallpaperConfigurationManager;
 @property (readonly, nonatomic) UIGestureRecognizer *wallpaperGestureRecognizer;
+@property (strong, nonatomic) id<BSInvalidatable> wallpaperStyleAnimationAssertion; // @synthesize wallpaperStyleAnimationAssertion=_wallpaperStyleAnimationAssertion;
 @property (nonatomic) double windowLevel;
 
 + (id)accessAuthenticator;
@@ -156,7 +159,7 @@
 - (id)averageColorInRect:(struct CGRect)arg1 forVariant:(long long)arg2;
 - (id)averageColorInRect:(struct CGRect)arg1 forVariant:(long long)arg2 withSmudgeRadius:(double)arg3;
 - (void)beginDelayingHomescreenStyleChangesForReason:(id)arg1;
-- (void)beginRequiringWithReason:(id)arg1;
+- (id)beginRequiringWithReason:(id)arg1;
 - (void)cancelInProcessAnimations;
 - (void)cleanupOldSharedWallpaper:(id)arg1 lockSreenWallpaper:(id)arg2 homeScreenWallpaper:(id)arg3;
 - (double)contrastForVariant:(long long)arg1;
@@ -168,11 +171,11 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)endDelayingHomescreenStyleChangesForReason:(id)arg1 animationFactory:(id)arg2;
-- (void)endRequiringWithReason:(id)arg1;
 - (id)init;
 - (id)initWithScreen:(id)arg1 orientation:(long long)arg2 variant:(long long)arg3 wallpaperConfigurationManager:(id)arg4 cachingIdentifier:(id)arg5 rootSettings:(id)arg6;
 - (id)initWithWallpaperConfigurationManager:(id)arg1;
 - (id)initWithWallpaperConfigurationManager:(id)arg1 cachingIdentifier:(id)arg2 rootSettings:(id)arg3;
+- (void)invalidateWallpaperAssertion:(id)arg1;
 - (id)legibilitySettingsForVariant:(long long)arg1;
 - (void)orientationSource:(long long)arg1 didRotateFromInterfaceOrientation:(long long)arg2;
 - (void)orientationSource:(long long)arg1 willAnimateRotationToInterfaceOrientation:(long long)arg2 duration:(double)arg3;
@@ -180,10 +183,11 @@
 - (void)preheatWallpaperForVariant:(long long)arg1;
 - (void)providerLegibilitySettingsChanged:(id)arg1;
 - (id)relinquishHostingOfWallpaperOverlay;
+- (void)removeColorSamplingAssertion:(id)arg1;
 - (void)removeObserver:(id)arg1 forVariant:(long long)arg2;
+- (void)removeWallpaperAnimationAssertion:(id)arg1;
+- (void)removeWallpaperRequiredAssertion:(id)arg1;
 - (BOOL)removeWallpaperStyleForPriority:(long long)arg1 forVariant:(long long)arg2 withAnimationFactory:(id)arg3;
-- (void)resumeColorSamplingForReason:(id)arg1;
-- (void)resumeWallpaperAnimationForReason:(id)arg1;
 - (void)setAlpha:(double)arg1 forWallpaperVariant:(long long)arg2;
 - (void)setDisallowsRasterization:(BOOL)arg1 forVariant:(long long)arg2 withReason:(id)arg3;
 - (void)setHomescreenWallpaperScale:(double)arg1 withAnimationFactory:(id)arg2;
@@ -200,8 +204,8 @@
 - (id)substitutionWallpaperConfigurationForWallpaperConfiguration:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
-- (void)suspendColorSamplingForReason:(id)arg1;
-- (void)suspendWallpaperAnimationForReason:(id)arg1;
+- (id)suspendColorSamplingForReason:(id)arg1;
+- (id)suspendWallpaperAnimationForReason:(id)arg1;
 - (void)updateIrisWallpaperForInteractiveMode;
 - (BOOL)updateIrisWallpaperForStaticMode;
 - (void)updateOrientationAfterSourceChange;

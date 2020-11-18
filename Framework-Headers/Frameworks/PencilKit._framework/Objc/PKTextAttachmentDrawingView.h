@@ -98,6 +98,7 @@
 - (struct CGRect)drawingBounds;
 - (void)drawingDataDidChange:(id)arg1;
 - (void)drawingDidChange;
+- (void)drawingDidEraseStrokes;
 - (void)drawingScrollViewDidScroll:(id)arg1;
 - (void)drawingWillBegin;
 - (void)fingerDrawingEnabledDidChange;

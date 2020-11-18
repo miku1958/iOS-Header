@@ -22,9 +22,10 @@
 
 + (id)identityKind;
 + (id)kindWithModelClass:(Class)arg1;
++ (id)kindWithModelClass:(Class)arg1 cacheKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_initWithModelClass:(Class)arg1;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;

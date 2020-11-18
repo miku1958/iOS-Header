@@ -34,6 +34,7 @@
     NSString *_hostAppLocalizedName;
     NSString *_hostApplicationIdentifier;
     NSString *_bundleIdentifier;
+    NSString *_relevantPassUniqueID;
     NSString *_teamIdentifier;
     CNContact *_shippingEmail;
     CNContact *_shippingPhone;
@@ -57,6 +58,9 @@
     PKDisbursementApplicationInformation *_disbursementApplicationInformation;
     PKBankAccountInformation *_bankAccount;
     PKCurrencyAmount *_peerPaymentBalanceForAccountPayment;
+    NSString *_installmentBindToken;
+    NSString *_installmentGroupIdentifier;
+    NSDecimalNumber *_installmentAuthorizationAmount;
     PKPaymentApplication *_paymentApplication;
     PKPaymentInstructions *_instructions;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
@@ -85,6 +89,9 @@
 @property (strong, nonatomic) NSString *hostAppLocalizedName; // @synthesize hostAppLocalizedName=_hostAppLocalizedName;
 @property (strong, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property (strong, nonatomic) PKRemotePaymentInstrument *initialRemotePaymentInstrument; // @synthesize initialRemotePaymentInstrument=_initialRemotePaymentInstrument;
+@property (strong, nonatomic) NSDecimalNumber *installmentAuthorizationAmount; // @synthesize installmentAuthorizationAmount=_installmentAuthorizationAmount;
+@property (copy, nonatomic) NSString *installmentBindToken; // @synthesize installmentBindToken=_installmentBindToken;
+@property (copy, nonatomic) NSString *installmentGroupIdentifier; // @synthesize installmentGroupIdentifier=_installmentGroupIdentifier;
 @property (strong, nonatomic) PKPaymentInstructions *instructions; // @synthesize instructions=_instructions;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) PKPassLibrary *library; // @synthesize library=_library;
@@ -105,6 +112,7 @@
 @property (strong, nonatomic) NSArray *pendingTransactions; // @synthesize pendingTransactions=_pendingTransactions;
 @property (readonly, nonatomic) BOOL pinRequired;
 @property (strong, nonatomic) PKPaymentOptionsRecents *recents; // @synthesize recents=_recents;
+@property (strong, nonatomic) NSString *relevantPassUniqueID; // @synthesize relevantPassUniqueID=_relevantPassUniqueID;
 @property (strong, nonatomic) PKRemoteDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property (readonly, nonatomic) NSArray *remoteDevices;
 @property (strong, nonatomic) PKRemotePaymentInstrument *remotePaymentInstrument; // @synthesize remotePaymentInstrument=_remotePaymentInstrument;

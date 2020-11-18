@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@class HUTitleDescriptionContentView, NSString, UIActivityIndicatorView;
+@class HUTitleDescriptionContentView, NSString, UIActivityIndicatorView, UIImage, UIImageView;
 @protocol HFStringGenerator;
 
 @interface HUActivityIndicatorCell : UITableViewCell <HUDisableableCellProtocol>
@@ -16,6 +16,7 @@
     BOOL _disabled;
     BOOL _animating;
     HUTitleDescriptionContentView *_titleDescriptionView;
+    UIImageView *_iconImageView;
     UIActivityIndicatorView *_activityIndicatorView;
 }
 
@@ -26,6 +27,8 @@
 @property (strong, nonatomic) id<HFStringGenerator> descriptionText;
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HUTitleDescriptionContentView *titleDescriptionView; // @synthesize titleDescriptionView=_titleDescriptionView;
 @property (strong, nonatomic) id<HFStringGenerator> titleText;
@@ -33,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)_setupConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 
 @end

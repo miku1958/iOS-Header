@@ -12,7 +12,7 @@
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
-@class FCObservable, NFEventManager, NFMultiDelegate, NSHashTable, NSString, NUArticleAdManager, SXScrollViewController, UIScrollView;
+@class FCObservable, NFEventManager, NFMultiDelegate, NSHashTable, NSString, NUArticleAdManager, SXScrollViewController, UIResponder, UIScrollView;
 @protocol NUANFDebugSettingsProvider, NUArticleDataProvider, NUArticleKeyCommandManager, NUDocumentSectionBlueprintProvider, NUEndOfArticleDataProvider, NULoadingDelegate, SXAnalyticsReporting;
 
 @interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUANFDebugSettingsObserver, NULoadable, NUBarCompressible>
@@ -60,6 +60,7 @@
 @property (readonly, nonatomic) NSHashTable *loadingListeners; // @synthesize loadingListeners=_loadingListeners;
 @property (readonly, nonatomic) NFMultiDelegate *multiScrollViewDelegate; // @synthesize multiScrollViewDelegate=_multiScrollViewDelegate;
 @property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
+@property (readonly, nonatomic) UIResponder *responder;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
@@ -67,6 +68,7 @@
 + (id)_parentOrPresentingViewControllerFor:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)accessibilityShouldScrollForScrollViewController:(id)arg1 defaultValue:(BOOL)arg2;
+- (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
 - (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8;
@@ -75,6 +77,7 @@
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)reportEvent:(id)arg1;
+- (BOOL)resignFirstResponder;
 - (void)restoreScrollPositionIfNeeded;
 - (void)scrollToTopAnimated:(BOOL)arg1;
 - (void)scrollViewController:(id)arg1 enableNavigation:(BOOL)arg2;

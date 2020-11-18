@@ -22,10 +22,13 @@
 - (void)_beginLoadingData;
 - (void)_finishLoadingData:(unsigned long long)arg1;
 - (id)_init;
+- (void)_notified_addDonatedActionsForInstalledApps:(id)arg1;
 - (void)_notified_distributeRecentDeletedActions:(id)arg1;
 - (void)_notified_distributeRecentDonatedActions:(id)arg1;
+- (void)_notified_removeDonatedActionsForUninstalledApps:(id)arg1;
 - (void)_notified_removeThenDistributeAllActions:(id)arg1;
 - (void)_queue_distributeAllDonatedActions;
+- (void)_queue_distributeAllDonatedActionsWithIdentifier:(id)arg1;
 - (void)_queue_distributeRecentDeletedActions;
 - (void)_queue_distributeRecentDonatedActions;
 - (BOOL)_shouldLimitQueries;

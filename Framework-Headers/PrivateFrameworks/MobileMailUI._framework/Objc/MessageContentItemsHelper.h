@@ -8,33 +8,47 @@
 
 #import <MobileMailUI/EFLoggable-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, WKWebView;
-@protocol ContentRepresentationHandlingDelegate;
+@class EMMailDropMetadata, NSArray, NSMutableDictionary, NSProgress, NSString, WKWebView;
+@protocol ContentRepresentationHandlingDelegate, EFScheduler;
 
 @interface MessageContentItemsHelper : NSObject <EFLoggable>
 {
     NSMutableDictionary *_elementIDToContentID;
     NSMutableDictionary *_elementIDToWKAttachmentID;
     NSMutableDictionary *_contentIDToDownloadFutures;
+    BOOL _didComputeMailDropProperties;
+    long long _totalUnstartedMailDropDownloadSize;
+    id<EFScheduler> _attachmentsScheduler;
+    NSProgress *_totalMailDropProgress;
+    BOOL _allMailDropsDownloaded;
     WKWebView *_webView;
     NSArray *_contentItems;
     id<ContentRepresentationHandlingDelegate> _representationHandler;
+    EMMailDropMetadata *_mailDropBannerMetadata;
+    unsigned long long _totalMailDropDownloadSize;
+    CDUnknownBlockType _maildropProgressHandler;
 }
 
+@property (nonatomic) BOOL allMailDropsDownloaded; // @synthesize allMailDropsDownloaded=_allMailDropsDownloaded;
 @property (strong, nonatomic) NSArray *contentItems; // @synthesize contentItems=_contentItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) EMMailDropMetadata *mailDropBannerMetadata; // @synthesize mailDropBannerMetadata=_mailDropBannerMetadata;
+@property (copy, nonatomic) CDUnknownBlockType maildropProgressHandler; // @synthesize maildropProgressHandler=_maildropProgressHandler;
 @property (weak, nonatomic) id<ContentRepresentationHandlingDelegate> representationHandler; // @synthesize representationHandler=_representationHandler;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long totalMailDropDownloadSize; // @synthesize totalMailDropDownloadSize=_totalMailDropDownloadSize;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 + (id)log;
 - (void).cxx_destruct;
+- (void)_computeMailDropProperties;
 - (void)_injectAttachmentViewForElementWithSourceAttributeValue:(id)arg1 forContentItem:(id)arg2;
+- (void)_updateProgressFraction:(id)arg1 forContentItem:(id)arg2;
 - (void)associateElementID:(id)arg1 withContentID:(id)arg2;
 - (void)associateElementID:(id)arg1 withWKAttachmentID:(id)arg2;
-- (void)attachmentWasTappedWithContentID:(id)arg1 rect:(struct CGRect)arg2 view:(id)arg3;
+- (void)attachmentWasTappedWithElementID:(id)arg1 rect:(struct CGRect)arg2 view:(id)arg3;
 - (id)contentItemForContentID:(id)arg1;
 - (id)contentItemForElementID:(id)arg1;
 - (long long)displayStateForContentItem:(id)arg1;
@@ -49,7 +63,7 @@
 - (void)setPercentCompleted:(double)arg1 forContentItem:(id)arg2;
 - (void)showMenuForContentItem:(id)arg1 rect:(struct CGRect)arg2 view:(id)arg3;
 - (id)startDownloadForContentItem:(id)arg1 userInitiated:(BOOL)arg2;
-- (void)updateDragItemProvider:(id)arg1 forContentID:(id)arg2;
+- (void)updateDragItemProvider:(id)arg1 forElementID:(id)arg2;
 
 @end
 

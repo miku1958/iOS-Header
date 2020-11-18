@@ -111,6 +111,7 @@
 - (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end
 

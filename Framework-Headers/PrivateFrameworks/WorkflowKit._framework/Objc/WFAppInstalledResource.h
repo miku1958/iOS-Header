@@ -7,36 +7,35 @@
 #import <WorkflowKit/WFResource.h>
 
 #import <WorkflowKit/ICAppInstallStatusObserver-Protocol.h>
-#import <WorkflowKit/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class ICApp, NSString, SKStoreProductViewController;
+@class ICApp, NSObject, NSString, WFiTunesSessionManager;
+@protocol OS_dispatch_queue;
 
-@interface WFAppInstalledResource : WFResource <SKStoreProductViewControllerDelegate, ICAppInstallStatusObserver>
+@interface WFAppInstalledResource : WFResource <ICAppInstallStatusObserver>
 {
-    CDUnknownBlockType _recoveryCompletionHandler;
-    SKStoreProductViewController *_viewController;
+    BOOL _skipLookup;
+    NSString *_appName;
+    WFiTunesSessionManager *_currentAppNameLookupSessionManager;
+    NSObject<OS_dispatch_queue> *_stateQueue;
 }
 
 @property (readonly, nonatomic) ICApp *app;
 @property (readonly, nonatomic) NSString *appIdentifier;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType recoveryCompletionHandler; // @synthesize recoveryCompletionHandler=_recoveryCompletionHandler;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) SKStoreProductViewController *viewController; // @synthesize viewController=_viewController;
+@property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (strong, nonatomic) WFiTunesSessionManager *currentAppNameLookupSessionManager; // @synthesize currentAppNameLookupSessionManager=_currentAppNameLookupSessionManager;
+@property (nonatomic) BOOL skipLookup; // @synthesize skipLookup=_skipLookup;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateQueue; // @synthesize stateQueue=_stateQueue;
 
 + (BOOL)mustBeAvailableForDisplay;
 + (BOOL)refreshesAvailabilityOnApplicationResume;
 - (void).cxx_destruct;
+- (id)appNotInstalledError;
 - (void)appRegistry:(id)arg1 installStatusChangedForApp:(id)arg2;
 - (void)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2 userInterface:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)eventDictionary;
 - (id)initWithDefinition:(id)arg1;
-- (void)productViewControllerDidFinish:(id)arg1;
 - (void)refreshAvailability;
-- (void)showAppStoreForApp:(id)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/PXActionManager.h>
 
-@class NSDictionary, PXCuratedLibraryViewModel;
+@class NSDictionary, PXCuratedLibraryFilterActionPerformer, PXCuratedLibraryViewModel;
 
 @interface PXCuratedLibraryActionManager : PXActionManager
 {
+    PXCuratedLibraryFilterActionPerformer *_filterActionPerformer;
     NSDictionary *_actionPerformersByType;
     NSDictionary *_assetCollectionActionPerformersByType;
     NSDictionary *_constructorSpecificActionPerformersByType;
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) NSDictionary *actionPerformersByType; // @synthesize actionPerformersByType=_actionPerformersByType;
 @property (readonly, nonatomic) NSDictionary *assetCollectionActionPerformersByType; // @synthesize assetCollectionActionPerformersByType=_assetCollectionActionPerformersByType;
 @property (readonly, nonatomic) NSDictionary *constructorSpecificActionPerformersByType; // @synthesize constructorSpecificActionPerformersByType=_constructorSpecificActionPerformersByType;
+@property (readonly) PXCuratedLibraryFilterActionPerformer *filterActionPerformer; // @synthesize filterActionPerformer=_filterActionPerformer;
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 + (id)actionsWithActionPerformers;

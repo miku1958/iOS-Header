@@ -20,10 +20,12 @@
 }
 
 @property (readonly, copy, nonatomic) INCodableLocalizationTable *_localizationTable;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, weak, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedPlaceholder;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
@@ -40,7 +42,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 codableAttribute:(id)arg2;
-- (id)keyPrefix;
 - (id)localizedPlaceholderForLanguage:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 

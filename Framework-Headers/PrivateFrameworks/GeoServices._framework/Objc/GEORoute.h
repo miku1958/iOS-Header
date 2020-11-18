@@ -13,7 +13,6 @@
 @interface GEORoute : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _advisorys;
     CDStruct_9f2792e4 _incidentEndOffsetsInRoutes;
@@ -43,6 +42,9 @@
     NSString *_trafficDescription;
     NSData *_unpackedLatLngVertices;
     NSData *_zilchPoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _arrivalStepID;
     unsigned int _arrivalParameterIndex;
     unsigned int _departureStepID;
@@ -344,6 +346,8 @@
 - (unsigned int)incidentEndOffsetsInRouteAtIndex:(unsigned long long)arg1;
 - (unsigned int)incidentIndicesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)indexForStepID:(unsigned long long)arg1;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isContingentRoute;
 - (BOOL)isContingentRouteFor:(id)arg1 afterPoint:(unsigned int)arg2 mainRoutes:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

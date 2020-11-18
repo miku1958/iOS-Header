@@ -10,7 +10,7 @@
 #import <WorkflowUI/WFSlotTemplateViewDelegate-Protocol.h>
 #import <WorkflowUI/WFVariableDelegate-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSMutableDictionary, NSSet, NSString, UIFont, WFModuleSummaryEditor, WFModuleSummaryTemplateBuilder, WFSlotIdentifier, WFSlotTemplateView, WFVariable;
+@class NSDictionary, NSHashTable, NSMutableDictionary, NSSet, NSString, UIColor, UIFont, WFModuleSummaryEditor, WFModuleSummaryTemplateBuilder, WFSlotIdentifier, WFSlotTemplateView, WFVariable;
 @protocol WFModuleSummaryViewDelegate, WFVariableProvider, WFVariableUIDelegate;
 
 @interface WFModuleSummaryView : UIView <WFSlotTemplateViewDelegate, WFModuleSummaryEditorDelegate, WFVariableDelegate>
@@ -38,6 +38,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFModuleSummaryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *disabledSlotBackgroundColor;
+@property (readonly, nonatomic) UIColor *disabledSlotTitleColor;
 @property (readonly, copy, nonatomic) NSSet *editableParameters; // @synthesize editableParameters=_editableParameters;
 @property (nonatomic) BOOL extendSlotBackgroundOffEdges;
 @property (readonly) unsigned long long hash;
@@ -74,6 +76,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)parameterForKey:(id)arg1;
 - (void)removeElementFromArrayAtIndex:(unsigned long long)arg1 forParameterKey:(id)arg2;
+- (void)setDisabledSlotTitleColor:(id)arg1 backgroundColor:(id)arg2 animated:(BOOL)arg3;
 - (void)setSummaryFormatString:(id)arg1 withParameters:(id)arg2 editableParameters:(id)arg3 parameterStates:(id)arg4;
 - (void)slotTemplateView:(id)arg1 deletePressedOnUnpopulatedSlotWithIdentifier:(id)arg2;
 - (void)slotTemplateView:(id)arg1 didChangeText:(id)arg2 forSlotWithIdentifier:(id)arg3;
@@ -85,13 +88,16 @@
 - (BOOL)slotTemplateView:(id)arg1 shouldChangeText:(id)arg2 forSlotWithIdentifier:(id)arg3;
 - (BOOL)slotTemplateView:(id)arg1 shouldLongPressSlotWithIdentifier:(id)arg2;
 - (BOOL)slotTemplateView:(id)arg1 shouldTapTextAttachment:(id)arg2 inSlotWithIdentifier:(id)arg3;
+- (void)slotTemplateView:(id)arg1 typingDidCopyWithOriginalBlock:(CDUnknownBlockType)arg2;
+- (void)slotTemplateView:(id)arg1 typingDidCutWithOriginalBlock:(CDUnknownBlockType)arg2;
+- (void)slotTemplateView:(id)arg1 typingDidPasteWithOriginalBlock:(CDUnknownBlockType)arg2;
 - (void)slotTemplateView:(id)arg1 willBeginTypingInSlotWithIdentifier:(id)arg2 usingTextEntry:(id)arg3 allowMultipleLines:(BOOL *)arg4;
 - (void)slotTemplateViewDidInvalidateSize:(id)arg1;
 - (void)startEditingForParameterKey:(id)arg1;
 - (void)summaryEditor:(id)arg1 didCommitParameterState:(id)arg2;
 - (void)summaryEditor:(id)arg1 didStageParameterState:(id)arg2;
 - (void)summaryEditor:(id)arg1 willUpdateVariable:(id)arg2;
-- (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(BOOL)arg2;
+- (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(BOOL)arg2 withTextAttachmentToEdit:(id)arg3;
 - (void)summaryEditorDidRequestTextEntry:(id)arg1;
 - (void)tintColorDidChange;
 - (id)transformParameterStateForSerialization:(id)arg1 inEditor:(id)arg2;

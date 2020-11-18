@@ -19,13 +19,13 @@
 - (void)_axUpdateVisibleContentInset;
 - (void)_axUpdateVisibleContentInsetForScrollView:(id)arg1;
 - (void)_initSubviews;
-- (void)_setContentInsetAdjustments:(struct UIEdgeInsets)arg1 forScrollView:(id)arg2;
 - (id)accessibilityActiveTabDocument;
 - (id)accessibilityCurrentWebView;
 - (void)dealloc;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (void)setShowingReader:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)togglePrivateBrowsingEnabled;
+- (void)updateInsetsForBackgroundWebView:(id)arg1;
 
 @end
 

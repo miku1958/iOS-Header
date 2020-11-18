@@ -6,15 +6,15 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
+#import <MediaPlaybackCore/MPCModelPlaybackRequest-Protocol.h>
 #import <MediaPlaybackCore/MPCModelPlaybackRequestEnvironmentConsuming-Protocol.h>
-#import <MediaPlaybackCore/MPCModelPlaybackRequesting-Protocol.h>
 #import <MediaPlaybackCore/MPCModelRequestRTCReporting-Protocol.h>
 #import <MediaPlaybackCore/MPCModelStorePreviousRequestStoring-Protocol.h>
 #import <MediaPlaybackCore/MPModelRequestDetailedKeepLocalStatusRequesting-Protocol.h>
 
 @class MPCPlaybackRequestEnvironment, MPModelResponse, MPSectionedCollection, NSArray, NSString;
 
-@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequesting, MPCModelPlaybackRequestEnvironmentConsuming, MPModelRequestDetailedKeepLocalStatusRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring>
+@interface MPCModelStorePlaybackItemsRequest : MPModelRequest <MPCModelPlaybackRequest, MPCModelPlaybackRequestEnvironmentConsuming, MPModelRequestDetailedKeepLocalStatusRequesting, MPCModelRequestRTCReporting, MPCModelStorePreviousRequestStoring>
 {
     BOOL _shouldBatchResultsWithPlaceholderObjects;
     BOOL _wantsDetailedKeepLocalRequestableResponse;
@@ -34,7 +34,6 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *playbackPrioritizedIndexPaths; // @synthesize playbackPrioritizedIndexPaths=_playbackPrioritizedIndexPaths;
 @property (copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
-@property (readonly, nonatomic) MPSectionedCollection *playbackSourceModelObjects;
 @property (strong, nonatomic) MPModelResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 @property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (copy, nonatomic) MPSectionedCollection *sectionedModelObjects; // @synthesize sectionedModelObjects=_sectionedModelObjects;
@@ -52,7 +51,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
-- (void)setAllowsPlaybackResponseBatching:(BOOL)arg1;
 
 @end
 

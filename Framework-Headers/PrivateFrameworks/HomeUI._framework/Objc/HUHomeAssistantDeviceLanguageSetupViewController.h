@@ -10,7 +10,7 @@
 #import <HomeUI/HUOnboardingWarningPresenter-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUHomeAssistantDeviceLanguageSetupViewController : HUImageOBWelcomeController <HUOnboardingWarningPresenter, HUConfigurationViewController, HUPreloadableViewController>
@@ -23,6 +23,7 @@
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
     NSArray *_supportedMultiUserLanguages;
     NSArray *_homeAssistantDevicesHavingLanguageMismatch;
+    HMHome *_home;
 }
 
 @property (strong, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSArray *homeAssistantDevicesHavingLanguageMismatch; // @synthesize homeAssistantDevicesHavingLanguageMismatch=_homeAssistantDevicesHavingLanguageMismatch;
 @property (nonatomic) BOOL isFinalStep;
 @property (nonatomic) BOOL maxNumberOfVoicesReached; // @synthesize maxNumberOfVoicesReached=_maxNumberOfVoicesReached;
@@ -47,7 +49,7 @@
 - (void)_setupPersonalRequestsItemInfrastructure;
 - (void)_turnOffPersonalRequests;
 - (id)hu_preloadContent;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 - (void)userTappedCancelFromWarning;
 - (void)userTappedContinueFromWarning;
 - (void)viewDidLoad;

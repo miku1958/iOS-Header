@@ -7,7 +7,7 @@
 #import <IMSharedUtilities/IMFileTransfer.h>
 
 @interface IMFileTransfer (IMFileTransfer_CKRecord)
-+ (BOOL)_recordIsValid:(id)arg1;
++ (BOOL)_recordIsInvalid:(id)arg1;
 + (id)_recordType;
 + (BOOL)attachmentRecordHasAsset:(id)arg1;
 + (id)md5HashForRecord:(id)arg1;

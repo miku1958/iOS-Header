@@ -25,6 +25,7 @@
 - (id)initWithDefinition:(id)arg1;
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (id)possibleStates;
+- (id)possibleStatesForLocalization;
 - (void)refreshInstalledApps;
 - (void)removeObservers;
 - (void)wasAddedToWorkflow;

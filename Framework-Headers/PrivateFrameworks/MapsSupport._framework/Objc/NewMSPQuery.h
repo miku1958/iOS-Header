@@ -47,12 +47,17 @@
 - (void)addOrUpdateObject:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addOrUpdateObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)container:(id)arg1 didEditWithNewContents:(id)arg2 orderedEdits:(id)arg3 cause:(long long)arg4 context:(id)arg5;
+- (void)containerDidEraseContents:(id)arg1 fromStorageTypes:(unsigned long long)arg2;
 - (void)fetchContentsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithContainer:(id)arg1 delegate:(id)arg2;
 - (id)initWithContainer:(id)arg1 delegate:(id)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
 - (id)initWithParentQuery:(id)arg1 container:(id)arg2 delegate:(id)arg3 filteredWithBlock:(CDUnknownBlockType)arg4;
 - (BOOL)isObject:(id)arg1 equalTo:(id)arg2;
+- (void)moveObject:(id)arg1 afterObject:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)moveObject:(id)arg1 beforeObject:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)moveObject:(id)arg1 toIndex:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)moveObjectToBack:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)moveObjectToFront:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processContents;
 - (void)processContentsUsingBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processContentsWithCompletion:(CDUnknownBlockType)arg1;

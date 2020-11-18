@@ -8,22 +8,28 @@
 
 #import <HomeUI/HUFeatureOnboardingFlow-Protocol.h>
 
-@class NAFuture, NSDictionary, NSString, UIViewController;
+@class HMHome, NAFuture, NSDictionary, NSString, UIViewController;
 @protocol HUConfigurationViewController;
 
 @interface HULanguageSetupOnboardingFlow : NSObject <HUFeatureOnboardingFlow>
 {
     BOOL _shouldAbortThisOnboardingFlowGroup;
     BOOL _shouldAbortAllOnboarding;
+    BOOL _forceOnboardingFinishedForErrorRecovery;
+    HMHome *_home;
     NAFuture *_onboardingFuture;
     UIViewController<HUConfigurationViewController> *_initialViewController;
     unsigned long long _languageOnboardingFlowType;
     NSDictionary *_usageOptions;
+    NSString *_assistantDeviceIntendedRecognitionLanguage;
 }
 
+@property (strong, nonatomic) NSString *assistantDeviceIntendedRecognitionLanguage; // @synthesize assistantDeviceIntendedRecognitionLanguage=_assistantDeviceIntendedRecognitionLanguage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceOnboardingFinishedForErrorRecovery; // @synthesize forceOnboardingFinishedForErrorRecovery=_forceOnboardingFinishedForErrorRecovery;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController; // @synthesize initialViewController=_initialViewController;
 @property (nonatomic) unsigned long long languageOnboardingFlowType; // @synthesize languageOnboardingFlowType=_languageOnboardingFlowType;
 @property (strong, nonatomic) NAFuture *onboardingFuture; // @synthesize onboardingFuture=_onboardingFuture;
@@ -34,7 +40,7 @@
 
 - (void).cxx_destruct;
 - (id)_determineNextViewControllerWithPriorResults:(id)arg1;
-- (id)initWithUsageOptions:(id)arg1;
+- (id)initWithUsageOptions:(id)arg1 home:(id)arg2;
 - (id)processUserInput:(id)arg1;
 
 @end

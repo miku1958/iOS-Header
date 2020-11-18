@@ -22,6 +22,7 @@
     BOOL _collectAnonymousData;
     BOOL _collectScores;
     BOOL _use2LayerRanking;
+    BOOL _bagEnabled;
     BOOL _resourceMetadataNeedsWrite;
     id<PRSSessionController> _client;
     long long _status;
@@ -48,6 +49,7 @@
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) NSArray *anonymousMetadataUndesiredBundleIDs; // @synthesize anonymousMetadataUndesiredBundleIDs=_anonymousMetadataUndesiredBundleIDs;
 @property (strong, nonatomic) NSSet *appBlacklist; // @synthesize appBlacklist=_appBlacklist;
+@property (readonly, nonatomic, getter=isBagEnabled) BOOL bagEnabled; // @synthesize bagEnabled=_bagEnabled;
 @property (strong) SSPlistDataReader *cep_server_values; // @synthesize cep_server_values=_cep_server_values;
 @property (weak) id<PRSSessionController> client; // @synthesize client=_client;
 @property (nonatomic) BOOL collectAnonymousData; // @synthesize collectAnonymousData=_collectAnonymousData;

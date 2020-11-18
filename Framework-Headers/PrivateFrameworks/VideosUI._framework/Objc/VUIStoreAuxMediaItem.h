@@ -15,10 +15,10 @@
 {
     BOOL _isAudioOnly;
     BOOL _disableResumeMenu;
-    BOOL _isForDownload;
     BOOL _disableScrubbing;
     BOOL _sharedPurchase;
     BOOL _isHLS;
+    BOOL _isForStartingDownload;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
     NSDictionary *_fpsAdditionalServerParams;
@@ -47,7 +47,7 @@
 @property (copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
-@property (nonatomic) BOOL isForDownload; // @synthesize isForDownload=_isForDownload;
+@property (nonatomic) BOOL isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
 @property (nonatomic) BOOL isHLS; // @synthesize isHLS=_isHLS;
 @property (strong, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property (nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
@@ -71,7 +71,7 @@
 - (void)dealloc;
 - (BOOL)hasTrait:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)initWithVideoManagedObject:(id)arg1 externalBookmarkTime:(id)arg2 externalBookmarkTimeStamp:(id)arg3;
+- (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(BOOL)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimeStamp:(id)arg4;
 - (BOOL)isEqualToMediaItem:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -15,10 +15,12 @@
 + (float)_floatValueForKey:(id)arg1 defaultValue:(float)arg2;
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
 + (BOOL)automatchClientPersona;
++ (id)dictionaryRepresentation;
 + (BOOL)disableASMRosters;
-+ (BOOL)enableStableObjectID;
++ (BOOL)enableFileBasedResponses;
 + (BOOL)isInternalOSVariant;
 + (BOOL)persistProgressData;
++ (BOOL)verboseOperationsLogging;
 
 @end
 

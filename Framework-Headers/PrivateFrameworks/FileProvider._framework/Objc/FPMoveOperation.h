@@ -27,10 +27,12 @@
     NSMutableSet *_createdOrFailedRoots;
     NSMutableDictionary *_createdItemsByRoot;
     NSMutableDictionary *_placeholderIDsByRoot;
+    NSMutableDictionary *_URLByResolvedFPItem;
     NSDictionary *_errorsByItem;
     NSDictionary *_transferResults;
     NSMutableDictionary *_progressByRoot;
     BOOL _shouldBounceOnCollision;
+    NSDictionary *_transferLocations;
     NSMutableDictionary *_filenamesByURL;
     CDUnknownBlockType __t_patchActionOperationInfo;
     CDUnknownBlockType __t_remoteOperationWasScheduled;
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL shouldBounceOnCollision; // @synthesize shouldBounceOnCollision=_shouldBounceOnCollision;
 @property (copy, nonatomic) NSDictionary *targetFilenamesByItem; // @synthesize targetFilenamesByItem=__targetFilenamesByItem;
 @property (copy, nonatomic) NSDictionary *targetFilenamesByURL; // @synthesize targetFilenamesByURL=__targetFilenamesByURL;
+@property (readonly, nonatomic) NSDictionary *transferLocations; // @synthesize transferLocations=_transferLocations;
 @property (readonly, nonatomic) NSDictionary *transferResults; // @synthesize transferResults=_transferResults;
 
 - (void).cxx_destruct;
@@ -59,6 +62,7 @@
 - (void)_presendNotifications;
 - (void)_recomputeMoveInfoIfNecessary;
 - (void)_recoverFromCollisionError:(id)arg1 withPolicy:(unsigned long long)arg2;
+- (void)_resolveURLsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_runWithRemoteOperation:(id)arg1;
 - (void)_scheduleAgainAfterErrorRecovery;
 - (void)_t_unblockReader;

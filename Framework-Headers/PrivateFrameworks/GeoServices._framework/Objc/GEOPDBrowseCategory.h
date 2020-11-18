@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBrowseCategory : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_displayString;
     NSString *_popularDisplayToken;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     GEOStyleAttributes *_styleAttributes;
     NSMutableArray *_subCategorys;
     NSData *_suggestionEntryMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _displayMode;
     int _sortOrder;
     int _subCategoryType;
@@ -95,6 +97,8 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)displayModeAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

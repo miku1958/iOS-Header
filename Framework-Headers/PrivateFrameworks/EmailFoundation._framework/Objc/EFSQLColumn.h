@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) double doubleValue;
 @property (readonly, nonatomic) long long index; // @synthesize index=_index;
 @property (readonly, nonatomic) long long int64Value;
+@property (readonly, nonatomic) long long integerValue;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSNumber *numberValue;
 @property (readonly, copy, nonatomic) id objectValue;

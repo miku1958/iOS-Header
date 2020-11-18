@@ -22,7 +22,6 @@
     BOOL _shouldFadeOutWhenReachingTop;
     BOOL _shouldAccomdateAccessibilityButtonLayout;
     BOOL _gradientRespectsSafeArea;
-    BOOL _gradientAlwaysSticksToTop;
     double _buttonHeight;
     double _buttonSpacing;
     double _buttonHorizontalPadding;
@@ -56,7 +55,6 @@
 @property (nonatomic) double fadeOutDistanceFromSafeAreaTop; // @synthesize fadeOutDistanceFromSafeAreaTop=_fadeOutDistanceFromSafeAreaTop;
 @property (nonatomic) double fadeOutMinimumAlpha; // @synthesize fadeOutMinimumAlpha=_fadeOutMinimumAlpha;
 @property (nonatomic) double gradientAlpha; // @synthesize gradientAlpha=_gradientAlpha;
-@property (nonatomic) BOOL gradientAlwaysSticksToTop; // @synthesize gradientAlwaysSticksToTop=_gradientAlwaysSticksToTop;
 @property (nonatomic) double gradientHeight; // @synthesize gradientHeight=_gradientHeight;
 @property (nonatomic) BOOL gradientRespectsSafeArea; // @synthesize gradientRespectsSafeArea=_gradientRespectsSafeArea;
 @property (nonatomic) unsigned long long inlineHeaderStyle; // @synthesize inlineHeaderStyle=_inlineHeaderStyle;

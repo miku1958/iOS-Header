@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface MTLockedFile : NSObject
 {
     int _fd;
+    NSString *_fileName;
 }
 
 @property (nonatomic) int fd; // @synthesize fd=_fd;
+@property (strong, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 
 + (id)lockFile:(id)arg1 openFlags:(int)arg2;
+- (void).cxx_destruct;
 - (void)close;
 - (void)dealloc;
 - (id)fileHandle;
 - (id)initWithFileName:(id)arg1 openFlags:(int)arg2;
+- (void)lockWithPromise:(id)arg1;
 
 @end
 

@@ -37,7 +37,6 @@
 @property (readonly) long long requestType; // @synthesize requestType=_requestType;
 @property (readonly) Class superclass;
 
-+ (id)_fetchableResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2;
 + (id)_resourceInfoForAsset:(id)arg1 resourcesToShare:(id)arg2 includeAllAssetResources:(BOOL)arg3 fulfillOnDemandResources:(BOOL)arg4 error:(id *)arg5;
 + (id)_resourcesToShareForAsset:(id)arg1 error:(id *)arg2;
 + (id)_resourcesToShareForAsset:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -47,8 +46,8 @@
 + (id)indexesForAssetsWithoutThumbnails:(id)arg1 requestType:(long long)arg2;
 + (id)originalsAndFullSizeResourcesToShareForAsset:(id)arg1 fromAvailableResources:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (id)resourceInfoForAsset:(id)arg1 requestType:(long long)arg2 error:(id *)arg3;
-+ (id)resourceInfoKeysForCPLResourceTypesForPhotos;
-+ (id)resourceInfoKeysForCPLResourceTypesForVideos;
++ (id)resourceInfoKeysForResourceTypesForPhotos;
++ (id)resourceInfoKeysForResourceTypesForVideos;
 + (BOOL)setValuesInDictionary:(id)arg1 fromDictionary:(id)arg2 keysToCopy:(id)arg3;
 + (id)singularResourcesToShareForAsset:(id)arg1 fromAvailableResources:(id)arg2 options:(id)arg3 useOriginalResources:(BOOL)arg4 knownUnsupported:(BOOL)arg5 error:(id *)arg6;
 + (id)utiKeysForURLKeys;
@@ -56,7 +55,6 @@
 - (void)_cancelActiveAssetResourceRequests;
 - (void)_didFinishDownloadWithSuccess:(BOOL)arg1 resourceInfo:(id)arg2 error:(id)arg3;
 - (void)_fetchResourcesForDuplicatingAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)_fetchResourcesForEditingAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchResourcesForPickerAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchResourcesForSharingAsset:(id)arg1 options:(id)arg2 networkAccessAllowed:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchResourcesWithOptions:(id)arg1 networkAccessAllowed:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;

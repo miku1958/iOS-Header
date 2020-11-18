@@ -22,7 +22,7 @@
 #import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <SpringBoard/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class DNDAWDMetricsService, DNDNotificationsService, NSArray, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableSet, NSNumberFormatter, NSObject, NSSet, NSString, NSTimer, RSPeerToPeerServerController, SBAccountStoreManager, SBAppStatusBarSettingsAssertion, SBAppSwitcherSystemService, SBApplication, SBApplicationAutoLaunchService, SBApplicationLaunchAlertService, SBBluetoothAccessoryBatteryMonitor, SBCarDoNotDisturbController, SBCardItemsController, SBCombinationHardwareButton, SBDeveloperBuildExpirationTrigger, SBDeviceOrientationUpdateManager, SBExternalDisplayManager, SBFUserAuthenticationController, SBHomeHardwareButton, SBHomeScreenService, SBIdleTimerPolicyAggregator, SBInteractiveScreenshotGestureManager, SBLockHardwareButton, SBLockScreenService, SBMainDisplayInterfaceOrientationAggregator, SBMainWorkspace, SBModalAlertPresentationCoordinator, SBModalAlertPresenter, SBModalUIFluidDismissGestureManager, SBNCNotificationDispatcher, SBPressPrecedenceArbiter, SBProximitySensorManager, SBRemoteAlertHandleServer, SBRemoteTransientOverlaySessionManager, SBRestartManager, SBSStatusBarStyleOverridesAssertion, SBScreenTimeTrackingController, SBScreenshotManager, SBSoftwareUpdatePasscodePolicyManager, SBSpotlightTransientOverlayViewController, SBSpuriousScreenUndimmingAssertion, SBStateDumpService, SBSynchronizeCloudCriticalDataOperation, SBTestAutomationService, SBUIController, SBUserAgent, SBUserSessionController, SBVolumeHardwareButton, SBWidgetController, SSScreenCapturer, STStatusServer, STTelephonyStateProvider, UIWindow;
+@class DNDAWDMetricsService, DNDNotificationsService, NSArray, NSCountedSet, NSDate, NSHashTable, NSMutableArray, NSMutableSet, NSNumberFormatter, NSObject, NSSet, NSString, NSTimer, RSPeerToPeerServerController, SBAccountStoreManager, SBAppStatusBarSettingsAssertion, SBAppSwitcherSystemService, SBApplication, SBApplicationAutoLaunchService, SBApplicationLaunchAlertService, SBBluetoothAccessoryBatteryMonitor, SBCameraHardwareButton, SBCarDoNotDisturbController, SBCardItemsController, SBCombinationHardwareButton, SBDeveloperBuildExpirationTrigger, SBDeviceOrientationUpdateManager, SBExternalDisplayManager, SBFUserAuthenticationController, SBHomeHardwareButton, SBHomeScreenService, SBIdleTimerPolicyAggregator, SBInteractiveScreenshotGestureManager, SBLockHardwareButton, SBLockScreenService, SBMainDisplayInterfaceOrientationAggregator, SBMainWorkspace, SBModalAlertPresentationCoordinator, SBModalAlertPresenter, SBModalUIFluidDismissGestureManager, SBNCNotificationDispatcher, SBPressPrecedenceArbiter, SBProximitySensorManager, SBRemoteAlertHandleServer, SBRemoteTransientOverlaySessionManager, SBRestartManager, SBSStatusBarStyleOverridesAssertion, SBScreenTimeTrackingController, SBScreenshotManager, SBSoftwareUpdatePasscodePolicyManager, SBSpotlightTransientOverlayViewController, SBSpuriousScreenUndimmingAssertion, SBStateDumpService, SBSynchronizeCloudCriticalDataOperation, SBTestAutomationService, SBUIController, SBUserAgent, SBUserSessionController, SBVolumeHardwareButton, SBWidgetController, SSScreenCapturer, STStatusServer, STTelephonyStateProvider, UIWindow;
 @protocol BSInvalidatable, OS_dispatch_source, SBFLockOutStatusProvider, SBIdleTimer, SBProximityBacklightPolicy, SBUIUserAgent;
 
 @interface SpringBoard : UISystemShellApplication <CCUIPPTHostDelegate, MCProfileConnectionObserver, RSPeerToPeerConnectionControllerDataSource, SBRestartManagerDelegate, SBModalAlertPresentationCoordinatorDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, SSScreenCapturerDelegate, SBBacklightControllerObserver, SBInteractiveScreenshotGestureManagerDelegate, SBRemoteTransientOverlaySessionManagerDelegate, SBSpotlightTransientOverlayViewControllerDelegate, _UIApplicationInitializationContextFactory, SBAVSystemControllerCacheObserver, UIApplicationDelegate, SBIdleTimerProviding>
@@ -137,6 +137,7 @@
     SBHomeHardwareButton *_homeHardwareButton;
     SBLockHardwareButton *_lockHardwareButton;
     SBVolumeHardwareButton *_volumeHardwareButton;
+    SBCameraHardwareButton *_cameraHardwareButton;
     SBAccountStoreManager *_accountStoreController;
     SBInteractiveScreenshotGestureManager *_interactiveScreenshotGestureManager;
     SBSoftwareUpdatePasscodePolicyManager *_softwareUpdatePasscodePolicyManager;
@@ -156,6 +157,7 @@
 @property (readonly, nonatomic) SBFUserAuthenticationController *authenticationController; // @synthesize authenticationController=_authenticationController;
 @property (nonatomic, getter=isBatterySaverModeActive) BOOL batterySaverModeActive; // @synthesize batterySaverModeActive=_batterySaverModeActive;
 @property (nonatomic) double bottomEdgeAmbiguousActivationMargin; // @synthesize bottomEdgeAmbiguousActivationMargin=_bottomEdgeAmbiguousActivationMargin;
+@property (readonly, nonatomic) SBCameraHardwareButton *cameraHardwareButton; // @synthesize cameraHardwareButton=_cameraHardwareButton;
 @property (readonly, nonatomic) SBCombinationHardwareButton *combinationHardwareButton; // @synthesize combinationHardwareButton=_combinationHardwareButton;
 @property (strong, nonatomic) NSTimer *daylightSavingsTimer; // @synthesize daylightSavingsTimer=_daylightSavingsTimer;
 @property (readonly, copy) NSString *debugDescription;
@@ -483,6 +485,7 @@
 - (BOOL)canShowLockScreenCameraGrabber;
 - (BOOL)caseIsEnabledAndLatched;
 - (id)coordinatorRequestedIdleTimerBehavior:(id)arg1;
+- (long long)deviceOrientationForDeferredUpdateIfAny;
 - (id)deviceOrientationUpdateDeferralAssertionWithReason:(id)arg1;
 - (void)didDismissMiniAlert;
 - (void)didReceiveMemoryWarning;
@@ -532,6 +535,7 @@
 - (id)menuButtonInterceptApp;
 - (BOOL)menuButtonInterceptAppEnabledForever;
 - (void)modalAlertPresentationCoordinator:(id)arg1 didChangeShowingSystemModalAlert:(BOOL)arg2;
+- (id)modalAlertPresentationCoordinatorRequestedForegroundScenes:(id)arg1;
 - (void)noteBacklightFadeFinished;
 - (void)noteBacklightLevelChanged;
 - (void)noteCaseHardwarePresent;

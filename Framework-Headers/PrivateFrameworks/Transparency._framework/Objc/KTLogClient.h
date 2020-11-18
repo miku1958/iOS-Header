@@ -28,22 +28,25 @@
 + (id)formatEventName:(id)arg1 application:(id)arg2 state:(id)arg3;
 + (id)formatEventName:(id)arg1 state:(id)arg2;
 - (void).cxx_destruct;
+- (void)clearState:(id *)arg1;
 - (BOOL)configurationExpired;
 - (void)configure:(CDUnknownBlockType)arg1;
-- (BOOL)configureFromBag:(id)arg1 error:(id *)arg2;
-- (id)createGETRequestForURL:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
-- (id)createPOSTRequestForURL:(id)arg1 timeout:(double)arg2 contents:(id)arg3 error:(id *)arg4;
-- (void)downloadConsistencyProof:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)configureFromNetworkBag:(id)arg1 error:(id *)arg2;
+- (BOOL)configureWithDisk:(id *)arg1;
+- (id)copyConfigurationBag:(id *)arg1;
+- (void)downloadConsistencyProof:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)downloadPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)downloadQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)downloadQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPublicKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)handleQueryResponseData:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)fetchQuery:(id)arg1 uuid:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)handleQueryResponse:(id)arg1 fetchError:(id)arg2 application:(id)arg3 error:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)processConfigBagData:(id)arg1 error:(id *)arg2;
+- (id)readConfigFromDisk:(id *)arg1;
 - (BOOL)validateConfigBagCertificates:(id)arg1 error:(id *)arg2;
 - (BOOL)validateConfigBagEntries:(id)arg1 error:(id *)arg2;
 - (BOOL)validateConfigBagSignature:(id)arg1 error:(id *)arg2;
 - (BOOL)validateConfigEntries:(id)arg1 error:(id *)arg2;
+- (BOOL)writeConfigToDisk:(id)arg1 error:(id *)arg2;
 
 @end
 

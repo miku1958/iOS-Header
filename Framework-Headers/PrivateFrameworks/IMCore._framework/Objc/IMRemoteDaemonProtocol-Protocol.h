@@ -29,6 +29,7 @@
 - (void)changeGroups:(NSDictionary *)arg1 account:(NSString *)arg2;
 - (void)changeMyStatus:(NSDictionary *)arg1 forAccount:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateDisplayName:(NSString *)arg2;
+- (void)chat:(NSString *)arg1 updateIsBlackholed:(BOOL)arg2;
 - (void)chat:(NSString *)arg1 updateIsFiltered:(BOOL)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressHandle:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
@@ -81,7 +82,6 @@
 - (void)holdBuddyUpdatesAccount:(NSString *)arg1;
 - (void)ignorePendingNicknameUpdatesForHandleIDs:(NSArray *)arg1;
 - (void)importMessage:(NSDictionary *)arg1 isRead:(BOOL)arg2;
-- (void)initiateCNContactBasedChatMerge:(BOOL)arg1;
 - (void)initiatePeriodicSync;
 - (void)initiateQuickSwitch;
 - (void)initiateSync;
@@ -150,6 +150,7 @@
 - (void)requestGroupsAccount:(NSString *)arg1;
 - (void)requestLastMessagesForChats;
 - (void)requestMOCEnabledState;
+- (void)requestNetworkDataAvailability;
 - (void)requestOneTimeCodeStatus;
 - (void)requestPendingACInvites;
 - (void)requestPendingMessages;

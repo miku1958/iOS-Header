@@ -34,8 +34,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConditionPredicate:(id)arg1 thenPredicate:(id)arg2 elsePredicate:(id)arg3;
-- (id)initWithProtobufferDecodableObject:(id)arg1;
-- (id)protobufferEncodableObject;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 
 @end
 

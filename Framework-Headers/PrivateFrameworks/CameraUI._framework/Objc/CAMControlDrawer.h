@@ -6,13 +6,15 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
+#import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMControlDrawerMenuButtonDelegate-Protocol.h>
 #import <CameraUI/UIScrollViewDelegate-Protocol.h>
 
 @class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerTimerButton, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
 @protocol CAMControlDrawerDelegate, CAMControlDrawerExpandableButton, CAMControlDrawerPresentationDelegate;
 
-@interface CAMControlDrawer : UIView <CAMControlDrawerMenuButtonDelegate, UIScrollViewDelegate>
+@interface CAMControlDrawer : UIView <CAMControlDrawerMenuButtonDelegate, UIScrollViewDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
 {
     long long _layoutStyle;
     id<CAMControlDrawerDelegate> _delegate;
@@ -68,6 +70,7 @@
 - (void)_handleControlReleased:(id)arg1;
 - (void)_handleControlValueChanged:(id)arg1;
 - (void)_installControlIfNeededForType:(long long)arg1;
+- (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
 - (void)_layoutApertureSlider;
 - (void)_layoutCustomControlsAnimated:(BOOL)arg1;
 - (void)_layoutFilterScrubberView;
@@ -94,6 +97,7 @@
 - (void)collapseExpandableButtonsAnimated:(BOOL)arg1;
 - (void)expandControlForType:(long long)arg1 animated:(BOOL)arg2;
 - (void)expandableButton:(id)arg1 willChangeExpanded:(BOOL)arg2;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
@@ -101,12 +105,15 @@
 - (void)layoutSubviews;
 - (void)menuButtonDidSelectItem:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setApertureSliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFilterScrubberVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setIntensitySliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLowLightSliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setVisibleControlTypes:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
+- (id)touchingRecognizersToCancel;
 
 @end
 

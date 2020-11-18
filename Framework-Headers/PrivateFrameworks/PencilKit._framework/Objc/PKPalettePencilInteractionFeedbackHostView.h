@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSTimer, PKPalettePencilInteractionFeedbackView, UILayoutGuide;
+@class NSLayoutConstraint, NSTimer, PKPalettePencilInteractionFeedbackView, UILayoutGuide, UIViewFloatAnimatableProperty;
 @protocol PKPalettePencilInteractionFeedbackHostViewDelegate;
 
 @interface PKPalettePencilInteractionFeedbackHostView : UIView
@@ -26,9 +26,11 @@
     NSLayoutConstraint *_pencilInteractionFeedbackViewRightConstraint;
     NSLayoutConstraint *_pencilInteractionFeedbackViewCenterXConstraint;
     NSLayoutConstraint *_pencilInteractionFeedbackViewCenterYConstraint;
+    UIViewFloatAnimatableProperty *_feedbackViewVisibilityAnimatableProperty;
 }
 
 @property (weak, nonatomic) id<PKPalettePencilInteractionFeedbackHostViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *feedbackViewVisibilityAnimatableProperty; // @synthesize feedbackViewVisibilityAnimatableProperty=_feedbackViewVisibilityAnimatableProperty;
 @property (strong, nonatomic) NSLayoutConstraint *layoutGuideCenterXConstraint; // @synthesize layoutGuideCenterXConstraint=_layoutGuideCenterXConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *layoutGuideCenterYConstraint; // @synthesize layoutGuideCenterYConstraint=_layoutGuideCenterYConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *layoutGuideHeightConstraint; // @synthesize layoutGuideHeightConstraint=_layoutGuideHeightConstraint;
@@ -46,6 +48,7 @@
 
 - (void).cxx_destruct;
 - (void)_animatePencilInteractionFeedbackViewToVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_isPencilInteractionFeedbackViewAlmostOffScreen;
 - (long long)_palettePosition;
 - (void)_updateLayoutGuideConstraints;
 - (void)hideFeedbackView;

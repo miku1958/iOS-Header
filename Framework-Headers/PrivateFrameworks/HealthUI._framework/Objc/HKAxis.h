@@ -60,7 +60,7 @@
 - (id)_cachedAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (struct HKRange)_chartRangeForChartRect:(struct CGRect)arg1 zoomScale:(double)arg2 contentOffset:(struct CGPoint)arg3;
 - (void)_drawTextBackgroundWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5 renderView:(id)arg6;
-- (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize *)arg7;
+- (void)_drawTextForModelRange:(id)arg1 inRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 style:(id)arg6 maximumLabelSize:(struct CGSize *)arg7 omitOffscreenLabels:(BOOL)arg8;
 - (id)_gridLinesForModelRange:(id)arg1 axisRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 style:(id)arg5 gridLineType:(long long)arg6;
 - (struct CGRect)_labelBackgroundRectWithLabels:(id)arg1 font:(id)arg2 offset:(double)arg3 rect:(struct CGRect)arg4 style:(id)arg5;
 - (double)_maxLabelWidthFromLabels:(id)arg1 font:(id)arg2;
@@ -78,7 +78,7 @@
 - (long long)dateZoomForZoomScale:(double)arg1;
 - (void)drawBaselineForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5;
 - (void)drawGridlinesForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 blendMode:(int)arg6;
-- (void)drawLabelsWithModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 maximumLabelSize:(struct CGSize *)arg6;
+- (void)drawLabelsWithModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5 maximumLabelSize:(struct CGSize *)arg6 omitOffscreenLabels:(BOOL)arg7;
 - (void)enumerateTickCoordinatesInModelRange:(id)arg1 zoomScale:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)findAxisLabelsInModelRange:(id)arg1 zoomScale:(double)arg2;
 - (id)init;

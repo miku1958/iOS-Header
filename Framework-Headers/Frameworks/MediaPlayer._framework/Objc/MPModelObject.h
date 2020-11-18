@@ -14,7 +14,7 @@
 
 @interface MPModelObject : NSObject <_MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
 {
-    MPModelObject *_originalObject;
+    MPIdentifierSet *_originalIdentifierSet;
     NSMutableDictionary *_storage;
     BOOL _isFinalized;
     MPIdentifierSet *_identifiers;
@@ -33,14 +33,13 @@
 + (void)_indexProperties;
 + (BOOL)_lookupPropertyForSelector:(SEL)arg1 result:(CDUnknownBlockType)arg2;
 + (id)_modelKeyForPropertySelector:(SEL)arg1;
++ (id)classesForSecureCoding;
 + (void)initialize;
 + (void)performWithoutEnforcement:(CDUnknownBlockType)arg1;
 + (id)requiredKeepLocalStatusObservationProperties;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-+ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
@@ -60,8 +59,6 @@
 - (id)newKeepLocalStatusObserverConfiguration;
 - (void)setValue:(id)arg1 forModelKey:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (id)storeItemMetadataRequestItemIdentifier;
-- (BOOL)storeItemMetadataRequestNeedsPersonalization;
 - (id)valueForModelKey:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

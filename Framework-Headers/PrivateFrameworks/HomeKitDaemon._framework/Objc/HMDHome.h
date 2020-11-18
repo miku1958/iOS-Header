@@ -40,6 +40,7 @@
     BOOL _anyBTLEAccessoryReachable;
     BOOL _watchSkipVersionCheck;
     BOOL _ownerTrustZoneCapable;
+    BOOL _migrationNeeded;
     BOOL _multiUserEnabled;
     BOOL _hasAnyUserAcknowledgedCameraRecordingOnboarding;
     BOOL _remoteAccessIsEnabled;
@@ -196,6 +197,7 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (nonatomic, getter=isMigratingAfterResidentChange) BOOL migratingAfterResidentChange; // @synthesize migratingAfterResidentChange=_migratingAfterResidentChange;
+@property BOOL migrationNeeded; // @synthesize migrationNeeded=_migrationNeeded;
 @property (strong, nonatomic) HMDHomeKitVersion *minHomeKitVersionForAccessoryNetworkProtectionChange; // @synthesize minHomeKitVersionForAccessoryNetworkProtectionChange=_minHomeKitVersionForAccessoryNetworkProtectionChange;
 @property (strong, nonatomic) HMDHomeKitVersion *minimumNetworkRouterSupportHomeKitVersion; // @synthesize minimumNetworkRouterSupportHomeKitVersion=_minimumNetworkRouterSupportHomeKitVersion;
 @property (strong, nonatomic) HMFTimer *modifyNotificationsCoalesceTimer; // @synthesize modifyNotificationsCoalesceTimer=_modifyNotificationsCoalesceTimer;
@@ -426,6 +428,7 @@
 - (void)_handleRemoveActionSet:(id)arg1;
 - (void)_handleRemoveActionSetModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
+- (void)_handleRemoveClientConfiguration:(id)arg1;
 - (void)_handleRemoveOutgoingHomeInvitationModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveRoom:(id)arg1;
 - (void)_handleRemoveRoomModel:(id)arg1 message:(id)arg2;
@@ -513,7 +516,10 @@
 - (void)_processAccessoriesToAddForUnpairedAccessory:(id)arg1 certificationStatus:(long long)arg2 accessoryServer:(id)arg3 networkCredential:(id)arg4 message:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_processLegacyPairingRequestForMessage:(id)arg1 cancelPairing:(BOOL)arg2;
 - (void)_processPairingRequestForMessage:(id)arg1 cancelPairing:(BOOL)arg2;
+- (void)_processProductDataForNewlyAddedAccessory:(id)arg1 transaction:(id)arg2;
 - (void)_processUpdatedAccessoryServer:(id)arg1 reAddServices:(BOOL)arg2;
+- (void)_processUpdatedProductDataForAccessory:(id)arg1 hapAccessory:(id)arg2 transaction:(id)arg3;
+- (id)_productDataFromHAPAccessory:(id)arg1;
 - (void)_purgeResidentUsers;
 - (void)_reachabilityChangedForAccessory:(id)arg1 reachable:(BOOL)arg2;
 - (void)_readCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
@@ -522,6 +528,7 @@
 - (void)_redispatchReadForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 responseTuples:(id)arg5 errorResponseTuples:(id)arg6;
 - (void)_redispatchWriteForAccessories:(id)arg1 dispatchGroup:(id)arg2 requestMap:(id)arg3 requestMessage:(id)arg4 source:(unsigned long long)arg5 responseTuples:(id)arg6;
 - (void)_reevaluateAccessoryInfoWithBadgeRefresh:(BOOL)arg1;
+- (void)_refreshCharacteristicValuesOnHomeNotificationEnable;
 - (void)_refreshUserDisplayNames;
 - (void)_registerDeviceForReachabilityNotification:(id)arg1 accessoryList:(id)arg2;
 - (void)_registerForInternalNotifications;
@@ -541,6 +548,8 @@
 - (void)_removeAllHomeContentsAndAccessoryPairings:(BOOL)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_removeAllUsersFromAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeCharacteristic:(id)arg1;
+- (void)_removeClientConfigurationWithIdentifier:(id)arg1;
+- (void)_removeClientConfigurationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeConnectionFromConnectionsDiscoveringSymptomsForNearbyDevices:(id)arg1;
 - (void)_removeCorruptAccessories;
 - (void)_removeMediaSessionWithIdentifier:(id)arg1;
@@ -553,6 +562,7 @@
 - (void)_removeUser:(id)arg1 message:(id)arg2;
 - (void)_removeUserFromContainer:(id)arg1;
 - (void)_removeWithMergeSecondaryAccessory:(id)arg1 removedFromBridgeAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_requestRemoveClientConfigurationWithIdentifier:(id)arg1;
 - (void)_requestUniquePSKClientConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_residentDeviceAvailable;
 - (id)_residentDeviceForResidentUser:(id)arg1;
@@ -599,6 +609,7 @@
 - (void)_updateRemoteReachability:(BOOL)arg1 accessories:(id)arg2;
 - (void)_updateWoWState:(id)arg1;
 - (BOOL)_validateAddingNewTriggerWithName:(id)arg1 message:(id)arg2;
+- (id)_vendorModelEntryForManufacturer:(id)arg1 model:(id)arg2 productData:(id)arg3;
 - (BOOL)_verifyUserManagementPermissionForAccessory:(id)arg1 error:(id *)arg2;
 - (void)_writeCharacteristicValues:(id)arg1 requestMessage:(id)arg2 source:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_writeCharacteristicValuesForAccessories:(id)arg1 writeRequestMap:(id)arg2 responseTuples:(id)arg3 requestMessage:(id)arg4 viaDevice:(id)arg5 source:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
@@ -678,6 +689,7 @@
 - (void)enableNotificationsForDevices:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluateIfMediaPlaybackStateChanged:(id)arg1;
+- (void)evaluateNetworkProtectionAndRouterManagement;
 - (void)evaluateNotificationConditionForCharacteristics:(id)arg1 homePresence:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)evaluatePredicate:(id)arg1;
 - (void)evaluateResidentUpdate;
@@ -702,7 +714,6 @@
 - (void)handleCurrentUserPrivilegeChanged:(id)arg1;
 - (void)handleDidReceiveIDSMessageWithNoListener:(id)arg1;
 - (void)handleEvaluatePredicateMessage:(id)arg1;
-- (void)handleForegroundAppsNotification:(id)arg1;
 - (void)handleHomeUIServiceTermination:(id)arg1;
 - (void)handleNetworkRouterProfileAdded:(id)arg1;
 - (void)handleNetworkRouterProfileRemoved:(id)arg1;
@@ -751,6 +762,7 @@
 - (id)outgoingInvitationWithUUID:(id)arg1;
 - (id)owner;
 - (BOOL)ownerTrustZoneCapable;
+- (id)playbackArchiveWithSessionIdentifier:(id)arg1;
 - (id)prepareUserManagementOperationForUser:(id)arg1 accessories:(id)arg2 type:(unsigned long long)arg3 error:(id *)arg4;
 - (id)prepareUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 type:(unsigned long long)arg3 model:(id)arg4 error:(id *)arg5;
 - (void)reEvaluateHomeHubState;

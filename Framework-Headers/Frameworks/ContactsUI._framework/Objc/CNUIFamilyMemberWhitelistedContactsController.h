@@ -19,7 +19,6 @@
 {
     id<CNUIFamilyMemberContactsPresentation> _familyMemberContactsPresentation;
     FAFamilyMember *_familyMember;
-    long long _status;
     id<CNUIFamilyMemberWhitelistedContactsControllerDelegate> _delegate;
     CNContactStore *_familyMemberScopedContactStore;
     CNContactFormatter *_contactCardWarningFormatter;
@@ -40,9 +39,10 @@
 @property (readonly, nonatomic) NSArray *familyMemberContactItems;
 @property (readonly, nonatomic) id<CNUIFamilyMemberContactsPresentation> familyMemberContactsPresentation; // @synthesize familyMemberContactsPresentation=_familyMemberContactsPresentation;
 @property (readonly, nonatomic) CNContactStore *familyMemberScopedContactStore; // @synthesize familyMemberScopedContactStore=_familyMemberScopedContactStore;
+@property (readonly, nonatomic) long long fetchStatus;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
-@property (readonly, nonatomic) long long status; // @synthesize status=_status;
+@property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
 
 + (id)contactPickerWithDelegate:(id)arg1 familyMember:(id)arg2;
@@ -62,7 +62,6 @@
 - (void)deleteFamilyMemberContactItem:(id)arg1;
 - (void)downtimePickerController:(id)arg1 didFinishWithContacts:(id)arg2;
 - (void)familyMemberContactItemsDidChange;
-- (long long)fetchStatus;
 - (id)generateContactSourceOptionSheet;
 - (id)init;
 - (id)initWithFamilyMember:(id)arg1 familyMemberContactsPresentation:(id)arg2;

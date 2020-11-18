@@ -16,28 +16,36 @@
     PXCuratedLibraryOverlayButtonConfiguration *_userData;
     UIVisualEffectView *_effectView;
     UIView *_contentView;
+    UIView *_solidBackgroundView;
     UIImageView *_iconImageView;
     UILabel *_titleLabel;
+    UILabel *_captionLabel;
     struct CGRect _clippingRect;
+    struct UIEdgeInsets _hitTestInsets;
 }
 
 @property (readonly, copy, nonatomic) NSString *accessibilityLabel;
+@property (strong, nonatomic) UILabel *captionLabel; // @synthesize captionLabel=_captionLabel;
 @property (nonatomic) struct CGRect clippingRect; // @synthesize clippingRect=_clippingRect;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (readonly, nonatomic) BOOL isAccessible;
 @property (readonly, nonatomic) BOOL isContainedInAsset;
+@property (strong, nonatomic) UIView *solidBackgroundView; // @synthesize solidBackgroundView=_solidBackgroundView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (copy, nonatomic) PXCuratedLibraryOverlayButtonConfiguration *userData; // @synthesize userData=_userData;
 
-+ (void)_getSize:(out struct CGSize *)arg1 titleFrame:(out struct CGRect *)arg2 iconFrame:(out struct CGRect *)arg3 forConfiguration:(id)arg4 title:(id)arg5;
++ (void)_getSize:(out struct CGSize *)arg1 titleFrame:(out struct CGRect *)arg2 captionFrame:(out struct CGRect *)arg3 iconFrame:(out struct CGRect *)arg4 forConfiguration:(id)arg5 title:(id)arg6;
 + (struct CGSize)_sizeOfTitle:(id)arg1 withFont:(struct UIFont *)arg2;
 + (id)buttonSizeCache;
++ (id)defaultTitleColor;
++ (struct UIFont *)defaultTitleFont;
 + (id)roundedCornerMaskImage:(CDStruct_2bd92d94)arg1 size:(struct CGSize)arg2;
 + (struct CGSize)sizeWithConfiguration:(id)arg1;
 + (id)titleSizeCache;
@@ -52,6 +60,7 @@
 - (void)becomeReusable;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
 

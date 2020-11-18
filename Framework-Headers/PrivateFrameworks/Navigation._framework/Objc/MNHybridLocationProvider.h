@@ -17,8 +17,6 @@
     unsigned long long _mode;
     double _desiredAccuracy;
     MNCoreLocationProvider *_coreLocationProvider;
-    unsigned long long _activeServices;
-    BOOL _shouldNotifyDelegate;
     id<MNLocationProviderDelegate> _delegate;
 }
 
@@ -46,10 +44,8 @@
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
-- (BOOL)_isSubscribedToService:(unsigned long long)arg1;
+- (void)_setEffectiveAccuracy:(double)arg1;
 - (void)_sharedInit;
-- (void)_subscribeToService:(unsigned long long)arg1;
-- (void)_unsubscribeFromService:(unsigned long long)arg1;
 - (id)coreLocationProvider;
 - (id)init;
 - (id)initWithEffectiveBundle:(id)arg1;

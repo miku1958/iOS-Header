@@ -56,20 +56,20 @@
 
 - (void).cxx_destruct;
 - (void)_clear;
+- (id)_dedupePredictedLocationsOfInterest:(id)arg1;
 - (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)_mergePredictedLocationOfInterest:(id)arg1 otherPredictedLocationOfInterest:(id)arg2;
+- (id)_mergePredictedLocationsOfInterest:(id)arg1;
 - (id)_mergedLocationOfInterest:(id)arg1 otherLocationOfInterest:(id)arg2;
-- (id)_mergedPredictedLocationsOfInterest:(id)arg1;
 - (void)_onLearnedLocationManagerNotification:(id)arg1;
 - (void)_purgeWithReferenceDate:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_setup;
 - (void)_setupEvalMode;
 - (void)_shutdown;
-- (id)_sortedAndMergedPredictedLocationsOfInterest:(id)arg1;
-- (id)_sortedPredictedLocationsOfInterest:(id)arg1;
+- (id)_sortAndDedupePredictedLocationsOfInterest:(id)arg1;
+- (id)_sortPredictedLocationsOfInterest:(id)arg1;
 - (void)_unregisterForNotifications;
 - (void)_updateEvalMode;
 - (void)clear;

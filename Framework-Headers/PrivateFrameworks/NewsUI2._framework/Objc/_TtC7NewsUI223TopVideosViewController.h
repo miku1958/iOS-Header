@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
     MISSING_TYPE *headlineModelFactory;
+    MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *gradientView;
     MISSING_TYPE *config;
     MISSING_TYPE *routableDelegate;

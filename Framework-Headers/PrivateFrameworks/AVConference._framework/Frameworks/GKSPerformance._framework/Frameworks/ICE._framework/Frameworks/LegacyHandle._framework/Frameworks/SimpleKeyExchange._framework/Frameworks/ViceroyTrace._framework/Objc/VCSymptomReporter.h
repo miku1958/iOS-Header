@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (int)reportHighConsecutiveAudioErasures;
 - (int)reportHighTargetQueueSize;
 - (int)reportIDSDataChannelEventUsageError;
+- (int)reportInactiveSlotsInChannelSequence;
+- (int)reportInvalidTransportType;
 - (int)reportKeyFrameNotSpreading;
 - (int)reportKeyIndexNotReceived;
 - (int)reportMediaQueueFlushingTooFrequent;

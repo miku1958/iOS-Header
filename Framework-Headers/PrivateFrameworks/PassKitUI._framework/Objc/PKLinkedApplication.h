@@ -41,7 +41,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useSmallIcon; // @synthesize useSmallIcon=_useSmallIcon;
 
-+ (void)openApplicationWithBundleID:(id)arg1 launchURL:(id)arg2;
++ (id)_openOptionsWithURL:(id)arg1;
 - (void).cxx_destruct;
 - (int)_iconOptionsForItem:(id)arg1;
 - (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2;

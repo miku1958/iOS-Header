@@ -9,7 +9,6 @@
 @interface EKSourceConstraints : NSObject
 {
     CDStruct_6a9d2bb3 _flags;
-    BOOL _eventAvalabilityLimited;
 }
 
 @property (nonatomic) BOOL alarmTriggerIntervalConstrainedToRecurrenceInterval;
@@ -21,7 +20,7 @@
 @property (nonatomic) BOOL canSetAvailability;
 @property (nonatomic) BOOL declinedStatusChangeRequiresNoPendingStatus;
 @property (nonatomic) BOOL deliverySourceOrExternalIDRequiredForResponse;
-@property (nonatomic) BOOL eventAvalabilityLimited; // @synthesize eventAvalabilityLimited=_eventAvalabilityLimited;
+@property (nonatomic) BOOL eventAvailabilityLimited;
 @property (nonatomic) BOOL eventDurationConstrainedToRecurrenceInterval;
 @property (nonatomic) BOOL futureStartDateLimitedToOccurrenceCacheBounds;
 @property (nonatomic) BOOL inviteesCanSeeAttendeeStatuses;
@@ -82,7 +81,6 @@
 @property (nonatomic) BOOL supportsSubscribedCalendars;
 @property (nonatomic) BOOL supportsURLField;
 
-- (BOOL)eventAvailabilityLimited;
 - (id)init;
 - (id)initWithCDBSourceConstraintFlags:(CDStruct_6a9d2bb3)arg1;
 - (BOOL)prohibitsUsingEventOrganizerEmailWhenComposingMail;

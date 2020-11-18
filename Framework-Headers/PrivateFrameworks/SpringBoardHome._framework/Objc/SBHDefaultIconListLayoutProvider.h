@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 + (unsigned long long)currentDeviceScreenType;
++ (id)frameworkFallbackInstance;
 - (void).cxx_destruct;
 - (void)configureClockIconConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;
 - (void)configureFloatyFolderConfiguration:(id)arg1 forScreenType:(unsigned long long)arg2 layoutOptions:(unsigned long long)arg3;

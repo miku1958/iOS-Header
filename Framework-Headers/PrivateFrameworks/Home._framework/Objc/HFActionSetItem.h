@@ -36,6 +36,7 @@
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_mostCommonRoomForActionSet:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)actionSetOperation:(id)arg1 errorFromError:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)executeActionSet;
 - (id)init;

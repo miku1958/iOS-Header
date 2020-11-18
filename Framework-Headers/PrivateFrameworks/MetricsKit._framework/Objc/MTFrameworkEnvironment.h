@@ -15,6 +15,7 @@
 + (id)sharedEnvironment;
 + (void)withEnvironment:(id)arg1 execute:(CDUnknownBlockType)arg2;
 - (id)date;
+- (BOOL)isInternalBuild;
 - (BOOL)isStandardEnvironment;
 - (id)valueForEntitlement:(id)arg1;
 

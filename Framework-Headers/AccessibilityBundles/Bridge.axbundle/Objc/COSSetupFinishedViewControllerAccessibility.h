@@ -14,8 +14,6 @@
 + (id)fakeBackButtonItemForDelegate:(id)arg1 withAction:(SEL)arg2;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (id)init;
 - (void)setIsSyncComplete:(BOOL)arg1;
 
 @end

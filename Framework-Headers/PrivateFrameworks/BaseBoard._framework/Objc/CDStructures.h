@@ -63,6 +63,10 @@ struct __va_list_tag {
     void *_field4;
 };
 
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
 struct mig_subsystem {
     CDUnknownFunctionPointerType _field1;
     int _field2;

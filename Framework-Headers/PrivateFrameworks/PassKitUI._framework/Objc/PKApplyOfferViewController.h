@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKApplyFlowControllerProtocol-Protocol.h>
 
-@class CLInUseAssertion, NSString, PKAccountFlowController, PKApplyOfferCreditCardView, UIView;
+@class CLInUseAssertion, NSString, PKAccountFlowController, PKApplyOfferCreditCardView, PKPaymentInstallmentConfiguration;
 
 @interface PKApplyOfferViewController : PKApplyExplanationViewController <PKApplyFlowControllerProtocol>
 {
@@ -16,8 +16,9 @@
     PKApplyOfferCreditCardView *_offerView;
     NSString *_offerTermsIdentifier;
     CLInUseAssertion *_inUseAssertion;
-    UIView *_heroView;
-    UIView *_cardImageShadowView;
+    BOOL _useCompactLayout;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
+    BOOL _hasSufficientOTBForInstallment;
 }
 
 @property (readonly, copy) NSString *debugDescription;

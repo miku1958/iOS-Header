@@ -24,6 +24,7 @@
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)registerBlocksForNotifications;
 - (void)requestReport;
+- (void)setEmulatedRxPLR:(double)arg1;
 - (void)setEnableLoopbackInterface:(BOOL)arg1;
 - (void)setupNotificationQueue:(id)arg1;
 - (void)updateAudioInjectConfig:(id)arg1;

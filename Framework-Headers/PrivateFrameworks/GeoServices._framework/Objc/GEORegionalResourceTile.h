@@ -13,12 +13,14 @@
 @interface GEORegionalResourceTile : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributions;
     NSMutableArray *_childrens;
     NSMutableArray *_iconChecksums;
     NSMutableArray *_icons;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _x;
     unsigned int _y;
     unsigned int _z;
@@ -85,6 +87,8 @@
 - (id)iconChecksumAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iconChecksumsCount;
 - (unsigned long long)iconsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

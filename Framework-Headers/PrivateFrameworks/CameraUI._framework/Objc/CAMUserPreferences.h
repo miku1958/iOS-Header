@@ -59,6 +59,8 @@
 @property (strong, nonatomic) CAMConflictingControlConfiguration *conflictingControlConfiguration; // @synthesize conflictingControlConfiguration=_conflictingControlConfiguration;
 @property (nonatomic) BOOL didAcknowledgeCTMDescription; // @synthesize didAcknowledgeCTMDescription=_didAcknowledgeCTMDescription;
 @property (nonatomic) BOOL didAcknowledgePortraitModeDescription; // @synthesize didAcknowledgePortraitModeDescription=_didAcknowledgePortraitModeDescription;
+@property (readonly, nonatomic) BOOL didConfirmSlomo1080p240MostCompatible;
+@property (readonly, nonatomic) BOOL didConfirmVideo4k60MostCompatible;
 @property (nonatomic, setter=_setDidResetTorchMode:) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 @property (nonatomic) BOOL forceEnableQRBanners; // @synthesize forceEnableQRBanners=_forceEnableQRBanners;
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
@@ -82,6 +84,7 @@
 @property (readonly, nonatomic) BOOL shouldUseModernHDRBehavior; // @synthesize shouldUseModernHDRBehavior=_shouldUseModernHDRBehavior;
 @property (readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
 @property (nonatomic) long long squareModeLastCapturedEffectFilterType; // @synthesize squareModeLastCapturedEffectFilterType=_squareModeLastCapturedEffectFilterType;
+@property (readonly, nonatomic) BOOL usingMostCompatibleEncoding;
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 @property (readonly, nonatomic, getter=isVideoOverCaptureEnabled) BOOL videoOverCaptureEnabled; // @synthesize videoOverCaptureEnabled=_videoOverCaptureEnabled;
 
@@ -95,6 +98,7 @@
 - (long long)_sanitizeLightingType:(long long)arg1 forMode:(long long)arg2;
 - (id)filterTypesForMode:(long long)arg1;
 - (BOOL)isOverCaptureEnabledForCTMCaptureType:(long long)arg1;
+- (long long)maxSupportedPhotoQualityPrioritizationForMode:(long long)arg1;
 - (long long)ppt_readPortraitLightingType;
 - (BOOL)readPreferencesWithOverrides:(id)arg1 emulationMode:(long long)arg2 callActive:(BOOL)arg3;
 - (BOOL)shouldDisableCameraSwitchingDuringVideoRecordingForMode:(long long)arg1;

@@ -15,6 +15,8 @@
 __attribute__((visibility("hidden")))
 @interface MediaControlsStandaloneEndpointController : MediaControlsEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
 {
+    BOOL _allowsAutomaticResponseLoading;
+    BOOL _endpointDiscovered;
     NSString *_routeUID;
     MPAVRoutingController *_routingController;
     MPMRAVEndpointObserverWrapper *_endpointObserver;
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEndpointDiscovered) BOOL endpointDiscovered; // @synthesize endpointDiscovered=_endpointDiscovered;
 @property (strong, nonatomic) MPMRAVEndpointObserverWrapper *endpointObserver; // @synthesize endpointObserver=_endpointObserver;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
@@ -34,10 +37,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)dealloc;
 - (void)endObserving;
+- (void)endpointController:(id)arg1 willAttemptToConnectToRoute:(id)arg2;
 - (id)initWithEndpoint:(id)arg1;
 - (id)initWithRouteUID:(id)arg1;
 - (id)proxyDelegate;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)setAllowsAutomaticResponseLoading:(BOOL)arg1;
+- (void)setRoute:(id)arg1;
+- (void)updateAllowsAutomaticResponseLoading;
 
 @end
 

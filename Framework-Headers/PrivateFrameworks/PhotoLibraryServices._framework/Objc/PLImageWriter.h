@@ -77,10 +77,10 @@
 - (void)_processDeletePhotoStreamDataJob:(id)arg1 withReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processImportImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processIngestedSyncedAssetJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processJob:(id)arg1;
 - (void)_processReenqueueAssetUUIDsToPhotoStreamJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processSavePhotoStreamImageToCameraRollJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processSyncClientSaveJobsJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processSyncedVideoSaveJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processVideoJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processVideoSaveJob:(id)arg1 completion:(CDUnknownBlockType)arg2;

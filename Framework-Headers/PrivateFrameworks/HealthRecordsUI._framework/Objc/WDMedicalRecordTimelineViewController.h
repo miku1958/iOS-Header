@@ -10,21 +10,23 @@
 #import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
+#import <HealthRecordsUI/HRTimelineHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UIColor, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
+@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider;
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate>
+@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate>
 {
     BOOL _loadingNextPage;
     BOOL _showSearchBar;
     BOOL _showsFilterControl;
     BOOL _enableReconnect;
     BOOL _queryReturned;
+    BOOL _chartabilityDetermined;
     BOOL _cloudSyncActive;
     WDMedicalRecordDisplayItemProvider *_displayItemProvider;
     HRProfile *_profile;
@@ -49,7 +51,7 @@ __attribute__((visibility("hidden")))
     long long _ingestionState;
     unsigned long long _indexManagerState;
     HKCloudSyncObserver *_cloudSyncObserver;
-    UIColor *_previousNavigationBackgroundColor;
+    NSHashTable *_floatingSectionHeaders;
 }
 
 @property (strong, nonatomic) HKClinicalAccount *account; // @synthesize account=_account;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) WDMedicalRecordCategory *category; // @synthesize category=_category;
 @property (strong, nonatomic) HKViewTableViewCell *chartCell; // @synthesize chartCell=_chartCell;
 @property (strong, nonatomic) HROverlayRoomViewController *chartViewController; // @synthesize chartViewController=_chartViewController;
+@property (nonatomic) BOOL chartabilityDetermined; // @synthesize chartabilityDetermined=_chartabilityDetermined;
 @property (nonatomic) BOOL cloudSyncActive; // @synthesize cloudSyncActive=_cloudSyncActive;
 @property (strong, nonatomic) HKCloudSyncObserver *cloudSyncObserver; // @synthesize cloudSyncObserver=_cloudSyncObserver;
 @property (strong, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
@@ -71,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enableReconnect; // @synthesize enableReconnect=_enableReconnect;
 @property (strong, nonatomic) id<HRRecordViewControllerFactory> factory; // @synthesize factory=_factory;
 @property (strong, nonatomic) UIButton *filterButton; // @synthesize filterButton=_filterButton;
+@property (strong, nonatomic) NSHashTable *floatingSectionHeaders; // @synthesize floatingSectionHeaders=_floatingSectionHeaders;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSUUID *highlightedRecordId; // @synthesize highlightedRecordId=_highlightedRecordId;
 @property (nonatomic) unsigned long long indexManagerState; // @synthesize indexManagerState=_indexManagerState;
@@ -78,7 +82,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL loadingNextPage; // @synthesize loadingNextPage=_loadingNextPage;
 @property (strong, nonatomic) id medicalRecordSearchController; // @synthesize medicalRecordSearchController=_medicalRecordSearchController;
 @property (strong, nonatomic) UISearchController *navigationSearchController; // @synthesize navigationSearchController=_navigationSearchController;
-@property (strong, nonatomic) UIColor *previousNavigationBackgroundColor; // @synthesize previousNavigationBackgroundColor=_previousNavigationBackgroundColor;
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) BOOL queryReturned; // @synthesize queryReturned=_queryReturned;
 @property (strong, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
@@ -112,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeSearchController;
 - (void)_removeSystemStatusObservers;
 - (id)_sampleTypesToDisplay;
+- (void)_scrollToHighlightedRecordIfNeeded;
 - (void)_scrollToRecordWithUUID:(id)arg1 animated:(BOOL)arg2;
 - (void)_searchControllerHasQueryChange:(id)arg1;
 - (long long)_sectionTypeForSectionIndex:(long long)arg1;
@@ -137,6 +141,8 @@ __attribute__((visibility("hidden")))
 - (void)conceptStore:(id)arg1 indexManagerDidChangeState:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)filterSettingsViewControllerWithDidSelectCategories:(id)arg1 accounts:(id)arg2;
+- (void)headerViewDidBeginFloating:(id)arg1;
+- (void)headerViewDidEndFloating:(id)arg1;
 - (void)healthRecordsStore:(id)arg1 accountDidChange:(id)arg2 changeType:(long long)arg3;
 - (void)healthRecordsStore:(id)arg1 ingestionStateDidUpdateTo:(long long)arg2;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 account:(id)arg3 showInitialSearchBar:(BOOL)arg4 enableReconnect:(BOOL)arg5;
@@ -161,7 +167,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

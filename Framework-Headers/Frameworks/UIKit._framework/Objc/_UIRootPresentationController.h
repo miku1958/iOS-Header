@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)_allowsDeferredTransitions;
 - (void).cxx_destruct;
 - (id)_fullscreenPresentationSuperview;
-- (BOOL)_inheritsPresentingViewControllerThemeLevel;
 - (BOOL)_isRootPresentation;
 - (BOOL)_mayChildGrabPresentedViewControllerView;
 - (id)_parentTraitEnvironment;

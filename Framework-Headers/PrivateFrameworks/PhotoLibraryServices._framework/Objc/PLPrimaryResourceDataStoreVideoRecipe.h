@@ -21,9 +21,10 @@
 - (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;
 - (id)description;
 - (id)expectedFileURLForVersion:(unsigned int)arg1 asset:(id)arg2;
-- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 progress:(id *)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)generateAndStoreForAssetWithPriority:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 isHighPriority:(BOOL)arg4 progress:(id *)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 progress:(id *)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)generateAndStoreForAssetWithPriority:(id)arg1 version:(unsigned int)arg2 imageConversionClient:(id)arg3 videoConversionClient:(id)arg4 isHighPriority:(BOOL)arg5 progress:(id *)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)initWithRecipeID:(unsigned int)arg1;
+- (BOOL)isMarkedFullSize;
 - (id)supportedVersionsForLocalResourceGeneration;
 - (id)utiInContext:(id)arg1;
 

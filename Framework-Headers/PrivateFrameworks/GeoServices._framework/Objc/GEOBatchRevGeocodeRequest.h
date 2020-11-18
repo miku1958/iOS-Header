@@ -14,20 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOBatchRevGeocodeRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _additionalPlaceTypes;
     NSString *_deviceCountryCode;
+    NSString *_deviceSku;
     NSString *_displayRegion;
     NSMutableArray *_locations;
     NSMutableArray *_serviceTags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_additionalPlaceTypes:1;
         unsigned int read_deviceCountryCode:1;
+        unsigned int read_deviceSku:1;
         unsigned int read_displayRegion:1;
         unsigned int read_locations:1;
         unsigned int read_serviceTags:1;
         unsigned int wrote_additionalPlaceTypes:1;
         unsigned int wrote_deviceCountryCode:1;
+        unsigned int wrote_deviceSku:1;
         unsigned int wrote_displayRegion:1;
         unsigned int wrote_locations:1;
         unsigned int wrote_serviceTags:1;
@@ -37,8 +42,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int *additionalPlaceTypes;
 @property (readonly, nonatomic) unsigned long long additionalPlaceTypesCount;
 @property (strong, nonatomic) NSString *deviceCountryCode;
+@property (strong, nonatomic) NSString *deviceSku;
 @property (strong, nonatomic) NSString *displayRegion;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
+@property (readonly, nonatomic) BOOL hasDeviceSku;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (strong, nonatomic) NSMutableArray *locations;
 @property (strong, nonatomic) NSMutableArray *serviceTags;
@@ -53,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_addNoFlagsServiceTag:(id)arg1;
 - (void)_readAdditionalPlaceTypes;
 - (void)_readDeviceCountryCode;
+- (void)_readDeviceSku;
 - (void)_readDisplayRegion;
 - (void)_readLocations;
 - (void)_readServiceTags;
@@ -71,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;

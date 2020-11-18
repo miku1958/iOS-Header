@@ -8,7 +8,10 @@
 
 @interface HFErrorHandler : NSObject
 {
+    BOOL _presentingAlert;
 }
+
+@property (nonatomic, getter=isPresentingAlert) BOOL presentingAlert; // @synthesize presentingAlert=_presentingAlert;
 
 + (id)_descriptionForHFErrorCode:(long long)arg1;
 + (id)_descriptionForHMErrorCode:(long long)arg1;
@@ -23,6 +26,7 @@
 - (void)handleError:(id)arg1;
 - (void)handleError:(id)arg1 operationType:(id)arg2 options:(id)arg3 retryBlock:(CDUnknownBlockType)arg4 cancelBlock:(CDUnknownBlockType)arg5;
 - (void)handleError:(id)arg1 retryBlock:(CDUnknownBlockType)arg2 cancelBlock:(CDUnknownBlockType)arg3;
+- (id)init;
 - (void)logError:(id)arg1 operationDescription:(id)arg2;
 
 @end

@@ -6,13 +6,14 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFHomeKitItemProtocol-Protocol.h>
+#import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HFDiscoveredAccessory, NSString;
-@protocol HFHomeKitObject;
+@class HFDiscoveredAccessory, HMHome, NSSet, NSString;
+@protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFDiscoveredAccessoryItem : HFItem <HFHomeKitItemProtocol>
+@interface HFDiscoveredAccessoryItem : HFItem <HFServiceLikeItem>
 {
+    id<HFCharacteristicValueSource> _valueSource;
     HFDiscoveredAccessory *_discoveredAccessory;
 }
 
@@ -20,13 +21,21 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessory; // @synthesize discoveredAccessory=_discoveredAccessory;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)accessories;
+- (id)copyWithValueSource:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithDiscoveredAccessory:(id)arg1;
+- (id)initWithDiscoveredAccessory:(id)arg1 valueSource:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 
 @end
 

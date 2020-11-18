@@ -18,6 +18,7 @@
 - (BOOL)_accessibilityAlwaysReturnsChild;
 - (BOOL)_accessibilityAvoidsMockViewContainers;
 - (id)_accessibilityCellEditingControl;
+- (id)_accessibilityCellReorderControl;
 - (id)_accessibilityChildren;
 - (void)_accessibilityClearChildren;
 - (BOOL)_accessibilityClientIgnoresReorderControl;

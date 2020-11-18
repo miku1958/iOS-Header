@@ -27,7 +27,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
 - (void)setProgressDidSetupHandler:(CDUnknownBlockType)arg1;
-- (void)startTrackingFileURL:(id)arg1;
+- (void)startTrackingFileURL:(id)arg1 kind:(id)arg2;
 - (void)stopTrackingIfStarted;
 
 @end

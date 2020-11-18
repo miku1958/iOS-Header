@@ -39,7 +39,7 @@
 - (id)getExperts;
 - (id)init;
 - (id)initWithAlgorithmMetricCalculator:(id)arg1 contactsManager:(id)arg2 distanceCalculator:(id)arg3 learnedLocationStore:(id)arg4 mapServiceManager:(id)arg5 mapsSupportManager:(id)arg6 platform:(id)arg7 queue:(id)arg8;
-- (BOOL)isRottedMeCard:(id)arg1 inferredHome:(id)arg2;
+- (BOOL)isRottedMeCard:(id)arg1 inferredPlace:(id)arg2;
 - (id)mergeExistingPlaces:(id)arg1 intoUpdatedPlace:(id)arg2 typesInMeCard:(id)arg3;
 - (BOOL)processExpertClassifications:(id)arg1 error:(id *)arg2;
 - (id)replaceBusinessMapItemWithReverseGeocodedMapItemForHome:(id)arg1;

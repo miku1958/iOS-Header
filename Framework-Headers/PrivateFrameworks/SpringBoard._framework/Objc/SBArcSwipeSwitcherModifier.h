@@ -15,7 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (long long)backdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct _NSRange)fullSizeSnapshotsRange;
@@ -28,12 +27,13 @@
 - (BOOL)isWallpaperRequiredForSwitcher;
 - (long long)keyboardSuppressionMode;
 - (id)layoutSettings;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;
 
 @end

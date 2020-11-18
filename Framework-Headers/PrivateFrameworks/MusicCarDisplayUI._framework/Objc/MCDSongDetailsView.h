@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (double)_preferredHeight;
 - (void)_updateFont;
+- (void)_updateNumberOfLines;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

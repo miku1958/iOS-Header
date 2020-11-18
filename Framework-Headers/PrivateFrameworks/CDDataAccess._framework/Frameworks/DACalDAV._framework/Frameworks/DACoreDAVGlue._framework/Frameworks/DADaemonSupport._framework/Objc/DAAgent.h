@@ -26,6 +26,7 @@
 @property (nonatomic) BOOL syncWhenReachable; // @synthesize syncWhenReachable=_syncWhenReachable;
 @property (readonly, nonatomic) DATrustHandler *trustHandler;
 
++ (id)launchingAgentWithAccount:(id)arg1;
 - (void).cxx_destruct;
 - (void)_reachabilityChanged:(id)arg1;
 - (id)description;

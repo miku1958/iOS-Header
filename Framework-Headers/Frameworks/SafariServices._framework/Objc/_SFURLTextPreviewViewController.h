@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSURL, _SFURLTextPreviewView, _WKActivatedElementInfo;
+@class NSArray, NSURL, _SFLinkPreviewHeader, _SFURLTextPreviewView, _WKActivatedElementInfo;
 
 @interface _SFURLTextPreviewViewController : UIViewController
 {
     NSArray *_linkActions;
     _WKActivatedElementInfo *_activatedElementInfo;
+    _SFLinkPreviewHeader *_previewHeader;
     NSURL *_URL;
     _SFURLTextPreviewView *_previewView;
 }
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)_activatedElementInfo;
 - (id)_linkActions;
+- (id)_previewHeader;
 - (void)_setActivatedElementInfo:(id)arg1;
 - (void)_setLinkActions:(id)arg1;
 - (id)initWithURL:(id)arg1;

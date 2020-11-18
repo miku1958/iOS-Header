@@ -22,6 +22,7 @@
     NSMutableArray *_activeProtocols;
     HMDDataStreamSetup *_setupInProgress;
     CDUnknownBlockType _dataStreamFactory;
+    NSString *_logIdentifier;
 }
 
 @property (weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
@@ -31,6 +32,7 @@
 @property (strong, nonatomic) HMDDataStream *defaultDataStream; // @synthesize defaultDataStream=_defaultDataStream;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong, nonatomic) HMDDataStreamSetup *setupInProgress; // @synthesize setupInProgress=_setupInProgress;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsDataStreamOverTCP; // @synthesize supportsDataStreamOverTCP=_supportsDataStreamOverTCP;

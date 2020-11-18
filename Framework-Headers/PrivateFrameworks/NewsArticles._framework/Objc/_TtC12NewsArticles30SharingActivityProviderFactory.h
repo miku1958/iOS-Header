@@ -15,6 +15,7 @@
     MISSING_TYPE *coordinator;
     MISSING_TYPE *overlayAlertPresenter;
     MISSING_TYPE *activityTypeProvider;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

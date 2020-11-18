@@ -13,12 +13,14 @@
 @interface GEORPProblemStatus : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _creationDate;
     GEORPDetails *_details;
     GEORPNotification *_notification;
     NSString *_problemId;
     GEORPResolution *_problemResolution;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _problemState;
     struct {
         unsigned int has_creationDate:1;
@@ -61,6 +63,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)problemStateAsString:(int)arg1;

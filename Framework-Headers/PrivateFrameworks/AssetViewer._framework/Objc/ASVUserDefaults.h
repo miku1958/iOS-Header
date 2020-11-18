@@ -10,11 +10,14 @@
 {
 }
 
++ (id)defaultPlanePosition;
++ (BOOL)forceDisableRayTracedAmbientOcclusion;
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
 + (BOOL)wants2DOverlayControlsHidden;
 + (BOOL)wantsAnimationDisabled;
 + (BOOL)wantsDebugVisualizationEnabled;
 + (BOOL)wantsObjectPlacedWithoutPlane;
++ (BOOL)wantsOpenInObjectMode;
 + (BOOL)wantsRayTracedAmbientOcclusionEnabled;
 + (BOOL)wantsSTAREnabled;
 + (BOOL)wantsStatisticsShown;

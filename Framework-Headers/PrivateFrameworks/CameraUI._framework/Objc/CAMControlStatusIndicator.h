@@ -6,10 +6,12 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIImageView, UILabel;
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
+
+@class NSString, UIImageView, UILabel;
 @protocol CAMControlStatusIndicatorDelegate;
 
-@interface CAMControlStatusIndicator : UIControl
+@interface CAMControlStatusIndicator : UIControl <CAMAccessibilityHUDItemProvider>
 {
     BOOL _showingValue;
     BOOL __needsUpdateValueText;
@@ -26,10 +28,15 @@
 @property (readonly, nonatomic) UIImageView *_outlineView; // @synthesize _outlineView=__outlineView;
 @property (readonly, nonatomic) UILabel *_valueLabel; // @synthesize _valueLabel=__valueLabel;
 @property (nonatomic, setter=_setValueLabelSize:) struct CGSize _valueLabelSize; // @synthesize _valueLabelSize=__valueLabelSize;
+@property (readonly, nonatomic) BOOL canAnimate;
 @property (readonly, nonatomic) BOOL canShowValue;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMControlStatusIndicatorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic, getter=isShowingValue) BOOL showingValue; // @synthesize showingValue=_showingValue;
+@property (readonly) Class superclass;
 
 + (id)_createStretchableCircleImageFilled:(BOOL)arg1;
 + (id)_filledOutlineImage;
@@ -41,17 +48,23 @@
 - (void)_updateImageOrientationAnimated:(BOOL)arg1;
 - (void)_updateValueLabelVisibilityAnimated:(BOOL)arg1;
 - (void)_updateValueText;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (id)imageAnimationFramesForCurrentState;
 - (id)imageForCurrentState;
 - (id)imageNameForCurrentState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setNeedsUpdateValueText;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setShowingValue:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldFillOutlineForCurrentState;
+- (BOOL)shouldShowOutlineForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (BOOL)shouldUseOutline;
+- (void)startAnimating;
+- (void)stopAnimating;
 - (void)updateImage;
 - (id)valueText;
 

@@ -52,7 +52,6 @@
 - (void)startDiscoveringPairedAccessories;
 - (void)stopDiscoveringAccessories;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(NSArray *)arg1;
-- (void)tearDownSessionForAccesoryServer:(HAPAccessoryServer *)arg1 completion:(void (^)(void))arg2;
 - (void)tombstoneAccessoryServer:(HAPAccessoryServer *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedAccessoryWithUUID:(NSUUID *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedHAPAccessoryWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1;

@@ -17,6 +17,7 @@
 - (struct CGRect)_incomingNavigationBarFrame;
 - (BOOL)_isInteractiveCustomNavigationTransition;
 - (struct NSDirectionalEdgeInsets)_layoutMarginsforNavigationBar:(UINavigationBar *)arg1;
+- (BOOL)_navigationBar:(UINavigationBar *)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint *)arg2;
 - (void)_navigationBar:(UINavigationBar *)arg1 itemEnabledAutoScrollTransition:(UINavigationItem *)arg2;
 - (double)_navigationBar:(UINavigationBar *)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBarChangedSize:(UINavigationBar *)arg1;

@@ -6,23 +6,12 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/MPMediaPickerControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFSelectMusicAction : WFAction <MPMediaPickerControllerDelegate>
+@interface WFSelectMusicAction : WFAction
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL selectMultiple;
-@property (readonly) Class superclass;
 
-- (void)mediaPicker:(id)arg1 didPickMediaItems:(id)arg2;
-- (void)mediaPickerDidCancel:(id)arg1;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

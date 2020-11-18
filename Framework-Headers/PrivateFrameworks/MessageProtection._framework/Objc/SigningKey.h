@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)debugDescription;
 - (id)description;
 - (id)publicKey;
 - (id)signData:(id)arg1 error:(id *)arg2;

@@ -43,6 +43,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUserIdentity:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)rectifiedPlaybackRequestEnvironmentForAccountManager:(id)arg1 reasons:(id *)arg2;
 
 @end
 

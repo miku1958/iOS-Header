@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *fullscreenImageData; // @synthesize fullscreenImageData=_fullscreenImageData;
 @property (strong, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (strong, nonatomic) NSString *imageFilterName; // @synthesize imageFilterName=_imageFilterName;
+@property (readonly, nonatomic) unsigned long long imageType;
 @property (strong, nonatomic) UIImage *loadingPlaceholderImage; // @synthesize loadingPlaceholderImage=_loadingPlaceholderImage;
 @property (strong, nonatomic) NSString *localizedVariantDisplayName; // @synthesize localizedVariantDisplayName=_localizedVariantDisplayName;
 @property (readonly, nonatomic) NSString *localizedVariantsTitle;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDate *sortDate; // @synthesize sortDate=_sortDate;
 @property (strong, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 @property (strong, nonatomic) NSData *thumbnailImageData; // @synthesize thumbnailImageData=_thumbnailImageData;
+@property (readonly, nonatomic) NSString *variantIdentifier;
 
 + (id)thumbnailViewForImage:(id)arg1;
 - (void).cxx_destruct;

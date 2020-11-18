@@ -11,9 +11,7 @@
 @protocol PKPaletteViewInternalDelegate <NSObject>
 
 @property (readonly, nonatomic) UIView *hostingView;
-@property (readonly, nonatomic) unsigned long long paletteCornerLocation;
 @property (readonly, nonatomic, getter=isPaletteDragging) BOOL paletteDragging;
-@property (readonly, nonatomic) unsigned long long paletteEdgeLocation;
 @property (readonly, nonatomic, getter=isPaletteMinimized) BOOL paletteMinimized;
 @property (readonly, nonatomic, getter=isPaletteVisible) BOOL paletteVisible;
 

@@ -202,7 +202,7 @@
 - (id)faceDescriptionForLibrary;
 - (BOOL)hasComplicationsOfType:(unsigned long long)arg1 forSlot:(id)arg2;
 - (BOOL)hasCustomSwitcherSelectionAction;
-- (BOOL)hasValidConfigurationForDeviceVersion:(unsigned int)arg1;
+- (BOOL)hasValidConfigurationForDevice:(id)arg1;
 - (void)incrementNumberOfCompanionEdits;
 - (void)incrementNumberOfGizmoEdits;
 - (unsigned long long)indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;

@@ -95,6 +95,7 @@
 - (void)chatController:(id)arg1 forwardComposition:(id)arg2;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
 - (id)childViewControllerForStatusBarHidden;
+- (id)childViewControllerForStatusBarStyle;
 - (void)cleanUpBizNavBarForConversation:(id)arg1;
 - (void)commitPayload:(id)arg1;
 - (void)commitSticker:(id)arg1;

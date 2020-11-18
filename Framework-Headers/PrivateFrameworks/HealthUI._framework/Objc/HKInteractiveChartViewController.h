@@ -104,6 +104,7 @@
 - (void).cxx_destruct;
 - (BOOL)_acceptSubclassRange:(id)arg1 proposedRange:(id)arg2 axisRange:(id)arg3;
 - (void)_addDisplayTypeToConfiguration:(id)arg1 allDisplayTypes:(id)arg2 configurationManager:(id)arg3;
+- (id)_addNoDataEntries:(id)arg1 timeScope:(long long)arg2;
 - (void)_addSeriesForDisplayType:(id)arg1 updatingTimeScopeProperties:(id)arg2 configurationManager:(id)arg3;
 - (id)_allDisplayTypes;
 - (double)_annotationViewCenterY;
@@ -122,8 +123,10 @@
 - (BOOL)_currentValueEnabled;
 - (id)_customGraphSeriesForDisplayType:(id)arg1;
 - (BOOL)_dashboardEmptyLabelsExist;
+- (BOOL)_date:(id)arg1 closeToDate:(id)arg2 epsilonDateComponents:(id)arg3 calendar:(id)arg4;
 - (id)_dateForBlockPoint:(id)arg1;
 - (id)_dateForMostRecentData;
+- (id)_dateForXCoordinate:(double)arg1 graphView:(id)arg2;
 - (long long)_dateZoom;
 - (id)_debugDateStringForPoint:(id)arg1;
 - (long long)_defaultAlignmentForTimeScope:(long long)arg1;
@@ -147,11 +150,13 @@
 - (void)_moveSelectedDateInDirection:(long long)arg1;
 - (void)_notifyObserversDidUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
 - (long long)_numHorizontalDisplayTypesForTimeScope:(long long)arg1 displayTypes:(id)arg2;
+- (id)_numberForXCoordinate:(double)arg1 graphView:(id)arg2;
 - (void)_omitLayoutHeader;
 - (id)_pointSelectionInfo:(id)arg1;
 - (id)_primaryDisplayType;
 - (BOOL)_primaryDisplayTypeHasNoData;
 - (void)_radioButtonsDidUpdate:(id)arg1;
+- (id)_rangeValueAsNumber:(id)arg1;
 - (void)_replacePrimaryGraphViewControllerWithScalarController;
 - (void)_replacePrimaryGraphViewControllerWithTimeScope:(long long)arg1 anchorDate:(id)arg2 animated:(BOOL)arg3;
 - (void)_scheduleDelayedAutoscale;
@@ -179,6 +184,7 @@
 - (long long)_userInfoSelectionCount:(id)arg1;
 - (BOOL)_valueRange:(id)arg1 fitsInsideValueRange:(id)arg2;
 - (BOOL)_visibleRangeIsNowForTimeScope:(long long)arg1;
+- (id)accessibilityDataForChart;
 - (void)addChartViewObserver:(id)arg1;
 - (void)addOverlayDisplayType:(id)arg1 stackOffset:(long long)arg2;
 - (id)currentDisplayTypesForStackOffset:(long long)arg1;
@@ -189,9 +195,9 @@
 - (void)currentValueViewDidTapOnInfoButton:(id)arg1;
 - (void)dealloc;
 - (id)descriptionForChartData:(id)arg1 timeScope:(long long)arg2;
-- (id)descriptionForVisiblePoints;
 - (id)descriptionForXCoordinate:(double)arg1 graphView:(id)arg2;
 - (id)descriptionSeriesForGraphView:(id)arg1;
+- (id)descriptionSpansForGraphView:(id)arg1;
 - (void)didTapBackButtonForMonthViewController:(id)arg1;
 - (void)didTapOnDateFromCurrentValueView:(id)arg1;
 - (void)didTapOnInfoButtonFromCurrentValueView:(id)arg1;

@@ -9,7 +9,7 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSDate;
+@class NSDate, NSString;
 
 @interface SPBeaconLocation : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,11 +17,13 @@
     double _latitude;
     double _longitude;
     double _horizontalAccuracy;
+    NSString *_source;
 }
 
 @property (readonly, nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property (nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property (nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (copy, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;
@@ -30,7 +32,7 @@
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTimestamp:(id)arg1 latitude:(double)arg2 longitude:(double)arg3 horizontalAccuracy:(double)arg4;
+- (id)initWithTimestamp:(id)arg1 latitude:(double)arg2 longitude:(double)arg3 horizontalAccuracy:(double)arg4 source:(id)arg5;
 
 @end
 

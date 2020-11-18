@@ -8,13 +8,14 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, NSString, UIActivityIndicatorView, UILabel, UIStackView;
+@class HFItem, NSString, UIActivityIndicatorView, UILabel, UIStackView, UIView;
 @protocol HUResizableCellDelegate;
 
 @interface HUSoftwareUpdateFetchCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
-    UIStackView *_titleSpinnerStackView;
+    UIStackView *_mainStackView;
+    UIView *_titleSpinnerView;
     UIActivityIndicatorView *_checkingForUpdateSpinner;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
@@ -25,15 +26,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (strong, nonatomic) UIStackView *mainStackView; // @synthesize mainStackView=_mainStackView;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong, nonatomic) UIStackView *titleSpinnerStackView; // @synthesize titleSpinnerStackView=_titleSpinnerStackView;
+@property (strong, nonatomic) UIView *titleSpinnerView; // @synthesize titleSpinnerView=_titleSpinnerView;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

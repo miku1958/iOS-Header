@@ -19,6 +19,7 @@
     NSSet *_sceneClassifications;
     BOOL _hidden;
     BOOL _favorite;
+    BOOL _syncFailureHidden;
     BOOL _cloudIsDeletable;
     BOOL _complete;
     BOOL _hasAdjustments;
@@ -195,6 +196,7 @@
 @property (readonly, nonatomic) unsigned long long sourceType;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isSyncFailureHidden) BOOL syncFailureHidden; // @synthesize syncFailureHidden=_syncFailureHidden;
 @property (readonly, nonatomic) NSString *thumbnailIdentifier;
 @property (readonly, nonatomic) unsigned long long thumbnailIndex;
 @property (readonly, nonatomic) unsigned long long thumbnailIndex; // @synthesize thumbnailIndex=_thumbnailIndex;

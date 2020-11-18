@@ -40,6 +40,7 @@
 + (id)keyPathsForValuesAffectingBudgetLimitScheduleRepresentation;
 + (id)limitKeyPaths;
 - (void)_usageLimitDidChangeFromOldApplicationIdentifiers:(id)arg1 oldCategoryIdentifiers:(id)arg2 oldWebDomains:(id)arg3 oldItemIdentifiers:(id)arg4 oldItemType:(id)arg5 toNewApplicationIdentifiers:(id)arg6 newCategoryIdentifiers:(id)arg7 newWebDomains:(id)arg8 newItemIdentifiers:(id)arg9 newItemType:(id)arg10;
+- (void)awakeFromFetch;
 - (id)dictionaryRepresentation;
 - (void)setBudgetLimit:(double)arg1;
 - (void)setBudgetLimit:(double)arg1 forDay:(unsigned long long)arg2;

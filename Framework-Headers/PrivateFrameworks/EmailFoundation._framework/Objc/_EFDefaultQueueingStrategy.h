@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)dequeueObject:(id)arg1 buffer:(id)arg2;
-- (void)enqueueObject:(id)arg1 buffer:(id)arg2;
+- (void)enqueueObject:(id)arg1 replaceIfExists:(BOOL)arg2 buffer:(id)arg3;
 
 @end
 

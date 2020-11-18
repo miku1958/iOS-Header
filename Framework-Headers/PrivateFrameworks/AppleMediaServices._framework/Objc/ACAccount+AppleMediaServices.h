@@ -55,7 +55,7 @@
 - (id)_hashedStorefront;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 dataProtectionClass:(unsigned long long)arg3 expectedClass:(Class)arg4;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 expectedClass:(Class)arg3;
-- (BOOL)_setCookies:(id)arg1;
+- (BOOL)_updateCookiesWithCookiesToAdd:(id)arg1 cookiesToRemove:(id)arg2;
 - (id)ams_accountFlagValueForAccountFlag:(id)arg1;
 - (id)ams_accountFlags;
 - (BOOL)ams_addCookies:(id)arg1;
@@ -64,6 +64,7 @@
 - (BOOL)ams_addGlobalCookiesForResponse:(id)arg1;
 - (BOOL)ams_addGlobalCookiesForResult:(id)arg1;
 - (void)ams_addHomeUserIdentifier:(id)arg1;
+- (id)ams_allStorefronts;
 - (long long)ams_biometricsState;
 - (id)ams_cookiesForURL:(id)arg1;
 - (id)ams_delta:(id)arg1;
@@ -84,6 +85,7 @@
 - (id)ams_password;
 - (BOOL)ams_postAccountFlagsWithBagContract:(id)arg1;
 - (id)ams_rawPassword;
+- (id)ams_registerSuccessCriteria;
 - (void)ams_removeAllCookies;
 - (void)ams_removeCookies:(id)arg1;
 - (void)ams_removeCookiesMatchingProperties:(id)arg1;
@@ -108,6 +110,7 @@
 - (void)ams_setPassword:(id)arg1;
 - (void)ams_setPrivateListeningEnabled:(BOOL)arg1 forHomeUserIdentifier:(id)arg2;
 - (void)ams_setRawPassword:(id)arg1;
+- (void)ams_setRegisterSuccessCriteria:(id)arg1;
 - (void)ams_setServerResponse:(id)arg1;
 - (void)ams_setStorefront:(id)arg1;
 - (void)ams_setStorefront:(id)arg1 forMediaType:(id)arg2;

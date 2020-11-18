@@ -25,11 +25,10 @@
 #import <ChatKit/UITableViewDropDelegate-Protocol.h>
 #import <ChatKit/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CKCloudKitSyncProgressViewController, CKConversation, CKConversationList, CKConversationListFilterCell, CKConversationSearchResultsController, CKLargeTitleAccessoryView, CKMessagesController, CKNavigationBarTitleView, CKOnboardingController, CKScheduledUpdater, CKSearchViewController, CNContact, CNContactStore, INKContentController, INKContentView, NSArray, NSIndexPath, NSString, UIBarButtonItem, UIButton, UISearchController, UITableView, UIView, _UIContextMenuInteraction;
+@class CKCloudKitSyncProgressViewController, CKConversation, CKConversationList, CKConversationListFilterCell, CKConversationSearchResultsController, CKLargeTitleAccessoryView, CKMessagesController, CKNavigationBarTitleView, CKOnboardingController, CKScheduledUpdater, CKSearchViewController, CNContact, CNContactStore, INKContentController, INKContentView, NSArray, NSIndexPath, NSMapTable, NSString, UIBarButtonItem, UIButton, UISearchController, UIView, _UIContextMenuInteraction;
 
 @interface CKConversationListController : UITableViewController <UISearchControllerDelegate, UISearchBarDelegate, CKCloudKitSyncProgressViewControllerDelegate, IMCloudKitEventHandler, CNContactViewControllerDelegate, CKConversationResultsControllerDelegate, CKContainerSearchControllerDelegate, CKConversationListCellDelegate, UITableViewDropDelegate, UITableViewDragDelegate, _UIContextMenuInteractionDelegate, INKContentControllerObserver, CNMeCardSharingSettingsViewControllerDelegate, CKOnboardingControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, UIActionSheetDelegate>
 {
-    UITableView *_table;
     NSIndexPath *_previouslySelectedIndexPath;
     unsigned int _isVisible:1;
     unsigned int _willRotate:1;
@@ -43,6 +42,8 @@
     CKConversationList *_conversationList;
     CKMessagesController *_messagesController;
     CKCloudKitSyncProgressViewController *_syncProgressViewController;
+    NSMapTable *_conversationListCellToChatInfo;
+    NSMapTable *_chatToConversationListCellInfo;
     CKNavigationBarTitleView *_navigationBarTitleView;
     CKLargeTitleAccessoryView *_largeTitleAccessoryView;
     CKScheduledUpdater *_updater;
@@ -75,6 +76,7 @@
 }
 
 @property (strong, nonatomic) CKConversationListFilterCell *cachedFilterControlCell; // @synthesize cachedFilterControlCell=_cachedFilterControlCell;
+@property (strong, nonatomic) NSMapTable *chatToConversationListCellInfo; // @synthesize chatToConversationListCellInfo=_chatToConversationListCellInfo;
 @property (strong, nonatomic) UIBarButtonItem *composeButton; // @synthesize composeButton=_composeButton;
 @property (strong, nonatomic) UIButton *composeButtonView; // @synthesize composeButtonView=_composeButtonView;
 @property (nonatomic) BOOL compositionWasSent; // @synthesize compositionWasSent=_compositionWasSent;
@@ -83,6 +85,7 @@
 @property (nonatomic) double conversationCellHeight; // @synthesize conversationCellHeight=_conversationCellHeight;
 @property (strong, nonatomic) CKConversation *conversationChangingPinState; // @synthesize conversationChangingPinState=_conversationChangingPinState;
 @property (weak, nonatomic) CKConversationList *conversationList; // @synthesize conversationList=_conversationList;
+@property (strong, nonatomic) NSMapTable *conversationListCellToChatInfo; // @synthesize conversationListCellToChatInfo=_conversationListCellToChatInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
@@ -122,6 +125,7 @@
 - (void).cxx_destruct;
 - (void)_beginAccountRepairIfNeeded;
 - (void)_cancelDeletion:(CDUnknownBlockType)arg1;
+- (void)_chatAllowedByScreenTimeChanged:(id)arg1;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatParticipantsChangedNotification:(id)arg1;
 - (void)_chatRegistryLastMessageLoadedNotification:(id)arg1;
@@ -250,7 +254,7 @@
 - (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
 - (BOOL)shouldCleanupFilter;
-- (BOOL)shouldScrollTableAtCellSelection:(long long)arg1;
+- (BOOL)shouldScrollTableAtCellSelection:(id)arg1;
 - (void)showAccountMismatachAlertForNicknames;
 - (void)showMeCardViewController;
 - (void)showMeCardViewControllerWithNickname:(id)arg1;
@@ -264,6 +268,7 @@
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
@@ -278,6 +283,7 @@
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;
 - (void)unregisterForCloudKitEvents;

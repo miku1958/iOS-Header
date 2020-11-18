@@ -187,6 +187,7 @@
 - (void)setObjectNoValidate:(id)arg1 forKey:(id)arg2;
 - (void)setParentReferenceFromRecord:(id)arg1;
 - (void)setParentReferenceFromRecordID:(id)arg1;
+- (void)setStreamingAssetRequestOptions:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)shortSharingToken;
 - (id)valueForKey:(id)arg1;

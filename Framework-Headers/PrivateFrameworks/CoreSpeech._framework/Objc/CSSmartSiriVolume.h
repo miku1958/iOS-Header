@@ -10,6 +10,7 @@
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
 #import <CoreSpeech/CSMediaPlayingMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSSiriClientBehaviorMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSiriEnabledMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSTimerMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
@@ -18,7 +19,7 @@
 @class CSAsset, CSAudioStream, CSSmartSiriVolumeEnablePolicy, NSString, NSUserDefaults;
 @protocol CSSmartSiriVolumeDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSSmartSiriVolume : NSObject <CSMediaPlayingMonitorDelegate, CSAudioStreamProvidingDelegate, CSSiriEnabledMonitorDelegate, CSAudioServerCrashMonitorDelegate, CSVoiceTriggerDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSVolumeMonitorDelegate>
+@interface CSSmartSiriVolume : NSObject <CSMediaPlayingMonitorDelegate, CSAudioStreamProvidingDelegate, CSSiriEnabledMonitorDelegate, CSAudioServerCrashMonitorDelegate, CSSiriClientBehaviorMonitorDelegate, CSVoiceTriggerDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSVolumeMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
     struct unique_ptr<SmartSiriVolume, std::__1::default_delete<SmartSiriVolume>> _smartSiriVolumeNoiseLevel;
@@ -120,6 +121,10 @@
 - (void)prepareSoundLevelBufferFromSamples:(id)arg1 soundType:(long long)arg2 firedVoiceTriggerEvent:(BOOL)arg3 triggerStartTimeSampleOffset:(unsigned long long)arg4 triggerEndTimeSampleOffset:(unsigned long long)arg5;
 - (void)reset;
 - (void)setAsset:(id)arg1;
+- (void)siriClientBehaviorMonitor:(id)arg1 didStartStreamWithContext:(id)arg2 successfully:(BOOL)arg3 option:(id)arg4;
+- (void)siriClientBehaviorMonitor:(id)arg1 didStopStream:(id)arg2;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStartStreamWithContext:(id)arg2 option:(id)arg3;
+- (void)siriClientBehaviorMonitor:(id)arg1 willStopStream:(id)arg2;
 - (void)startSmartSiriVolume;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
 

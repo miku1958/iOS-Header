@@ -33,12 +33,14 @@
 - (void)__showMadridRegistrationViewIfNecessary;
 - (void)__updateAppSnapshot;
 - (void)_chatItemsDidChange:(id)arg1;
+- (void)_clearOldInputContextIdentifiersIfNeeded;
 - (void)_conversationFilteringStateChangedNotification:(id)arg1;
 - (void)_createMadridRegistrationViewIfNecessary;
 - (void)_destroyMadridRegistrationView;
 - (void)_handleAccountsChanged:(id)arg1;
 - (void)_handleDaemonConnected:(id)arg1;
 - (void)_handleDaemonDisconnected:(id)arg1;
+- (id)_oldInputContextIdentifiers;
 - (void)_prepareForResume:(BOOL)arg1;
 - (void)_prepareForSuspend;
 - (BOOL)_restoreState:(id)arg1;

@@ -61,6 +61,7 @@
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
 - (void)_disableCrown;
 - (void)_enableCrown;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
 - (BOOL)_isEditOptionFullscreen:(id)arg1;
@@ -87,7 +88,8 @@
 - (BOOL)_supportsUnadornedSnapshot;
 - (id)_swatchForAsset:(unsigned long long)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
-- (id)_textureForAsset:(unsigned long long)arg1;
+- (id)_textureChromaForAsset:(unsigned long long)arg1;
+- (id)_textureLumaForAsset:(unsigned long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateComplications;
 - (void)_updateDayDuration;

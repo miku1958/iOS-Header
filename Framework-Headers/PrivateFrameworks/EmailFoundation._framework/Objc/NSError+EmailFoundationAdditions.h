@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) BOOL ef_isCancelledError;
 @property (readonly, nonatomic) BOOL ef_isConnectionInterruptedError;
 @property (readonly, nonatomic) BOOL ef_isNotSupportedError;
+@property (readonly, nonatomic) BOOL ef_isTemporarilyUnavailableError;
 @property (readonly, nonatomic) BOOL ef_isTimeoutError;
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (readonly) unsigned long long hash;
@@ -27,6 +28,7 @@
 + (id)ef_connectionInterruptedError;
 + (id)ef_notSupportedError;
 + (void)ef_setDecoder:(CDUnknownBlockType)arg1 forDomain:(id)arg2;
++ (id)ef_temporarilyUnavailableError;
 + (id)ef_timeoutError;
 - (CDUnknownBlockType)ef_match;
 @end

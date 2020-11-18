@@ -15,7 +15,6 @@
 - (struct UIEdgeInsets)attributesContentViewInsets;
 - (struct UIEdgeInsets)attributesContentViewScrollIndicatorInsets;
 - (struct CGRect)avatarContainerFrame;
-- (id)backgroundColor;
 - (struct CGRect)groupDialContainerFrame;
 - (double)headerMaskingViewAlpha;
 - (struct CGRect)headerMaskingViewFrame;

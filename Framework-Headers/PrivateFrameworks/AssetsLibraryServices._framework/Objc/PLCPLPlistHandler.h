@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)CPLPlistFileExistsWithPathManager:(id)arg1;
 + (id)_readCPLPlistWithPathManager:(id)arg1 error:(id *)arg2;
 + (void)deleteCPLPlistWithPathManager:(id)arg1;
 + (void)initialize;

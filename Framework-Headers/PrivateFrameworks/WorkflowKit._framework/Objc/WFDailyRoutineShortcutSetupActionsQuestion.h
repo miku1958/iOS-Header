@@ -6,21 +6,21 @@
 
 #import <WorkflowKit/WFDailyRoutineShortcutSetupQuestion.h>
 
-@class NSArray, NSString, UIImage, WFDailyRoutineShortcutSetupActionParameterFollowUpQuestion;
+@class NSArray, NSString, WFDailyRoutineShortcutSetupActionParameterFollowUpQuestion, WFImage;
 
 @interface WFDailyRoutineShortcutSetupActionsQuestion : WFDailyRoutineShortcutSetupQuestion
 {
     NSArray *_actions;
     NSString *_addButtonTitle;
     NSString *_skipButtonTitle;
-    UIImage *_icon;
+    WFImage *_icon;
     WFDailyRoutineShortcutSetupActionParameterFollowUpQuestion *_followUpQuestion;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSString *addButtonTitle; // @synthesize addButtonTitle=_addButtonTitle;
 @property (strong, nonatomic) WFDailyRoutineShortcutSetupActionParameterFollowUpQuestion *followUpQuestion; // @synthesize followUpQuestion=_followUpQuestion;
-@property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) WFImage *icon; // @synthesize icon=_icon;
 @property (copy, nonatomic) NSString *skipButtonTitle; // @synthesize skipButtonTitle=_skipButtonTitle;
 
 - (void).cxx_destruct;

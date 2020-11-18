@@ -27,6 +27,7 @@
 + (id)iconWithPresentationContext:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGImage *)_CGImageForImage:(id)arg1;
+- (id)_applicationProxyForBundleID:(id)arg1;
 - (id)_catalogueImageWithName:(id)arg1;
 - (id)_dataForImage:(id)arg1;
 - (BOOL)_hasInstalledApplicationWithBundleID:(id)arg1;

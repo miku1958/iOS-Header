@@ -22,13 +22,14 @@
     ARMattingImageMetaData *_mattingImageData;
     ARMLImageDownScalingResultData *_downSamplingResultData;
     BOOL _enableDoubleMLResolutionForIPad;
-    BOOL _isIpad;
     NSObject<OS_dispatch_queue> *_processingQueue;
     double _resultLatency;
     BOOL _centerCropImage;
+    BOOL _generateMattingMetaData;
 }
 
 @property (nonatomic) BOOL centerCropImage; // @synthesize centerCropImage=_centerCropImage;
+@property (nonatomic) BOOL generateMattingMetaData; // @synthesize generateMattingMetaData=_generateMattingMetaData;
 
 - (void).cxx_destruct;
 - (id)_convertImageColorSpace:(id)arg1;

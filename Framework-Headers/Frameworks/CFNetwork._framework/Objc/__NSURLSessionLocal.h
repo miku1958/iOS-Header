@@ -122,7 +122,7 @@
 - (unsigned long long)nextSeed;
 - (void)removeConnectionlessTask:(id)arg1;
 - (void)replaceTask:(id)arg1 withTask:(id)arg2;
-- (Class)sessionConnectionClass:(id)arg1;
+- (Class)sessionConnectionClass:(id)arg1 task:(id)arg2;
 - (void)task:(id)arg1 terminatedConnection:(id)arg2;
 - (id)taskForClassInfo:(id)arg1;
 - (id)webSocketTaskForRequest:(id)arg1;

@@ -15,12 +15,14 @@
 @interface GEOPBTransitArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_accessibilityString;
     GEOPBTransitShield *_iconFallbackShield;
     GEOPBTransitIcon *_icon;
     GEOPBTransitShield *_shield;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _artworkType;
     int _artworkUse;
     int _badge;
@@ -88,6 +90,8 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

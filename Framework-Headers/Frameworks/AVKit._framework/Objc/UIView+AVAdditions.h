@@ -37,10 +37,12 @@
 - (id)avkit_hitTestControlForPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)avkit_hitTestControlForPoint:(struct CGPoint)arg1 withEvent:(id)arg2 bestSoFar:(inout id *)arg3 shortestDistanceSoFar:(inout double *)arg4;
 - (BOOL)avkit_isAncestorOfViewPassingTest:(CDUnknownBlockType)arg1;
+- (BOOL)avkit_isBeingDismissed;
 - (BOOL)avkit_isBeingScrollTested;
 - (BOOL)avkit_isBeingScrolled;
 - (BOOL)avkit_isBeingScrolledQuickly;
 - (BOOL)avkit_isCompletelyTransparent;
+- (BOOL)avkit_isCounterRotatedForTransition;
 - (BOOL)avkit_isDescendantOfNonPagingScrollView;
 - (BOOL)avkit_isDescendantOfViewPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)avkit_isInAScrollView;

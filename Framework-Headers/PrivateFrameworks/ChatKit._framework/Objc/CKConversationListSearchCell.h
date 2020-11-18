@@ -12,13 +12,13 @@
 
 @interface CKConversationListSearchCell : CKConversationListStandardCell <CKConversationSearchCellProtocol>
 {
-    struct UIEdgeInsets marginInsets;
+    struct UIEdgeInsets _marginInsets;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+@property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (readonly) Class superclass;
 
 + (id)annotatedResultStringWithSearchText:(id)arg1 resultText:(id)arg2 primaryTextColor:(id)arg3 primaryFont:(id)arg4 annotatedTextColor:(id)arg5 annotatedFont:(id)arg6;

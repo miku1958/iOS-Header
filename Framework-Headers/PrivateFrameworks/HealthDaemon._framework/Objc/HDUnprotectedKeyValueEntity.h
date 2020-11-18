@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_insertOrReplaceSQL;
 + (id)badgeForDomain:(long long)arg1 profile:(id)arg2 error:(out id *)arg3;
 + (id)databaseTable;
 + (id)keyForNotificationDomain:(long long)arg1 error:(out id *)arg2;

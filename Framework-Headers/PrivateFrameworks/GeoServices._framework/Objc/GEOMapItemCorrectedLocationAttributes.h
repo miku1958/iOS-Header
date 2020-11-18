@@ -13,13 +13,15 @@
 @interface GEOMapItemCorrectedLocationAttributes : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_correctedAddressSecondaryStreetLine;
     GEOAddress *_correctedAddress;
     GEOLatLng *_correctedCoordinate;
     NSString *_customLabel;
     double _lastUpdateDate;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     BOOL _hasSubmittedRAP;
     struct {
         unsigned int has_lastUpdateDate:1;
@@ -65,6 +67,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

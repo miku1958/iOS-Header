@@ -10,12 +10,12 @@
 
 @interface SiriBluetoothContext : SiriContext
 {
+    NSNumber *_isTemporaryDevice;
     NSNumber *_isEyesFree;
     NSString *_address;
 }
 
 @property (readonly, nonatomic) NSString *address; // @synthesize address=_address;
-@property (readonly, nonatomic) NSNumber *isEyesFree; // @synthesize isEyesFree=_isEyesFree;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -23,6 +23,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBluetoothDevice:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEyesFree;
+- (BOOL)isTemporaryDevice;
 
 @end
 

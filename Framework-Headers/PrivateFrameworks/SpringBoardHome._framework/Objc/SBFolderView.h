@@ -20,13 +20,11 @@
     NSMutableArray *_iconListViews;
     NSMutableSet *_scrollingDisabledReasons;
     NSMutableSet *_pageControlDisabledReasons;
-    SBIconListView *_rotatingIconList;
     SBIconListPageControl *_pageControl;
     SBIconScrollView *_scrollView;
     SBFolderTitleTextField *_titleTextField;
     NSMutableSet *_scrollViewIsScrollingOverrides;
     UIView *_scalingView;
-    long long _disableUpdatingCurrentIconListCount;
     struct SBVisibleColumnRange _visibleColumnRange;
     struct SBFolderPredictedVisibleColumn _predictedVisibleColumn;
     BOOL _isScalingViewBorrowed;
@@ -129,6 +127,7 @@
 - (void)_checkIfScrollStateChanged;
 - (id)_createIconListViewForList:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_currentPageIndexDidChange;
+- (void)_currentPageIndexDidChangeFromPageIndex:(long long)arg1;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
 - (struct CGRect)_frameForScalingView;
@@ -148,9 +147,7 @@
 - (long long)_pageIndexForOffset:(double)arg1;
 - (long long)_pageIndexForOffset:(double)arg1 behavior:(long long)arg2 fractionOfDistanceThroughPage:(double *)arg3;
 - (double)_pageWidth;
-- (void)_popDisableUpdateCurrentIconListCount;
 - (void)_purgeListViews;
-- (void)_pushDisableUpdateCurrentIconListCount;
 - (void)_removeIconListView:(id)arg1;
 - (void)_resetIconListViews;
 - (double)_scrollOffsetForContentAtPageIndex:(long long)arg1;
@@ -167,7 +164,6 @@
 - (void)_setPageControlDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)_setScrollViewContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)_setScrollingDisabled:(BOOL)arg1 forReason:(id)arg2;
-- (BOOL)_shouldDisableUpdatingCurrentIconList;
 - (BOOL)_shouldIgnoreScrollingDidEndNotifications;
 - (BOOL)_showsTitle;
 - (double)_titleFontSize;
@@ -177,7 +173,6 @@
 - (void)_updateIconListContainment:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_updateIconListFrames;
 - (void)_updateIconListLegibilitySettings;
-- (void)_updateIconListViews;
 - (void)_updatePageControlCurrentPage;
 - (void)_updatePageControlNumberOfPages;
 - (void)_updatePageControlToIndex:(long long)arg1;
@@ -186,7 +181,7 @@
 - (void)_updateScrollingState:(BOOL)arg1;
 - (void)_updateTitleLegibilitySettings;
 - (BOOL)_useParallaxOnPageControl;
-- (void)_willAnimateScrollToPageIndex:(long long)arg1;
+- (void)_willScrollToPageIndex:(long long)arg1 animated:(BOOL)arg2;
 - (id)accessibilityLegibilitySettingsForRect:(struct CGRect)arg1 tintStyle:(unsigned long long)arg2;
 - (id)accessibilityTintColorForRect:(struct CGRect)arg1 tintStyle:(unsigned long long)arg2;
 - (void)addScrollViewIsScrollingOverrideReason:(id)arg1;
@@ -208,6 +203,7 @@
 - (void)didTransitionAnimated:(BOOL)arg1;
 - (BOOL)doesPageContainIconListView:(long long)arg1;
 - (void)enumerateIconListViewsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateIconListViewsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fadeContentForMagnificationFraction:(double)arg1;
 - (void)fadeContentForMinificationFraction:(double)arg1;
 - (id)firstIconListView;

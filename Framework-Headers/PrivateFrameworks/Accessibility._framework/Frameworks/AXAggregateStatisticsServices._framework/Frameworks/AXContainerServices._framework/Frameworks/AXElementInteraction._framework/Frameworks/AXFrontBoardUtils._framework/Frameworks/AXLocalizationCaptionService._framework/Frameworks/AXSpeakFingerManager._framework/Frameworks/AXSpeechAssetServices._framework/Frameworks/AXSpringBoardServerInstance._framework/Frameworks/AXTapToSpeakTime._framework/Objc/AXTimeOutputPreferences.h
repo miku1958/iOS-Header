@@ -20,8 +20,10 @@
 - (BOOL)_npsBoolValueForPreferenceKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (long long)_npsIntegerValueForPreferenceKey:(id)arg1 defaultValue:(long long)arg2;
 - (id)_npsValueForPreferenceKey:(id)arg1;
+- (id)_npsValueForPreferenceKey:(id)arg1 expectedClass:(Class)arg2;
 - (void)_setNPSValue:(id)arg1 preferenceKey:(id)arg2;
 - (BOOL)_voiceOverIsEnabled;
+- (BOOL)_voiceOverIsInTripleClick;
 - (id)localizedStringForKey:(id)arg1;
 - (id)localizedStringForTapToSpeakTimeAvailability:(long long)arg1;
 - (id)localizedStringForTapticChimesFrequencyEncoding:(long long)arg1;

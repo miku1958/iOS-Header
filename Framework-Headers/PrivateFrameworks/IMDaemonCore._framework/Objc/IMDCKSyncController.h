@@ -61,7 +61,6 @@
 - (BOOL)_hasDumpedLogsInPastHour;
 - (BOOL)_hasDumpedRestoreFailureLogsInPastHour;
 - (void)_ifCloudKitAbleToSyncIsFullSync:(BOOL)arg1 activity:(id)arg2 callBlock:(CDUnknownBlockType)arg3;
-- (BOOL)_isSyncingToStingRay;
 - (void)_kickOffNightlyPeriodicSyncIfApplicable;
 - (void)_logIMAutomaticHistorySyncDidNotOccurMetricsUnderFirstUnlock:(BOOL)arg1 isSyncing:(BOOL)arg2 deviceConditionsAllowSync:(BOOL)arg3 syncNotCompletedRecently:(BOOL)arg4;
 - (long long)_manualSyncAttemptCount;

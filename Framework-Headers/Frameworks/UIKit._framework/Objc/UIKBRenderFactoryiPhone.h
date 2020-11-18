@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGPoint)ZWNJKeyOffset;
+- (void)_configureTraitsForPopupStyle:(id)arg1 withKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;

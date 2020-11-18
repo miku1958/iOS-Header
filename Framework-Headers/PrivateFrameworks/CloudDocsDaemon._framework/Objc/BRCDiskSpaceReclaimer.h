@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 
 + (double)accessTimeDeltaForUrgency:(int)arg1;
 + (double)onDiskAccessTimeDeltaForUrgency:(int)arg1;
++ (int)simpleUrgencyForCacheDeleteUrgency:(int)arg1;
 + (int)urgencyForCacheDeleteUrgency:(int)arg1;
 - (void).cxx_destruct;
 - (void)_asyncAutovacuumIfNeeds:(id)arg1;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (long long)_vacuumDB:(id)arg1 amount:(long long)arg2 withUrgency:(int)arg3;
 - (id)accessTimestampForDocument:(id)arg1;
 - (void)cachedPurgeableSpaceForAllUrgencies:(id *)arg1 nonPurgeableSpace:(id *)arg2 error:(id *)arg3;
+- (long long)cachedPurgeableSpaceForUrgency:(int)arg1;
 - (void)close;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(CDUnknownBlockType)arg1;
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;

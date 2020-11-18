@@ -19,6 +19,7 @@
 - (BOOL)rem_isAllDayDateComponents;
 - (BOOL)rem_isValidDateComponents;
 - (BOOL)rem_isWeekendDateComponents;
+- (id)rem_stringRepresentation;
 - (id)rem_strippingTimeZone;
 @end
 

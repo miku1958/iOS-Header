@@ -215,6 +215,7 @@
 - (void)setInputViewVisible:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setInputViewVisible:(BOOL)arg1 entryFieldCollapsed:(BOOL)arg2 animated:(BOOL)arg3 messageDelegate:(BOOL)arg4;
 - (void)setLocalUserIsTyping:(BOOL)arg1;
+- (BOOL)shouldPreventAppFromDisplayingForBundleIdentifier:(id)arg1;
 - (void)showAppsBrowser;
 - (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)showDTCompose;

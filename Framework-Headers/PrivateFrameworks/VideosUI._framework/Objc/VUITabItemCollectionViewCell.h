@@ -6,12 +6,13 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class IKViewElement, NSShadow, TVImageLayout, VUILabel, VUITextLayout, _TVImageView;
+@class IKImageElement, IKViewElement, NSShadow, TVImageLayout, VUILabel, VUITextLayout, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUITabItemCollectionViewCell : UICollectionViewCell
 {
     IKViewElement *_viewElement;
+    IKImageElement *_imageElement;
     VUILabel *_titleLabel;
     VUITextLayout *_titleLayout;
     _TVImageView *_imageView;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSShadow *_shadow;
 }
 
+@property (strong, nonatomic) IKImageElement *imageElement; // @synthesize imageElement=_imageElement;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;

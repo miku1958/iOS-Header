@@ -23,6 +23,7 @@
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
+- (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_transformWithError:(out id *)arg1;
 - (BOOL)canPropagateOriginalAuxiliaryData;
 - (id)initWithOrientation:(long long)arg1 input:(id)arg2;

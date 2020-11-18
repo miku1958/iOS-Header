@@ -70,8 +70,6 @@
 @property (readonly, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
 @property (readonly, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 
-+ (id)locationFromAggregateVisits:(id)arg1;
-+ (id)visitFromAggregateVisits:(id)arg1;
 - (void).cxx_destruct;
 - (id)_bestFusedInferredMapItemForVisit:(id)arg1 fromCandidates:(id)arg2 error:(id *)arg3;
 - (id)_bestInferredMapItemForVisit:(id)arg1 error:(id *)arg2;
@@ -79,6 +77,7 @@
 - (id)_candidatesForVisit:(id)arg1 providers:(id)arg2 error:(id *)arg3;
 - (BOOL)_classifyPlaceTypes:(id *)arg1;
 - (void)_classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)_consolidateKnownPlaceTypesWithError:(id *)arg1;
 - (BOOL)_deferTrainingDueToAvailability;
 - (BOOL)_deferTrainingDueToRecentResetSync;
 - (id)_enabledMapItemProviders;
@@ -120,6 +119,8 @@
 - (void)_updateMonitorFingerprintsWithVisit:(id)arg1;
 - (id)_visitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
 - (void)classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;
+- (id)createRelabeler;
+- (id)createRelabelerPersisterWithError:(id *)arg1;
 - (void)didFinishTraining;
 - (id)extractCandidate:(struct RTPair *)arg1 fromNearbyCandidates:(id)arg2 extractedCandidate:(struct RTPair **)arg3 error:(id *)arg4;
 - (void)fetchFusionCandidatesForVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -131,7 +132,6 @@
 - (void)onFingerprintManagerNotification:(id)arg1;
 - (void)onVisitManagerNotification:(id)arg1;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (unsigned long long)preferredReconciliationAlgorithm;
 - (void)queryMapItemProvider:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)reconcileLearnedLocationsWithHandler:(CDUnknownBlockType)arg1;
 - (void)relabelWithHandler:(CDUnknownBlockType)arg1;

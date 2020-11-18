@@ -12,6 +12,7 @@
     BOOL _autoDismiss;
     BOOL _forceEUVolumeMode;
     BOOL _rampTickHapticIntensity;
+    BOOL _shouldRouteChangeResultInPresentingVolumeHUD;
     float _EUVolumeLimit;
     float _volumeStepDelta;
     float _minimumTickHapticIntensity;
@@ -26,15 +27,23 @@
     double _minMaxYScaleSpringResponse;
     double _minMaxYScaleSpringVolumeToMax;
     double _minMaxYScaleSpringVolumeToMin;
+    double _deflatorTargetDownScale;
+    double _deflatorTargetCompleteDownScale;
+    double _deflatorTargetFudgeFactor;
+    double _deflatorTargetCompleteImpulse;
     double _positionXSpringRetargetImpulse;
     double _positionXSpringDampingRatio;
     double _positionXSpringResponse;
+    double _positionXSpringResponseBeginDeflator;
+    double _positionXSpringResponseFinishDeflate;
     double _positionYSpringRetargetImpulse;
     double _positionYSpringDampingRatio;
     double _positionYSpringResponse;
     double _scaleSpringRetargetImpulse;
     double _scaleSpringDampingRatio;
     double _scaleSpringResponse;
+    double _scaleSpringResponseBeginDeflator;
+    double _scaleSpringResponseFinishDeflate;
     double _scaleSpringBase;
     double _scaleSpringTracking;
     double _dimmingAlpha;
@@ -74,6 +83,10 @@
 
 @property (nonatomic) float EUVolumeLimit; // @synthesize EUVolumeLimit=_EUVolumeLimit;
 @property (nonatomic) BOOL autoDismiss; // @synthesize autoDismiss=_autoDismiss;
+@property (nonatomic) double deflatorTargetCompleteDownScale; // @synthesize deflatorTargetCompleteDownScale=_deflatorTargetCompleteDownScale;
+@property (nonatomic) double deflatorTargetCompleteImpulse; // @synthesize deflatorTargetCompleteImpulse=_deflatorTargetCompleteImpulse;
+@property (nonatomic) double deflatorTargetDownScale; // @synthesize deflatorTargetDownScale=_deflatorTargetDownScale;
+@property (nonatomic) double deflatorTargetFudgeFactor; // @synthesize deflatorTargetFudgeFactor=_deflatorTargetFudgeFactor;
 @property (nonatomic) double dimmingAlpha; // @synthesize dimmingAlpha=_dimmingAlpha;
 @property (nonatomic) double dismissalInterval; // @synthesize dismissalInterval=_dismissalInterval;
 @property (nonatomic) BOOL forceEUVolumeMode; // @synthesize forceEUVolumeMode=_forceEUVolumeMode;
@@ -121,6 +134,8 @@
 @property (nonatomic) double portraitStateBaseCornerRadius; // @synthesize portraitStateBaseCornerRadius=_portraitStateBaseCornerRadius;
 @property (nonatomic) double positionXSpringDampingRatio; // @synthesize positionXSpringDampingRatio=_positionXSpringDampingRatio;
 @property (nonatomic) double positionXSpringResponse; // @synthesize positionXSpringResponse=_positionXSpringResponse;
+@property (nonatomic) double positionXSpringResponseBeginDeflator; // @synthesize positionXSpringResponseBeginDeflator=_positionXSpringResponseBeginDeflator;
+@property (nonatomic) double positionXSpringResponseFinishDeflate; // @synthesize positionXSpringResponseFinishDeflate=_positionXSpringResponseFinishDeflate;
 @property (nonatomic) double positionXSpringRetargetImpulse; // @synthesize positionXSpringRetargetImpulse=_positionXSpringRetargetImpulse;
 @property (nonatomic) double positionYSpringDampingRatio; // @synthesize positionYSpringDampingRatio=_positionYSpringDampingRatio;
 @property (nonatomic) double positionYSpringResponse; // @synthesize positionYSpringResponse=_positionYSpringResponse;
@@ -129,8 +144,11 @@
 @property (nonatomic) double scaleSpringBase; // @synthesize scaleSpringBase=_scaleSpringBase;
 @property (nonatomic) double scaleSpringDampingRatio; // @synthesize scaleSpringDampingRatio=_scaleSpringDampingRatio;
 @property (nonatomic) double scaleSpringResponse; // @synthesize scaleSpringResponse=_scaleSpringResponse;
+@property (nonatomic) double scaleSpringResponseBeginDeflator; // @synthesize scaleSpringResponseBeginDeflator=_scaleSpringResponseBeginDeflator;
+@property (nonatomic) double scaleSpringResponseFinishDeflate; // @synthesize scaleSpringResponseFinishDeflate=_scaleSpringResponseFinishDeflate;
 @property (nonatomic) double scaleSpringRetargetImpulse; // @synthesize scaleSpringRetargetImpulse=_scaleSpringRetargetImpulse;
 @property (nonatomic) double scaleSpringTracking; // @synthesize scaleSpringTracking=_scaleSpringTracking;
+@property (nonatomic) BOOL shouldRouteChangeResultInPresentingVolumeHUD; // @synthesize shouldRouteChangeResultInPresentingVolumeHUD=_shouldRouteChangeResultInPresentingVolumeHUD;
 @property (nonatomic) BOOL showDebugUI; // @synthesize showDebugUI=_showDebugUI;
 @property (nonatomic) double volumeButtonsCenterY; // @synthesize volumeButtonsCenterY=_volumeButtonsCenterY;
 @property (nonatomic) float volumeStepDelta; // @synthesize volumeStepDelta=_volumeStepDelta;

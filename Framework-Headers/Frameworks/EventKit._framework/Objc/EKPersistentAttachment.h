@@ -34,6 +34,7 @@
 - (void)setLocalRelativePath:(id)arg1;
 - (void)setURL:(id)arg1;
 - (void)setURLForPendingFileCopy:(id)arg1;
+- (void)setUUID:(id)arg1;
 - (void)setXPropertiesData:(id)arg1;
 
 @end

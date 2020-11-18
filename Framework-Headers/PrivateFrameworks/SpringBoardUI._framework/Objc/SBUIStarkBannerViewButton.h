@@ -6,10 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class UIColor, UIImage, UIImageView, UILabel, UIView;
+@class NSString, UIColor, UIImage, UIImageView, UILabel, UIView;
 
 @interface SBUIStarkBannerViewButton : UIControl
 {
+    NSString *_text;
     UILabel *_textLabel;
     UIColor *_unselectedTextColor;
     UIColor *_selectedTextColor;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property (strong, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
 @property (strong, nonatomic) UIColor *selectedTextColor; // @synthesize selectedTextColor=_selectedTextColor;
+@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (strong, nonatomic) UIImage *unselectedImage; // @synthesize unselectedImage=_unselectedImage;
 @property (strong, nonatomic) UIColor *unselectedTextColor; // @synthesize unselectedTextColor=_unselectedTextColor;

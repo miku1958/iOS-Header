@@ -11,7 +11,7 @@
 #import <IDSFoundation/IDSLinkDelegate-Protocol.h>
 #import <IDSFoundation/IDSStunCandidatePairDelegate-Protocol.h>
 
-@class IDSCommnatManager, IDSGLSessionManager, IDSGlobalLinkBlocks, IDSTCPLink, IDSUDPLink, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+@class IDSCommnatManager, IDSGLSessionManager, IDSGlobalLinkBlocks, IDSTCPLink, IDSUDPLink, NSData, NSMutableArray, NSMutableDictionary, NSString;
 @protocol IDSLinkDelegate, OS_dispatch_source;
 
 @interface IDSGlobalLink : NSObject <IDSLink, IDSLinkDelegate, IDSStunCandidatePairDelegate, IDSGLSessionManagerDelegate>
@@ -54,8 +54,7 @@
     NSMutableDictionary *_tokenToReallocBlocks;
     NSObject<OS_dispatch_source> *_disconnectTimer;
     NSObject<OS_dispatch_source> *_activityTimer;
-    NSObject<OS_dispatch_source> *_allocbindFailoverTimer;
-    NSDictionary *_connectingCandidatePairSessionInfo;
+    NSMutableDictionary *_connectingCandidatePairSessionInfo;
     NSMutableArray *_interfaceAddressArray;
     BOOL _isInitiator;
     int _nominateCount;
@@ -143,10 +142,11 @@
 - (BOOL)_getSessionParticipants:(id)arg1 relaySessionID:(id)arg2 options:(id)arg3;
 - (BOOL)_getSessionStreamInfo:(id)arg1 relaySessionID:(id)arg2 options:(id)arg3;
 - (void)_handleActivityTimer;
-- (void)_handleAllocbindFailoverTimer:(id)arg1 onInterface:(int)arg2;
+- (void)_handleAllocbindFailoverTimer:(id)arg1 failoverTimerOnCandidatePair:(id)arg2 onInterface:(int)arg3;
 - (void)_handleCommnatResult:(long long)arg1 reflextiveCandidate:(id)arg2;
 - (void)_handleDisconnectTimer;
 - (void)_handleSelfAllocationTimeout:(id)arg1;
+- (BOOL)_hasActiveAllocbindFailoverTimerForSessionID:(id)arg1;
 - (BOOL)_hasConnectedCandidatePair;
 - (BOOL)_hasConnectingRelayCandidatePair;
 - (void)_invalidateCandidatePairs:(id)arg1;
@@ -217,13 +217,13 @@
 - (void)_setupRelayConnectionForNetworkAddressChanges;
 - (BOOL)_skipCommandMessage:(long long)arg1 candidatePair:(id)arg2 timeNow:(double)arg3;
 - (void)_startActivityTimer;
-- (void)_startAllocbindFailoverTimer:(id)arg1 onInterface:(int)arg2;
+- (void)_startAllocbindFailoverTimerOnCandidatePair:(id)arg1;
 - (void)_startDisconnectTimer;
 - (void)_startExtIPDiscovery;
 - (void)_startStunCheck:(id)arg1;
 - (double)_startTimeForStunRequest:(id)arg1;
 - (void)_stopActivityTimer;
-- (void)_stopAllocbindFailoverTimer;
+- (void)_stopAllocbindFailoverTimer:(id)arg1;
 - (void)_stopDisconnectTimer;
 - (void)_updateDefaultCandidatePair:(id)arg1;
 - (void)_updateInterfaceAddressesWithAddList:(id)arg1 removeList:(id)arg2;

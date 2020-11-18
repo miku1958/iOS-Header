@@ -6,38 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-@class MCDPlayModeButton, MCDRepeatButton, NSArray, UILayoutGuide;
+@class MCDPlayModeButton, MCDRepeatButton, NSArray, UIStackView;
 
 @interface MCDPlayModeControlView : UIView
 {
     BOOL _fuseSubscriberLayout;
+    BOOL _showsArtwork;
     MCDRepeatButton *_repeatButton;
     MCDPlayModeButton *_moreButton;
     MCDPlayModeButton *_shuffleButton;
     MCDPlayModeButton *_addToLibraryButton;
     MCDPlayModeButton *_playbackRateButton;
+    UIStackView *_stackView;
     NSArray *_activeButtonLayoutConstraints;
-    UILayoutGuide *_leadingGuide;
-    UILayoutGuide *_trailingGuide;
 }
 
 @property (strong, nonatomic) NSArray *activeButtonLayoutConstraints; // @synthesize activeButtonLayoutConstraints=_activeButtonLayoutConstraints;
 @property (readonly, nonatomic) MCDPlayModeButton *addToLibraryButton; // @synthesize addToLibraryButton=_addToLibraryButton;
 @property (nonatomic) BOOL fuseSubscriberLayout; // @synthesize fuseSubscriberLayout=_fuseSubscriberLayout;
-@property (strong, nonatomic) UILayoutGuide *leadingGuide; // @synthesize leadingGuide=_leadingGuide;
+@property (readonly, nonatomic) double maximumButtonWidth;
 @property (readonly, nonatomic) MCDPlayModeButton *moreButton; // @synthesize moreButton=_moreButton;
 @property (readonly, nonatomic) MCDPlayModeButton *playbackRateButton; // @synthesize playbackRateButton=_playbackRateButton;
 @property (readonly, nonatomic) MCDRepeatButton *repeatButton; // @synthesize repeatButton=_repeatButton;
+@property (nonatomic) BOOL showsArtwork; // @synthesize showsArtwork=_showsArtwork;
 @property (readonly, nonatomic) MCDPlayModeButton *shuffleButton; // @synthesize shuffleButton=_shuffleButton;
-@property (strong, nonatomic) UILayoutGuide *trailingGuide; // @synthesize trailingGuide=_trailingGuide;
+@property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 - (void).cxx_destruct;
 - (void)_updateButtonLayouts;
-- (void)addSizeConstraintsForButton:(id)arg1;
+- (id)_visibleControlButtons;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (void)setupConstraints;
 
 @end
 

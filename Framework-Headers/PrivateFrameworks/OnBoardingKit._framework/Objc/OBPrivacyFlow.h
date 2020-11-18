@@ -40,6 +40,7 @@
 - (BOOL)_conformsToRequirement:(id)arg1;
 - (BOOL)_conformsToRequirements:(id)arg1;
 - (id)_currentPlatform;
+- (id)_iconType;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 table:(id)arg3 preferredDeviceType:(unsigned long long)arg4;
 - (id)_textForConditionalItem:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;

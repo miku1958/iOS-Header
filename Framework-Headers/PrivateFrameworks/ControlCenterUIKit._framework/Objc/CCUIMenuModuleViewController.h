@@ -27,6 +27,7 @@
     UIActivityIndicatorView *_busyIndicatorView;
     UILongPressGestureRecognizer *_pressGestureRecognizer;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    BOOL _allowsMenuInteraction;
     BOOL _ignoreMenuItemAtTouchLocationAfterExpanded;
     struct CGPoint _touchLocationToIgnore;
     CCUIMenuModuleItemView *_footerButtonView;

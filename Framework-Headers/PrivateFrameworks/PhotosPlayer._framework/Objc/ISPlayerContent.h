@@ -19,8 +19,6 @@
     NSNumber *_variationIdentifier;
     CDStruct_1b6d18a9 _photoTime;
     CDStruct_1b6d18a9 _videoDuration;
-    CDStruct_1b6d18a9 _prePhotoFrameTime;
-    CDStruct_1b6d18a9 _postPhotoFrameTime;
 }
 
 @property (readonly, nonatomic) struct CGImage *photo; // @synthesize photo=_photo;
@@ -28,8 +26,6 @@
 @property (readonly, nonatomic) BOOL photoHasColorAdjustments; // @synthesize photoHasColorAdjustments=_photoHasColorAdjustments;
 @property (readonly, nonatomic) BOOL photoIsOriginal; // @synthesize photoIsOriginal=_photoIsOriginal;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 photoTime; // @synthesize photoTime=_photoTime;
-@property (readonly, nonatomic) CDStruct_1b6d18a9 postPhotoFrameTime; // @synthesize postPhotoFrameTime=_postPhotoFrameTime;
-@property (readonly, nonatomic) CDStruct_1b6d18a9 prePhotoFrameTime; // @synthesize prePhotoFrameTime=_prePhotoFrameTime;
 @property (readonly, nonatomic) BOOL supportsVitality; // @synthesize supportsVitality=_supportsVitality;
 @property (readonly, nonatomic) NSNumber *variationIdentifier; // @synthesize variationIdentifier=_variationIdentifier;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 videoDuration; // @synthesize videoDuration=_videoDuration;
@@ -38,7 +34,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithPhoto:(struct CGImage *)arg1 photoIsOriginal:(BOOL)arg2 photoEXIFOrientation:(int)arg3 photoTime:(CDStruct_1b6d18a9)arg4 videoDuration:(CDStruct_1b6d18a9)arg5 photoHasColorAdjustments:(BOOL)arg6 videoPlayerItem:(id)arg7 prePhotoFrameTime:(CDStruct_1b6d18a9)arg8 postPhotoFrameTime:(CDStruct_1b6d18a9)arg9 variationIdentifier:(id)arg10 supportsVitality:(BOOL)arg11;
+- (id)initWithPhoto:(struct CGImage *)arg1 photoIsOriginal:(BOOL)arg2 photoEXIFOrientation:(int)arg3 photoTime:(CDStruct_1b6d18a9)arg4 videoDuration:(CDStruct_1b6d18a9)arg5 photoHasColorAdjustments:(BOOL)arg6 videoPlayerItem:(id)arg7 variationIdentifier:(id)arg8 supportsVitality:(BOOL)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

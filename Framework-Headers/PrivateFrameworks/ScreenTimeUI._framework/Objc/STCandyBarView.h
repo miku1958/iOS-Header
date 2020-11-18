@@ -10,18 +10,22 @@
 
 @interface STCandyBarView : UIView
 {
+    BOOL _useVibrancy;
     NSArray *_usageItems;
     NSArray *_viewItems;
 }
 
 @property (copy, nonatomic) NSArray *usageItems; // @synthesize usageItems=_usageItems;
+@property (readonly) BOOL useVibrancy; // @synthesize useVibrancy=_useVibrancy;
 @property (copy, nonatomic) NSArray *viewItems; // @synthesize viewItems=_viewItems;
 
 - (void).cxx_destruct;
 - (id)capImageWithHeight:(double)arg1 leadingLineCap:(int)arg2 trailingLineCap:(int)arg3;
+- (id)initWithVibrancy:(BOOL)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setUsageItems:(id)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)updateSectionViewImages;
 

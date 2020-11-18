@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_annotationHitLongPress:(id)arg1 gestureState:(long long)arg2 location:(struct CGPoint)arg3;
 - (id)_annotationPreceding:(id)arg1 wrapAround:(BOOL)arg2;
 - (id)_annotationsForSelection:(id)arg1;
+- (void)_clearTextSelectionMenuItems;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toPageView:(id)arg2;
 - (void)_doButtonHit:(id)arg1;
 - (id)_getPagePoint:(struct CGPoint *)arg1 forGestureLocation:(struct CGPoint)arg2;

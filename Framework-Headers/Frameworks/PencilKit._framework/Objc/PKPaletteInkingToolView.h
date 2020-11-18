@@ -70,6 +70,7 @@
 + (id)defaultColorForInkingToolWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_colorIndicatorImageViewFrame;
+- (void)_inkAttributesPickerUserDidEndDraggingSlider:(id)arg1;
 - (id)_opacityLabelFont;
 - (void)_reloadToolImage;
 - (void)_setToolProperties:(id)arg1 toolIdentifier:(id)arg2;
@@ -84,7 +85,8 @@
 - (id)attributeViewController;
 - (id)initWithToolIdentifier:(id)arg1;
 - (id)initWithToolIdentifier:(id)arg1 toolProperties:(id)arg2;
-- (void)inkAttributesPickerDidChangeSelectedInk:(id)arg1;
+- (void)inkAttributesPickerDidChangeInkOpacity:(id)arg1;
+- (void)inkAttributesPickerDidChangeInkThickness:(id)arg1;
 - (void)layoutSubviews;
 - (void)setEdgeLocation:(unsigned long long)arg1;
 - (void)setInkColor:(id)arg1;

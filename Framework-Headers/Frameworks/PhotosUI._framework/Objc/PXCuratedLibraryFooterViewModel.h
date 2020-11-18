@@ -6,25 +6,23 @@
 
 #import <PhotosUICore/PXFooterViewModel.h>
 
-#import <PhotosUICore/PXCPLServiceUIDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCloudQuotaControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
 @class NSArray, NSString, PXCPLServiceUI, PXCloudQuotaController, PXCuratedLibraryAnalysisStatus, PXCuratedLibraryItemCountsController, PXFooterSettings;
-@protocol PXCuratedLibraryFooterCPLActionDelegate, PXCuratedLibraryFooterViewModelPresentationDelegate;
+@protocol PXCuratedLibraryFooterViewModelPresentationDelegate;
 
-@interface PXCuratedLibraryFooterViewModel : PXFooterViewModel <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PXChangeObserver, PXSettingsKeyObserver>
+@interface PXCuratedLibraryFooterViewModel : PXFooterViewModel <PXCloudQuotaControllerDelegate, PXChangeObserver, PXSettingsKeyObserver>
 {
+    PXCPLServiceUI *_cplServiceUI;
     PXCloudQuotaController *_cloudQuotaController;
     long long _animatedGridCycleIndex;
     BOOL _hasImportantInformation;
     BOOL _isFooterShown;
     NSArray *_syncProgressAlbums;
     id<PXCuratedLibraryFooterViewModelPresentationDelegate> _presentingDelegate;
-    id<PXCuratedLibraryFooterCPLActionDelegate> _cplActionDelegate;
     long long _mode;
-    PXCPLServiceUI *_cplServiceUI;
     PXCuratedLibraryAnalysisStatus *_analysisStatus;
     PXCuratedLibraryItemCountsController *_itemCountsController;
     PXFooterSettings *_settings;
@@ -32,8 +30,6 @@
 
 @property (readonly, nonatomic) PXCuratedLibraryAnalysisStatus *analysisStatus; // @synthesize analysisStatus=_analysisStatus;
 @property (readonly, nonatomic) PXCloudQuotaController *cloudQuotaController; // @synthesize cloudQuotaController=_cloudQuotaController;
-@property (weak, nonatomic) id<PXCuratedLibraryFooterCPLActionDelegate> cplActionDelegate; // @synthesize cplActionDelegate=_cplActionDelegate;
-@property (readonly, nonatomic) PXCPLServiceUI *cplServiceUI; // @synthesize cplServiceUI=_cplServiceUI;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasImportantInformation; // @synthesize hasImportantInformation=_hasImportantInformation;
@@ -47,8 +43,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *syncProgressAlbums; // @synthesize syncProgressAlbums=_syncProgressAlbums;
 
-+ (void)_getTitle:(id *)arg1 description:(id *)arg2 forMode:(long long)arg3 itemCountsController:(id)arg4 analysisStatus:(id)arg5;
 + (BOOL)_hasSyncProgressStatusForSyncAlbums:(id)arg1 outImportOperations:(int *)arg2;
++ (id)_titleWithOptionalDescription:(id *)arg1 progress:(float *)arg2 forMode:(long long)arg3 itemCountsController:(id)arg4 analysisStatus:(id)arg5 serviceStatus:(id)arg6 inRebuild:(BOOL)arg7;
 + (BOOL)hasAnalysisProgressForMode:(long long)arg1 analysisStatus:(id)arg2 serviceStatus:(id)arg3 serviceUIStatus:(id)arg4 userDefaults:(id)arg5 outAnimatedIconMode:(long long *)arg6 outProgress:(float *)arg7 outTitle:(id *)arg8 outDescription:(id *)arg9;
 + (BOOL)hasCPLStatusForServiceStatus:(id)arg1 serviceUIStatus:(id)arg2;
 - (void).cxx_destruct;
@@ -59,12 +55,9 @@
 - (void)didShowFooter;
 - (void)footerAnimationCrossedGridCycleBoundary;
 - (id)init;
-- (id)initWithItemCountsController:(id)arg1 cplService:(id)arg2 analysisStatus:(id)arg3 mode:(long long)arg4;
+- (id)initWithItemCountsController:(id)arg1 cplServiceUI:(id)arg2 analysisStatus:(id)arg3 mode:(long long)arg4;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (struct NSObject *)presentingViewControllerForCloudQuotaController:(id)arg1;
-- (BOOL)serviceUI:(id)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
-- (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
 - (void)setHasImportantInformation:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 

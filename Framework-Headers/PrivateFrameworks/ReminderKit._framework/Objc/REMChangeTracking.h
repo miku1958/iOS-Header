@@ -24,7 +24,7 @@
 + (id)entityNamesToIncludeFromTrackingWithOptionProvider:(Class)arg1;
 + (id)internalTransactionAuthorKeysToExclude;
 - (void).cxx_destruct;
-- (void)_performChangeTrackingWithBlock:(CDUnknownBlockType)arg1 xpcErrorHandler:(CDUnknownBlockType)arg2;
+- (void)_performChangeTrackingWithReason:(id)arg1 block:(CDUnknownBlockType)arg2 xpcErrorHandler:(CDUnknownBlockType)arg3;
 - (id)changeSetByFilteringTransactionAuthorKeysToExcludeFromChangeSet:(id)arg1;
 - (id)currentChangeTokenForAccountTypes:(long long)arg1 error:(id *)arg2;
 - (id)currentChangeTokenForAllAccountsWithError:(id *)arg1;

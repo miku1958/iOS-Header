@@ -29,15 +29,19 @@
 
 - (void).cxx_destruct;
 - (void)_setExpanded:(BOOL)arg1 animated:(BOOL)arg2 shouldNotify:(BOOL)arg3;
+- (BOOL)_shouldRejectAccessibilityGestureForHUDManager:(id)arg1;
 - (BOOL)_shouldTrackView:(id)arg1 forTouchAtLocation:(struct CGPoint)arg2;
 - (void)_updateHighlightedView;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (BOOL)isExpandable;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
 - (BOOL)shouldScaleImageWhileHighlighted;
 
 @end

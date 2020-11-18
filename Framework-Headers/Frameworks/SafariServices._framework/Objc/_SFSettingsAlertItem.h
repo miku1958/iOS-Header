@@ -43,10 +43,11 @@
 + (id)buttonWithAttributedTitle:(id)arg1 textStyle:(id)arg2 icon:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)buttonWithTitle:(id)arg1 textStyle:(id)arg2 icon:(id)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)itemWithCustomView:(id)arg1;
-+ (id)optionsGroupWithController:(id)arg1;
++ (id)optionsGroupWithTitle:(id)arg1 controller:(id)arg2;
 + (id)stepperWithController:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)initWithType:(long long)arg1;
+- (void)updateOptionsGroupDetailLabel;
 
 @end
 

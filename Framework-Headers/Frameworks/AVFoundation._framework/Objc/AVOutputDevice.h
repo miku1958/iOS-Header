@@ -71,6 +71,7 @@
 - (BOOL)requiresAuthorization;
 - (id)serialNumber;
 - (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (BOOL)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 - (BOOL)supportsBluetoothSharing;

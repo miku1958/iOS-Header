@@ -23,7 +23,7 @@
 + (id)sharedInstanceWithPixelFormat:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
-- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2;
+- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2 librarySPI:(id)arg3;
 - (void)_initDepthStencilState;
 - (void)_initHemi;
 - (void)_initPrograms;

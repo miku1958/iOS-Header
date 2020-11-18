@@ -85,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)createDisplayLinkIfNeeded;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateDisplayLinkIfNeeded;

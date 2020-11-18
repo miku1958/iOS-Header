@@ -43,7 +43,6 @@
     BOOL _showsSkimmingSlideshow;
     BOOL _showsSkimmingInteraction;
     BOOL _allowsPositionDependentHeaderContentOpacity;
-    BOOL _viewBasedDecorationsEnabled;
     BOOL _presentedSkimming;
     PXCuratedLibraryOverlayButtonConfiguration *_showAllButtonConfiguration;
     PXCuratedLibraryOverlayButtonConfiguration *_selectAllButtonConfiguration;
@@ -116,7 +115,6 @@
 @property (strong, nonatomic) PXAssetsSectionLayoutSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetZoomLevel; // @synthesize targetZoomLevel=_targetZoomLevel;
-@property (readonly, nonatomic) BOOL viewBasedDecorationsEnabled; // @synthesize viewBasedDecorationsEnabled=_viewBasedDecorationsEnabled;
 @property (nonatomic) BOOL wantsShadow; // @synthesize wantsShadow=_wantsShadow;
 @property (nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
@@ -163,7 +161,7 @@
 - (BOOL)hasBodyContent;
 - (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
 - (id)init;
-- (id)initWithSection:(long long)arg1 dataSource:(id)arg2 actionManager:(id)arg3 zoomLevel:(long long)arg4 viewBasedDecorationsEnabled:(BOOL)arg5 spec:(id)arg6;
+- (id)initWithSection:(long long)arg1 dataSource:(id)arg2 actionManager:(id)arg3 zoomLevel:(long long)arg4 spec:(id)arg5;
 - (double)itemsLayout:(id)arg1 aspectRatioForItem:(long long)arg2;
 - (struct CGRect)itemsLayout:(id)arg1 bestCropRectForItem:(long long)arg2 withAspectRatio:(double)arg3;
 - (void)itemsLayout:(id)arg1 updateTagsInSpriteInfos:(CDStruct_9d1ebe49 *)arg2 forItemsInRange:(struct _NSRange)arg3;

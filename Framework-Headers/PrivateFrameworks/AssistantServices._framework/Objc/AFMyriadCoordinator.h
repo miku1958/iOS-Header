@@ -84,6 +84,10 @@
     BOOL _wasEmergency;
     SFDiagnostics *_sfdiagnostics;
     AFWatchdogTimer *_sfDiagnosticsTimer;
+    struct {
+        BOOL isBTLEScanning;
+        BOOL isBTLEAdvertising;
+    } _heySiriBTLEState;
 }
 
 + (void)clearCurrentCoordinator;
@@ -102,6 +106,7 @@
 - (void)_advertiseWith:(id)arg1 afterDelay:(float)arg2 maxInterval:(float)arg3 thenExecute:(CDUnknownBlockType)arg4;
 - (void)_ageWedgeFilter;
 - (void)_cancelOverallTimeout;
+- (void)_cancelTimer;
 - (void)_duringNextWindowEnterState:(unsigned long long)arg1;
 - (void)_duringNextWindowExecute:(CDUnknownBlockType)arg1;
 - (id)_endAdvertisingAnalyticsContext:(BOOL)arg1;
@@ -113,7 +118,6 @@
 - (void)_initDeviceClassAndAdjustments;
 - (void)_initializeTimer;
 - (BOOL)_isAPhone:(unsigned char)arg1;
-- (BOOL)_isAlreadyAdvertising;
 - (void)_leaveBLEDiagnosticMode;
 - (void)_loseElection;
 - (BOOL)_okayToSuppressOnOutput;
@@ -131,7 +135,6 @@
 - (void)_startListenTimer;
 - (void)_startTimer:(id)arg1 for:(float)arg2 thenEnterState:(unsigned long long)arg3;
 - (void)_startTimer:(id)arg1 for:(float)arg2 thenExecute:(CDUnknownBlockType)arg3;
-- (void)_startTimer:(id)arg1 until:(id)arg2 thenExecute:(CDUnknownBlockType)arg3;
 - (id)_stateAsString;
 - (id)_stateAsString:(unsigned long long)arg1;
 - (void)_stopAdvertisingAndListening;

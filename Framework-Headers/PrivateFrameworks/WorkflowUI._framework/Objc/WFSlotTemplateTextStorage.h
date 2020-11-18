@@ -17,6 +17,8 @@
     UIColor *_textColor;
     UIColor *_tintColor;
     NSParagraphStyle *_paragraphStyle;
+    UIColor *_disabledSlotTitleColor;
+    UIColor *_disabledSlotBackgroundColor;
     NSArray *_contents;
     long long _contentsTextAlignment;
     NSTextStorage *_textStorage;
@@ -29,6 +31,8 @@
 @property (copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
 @property (readonly, nonatomic) long long contentsTextAlignment; // @synthesize contentsTextAlignment=_contentsTextAlignment;
 @property (weak, nonatomic) id<WFSlotTemplateTextStorageDelegate> delegate; // @dynamic delegate;
+@property (readonly, nonatomic) UIColor *disabledSlotBackgroundColor; // @synthesize disabledSlotBackgroundColor=_disabledSlotBackgroundColor;
+@property (readonly, nonatomic) UIColor *disabledSlotTitleColor; // @synthesize disabledSlotTitleColor=_disabledSlotTitleColor;
 @property (nonatomic) unsigned long long editingLevel; // @synthesize editingLevel=_editingLevel;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
@@ -65,6 +69,7 @@
 - (void)replaceAttributeInInanimateText:(id)arg1 value:(id)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
+- (void)setDisabledSlotTitleColor:(id)arg1 backgroundColor:(id)arg2;
 - (id)slotAtCharacterIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 effectiveContentRange:(struct _NSRange *)arg3;
 - (unsigned long long)slotSpacingOpportunityAtCharacterIndex:(unsigned long long)arg1;
 - (id)string;

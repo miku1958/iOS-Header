@@ -18,6 +18,7 @@
 @property (nonatomic) double lastSuccessfulKeepAliveInterval;
 @property (nonatomic) double maximumKeepAliveInterval;
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled;
+@property (nonatomic) double minimumIntervalFallbackStateTimeout;
 @property (nonatomic) double minimumKeepAliveInterval;
 @property (nonatomic) double serverStatsExpectedKeepAliveInterval;
 @property (nonatomic) double serverStatsMaxKeepAliveInterval;

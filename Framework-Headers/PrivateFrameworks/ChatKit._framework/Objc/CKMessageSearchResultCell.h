@@ -13,19 +13,21 @@
 
 @interface CKMessageSearchResultCell : UICollectionViewCell <CKSearchResultCell>
 {
+    BOOL editing;
     NSString *_searchText;
     CALayer *_topHairline;
     CALayer *_bottomHairline;
     UITableViewCell<CKConversationSearchCellProtocol> *_searchCell;
     CKSpotlightQueryResult *_result;
-    struct UIEdgeInsets marginInsets;
+    struct UIEdgeInsets _marginInsets;
 }
 
 @property (strong, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
+@property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (strong, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property (strong, nonatomic) UITableViewCell<CKConversationSearchCellProtocol> *searchCell; // @synthesize searchCell=_searchCell;
 @property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;

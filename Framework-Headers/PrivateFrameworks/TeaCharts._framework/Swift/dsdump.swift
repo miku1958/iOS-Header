@@ -383,7 +383,7 @@
  class TeaCharts.InteractionManager {
  class TeaCharts.SparklineAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xdb50  @objc SparklineAssembly.init <stripped>
+	0xdce0  @objc SparklineAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -410,10 +410,10 @@
 	var zoneLineViews : [String : LineView] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xe290  @objc LineSeriesView.initWithCoder: <stripped>
-	0xea00  @objc LineSeriesView.layoutSubviews <stripped>
-	0xeae0  @objc LineSeriesView.initWithFrame: <stripped>
-	0xeb60  @objc LineSeriesView..cxx_destruct <stripped>
+	0xe420  @objc LineSeriesView.initWithCoder: <stripped>
+	0xeb90  @objc LineSeriesView.layoutSubviews <stripped>
+	0xec70  @objc LineSeriesView.initWithFrame: <stripped>
+	0xecf0  @objc LineSeriesView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -433,7 +433,7 @@
 	let valueCoordinateCalculator : ValueCoordinateCalculatorType // +0x38 (0x28)
 
 	// Swift methods
-	0x11450  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
+	0x115e0  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
  }
 
  class TeaCharts.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -442,9 +442,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x12ac0  @objc Assembly.assemblies <stripped>
-	0x12d30  @objc Assembly.init <stripped>
-	0x12da0  @objc Assembly..cxx_destruct <stripped>
+	0x12c50  @objc Assembly.assemblies <stripped>
+	0x12ec0  @objc Assembly.init <stripped>
+	0x12f30  @objc Assembly..cxx_destruct <stripped>
  }
 
  struct TeaCharts.LayoutOptions {
@@ -477,11 +477,11 @@
 	let maskLayer : CAShapeLayer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x130a0  @objc LineView.initWithCoder: <stripped>
-	0x13180  @objc LineView.init <stripped>
-	0x133f0  @objc LineView.layoutSubviews <stripped>
-	0x13630  @objc LineView.initWithFrame: <stripped>
-	0x136b0  @objc LineView..cxx_destruct <stripped>
+	0x13230  @objc LineView.initWithCoder: <stripped>
+	0x13310  @objc LineView.init <stripped>
+	0x13580  @objc LineView.layoutSubviews <stripped>
+	0x137c0  @objc LineView.initWithFrame: <stripped>
+	0x13840  @objc LineView..cxx_destruct <stripped>
  }
 
  class TeaCharts.CategoryAxisGridViewModelGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -584,7 +584,7 @@
 
  class TeaCharts.GridAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x23070  @objc GridAssembly.init <stripped>
+	0x23200  @objc GridAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -597,7 +597,7 @@
 	var cache : LRUCacheKey // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x23af0  @objc SparklineViewRenderer.didReceiveMemoryWarning <stripped>
+	0x23c80  @objc SparklineViewRenderer.didReceiveMemoryWarning <stripped>
 
 	// Swift methods
  }
@@ -612,7 +612,7 @@
 
  class TeaCharts.ColumnChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x25300  @objc ColumnChartAssembly.init <stripped>
+	0x25490  @objc ColumnChartAssembly.init <stripped>
 
 	// Swift methods
  }
@@ -623,13 +623,13 @@
 	var seriesViews : [LineSeriesView] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x25ad0  @objc LineChartView.initWithCoder: <stripped>
-	0x25f20  @objc LineChartView.layoutSubviews <stripped>
-	0x26000  @objc LineChartView.initWithFrame: <stripped>
-	0x26080  @objc LineChartView..cxx_destruct <stripped>
+	0x25c60  @objc LineChartView.initWithCoder: <stripped>
+	0x260b0  @objc LineChartView.layoutSubviews <stripped>
+	0x26190  @objc LineChartView.initWithFrame: <stripped>
+	0x26210  @objc LineChartView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x259c0  class func LineChartView.__allocating_init(seriesViews:) // init 
+	0x25b50  class func LineChartView.__allocating_init(seriesViews:) // init 
  }
 
  class TeaCharts.ColumnChartImageGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartImageGeneratorType {
@@ -717,8 +717,8 @@
 
  class TeaCharts.LineChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x2df30  @objc LineChartAssembly.init <stripped>
-	0x2dfd0  @objc LineChartAssembly..cxx_destruct <stripped>
+	0x2e0c0  @objc LineChartAssembly.init <stripped>
+	0x2e160  @objc LineChartAssembly..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -729,11 +729,11 @@
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2e9a0  @objc ColumnChartView.initWithCoder: <stripped>
-	0x2ea60  @objc ColumnChartView.init <stripped>
-	0x2ec50  @objc ColumnChartView.layoutSubviews <stripped>
-	0x2edf0  @objc ColumnChartView.initWithFrame: <stripped>
-	0x2ee70  @objc ColumnChartView..cxx_destruct <stripped>
+	0x2eb30  @objc ColumnChartView.initWithCoder: <stripped>
+	0x2ebf0  @objc ColumnChartView.init <stripped>
+	0x2ede0  @objc ColumnChartView.layoutSubviews <stripped>
+	0x2ef80  @objc ColumnChartView.initWithFrame: <stripped>
+	0x2f000  @objc ColumnChartView..cxx_destruct <stripped>
  }
 
  class TeaCharts.LineChartStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LineChartStylerType {
@@ -781,10 +781,10 @@
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x311e0  @objc SparklineView.initWithCoder: <stripped>
-	0x31420  @objc SparklineView.initWithFrame: <stripped>
-	0x31550  @objc SparklineView.layoutSubviews <stripped>
-	0x31690  @objc SparklineView..cxx_destruct <stripped>
+	0x31370  @objc SparklineView.initWithCoder: <stripped>
+	0x315b0  @objc SparklineView.initWithFrame: <stripped>
+	0x316e0  @objc SparklineView.layoutSubviews <stripped>
+	0x31820  @objc SparklineView..cxx_destruct <stripped>
  }
 
  class TeaCharts.LineSeriesAccessibilityElementProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -821,13 +821,13 @@
 	var timer : NSTimer? // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x32cf0  @objc TapDragGestureRecognizer.initWithCoder: <stripped>
-	0x33a40  @objc TapDragGestureRecognizer.touchesBegan:withEvent: <stripped>
-	0x33bb0  @objc TapDragGestureRecognizer.touchesMoved:withEvent: <stripped>
-	0x33d30  @objc TapDragGestureRecognizer.touchesEnded:withEvent: <stripped>
-	0x33f00  @objc TapDragGestureRecognizer.reset <stripped>
-	0x33fe0  @objc TapDragGestureRecognizer.initWithTarget:action: <stripped>
-	0x34090  @objc TapDragGestureRecognizer..cxx_destruct <stripped>
+	0x32e80  @objc TapDragGestureRecognizer.initWithCoder: <stripped>
+	0x33bd0  @objc TapDragGestureRecognizer.touchesBegan:withEvent: <stripped>
+	0x33d40  @objc TapDragGestureRecognizer.touchesMoved:withEvent: <stripped>
+	0x33ec0  @objc TapDragGestureRecognizer.touchesEnded:withEvent: <stripped>
+	0x34090  @objc TapDragGestureRecognizer.reset <stripped>
+	0x34170  @objc TapDragGestureRecognizer.initWithTarget:action: <stripped>
+	0x34220  @objc TapDragGestureRecognizer..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -876,29 +876,29 @@
 	var dataElements : [UIAccessibilityElement]? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3a360  @objc LineSeriesAccessibilityElement.accessibilityFrame <stripped>
-	0x3a520  @objc LineSeriesAccessibilityElement.setAccessibilityFrame: <stripped>
-	0x3a530  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesName <stripped>
-	0x3a890  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValuesForAxis: <stripped>
-	0x3a8b0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesType <stripped>
-	0x3a8c0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesTitleForAxis: <stripped>
-	0x3a910  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMinimumValueForAxis: <stripped>
-	0x3a9f0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMaximumValueForAxis: <stripped>
-	0x3aae0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSonification <stripped>
-	0x3aae0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSummarization <stripped>
-	0x3ab00  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesIncludesTrendlineInSonification <stripped>
-	0x3ab10  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSonificationDuration <stripped>
-	0x3aec0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValueDescriptionForPosition:axis: <stripped>
-	0x3ba60  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesGridlinePositionsForAxis: <stripped>
-	0x3cc90  @objc LineSeriesAccessibilityElement.initWithAccessibilityContainer: <stripped>
-	0x3cd30  @objc LineSeriesAccessibilityElement.init <stripped>
-	0x3cda0  @objc LineSeriesAccessibilityElement..cxx_destruct <stripped>
+	0x3a4f0  @objc LineSeriesAccessibilityElement.accessibilityFrame <stripped>
+	0x3a6b0  @objc LineSeriesAccessibilityElement.setAccessibilityFrame: <stripped>
+	0x3a6c0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesName <stripped>
+	0x3aa20  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValuesForAxis: <stripped>
+	0x3aa40  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesType <stripped>
+	0x3aa50  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesTitleForAxis: <stripped>
+	0x3aaa0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMinimumValueForAxis: <stripped>
+	0x3ab80  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesMaximumValueForAxis: <stripped>
+	0x3ac70  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSonification <stripped>
+	0x3ac70  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSupportsSummarization <stripped>
+	0x3ac90  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesIncludesTrendlineInSonification <stripped>
+	0x3aca0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesSonificationDuration <stripped>
+	0x3b050  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesValueDescriptionForPosition:axis: <stripped>
+	0x3bbf0  @objc LineSeriesAccessibilityElement.tc_accessibilityDataSeriesGridlinePositionsForAxis: <stripped>
+	0x3ce20  @objc LineSeriesAccessibilityElement.initWithAccessibilityContainer: <stripped>
+	0x3cec0  @objc LineSeriesAccessibilityElement.init <stripped>
+	0x3cf30  @objc LineSeriesAccessibilityElement..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3bb10  func <stripped> // method 
-	0x3bce0  func <stripped> // method 
-	0x3be00  func <stripped> // method 
-	0x3c830  func <stripped> // method 
+	0x3bca0  func <stripped> // method 
+	0x3be70  func <stripped> // method 
+	0x3bf90  func <stripped> // method 
+	0x3c9c0  func <stripped> // method 
  }
 
  struct TeaCharts.ValueAxis {
@@ -922,13 +922,13 @@
 	var labels : [UILabel] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x40290  @objc GridView.initWithCoder: <stripped>
-	0x40d80  @objc GridView.layoutSubviews <stripped>
-	0x40e60  @objc GridView.initWithFrame: <stripped>
-	0x40ee0  @objc GridView..cxx_destruct <stripped>
+	0x40420  @objc GridView.initWithCoder: <stripped>
+	0x40f10  @objc GridView.layoutSubviews <stripped>
+	0x40ff0  @objc GridView.initWithFrame: <stripped>
+	0x41070  @objc GridView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x40130  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
+	0x402c0  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
  }
 
  struct TeaCharts.LineChartImages {
@@ -944,7 +944,7 @@
 	let coordinateProvider : LineChartCoordinateProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x41a80  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
+	0x41c10  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
  }
 
  class TeaCharts.LineStyle : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -955,7 +955,7 @@
 	let zoneStyles : LineStyle // +0x40 (0x8)
 
 	// Swift methods
-	0x42b20  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
+	0x42cb0  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
  }
 
  struct TeaCharts.AxisGridViewModelGeneratorOptions {
@@ -972,7 +972,7 @@
 	let categoryCoordinateCalculator : CategoryCoordinateCalculatorType // +0x38 (0x28)
 
 	// Swift methods
-	0x42eb0  func <stripped> // method 
+	0x43040  func <stripped> // method 
  }
 
  class TeaCharts.StyleManager {
@@ -994,7 +994,7 @@
 
  class TeaCharts.ChartsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x452e0  @objc ChartsAssembly.init <stripped>
+	0x45470  @objc ChartsAssembly.init <stripped>
  }
 
  class TeaCharts.ChartLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ChartLayoutAttributesFactoryType {
@@ -1011,7 +1011,7 @@
 
  class TeaCharts.LinearAxisCalculationModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x45a30  class func LinearAxisCalculationModel.__allocating_init() // init 
+	0x45bc0  class func LinearAxisCalculationModel.__allocating_init() // init 
  }
 
  struct TeaCharts.CategoryDataPoint {

@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)addModel:(id)arg1;
 - (void)addModelToBeUpdated:(id)arg1;
+- (void)addSettingModel:(id)arg1;
 - (id)initForInitialCreationWithTransactionLabel:(id)arg1;
 - (id)initWithTransactionLabel:(id)arg1;
 

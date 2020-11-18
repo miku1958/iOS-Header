@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL inactive; // @synthesize inactive=_inactive;
 @property (readonly, nonatomic) NSLock *observersLock; // @synthesize observersLock=_observersLock;
 @property (strong, nonatomic) id<WFApplicationContextProvider> provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) BOOL shouldReverseLayoutDirection;
 
 + (id)imageNamed:(id)arg1;
 + (id)sharedContext;

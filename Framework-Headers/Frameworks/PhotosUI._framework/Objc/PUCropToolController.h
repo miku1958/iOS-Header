@@ -92,6 +92,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_imageLoadingQueueCompletionBlocks;
     UILongPressGestureRecognizer *__accessibilityLongPressGestureRecognizer;
     CEKBadgeTextView *_badgeView;
+    struct CGSize _minimumViewCropRectSizeForHandleGesture;
     struct CGSize _screenSize;
     CDStruct_1b6d18a9 _videoScrubberSeekTime;
     struct CGRect __initialHandlePanCropRect;
@@ -175,6 +176,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PFSerialQueue *imageLoadingQueue; // @synthesize imageLoadingQueue=_imageLoadingQueue;
 @property (strong, nonatomic) NSMutableArray *imageLoadingQueueCompletionBlocks; // @synthesize imageLoadingQueueCompletionBlocks=_imageLoadingQueueCompletionBlocks;
 @property (nonatomic) BOOL initialImageLoaded; // @synthesize initialImageLoaded=_initialImageLoaded;
+@property (nonatomic) struct CGSize minimumViewCropRectSizeForHandleGesture; // @synthesize minimumViewCropRectSizeForHandleGesture=_minimumViewCropRectSizeForHandleGesture;
 @property (nonatomic) BOOL modelLoadingSuspended; // @synthesize modelLoadingSuspended=_modelLoadingSuspended;
 @property (strong, nonatomic) PUEditActionActivity *overcaptureSourceToggleActivity; // @synthesize overcaptureSourceToggleActivity=_overcaptureSourceToggleActivity;
 @property (nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
@@ -274,6 +276,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateCropToggleButton;
 - (void)_updateCropToggleConstraintsIfNeeded;
 - (void)_updateCropViewsForInteraction;
+- (void)_updateOvercaptureSourceSwitchActivity;
 - (void)_updatePreviewViewInsets;
 - (void)_updateRendererWithCurrentComposition;
 - (void)adjustmentsDataChanged:(id)arg1;

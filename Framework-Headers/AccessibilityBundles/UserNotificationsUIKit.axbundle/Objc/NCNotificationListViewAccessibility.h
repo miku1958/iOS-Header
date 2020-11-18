@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (id)_accessibilityListCell;
+- (id)_accessibilitySupplementaryFooterViews;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityUserTestingChildren;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;

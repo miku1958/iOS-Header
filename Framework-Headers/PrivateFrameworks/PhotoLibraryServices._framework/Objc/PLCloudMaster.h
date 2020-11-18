@@ -45,6 +45,7 @@
 + (id)cloudMasterWithScopedIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
 + (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
 + (id)entityName;
++ (unsigned long long)fullSizeJPEGSourceForUTI:(id)arg1 andImageDimensions:(struct CGSize)arg2;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
 + (id)listOfSyncedProperties;
 + (void)resetCloudMastersStateInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;

@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
 @interface GEOSearchAttributionSource : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _attributionRequirements;
     NSMutableArray *_attributionApps;
     NSMutableArray *_localizedAttributions;
     NSString *_sourceIdentifier;
     NSMutableArray *_supportedComponentActions;
     NSString *_webBaseActionURL;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _sourceVersion;
     BOOL _enforceAppStore;
     struct {
@@ -90,6 +92,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedAttributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAttributionsCount;

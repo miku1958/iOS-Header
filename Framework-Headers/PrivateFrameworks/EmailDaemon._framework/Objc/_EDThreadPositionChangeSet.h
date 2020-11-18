@@ -23,12 +23,14 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isMovingObjectID:(id)arg1;
-- (BOOL)addThreadObjectIDToAdd:(id)arg1 before:(id)arg2;
-- (BOOL)addThreadObjectIDToMove:(id)arg1 before:(id)arg2;
+- (BOOL)addObjectIDToAdd:(id)arg1 before:(id)arg2;
+- (void)addObjectIDToDelete:(id)arg1;
+- (BOOL)addObjectIDToMove:(id)arg1 before:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
 - (BOOL)isAddingObjectID:(id)arg1;
+- (BOOL)isDeletingObjectID:(id)arg1;
 
 @end
 

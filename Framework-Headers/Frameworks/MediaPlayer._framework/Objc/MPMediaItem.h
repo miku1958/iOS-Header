@@ -109,7 +109,6 @@
 - (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (Class)itemArrayCoderPIDDataCodingClass;
 - (void)markNominalAmountHasBeenPlayed;
 - (id)multiverseIdentifier;
 - (double)nominalHasBeenPlayedThreshold;

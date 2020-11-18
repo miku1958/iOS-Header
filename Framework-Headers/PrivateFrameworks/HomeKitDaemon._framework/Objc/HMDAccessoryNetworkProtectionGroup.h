@@ -9,24 +9,24 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMDHome, HMFUnfairLock, NSString, NSUUID;
+@class HMDHome, HMFUnfairLock, NSNumber, NSString, NSUUID;
 
 @interface HMDAccessoryNetworkProtectionGroup : NSObject <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     HMFUnfairLock *_lock;
     long long _targetProtectionMode;
-    NSUUID *_uuid;
     NSString *_manufacturer;
-    HMAccessoryCategory *_category;
+    NSNumber *_category;
+    NSUUID *_uuid;
     HMDHome *_home;
 }
 
-@property (readonly) HMAccessoryCategory *category; // @synthesize category=_category;
+@property (strong, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (readonly) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
+@property (strong, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetProtectionMode; // @synthesize targetProtectionMode=_targetProtectionMode;
 @property (readonly) NSUUID *uuid; // @synthesize uuid=_uuid;

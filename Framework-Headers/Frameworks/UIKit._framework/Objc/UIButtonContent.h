@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIColor *shadowColor;
     NSNumber *drawingStroke;
     UIImageSymbolConfiguration *preferredSymbolConfiguration;
+    BOOL isWidthVariant;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)updateVariableLengthStringForView:(id)arg1;
 
 @end
 

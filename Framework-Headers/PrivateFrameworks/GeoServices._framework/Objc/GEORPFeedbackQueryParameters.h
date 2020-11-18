@@ -13,11 +13,13 @@
 @interface GEORPFeedbackQueryParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackComponentTypes;
     GEORPPageInfo *_pageInfo;
     GEORPSortParameters *_sortParameters;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_feedbackComponentTypes:1;
@@ -56,6 +58,8 @@
 - (int)feedbackComponentTypeAtIndex:(unsigned long long)arg1;
 - (id)feedbackComponentTypesAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

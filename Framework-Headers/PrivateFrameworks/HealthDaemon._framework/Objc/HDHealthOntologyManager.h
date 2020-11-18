@@ -78,7 +78,7 @@
 - (BOOL)_queue_insertRawRelationshipIntoDatabase:(id)arg1 valueString:(id)arg2;
 - (BOOL)_queue_insertTwoItemRawOntologyValueIntoDatabase:(id)arg1 table:(id)arg2 valueString:(id)arg3;
 - (id)_referenceOntologyFileURL;
-- (id)_work_conceptFromGraphNode:(id)arg1;
+- (id)_work_conceptFromGraphNode:(id)arg1 preloadRelationships:(BOOL)arg2;
 - (id)_work_graphDatabase:(id)arg1 findConceptForCoding:(id)arg2;
 - (id)_work_graphDatabase:(id)arg1 synthesizeConceptWithPrimaryCoding:(id)arg2 displayName:(id)arg3;
 - (BOOL)_work_node:(id)arg1 addAttributeWithCoding:(id)arg2 error:(id *)arg3;
@@ -103,8 +103,10 @@
 - (void)importWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithProfile:(id)arg1;
+- (BOOL)insertAssociations:(id)arg1 error:(id *)arg2;
 - (void)invalidateAndWait;
 - (BOOL)makeAssociationFromSampleUUID:(id)arg1 toConcept:(id)arg2 error:(id *)arg3;
+- (BOOL)makeAssociationFromSampleUUID:(id)arg1 toConceptIdentifier:(id)arg2 error:(id *)arg3;
 - (id)nameForCodingSystem:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)obliterateWithReason:(id)arg1;
 - (BOOL)performGraphDatabaseWork:(CDUnknownBlockType)arg1 usingTransaction:(BOOL)arg2 error:(id *)arg3;

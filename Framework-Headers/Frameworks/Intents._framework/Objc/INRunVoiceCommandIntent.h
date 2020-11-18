@@ -6,25 +6,31 @@
 
 #import <Intents/INIntent.h>
 
+#import <Intents/INFileEnumerable-Protocol.h>
 #import <Intents/INRunVoiceCommandIntentExport-Protocol.h>
 
 @class INIntentExecutionResult, INSpeakableString, INVoiceCommandDeviceInformation, NSString;
 
-@interface INRunVoiceCommandIntent : INIntent <INRunVoiceCommandIntentExport>
+@interface INRunVoiceCommandIntent : INIntent <INFileEnumerable, INRunVoiceCommandIntentExport>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) INIntentExecutionResult *executionResult;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INVoiceCommandDeviceInformation *originDevice;
 @property (readonly, copy, nonatomic) NSString *previousIntentIdentifier;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INSpeakableString *voiceCommand;
 
 - (id)_dictionaryRepresentation;
-- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
+- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;

@@ -32,10 +32,11 @@
 - (void)extension:(id)arg1 didStartWithError:(id)arg2;
 - (void)extensionDidDetachIPC:(id)arg1;
 - (void)handleAppsUninstalled:(id)arg1;
+- (void)handleAppsUpdateBegins:(id)arg1;
+- (void)handleAppsUpdateEnding:(id)arg1;
+- (void)handleAppsUpdateEnds:(id)arg1;
 - (void)handleCancel;
 - (void)handleExtensionStartedWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handlePluginUpdateBegins:(id)arg1;
-- (void)handlePluginUpdateEnds:(id)arg1;
 - (id)managerInterface;
 - (void)sendExtensionFailed;
 - (void)sendStatus:(long long)arg1 withDisconnectError:(id)arg2;

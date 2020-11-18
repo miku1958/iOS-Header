@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INFileEnumerable-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INInteractionExport-Protocol.h>
 #import <Intents/INKeyImageProducing-Protocol.h>
@@ -14,7 +15,7 @@
 
 @class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, NSUUID, SAUISnippet;
 
-@interface INInteraction : NSObject <INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
+@interface INInteraction : NSObject <INFileEnumerable, INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
 {
     INIntent *_intent;
     INIntentResponse *_intentResponse;
@@ -37,16 +38,20 @@
 @property (strong, nonatomic) NSDate *date;
 @property (copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (copy, nonatomic) NSString *domainIdentifier;
 @property (nonatomic) double duration;
 @property (copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic, setter=_setIntent:) INIntent *intent; // @synthesize intent=_intent;
 @property (nonatomic) long long intentHandlingStatus; // @synthesize intentHandlingStatus=_intentHandlingStatus;
 @property (copy, nonatomic, setter=_setIntentResponse:) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (unsigned long long)_searchableItemVersion;
@@ -62,6 +67,8 @@
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_init;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 - (id)_searchableItemIncludingData:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

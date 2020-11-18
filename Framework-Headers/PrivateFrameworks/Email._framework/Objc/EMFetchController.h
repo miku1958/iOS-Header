@@ -17,6 +17,7 @@
 
 + (id)remoteInterface;
 - (void).cxx_destruct;
+- (id)diagnosticInformation;
 - (id)initWithRemoteConnection:(id)arg1;
 - (void)performFetchOfType:(int)arg1;
 - (void)performFetchOfType:(int)arg1 accounts:(id)arg2;

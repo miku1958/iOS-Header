@@ -14,6 +14,7 @@
 + (id)strategyWithQueue:(id)arg1;
 - (void)addEvent:(id)arg1;
 - (id)allEvents;
+- (BOOL)isSequenceTerminated;
 
 @end
 

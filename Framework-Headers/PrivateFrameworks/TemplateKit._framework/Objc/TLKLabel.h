@@ -48,6 +48,7 @@
 - (void)setFont:(id)arg1;
 - (void)setFont:(id)arg1 keepOriginal:(BOOL)arg2;
 - (void)setText:(id)arg1;
+- (void)setTextAlignment:(long long)arg1;
 - (void)setTextColor:(id)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateAttributedText;

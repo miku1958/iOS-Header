@@ -10,6 +10,9 @@
 @protocol SBTetheredSwitcherContentViewControlling;
 
 @protocol SBTetheredSwitcherContentViewControlling <NSObject>
+
+@property (readonly, nonatomic) id<SBTetheredSwitcherContentViewControlling> tetheredViewController;
+
 - (void)beginTetheringWithViewController:(id<SBTetheredSwitcherContentViewControlling>)arg1 asTetheree:(BOOL)arg2;
 - (UIPanGestureRecognizer *)borrowScrollViewPanGestureRecognizer;
 - (struct CGSize)contentSize;
@@ -19,9 +22,10 @@
 - (BOOL)hasItemContainerAtLocationInContentView:(struct CGPoint)arg1;
 - (BOOL)isScrolling;
 - (unsigned long long)numberOfAppLayouts;
+- (void)prepareToReopenClosedWindowsWithCompletion:(void (^)(BOOL, BOOL))arg1;
 - (void)returnScrollViewPanGestureRecognizer:(UIPanGestureRecognizer *)arg1;
 - (void)setTetheredContentView:(SBFluidSwitcherContentView *)arg1;
-- (void)setTetheredScrollViewContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
+- (void)setTetheredScrollViewContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
 - (void)tetheredViewController:(id<SBTetheredSwitcherContentViewControlling>)arg1 didPerformTransitionWithMode:(long long)arg2;
 @end
 

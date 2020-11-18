@@ -24,6 +24,8 @@
     unsigned long long _etaTransportType;
     double _etaTravelTime;
     BOOL _active;
+    BOOL _paused;
+    BOOL _inactiveInBackground;
     NSTimer *_refreshTimer;
     CLLocation *_currentLocation;
     id<MKETAProviderDelegate> _delegate;
@@ -57,6 +59,7 @@
 - (void)_cancelTimer;
 - (void)_commonInit;
 - (void)_configureETAForMapItem:(id)arg1;
+- (void)_didEnterBackground;
 - (void)_notifyETAAllObservers;
 - (void)_notifyLocationAllObservers;
 - (void)_refreshTimer;
@@ -65,6 +68,7 @@
 - (void)_updateETA;
 - (void)_updateETADisplayWithTransportType:(unsigned long long)arg1 travelTime:(double)arg2 distance:(double)arg3;
 - (void)_updateETAHandler:(id)arg1;
+- (void)_willEnterForeground;
 - (void)addObserver:(id)arg1;
 - (void)cancel;
 - (void)configureWithNearestStationMapItem:(id)arg1;
@@ -81,10 +85,12 @@
 - (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
 - (BOOL)locationManagerShouldPauseLocationUpdates:(id)arg1;
 - (void)locationManagerUpdatedLocation:(id)arg1;
+- (void)pause;
 - (void)quickRouteManager:(id)arg1 didUpdateETA:(id)arg2 error:(id)arg3 animated:(BOOL)arg4;
 - (BOOL)quickRouteShouldIncludeTransitWhenNotPreferredTransportType;
 - (BOOL)quickRouteShouldOnlyUseAutomobile;
 - (void)removeObserver:(id)arg1;
+- (void)restart;
 - (void)start;
 
 @end

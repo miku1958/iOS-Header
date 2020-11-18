@@ -127,7 +127,7 @@
     UIActivityViewController *_primingActivityViewController;
     struct CGPoint __previousPreheatContentOffset;
     struct CGPoint __previousPrefetchContentOffset;
-    struct CGSize __maximumThumbnailRequestSize;
+    struct CGSize _maximumThumbnailRequestSize;
     struct CGSize __cachedViewSizeTransitionContextSize;
     struct UIEdgeInsets _collectionViewLayoutReferenceSafeAreaInsets;
     struct CGRect __previousPreheatRect;
@@ -151,7 +151,6 @@
 @property (strong, nonatomic, setter=_setDuplicateActionController:) PUDuplicateActionController *_duplicateActionController; // @synthesize _duplicateActionController=__duplicateActionController;
 @property (strong, nonatomic, setter=_setEmptyPlaceholderView:) UIView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
 @property (nonatomic, setter=_setMaximumNumberOfRowsToPreheat:) long long _maximumNumberOfRowsToPreheat; // @synthesize _maximumNumberOfRowsToPreheat=__maximumNumberOfRowsToPreheat;
-@property (nonatomic, setter=_setMaximumThumbnailRequestSize:) struct CGSize _maximumThumbnailRequestSize; // @synthesize _maximumThumbnailRequestSize=__maximumThumbnailRequestSize;
 @property (strong, nonatomic, setter=_setMenuIndexPath:) NSIndexPath *_menuIndexPath; // @synthesize _menuIndexPath=__menuIndexPath;
 @property (strong, nonatomic) UIMultiSelectInteraction *_multiSelectInteraction; // @synthesize _multiSelectInteraction=__multiSelectInteraction;
 @property (nonatomic, setter=_setNeedsNewEmptyPlaceholderView:) BOOL _needsNewEmptyPlaceholderView; // @synthesize _needsNewEmptyPlaceholderView=__needsNewEmptyPlaceholderView;
@@ -188,6 +187,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL initiallyScrolledToBottom; // @synthesize initiallyScrolledToBottom=_initiallyScrolledToBottom;
 @property (strong, nonatomic) UICollectionViewLayout<PUGridLayoutProtocol> *mainGridLayout; // @synthesize mainGridLayout=_mainGridLayout;
+@property (nonatomic, setter=_setMaximumThumbnailRequestSize:) struct CGSize maximumThumbnailRequestSize; // @synthesize maximumThumbnailRequestSize=_maximumThumbnailRequestSize;
 @property (copy, nonatomic) CDUnknownBlockType onViewDidAppearCompletion; // @synthesize onViewDidAppearCompletion=_onViewDidAppearCompletion;
 @property (strong, nonatomic, setter=_setOneUpPresentationHelper:) PUOneUpPresentationHelper *oneUpPresentationHelper; // @synthesize oneUpPresentationHelper=_oneUpPresentationHelper;
 @property (copy, nonatomic) CDUnknownBlockType pendingProcessDataSourceUpdateBlock; // @synthesize pendingProcessDataSourceUpdateBlock=_pendingProcessDataSourceUpdateBlock;

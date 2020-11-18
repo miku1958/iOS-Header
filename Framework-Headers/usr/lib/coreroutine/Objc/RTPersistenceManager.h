@@ -70,7 +70,7 @@
 - (void)performZoneResetMirroringRequest:(CDUnknownBlockType)arg1;
 - (void)performZoneResetMirroringRequestWithQualityOfService:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)persistenceContext:(id)arg1 encounteredError:(id)arg2;
-- (void)persistenceContextPerformedSave:(id)arg1;
+- (BOOL)persistenceContextPerformedSave:(id)arg1 error:(id *)arg2;
 - (BOOL)persistenceContextShouldExecute:(id)arg1;
 - (id)persistenceContextWithOptions:(long long)arg1;
 - (id)persistenceStoreConfigurations;

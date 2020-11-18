@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_setTag:(id)arg1;
 - (void)_transceiveWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_transceiveWithSession:(id)arg1 sendData:(id)arg2 receivedData:(id *)arg3 error:(id *)arg4;
+- (id)_translateNFCDError:(id)arg1;
 - (id)applicationData;
 - (id)asNFCFeliCaTag;
 - (id)asNFCISO15693Tag;

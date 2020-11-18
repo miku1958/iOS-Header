@@ -13,14 +13,14 @@
 #import <HomeKitDaemon/HMDDatabaseZoneManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDBulletinBoard, HMDCameraProfileSettingsDerivedPropertiesModel, HMDCameraProfileSettingsModel, HMDDatabaseZoneManager, HMDHAPAccessory, HMFMessageDispatcher, NSNotificationCenter, NSNumber, NSObject, NSString, NSUUID;
+@class HMDBulletinBoard, HMDCameraProfileSettingsDerivedPropertiesModel, HMDCameraProfileSettingsModel, HMDDatabaseZoneManager, HMDHAPAccessory, HMFMessageDispatcher, HMFTimer, NSNotificationCenter, NSNumber, NSObject, NSString, NSUUID;
 @protocol HMDCameraProfileSettingsManagerDelegate, OS_dispatch_queue;
 
-@interface HMDCameraProfileSettingsManager : HMFObject <HMFLogging, HMBLocalZoneDelegate, HMBCloudZoneDelegate, HMBLocalZoneModelObserver, HMDCloudShareParticipantsManagerDataSource, HMDDatabaseZoneManagerDelegate, HMFMessageReceiver>
+@interface HMDCameraProfileSettingsManager : HMFObject <HMFLogging, HMBLocalZoneDelegate, HMBCloudZoneDelegate, HMBLocalZoneModelObserver, HMDCloudShareParticipantsManagerDataSource, HMDDatabaseZoneManagerDelegate, HMFTimerDelegate, HMFMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_messageReceiveQueue;
-    NSString *_logIdentifier;
     unsigned long long _currentAccessMode;
     id<HMDCameraProfileSettingsManagerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -29,13 +29,17 @@
     HMDDatabaseZoneManager *_zoneManager;
     NSNotificationCenter *_notificationCenter;
     HMDBulletinBoard *_bulletinBoard;
+    NSString *_clientIdentifier;
     NSNumber *_anyUserAtHome;
     NSUUID *_uniqueIdentifier;
+    CDUnknownBlockType _timerFactory;
+    HMFTimer *_safeModeTimer;
 }
 
 @property (strong, getter=isAnyUserAtHome) NSNumber *anyUserAtHome; // @synthesize anyUserAtHome=_anyUserAtHome;
 @property (readonly) HMDBulletinBoard *bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
-@property (readonly, getter=isCameraDisabledByThirdParty) BOOL cameraDisabledByThirdParty;
+@property (readonly, getter=isCameraManuallyDisabled) BOOL cameraManuallyDisabled;
+@property (readonly) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly) unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
 @property (readonly, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
 @property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
@@ -47,19 +51,19 @@
 @property (readonly, copy) NSString *description;
 @property (weak) HMDHAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue; // @synthesize messageReceiveQueue=_messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong) HMFTimer *safeModeTimer; // @synthesize safeModeTimer=_safeModeTimer;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long supportedFeatures;
+@property (copy) CDUnknownBlockType timerFactory; // @synthesize timerFactory=_timerFactory;
 @property (readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
 @property (readonly) NSString *zoneName;
 
-+ (id)clientIdentifier;
 + (id)logCategory;
 + (id)zoneNameForHome:(id)arg1;
 - (void).cxx_destruct;
@@ -71,6 +75,7 @@
 - (void)_addRecordingAudioEnabledWriteRequestToArray:(id)arg1 recordingAudioEnabled:(BOOL)arg2;
 - (void)_addSnapshotsActiveCharacteristicWriteRequestToArray:(id)arg1 snapshotsAllowed:(BOOL)arg2;
 - (void)_addWriteRequestToArray:(id)arg1 forCharacteristicWithType:(id)arg2 ofServiceWithType:(id)arg3 value:(id)arg4;
+- (void)_evaluateHomePresence;
 - (void)_handleAccessModeChangeNotificationEnabled:(id)arg1;
 - (void)_handleAccessModeIndicatorEnabled:(id)arg1;
 - (void)_handleAccessoryDidBecomeReachable;
@@ -86,22 +91,24 @@
 - (void)_handleUpdatedSettings:(id)arg1 previousSettings:(id)arg2;
 - (CDUnknownBlockType)_localZoneUpdateCompletionForMessage:(id)arg1;
 - (id)_payloadForSettings:(id)arg1;
-- (void)_populateCurrentAccessModeFieldForDerivedProperties:(id)arg1 currentSettings:(id)arg2 didUpdateField:(BOOL *)arg3;
+- (void)_populateCurrentAccessModeFieldForDerivedProperties:(id)arg1 currentSettings:(id)arg2 userInitiated:(BOOL)arg3 didUpdateField:(BOOL *)arg4;
 - (void)_populateNotificationFieldForSettings:(id)arg1 didUpdateField:(BOOL *)arg2;
 - (id)_settingsModelForUpdate;
 - (BOOL)_shouldQueryCanDisableRecordingForAccessMode:(unsigned long long)arg1 isAtHome:(BOOL)arg2 currentSettings:(id)arg3;
 - (BOOL)_shouldQueryCanEnableRecordingForAccessMode:(unsigned long long)arg1 currentSettings:(id)arg2;
+- (void)_startSafeModeTimer;
 - (void)_synchronizeAllSettingsToCamera;
 - (void)_updateClientsOfChangedSettings:(id)arg1;
-- (void)_updateCurrentAccessModeForSettings:(id)arg1 withDescription:(id)arg2;
+- (void)_updateCurrentAccessModeForSettings:(id)arg1 userInitiated:(BOOL)arg2 withDescription:(id)arg3;
 - (void)_updateSettingsWithDerivedProperties:(id)arg1;
 - (void)configureWithMessageDispatcher:(id)arg1 adminMessageDispatcher:(id)arg2 deviceIsResidentCapable:(BOOL)arg3;
 - (void)dealloc;
 - (void)disableRecordingAccessModes;
-- (void)handleAccessoryIsReachableNotification:(id)arg1;
+- (void)handleAccessoryConfiguredNotification:(id)arg1;
 - (void)handleAccessoryServiceAddedNotification:(id)arg1;
 - (void)handleCharacteristicsValueUpdated:(id)arg1;
-- (void)handleHomePresenceUpdateNotification:(id)arg1;
+- (void)handleHomePresenceEvaluatedNotification:(id)arg1;
+- (void)handlePrimaryResidentUpdateNotification:(id)arg1;
 - (void)handleRecordingManagementServiceDidUpdateNotification:(id)arg1;
 - (id)initWithHAPAccessory:(id)arg1 workQueue:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 hapAccessory:(id)arg2 workQueue:(id)arg3 zoneManager:(id)arg4 notificationCenter:(id)arg5 bulletinBoard:(id)arg6;
@@ -109,11 +116,13 @@
 - (id)localZone:(id)arg1 didProcessModelDeletion:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelUpdate:(id)arg2;
 - (void)localZone:(id)arg1 processingDidComplete:(id)arg2 mirrorOutputFuture:(id)arg3 actions:(id)arg4;
+- (id)logIdentifier;
 - (BOOL)manager:(id)arg1 shouldShareWithUser:(id)arg2;
+- (id)manuallyDisabledCharacteristic;
 - (id)messageDestination;
 - (void)remove;
 - (void)start;
-- (id)thirdPartyCameraActiveCharacteristic;
+- (void)timerDidFire:(id)arg1;
 - (void)zoneManagerDidStart:(id)arg1;
 - (void)zoneManagerDidStop:(id)arg1;
 

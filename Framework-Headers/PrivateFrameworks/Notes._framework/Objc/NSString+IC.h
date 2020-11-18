@@ -29,6 +29,7 @@
 - (unsigned long long)ic_HTMLInsertionPoint;
 - (id)ic_checkedSubstringWithRange:(struct _NSRange)arg1;
 - (BOOL)ic_containsAlphanumericCharacters;
+- (BOOL)ic_containsNonWhitespaceAndAttachmentCharacters;
 - (BOOL)ic_containsNonWhitespaceCharacters;
 - (unsigned long long)ic_countOfCharactersInSet:(id)arg1;
 - (BOOL)ic_isLastCharacterInRangeANewlineForRange:(struct _NSRange)arg1;

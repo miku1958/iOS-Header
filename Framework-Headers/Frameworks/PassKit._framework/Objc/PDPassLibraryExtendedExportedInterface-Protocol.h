@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDPassLibraryInAppExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSNumber, NSSet, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPass, PKPaymentSetupConfiguration, PKPaymentSetupRequest;
+@class CLLocation, NSArray, NSNumber, NSSet, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPaymentSetupConfiguration, PKPaymentSetupRequest;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
@@ -27,7 +27,7 @@
 - (void)noteAccountChangedWithHandler:(void (^)(void))arg1;
 - (void)noteAccountDeletedWithHandler:(void (^)(void))arg1;
 - (void)noteObjectSharedWithUniqueID:(NSString *)arg1;
-- (void)notifyPassUsed:(PKPass *)arg1 fromSource:(long long)arg2;
+- (void)notifyPassUsedWithIdentifier:(NSString *)arg1 fromSource:(long long)arg2;
 - (void)nukeDatabaseAndExit;
 - (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(BOOL))arg1;
@@ -43,6 +43,7 @@
 - (void)removeAllScheduledActivities;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(NSString *)arg1;
+- (void)resetApplePayWithDiagnosticReason:(NSString *)arg1 handler:(void (^)(void))arg2;
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)shuffleGroups:(int)arg1;
 - (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(void (^)(NSError *))arg1;

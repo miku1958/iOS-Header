@@ -11,6 +11,7 @@
 
 @interface EMBlockedSenderManager : NSObject
 {
+    struct atomic_flag _didRemoveObservers;
     NSSet *_blockedSenderCache;
     id<EFScheduler> _resetScheduler;
     NSObject<OS_dispatch_queue> *_cacheQueue;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) id<EFScheduler> resetScheduler; // @synthesize resetScheduler=_resetScheduler;
 
 + (void)setPromptForBlockedSender:(BOOL)arg1;
++ (BOOL)shouldMoveToTrashForMailboxType:(long long)arg1;
 + (BOOL)shouldPromptForBlockedSender;
 - (void).cxx_destruct;
 - (void)_blockContact:(id)arg1 block:(BOOL)arg2;
@@ -30,6 +32,7 @@
 - (void)_blockedSenderListDidChange:(id)arg1;
 - (BOOL)_isEmailAddressBlocked:(id)arg1;
 - (void)_postBlockedSenderListDidChangeNotificationBasedOnBlockedSenderEnabledState;
+- (void)_removeObserversIfNeeded;
 - (void)_resetBlockedSenderCache;
 - (void)_unblockPhoneNumber:(id)arg1;
 - (BOOL)areAnyEmailAddressesBlocked:(id)arg1;
@@ -42,6 +45,7 @@
 - (BOOL)isContactBlocked:(id)arg1;
 - (BOOL)isEmailAddressBlocked:(id)arg1;
 - (BOOL)isTokenAddressIsBlocked:(id)arg1;
+- (void)tearDown;
 - (void)unblockContact:(id)arg1;
 - (void)unblockEmailAddress:(id)arg1;
 - (void)unblockEmailAddresses:(id)arg1;

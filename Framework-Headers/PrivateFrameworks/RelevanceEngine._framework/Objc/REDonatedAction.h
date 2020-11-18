@@ -9,7 +9,7 @@
 #import <RelevanceEngine/NSCopying-Protocol.h>
 #import <RelevanceEngine/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, REIdentifier;
+@class INInteraction, INRelevantShortcut, NSArray, NSDate, NSDictionary, NSString, REIdentifier;
 @protocol REDonatedActionIdentifierProviding;
 
 @interface REDonatedAction : NSObject <NSSecureCoding, NSCopying>
@@ -17,6 +17,7 @@
     BOOL _isIntentBacked;
     BOOL _localDonation;
     unsigned long long _type;
+    INInteraction *_interaction;
     NSDate *_creationDate;
     NSDate *_localSaveDate;
     REIdentifier *_donationIdentifier;
@@ -30,6 +31,9 @@
     NSString *_intentTypeName;
     NSString *_activityType;
     NSDictionary *_metrics;
+    NSString *_userActivityRequiredString;
+    NSString *_userActivityTitleString;
+    INRelevantShortcut *_relevantShortcut;
 }
 
 @property (readonly, nonatomic) id<REDonatedActionIdentifierProviding> actionTypeIdentifier; // @synthesize actionTypeIdentifier=_actionTypeIdentifier;
@@ -42,16 +46,20 @@
 @property (readonly, nonatomic) unsigned long long filteredShortcutType; // @synthesize filteredShortcutType=_filteredShortcutType;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *intentTypeName; // @synthesize intentTypeName=_intentTypeName;
+@property (strong, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;
 @property (readonly, nonatomic) NSString *localBundleIdentifier;
 @property (readonly, nonatomic, getter=isLocalDonation) BOOL localDonation; // @synthesize localDonation=_localDonation;
 @property (readonly, nonatomic) NSDate *localSaveDate; // @synthesize localSaveDate=_localSaveDate;
 @property (strong, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) NSArray *relevanceProviders; // @synthesize relevanceProviders=_relevanceProviders;
 @property (readonly, nonatomic) unsigned long long relevanceProvidersHash; // @synthesize relevanceProvidersHash=_relevanceProvidersHash;
+@property (strong, nonatomic) INRelevantShortcut *relevantShortcut; // @synthesize relevantShortcut=_relevantShortcut;
 @property (readonly, nonatomic) NSString *remoteBundleIdentifier;
 @property (readonly, nonatomic) id<REDonatedActionIdentifierProviding> simplifiedActionTypeIdentifier; // @synthesize simplifiedActionTypeIdentifier=_simplifiedActionTypeIdentifier;
 @property (readonly, nonatomic) unsigned long long trainingActionIdentifier;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *userActivityRequiredString; // @synthesize userActivityRequiredString=_userActivityRequiredString;
+@property (strong, nonatomic) NSString *userActivityTitleString; // @synthesize userActivityTitleString=_userActivityTitleString;
 
 + (id)bundleIdForExtensionId:(id)arg1;
 + (BOOL)supportedActivityType:(id)arg1 forBundleID:(id)arg2;
@@ -61,7 +69,6 @@
 - (id)_initInteractionWithEvent:(id)arg1 filtered:(BOOL)arg2;
 - (id)_initRelevantShortcutWithEvent:(id)arg1 filtered:(BOOL)arg2;
 - (id)_initUserActivityWithEvent:(id)arg1 filtered:(BOOL)arg2;
-- (void)_loadDuetEvent:(CDUnknownBlockType)arg1;
 - (void)_loadShortcutIdentifiersFromIntent:(id)arg1;
 - (void)_loadShortcutIdentifiersFromUserActivity:(id)arg1;
 - (id)_shortcutFilter;

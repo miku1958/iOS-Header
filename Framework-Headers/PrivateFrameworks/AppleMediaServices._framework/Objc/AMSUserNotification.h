@@ -56,7 +56,7 @@
 @property (strong, nonatomic) NSURL *videoUrl; // @synthesize videoUrl=_videoUrl;
 
 + (id)_cachedImagePathForIdentifier:(id)arg1 assetURL:(id)arg2;
-+ (BOOL)_canParseNotificationWithIdentifier:(id)arg1;
++ (BOOL)_canParseNotificationWithIdentifier:(id)arg1 userInfo:(id)arg2;
 + (id)_downloadAssetAtUrl:(id)arg1 withIdentifier:(id)arg2 logKey:(id)arg3 bag:(id)arg4;
 + (void)addRequiredBagKeysToAggregator:(id)arg1;
 + (id)bagKeySet;
@@ -69,6 +69,7 @@
 + (id)notificationCenter:(id)arg1 didChangeSettings:(id)arg2 bag:(id)arg3;
 + (id)notificationCenter:(id)arg1 openSettingsForNotification:(id)arg2 bag:(id)arg3;
 + (id)notificationWithPayload:(id)arg1 andConfig:(id)arg2;
++ (void)openAppUsingBundleIdentifier:(id)arg1;
 + (BOOL)shouldHandleNotificationResponse:(id)arg1;
 + (BOOL)shouldHandleServiceExtensionNotificationRequest:(id)arg1;
 - (void).cxx_destruct;

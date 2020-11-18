@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraNotificationCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSString;
+@class HMDCameraNotificationCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSSet, NSString;
 @protocol HMDCameraRecordingSessionNotificationTriggerDelegate, OS_dispatch_queue;
 
 @interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate, HMFLogging>
@@ -19,33 +19,34 @@
     HMDHAPAccessory *_cameraAccessory;
     HMDCameraNotificationCharacteristicsAvailabilityListener *_availabilityListener;
     NSNotificationCenter *_notificationCenter;
-    NSString *_logIdentifier;
+    NSSet *_availableCharacteristics;
+    NSString *_clientIdentifier;
 }
 
 @property (readonly) HMDCameraNotificationCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
+@property (strong) NSSet *availableCharacteristics; // @synthesize availableCharacteristics=_availableCharacteristics;
 @property (readonly, weak) HMDHAPAccessory *cameraAccessory; // @synthesize cameraAccessory=_cameraAccessory;
+@property (readonly, copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMDCameraRecordingSessionNotificationTriggerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)clientIdentifier;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_configureAvailableCharacteristics:(id)arg1 previousCharacteristics:(id)arg2;
-- (void)_handleAccessoryLocalReachabilityChanged:(id)arg1;
+- (void)_configureAvailableCharacteristics:(id)arg1;
 - (void)_handleCharacteristicsValueUpdated:(id)arg1;
 - (void)_handleObservedCharacteristicsValueUpdate:(id)arg1;
-- (void)_registerForNotifications:(id)arg1;
 - (void)_setNotificationForCharacteristics:(id)arg1 to:(BOOL)arg2;
 - (void)dealloc;
+- (void)handleAccessoryConfigured:(id)arg1;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2 availabilityListener:(id)arg3 notificationCenter:(id)arg4;
-- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2 previousCharacteristics:(id)arg3;
+- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
+- (id)logIdentifier;
 - (void)start;
 
 @end

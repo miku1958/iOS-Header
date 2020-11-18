@@ -6,39 +6,25 @@
 
 #import <SpringBoardHome/SBLeafIcon.h>
 
-#import <SearchUI/SearchUIApplicationIconStateObserver-Protocol.h>
+@class SFSearchResult, SearchUIAppIconImage;
 
-@class LSApplicationProxy, NSArray, NSString, NSURL, SFSearchResult, SearchUIAppIconImage;
-
-@interface SearchUIAppIcon : SBLeafIcon <SearchUIApplicationIconStateObserver>
+@interface SearchUIAppIcon : SBLeafIcon
 {
     SFSearchResult *_searchResult;
+    unsigned long long _variant;
     SearchUIAppIconImage *_iconImage;
-    NSURL *_applicationBundleURL;
-    NSArray *_applicationShortcutItems;
-    NSString *_applicationShortcutWidgetBundleIdentifier;
-    LSApplicationProxy *_applicationProxy;
 }
 
-@property (copy, nonatomic) NSURL *applicationBundleURL; // @synthesize applicationBundleURL=_applicationBundleURL;
-@property (strong, nonatomic) LSApplicationProxy *applicationProxy; // @synthesize applicationProxy=_applicationProxy;
-@property (copy, nonatomic) NSArray *applicationShortcutItems; // @synthesize applicationShortcutItems=_applicationShortcutItems;
-@property (copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SearchUIAppIconImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (readonly, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 
 + (BOOL)canGenerateIconsInBackground;
 + (BOOL)isPlaceholderIcon;
-+ (id)sharedApplicationWorkspace;
 - (void).cxx_destruct;
 - (void)applicationWithBundleIdentifierDidChangeIconAccessories:(id)arg1;
-- (void)dealloc;
 - (void)iconDidChange;
-- (id)initWithSearchResult:(id)arg1;
+- (id)initWithSearchResult:(id)arg1 variant:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)uniqueIdentifier;
 

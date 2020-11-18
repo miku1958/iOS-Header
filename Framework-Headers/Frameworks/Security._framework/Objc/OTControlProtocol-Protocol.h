@@ -29,7 +29,7 @@
 - (void)preflightBottledPeer:(NSString *)arg1 dsid:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
 - (void)removeFriendsInClique:(NSString *)arg1 context:(NSString *)arg2 peerIDs:(NSArray *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)reset:(void (^)(BOOL, NSError *))arg1;
-- (void)resetAndEstablish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)resetAndEstablish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 resetReason:(long long)arg4 reply:(void (^)(NSError *))arg5;
 - (void)restore:(NSString *)arg1 contextID:(NSString *)arg2 bottleSalt:(NSString *)arg3 entropy:(NSData *)arg4 bottleID:(NSString *)arg5 reply:(void (^)(NSError *))arg6;
 - (void)restore:(NSString *)arg1 dsid:(NSString *)arg2 secret:(NSData *)arg3 escrowRecordID:(NSString *)arg4 reply:(void (^)(NSData *, NSData *, NSError *))arg5;
 - (void)rpcEpochWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(unsigned long long, NSError *))arg2;

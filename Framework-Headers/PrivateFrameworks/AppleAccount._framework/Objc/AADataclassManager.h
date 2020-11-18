@@ -6,24 +6,34 @@
 
 #import <objc/NSObject.h>
 
+@class ACAccountStore;
+
 @interface AADataclassManager : NSObject
 {
+    ACAccountStore *_store;
 }
 
 + (id)appBundleIdentifierDictionary;
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (id)_filteredDataclassesForAccountClass:(id)arg1;
 - (BOOL)_hideDataclassWhenAppRemoved:(id)arg1;
 - (BOOL)_isRestrictedForDataclass:(id)arg1;
 - (BOOL)_isRunningInStoreDemoMode;
+- (id)_nonVisibleServiceDataclass;
 - (BOOL)_shouldProvisionNotesForAccount:(id)arg1;
 - (id)_userVisibleDataclasses;
 - (id)appBundleIdentifierForDataclass:(id)arg1;
-- (void)attemptToEnableDataclasses:(id)arg1 forAccount:(id)arg2 inStore:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)blackListedMacOSDataclasses;
+- (id)buildAutoEnableableDataclassesAndActionsForAccount:(id)arg1 dataclassesForEnablement:(id)arg2;
+- (BOOL)canAutoEnableDataclass:(id)arg1 forAccount:(id)arg2;
+- (void)enableDataclassesWithoutLocalDataDataclassActionsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)enableDataclassesWithoutLocalDataDataclassActionsForDataclasses:(id)arg1 fromAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)filterDataclassesForPossibleAutoEnablementForAccount:(id)arg1;
 - (id)filteredServerProvidedFeatures:(id)arg1 forAccount:(id)arg2;
+- (id)init;
+- (BOOL)isDataclassActionSafeForAutoEnablement:(id)arg1;
 - (BOOL)isSystemAppRestrictedOrRemovedForDataclass:(id)arg1;
-- (BOOL)shouldAutoEnableDataclass:(id)arg1 forAccount:(id)arg2;
 - (BOOL)shouldProvisionDataclass:(id)arg1 forAccount:(id)arg2;
 - (id)whitelistedDataclassesForAppleAccountClassBasic;
 - (id)whitelistedDataclassesForAppleAccountClassFull;

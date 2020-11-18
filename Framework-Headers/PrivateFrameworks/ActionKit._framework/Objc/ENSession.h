@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ActionKit/ENAuthenticatorDelegate-Protocol.h>
 #import <ActionKit/ENBusinessNoteStoreClientDelegate-Protocol.h>
 #import <ActionKit/ENLinkedNoteStoreClientDelegate-Protocol.h>
-#import <ActionKit/ENOAuthAuthenticatorDelegate-Protocol.h>
 
-@class EDAMUser, ENAuthCache, ENBusinessNoteStoreClient, ENNoteStoreClient, ENOAuthAuthenticator, ENPreferencesStore, ENUserStoreClient, NSArray, NSDate, NSString;
-@protocol ENSDKLogging, OS_dispatch_queue;
+@class EDAMUser, ENAuthCache, ENBusinessNoteStoreClient, ENNoteStoreClient, ENPreferencesStore, ENUserStoreClient, NSArray, NSDate, NSString;
+@protocol ENAuthenticator, ENSDKLogging, OS_dispatch_queue;
 
-@interface ENSession : NSObject <ENLinkedNoteStoreClientDelegate, ENBusinessNoteStoreClientDelegate, ENOAuthAuthenticatorDelegate>
+@interface ENSession : NSObject <ENLinkedNoteStoreClientDelegate, ENBusinessNoteStoreClientDelegate, ENAuthenticatorDelegate>
 {
     BOOL _isAuthenticated;
     BOOL _supportsLinkedAppNotebook;
@@ -23,15 +23,13 @@
     long long _personalUploadLimit;
     long long _businessUploadUsage;
     long long _businessUploadLimit;
-    NSString *_customEvernoteLoginTitle;
-    NSString *_customEvernoteLoginDescription;
-    ENOAuthAuthenticator *_authenticator;
+    id<ENAuthenticator> _authenticator;
     CDUnknownBlockType _authenticationCompletion;
     NSString *_sessionHost;
     EDAMUser *_user;
+    NSString *_primaryAuthenticationToken;
     EDAMUser *_businessUser;
     ENPreferencesStore *_preferences;
-    NSString *_primaryAuthenticationToken;
     ENUserStoreClient *_userStore;
     ENNoteStoreClient *_primaryNoteStore;
     ENBusinessNoteStoreClient *_businessNoteStore;
@@ -44,14 +42,12 @@
 
 @property (strong, nonatomic) ENAuthCache *authCache; // @synthesize authCache=_authCache;
 @property (copy, nonatomic) CDUnknownBlockType authenticationCompletion; // @synthesize authenticationCompletion=_authenticationCompletion;
-@property (strong, nonatomic) ENOAuthAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
+@property (strong, nonatomic) id<ENAuthenticator> authenticator; // @synthesize authenticator=_authenticator;
 @property (readonly, nonatomic) NSString *businessDisplayName;
 @property (strong, nonatomic) ENBusinessNoteStoreClient *businessNoteStore; // @synthesize businessNoteStore=_businessNoteStore;
 @property (nonatomic) long long businessUploadLimit; // @synthesize businessUploadLimit=_businessUploadLimit;
 @property (nonatomic) long long businessUploadUsage; // @synthesize businessUploadUsage=_businessUploadUsage;
 @property (strong, nonatomic) EDAMUser *businessUser; // @synthesize businessUser=_businessUser;
-@property (copy, nonatomic) NSString *customEvernoteLoginDescription; // @synthesize customEvernoteLoginDescription=_customEvernoteLoginDescription;
-@property (copy, nonatomic) NSString *customEvernoteLoginTitle; // @synthesize customEvernoteLoginTitle=_customEvernoteLoginTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -65,7 +61,7 @@
 @property (nonatomic) long long personalUploadLimit; // @synthesize personalUploadLimit=_personalUploadLimit;
 @property (nonatomic) long long personalUploadUsage; // @synthesize personalUploadUsage=_personalUploadUsage;
 @property (strong, nonatomic) ENPreferencesStore *preferences; // @synthesize preferences=_preferences;
-@property (strong, nonatomic) NSString *primaryAuthenticationToken; // @synthesize primaryAuthenticationToken=_primaryAuthenticationToken;
+@property (copy, nonatomic) NSString *primaryAuthenticationToken; // @synthesize primaryAuthenticationToken=_primaryAuthenticationToken;
 @property (strong, nonatomic) ENNoteStoreClient *primaryNoteStore; // @synthesize primaryNoteStore=_primaryNoteStore;
 @property (copy, nonatomic) NSString *sessionHost; // @synthesize sessionHost=_sessionHost;
 @property (copy, nonatomic) NSString *sourceApplication; // @synthesize sourceApplication=_sourceApplication;
@@ -79,7 +75,11 @@
 
 + (id)bundleSeedID;
 + (BOOL)checkSharedSessionSettings;
++ (id)consumerKey;
++ (id)consumerSecret;
++ (id)developerToken;
 + (id)keychainAccessGroup;
++ (id)sessionHostOverride;
 + (void)setDisableRefreshingNotebooksCacheOnLaunch:(BOOL)arg1;
 + (void)setKeychainGroup:(id)arg1;
 + (void)setSecurityApplicationGroupIdentifier:(id)arg1;
@@ -89,7 +89,6 @@
 - (void).cxx_destruct;
 - (void)addCredentials:(id)arg1;
 - (BOOL)appNotebookIsLinked;
-- (void)authenticateWithViewController:(id)arg1 preferRegistration:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)authenticationTokenForBusinessStoreClient:(id)arg1;
 - (id)authenticationTokenForLinkedNotebookRef:(id)arg1;
 - (id)authenticationTokenForNoteRef:(id)arg1;
@@ -158,8 +157,6 @@
 - (id)userStoreClientForBootstrapping;
 - (id)userStoreUrl;
 - (id)validBusinessAuthenticationResult;
-- (BOOL)viewNoteInEvernote:(id)arg1;
-- (BOOL)viewNoteInEvernote:(id)arg1 callbackURL:(id)arg2;
 
 @end
 

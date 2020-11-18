@@ -41,6 +41,7 @@
 - (void).cxx_destruct;
 - (id)additionalRepresentationsForSerialization;
 - (id)assetRepresentationTypes;
+- (id)assetResourceManager;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)duration;
@@ -58,6 +59,7 @@
 - (void)getThumbnail:(CDUnknownBlockType)arg1 ofSize:(struct CGSize)arg2;
 - (unsigned long long)hash;
 - (id)height;
+- (id)imageManager;
 - (id)isBurst;
 - (BOOL)isEqual:(id)arg1;
 - (id)isFavorite;

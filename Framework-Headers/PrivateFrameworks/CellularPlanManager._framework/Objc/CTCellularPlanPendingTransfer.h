@@ -28,7 +28,7 @@
 @property (nonatomic) long long status; // @synthesize status=_status;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

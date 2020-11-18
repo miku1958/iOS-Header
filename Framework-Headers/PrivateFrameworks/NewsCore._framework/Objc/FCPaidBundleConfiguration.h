@@ -21,6 +21,11 @@
     NSDictionary *_subscriptionButtonConfigurationsByType;
 }
 
+@property (readonly, nonatomic) NSString *appLaunchUpsellArticleID;
+@property (readonly, nonatomic) NSString *appLaunchUpsellInstanceID;
+@property (readonly, nonatomic) long long appLaunchUpsellNewSessionBackgroundTimeInterval;
+@property (readonly, nonatomic) unsigned long long appLaunchUpsellPaidVisibility;
+@property (readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property (readonly, nonatomic) unsigned long long articleHardPaywallType;
 @property (readonly, nonatomic) long long bundleSubscriptionsGlobalMeteredCount;
 @property (readonly, nonatomic, getter=isCategoriesDownloadButtonEnabled) BOOL categoriesDownloadButtonEnabled;

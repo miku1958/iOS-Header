@@ -39,14 +39,14 @@
 - (void)enableLogging:(BOOL)arg1;
 - (id)filterAoiCandidates:(id)arg1 error:(id *)arg2;
 - (id)filterFarCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
-- (id)filterOldCandidates:(id)arg1 error:(id *)arg2;
+- (id)filterOldCandidates:(id)arg1 referenceDate:(id)arg2 error:(id *)arg3;
 - (id)generateRelabeledInferredMapItemsFromProbMap:(id)arg1 inferredMapItemDeduperState:(id)arg2 hallucinatedUUIDs:(id)arg3 originalCandidate:(struct RTPair *)arg4 referenceLocation:(id)arg5 error:(id *)arg6;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2;
 - (id)initWithDistanceCalculator:(id)arg1 parameters:(id)arg2;
 - (BOOL)partitionCandidates:(id)arg1 intoNonRevGeoCandidates:(id *)arg2 revGeoCandidates:(id *)arg3 error:(id *)arg4;
 - (BOOL)placeholderCandidate:(struct RTPair *)arg1;
-- (id)preprocessContextCandidates:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
+- (id)preprocessContextCandidates:(id)arg1 relabelingCandidate:(struct RTPair *)arg2 error:(id *)arg3;
 - (id)relabelCandidate:(struct RTPair *)arg1 usingContextCandidates:(id)arg2 metrics:(id)arg3 outPriorVector:(id *)arg4 outObservationVector:(id *)arg5 outPosteriorVector:(id *)arg6 error:(id *)arg7;
 - (id)relabeledInferredMapItemFromProbVector:(id)arg1 error:(id *)arg2;
 - (id)relabeledProbVectorForCandidate:(struct RTPair *)arg1 usingContextNonRevGeoCandidates:(id)arg2 contextRevGeoCandidates:(id)arg3 inferredMapItemDeduperState:(id)arg4 referenceLocation:(id)arg5 outPriorVector:(id *)arg6 outObservationVector:(id *)arg7 outPosteriorVector:(id *)arg8 error:(id *)arg9;

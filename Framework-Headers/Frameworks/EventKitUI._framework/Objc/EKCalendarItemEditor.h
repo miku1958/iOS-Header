@@ -87,7 +87,8 @@ __attribute__((visibility("hidden")))
 - (void)_performDelete:(long long)arg1;
 - (BOOL)_performSave:(long long)arg1 animated:(BOOL)arg2;
 - (void)_pinKeyboard:(BOOL)arg1;
-- (void)_presentDetachSheet;
+- (void)_presentAttachmentRecurrenceSheetForEvent:(id)arg1;
+- (void)_presentDetachSheetForEvent:(id)arg1 saveAttachments:(BOOL)arg2;
 - (void)_reallyHandleCellHeightChange;
 - (void)_revertEvent;
 - (void)_setCalendarItemOnEditItems;
@@ -103,6 +104,8 @@ __attribute__((visibility("hidden")))
 - (id)_viewForSheet;
 - (id)_viewHierarchy;
 - (void)applicationDidResume;
+- (id)attachmentsModifiedEvent;
+- (BOOL)attachmentsModifiedOnRecurrence;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancel:(id)arg1;
 - (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
@@ -136,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (long long)firstTableRowForEditItem:(id)arg1;
 - (void)focus:(unsigned long long)arg1 select:(BOOL)arg2;
 - (void)handleTapOutside;
+- (BOOL)hasAttachmentChanges;
 - (BOOL)hasUnsavedChanges;
 - (id)init;
 - (void)loadView;
@@ -151,6 +155,7 @@ __attribute__((visibility("hidden")))
 - (long long)rowNumberForEditItem:(id)arg1;
 - (BOOL)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
 - (BOOL)saveWithSpan:(long long)arg1 animated:(BOOL)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)setEditItemVisibility:(int)arg1 animated:(BOOL)arg2;
 - (void)setupDeleteButton;
 - (void)setupForEvent;

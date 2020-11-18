@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIContextMenuActionsListViewDelegate-Protocol.h>
 #import <UIKitCore/_UIPreviewPlatterPanControllerDelegate-Protocol.h>
 
-@class NSString, UIPanGestureRecognizer, UITapGestureRecognizer, UITargetedPreview, UIView, UIVisualEffectView, _UIContextMenuActionsListView, _UIContextMenuStyle, _UIFulfilledContextMenuConfiguration, _UIPreviewPlatterLayoutArbiter, _UIPreviewPlatterPanController, _UIPreviewPlatterView;
+@class NSArray, NSString, UIPanGestureRecognizer, UITapGestureRecognizer, UITargetedPreview, UIView, UIVisualEffectView, _UIContextMenuActionsListView, _UIContextMenuStyle, _UIFulfilledContextMenuConfiguration, _UIPreviewPlatterLayoutArbiter, _UIPreviewPlatterPanController, _UIPreviewPlatterView;
 @protocol _UIPreviewPlatterPresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     _UIPreviewPlatterView *_contentPlatterView;
     _UIContextMenuActionsListView *_actionsView;
     _UIFulfilledContextMenuConfiguration *_displayedConfiguration;
+    NSArray *_accessoryViews;
     UITapGestureRecognizer *_platterActionTapGestureRecognizer;
     UITapGestureRecognizer *_dismissalTapGestureRecognizer;
     UIPanGestureRecognizer *_actionScrubbingHandoffGestureRecognizer;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _platterContentSize;
 }
 
+@property (readonly, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property (strong, nonatomic) UIPanGestureRecognizer *actionScrubbingHandoffGestureRecognizer; // @synthesize actionScrubbingHandoffGestureRecognizer=_actionScrubbingHandoffGestureRecognizer;
 @property (readonly, nonatomic) _UIContextMenuActionsListView *actionsView; // @synthesize actionsView=_actionsView;
 @property (readonly, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)_actionsOnlyViewControllerForSourcePreview:(id)arg1;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (void)_createActionsViewIfNecessary;
+- (void)_didCompleteLayout;
 - (void)_handleActionHandoffGesture:(id)arg1;
 - (void)_handleDismissalTapGesture:(id)arg1;
 - (void)_handlePlatterActionTapGesture:(id)arg1;
@@ -91,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (void)previewActionsView:(id)arg1 didSelectAction:(id)arg2;
+- (void)setDisplayedMenu:(id)arg1 withAnimationStyle:(unsigned long long)arg2;
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)tearOffForDraggingWithDragContainerView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

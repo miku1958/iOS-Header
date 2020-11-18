@@ -42,7 +42,9 @@
 - (void)application:(UIApplication *)arg1 performFetchWithCompletionHandler:(void (^)(unsigned long long))arg2;
 - (BOOL)application:(UIApplication *)arg1 shouldAllowExtensionPointIdentifier:(NSString *)arg2;
 - (BOOL)application:(UIApplication *)arg1 shouldRestoreApplicationState:(NSCoder *)arg2;
+- (BOOL)application:(UIApplication *)arg1 shouldRestoreSecureApplicationState:(NSCoder *)arg2;
 - (BOOL)application:(UIApplication *)arg1 shouldSaveApplicationState:(NSCoder *)arg2;
+- (BOOL)application:(UIApplication *)arg1 shouldSaveSecureApplicationState:(NSCoder *)arg2;
 - (unsigned long long)application:(UIApplication *)arg1 supportedInterfaceOrientationsForWindow:(UIWindow *)arg2;
 - (void)application:(UIApplication *)arg1 userDidAcceptCloudKitShareWithMetadata:(CKShareMetadata *)arg2;
 - (UIViewController *)application:(UIApplication *)arg1 viewControllerWithRestorationIdentifierPath:(NSArray *)arg2 coder:(NSCoder *)arg3;

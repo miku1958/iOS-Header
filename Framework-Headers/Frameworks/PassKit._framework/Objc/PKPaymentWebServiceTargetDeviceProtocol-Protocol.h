@@ -89,5 +89,6 @@
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (PKTrustedDeviceEnrollmentInfo *)trustedDeviceEnrollmentInfoForWebService:(PKPaymentWebService *)arg1;
 - (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
+- (BOOL)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1;
 @end
 

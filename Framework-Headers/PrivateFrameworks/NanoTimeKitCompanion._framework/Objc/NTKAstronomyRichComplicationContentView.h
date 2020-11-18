@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKAstronomyVistaViewObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
-@class CLKDevice, CLLocation, NSDate, NTKAstronomyLocationDot, NTKAstronomyVistaView, NTKDelayedBlock;
+@class CLKDevice, CLKUIQuadView, CLLocation, NSDate, NTKAstronomyLocationDot, NTKAstronomyVistaView, NTKDelayedBlock;
 
 @interface NTKAstronomyRichComplicationContentView : UIView <NTKAstronomyVistaViewObserver, NTKTimeTravel>
 {
@@ -24,6 +24,8 @@
     NTKDelayedBlock *_stopAnimationDelayedBlock;
     CLLocation *_currentLocation;
 }
+
+@property (readonly, nonatomic) CLKUIQuadView *quadView;
 
 - (void).cxx_destruct;
 - (void)_hideLocationDot;

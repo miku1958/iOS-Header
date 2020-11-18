@@ -6,16 +6,13 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIAction, UIAlertController, UIContextMenuConfiguration;
+@class UIAction, UIContextMenuConfiguration;
 
 @protocol _UITextItemInteractionHandler <NSObject>
 - (UIContextMenuConfiguration *)contextMenuConfiguration;
 - (UIAction *)defaultAction;
 
 @optional
-- (NSArray *)actionSheetActionsForAlertController:(UIAlertController *)arg1;
-- (NSString *)actionSheetTitle;
 - (unsigned long long)preferredContextMenuLayout;
-- (BOOL)shouldShowActionSheet;
 @end
 

@@ -44,6 +44,7 @@
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityHandwritingElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
+- (BOOL)_accessibilityIsGroupedParent;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilitySortedElementsWithin;

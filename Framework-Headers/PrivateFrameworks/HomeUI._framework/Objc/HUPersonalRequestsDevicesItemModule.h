@@ -16,6 +16,7 @@
     BOOL _onlyShowDeviceSwitches;
     NSSet *_itemProviders;
     id<HFMediaProfileContainer> _sourceMediaProfileContainer;
+    NSArray *_supportedMULanguageCodes;
     HMHome *_home;
     HFUserItem *_sourceItem;
     HFItemProvider *_personalRequestsDevicesProvider;
@@ -40,13 +41,16 @@
 @property (readonly, nonatomic) HFUserItem *sourceItem; // @synthesize sourceItem=_sourceItem;
 @property (strong, nonatomic) id<HFMediaProfileContainer> sourceMediaProfileContainer; // @synthesize sourceMediaProfileContainer=_sourceMediaProfileContainer;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *supportedMULanguageCodes; // @synthesize supportedMULanguageCodes=_supportedMULanguageCodes;
 
 - (void).cxx_destruct;
 - (id)_commitUpdateToAccessControl:(id)arg1;
 - (void)_createItemProviders;
 - (BOOL)_showPersonalRequestsItems;
+- (BOOL)_voiceRecognitionLanguage:(id)arg1 matchesMultiUserCapableHomePod:(id)arg2;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 userItem:(id)arg2 home:(id)arg3 onlyShowDeviceSwitches:(BOOL)arg4;
+- (BOOL)isCurrentIOSDeviceOnSameVoiceRecognitionLanguageAsPersonalRequestsDeviceForItem:(id)arg1;
 - (BOOL)isItemPersonalRequestsDevice:(id)arg1;
 - (BOOL)isItemPersonalRequestsFooter:(id)arg1;
 - (BOOL)isItemPersonalRequestsToggle:(id)arg1;
@@ -54,6 +58,7 @@
 - (void)registerForExternalUpdates;
 - (void)toggleAllPersonalRequestsDevices;
 - (void)turnOnAllPersonalRequestsDevices;
+- (void)turnOnPersonalRequestsForAllVoiceRecognitionCapablePersonalRequestsDevices;
 - (void)unregisterForExternalUpdates;
 - (id)updateLocationDeviceToThisDevice;
 

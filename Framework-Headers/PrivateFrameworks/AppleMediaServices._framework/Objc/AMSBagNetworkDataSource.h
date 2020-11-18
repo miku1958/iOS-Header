@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)valueForURLVariable:(id)arg1;
+- (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 
 @end
 

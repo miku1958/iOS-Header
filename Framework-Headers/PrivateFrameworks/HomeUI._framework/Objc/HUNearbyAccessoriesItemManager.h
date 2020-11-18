@@ -10,10 +10,12 @@
 
 @interface HUNearbyAccessoriesItemManager : HFItemManager
 {
+    BOOL _supportsQuickControls;
     HMAccessory *_primaryAccessory;
 }
 
 @property (strong, nonatomic) HMAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
+@property (nonatomic) BOOL supportsQuickControls; // @synthesize supportsQuickControls=_supportsQuickControls;
 
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
@@ -22,7 +24,7 @@
 - (BOOL)_isServiceItemAssociatedWithPrimaryAccessory:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
 - (unsigned long long)_numberOfSections;
-- (id)initWithDelegate:(id)arg1 sourceProfileItem:(id)arg2;
+- (id)initWithDelegate:(id)arg1 sourceProfileItem:(id)arg2 supportsQuickControls:(BOOL)arg3;
 - (BOOL)shouldHideItem:(id)arg1;
 
 @end

@@ -15,6 +15,7 @@
     MISSING_TYPE *beaconRefreshingController;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *garbageCollector;
+    MISSING_TYPE *locationController;
     MISSING_TYPE *serverInteractionController;
     MISSING_TYPE *actionsController;
     MISSING_TYPE *trackingAvoidance;

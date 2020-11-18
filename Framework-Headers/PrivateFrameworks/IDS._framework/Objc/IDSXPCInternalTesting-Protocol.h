@@ -26,6 +26,7 @@
 - (void)oneToOneECCQuicktestEncryptionWithData:(NSData *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)performOutstandingKeyTransparencyVerificationWithCompletion:(void (^)(NSError *))arg1;
 - (void)registeredIdentityTimestampsWithBlock:(void (^)(NSArray *))arg1;
+- (void)removeConnectionWithConnectionName:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setECVersion:(unsigned int)arg1 withCompletion:(void (^)(void))arg2;
 - (void)setForceKeyRoll:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
 - (void)tapToRadarWithTitle:(NSString *)arg1 message:(NSString *)arg2 completion:(void (^)(void))arg3;

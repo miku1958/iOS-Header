@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXObservable.h>
 
 @class PXCPLServiceStatus;
 @protocol PXCPLService, PXCPLServiceUIDelegate, PXCPLServiceUIStatus;
 
-@interface PXCPLServiceUI : NSObject
+@interface PXCPLServiceUI : PXObservable
 {
     id<PXCPLService> _cplService;
     struct {
@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (void)_handleUpdatedServiceStatus:(id)arg1;
 - (void)_performAction:(long long)arg1;
-- (void)_serviceUIStatusDidChange:(id)arg1 onlyProgressDidChange:(BOOL)arg2;
+- (void)_serviceUIStatusDidChange:(id)arg1 nonProgressPropertiesDidChange:(BOOL)arg2 progressDidChange:(BOOL)arg3;
 - (id)init;
 - (id)initWithCPLService:(id)arg1;
 - (BOOL)performDefaultHandlerForAction:(long long)arg1;

@@ -20,24 +20,35 @@
 @property (readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 - (void).cxx_destruct;
+- (void)clearLogClientConfiguration:(CDUnknownBlockType)arg1;
+- (void)clearPublicKeyStoreState:(CDUnknownBlockType)arg1;
 - (void)clearState:(CDUnknownBlockType)arg1;
+- (void)convertToSelfRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 updateCompletionBlock:(CDUnknownBlockType)arg6;
 - (void)convertToSelfRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryResponse:(id)arg4 updateCompletionBlock:(CDUnknownBlockType)arg5;
-- (void)copyApplicationState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)copyApplicationState:(CDUnknownBlockType)arg1;
+- (void)copyApplicationTranscript:(CDUnknownBlockType)arg1;
+- (void)copyDaemonState:(CDUnknownBlockType)arg1;
+- (void)copyDataStoreStatistics:(CDUnknownBlockType)arg1;
+- (void)copyKeyStoreState:(CDUnknownBlockType)arg1;
+- (void)copyKeyStoreStateFromDisk:(CDUnknownBlockType)arg1;
+- (void)copyLogClientConfiguration:(CDUnknownBlockType)arg1;
+- (void)forceApplicationConfig:(CDUnknownBlockType)arg1;
 - (void)forceApplicationKeysDownload:(CDUnknownBlockType)arg1;
 - (void)forceApplicationKeysFetch:(CDUnknownBlockType)arg1;
 - (void)forceConfigUpdate:(CDUnknownBlockType)arg1;
+- (void)forceDutyCycle:(CDUnknownBlockType)arg1;
 - (void)forceValidateUUID:(id)arg1 uri:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)initWithApplication:(id)arg1;
-- (id)initWithApplication:(id)arg1 service:(id)arg2;
-- (void)updateUUIDData:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryResponse:(id)arg4 updateCompletionBlock:(CDUnknownBlockType)arg5;
+- (void)invokeXPCAsynchronousCallWithBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2;
+- (void)invokeXPCSynchronousCallWithBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2;
 - (id)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 insertResponse:(id)arg4 error:(id *)arg5;
 - (void)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 insertResponse:(id)arg4 promiseCompletionBlock:(CDUnknownBlockType)arg5;
+- (id)validateEnrollmentUri:(id)arg1 accountID:(id)arg2 loggableData:(id)arg3 queryRequest:(id)arg4 insertResponse:(id)arg5 error:(id *)arg6;
 - (void)validateEnrollmentUriResult:(id)arg1 uuid:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (id)validatePeerUri:(id)arg1 accountID:(id)arg2 loggableDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 error:(id *)arg6;
 - (id)validatePeerUri:(id)arg1 accountID:(id)arg2 loggableDatas:(id)arg3 queryResponse:(id)arg4 error:(id *)arg5;
 - (void)validatePeerUri:(id)arg1 accountID:(id)arg2 loggableDatas:(id)arg3 queryResponse:(id)arg4 promiseCompletionBlock:(CDUnknownBlockType)arg5;
 - (void)validatePeerUriResult:(id)arg1 uuid:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (id)validateSelfUri:(id)arg1 accountID:(id)arg2 serverDatas:(id)arg3 syncedDatas:(id)arg4 queryResponse:(id)arg5 error:(id *)arg6;
-- (void)validateSelfUri:(id)arg1 accountID:(id)arg2 serverDatas:(id)arg3 syncedDatas:(id)arg4 queryResponse:(id)arg5 promiseCompletionBlock:(CDUnknownBlockType)arg6;
 - (void)validateSelfUriResult:(id)arg1 uuid:(id)arg2 syncedDatas:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 
 @end

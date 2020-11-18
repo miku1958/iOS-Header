@@ -22,6 +22,8 @@
     NSMutableArray *_onRollbackBlocks;
     BOOL _writer;
     BOOL _checkpointRequired;
+    BOOL _hasEncounteredCorruptionError;
+    int _corruptionResultCode;
     id<HDSQLiteDatabaseDelegate> _delegate;
     NSURL *_fileURL;
     long long _cacheScope;
@@ -30,15 +32,16 @@
 
 @property (nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
 @property (nonatomic) BOOL checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
+@property (readonly, nonatomic) int corruptionResultCode; // @synthesize corruptionResultCode=_corruptionResultCode;
 @property (weak, nonatomic) id<HDSQLiteDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, nonatomic) BOOL hasEncounteredCorruptionError; // @synthesize hasEncounteredCorruptionError=_hasEncounteredCorruptionError;
 @property (readonly, copy, nonatomic) NSNumber *lastInsertRowID;
 @property (readonly, nonatomic, getter=isOpen) BOOL open;
 @property (readonly, nonatomic) HDSQLiteStatementCache *statementCache; // @synthesize statementCache=_statementCache;
 @property (readonly, nonatomic) long long statementCacheScope;
 @property (nonatomic, getter=isWriter) BOOL writer; // @synthesize writer=_writer;
 
-+ (BOOL)_stepStatement:(struct sqlite3_stmt *)arg1 hasRow:(BOOL *)arg2 resultCode:(int *)arg3 error:(id *)arg4;
 + (id)highFrequencyDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)mainDatabaseURLWithProfileDirectoryPath:(id)arg1;
 + (id)protectedDatabaseURLWithProfileDirectoryPath:(id)arg1;
@@ -56,6 +59,7 @@
 - (id)_schemaForTableWithName:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (BOOL)_setPragma:(id)arg1 integerValue:(long long)arg2 withDatabaseName:(id)arg3 error:(id *)arg4;
 - (id)_statementCache;
+- (BOOL)_stepStatement:(struct sqlite3_stmt *)arg1 hasRow:(BOOL *)arg2 error:(id *)arg3;
 - (id)_tableNamesForDatabaseWithName:(id)arg1 error:(id *)arg2;
 - (BOOL)_verifyDatabaseOpenAndReturnError:(id *)arg1;
 - (void)accessDatabaseUsingBlock:(CDUnknownBlockType)arg1;

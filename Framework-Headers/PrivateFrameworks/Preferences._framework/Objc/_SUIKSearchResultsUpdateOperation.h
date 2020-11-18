@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSArray, UICollectionViewDiffableDataSource;
+@class NSArray, NSDiffableDataSourceSnapshot, UICollectionViewDiffableDataSource;
 @protocol SUIKSearchResultsCollectionViewControllerDelegate;
 
 @interface _SUIKSearchResultsUpdateOperation : NSOperation
@@ -14,10 +14,10 @@
     NSArray *_results;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     id<SUIKSearchResultsCollectionViewControllerDelegate> _delegate;
-    NSArray *_categories;
+    NSDiffableDataSourceSnapshot *_currentSnapshot;
 }
 
-@property (strong, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property (strong, nonatomic) NSDiffableDataSourceSnapshot *currentSnapshot; // @synthesize currentSnapshot=_currentSnapshot;
 @property (weak, nonatomic) id<SUIKSearchResultsCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
 @property (weak, nonatomic) NSArray *results; // @synthesize results=_results;

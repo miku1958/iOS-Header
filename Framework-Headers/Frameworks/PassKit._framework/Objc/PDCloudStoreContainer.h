@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKContainer, NSArray, NSError, NSMutableDictionary, NSMutableSet;
+@class CKContainer, NSArray, NSError, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, PDCloudStoreRecordsRequest;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, PDCloudStoreContainerDelegate, PDCloudStoreDataSource;
 
 @interface PDCloudStoreContainer : NSObject
@@ -17,6 +17,8 @@
     BOOL _shouldInvalidateCloudStore;
     BOOL _shouldCancelAllTasks;
     NSObject<OS_dispatch_source> *_timeoutTimer;
+    NSMutableOrderedSet *_fetchRequests;
+    PDCloudStoreRecordsRequest *_currentRequest;
     BOOL _accountChangedNotificationReceived;
     BOOL _cloudContainerSetupInProgress;
     BOOL _resettingCloudContainer;
@@ -27,7 +29,6 @@
     NSArray *_zoneNames;
     NSMutableDictionary *_subscriptionsByIdentifier;
     NSMutableDictionary *_zonesByName;
-    NSMutableDictionary *_changeTokensByZoneID;
     NSMutableDictionary *_completedFetchTimestampByZoneID;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSError *_operationError;
@@ -35,7 +36,6 @@
 }
 
 @property (nonatomic) BOOL accountChangedNotificationReceived; // @synthesize accountChangedNotificationReceived=_accountChangedNotificationReceived;
-@property (readonly, nonatomic) NSMutableDictionary *changeTokensByZoneID; // @synthesize changeTokensByZoneID=_changeTokensByZoneID;
 @property (nonatomic) BOOL cloudContainerSetupInProgress; // @synthesize cloudContainerSetupInProgress=_cloudContainerSetupInProgress;
 @property (readonly, nonatomic) NSMutableDictionary *completedFetchTimestampByZoneID; // @synthesize completedFetchTimestampByZoneID=_completedFetchTimestampByZoneID;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
@@ -50,7 +50,7 @@
 @property (strong, nonatomic) NSArray *zoneNames; // @synthesize zoneNames=_zoneNames;
 @property (readonly, nonatomic) NSMutableDictionary *zonesByName; // @synthesize zonesByName=_zonesByName;
 
-+ (void)invalidateServerChangeTokens;
++ (id)serverChangeTokenFromArchiveData:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addOperation:(id)arg1;
 - (void)_cancelAllOperations;
@@ -61,39 +61,36 @@
 - (void)_deleteAllZonesWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchAllSubscriptionsWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchRecordZonesWithOperationGroupNameSuffix:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 cursor:(id)arg3 fetchedRecords:(id)arg4 zone:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 qualityOfService:(long long)arg4 cursor:(id)arg5 fetchedRecords:(id)arg6 zone:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_keychainSyncFinishedFired;
 - (void)_markEndCloudStoreDatabaseSetupWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (void)_modifyRecordsOperationWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_queue_executeNextFecthRequestIfPossible;
+- (void)_queue_fetchAllRecordsUsingStoredChangeToken:(BOOL)arg1 changeToken:(id)arg2 shouldSaveToken:(BOOL)arg3 operationGroupName:(id)arg4 operationGroupNameSuffix:(id)arg5 qualityOfService:(long long)arg6 batchHandler:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_resetCachedZoneDataForZoneID:(id)arg1;
 - (void)_resetContainerValues;
 - (void)_retryContainerStateWithError:(id)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_serverChangeTokenFromArchiveData:(id)arg1;
 - (void)_startCloudStoreInitializationTimer;
 - (void)_subscriptionOperationWithSubscriptionsToSave:(id)arg1 subscriptionIDsToDelete:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_zoneOperationWithZonesToSave:(id)arg1 zonesIDsToDelete:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)allRecordNamesAssociatedWithRecordName:(id)arg1 inZone:(id)arg2;
 - (void)attachToContainer;
+- (BOOL)canCoalesceRequest:(id)arg1 withNewRequest:(id)arg2;
 - (BOOL)canInitializeContainer;
 - (BOOL)canUpdateAndFetchRecords;
 - (id)cloudRecordObjectFromItemType:(unsigned long long)arg1 records:(id)arg2;
 - (void)cloudStoreAccountChanged:(id)arg1;
 - (void)cloudStoreAccountInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)cloudStoreSpecificKeysForItem:(id)arg1;
+- (void)coalesceRequest:(id)arg1 withNewRequest:(id)arg2;
 - (void)createZoneSubscriptions:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)createZones:(id)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)createZones:(id)arg1 operationGroupNameSuffix:(id)arg2 userInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)description;
 - (void)detachFromContainerWithState:(unsigned long long)arg1;
 - (BOOL)ensureContainerState:(unsigned long long)arg1;
 - (id)errorWithCode:(long long)arg1 description:(id)arg2;
-- (void)fetchAndProccessRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 zone:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
-- (void)fetchAndStoreChanges:(BOOL)arg1 forceFetch:(BOOL)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 userInfo:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)fetchAndStoreChanges:(BOOL)arg1 forceFetch:(BOOL)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 userInfo:(id)arg5 proccessedCloudStoreRecords:(id)arg6 processedDeletedRecords:(id)arg7 serverChangeToken:(id)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 zone:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)fetchRecordsWithRecordIDs:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)executeRecordsRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 qualityOfService:(long long)arg4 zone:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)fetchRecordsWithRecordIDs:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithDataSource:(id)arg1;
 - (void)initialCloudDatabaseSetupWithCompletion:(CDUnknownBlockType)arg1;
@@ -101,31 +98,31 @@
 - (void)invalidateCloudStoreAndClearCache:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1 clearCache:(BOOL)arg2;
 - (void)invalidateCloudStoreWithOperationGroupNameSuffix:(id)arg1 clearCache:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)invalidateServerChangeTokens;
 - (BOOL)isSetup;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)lastFetchDateForZoneWithName:(id)arg1;
-- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)modifyRecordsOperationWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 request:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processResultWithError:(id)arg1 nextExpectedState:(unsigned long long)arg2 operationGroupNameSuffix:(id)arg3 retryCount:(unsigned long long)arg4 shouldRetry:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)readCachedContainerValues;
 - (id)recordTypeForRecordID:(id)arg1;
 - (id)recordTypesForCloudStoreItemType:(unsigned long long)arg1;
-- (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 groupName:(id)arg3 groupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)resetCachedContainerValues;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)retrieveCachedServerChangeTokensForKey:(id)arg1;
 - (void)retrieveCachedServerFetchTimestampsForKey:(id)arg1;
 - (void)retrieveCachedServerSubscriptionsForKey:(id)arg1;
 - (void)retrieveCachedServerZonesForKey:(id)arg1;
 - (void)saveCachedContainerValues;
-- (void)saveServerChangeTokensForKey:(id)arg1;
 - (void)saveServerFetchTimestampsForKey:(id)arg1;
 - (void)saveServerSubscriptionsForKey:(id)arg1;
 - (void)saveServerZonesForKey:(id)arg1;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)shouldContinueWithRequest:(id)arg1;
 - (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 groupName:(id)arg3 groupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)zoneForCloudStoreItemType:(unsigned long long)arg1;
 
 @end

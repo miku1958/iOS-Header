@@ -12,10 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC7FMFCore25FMFGenericResponseHandler : NSObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *fmfSession;
     MISSING_TYPE *locationShifter;
     MISSING_TYPE *updateQueue;
-    MISSING_TYPE *fences;
     MISSING_TYPE *locationAlertsOnMeByMe;
     MISSING_TYPE *locationAlertsOnMeByFriends;
     MISSING_TYPE *locationAlertsOnFriendsByMe;

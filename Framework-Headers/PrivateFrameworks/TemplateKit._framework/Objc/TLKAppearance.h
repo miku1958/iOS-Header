@@ -48,6 +48,7 @@
 - (id)buttonColorForProminence:(unsigned long long)arg1;
 - (id)colorForProminence:(unsigned long long)arg1;
 - (id)colorWithWhite:(unsigned long long)arg1;
+- (id)colorWithWhite:(unsigned long long)arg1 highContrastWhite:(unsigned long long)arg2;
 - (void)disableAppearanceForView:(id)arg1;
 - (void)enableAppearanceForContainer:(id)arg1;
 - (void)enableAppearanceForView:(id)arg1;

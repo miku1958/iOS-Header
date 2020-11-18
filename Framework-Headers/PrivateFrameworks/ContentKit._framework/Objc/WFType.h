@@ -15,7 +15,7 @@
 {
 }
 
-@property (readonly, nonatomic) NSString *string;
+@property (readonly, copy, nonatomic) NSString *string;
 @property (readonly, nonatomic) NSString *typeDescription;
 
 + (BOOL)supportsSecureCoding;
@@ -26,7 +26,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToClass:(Class)arg1;
 - (BOOL)isEqualToType:(id)arg1;
 - (BOOL)isEqualToUTType:(const struct __CFString *)arg1;

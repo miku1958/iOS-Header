@@ -29,7 +29,7 @@
 @property (strong, nonatomic, getter=_sortedDevices, setter=_setSortedDevices:) NSArray *sortedDevices; // @synthesize sortedDevices=_sortedDevices;
 
 + (id)_glyphForBatteryDevice:(id)arg1;
-+ (id)_glyphForBatteryDeviceWithTransport:(long long)arg1 accessoryCategory:(unsigned long long)arg2 vendor:(long long)arg3 productIdentifier:(long long)arg4 parts:(unsigned long long)arg5;
++ (id)_glyphForBatteryDeviceWithTransport:(long long)arg1 accessoryCategory:(unsigned long long)arg2 vendor:(long long)arg3 productIdentifier:(long long)arg4 parts:(unsigned long long)arg5 modelNumber:(id)arg6;
 + (id)_internalBatteryDeviceGlyph;
 + (id)sharedInstance;
 - (void).cxx_destruct;

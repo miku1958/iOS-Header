@@ -42,6 +42,7 @@
 - (void)_deregisterXpcClient:(id)arg1;
 - (void)_handlePendingRequestTimeouts;
 - (void)_handleShareForRemoteClientRequest:(id)arg1;
+- (void)_invalidateXpcClient:(id)arg1;
 - (void)_registerWithXpcClient:(id)arg1 containerIDs:(id)arg2;
 - (void)_removeTimerIfNotNeeded;
 - (void)_resumeRequestsForContainerID:(id)arg1 connection:(id)arg2;
@@ -51,6 +52,7 @@
 - (void)deregisterXpcClient:(id)arg1;
 - (void)handleShareForRemoteClientRequest:(id)arg1 home:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pendingRequestTimeoutInterval:(double)arg3;
+- (void)invalidateXpcClient:(id)arg1;
 - (void)registerWithXpcClient:(id)arg1 containerIDs:(id)arg2;
 - (void)timerDidFire:(id)arg1;
 

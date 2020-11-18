@@ -18,6 +18,7 @@
 @interface CKSearchViewController : CKScrollViewController <CKSearchResultsTitleHeaderCellDelegate, _UIContextMenuInteractionDelegate, UISearchResultsUpdating, UICollectionViewDelegate, CKSearchControllerDelegate>
 {
     BOOL _isInitialLoad;
+    BOOL _suppressNextReloadAnimation;
     id<CKContainerSearchControllerDelegate> _delegate;
     unsigned long long _mode;
     NSArray *_searchControllers;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) NSArray *searchControllers; // @synthesize searchControllers=_searchControllers;
 @property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressNextReloadAnimation; // @synthesize suppressNextReloadAnimation=_suppressNextReloadAnimation;
 @property (strong, nonatomic) IMTimingCollection *timingCollection; // @synthesize timingCollection=_timingCollection;
 
 - (void).cxx_destruct;
@@ -84,6 +86,7 @@
 - (id)scrollView;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)searchController:(id)arg1 conversationForChatGUID:(id)arg2;
+- (void)searchController:(id)arg1 requestsItemDeletionAtIndexPath:(id)arg2;
 - (void)searchController:(id)arg1 requestsPresentationOfAlertController:(id)arg2 atRect:(struct CGRect)arg3;
 - (void)searchController:(id)arg1 requestsPresentationOfShareController:(id)arg2 atRect:(struct CGRect)arg3;
 - (void)searchControllerContentsDidChange:(id)arg1;
@@ -97,6 +100,7 @@
 - (void)viewLayoutMarginsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDissapeaer:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

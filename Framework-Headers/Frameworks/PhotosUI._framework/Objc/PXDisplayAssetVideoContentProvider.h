@@ -38,7 +38,7 @@
 - (BOOL)_loadingQueue_needsNewRequestForPriority:(long long)arg1;
 - (void)_loadingQueue_reloadContent;
 - (void)_loadingQueue_setAsset:(id)arg1;
-- (void)_postprocessingQueue_performPostprocessingOfItem:(id)arg1 info:(id)arg2;
+- (void)_postprocessingQueue_performPostprocessingOfItem:(id)arg1 info:(id)arg2 priority:(long long)arg3;
 - (void)beginLoadingWithPriority:(long long)arg1;
 - (void)cancelLoading;
 - (id)contentIdentifier;

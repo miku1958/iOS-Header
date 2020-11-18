@@ -27,13 +27,13 @@
 @property (readonly, nonatomic) HUAppleMusicAccountItemProvider *appleMusicAccountItemProvider; // @synthesize appleMusicAccountItemProvider=_appleMusicAccountItemProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *explicitAccountSignedInMessage;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HUAppleMusicItem *loggedInUsernameItem; // @synthesize loggedInUsernameItem=_loggedInUsernameItem;
 @property (readonly, nonatomic) HUAppleMusicItem *loginItem; // @synthesize loginItem=_loginItem;
 @property (readonly, nonatomic) HUAppleMusicItem *logoutItem; // @synthesize logoutItem=_logoutItem;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly, nonatomic) unsigned long long numberOfKnownAccounts;
-@property (readonly, nonatomic) NSString *signInMessage;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (copy, nonatomic) CDUnknownBlockType stateChangeObserver; // @synthesize stateChangeObserver=_stateChangeObserver;
 @property (readonly) Class superclass;
@@ -43,6 +43,7 @@
 - (void)dispatcher:(id)arg1 appleMusicAccountsDidUpdate:(id)arg2;
 - (id)initWithMediaProfileContainer:(id)arg1 itemUpdater:(id)arg2;
 - (id)itemProviders;
+- (id)signInMessage:(BOOL)arg1;
 
 @end
 

@@ -27,6 +27,7 @@
 - (id)init;
 - (id)initWithContainer:(id)arg1 center:(struct CGPoint)arg2;
 - (id)initWithContainer:(id)arg1 center:(struct CGPoint)arg2 transform:(struct CGAffineTransform)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

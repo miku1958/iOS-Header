@@ -61,6 +61,8 @@
 - (void)invalidateIntrinsicContentSize;
 - (void)layoutSubviews;
 - (void)resetMarqueePosition;
+- (void)sceneDidEnterBackgroundNotification:(id)arg1;
+- (void)sceneWillEnterForegroundNotification:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMarqueeEnabled:(BOOL)arg1 withOptions:(long long)arg2;

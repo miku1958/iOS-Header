@@ -17,7 +17,7 @@
 }
 
 @property (readonly, weak, nonatomic) id<_SFBrowserContentController> browserContentController; // @synthesize browserContentController=_browserContentController;
-@property (readonly, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
+@property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
 - (BOOL)_canHideToolbar;

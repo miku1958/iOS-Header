@@ -17,6 +17,7 @@
 {
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
+    struct os_unfair_lock_s _lock;
     BOOL _markedForRemoval;
     BOOL _listsDADisplayOrderChanged;
     BOOL _inactive;
@@ -46,6 +47,7 @@
 @property (nonatomic) BOOL daWasMigrated; // @synthesize daWasMigrated=_daWasMigrated;
 @property (nonatomic) BOOL didChooseToMigrate; // @synthesize didChooseToMigrate=_didChooseToMigrate;
 @property (nonatomic) BOOL didFinishMigration; // @synthesize didFinishMigration=_didFinishMigration;
+@property (readonly, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;
 @property (copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag;
 @property (nonatomic) BOOL inactive; // @synthesize inactive=_inactive;

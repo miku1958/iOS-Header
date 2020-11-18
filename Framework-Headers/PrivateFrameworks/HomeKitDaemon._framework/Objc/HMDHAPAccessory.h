@@ -171,10 +171,12 @@
 - (void)_handleKeyRefreshTimerFired;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleRenameService:(id)arg1;
+- (void)_handleRoomChangedFromOldRoomName:(id)arg1;
 - (void)_handleServiceRemovedTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
 - (void)_handleUpdateAuthorizationData:(id)arg1;
 - (void)_handleUpdateMediaSourceDisplayOrder:(id)arg1;
+- (void)_handleUpdatedName:(id)arg1;
 - (BOOL)_handleUpdatedServicesForCameraProfiles:(id)arg1;
 - (void)_handleUpdatedServicesForDataStreamController:(id)arg1;
 - (BOOL)_handleUpdatedServicesForNetworkRouterProfileAndController:(id)arg1;
@@ -301,6 +303,7 @@
 - (void)handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handlePairedStateChange:(BOOL)arg1;
 - (void)handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2 enableTime:(id)arg3;
+- (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
 - (void)handleUpdatedPassword:(id)arg1;
@@ -339,6 +342,7 @@
 - (id)matchingTransportInformationWithServerIdentifier:(id)arg1 linkType:(long long)arg2;
 - (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyClientsOfTargetControlSupportUpdate;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;

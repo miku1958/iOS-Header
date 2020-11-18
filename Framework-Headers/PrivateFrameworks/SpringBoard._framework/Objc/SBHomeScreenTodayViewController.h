@@ -12,7 +12,7 @@
 #import <SpringBoard/SPUISearchBarDelegate-Protocol.h>
 #import <SpringBoard/WGWidgetGroupViewControllerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSString, SBMainStatusBarContentAssertion, SBUISpotlightBarNavigationController, SBViewControllerTransitionContext, SPUISearchBarController, WGWidgetGroupViewController, _UILegibilitySettings;
+@class FBDisplayLayoutElement, NSString, SBUISpotlightBarNavigationController, SBViewControllerTransitionContext, SPUISearchBarController, WGWidgetGroupViewController, _UILegibilitySettings;
 @protocol SBHomeScreenTodayViewControllerDelegate;
 
 @interface SBHomeScreenTodayViewController : UIViewController <WGWidgetGroupViewControllerDelegate, SPUISearchBarDelegate, SBUICoronaAnimationControllerParticipant, SBUISpotlightInitiating, SBHLegibility>
@@ -30,7 +30,6 @@
     UIViewController *_spotlightViewController;
     id<SBHomeScreenTodayViewControllerDelegate> _delegate;
     long long _pullToSearchState;
-    SBMainStatusBarContentAssertion *_statusBarContentAssertion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -42,7 +41,6 @@
 @property (nonatomic) long long pullToSearchState; // @synthesize pullToSearchState=_pullToSearchState;
 @property (nonatomic) BOOL showsSearchBar; // @synthesize showsSearchBar=_showsSearchBar;
 @property (readonly, nonatomic) UIViewController *spotlightViewController; // @synthesize spotlightViewController=_spotlightViewController;
-@property (strong, nonatomic) SBMainStatusBarContentAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBViewControllerTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
 
@@ -56,13 +54,11 @@
 - (id)_eligibleScrollViews;
 - (id)_majorScrollView;
 - (double)_maxClippingOffset;
-- (void)_relinquishStatusBarContentAssertion;
 - (void)_removeMatchMoveAnimations;
 - (void)_setRequestDisableRootFolderParallax:(BOOL)arg1 reason:(id)arg2;
 - (void)_setRequestDisableRootFolderScrolling:(BOOL)arg1 reason:(id)arg2;
 - (void)_statusBarHeightDidChange:(id)arg1;
 - (struct CGRect)_suggestedTodayViewFrameForBounds:(struct CGRect)arg1;
-- (void)_takeStatusBarContentAssertion;
 - (double)_topContentInsetForNavigationBar:(id)arg1;
 - (void)_updateLegibilitySettings;
 - (void)_updateScrollViewContentInsetAndOffsetIfNecessary;
@@ -99,7 +95,6 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (struct UIEdgeInsets)widgetGroupViewController:(id)arg1 contentOccludingInsetsForInterfaceOrientation:(long long)arg2;
 - (struct CGSize)widgetGroupViewController:(id)arg1 sizeForInterfaceOrientation:(long long)arg2;
-- (void)widgetGroupViewControllerDidChangeHeaderVisibility:(id)arg1;
 - (struct UIEdgeInsets)widgetListViewEdgeInsetsIncludingSearchHeader:(BOOL)arg1;
 
 @end

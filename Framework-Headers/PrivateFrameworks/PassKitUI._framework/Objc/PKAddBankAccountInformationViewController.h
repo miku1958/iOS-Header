@@ -26,6 +26,7 @@
     BOOL _isEditingBankInformation;
     BOOL _hasInteractedWithCell;
     BOOL _prefilledFromKeychain;
+    NSMutableDictionary *_cellHasPastedContent;
     PKAccount *_featureAccount;
     BOOL _offerKeychainPreFill;
     id<PKAddBankAccountInformationViewControllerDelegate> _delegate;
@@ -40,7 +41,9 @@
 
 - (void).cxx_destruct;
 - (void)_addPaymentFundingSourceWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)_allCellsHavePastedContent;
 - (id)_bankInformationTextForRow:(unsigned long long)arg1;
+- (id)_cellHasPastedContent;
 - (BOOL)_cellValuesAreValid;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 minDigits:(unsigned long long)arg2 maxDigits:(unsigned long long)arg3;
@@ -59,6 +62,7 @@
 - (id)_placeholderTextForRow:(unsigned long long)arg1;
 - (void)_reloadTableSection;
 - (unsigned long long)_rowWithTextField:(id)arg1;
+- (void)_setCellHasPastedContent:(BOOL)arg1 forRow:(unsigned long long)arg2;
 - (void)_setIdleTimerDisabled:(BOOL)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setNavigationBarItemsHidden:(BOOL)arg1;
@@ -88,6 +92,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (void)textFieldClearButtonPressed:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

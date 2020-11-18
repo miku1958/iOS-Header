@@ -25,8 +25,7 @@ __attribute__((visibility("hidden")))
 
 + (id)defaultPreflightManager;
 - (void).cxx_destruct;
-- (id)_contentRatingValue;
-- (BOOL)_isAllowedToPlayForRatingDomain:(id)arg1;
+- (BOOL)_isAllowedToPlayOrPurchase;
 - (BOOL)_isOnWiFi;
 - (BOOL)_isTrailer;
 - (id)_lastAgeConfirmationPrompted;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_preflightDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_preflightWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_ratingDomain;
+- (id)_ratingValue;
 - (long long)_requiredAgeForPlayback;
 - (void)_setLastAgeConfirmationPrompted:(id)arg1;
 - (void)_setLastConfirmedAge:(long long)arg1;

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NGMPublicPreKey *publicPrekey; // @synthesize publicPrekey=_publicPrekey;
 
 - (void).cxx_destruct;
-- (id)debugDescription;
 - (BOOL)delete;
 - (id)description;
 - (id)initWithPBPrekey:(id)arg1 error:(id *)arg2;

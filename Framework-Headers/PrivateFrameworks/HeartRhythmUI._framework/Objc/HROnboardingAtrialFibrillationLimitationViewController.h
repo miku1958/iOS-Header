@@ -14,6 +14,7 @@
 {
     BOOL _stateAnimating;
     long long _state;
+    double _initialContentOffset;
     UILabel *_titleLabel;
     UIView *_backgroundView1;
     UIView *_backgroundView2;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) UIView *backgroundView3; // @synthesize backgroundView3=_backgroundView3;
 @property (strong, nonatomic) UIView *backgroundView4; // @synthesize backgroundView4=_backgroundView4;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
+@property (nonatomic) double initialContentOffset; // @synthesize initialContentOffset=_initialContentOffset;
 @property (strong, nonatomic) HRListItemLabel *listItemLabel4; // @synthesize listItemLabel4=_listItemLabel4;
 @property (strong, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
 @property (nonatomic) long long state; // @synthesize state=_state;
@@ -46,6 +48,7 @@
 - (void).cxx_destruct;
 - (id)_bottomViewForState:(long long)arg1;
 - (struct CGSize)_listItemSize;
+- (void)_scrollBackgroundViewToVisible:(id)arg1;
 - (void)_setStackedButtonViewAsFooterView;
 - (void)_setUpInfoLabelConstraints;
 - (void)_setUpInfoLabels;

@@ -20,7 +20,7 @@
 @property (readonly, copy, nonatomic) NSString *alertTopic; // @synthesize alertTopic=_alertTopic;
 @property (readonly, nonatomic) long long alertType; // @synthesize alertType=_alertType;
 
-+ (id)soundWithAlertType:(long long)arg1;
++ (id)soundWithAlertType:(long long)arg1 alertTopic:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithAlertType:(long long)arg1 alertTopic:(id)arg2;

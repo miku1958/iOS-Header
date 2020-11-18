@@ -56,6 +56,7 @@
 - (void)_configureForValueAddedServiceWithContext:(id)arg1;
 - (void)_endSession;
 - (void)_endSessionStartTimer;
+- (void)_lostModeButtonTapped;
 - (id)_messageContentViewFromMessage:(id)arg1;
 - (id)_messageForPaymentApplicationState;
 - (id)_messageForPeerPaymentZeroBalance;

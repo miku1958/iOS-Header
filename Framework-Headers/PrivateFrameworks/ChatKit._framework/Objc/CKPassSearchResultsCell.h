@@ -13,6 +13,7 @@
 + (id)reuseIdentifier;
 - (struct CGPoint)avatarOffsetLTR;
 - (struct CGPoint)avatarOffsetRTL;
+- (double)editModeHorizontalOffset;
 - (void)layoutSubviews;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 

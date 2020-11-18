@@ -42,7 +42,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_isEqualToCPLServiceUIStatus:(id)arg1 onlyProgressIsNotEqual:(BOOL *)arg2;
 - (id)init;
 
 @end

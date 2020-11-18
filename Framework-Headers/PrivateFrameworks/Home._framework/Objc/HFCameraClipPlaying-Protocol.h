@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long timeControlStatus;
 
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 usingBlock:(void (^)(void))arg2;
+- (void)endScrubbingWithOffset:(double)arg1;
 - (void)pause;
 - (void)play;
 - (void)removeTimeObserver:(id)arg1;

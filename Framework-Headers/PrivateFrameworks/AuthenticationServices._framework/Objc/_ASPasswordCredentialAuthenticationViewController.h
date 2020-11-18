@@ -18,7 +18,7 @@
 @property (weak, nonatomic) id<_ASPasswordCredentialAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (void)_finishWithCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_finishWithCredential:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_nonUIRequestDidRequireUserInteraction;
 - (void)_requestDidFailWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithExtension:(id)arg1 credentialIdentity:(id)arg2;

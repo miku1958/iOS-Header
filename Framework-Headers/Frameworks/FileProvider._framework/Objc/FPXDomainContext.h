@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithVendorInstance:(id)arg1 domain:(id)arg2 extensionContext:(id)arg3 usesFPFS:(BOOL)arg4;
 - (id)internalErrorFromVendorError:(id)arg1;
+- (void)invalidate;
 - (id)itemFromVendorItem:(id)arg1;
 - (id)itemIDFromVendorItemID:(id)arg1;
 - (id)itemIDsFromVendorItemIDs:(id)arg1;

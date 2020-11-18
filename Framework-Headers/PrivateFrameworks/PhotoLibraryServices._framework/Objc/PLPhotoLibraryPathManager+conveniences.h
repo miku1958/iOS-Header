@@ -8,13 +8,15 @@
 
 @interface PLPhotoLibraryPathManager (conveniences)
 - (id)URLForMetadataWithExtension:(id)arg1 forMediaInMainDirectory:(id)arg2 withFilename:(id)arg3;
-- (void)_setSqliteErrorAndExitIfNecessaryForReason:(int)arg1;
+- (BOOL)_createSqliteErrorIndicatorFileWithRebuildReason:(long long)arg1;
+- (id)_rebuidHistoryFilePath;
+- (id)_rebuildDateFormatter;
+- (id)_sqliteErrorIndicatorFilePath;
 - (id)assetPathForMutationsDirectoryWithDirectory:(id)arg1 filename:(id)arg2;
 - (id)cloudSharingArchiveDirectory;
 - (id)cplDataDirectoryCreateIfNeeded:(BOOL)arg1;
 - (id)cplDownloadFinishedMarkerFilePath;
 - (id)cplEnableMarkerFilePath;
-- (BOOL)createSqliteErrorIndicatorFile;
 - (id)dataMigratorFinishedFilePath;
 - (id)deletedMemoryUUIDsFilePath;
 - (id)directoryPathForInFlightComments:(BOOL)arg1;
@@ -24,12 +26,13 @@
 - (id)pathToiPhotoLibraryMediaDir;
 - (id)pauseICloudPhotosFilePath;
 - (id)photoStreamsDataDirectory;
+- (id)recordRebuildReason;
+- (void)removeSqliteErrorIndicatorFile;
 - (id)searchIndexManagerDatabaseDirectory;
 - (id)searchIndexManagerDatabaseFilePath;
 - (id)searchMetadataStoreFilePath;
-- (void)setSqliteErrorAndExitIfNecessaryForDemoContentInstallation;
-- (void)setSqliteErrorAndExitIfNecessaryForSimulatedCorruption:(BOOL)arg1;
-- (id)sqliteErrorIndicatorFilePath;
+- (void)setSqliteErrorForReason:(long long)arg1 allowsExit:(BOOL)arg2;
+- (BOOL)sqliteErrorIndicatorFileExists;
 - (id)temporaryRenderContentURLForInternalRendersWithExtension:(id)arg1;
 - (id)zeroKeywordStoreFilePath;
 @end

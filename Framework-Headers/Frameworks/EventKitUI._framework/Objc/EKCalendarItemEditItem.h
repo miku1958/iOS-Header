@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 - (BOOL)shouldPinKeyboard;
+- (void)tableViewDidScroll;
 - (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (id)viewForActionSheet;

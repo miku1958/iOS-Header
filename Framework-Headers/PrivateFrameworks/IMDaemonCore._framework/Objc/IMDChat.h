@@ -41,6 +41,7 @@
     BOOL _pendingENGroupParticipantUpdate;
     BOOL _isArchived;
     BOOL _isFiltered;
+    BOOL _isBlackholed;
     BOOL _hasHadSuccessfulQuery;
     BOOL _wasReportedAsJunk;
     BOOL _meCardUpdated;
@@ -72,6 +73,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly) BOOL isArchived;
+@property BOOL isBlackholed;
 @property BOOL isFiltered;
 @property (readonly, nonatomic) BOOL isUnnamedChat;
 @property (copy) NSString *lastAddressedLocalHandle;
@@ -128,7 +130,7 @@
 - (long long)engroupCreationDate;
 - (id)generateNewGroupID;
 - (int)getNumberOfTimesRespondedToThread;
-- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(BOOL)arg14 hasHadSuccessfulQuery:(BOOL)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25;
+- (id)initWithAccountID:(id)arg1 service:(id)arg2 guid:(id)arg3 groupID:(id)arg4 chatIdentifier:(id)arg5 participants:(id)arg6 roomName:(id)arg7 displayName:(id)arg8 lastAddressedLocalHandle:(id)arg9 lastAddressedSIMID:(id)arg10 properties:(id)arg11 state:(long long)arg12 style:(unsigned char)arg13 isFiltered:(BOOL)arg14 hasHadSuccessfulQuery:(BOOL)arg15 engramID:(id)arg16 serverChangeToken:(id)arg17 cloudKitSyncState:(long long)arg18 originalGroupID:(id)arg19 lastReadMessageTimeStamp:(long long)arg20 lastMessageTimeStampOnLoad:(long long)arg21 srServerChangeToken:(id)arg22 srCloudKitSyncState:(long long)arg23 cloudKitRecordID:(id)arg24 srCloudKitRecordID:(id)arg25 isBlackholed:(BOOL)arg26;
 - (id)initWithCKRecord:(id)arg1 isUsingStingRay:(BOOL)arg2;
 - (BOOL)isBusinessChat;
 - (BOOL)isNewerThan:(id)arg1;
@@ -152,6 +154,7 @@
 - (void)updateEngroupCreationDate:(long long)arg1;
 - (void)updateGroupID:(id)arg1;
 - (void)updateHasHadSuccessfulQuery:(BOOL)arg1;
+- (void)updateIsBlackholed:(BOOL)arg1;
 - (void)updateIsFiltered:(BOOL)arg1;
 - (void)updateIsSMSSpamChatProperty:(BOOL)arg1;
 - (void)updateIsiMessageSpam:(BOOL)arg1;

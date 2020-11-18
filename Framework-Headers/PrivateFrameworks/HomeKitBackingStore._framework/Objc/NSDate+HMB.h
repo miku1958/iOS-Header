@@ -6,18 +6,19 @@
 
 #import <Foundation/NSDate.h>
 
-#import <HomeKitBackingStore/HMBModelQueryableParameterCoder-Protocol.h>
+#import <HomeKitBackingStore/HMBQueryableModelFieldCoder-Protocol.h>
 
 @class NSString;
 
-@interface NSDate (HMB) <HMBModelQueryableParameterCoder>
+@interface NSDate (HMB) <HMBQueryableModelFieldCoder>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)hmbDecodeQueryableParameterFromData:(id)arg1;
-- (id)hmbEncodeQueryableParameter;
++ (id)hmbDecodeQueryableParameter:(id)arg1;
++ (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
++ (id)hmbEncodeQueryableParameter:(id)arg1;
 @end
 

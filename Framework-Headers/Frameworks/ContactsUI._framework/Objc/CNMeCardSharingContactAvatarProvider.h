@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)generateAvatarImageOfSize:(struct CGSize)arg1 imageHandler:(CDUnknownBlockType)arg2;
 - (id)initWithContact:(id)arg1;
+- (id)initWithContact:(id)arg1 renderer:(id)arg2;
 
 @end
 

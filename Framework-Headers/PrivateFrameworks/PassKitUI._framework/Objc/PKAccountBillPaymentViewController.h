@@ -8,20 +8,23 @@
 
 #import <PassKitUI/PKAccountBillPaymentAmountDescriptionViewDelegate-Protocol.h>
 #import <PassKitUI/PKAccountBillPaymentControllerDelegate-Protocol.h>
+#import <PassKitUI/PKAccountServiceAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKAddBankAccountInformationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKBillPaymentRingViewDataSource-Protocol.h>
 #import <PassKitUI/PKBillPaymentRingViewDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccount, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKPaymentPass, UIButton, UILabel, UIScrollView, UITapGestureRecognizer, _PKUIKVisibilityBackdropView;
+@class CLInUseAssertion, NSArray, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccount, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAccountServiceAccountResolutionCofiguration, PKAccountServiceAccountResolutionController, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKPaymentPass, UIButton, UIImageView, UILabel, UIScrollView, UITapGestureRecognizer, _PKUIKVisibilityBackdropView;
 @protocol PKAccountBillPaymentObserver;
 
-@interface PKAccountBillPaymentViewController : UIViewController <_PKUIKVisibilityBackdropViewDelegate, PKBillPaymentRingViewDelegate, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKBillPaymentRingViewDataSource, PKAccountBillPaymentAmountDescriptionViewDelegate, UIScrollViewDelegate>
+@interface PKAccountBillPaymentViewController : UIViewController <_PKUIKVisibilityBackdropViewDelegate, PKBillPaymentRingViewDelegate, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKBillPaymentRingViewDataSource, PKAccountBillPaymentAmountDescriptionViewDelegate, UIScrollViewDelegate, PKAccountServiceAccountResolutionControllerDelegate>
 {
     PKAccount *_account;
     PKPaymentPass *_pass;
     unsigned long long _interstitialState;
+    unsigned long long _featuredViewState;
+    NSArray *_installmentPlans;
     unsigned long long _screenType;
     PKAccountBillPaymentController *_billPaymentCoordinator;
     PKBillPaymentSuggestedAmountController *_suggestedAmountController;
@@ -33,6 +36,7 @@
     NSDecimalNumber *_apr;
     NSMutableDictionary *_smallRingInterestAttributes;
     NSDictionary *_smallRingInterestDateAttributes;
+    PKAccountServiceAccountResolutionCofiguration *_configuration;
     BOOL _hasAnimatedRing;
     BOOL _performingAction;
     BOOL _buttonsArePayButtons;
@@ -50,14 +54,16 @@
     PKBillPaymentRingView *_ringView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
-    UIButton *_showKeyboardButton;
+    UIButton *_tertiaryButton;
     PKContinuousButton *_primaryButton;
     PKContinuousButton *_secondaryButton;
     UILabel *_smallRingInterestLabel;
     _PKUIKVisibilityBackdropView *_backdropView;
     UIScrollView *_scrollView;
+    UIImageView *_productHeroView;
     UITapGestureRecognizer *_ringViewTapRecognizer;
     PKAddBankAccountInformationViewController *_addBankAccountViewController;
+    PKAccountServiceAccountResolutionController *_accountResolutionController;
     CLInUseAssertion *_CLInUse;
     unsigned char _visibility;
     id<PKAccountBillPaymentObserver> _observer;
@@ -71,10 +77,10 @@
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly) Class superclass;
 
-+ (void)_billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (void)_billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 configuration:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 + (id)alertControllerForDisplayableError:(id)arg1;
 + (id)backgroundColor;
-+ (void)billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (void)billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 configuration:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 + (BOOL)canPayBillForAccount:(id)arg1 displayableError:(id *)arg2;
 + (struct UIEdgeInsets)contentMargins;
 + (id)displayableErrorForAccount:(id)arg1 reason:(unsigned long long)arg2;
@@ -85,6 +91,8 @@
 - (void)_accountDidChange:(id)arg1;
 - (id)_addBankAccountInformationViewController;
 - (void)_cancelButtonTapped:(id)arg1;
+- (void)_configureProductHeroView;
+- (void)_contactSupportButtonTapped:(id)arg1;
 - (void)_dismissViewControllerWithSuccess:(BOOL)arg1;
 - (id)_interestForAmount:(id)arg1;
 - (BOOL)_interestLabelIsOutsideSmallRing;
@@ -115,6 +123,7 @@
 - (void)_updateNavigationTitle;
 - (void)_updateSubtitle;
 - (void)accountBillPaymentController:(id)arg1 hasChangedState:(unsigned long long)arg2 error:(id)arg3 updatedAccount:(id)arg4;
+- (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)addBankAccountInformationViewController:(id)arg1 didAddFundingSource:(id)arg2;
 - (void)addBankAccountInformationViewControllerDidFinish:(id)arg1;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;
@@ -128,7 +137,7 @@
 - (void)dealloc;
 - (id)disabledBottomCurvedTextForBillPaymentRingView:(id)arg1;
 - (id)disabledTopCurvedTextForBillPaymentRingView:(id)arg1;
-- (id)initWithAccount:(id)arg1 paymentPass:(id)arg2 suggestedAmountController:(id)arg3 interstitalState:(unsigned long long)arg4;
+- (id)initWithAccount:(id)arg1 paymentPass:(id)arg2 suggestedAmountController:(id)arg3 configuration:(id)arg4 interstitalState:(unsigned long long)arg5;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithSuggestedAmountController:(id)arg1 paymentPass:(id)arg2;
 - (void)keyboardWillChange:(id)arg1;

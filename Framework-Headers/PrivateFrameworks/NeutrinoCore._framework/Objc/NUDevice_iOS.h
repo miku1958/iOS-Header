@@ -15,11 +15,11 @@
 
 - (void).cxx_destruct;
 - (long long)_defaultSampleMode;
-- (id)_newLowPriorityRenderer;
+- (id)_lowPriorityRenderer:(out id *)arg1;
 - (id)_newMetalRendererWithOptions:(id)arg1;
-- (id)_newOpenGLRendererWithOptions:(id)arg1;
-- (id)_newRenderer;
-- (id)_newRendererWithOptions:(id)arg1;
+- (id)_newOpenGLRendererWithOptions:(id)arg1 error:(out id *)arg2;
+- (id)_newRenderer:(out id *)arg1;
+- (id)_newRendererWithOptions:(id)arg1 error:(out id *)arg2;
 - (long long)_openGLVirtualScreen;
 - (id)debugDescription;
 - (unsigned long long)family;

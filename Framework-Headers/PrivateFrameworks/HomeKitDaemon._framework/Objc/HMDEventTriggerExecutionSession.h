@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionEvent, NSArray, NSMapTable, NSMutableArray, NSPredicate, NSString;
+@class HMDEventTriggerUserConfirmationSession, HMDPredicateUtilities, HMDTriggerConfirmationTimer, HMFTimer, HomeKitEventTriggerExecutionSessionEvent, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSPredicate, NSString;
 
 @interface HMDEventTriggerExecutionSession : HMDEventTriggerSession <HMFDumpState, HMFLogging, HMDEventDelegate, HMFTimerDelegate>
 {
@@ -32,6 +32,7 @@
     HMFTimer *_startCharacteristicsMonitorTimer;
     HomeKitEventTriggerExecutionSessionEvent *_metricEvent;
     NSMapTable *_writeRequests;
+    NSMutableSet *_mediaProfiles;
 }
 
 @property (nonatomic) BOOL actionSetExecutionInProgress; // @synthesize actionSetExecutionInProgress=_actionSetExecutionInProgress;
@@ -44,6 +45,7 @@
 @property (nonatomic) BOOL executionCompleteCalled; // @synthesize executionCompleteCalled=_executionCompleteCalled;
 @property (nonatomic) unsigned long long executionState; // @synthesize executionState=_executionState;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
 @property (readonly, nonatomic) HomeKitEventTriggerExecutionSessionEvent *metricEvent; // @synthesize metricEvent=_metricEvent;
 @property (strong, nonatomic) NSArray *monitorEvents; // @synthesize monitorEvents=_monitorEvents;
 @property (readonly, nonatomic) BOOL needsUserConfirmation;
@@ -55,7 +57,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMutableArray *triggerEvents; // @synthesize triggerEvents=_triggerEvents;
 @property (readonly, nonatomic) HMDEventTriggerUserConfirmationSession *userConfirmationSession; // @synthesize userConfirmationSession=_userConfirmationSession;
-@property (strong, nonatomic) NSMapTable *writeRequests; // @synthesize writeRequests=_writeRequests;
+@property (readonly, nonatomic) NSMapTable *writeRequests; // @synthesize writeRequests=_writeRequests;
 
 + (id)logCategory;
 - (void).cxx_destruct;
@@ -65,6 +67,7 @@
 - (void)_addEvent:(id)arg1 causingDevice:(id)arg2;
 - (void)_callExecutionComplete:(id)arg1;
 - (void)_callExecutionComplete:(id)arg1 callDelegate:(BOOL)arg2;
+- (void)_callExecutionCompleteIfNoMoreOutstandingRequests;
 - (id)_createMonitoringEvents:(id)arg1;
 - (void)_directlyExecuteActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_evaluateFiringTrigger;
@@ -83,6 +86,7 @@
 - (id)dumpState;
 - (id)durationEndEvents;
 - (void)evaluateFiringTrigger;
+- (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
 - (id)initWithEventTrigger:(id)arg1 predicateUtilities:(id)arg2 triggerEvent:(id)arg3 causingDevice:(id)arg4 workQueue:(id)arg5 actionSets:(id)arg6 evaluationCondition:(id)arg7 recurrences:(id)arg8 endEvents:(id)arg9 msgDispatcher:(id)arg10;
 - (id)logIdentifier;
 - (void)postponeRestoreIfWaitingForEndEvent;

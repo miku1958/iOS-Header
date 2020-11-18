@@ -15,6 +15,7 @@
     CKRecordID *detailPage;
     NSString *language;
     CKRecordID *base;
+    NSString *persistentIdentifier;
 }
 
 @property (strong, nonatomic) CKRecordID *base; // @synthesize base;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) CKRecordID *identifier; // @synthesize identifier;
 @property (copy, nonatomic) NSString *language; // @synthesize language;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
+@property (copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 
 - (void).cxx_destruct;
 

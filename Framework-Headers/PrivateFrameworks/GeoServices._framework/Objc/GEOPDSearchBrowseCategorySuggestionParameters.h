@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     double _requestLocalTimestamp;
     GEOPDVenueIdentifier *_venueFilter;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _minimumNumberOfCategories;
     int _suggestionType;
     BOOL _isCarplayRequest;
@@ -88,6 +90,8 @@ __attribute__((visibility("hidden")))
 - (int)engineTypeAtIndex:(unsigned long long)arg1;
 - (id)engineTypesAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

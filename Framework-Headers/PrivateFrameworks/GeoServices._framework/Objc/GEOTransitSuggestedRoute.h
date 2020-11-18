@@ -14,7 +14,6 @@
 @interface GEOTransitSuggestedRoute : PBCodable <GEOCompanionCompatibility, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _routeBadges;
     GEOTransitRouteDisplayStrings *_displayStrings;
@@ -25,6 +24,9 @@
     NSMutableArray *_sections;
     NSMutableArray *_steps;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _absEndTime;
     unsigned int _absStartTime;
     unsigned int _rank;
@@ -136,6 +138,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

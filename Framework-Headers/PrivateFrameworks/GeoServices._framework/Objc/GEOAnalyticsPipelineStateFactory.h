@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)lookAroundSummary;
 - (id)lookAroundView;
+- (id)mapRestore;
 - (id)mapSettings;
 - (id)mapUI;
 - (id)mapUIShown;

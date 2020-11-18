@@ -9,7 +9,7 @@
 #import <Message/EFLoggable-Protocol.h>
 
 @class EDConversationPersistence, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, MFMailMessageLibrary, NSString;
-@protocol EDAccountsProvider, EMUserProfileProvider;
+@protocol EDAccountsProvider, EDRemoteSearchProvider, EMUserProfileProvider;
 
 @interface MFPersistence_iOS : EDPersistence <EFLoggable>
 {
@@ -20,6 +20,7 @@
     EDMailboxPersistence *_mailboxPersistence;
     EDMessageChangeManager *_messageChangeManager;
     EDMessagePersistence *_messagePersistence;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDSearchableIndexManager *_searchableIndexManager;
     EDServerMessagePersistenceFactory *_serverMessagePersistenceFactory;
     EDThreadPersistence *_threadPersistence;
@@ -45,6 +46,7 @@
 - (id)localActionPersistence;
 - (id)messageChangeManager;
 - (id)messagePersistence;
+- (id)remoteSearchProvider;
 - (void)scheduleRecurringActivity;
 - (id)searchableIndexManager;
 - (id)serverMessagePersistenceFactory;

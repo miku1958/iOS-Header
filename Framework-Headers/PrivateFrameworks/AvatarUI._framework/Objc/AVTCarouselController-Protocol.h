@@ -17,13 +17,11 @@
 @property (nonatomic) BOOL singleAvatarMode;
 
 - (void)displayAvatarRecordWithIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
-- (void)lockOnFocusedViewAnimated:(BOOL)arg1;
 - (void)presentActionsForAvatar:(id<AVTAvatarRecord>)arg1;
 - (void)presentEditorForCreatingAvatar:(id)arg1;
 - (void)reloadData;
 - (void)setAllowsCreate:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSingleAvatarMode:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setSingleAvatarMode:(BOOL)arg1 fillContainer:(BOOL)arg2 animated:(BOOL)arg3;
 - (id<AVTUIViewSnapshotProvider>)snapshotProviderFocusedOnRecordWithIdentifier:(NSString *)arg1 size:(struct CGSize)arg2;
-- (void)unlockFromFocusedViewAnimated:(BOOL)arg1;
 @end
 

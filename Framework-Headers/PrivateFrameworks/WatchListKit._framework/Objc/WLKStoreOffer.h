@@ -19,12 +19,14 @@
     NSDictionary *_dictionary;
     WLKStoreOfferPeriod *_renewalPeriod;
     WLKStoreOfferPeriod *_freeTrialPeriod;
+    WLKStoreOfferPeriod *_introOfferPeriod;
 }
 
 @property (readonly, nonatomic) NSString *buyParameters; // @synthesize buyParameters=_buyParameters;
 @property (readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSString *formattedPrice; // @synthesize formattedPrice=_formattedPrice;
 @property (readonly, nonatomic) WLKStoreOfferPeriod *freeTrialPeriod; // @synthesize freeTrialPeriod=_freeTrialPeriod;
+@property (readonly, nonatomic) WLKStoreOfferPeriod *introOfferPeriod; // @synthesize introOfferPeriod=_introOfferPeriod;
 @property (readonly, nonatomic) unsigned long long offerType; // @synthesize offerType=_offerType;
 @property (readonly, nonatomic) NSNumber *price; // @synthesize price=_price;
 @property (readonly, nonatomic) WLKStoreOfferPeriod *renewalPeriod; // @synthesize renewalPeriod=_renewalPeriod;
@@ -36,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)initWithMAPIDictionary:(id)arg1;
 - (id)initWithSubscriptionDictionary:(id)arg1;
+- (BOOL)specialOfferEligible;
 - (id)sui_buttonSubtitleWithServiceName:(id)arg1;
 - (id)sui_buttonTitle;
 

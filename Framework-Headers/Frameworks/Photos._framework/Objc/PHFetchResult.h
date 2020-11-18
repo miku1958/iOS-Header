@@ -64,6 +64,7 @@
 + (id)pl_fetchResultForStandInAssetCollection:(id)arg1;
 + (id)pl_filterPredicateForAssetContainer:(id)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)_possibleChangesFromDetectionCriteriaForChange:(id)arg1;
 - (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (unsigned long long)cachedCountOfCollectionsWithCollectionTypes:(id)arg1;
 - (id)changeHandlingKey;

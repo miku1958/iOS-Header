@@ -13,6 +13,7 @@
 
 @interface CKConversationSearchResultCell : UICollectionViewCell <CNAvatarViewDelegate, CKSearchResultCell>
 {
+    BOOL editing;
     CKAvatarView *_avatarView;
     UILabel *_nameLabel;
     CKConversation *_conversation;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;

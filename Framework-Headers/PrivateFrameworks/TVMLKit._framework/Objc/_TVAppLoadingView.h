@@ -32,6 +32,7 @@
 - (void)setLoadingDelay:(double)arg1;
 - (void)setTimeout:(double)arg1;
 - (void)showOverKeyWindow;
+- (void)showOverKeyWindowWithSpinnerOnly:(BOOL)arg1;
 - (void)timeout;
 
 @end

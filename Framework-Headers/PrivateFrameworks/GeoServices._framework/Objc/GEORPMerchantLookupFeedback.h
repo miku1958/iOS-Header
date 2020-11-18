@@ -13,18 +13,13 @@
 @interface GEORPMerchantLookupFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPMerchantLookupContext *_context;
     GEORPMerchantLookupCorrections *_corrections;
-    struct {
-        unsigned int read_unknownFields:1;
-        unsigned int read_context:1;
-        unsigned int read_corrections:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_context:1;
-        unsigned int wrote_corrections:1;
-    } _flags;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    CDStruct_5bb8e4f8 _flags;
 }
 
 @property (strong, nonatomic) GEORPMerchantLookupContext *context;
@@ -43,6 +38,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

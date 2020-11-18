@@ -13,6 +13,9 @@
 + (id)_localeString;
 + (id)hu_allowAccessWhileLockedSettingsURL;
 + (id)hu_applePrivacyURL;
++ (id)hu_cameraRecordingURL;
++ (id)hu_learnAboutNetworkProtectionURL;
++ (id)hu_learnAboutNetworkRoutersURL;
 + (id)hu_learnAboutNetworksRequiringProfilesURL;
 + (id)hu_learnAboutUnshareableNetworksURL;
 + (id)hu_learnToAddAccessoriesURL;

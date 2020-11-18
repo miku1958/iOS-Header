@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)resolveItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveItem:(id)arg1 recursively:(BOOL)arg2 andCoordinateWithHandler:(CDUnknownBlockType)arg3;
 - (void)resolveItemOrURL:(id)arg1 recursively:(BOOL)arg2 andCoordinateWithHandler:(CDUnknownBlockType)arg3;
+- (void)resolveItemOrURL:(id)arg1 recursively:(BOOL)arg2 coordinateIfExport:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)startAccessingURLForAtomDuration:(id)arg1;
 - (void)stopAccessingAllURLs;
 - (void)stopAccessingURL:(id)arg1;

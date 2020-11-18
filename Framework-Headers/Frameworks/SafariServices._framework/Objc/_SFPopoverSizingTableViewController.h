@@ -13,6 +13,7 @@
     UIBlurEffect *_backgroundBlurEffect;
     BOOL _didUpdateTranslucentAppearanceAtLeastOnce;
     BOOL _didHaveTranslucentAppearance;
+    BOOL _updatePreferredContentSizeAfterNextLayout;
     double _preferredContentWidth;
 }
 
@@ -37,6 +38,7 @@
 - (void)updatePreferredContentSize;
 - (void)updateTranslucentAppearance;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willMoveToParentViewController:(id)arg1;

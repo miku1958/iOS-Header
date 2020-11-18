@@ -6,7 +6,7 @@
 
 #import <WatchListKit/WLKBasicContentMetadata.h>
 
-@class NSDate, NSNumber, NSString, WLKArtworkVariantListing, WLKPlayable, WLKShowContentRating;
+@class NSDate, NSNumber, NSString, WLKArtworkVariantListing, WLKPlayable;
 
 @interface WLKBasicEpisodeMetadata : WLKBasicContentMetadata
 {
@@ -19,13 +19,11 @@
     NSDate *_releaseDate;
     WLKArtworkVariantListing *_showImages;
     WLKArtworkVariantListing *_seasonImages;
-    WLKShowContentRating *_contentRating;
     WLKPlayable *_playable;
 }
 
 @property (readonly, copy, nonatomic) NSString *canonicalSeasonID; // @synthesize canonicalSeasonID=_canonicalSeasonID;
 @property (readonly, copy, nonatomic) NSString *canonicalShowID; // @synthesize canonicalShowID=_canonicalShowID;
-@property (readonly, nonatomic) WLKShowContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSNumber *episodeNumber; // @synthesize episodeNumber=_episodeNumber;
 @property (readonly, nonatomic) WLKPlayable *playable; // @synthesize playable=_playable;

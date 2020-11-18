@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray;
-@protocol MTLArgumentEncoder, MTLBuffer, MTLComputePipelineState;
+@protocol MTLComputePipelineState;
 
 @interface AVTCompositorPipeline : NSObject
 {
@@ -15,8 +15,6 @@
     long long _affectingComponentsMask;
     NSArray *_bindings;
     id<MTLComputePipelineState> _pipelineState;
-    id<MTLArgumentEncoder> _argumentEncoder;
-    id<MTLBuffer> _paramsBuffer;
 }
 
 - (void).cxx_destruct;

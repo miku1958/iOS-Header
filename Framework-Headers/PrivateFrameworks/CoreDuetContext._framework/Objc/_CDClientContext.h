@@ -18,6 +18,7 @@
     BOOL _interrupted;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_xpcQueue;
+    NSObject<OS_dispatch_queue> *_xpcEventQueue;
     NSXPCConnection *_xpcConnection;
     NSXPCListenerEndpoint *_endpoint;
     NSMutableDictionary *_keyPathToValues;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) id<_CDRemoteUserContextServer> remoteUserContextProxy; // @synthesize remoteUserContextProxy=_remoteUserContextProxy;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcEventQueue; // @synthesize xpcEventQueue=_xpcEventQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
 + (id)clientInterface;

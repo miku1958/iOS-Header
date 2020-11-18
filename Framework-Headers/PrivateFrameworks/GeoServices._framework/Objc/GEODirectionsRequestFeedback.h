@@ -13,10 +13,12 @@
 @interface GEODirectionsRequestFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_appIdentifier;
     NSString *_requestingAppId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _purpose;
     int _source;
     struct {
@@ -55,6 +57,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithPurpose:(int)arg1;
 - (id)initWithPurpose:(int)arg1 andSource:(int)arg2;
 - (id)initWithPurpose:(int)arg1 andSource:(int)arg2 andIdentifier:(id)arg3;

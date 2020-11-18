@@ -16,14 +16,17 @@
     long long _style;
     double _glyphViewPadding;
     double _labelTopPadding;
+    BOOL _didLayout;
     BOOL _biometricsUnavailableHint;
     BOOL _touchRecognizingHint;
     BOOL _persistentEmulationHint;
     BOOL _accessPass;
     long long _state;
+    long long _layoutState;
     PKGlyphView *_glyph;
     UILabel *_label;
     UILabel *_debugLabel;
+    double _labelStateBottomInset;
     double _labelAlpha;
     id<PKPassPaymentPayStateViewDelegate> _delegate;
 }
@@ -38,6 +41,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
+@property (nonatomic) double labelStateBottomInset; // @synthesize labelStateBottomInset=_labelStateBottomInset;
+@property (readonly, nonatomic) long long layoutState; // @synthesize layoutState=_layoutState;
 @property (nonatomic) BOOL persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -51,6 +56,7 @@
 - (BOOL)_canPreserveGlyphForState:(long long)arg1;
 - (void)_configureLayoutMetrics;
 - (long long)_defaultGlyphStateForState:(long long)arg1;
+- (void)_resolveLayout;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
 - (void)dealloc;
 - (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;

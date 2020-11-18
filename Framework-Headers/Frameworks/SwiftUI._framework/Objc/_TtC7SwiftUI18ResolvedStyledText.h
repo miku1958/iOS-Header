@@ -18,6 +18,7 @@
     MISSING_TYPE *pixelLength;
     MISSING_TYPE *cache;
     MISSING_TYPE *scaleFactorOverride;
+    MISSING_TYPE *$__lazy_storage_$_oversizeCharacterOutsets;
 }
 
 @end

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _EVOrganizationName;
     BOOL _EVOrganizationNameIsValid;
     BOOL _inInteractiveDismiss;
+    BOOL _exitRequested;
     struct RetainPtr<id> _notificationListener;
     WKWebView *__webView;
 }

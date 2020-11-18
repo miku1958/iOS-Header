@@ -12,6 +12,8 @@
 @interface TIRevisionHistory : NSObject
 {
     BOOL _shouldReportRevisionToDP;
+    BOOL _isDeletingBackwards;
+    BOOL _isRapidDeleteActive;
     id<TIRevisionHistoryDelegate> _delegate;
     TILRUDictionary *_recentAutocorrections;
     NSString *_documentText;
@@ -25,6 +27,8 @@
 @property (nonatomic) struct _TIRevisionHistoryTokenIterator currentTokenIterator; // @synthesize currentTokenIterator=_currentTokenIterator;
 @property (nonatomic) id<TIRevisionHistoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSString *documentText; // @synthesize documentText=_documentText;
+@property (nonatomic) BOOL isDeletingBackwards; // @synthesize isDeletingBackwards=_isDeletingBackwards;
+@property (nonatomic) BOOL isRapidDeleteActive; // @synthesize isRapidDeleteActive=_isRapidDeleteActive;
 @property (strong, nonatomic) TIRevisionHistoryToken *lastRejectedToken; // @synthesize lastRejectedToken=_lastRejectedToken;
 @property (strong, nonatomic) TILRUDictionary *recentAutocorrections; // @synthesize recentAutocorrections=_recentAutocorrections;
 @property (nonatomic) struct _NSRange selectedRange; // @synthesize selectedRange=_selectedRange;
@@ -32,6 +36,7 @@
 @property (readonly, nonatomic) NSMutableArray *tokenization; // @synthesize tokenization=_tokenization;
 @property (readonly, nonatomic) void *tokenizer; // @synthesize tokenizer=_tokenizer;
 
++ (id)documentStateTrimmedToSentenceForState:(id)arg1;
 - (void).cxx_destruct;
 - (void)acceptCurrentSentence;
 - (void)acceptText:(id)arg1 isAutoshifted:(BOOL)arg2;
@@ -45,7 +50,7 @@
 - (id)currentWord;
 - (void)dealloc;
 - (void)deleteBackward;
-- (BOOL)deletingBackwardEqualsDocumentState:(id)arg1;
+- (struct _NSRange)deletionRangeToObtainDocumentState:(id)arg1;
 - (struct _NSRange)documentRangeOfTokenAtIterator:(struct _TIRevisionHistoryTokenIterator)arg1;
 - (id)documentState;
 - (void)enumerateSentenceStemUsingBlock:(CDUnknownBlockType)arg1;

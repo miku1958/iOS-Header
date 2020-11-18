@@ -17,7 +17,6 @@
     CBCentralManager *_bluetoothManager;
     NSLock *_centralRequestsLock;
     BOOL _isScanning;
-    BOOL _isResetting;
     BOOL _centralIsOn;
     NSObject<OS_dispatch_queue> *_bluetoothCentralQueue;
     NSMutableArray *_availableSearchBlocks;
@@ -95,6 +94,7 @@
 - (void)removeAvailableDevice:(id)arg1;
 - (void)removeConnectedDevice:(id)arg1;
 - (void)removeLoadedDevice:(id)arg1;
+- (BOOL)representsLocalDevices;
 - (void)resetConnectionToPeripheral:(id)arg1;
 - (void)searchForAvailableDevices;
 - (void)searchForAvailableDevicesWithCompletion:(CDUnknownBlockType)arg1;

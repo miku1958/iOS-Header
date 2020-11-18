@@ -13,10 +13,12 @@
 @interface GEORPFeedbackInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_feedbackComponents;
     NSString *_feedbackId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_status:1;
@@ -54,6 +56,8 @@
 - (id)feedbackComponentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackComponentsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

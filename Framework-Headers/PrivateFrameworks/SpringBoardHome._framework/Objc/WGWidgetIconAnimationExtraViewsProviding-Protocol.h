@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSArray *extraViews;
 @property (readonly, nonatomic) UIView *extraViewsContainer;
+@property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 
 @end

@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)flushTransactions;
 - (id)initWithTransportSessionID:(unsigned int)arg1 transactionData:(id)arg2 participantID:(id)arg3 transactionDelegate:(id)arg4;
-- (BOOL)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3;
+- (BOOL)sendReliableMessage:(id)arg1 sessionID:(unsigned int)arg2 participantID:(id)arg3 timeout:(id)arg4;
 
 @end
 

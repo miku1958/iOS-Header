@@ -63,6 +63,7 @@
 @property (readonly, nonatomic) id<SBIconModelStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDock;
+@property (readonly, copy, nonatomic) NSString *unlocalizedDefaultFolderName;
 @property (readonly, copy, nonatomic) NSSet *visibleIconIdentifiers;
 @property (readonly, copy, nonatomic) NSSet *visibleIconTags; // @synthesize visibleIconTags=_visibleIconTags;
 

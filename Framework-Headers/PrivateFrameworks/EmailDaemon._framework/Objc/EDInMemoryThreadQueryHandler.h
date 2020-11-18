@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EmailDaemon/EDThreadQueryHandler.h>
+#import <EmailDaemon/EDMessageRepositoryQueryHandler.h>
 
 #import <EmailDaemon/EDMessageQueryHelperDelegate-Protocol.h>
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDMessageQueryHelper, EDUpdateThrottler, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
-@protocol EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
+@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
+@protocol EDRemoteSearchProvider, EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
 
-@interface EDInMemoryThreadQueryHandler : EDThreadQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
+@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
     NSMutableOrderedSet *_conversationIDs;
     NSMutableDictionary *_threadsByConversationID;
@@ -24,13 +24,17 @@
     BOOL _isInitialized;
     BOOL _isPaused;
     BOOL _hasChangesWhilePaused;
+    EDVIPManager *_vipManager;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDMessageQueryHelper *_messageQueryHelper;
     NSArray *_messageSortDescriptors;
     CDUnknownBlockType _comparator;
     EDUpdateThrottler *_updateThrottler;
+    EDThreadReloadSummaryHelper *_reloadSummaryHelper;
     id<EFScheduler> _scheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
+    EMMailboxScope *_mailboxScope;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
@@ -42,13 +46,17 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInitialized; // @synthesize isInitialized=_isInitialized;
 @property (nonatomic) BOOL isPaused; // @synthesize isPaused=_isPaused;
+@property (readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
 @property (strong, nonatomic) EDMessageQueryHelper *messageQueryHelper; // @synthesize messageQueryHelper=_messageQueryHelper;
 @property (readonly, copy, nonatomic) NSArray *messageSortDescriptors; // @synthesize messageSortDescriptors=_messageSortDescriptors;
+@property (readonly, nonatomic) EDThreadReloadSummaryHelper *reloadSummaryHelper; // @synthesize reloadSummaryHelper=_reloadSummaryHelper;
+@property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserverIfNotPaused;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
+@property (readonly, nonatomic) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
 
 + (id)log;
 - (void).cxx_destruct;
@@ -81,7 +89,7 @@
 - (void)cancel;
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (void)dealloc;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 observer:(id)arg4 observationIdentifier:(id)arg5;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
 - (id)messagesForThread:(id)arg1;
 - (void)queryHelper:(id)arg1 conversationIDDidChangeForMessages:(id)arg2 fromConversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 conversationNotificationLevelDidChangeForConversation:(long long)arg2 conversationID:(long long)arg3;
@@ -95,6 +103,7 @@
 - (void)queryHelperDidFinishRemoteSearch:(id)arg1;
 - (void)queryHelperNeedsRestart:(id)arg1;
 - (void)start;
+- (void)tearDown;
 - (id)threadForObjectID:(id)arg1 error:(id *)arg2;
 
 @end

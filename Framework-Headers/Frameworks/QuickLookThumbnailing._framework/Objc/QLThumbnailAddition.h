@@ -41,6 +41,7 @@
 + (void)downloadOrGenerateThumbnailAtTaggedURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)downloadOrGenerateThumbnailAtURL:(id)arg1;
 + (void)downloadOrGenerateThumbnailAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)fpfsDownloadOrGenerateThumbnailAtTaggedURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)generateThumbnailIfPossibleAtLogicalURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)hasThumbnailOnImmutableDocumentAtURL:(id)arg1;
 + (BOOL)imageContainsAlpha:(struct CGImage *)arg1;
@@ -53,6 +54,8 @@
 + (id)metadataForGeneratedThumbnailForURL:(id)arg1 maximumDimension:(double)arg2;
 + (void)noteCloudDocsDownloadedFileAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)plistInExtendedAttributeNamed:(const char *)arg1 flags:(unsigned long long)arg2 onFileDescriptor:(int)arg3 error:(id *)arg4;
++ (void)preFPFSDownloadOrGenerateThumbnailAtTaggedURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)preFPFSDownloadThumbnailAtTaggedURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)removeAdditionsOnURL:(id)arg1 error:(id *)arg2;
 + (BOOL)removeExtendedAttributeNamed:(const char *)arg1 flags:(unsigned long long)arg2 onFileDescriptor:(int)arg3 error:(id *)arg4;
 + (BOOL)removeThumbnailsStoredInExtendedAttributesOnURL:(id)arg1 error:(id *)arg2;

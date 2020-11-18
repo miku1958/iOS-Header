@@ -531,6 +531,7 @@
 - (void)replaceSelectionWithText:(id)arg1;
 - (void)resetPageZoom:(id)arg1;
 - (void)resetTrackedRepaints;
+- (void)resumeAllMediaPlayback;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (id)scriptDebugDelegate;
 - (void)scrollDOMRangeToVisible:(id)arg1;
@@ -589,6 +590,7 @@
 - (id)styleDeclarationWithText:(id)arg1;
 - (void)subscript:(id)arg1;
 - (void)superscript:(id)arg1;
+- (void)suspendAllMediaPlayback;
 - (void)swapWithMark:(id)arg1;
 - (BOOL)tabKeyCyclesThroughElements;
 - (void)takeFindStringFromSelection:(id)arg1;

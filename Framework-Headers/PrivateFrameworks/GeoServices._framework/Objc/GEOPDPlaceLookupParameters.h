@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPlaceLookupParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _muids;
     NSMutableArray *_identifiers;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _resultProviderId;
     BOOL _enablePartialClientization;
     struct {
@@ -63,6 +65,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)identifierAtIndex:(unsigned long long)arg1;
 - (unsigned long long)identifiersCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

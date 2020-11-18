@@ -37,6 +37,7 @@
 - (unsigned long long)hash;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithServiceIdentifier:(id)arg1 language:(id)arg2 variant:(id)arg3;
+- (id)initWithServiceIdentifier:(id)arg1 tableIdentifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

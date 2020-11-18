@@ -18,7 +18,7 @@
     MXMSampleTag *_tag;
     NSUnit *_unit;
     MXMSampleTimeSeries *_timeIndex;
-    CDStruct_0bece6d5 *_index;
+    CDStruct_4bcfbbae *_index;
     void *_underlyingBuffer;
     long long _underlyingBufferLength;
     NSArray *_cachedSamples;
@@ -32,7 +32,7 @@
 @property (readonly) double *doubleValues;
 @property (readonly) double *firstDoubleValue;
 @property (readonly, nonatomic) MXMSample *geoMean;
-@property (nonatomic) CDStruct_0bece6d5 *index; // @synthesize index=_index;
+@property (nonatomic) CDStruct_4bcfbbae *index; // @synthesize index=_index;
 @property (readonly) double *lastDoubleValue;
 @property (readonly) unsigned long long length;
 @property (readonly, nonatomic) MXMSample *max;
@@ -65,8 +65,7 @@
 - (id)initWithTag:(id)arg1 unit:(id)arg2 attributes:(id)arg3;
 - (id)initWithTime:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4;
 - (id)initWithTime:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4 doubleValues:(double *)arg5 length:(unsigned long long)arg6;
-- (id)initWithTime:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4 unsignedIntegerValues:(unsigned long long *)arg5 length:(unsigned long long)arg6;
-- (id)initWithTime:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4 values:(void *)arg5 length:(unsigned long long)arg6 valueSize:(unsigned long long)arg7 valueType:(char *)arg8 valueTypeLength:(unsigned long long)arg9;
+- (id)initWithTime:(id)arg1 tag:(id)arg2 unit:(id)arg3 attributes:(id)arg4 values:(void *)arg5 length:(unsigned long long)arg6 valueSize:(unsigned long long)arg7;
 - (id)mutableCopy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;

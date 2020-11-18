@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+#import <CompanionSync/SYStateLoggable-Protocol.h>
+
+@class NSMutableArray, NSString, PBCodable;
 @protocol OS_dispatch_queue;
 
-@interface _SYMultiSuspendableQueue : NSObject
+@interface _SYMultiSuspendableQueue : NSObject <SYStateLoggable>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_targetQueue;
@@ -20,9 +22,14 @@
     NSMutableArray *_latestResumeBacktraces;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned int qosClass;
+@property (readonly, nonatomic) PBCodable *stateForLogging;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *targetQueue;
 

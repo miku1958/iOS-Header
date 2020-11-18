@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *avatarBackgrounds; // @synthesize avatarBackgrounds=_avatarBackgrounds;
 
 + (id)avatarBackgroundsFromDictionary:(id)arg1;
++ (id)avatarPoseConfigurationsForAvatarRecord:(id)arg1;
 + (id)colorFromRGBArray:(id)arg1;
 + (id)colorFromRGBString:(id)arg1;
 + (id)colorGradientBackground:(id)arg1;
@@ -25,8 +26,8 @@ __attribute__((visibility("hidden")))
 + (id)generateGradientColorsByColor;
 + (id)gradientStartColor:(id)arg1;
 + (id)nonAlphaColorForBackgroundColor:(id)arg1;
++ (id)sharingProfileAvatarPoseConfigurationForAvatarRecord:(id)arg1;
 - (void).cxx_destruct;
-- (id)avatarPoseConfigurationsForAvatarRecord:(id)arg1;
 - (id)init;
 
 @end

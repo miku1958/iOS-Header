@@ -23,8 +23,11 @@
 
 - (void).cxx_destruct;
 - (id)QIDWeightsWithMappedTopicIdentifier:(id)arg1;
+- (void)_enumerateSparseColumnAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_enumerateSparseRowAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)addBias:(float *)arg1;
-- (void)addTopicToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned int *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
+- (void)addWeightedTopicScoreToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned short *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
+- (void)addWeightedTopicScoreToBuffer:(float *)arg1 qid:(unsigned int)arg2 score:(float)arg3;
 - (void)halfSigmoid:(float *)arg1;
 - (id)init;
 - (id)initWithPath:(id)arg1;

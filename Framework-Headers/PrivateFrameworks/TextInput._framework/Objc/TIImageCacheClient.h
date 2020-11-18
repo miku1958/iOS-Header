@@ -40,7 +40,7 @@
 - (void)_remoteStoreImageForKey:(id)arg1 inGroup:(id)arg2 withItem:(id)arg3;
 - (void)_setCacheVersion:(int)arg1;
 - (id)_versionPath;
-- (id)cacheNumberForKey:(id)arg1;
+- (id)cacheNumberForKey:(id)arg1 inGroup:(id)arg2;
 - (struct CGImage *)copyImageForKey:(id)arg1 inGroup:(id)arg2;
 - (void)dealloc;
 - (void)idleAfter:(double)arg1;

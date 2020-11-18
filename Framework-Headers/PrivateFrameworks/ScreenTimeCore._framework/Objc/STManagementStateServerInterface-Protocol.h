@@ -21,6 +21,7 @@
 - (void)enableScreenTimeForDSID:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)isExplicitContentRestrictedWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)isRestrictionsPasscodeSetWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
+- (void)needsToSetRestrictionsPasscodeWithReplyHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)performMigrationFromMCXSettings:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)permitWebFilterURL:(NSURL *)arg1 pageTitle:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)screenTimeStateWithCompletionHandler:(void (^)(long long, NSError *))arg1;

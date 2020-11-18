@@ -48,6 +48,7 @@
 @property (nonatomic) BOOL shouldMonitorScrollingPastBottomOfContent; // @synthesize shouldMonitorScrollingPastBottomOfContent=_shouldMonitorScrollingPastBottomOfContent;
 @property (nonatomic) BOOL shouldUseInsetRoundedSections;
 @property (nonatomic) BOOL shouldUseStandardSectionInsets;
+@property (nonatomic) BOOL showsVerticalScrollIndicator;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType tableViewDidUpdateHandler; // @synthesize tableViewDidUpdateHandler;
@@ -69,6 +70,7 @@
 - (void)performScrollTestWithHandlerForFirstScrollCompletion:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)purgeMemory;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2;
+- (void)restoreResultsIfNeeded;
 - (struct CGRect)scrollToIndexPath:(id)arg1;
 - (void)tapAtIndexPath:(id)arg1;
 - (void)toggleShowMoreForSection:(unsigned long long)arg1;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
+- (BOOL)_accessibilityIsFKARunningForFocusItem;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityPresentsAsPopup;
 - (BOOL)_accessibilityShouldPostScreenChangedOnPresentation;
@@ -22,6 +23,7 @@
 - (id)_accessibilitySpeakThisViewController;
 - (id)_accessibilitySpeakThisViews;
 - (id)_accessibilityUserTestingViewControllerInfo;
+- (id)_overridingPreferredFocusEnvironment;
 - (void)_presentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animationController:(id)arg4 interactionController:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_primitiveSetNavigationControllerContentInsetAdjustment:(struct UIEdgeInsets)arg1;
 - (void)_setAccessibilityDidLoadAccessibilityInformation:(BOOL)arg1;

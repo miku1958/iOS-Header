@@ -73,6 +73,7 @@
 @property (nonatomic) long long lineOffset; // @synthesize lineOffset=_lineOffset;
 @property (readonly, nonatomic) BOOL needsDisplayFlush; // @synthesize needsDisplayFlush=_needsDisplayFlush;
 @property (strong, nonatomic) NSMutableArray *pendingBrailleStringDictionaries; // @synthesize pendingBrailleStringDictionaries=_pendingBrailleStringDictionaries;
+@property (readonly, nonatomic) BRLTBrailleStateManager *stateManager;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<BRLTBrailleStateManagerDelegate> translationDelegate; // @synthesize translationDelegate=_translationDelegate;
 @property (readonly, nonatomic) BOOL wantsEdits;

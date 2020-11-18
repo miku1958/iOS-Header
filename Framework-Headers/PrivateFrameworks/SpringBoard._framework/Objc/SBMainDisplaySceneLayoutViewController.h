@@ -13,7 +13,7 @@
 #import <SpringBoard/TFBetaLaunchHandleActivationDelegate-Protocol.h>
 
 @class FBScene, NSArray, NSLayoutConstraint, NSMutableSet, NSObject, NSString, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutGestureManager, SBMainDisplaySceneLayoutStatusBarView, SBOrientationTransformWrapperView, SBSceneHandleBlockObserver, SBSeparatorView, UIApplicationSceneClientSettingsDiffInspector, UIView;
-@protocol OS_dispatch_queue;
+@protocol BSInvalidatable, OS_dispatch_queue;
 
 @interface SBMainDisplaySceneLayoutViewController : SBSceneLayoutViewController <SBMainDisplaySceneLayoutStatusBarViewDataSource, PTSettingsKeyObserver, SBSceneHandleObserver, TFBetaLaunchHandleActivationDelegate, SBDeviceApplicationSceneStatusBarBreadcrumbProviderObserver>
 {
@@ -42,6 +42,7 @@
     BOOL __preventsCornerRadiusUpdate;
     double _separatorViewAlpha;
     unsigned long long _nubStyle;
+    id<BSInvalidatable> _pushPopWallpaperRequireAssertion;
     SBHomeGrabberRotationView *_homeGrabberRotationView;
     NSString *_keyboardFocusSceneID;
 }
@@ -66,6 +67,7 @@
 @property (readonly, nonatomic) SBHomeGrabberRotationView *homeGrabberRotationView; // @synthesize homeGrabberRotationView=_homeGrabberRotationView;
 @property (copy, nonatomic, getter=_keyboardFocusSceneID, setter=_setKeyboardFocusSceneID:) NSString *keyboardFocusSceneID; // @synthesize keyboardFocusSceneID=_keyboardFocusSceneID;
 @property (readonly, nonatomic) SBMainDisplayLayoutState *layoutState; // @dynamic layoutState;
+@property (strong, nonatomic) id<BSInvalidatable> pushPopWallpaperRequireAssertion; // @synthesize pushPopWallpaperRequireAssertion=_pushPopWallpaperRequireAssertion;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 

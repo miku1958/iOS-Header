@@ -9,7 +9,7 @@
 #import <WorkflowKit/WFSiriUserInterface-Protocol.h>
 #import <WorkflowKit/WFWorkflowControllerDelegate-Protocol.h>
 
-@class INIntentResponse, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
+@class INInteraction, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
 @protocol WFLWorkflowControllerDelegate;
 
 @interface WFLWorkflowController : NSObject <WFWorkflowControllerDelegate, WFSiriUserInterface>
@@ -18,7 +18,7 @@
     id<WFLWorkflowControllerDelegate> _delegate;
     long long _executionContext;
     WFWorkflowController *_controller;
-    INIntentResponse *_lastIntentResponse;
+    INInteraction *_lastInteraction;
 }
 
 @property (readonly, copy, nonatomic) NSArray *airPlayRouteIDs; // @synthesize airPlayRouteIDs=_airPlayRouteIDs;
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) INIntentResponse *lastIntentResponse; // @synthesize lastIntentResponse=_lastIntentResponse;
+@property (strong, nonatomic) INInteraction *lastInteraction; // @synthesize lastInteraction=_lastInteraction;
 @property (readonly, nonatomic) NSProgress *progress;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly) Class superclass;
@@ -43,6 +43,7 @@
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openUserActivity:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentAlert:(id)arg1;
+- (id)runSource;
 - (void)runWithInput:(id)arg1;
 - (void)showInteractionIfNeeded:(id)arg1 requiringConfirmation:(BOOL)arg2 requiringAuthentication:(BOOL)arg3 executionStage:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)speakText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

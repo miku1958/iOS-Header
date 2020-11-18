@@ -78,6 +78,7 @@
 - (void)proximityClientDeviceWasDismissedHandler:(id)arg1 reason:(long long)arg2;
 - (void)proximityClientDeviceWasSelectedHandler:(id)arg1;
 - (void)proximityClientDeviceWillTriggerHandler:(id)arg1;
+- (void)requestScannerTimerReset;
 - (void)updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -10,11 +10,14 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCodableLocalizationTable, NSArray, NSString;
+@class INCodableLocalizationTable, NSArray, NSMutableDictionary, NSString;
 
 @interface INCodableEnum : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
     INCodableLocalizationTable *_localizationTable;
+    NSString *_enumValueKeyPrefix;
+    NSString *_enumValueSynonymKeyPrefix;
+    NSMutableDictionary *_dictionaryKeysForCacheGroup;
     NSString *_name;
     NSString *_displayName;
     NSString *_displayNameID;
@@ -23,13 +26,18 @@
     NSArray *_values;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *_dictionaryKeysForCacheGroup; // @synthesize _dictionaryKeysForCacheGroup;
+@property (readonly, copy, nonatomic) NSString *_enumValueKeyPrefix; // @synthesize _enumValueKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_enumValueSynonymKeyPrefix; // @synthesize _enumValueSynonymKeyPrefix;
 @property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *displayNameID; // @synthesize displayNameID=_displayNameID;
 @property (copy, nonatomic, setter=_setEnumNamespace:) NSString *enumNamespace; // @synthesize enumNamespace=_enumNamespace;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedDisplayName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
@@ -38,6 +46,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_dictionaryKeyForKeyPath:(id)arg1 object:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentation;
@@ -46,7 +55,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 displayName:(id)arg2 displayNameID:(id)arg3 enumNamespace:(id)arg4 type:(long long)arg5 values:(id)arg6 localizationTable:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedDisplayNameForLanguage:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 

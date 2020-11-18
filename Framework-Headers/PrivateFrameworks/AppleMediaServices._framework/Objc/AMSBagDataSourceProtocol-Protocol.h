@@ -6,7 +6,7 @@
 
 #import <AppleMediaServices/NSObject-Protocol.h>
 
-@class AMSBagKeyInfo, NSDate, NSString;
+@class ACAccount, AMSBagKeyInfo, NSDate, NSString;
 
 @protocol AMSBagDataSourceProtocol <NSObject>
 
@@ -19,7 +19,7 @@
 
 - (AMSBagKeyInfo *)bagKeyInfoForKey:(NSString *)arg1;
 - (void)loadWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
-- (NSString *)valueForURLVariable:(NSString *)arg1;
+- (NSString *)valueForURLVariable:(NSString *)arg1 account:(ACAccount *)arg2;
 
 @optional
 @end

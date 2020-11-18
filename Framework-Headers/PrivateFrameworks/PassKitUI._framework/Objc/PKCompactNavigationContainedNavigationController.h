@@ -8,29 +8,30 @@
 
 #import <PassKitUI/PKObservableContentContainer-Protocol.h>
 
-@class NSHashTable, NSString, UIVisualEffectView;
+@class NSHashTable, NSString, PKCompactNavigationContainerController, UIVisualEffectView;
 
 @interface PKCompactNavigationContainedNavigationController : UINavigationController <PKObservableContentContainer>
 {
     UIVisualEffectView *_backdropView;
     struct os_unfair_lock_s _observersLock;
     NSHashTable *_observers;
-    BOOL _overridesContentOverlayInsets;
+    BOOL _propagateParentNCCBottomSafeAreaInset;
     unsigned long long _style;
+    PKCompactNavigationContainerController *_parentNavigationContainerController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL overridesContentOverlayInsets; // @synthesize overridesContentOverlayInsets=_overridesContentOverlayInsets;
+@property (weak, nonatomic) PKCompactNavigationContainerController *parentNavigationContainerController; // @synthesize parentNavigationContainerController=_parentNavigationContainerController;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
+@property (nonatomic) BOOL propagateParentNCCBottomSafeAreaInset; // @synthesize propagateParentNCCBottomSafeAreaInset=_propagateParentNCCBottomSafeAreaInset;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (id)_observers;
-- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)addContentContainerObserver:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;

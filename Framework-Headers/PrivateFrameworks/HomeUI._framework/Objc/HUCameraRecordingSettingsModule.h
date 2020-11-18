@@ -15,6 +15,9 @@
 {
     NSSet *_itemProviders;
     unsigned long long _displayStyle;
+    NSString *_longestCameraUsageOptionItemTitle;
+    NSString *_longestCameraPresenceItemTitle;
+    NSArray *_cameraPresenceItems;
     id<HUCameraRecordingSettingsModuleDelegate> _delegate;
     NSSet *_cameraProfiles;
     HUCameraRecordingOptionsItem *_recordingOptionsItem;
@@ -26,6 +29,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long awayAccessModeSetting;
+@property (readonly, nonatomic) NSArray *cameraPresenceItems; // @synthesize cameraPresenceItems=_cameraPresenceItems;
 @property (readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCameraRecordingSettingsModuleDelegate> delegate; // @synthesize delegate=_delegate;
@@ -36,6 +40,8 @@
 @property (strong, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (strong, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
 @property (strong, nonatomic) NSString *locationDeviceName; // @synthesize locationDeviceName=_locationDeviceName;
+@property (readonly, nonatomic) NSString *longestCameraPresenceItemTitle; // @synthesize longestCameraPresenceItemTitle=_longestCameraPresenceItemTitle;
+@property (readonly, nonatomic) NSString *longestCameraUsageOptionItemTitle; // @synthesize longestCameraUsageOptionItemTitle=_longestCameraUsageOptionItemTitle;
 @property (readonly, nonatomic) NSArray *presenceModules;
 @property (readonly, nonatomic) unsigned long long presentAccessModeSetting;
 @property (strong, nonatomic) UIViewController *presentingViewController;

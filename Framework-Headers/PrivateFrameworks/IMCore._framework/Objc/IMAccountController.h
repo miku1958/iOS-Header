@@ -18,6 +18,7 @@
     NSMutableDictionary *_serviceToAccountsMap;
     NSMutableDictionary *_serviceToConnectedAccountsMap;
     NSMutableDictionary *_serviceToOperationalAccountsMap;
+    BOOL _networkDataAvailable;
     NSArray *_accounts;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) IMAccount *activeSMSAccount;
 @property (readonly, nonatomic) id bestAccountForStatus;
 @property (readonly, nonatomic) NSArray *connectedAccounts;
+@property (nonatomic) BOOL networkDataAvailable; // @synthesize networkDataAvailable=_networkDataAvailable;
 @property (readonly, nonatomic) int numberOfAccounts;
 @property (readonly, nonatomic) NSArray *operationalAccounts;
 
@@ -43,6 +45,8 @@
 - (void)_disableCache;
 - (void)_enableCache;
 - (void)_rebuildOperationalAccountsCache:(BOOL)arg1;
+- (void)_requestNetworkDataAvailability;
+- (BOOL)_shouldPerformDeferredSetup;
 - (BOOL)accountActive:(id)arg1;
 - (id)accountAtIndex:(int)arg1;
 - (BOOL)accountConnected:(id)arg1;
@@ -85,6 +89,7 @@
 - (BOOL)deactivateAccounts:(id)arg1;
 - (BOOL)deactivateAccounts:(id)arg1 withDisable:(BOOL)arg2;
 - (void)dealloc;
+- (void)deferredSetup;
 - (BOOL)deleteAccount:(id)arg1;
 - (BOOL)deleteAccount:(id)arg1 locally:(BOOL)arg2;
 - (id)iMessageAccountForLastAddressedHandle:(id)arg1 simID:(id)arg2;

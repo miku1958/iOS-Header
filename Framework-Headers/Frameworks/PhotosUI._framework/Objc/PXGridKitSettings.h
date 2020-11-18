@@ -20,9 +20,12 @@
     BOOL _debugResolution;
     BOOL _debugColorTransform;
     BOOL _colorCopiedImages;
+    BOOL _colorCachedThumbnails;
     BOOL _requestThumbnailsOnly;
     BOOL _requestMasterThumbsOnly;
     BOOL _disableLowResThumbnails;
+    BOOL _simulateSomeAssetsInCloud;
+    BOOL _loadThumbnailsAsync;
     BOOL _allowBlockingDuringScrolling;
     BOOL _allowBlockingDueToFences;
     BOOL _wantsOrthogonalProjection;
@@ -44,6 +47,8 @@
     BOOL _shouldShowBoundariesOfTextTextures;
     BOOL _shouldIncludeSpecialCharactersInTextTextures;
     long long _sampleCount;
+    long long _thumbnailCacheSize;
+    double _opportunisticPreheatRequiredIdleTime;
     double _blockingWhileScrollingTimeout;
     double _blockingWhileScrubbingTimeout;
     long long _blockOnMissingThumbnailsAtSpeedRegime;
@@ -62,6 +67,7 @@
 @property (nonatomic) double blockingWhileScrollingTimeout; // @synthesize blockingWhileScrollingTimeout=_blockingWhileScrollingTimeout;
 @property (nonatomic) double blockingWhileScrubbingTimeout; // @synthesize blockingWhileScrubbingTimeout=_blockingWhileScrubbingTimeout;
 @property (nonatomic) double cameraZoomFactor; // @synthesize cameraZoomFactor=_cameraZoomFactor;
+@property (nonatomic) BOOL colorCachedThumbnails; // @synthesize colorCachedThumbnails=_colorCachedThumbnails;
 @property (nonatomic) BOOL colorCopiedImages; // @synthesize colorCopiedImages=_colorCopiedImages;
 @property (nonatomic) BOOL debugColorTransform; // @synthesize debugColorTransform=_debugColorTransform;
 @property (nonatomic) BOOL debugExtendedColorRange; // @synthesize debugExtendedColorRange=_debugExtendedColorRange;
@@ -85,9 +91,11 @@
 @property (nonatomic) BOOL enableRectDiagnosticsForViewSprites; // @synthesize enableRectDiagnosticsForViewSprites=_enableRectDiagnosticsForViewSprites;
 @property (nonatomic) BOOL enableRoundedCorners; // @synthesize enableRoundedCorners=_enableRoundedCorners;
 @property (nonatomic) BOOL enableViewRenderer; // @synthesize enableViewRenderer=_enableViewRenderer;
+@property (nonatomic) BOOL loadThumbnailsAsync; // @synthesize loadThumbnailsAsync=_loadThumbnailsAsync;
 @property (nonatomic) BOOL lowLatency; // @synthesize lowLatency=_lowLatency;
 @property (nonatomic) long long lowSpecProcessorCountLimit; // @synthesize lowSpecProcessorCountLimit=_lowSpecProcessorCountLimit;
 @property (nonatomic) double maxCornerRadius; // @synthesize maxCornerRadius=_maxCornerRadius;
+@property (nonatomic) double opportunisticPreheatRequiredIdleTime; // @synthesize opportunisticPreheatRequiredIdleTime=_opportunisticPreheatRequiredIdleTime;
 @property (nonatomic) BOOL pauseWhenIdle; // @synthesize pauseWhenIdle=_pauseWhenIdle;
 @property (nonatomic) double perspectiveAngle; // @synthesize perspectiveAngle=_perspectiveAngle;
 @property (nonatomic) BOOL requestMasterThumbsOnly; // @synthesize requestMasterThumbsOnly=_requestMasterThumbsOnly;
@@ -95,7 +103,9 @@
 @property (nonatomic) long long sampleCount; // @synthesize sampleCount=_sampleCount;
 @property (nonatomic) BOOL shouldIncludeSpecialCharactersInTextTextures; // @synthesize shouldIncludeSpecialCharactersInTextTextures=_shouldIncludeSpecialCharactersInTextTextures;
 @property (nonatomic) BOOL shouldShowBoundariesOfTextTextures; // @synthesize shouldShowBoundariesOfTextTextures=_shouldShowBoundariesOfTextTextures;
+@property (nonatomic) BOOL simulateSomeAssetsInCloud; // @synthesize simulateSomeAssetsInCloud=_simulateSomeAssetsInCloud;
 @property (nonatomic) double slowAnimationsSpeed; // @synthesize slowAnimationsSpeed=_slowAnimationsSpeed;
+@property (nonatomic) long long thumbnailCacheSize; // @synthesize thumbnailCacheSize=_thumbnailCacheSize;
 @property (nonatomic) long long videoAllowedAtOrBelowSpeed; // @synthesize videoAllowedAtOrBelowSpeed=_videoAllowedAtOrBelowSpeed;
 @property (nonatomic) long long videoAllowedAtOrBelowSpeedForLowSpec; // @synthesize videoAllowedAtOrBelowSpeedForLowSpec=_videoAllowedAtOrBelowSpeedForLowSpec;
 @property (nonatomic) BOOL wantsOrthogonalProjection; // @synthesize wantsOrthogonalProjection=_wantsOrthogonalProjection;

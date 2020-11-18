@@ -9,7 +9,6 @@
 @class PXCuratedLibraryFooterController;
 
 @protocol PXCuratedLibraryFooterControllerDelegate <NSObject>
-- (BOOL)footerController:(PXCuratedLibraryFooterController *)arg1 performCPLAction:(long long)arg2;
 - (void)footerControllerRevealFooter:(PXCuratedLibraryFooterController *)arg1;
 - (struct NSObject *)presentingViewControllerForFooterController:(PXCuratedLibraryFooterController *)arg1;
 @end

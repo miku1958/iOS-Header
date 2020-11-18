@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (id)_initWithWorkspace:(id)arg1 displayConfiguration:(id)arg2;
 - (id)compactDescriptionBuilder;
+- (id)copyMainWorkspaceTransitionRequest;
 - (void)declineWithReason:(id)arg1;
 - (void)finalize;
 - (id)initWithDisplayConfiguration:(id)arg1;

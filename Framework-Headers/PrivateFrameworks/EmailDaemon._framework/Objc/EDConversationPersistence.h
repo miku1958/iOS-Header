@@ -63,6 +63,7 @@
 - (void)updateAssociationTableForMessageID:(id)arg1 dateSent:(id)arg2 conversationID:(long long)arg3;
 - (void)updateAssociationTableForMessageIDs:(id)arg1 conversationID:(long long)arg2;
 - (void)updateAssociationTableForMessagePersistentIDs:(id)arg1 conversationID:(long long)arg2;
+- (void)updateConversationNotificationLevel:(long long)arg1 forConversationWithID:(long long)arg2;
 
 @end
 

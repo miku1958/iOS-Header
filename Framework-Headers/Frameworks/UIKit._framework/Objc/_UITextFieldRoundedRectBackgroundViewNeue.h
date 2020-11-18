@@ -10,18 +10,18 @@
 
 @interface _UITextFieldRoundedRectBackgroundViewNeue : UIView
 {
+    double _lineWidthPixels;
     BOOL _disabled;
     BOOL _hasFlexibleCornerRadius;
     UIColor *_strokeColor;
     UIColor *_fillColor;
-    double _lineWidth;
     double _cornerRadius;
 }
 
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (strong, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property (nonatomic) BOOL hasFlexibleCornerRadius; // @synthesize hasFlexibleCornerRadius=_hasFlexibleCornerRadius;
-@property (nonatomic) double lineWidth; // @synthesize lineWidth=_lineWidth;
+@property (nonatomic) double lineWidth;
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 
 - (void).cxx_destruct;

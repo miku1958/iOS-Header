@@ -23,6 +23,7 @@
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (id)encodedData;
 - (void)finishEncoding;
+- (id)initForWritingWithRemoteDeviceIsOnSameAccount:(BOOL)arg1 remoteGateway:(BOOL)arg2 remoteUserIsAdministrator:(BOOL)arg3 user:(id)arg4 dataVersion:(long long)arg5 supportedFeatures:(id)arg6;
 - (id)initForWritingWithRemoteDeviceIsOnSameAccount:(BOOL)arg1 remoteGateway:(BOOL)arg2 remoteUserIsAdministrator:(BOOL)arg3 user:(id)arg4 supportedFeatures:(id)arg5;
 
 @end

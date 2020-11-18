@@ -23,6 +23,7 @@
     BOOL _counting;
     BOOL _live;
     BOOL _queryDidMoveToFinishedState;
+    BOOL _liveQueryDidGather;
     NSString *_bundleIdentifier;
     CDUnknownBlockType _resultsBlock;
     CDUnknownBlockType _completionBlock;
@@ -58,6 +59,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL live; // @synthesize live=_live;
+@property (nonatomic) BOOL liveQueryDidGather; // @synthesize liveQueryDidGather=_liveQueryDidGather;
 @property (copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (copy, nonatomic) NSString *logPrefixString; // @synthesize logPrefixString=_logPrefixString;
 @property (nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;

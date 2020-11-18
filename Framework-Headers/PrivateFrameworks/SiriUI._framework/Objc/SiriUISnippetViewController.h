@@ -15,7 +15,6 @@
     UICollectionReusableView<SiriUIReusableView> *_footerView;
     UICollectionReusableView<SiriUIReusableView> *_transparentHeaderView;
     UICollectionReusableView<SiriUIReusableView> *_transparentFooterView;
-    BOOL _topKeylineHidden;
     BOOL _wantsConfirmationInsets;
     BOOL _isFullPadWidth;
     BOOL _isTransparent;
@@ -65,7 +64,6 @@
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) UIColor *titleBackgroundColor; // @synthesize titleBackgroundColor=_titleBackgroundColor;
 @property (copy, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
-@property (nonatomic) BOOL topKeylineHidden; // @synthesize topKeylineHidden=_topKeylineHidden;
 @property (readonly, nonatomic, getter=isVirgin) BOOL virgin; // @synthesize virgin=_virgin;
 @property (nonatomic) BOOL wantsConfirmationInsets; // @synthesize wantsConfirmationInsets=_wantsConfirmationInsets;
 @property (nonatomic, getter=_willAnimateCancellation, setter=_setWillAnimateCancellation:) BOOL willAnimateCancellation; // @synthesize willAnimateCancellation=_willAnimateCancellation;
@@ -109,6 +107,7 @@
 - (BOOL)logContentsIfApplicable;
 - (BOOL)removedAfterDialogProgresses;
 - (void)setManageBackgroundColor:(BOOL)arg1;
+- (void)setTopKeylineHidden:(BOOL)arg1;
 - (BOOL)shouldHidePriorViews;
 - (void)siriDidLayoutSnippetView;
 - (void)siriWillLayoutSnippetView;

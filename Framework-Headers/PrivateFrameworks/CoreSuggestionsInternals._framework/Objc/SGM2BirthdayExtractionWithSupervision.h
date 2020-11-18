@@ -10,19 +10,32 @@
 
 @interface SGM2BirthdayExtractionWithSupervision : PBCodable <NSCopying>
 {
+    unsigned int _modelVersion;
+    int _offset;
     BOOL _dateIsCorrect;
+    BOOL _didRegexTrigger;
     BOOL _isFromCongratulation;
     struct {
+        unsigned int modelVersion:1;
+        unsigned int offset:1;
         unsigned int dateIsCorrect:1;
+        unsigned int didRegexTrigger:1;
         unsigned int isFromCongratulation:1;
     } _has;
 }
 
 @property (nonatomic) BOOL dateIsCorrect; // @synthesize dateIsCorrect=_dateIsCorrect;
+@property (nonatomic) BOOL didRegexTrigger; // @synthesize didRegexTrigger=_didRegexTrigger;
 @property (nonatomic) BOOL hasDateIsCorrect;
+@property (nonatomic) BOOL hasDidRegexTrigger;
 @property (nonatomic) BOOL hasIsFromCongratulation;
+@property (nonatomic) BOOL hasModelVersion;
+@property (nonatomic) BOOL hasOffset;
 @property (nonatomic) BOOL isFromCongratulation; // @synthesize isFromCongratulation=_isFromCongratulation;
+@property (nonatomic) unsigned int modelVersion; // @synthesize modelVersion=_modelVersion;
+@property (nonatomic) int offset; // @synthesize offset=_offset;
 
+- (int)StringAsOffset:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +43,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)offsetAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

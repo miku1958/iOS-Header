@@ -11,9 +11,10 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI227EmailSignupDetectionManager : NSObject
 {
+    MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *appLaunchUpsellManager;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *kMaxCount;
-    MISSING_TYPE *kEmailSignUpAppLaunchCurrentCount;
+    MISSING_TYPE *emailSignUpAppLaunchCurrentCount;
     MISSING_TYPE *appleAccount;
 }
 

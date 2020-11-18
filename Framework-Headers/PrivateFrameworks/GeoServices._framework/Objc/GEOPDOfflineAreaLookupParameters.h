@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDOfflineAreaLookupParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLocation *_extendedLocation;
     unsigned long long _featureId;
     NSMutableArray *_layers;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_featureId:1;
         unsigned int read_unknownFields:1;
@@ -53,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)layerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)layersCount;

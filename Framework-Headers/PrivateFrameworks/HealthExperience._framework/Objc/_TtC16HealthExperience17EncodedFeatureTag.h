@@ -6,15 +6,9 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSString, _TtC16HealthExperience8FeedItem;
-
 @interface _TtC16HealthExperience17EncodedFeatureTag : NSManagedObject
 {
 }
-
-@property (nonatomic, copy) NSData *data; // @dynamic data;
-@property (nonatomic, strong) _TtC16HealthExperience8FeedItem *feedItem; // @dynamic feedItem;
-@property (nonatomic, copy) NSString *name; // @dynamic name;
 
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 

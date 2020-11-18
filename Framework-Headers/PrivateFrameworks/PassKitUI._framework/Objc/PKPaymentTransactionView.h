@@ -21,6 +21,7 @@
     BOOL _hideRewardsBackground;
     BOOL _showsAvatarView;
     BOOL _showsDisclosureView;
+    BOOL _strokeImage;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
     NSString *_primaryString;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
 @property (nonatomic) BOOL showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
 @property (nonatomic) BOOL showsDisclosureView; // @synthesize showsDisclosureView=_showsDisclosureView;
+@property (nonatomic) BOOL strokeImage; // @synthesize strokeImage=_strokeImage;
 @property (strong, nonatomic) NSString *tertiaryString; // @synthesize tertiaryString=_tertiaryString;
 @property (strong, nonatomic) NSAttributedString *transactionValueAttributedText; // @dynamic transactionValueAttributedText;
 

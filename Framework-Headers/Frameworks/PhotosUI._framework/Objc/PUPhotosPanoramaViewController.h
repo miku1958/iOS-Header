@@ -28,6 +28,7 @@
 - (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (id)imageRequestOptionsForAsset:(id)arg1 pixelSize:(inout struct CGSize *)arg2;
 - (id)initWithSpec:(id)arg1;
+- (struct CGSize)maximumThumbnailRequestSize;
 - (id)newGridLayout;
 - (void)rotatePhotoViewToHorizontalIfNeeded:(id)arg1 withAsset:(id)arg2;
 - (void)updateLayoutMetrics;

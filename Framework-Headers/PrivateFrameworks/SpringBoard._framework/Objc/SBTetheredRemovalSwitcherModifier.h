@@ -13,15 +13,14 @@
     NSUUID *_tetheredRemovalID;
     BOOL _isFloating;
     unsigned long long _phase;
-    BOOL _simulatingPostRemovalState;
+    unsigned long long _indexToScrollAfterInsertion;
 }
 
 - (void).cxx_destruct;
-- (void)_performBlockWhileSimulatingPostRemovalAppLayoutState:(CDUnknownBlockType)arg1;
 - (id)handleTetheredRemovalEvent:(id)arg1;
 - (id)initWithTetheredRemovalID:(id)arg1 floating:(BOOL)arg2;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (struct CGRect)switcherViewBounds;
+- (long long)layoutUpdateMode;
 
 @end
 

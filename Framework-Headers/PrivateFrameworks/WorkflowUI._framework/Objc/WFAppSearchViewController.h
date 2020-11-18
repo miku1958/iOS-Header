@@ -41,13 +41,14 @@
 
 - (void).cxx_destruct;
 - (void)adjustInsetsForKeyboard;
-- (id)applicationIconForBundleIdentifier:(id)arg1;
+- (id)applicationIconImageForBundleIdentifier:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)done;
 - (id)init;
 - (id)initWithAppSearchType:(long long)arg1;
 - (id)initWithAppSearchType:(long long)arg1 allowMultipleSelection:(BOOL)arg2 selectedApps:(id)arg3;
+- (id)initWithAppSearchType:(long long)arg1 omittedAppBundleIDs:(id)arg2 allowMultipleSelection:(BOOL)arg3 selectedApps:(id)arg4;
 - (void)loadView;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;

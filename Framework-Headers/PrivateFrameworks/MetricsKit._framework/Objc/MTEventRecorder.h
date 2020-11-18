@@ -27,7 +27,11 @@
 - (id)_recordEvent:(id)arg1 toTopic:(id)arg2 usingRecorder:(id)arg3;
 - (id)_recordEvent:(id)arg1 usingRecorder:(id)arg2;
 - (void)addEventListener:(id)arg1;
+- (void)dealloc;
 - (id)flushUnreportedEvents;
+- (id)init;
+- (id)initWithMetricsKit:(id)arg1;
+- (void)maybeSubscribeToFlushNotification;
 - (id)recordEvent:(id)arg1;
 - (id)recordEvent:(id)arg1 shouldSkipValidation:(BOOL)arg2;
 - (id)recordEvent:(id)arg1 toTopic:(id)arg2;

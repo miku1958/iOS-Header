@@ -8,24 +8,29 @@
 
 #import <VideosUI/VUIUpNextButtonProtocol-Protocol.h>
 
-@class NSString, VUIUpNextButtonProperties;
+@class NSLayoutConstraint, NSString, VUIUpNextButtonProperties;
 
 __attribute__((visibility("hidden")))
 @interface VUIUpNextButton : VUIButton <VUIUpNextButtonProtocol>
 {
     VUIUpNextButtonProperties *_properties;
+    NSLayoutConstraint *_stackViewWidthConstraint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUIUpNextButtonProperties *properties; // @synthesize properties=_properties;
+@property (strong, nonatomic) NSLayoutConstraint *stackViewWidthConstraint; // @synthesize stackViewWidthConstraint=_stackViewWidthConstraint;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_selectButtonAction:(id)arg1 eventType:(id)arg2;
+- (void)_updateWidthConstraintsFromOldSize:(struct CGSize)arg1 toNewSize:(struct CGSize)arg2;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (id)largeContentTitle;
+- (void)setTintColor:(id)arg1;
 - (void)upNextStateChangedToAdded;
 - (void)upNextStateChangedToRemoved;
 - (void)updateWithElement:(id)arg1;

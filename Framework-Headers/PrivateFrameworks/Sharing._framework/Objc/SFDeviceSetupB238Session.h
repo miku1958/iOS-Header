@@ -76,6 +76,7 @@
     int _personalRequestsChoice;
     BOOL _siriForEveryoneAnswered;
     int _siriForEveryoneState;
+    int _siriDataSharing;
     int _termsState;
     BOOL _termsAgreed;
     int _shareSettingsState;
@@ -89,6 +90,8 @@
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
+    double _wifiSetupStepSecs;
+    double _wifiBonjourTestSecs;
     int _trSessionState;
     TRSession *_trSession;
     NSMutableArray *_trOperations;
@@ -190,6 +193,7 @@
 @property (copy, nonatomic) CDUnknownBlockType promptToShareSettingsHandler; // @synthesize promptToShareSettingsHandler=_promptToShareSettingsHandler;
 @property (readonly, nonatomic) HMHome *selectedHome;
 @property (readonly, nonatomic) NSString *selectedSiriLanguage;
+@property (readonly, nonatomic) BOOL siriDataSharingEnabled;
 @property (readonly, nonatomic) unsigned char stereoCounterpartColor; // @synthesize stereoCounterpartColor=_stereoCounterpartColor;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long testFlags; // @synthesize testFlags=_testFlags;
@@ -209,6 +213,7 @@
 - (void)_preflightAppleMusic;
 - (void)_preflightAppleMusicCompleted:(int)arg1;
 - (void)_promptForPINWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
+- (BOOL)_recognizeVoiceAlreadyEnabled;
 - (void)_reportError:(id)arg1 label:(id)arg2;
 - (void)_run;
 - (int)_runAppleMusic;
@@ -224,6 +229,9 @@
 - (int)_runFinishStart;
 - (int)_runHomeKitSetup;
 - (int)_runHomeKitUserInput;
+- (int)_runMultiUserEnable;
+- (void)_runMultiUserEnableEnableSettingStart:(id)arg1 privateSettings:(BOOL)arg2;
+- (void)_runMultiUserEnableHome;
 - (int)_runPairSetup;
 - (int)_runPersonalRequests;
 - (int)_runPreAuth;
@@ -233,6 +241,11 @@
 - (int)_runPreflightWiFi;
 - (int)_runPreflightiCloud;
 - (int)_runPreflightiTunes;
+- (int)_runRecognizeVoice;
+- (void)_runRecognizeVoiceCheckLanguageResponse:(id)arg1 error:(id)arg2;
+- (void)_runRecognizeVoiceCheckLanguageStart;
+- (void)_runRecognizeVoiceCheckVoiceProfileResponse:(BOOL)arg1 error:(id)arg2;
+- (void)_runRecognizeVoiceCheckVoiceProfileStart;
 - (int)_runSFSessionStart;
 - (int)_runShareSettings;
 - (int)_runSiriForEveryone;

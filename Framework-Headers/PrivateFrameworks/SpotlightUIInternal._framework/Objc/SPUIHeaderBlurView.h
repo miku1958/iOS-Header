@@ -6,14 +6,19 @@
 
 #import <UIKit/UIVisualEffectView.h>
 
+@class UIColor;
+
 @interface SPUIHeaderBlurView : UIVisualEffectView
 {
     BOOL _useInPlaceFilteredBlur;
+    UIColor *_baseTintColor;
 }
 
+@property (strong) UIColor *baseTintColor; // @synthesize baseTintColor=_baseTintColor;
 @property (nonatomic) BOOL useInPlaceFilteredBlur; // @synthesize useInPlaceFilteredBlur=_useInPlaceFilteredBlur;
 
 + (double)backgroundViewBlurAlphaForProgress:(double)arg1 isDarkBackground:(BOOL)arg2;
+- (void).cxx_destruct;
 - (id)init;
 - (void)setTintColor:(id)arg1;
 - (void)updateEffect;

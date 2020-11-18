@@ -43,7 +43,6 @@
 - (void)timePickerUpdated:(id)arg1;
 - (id)titleForIndexPath:(id)arg1;
 - (void)updateTriggerTimeFromDate:(id)arg1;
-- (void)updateUI;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

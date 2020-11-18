@@ -18,6 +18,7 @@
     unsigned long long _userActivityHash;
     NSString *_title;
     NSString *_subtitle;
+    NSString *_languageCode;
     ATXActionCriteria *_criteria;
     BOOL _isFutureMedia;
     BOOL _isTVWhiteListedLongFormMedia;
@@ -63,6 +64,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_bundleIdForDisplay;
+- (BOOL)_shouldUseCachedTitle:(id)arg1 cachedLanguageCode:(id)arg2;
 - (id)_spotlightContentType;
 - (id)actionDescription;
 - (id)actionKey;
@@ -75,7 +77,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasActionTitle;
 - (id)init;
-- (id)initWithActivity:(id)arg1 activityString:(id)arg2 itemIdentifier:(id)arg3 contentAttributeSet:(id)arg4 intent:(id)arg5 actionUUID:(id)arg6 bundleId:(id)arg7 type:(unsigned long long)arg8 heuristic:(id)arg9 heuristicMetadata:(id)arg10 criteria:(id)arg11 isFutureMedia:(BOOL)arg12 routeInfo:(id)arg13 title:(id)arg14 subtitle:(id)arg15;
+- (id)initWithActivity:(id)arg1 activityString:(id)arg2 itemIdentifier:(id)arg3 contentAttributeSet:(id)arg4 intent:(id)arg5 actionUUID:(id)arg6 bundleId:(id)arg7 type:(unsigned long long)arg8 heuristic:(id)arg9 heuristicMetadata:(id)arg10 criteria:(id)arg11 isFutureMedia:(BOOL)arg12 routeInfo:(id)arg13 title:(id)arg14 subtitle:(id)arg15 languageCode:(id)arg16;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 heuristicMetadata:(id)arg5 criteria:(id)arg6 isFutureMedia:(BOOL)arg7 title:(id)arg8 subtitle:(id)arg9;
 - (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 criteria:(id)arg8 isFutureMedia:(BOOL)arg9 title:(id)arg10 subtitle:(id)arg11;
@@ -87,6 +89,8 @@
 - (id)predictionTypeStringForPET;
 - (void)setCriteria:(id)arg1;
 - (void)setHeuristic:(id)arg1;
+- (void)setSubtitleForSerializationToCache;
+- (void)setTitleForSerializationToCache;
 - (id)underlyingInteraction;
 - (unsigned long long)userActivityHash;
 

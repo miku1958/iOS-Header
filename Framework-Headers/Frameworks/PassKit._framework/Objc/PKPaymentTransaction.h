@@ -9,7 +9,7 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSTimeZone, NSUUID, PKAccountEvent, PKCurrencyAmount, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
+@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSTimeZone, NSUUID, PKAccountEvent, PKCurrencyAmount, PKInstallmentPlan, PKInstallmentPlanPayment, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
 
 @interface PKPaymentTransaction : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
@@ -26,6 +26,7 @@
     BOOL _hasAssociatedPaymentApplication;
     BOOL _hasNotificationServiceData;
     BOOL _originatedByDevice;
+    BOOL _fuzzyMatched;
     NSString *_identifier;
     NSString *_serviceIdentifier;
     NSString *_paymentHash;
@@ -95,6 +96,8 @@
     NSOrderedSet *_servicingEvents;
     NSArray *_payments;
     PKAccountEvent *_redemptionEvent;
+    PKInstallmentPlanPayment *_installmentPayment;
+    PKInstallmentPlan *_installmentPlan;
     NSDictionary *_metadata;
     NSDate *_lastMerchantReprocessingDate;
     NSString *_issueReportIdentifier;
@@ -139,12 +142,15 @@
 @property (readonly, nonatomic) NSString *formattedBalanceAdjustmentAmount;
 @property (readonly, nonatomic) NSString *formattedBalanceAdjustmentSubtotalAmount;
 @property (readonly, nonatomic) BOOL fullyProcessed;
+@property (nonatomic, getter=isFuzzyMatched) BOOL fuzzyMatched; // @synthesize fuzzyMatched=_fuzzyMatched;
 @property (nonatomic) BOOL hasAssociatedPaymentApplication; // @synthesize hasAssociatedPaymentApplication=_hasAssociatedPaymentApplication;
 @property (readonly, nonatomic) BOOL hasBackingData;
 @property (readonly, nonatomic) BOOL hasEffectiveTransactionSource;
 @property (nonatomic) BOOL hasNotificationServiceData; // @synthesize hasNotificationServiceData=_hasNotificationServiceData;
 @property (readonly, nonatomic) BOOL hasTransactionSource;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) PKInstallmentPlanPayment *installmentPayment; // @synthesize installmentPayment=_installmentPayment;
+@property (strong, nonatomic) PKInstallmentPlan *installmentPlan; // @synthesize installmentPlan=_installmentPlan;
 @property (nonatomic) BOOL isCloudKitArchived; // @synthesize isCloudKitArchived=_isCloudKitArchived;
 @property (copy, nonatomic) NSString *issueReportIdentifier; // @synthesize issueReportIdentifier=_issueReportIdentifier;
 @property (strong, nonatomic) NSDate *lastMerchantReprocessingDate; // @synthesize lastMerchantReprocessingDate=_lastMerchantReprocessingDate;

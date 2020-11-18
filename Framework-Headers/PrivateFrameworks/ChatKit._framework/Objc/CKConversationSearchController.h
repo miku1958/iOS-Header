@@ -6,24 +6,39 @@
 
 #import <ChatKit/CKSearchController.h>
 
+@class NSArray, NSSet, _PSSuggester;
+
 @interface CKConversationSearchController : CKSearchController
 {
     BOOL _gotResults;
+    BOOL _searchTerminated;
+    NSSet *_intermediaryResults;
+    _PSSuggester *_zkwSuggester;
+    NSArray *_currentZKWSuggestions;
 }
 
+@property (strong, nonatomic) NSArray *currentZKWSuggestions; // @synthesize currentZKWSuggestions=_currentZKWSuggestions;
 @property (nonatomic) BOOL gotResults; // @synthesize gotResults=_gotResults;
+@property (strong, nonatomic) NSSet *intermediaryResults; // @synthesize intermediaryResults=_intermediaryResults;
+@property (nonatomic) BOOL searchTerminated; // @synthesize searchTerminated=_searchTerminated;
+@property (strong, nonatomic) _PSSuggester *zkwSuggester; // @synthesize zkwSuggester=_zkwSuggester;
 
 + (Class)cellClass;
++ (unsigned long long)recencyRankedTargetResultCount;
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (BOOL)supportsMenuInteraction;
 + (BOOL)supportsQuicklook;
++ (BOOL)useRecencyRankedSearchForMode:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (id)_appendRecencyToRankingQuery:(id)arg1 hours:(unsigned long long)arg2;
 - (void)_searchSpotlightWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (void)_searchZKWWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (id)_sortedAndRankedItemsWithItems:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)chatGUIDForSearchableItem:(id)arg1;
+- (void)didSelectResult:(id)arg1;
 - (id)fetchAttributes;
 - (id)filterQueries;
 - (double)interGroupSpacing;

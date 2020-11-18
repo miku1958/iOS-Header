@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class KTApplicationPublicKeyStore, KTContextVerifier, KTLogClient, NSString, TransparencyManagedDataStore;
+@class KTApplicationPublicKeyStore, KTContextVerifier, KTLogClient, NSString, TransparencyManagedDataStore, TransparencyTranscript;
 
 @interface KTContext : NSObject
 {
     NSString *_applicationID;
+    TransparencyTranscript *_transcript;
     KTApplicationPublicKeyStore *_applicationKeyStore;
     TransparencyManagedDataStore *_dataStore;
     KTLogClient *_logClient;
     KTContextVerifier *_verifier;
 }
 
-@property (readonly) NSString *applicationID; // @synthesize applicationID=_applicationID;
+@property (strong) NSString *applicationID; // @synthesize applicationID=_applicationID;
 @property (strong) KTApplicationPublicKeyStore *applicationKeyStore; // @synthesize applicationKeyStore=_applicationKeyStore;
 @property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (strong) KTLogClient *logClient; // @synthesize logClient=_logClient;
+@property (strong) TransparencyTranscript *transcript; // @synthesize transcript=_transcript;
 @property (strong) KTContextVerifier *verifier; // @synthesize verifier=_verifier;
 
 - (void).cxx_destruct;
@@ -38,19 +40,22 @@
 - (unsigned long long)handleVerifyPeerResponse:(id)arg1 request:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)handleVerifySelfResponse:(id)arg1 request:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (id)initWithApplicationKeyStore:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 applicationID:(id)arg4;
+- (void)logFinishFailureEvent:(id)arg1 error:(id)arg2;
+- (void)logFinishSuccessEvent:(id)arg1;
+- (void)logStartEvent:(id)arg1;
 - (BOOL)ready:(id *)arg1;
 - (BOOL)runDutyCycleForActivity:(id)arg1;
 - (unsigned long long)validateEnrollment:(id)arg1 queryResponse:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)validateEnrollment:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateEnrollmentWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
-- (void)validateKTSMTsMerged:(id)arg1 uri:(id)arg2 accountId:(id)arg3;
+- (void)validateKTSMTsMerged:(id)arg1 uri:(id)arg2 uuid:(id)arg3 accountId:(id)arg4;
 - (unsigned long long)validatePeer:(id)arg1 queryResponse:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)validatePeer:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validatePeerWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateSelf:(id)arg1 queryResponse:(id)arg2 transparentData:(id *)arg3 error:(id *)arg4;
 - (unsigned long long)validateSelf:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
 - (unsigned long long)validateSelfWithAnalytics:(id)arg1 transparentData:(id *)arg2 error:(id *)arg3;
-- (unsigned long long)verifyDeviceWitnesses:(id)arg1 request:(id)arg2 loggableDatas:(id)arg3 error:(id *)arg4;
+- (unsigned long long)verifyDeviceWitnesses:(id)arg1 request:(id)arg2 loggableDatas:(id)arg3 uriVRFOutput:(id)arg4 error:(id *)arg5;
 - (unsigned long long)writeFailureForRequest:(id)arg1 proof:(id)arg2 error:(id *)arg3;
 
 @end

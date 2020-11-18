@@ -11,25 +11,23 @@
 #import <HomeUI/UICollectionViewDelegate-Protocol.h>
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class HFColorPalette, HFColorPaletteColor, HUQuickControlColorViewProfile, NSArray, NSIndexPath, NSNumber, NSString, UICollectionView, UICollectionViewFlowLayout, UIImpactFeedbackGenerator, UISelectionFeedbackGenerator;
+@class HFColorPalette, HFColorPaletteColor, HUQuickControlColorViewProfile, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout, UIImpactFeedbackGenerator, UISelectionFeedbackGenerator;
 @protocol HUQuickControlColorPaletteViewInteractionDelegate;
 
 @interface HUColorLinearPaletteView : UIView <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, HUQuickControlInteractiveView>
 {
     BOOL _userInteractionActive;
-    BOOL _colorPaletteHasChanged;
     HUQuickControlColorViewProfile *_profile;
     id<HUQuickControlColorPaletteViewInteractionDelegate> _interactionDelegate;
     unsigned long long _reachabilityState;
-    HFColorPalette *_colorPalette;
+    unsigned long long _mode;
     NSIndexPath *_selectedColorIndexPath;
-    NSArray *_colorSwatchViews;
+    HFColorPalette *_colorPalette;
     HFColorPalette *_calibratedColorPalette;
     HFColorPaletteColor *_selectedColor;
-    NSNumber *_selectedColorBiasIndex;
+    NSIndexPath *_prevSelectedColorIndexPath;
     UICollectionView *_colorSwatchCollectionView;
     UICollectionViewFlowLayout *_collectionViewFlowLayout;
-    NSIndexPath *_prevSelectedColorIndexPath;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
 }
@@ -37,20 +35,18 @@
 @property (strong, nonatomic) HFColorPalette *calibratedColorPalette; // @synthesize calibratedColorPalette=_calibratedColorPalette;
 @property (strong, nonatomic) UICollectionViewFlowLayout *collectionViewFlowLayout; // @synthesize collectionViewFlowLayout=_collectionViewFlowLayout;
 @property (strong, nonatomic) HFColorPalette *colorPalette; // @synthesize colorPalette=_colorPalette;
-@property (nonatomic) BOOL colorPaletteHasChanged; // @synthesize colorPaletteHasChanged=_colorPaletteHasChanged;
 @property (strong, nonatomic) UICollectionView *colorSwatchCollectionView; // @synthesize colorSwatchCollectionView=_colorSwatchCollectionView;
-@property (copy, nonatomic) NSArray *colorSwatchViews; // @synthesize colorSwatchViews=_colorSwatchViews;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property (weak, nonatomic) id<HUQuickControlColorPaletteViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) NSIndexPath *prevSelectedColorIndexPath; // @synthesize prevSelectedColorIndexPath=_prevSelectedColorIndexPath;
 @property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
-@property (strong, nonatomic) NSNumber *selectedColorBiasIndex; // @synthesize selectedColorBiasIndex=_selectedColorBiasIndex;
 @property (strong, nonatomic) NSIndexPath *selectedColorIndexPath; // @synthesize selectedColorIndexPath=_selectedColorIndexPath;
 @property (strong, nonatomic) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
 @property (readonly) Class superclass;
@@ -58,12 +54,12 @@
 @property (strong, nonatomic) id value;
 
 - (void).cxx_destruct;
-- (void)_actuateImpactTapticFeedbackIfAvailable;
-- (void)_actuateSelectionTapticFeedbackIfAvailable;
+- (void)_actuateImpactTapticFeedback;
+- (void)_actuateSelectionTapticFeedback;
 - (unsigned long long)_indexForSelectedColor:(id)arg1 includeBias:(BOOL)arg2;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (void)_setColorPalette:(id)arg1 notifyDelegate:(BOOL)arg2;
-- (void)_setSelectedColor:(id)arg1 notifyDelegate:(BOOL)arg2 updateSelectionState:(BOOL)arg3;
+- (void)_setSelectedColor:(id)arg1 notifyDelegate:(BOOL)arg2 selectionChanged:(BOOL)arg3;
 - (void)_updateCalibratedColorPalette;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
@@ -78,6 +74,7 @@
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateSelectedColorIndexPathToIndexPath:(id)arg1;
 
 @end
 

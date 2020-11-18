@@ -239,7 +239,7 @@
 + (id)xRayFilter;
 + (id)zoomBlurFilter;
 - (id)_copyFilterWithZone:(struct _NSZone *)arg1;
-- (void)_crashed_when_dealloc_called_setValue_nil_forKey_probably_because_the_subclass_already_released_it:(id)arg1 overridesDealloc:(BOOL)arg2;
+- (void)_crashed_when_dealloc_called_setValue_nil_forKey_probably_because_the_subclass_already_released_it:(id)arg1 className:(const char *)arg2 overridesDealloc:(BOOL)arg3;
 - (BOOL)_filterClassInCategory:(id)arg1;
 - (BOOL)_isIdentity;
 - (id)_serializedXMPString;

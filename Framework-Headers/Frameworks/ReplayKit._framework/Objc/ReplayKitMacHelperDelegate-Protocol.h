@@ -17,5 +17,6 @@
 - (void)macApplicationDidResignActive;
 - (void)replayKitMacHelper:(id<ReplayKitMacHelper>)arg1 didDismissVideoEditorSheetWithActivityTypes:(NSArray *)arg2;
 - (void)userDidStopRecordingFromStatusBar;
+- (void)userDidStopRecordingFromWindowClose;
 @end
 

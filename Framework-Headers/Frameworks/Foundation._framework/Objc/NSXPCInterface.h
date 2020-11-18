@@ -26,12 +26,12 @@
 - (BOOL)_hasProxiesInArgumentsOfSelector:(SEL)arg1;
 - (BOOL)_hasProxiesInReplyBlockArgumentsOfSelector:(SEL)arg1;
 - (id)_interfaceForArgument:(unsigned long long)arg1 ofSelector:(SEL)arg2 reply:(BOOL)arg3;
-- (void)_methodSignature:(id *)arg1 allowedClasses:(id *)arg2 forSelector:(SEL)arg3 isReply:(BOOL)arg4;
 - (id)_methodSignatureForRemoteSelector:(SEL)arg1;
 - (id)_methodSignatureForReplyBlockOfSelector:(SEL)arg1;
 - (unsigned long long)_remoteVersion;
 - (unsigned long long)_respondsToRemoteSelector:(SEL)arg1;
 - (Class)_returnClassForSelector:(SEL)arg1;
+- (BOOL)_selectorIsAllowed:(SEL)arg1 isReply:(BOOL)arg2 methodSignature:(id *)arg3 allowedClasses:(id *)arg4;
 - (Class)classForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (id)classesForSelector:(SEL)arg1 argumentIndex:(unsigned long long)arg2 ofReply:(BOOL)arg3;
 - (void)dealloc;

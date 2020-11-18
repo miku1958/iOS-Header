@@ -34,13 +34,11 @@
 + (id)descriptorForRequiredKeys;
 + (id)starkCardControllerForCalendarEventWithContact:(id)arg1;
 - (void).cxx_destruct;
-- (id)accessibilityFontSizeConstraints;
 - (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1 displayedContactProperties:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)regularFontSizeConstraints;
 - (void)resetLayoutConstraints;
 - (void)setupLayoutConstraints;
 - (void)setupViewControllers;

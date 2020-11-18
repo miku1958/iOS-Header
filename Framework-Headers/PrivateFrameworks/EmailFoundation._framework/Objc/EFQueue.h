@@ -31,6 +31,7 @@
 - (id)description;
 - (id)drain;
 - (void)enqueue:(id)arg1;
+- (void)enqueue:(id)arg1 replaceIfExists:(BOOL)arg2;
 - (id)init;
 - (id)initWithStrategy:(id)arg1;
 - (id)peek;

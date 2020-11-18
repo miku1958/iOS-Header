@@ -29,11 +29,15 @@
 
 - (void).cxx_destruct;
 - (id)_defaultPaymentSetupViewControllerAllowingManualEntry:(BOOL)arg1;
+- (id)_educationViewControllerShouldShow;
+- (id)_nextPaymentCredentialControllerWithSetupProduct:(id)arg1 allowsManualEntry:(BOOL)arg2;
+- (id)_offerMakeDefaultViewController;
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (id)intialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(BOOL)arg2;
 - (id)manualEntryPaymentSetupViewControllerForProduct:(id)arg1 allowsSelectingBank:(BOOL)arg2;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 allowsManualEntry:(BOOL)arg2;
+- (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 state:(long long)arg2 allowsManualEntry:(BOOL)arg3;
 - (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)paymentSetupViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2 allowsManualEntry:(BOOL)arg3;
 - (void)presentPasscodeUpgradeOnViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;

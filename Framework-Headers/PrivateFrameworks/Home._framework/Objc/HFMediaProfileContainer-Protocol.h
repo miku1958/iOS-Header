@@ -24,6 +24,8 @@
 @property (readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
 @property (readonly, copy, nonatomic) NSSet *hf_deviceIdentifiers;
 @property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
+@property (readonly, nonatomic) BOOL hf_homePodIsCapableOfShowingSplitAccountError;
+@property (readonly, nonatomic) BOOL hf_homePodSupportsMultiUser;
 @property (readonly, nonatomic) BOOL hf_isAccessorySettingsReachable;
 @property (readonly, nonatomic) BOOL hf_isAppleMusicReachable;
 @property (readonly, nonatomic) BOOL hf_isCurrentAccessory;
@@ -35,12 +37,15 @@
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
 @property (readonly, nonatomic) BOOL hf_supportsMediaSystem;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
+@property (readonly, nonatomic) NSSet *mediaProfiles;
 @property (readonly, copy, nonatomic) HMMediaSession *mediaSession;
 
 - (ACAccount *)hf_appleMusicCurrentLoggedInAccount;
 - (NSString *)hf_appleMusicCurrentLoggedInAccountDSID;
 - (NAFuture *)hf_fetchLog:(NSString *)arg1 timeout:(double)arg2;
 - (NAFuture *)hf_fetchLogListWithTimeout:(double)arg1;
+- (NAFuture *)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
+- (NAFuture *)hf_homePodSupportsMultiUserLanguage;
 - (NSString *)hf_idsDeviceIdentifierWithError:(id *)arg1;
 @end
 

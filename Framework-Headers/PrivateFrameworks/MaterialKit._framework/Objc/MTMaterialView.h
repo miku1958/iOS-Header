@@ -46,6 +46,7 @@
 @property (nonatomic) long long recipe; // @synthesize recipe=_recipe;
 @property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
 @property (copy, nonatomic) NSString *recipeName;
+@property (nonatomic) BOOL shouldCrossfade;
 @property (nonatomic) BOOL shouldCrossfadeIfNecessary;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
@@ -87,7 +88,7 @@
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)init;
-- (BOOL)isManagingCustomOpacityTransitionForMaterialLayer:(id)arg1;
+- (BOOL)isManagingInterpolationForMaterialLayer:(id)arg1;
 - (BOOL)isManagingOpacityForMaterialLayer:(id)arg1;
 - (void)layoutSubviews;
 - (BOOL)managesWeightingForMaterialLayer:(id)arg1;

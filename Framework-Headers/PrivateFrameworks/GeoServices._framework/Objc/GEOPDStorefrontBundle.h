@@ -13,11 +13,13 @@
 @interface GEOPDStorefrontBundle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_faces;
     unsigned long long _identifier;
     unsigned long long _matchedMuid;
     GEOPDStorefrontPresentation *_presentation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_identifier:1;
         unsigned int has_matchedMuid:1;
@@ -53,6 +55,8 @@
 - (id)faceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)facesCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

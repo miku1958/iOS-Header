@@ -47,7 +47,6 @@
 + (Class)layoutOptionsClass;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_applyRoundedCornersToLipViewForLayoutWidth:(double)arg1;
 - (void)_configureBannerForUnfinishedOnboardingFlowKeyPath:(id)arg1;
 - (BOOL)_isCellSizeSubclassSmallPhone;
 - (void)_setupCommonCellAppearance;

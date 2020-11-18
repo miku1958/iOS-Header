@@ -10,7 +10,7 @@
 #import <coreroutine/RTPersistenceMetricsDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccount, RTAccountManager, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
+@class NSString, RTAccount, RTAccountManager, RTDarwinNotificationHelper, RTDataProtectionManager, RTDefaultsManager, RTKeychainManager, RTLifeCycleManager, RTPersistenceManager, RTPersistenceResetSyncContext, RTPlatform;
 @protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMetricsDelegate;
 
 @interface RTPersistenceDriver : NSObject <RTPersistenceMetricsDelegate, RTPersistenceDelegate, RTPurgable>
@@ -31,6 +31,7 @@
     RTAccount *_currentAccount;
     id<RTPersistenceMetricsDelegate> _metricsDelegate;
     RTPersistenceResetSyncContext *_resetSyncContext;
+    RTDarwinNotificationHelper *_notificationHelper;
 }
 
 @property (readonly) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
@@ -49,6 +50,7 @@
 @property (readonly) RTKeychainManager *keychainManager; // @synthesize keychainManager=_keychainManager;
 @property (strong) RTLifeCycleManager *lifecycleManager; // @synthesize lifecycleManager=_lifecycleManager;
 @property (weak) id<RTPersistenceMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
+@property (strong) RTDarwinNotificationHelper *notificationHelper; // @synthesize notificationHelper=_notificationHelper;
 @property (readonly) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property BOOL requiresDirtyTransaction; // @synthesize requiresDirtyTransaction=_requiresDirtyTransaction;

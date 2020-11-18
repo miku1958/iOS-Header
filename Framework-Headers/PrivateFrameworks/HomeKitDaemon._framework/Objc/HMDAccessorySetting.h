@@ -84,6 +84,7 @@
 - (void)_replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_saveHomeConfiguration:(id)arg1;
 - (BOOL)_shouldBlockSettingUpdateMessage:(id)arg1;
+- (BOOL)_shouldTurnOffPersonalRequestsOnLanguageChangeFrom:(id)arg1 toValue:(id)arg2;
 - (id)accessoryFromTarget;
 - (void)addConstraint:(id)arg1;
 - (BOOL)compareConstraints:(id)arg1;

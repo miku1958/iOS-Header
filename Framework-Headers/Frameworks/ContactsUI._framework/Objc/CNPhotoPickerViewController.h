@@ -46,8 +46,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPhotoPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) CNPhotoPickerProviderItem *duplicatingProviderItem; // @synthesize duplicatingProviderItem=_duplicatingProviderItem;
-@property (nonatomic) CNPhotoPickerProviderItem *editingProviderItem; // @synthesize editingProviderItem=_editingProviderItem;
+@property (strong, nonatomic) CNPhotoPickerProviderItem *duplicatingProviderItem; // @synthesize duplicatingProviderItem=_duplicatingProviderItem;
+@property (strong, nonatomic) CNPhotoPickerProviderItem *editingProviderItem; // @synthesize editingProviderItem=_editingProviderItem;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CNPhotoPickerHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (readonly) BOOL isPresentingModalViewController;
@@ -57,6 +57,7 @@
 
 + (BOOL)canShowAvatarEditor;
 + (BOOL)canShowPhotoPickerForView:(id)arg1 withTraitCollection:(id)arg2;
++ (struct CGSize)defaultContentSize;
 + (id)descriptorForRequiredKeys;
 + (double)itemsPerRowForWidth:(double)arg1;
 + (id)log;

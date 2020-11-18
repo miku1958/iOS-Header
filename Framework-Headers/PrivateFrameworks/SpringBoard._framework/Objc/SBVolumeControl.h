@@ -51,6 +51,7 @@
 - (void).cxx_destruct;
 - (BOOL)_HUDIsDisplayableForCategory:(id)arg1;
 - (BOOL)_HUDIsDisplayableForLastEventCategory;
+- (BOOL)_HUDIsDisplayableInCurrentSpringBoardContext;
 - (long long)_audioRouteTypeForActiveAudioRoute:(id)arg1 withAttributes:(id)arg2;
 - (long long)_audioRouteTypeForOutputDevice:(id)arg1;
 - (long long)_audioRouteTypeForTelephonyDeviceType:(long long)arg1;
@@ -64,14 +65,17 @@
 - (void)_effectiveVolumeChanged:(id)arg1;
 - (float)_getMediaVolumeForIAP;
 - (BOOL)_isCategoryAlwaysHidden:(id)arg1;
+- (BOOL)_isHUDDisplayable;
 - (BOOL)_isVolumeHUDVisible;
 - (BOOL)_isVolumeHUDVisibleOrFading;
 - (BOOL)_outputDevicesRepresentWirelessSplitterGroup:(id)arg1;
+- (void)_presentVolumeHUDIfDisplayableOrRefreshIfPresented:(id)arg1;
 - (void)_presentVolumeHUDWithVolume:(float)arg1;
 - (void)_resetMediaServerConnection;
 - (void)_sendEUVolumeLimitAcknowledgementIfNecessary;
 - (void)_serverConnectionDied:(id)arg1;
 - (void)_setMediaVolumeForIAP:(float)arg1;
+- (BOOL)_shouldRouteChangeResultInPresentingVolumeHUDWhenTransitioningFrom:(id)arg1 toAudioRoutes:(id)arg2;
 - (BOOL)_turnOnScreenIfNecessaryForEULimit:(BOOL)arg1;
 - (void)_updateAudioRoutesIfNecessary:(BOOL)arg1 forRoute:(id)arg2 withAttributes:(id)arg3 andOutputDevices:(id)arg4;
 - (void)_updateEUVolumeSettings;
@@ -96,6 +100,7 @@
 - (BOOL)isEUDevice;
 - (BOOL)isEUVolumeLimitEnabled;
 - (BOOL)isEUVolumeLimitEnforced;
+- (BOOL)isEUVolumeLimitSet;
 - (id)presentedVolumeHUDViewController;
 - (void)removeAlwaysHiddenCategory:(id)arg1;
 - (void)setActiveCategoryVolume:(float)arg1;

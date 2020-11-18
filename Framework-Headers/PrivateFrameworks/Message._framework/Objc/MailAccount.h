@@ -61,6 +61,7 @@
 @property (readonly) BOOL moveSupported;
 @property (readonly, nonatomic) BOOL needsRemoteSearchResultsVerification;
 @property (copy, nonatomic) NSString *password;
+@property (readonly, nonatomic) BOOL primaryiCloudAccount;
 @property (readonly, nonatomic) MFLocalActionReplayHandler *replayHandler; // @synthesize replayHandler=_replayHandler;
 @property (readonly, nonatomic) MFMailboxUid *rootMailboxUid;
 @property (readonly) BOOL shouldArchiveByDefault;
@@ -69,6 +70,7 @@
 @property (readonly, copy, nonatomic) NSString *statisticsKind;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
+@property (readonly, nonatomic) BOOL supportsRemoteAppend;
 @property (readonly, copy, nonatomic) ACAccount *systemAccount;
 
 + (id)URLForInfo:(id)arg1;
@@ -366,7 +368,6 @@
 - (BOOL)supportsMailboxEditing;
 - (BOOL)supportsMessageFlagging;
 - (BOOL)supportsPurge;
-- (BOOL)supportsRemoteAppend;
 - (BOOL)supportsSyncingReadState;
 - (BOOL)supportsThreadOperations;
 - (BOOL)supportsUserPushedMailboxes;

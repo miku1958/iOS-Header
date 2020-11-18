@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;
+- (void)didDecideShouldShowLinkPreviews:(BOOL)arg1;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
 - (void)didMoveToParentViewController:(id)arg1;

@@ -13,6 +13,8 @@
 @interface MediaControlsVolumeController : NSObject <MPVolumeControllerDelegate>
 {
     BOOL _isSplitRoute;
+    BOOL _primaryInteractionEnabled;
+    BOOL _secondaryInteractionEnabled;
     NSString *_volumeAudioCategory;
     MPAVEndpointRoute *_systemRoute;
     NSHashTable *_observers;
@@ -29,8 +31,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isSplitRoute; // @synthesize isSplitRoute=_isSplitRoute;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (nonatomic) BOOL primaryInteractionEnabled; // @synthesize primaryInteractionEnabled=_primaryInteractionEnabled;
 @property (strong, nonatomic) MPAVOutputDeviceRoute *primaryOutputDeviceRoute; // @synthesize primaryOutputDeviceRoute=_primaryOutputDeviceRoute;
 @property (strong, nonatomic) MPVolumeController *primaryVolumeController; // @synthesize primaryVolumeController=_primaryVolumeController;
+@property (nonatomic) BOOL secondaryInteractionEnabled; // @synthesize secondaryInteractionEnabled=_secondaryInteractionEnabled;
 @property (strong, nonatomic) MPAVOutputDeviceRoute *secondaryOutputDeviceRoute; // @synthesize secondaryOutputDeviceRoute=_secondaryOutputDeviceRoute;
 @property (strong, nonatomic) MPVolumeController *secondaryVolumeController; // @synthesize secondaryVolumeController=_secondaryVolumeController;
 @property (readonly) Class superclass;
@@ -39,20 +43,27 @@
 @property (strong, nonatomic) MPVolumeController *systemVolumeController; // @synthesize systemVolumeController=_systemVolumeController;
 @property (copy, nonatomic) NSString *volumeAudioCategory; // @synthesize volumeAudioCategory=_volumeAudioCategory;
 
++ (BOOL)isDefaultPackage:(id)arg1;
 - (void).cxx_destruct;
+- (void)_notifyUserInteractionEnabledChanged:(BOOL)arg1 routeType:(unsigned long long)arg2;
 - (void)_notifyVolumeChangedForVolumeController:(id)arg1 volumeControlAvailable:(BOOL)arg2 effectiveVolume:(float)arg3;
+- (id)_packageNameForRoute:(id)arg1 isRTL:(BOOL)arg2;
 - (unsigned long long)_routeForVolumeController:(id)arg1;
 - (BOOL)_setupOutputDevicesAndVolumeControllersIfNeeded;
+- (id)_volumePackageNameForRTL:(BOOL)arg1;
 - (void)addObserver:(id)arg1;
 - (id)availableBluetoothListeningModeForRouteType:(unsigned long long)arg1;
 - (id)currentBluetoothListeningModeForRouteType:(unsigned long long)arg1;
-- (id)imageForRouteType:(unsigned long long)arg1;
+- (id)glyphStateForVolumeLevel:(double)arg1 packageName:(id)arg2;
 - (id)init;
+- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(BOOL)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)routeDidChangeNotification;
 - (id)routeNameForRouteType:(unsigned long long)arg1;
-- (void)setCurrentBluetoothListeningModeForRouteType:(unsigned long long)arg1 bluetoothListeningMode:(id)arg2;
+- (id)setCurrentBluetoothListeningModeForRouteType:(unsigned long long)arg1 bluetoothListeningMode:(id)arg2;
+- (void)setUserInteractionEnabled:(BOOL)arg1 forRouteType:(unsigned long long)arg2;
 - (void)setVolume:(float)arg1 forRouteType:(unsigned long long)arg2;
+- (BOOL)userInteractionEnabledForRouteType:(unsigned long long)arg1;
 - (BOOL)volumeControlAvailableForRouteType:(unsigned long long)arg1;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;

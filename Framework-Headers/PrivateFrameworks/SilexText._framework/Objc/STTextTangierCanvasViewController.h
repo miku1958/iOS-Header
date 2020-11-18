@@ -17,11 +17,11 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
+- (void)interactionDidEnd:(id)arg1;
 - (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)loadView;
 - (void)selectAll:(id)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

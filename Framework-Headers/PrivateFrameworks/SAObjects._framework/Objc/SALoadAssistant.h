@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *assistantId;
 @property (copy, nonatomic) NSString *connectionMode;
 @property (copy, nonatomic) NSString *connectionType;
+@property (copy, nonatomic) NSString *dataSharingOptInStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

@@ -24,6 +24,7 @@
 - (void)navigationSession:(MNNavigationSession *)arg1 didReceiveTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2 responseCallback:(void (^)(BOOL))arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didReroute:(MNActiveRouteInfo *)arg2 withLocation:(MNLocation *)arg3 withAlternateRoutes:(NSArray *)arg4;
 - (void)navigationSession:(MNNavigationSession *)arg1 didStartSpeakingPrompt:(NSString *)arg2;
+- (void)navigationSession:(MNNavigationSession *)arg1 didSuppressReroute:(NSError *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteInfo *)arg3;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateAlternateRoutes:(NSArray *)arg2;
 - (void)navigationSession:(MNNavigationSession *)arg1 didUpdateDestination:(GEOComposedWaypoint *)arg2;

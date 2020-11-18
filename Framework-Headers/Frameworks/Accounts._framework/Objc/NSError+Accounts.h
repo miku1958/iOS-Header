@@ -8,6 +8,7 @@
 
 @interface NSError (Accounts)
 
+@property (readonly, nonatomic, getter=ac_isDiskFullSQLError) BOOL ac_diskFullSQLError;
 @property (readonly, nonatomic, getter=ac_isUnrecoverableDatabaseError) BOOL ac_unrecoverableDatabaseError;
 
 - (id)_sanitizeObject:(id)arg1;

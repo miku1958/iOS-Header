@@ -16,6 +16,7 @@
     BOOL _encrypted;
     BOOL _excludeFromCloudStorage;
     BOOL _optional;
+    BOOL _conformsToHMBModelNativeCKWrapper;
     Class _classObj;
     NSString *_externalRecordField;
     unsigned long long _loggingVisibility;
@@ -24,11 +25,14 @@
     HMFVersion *_unavailableVersion;
     CDUnknownBlockType _encodeBlock;
     CDUnknownBlockType _decodeBlock;
+    CDUnknownBlockType _descriptionBlock;
 }
 
 @property (readonly, nonatomic) Class classObj; // @synthesize classObj=_classObj;
+@property (nonatomic) BOOL conformsToHMBModelNativeCKWrapper; // @synthesize conformsToHMBModelNativeCKWrapper=_conformsToHMBModelNativeCKWrapper;
 @property (copy, nonatomic) CDUnknownBlockType decodeBlock; // @synthesize decodeBlock=_decodeBlock;
 @property (strong, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (copy, nonatomic) CDUnknownBlockType descriptionBlock; // @synthesize descriptionBlock=_descriptionBlock;
 @property (copy, nonatomic) CDUnknownBlockType encodeBlock; // @synthesize encodeBlock=_encodeBlock;
 @property (nonatomic) BOOL encrypted; // @synthesize encrypted=_encrypted;
 @property (nonatomic) BOOL excludeFromCloudStorage; // @synthesize excludeFromCloudStorage=_excludeFromCloudStorage;
@@ -47,7 +51,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)decodeQueryableValue:(id)arg1;
 - (id)description;
+- (id)descriptionForEncodedQueryableValue:(id)arg1;
 - (id)encodeQueryableValue:(id)arg1;
+- (id)initWithClass:(Class)arg1;
 - (id)initWithClass:(Class)arg1 options:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

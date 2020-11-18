@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *stationHash;
 @property (readonly, nonatomic) long long stationID;
 @property (readonly, copy, nonatomic) NSString *stationStringID;
+@property (readonly, nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired;
 @property (readonly, nonatomic) long long subtype;
 @property (readonly, nonatomic) long long type;
 

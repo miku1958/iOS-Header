@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     VUILabel *_subTextView;
     VUILabel *_episodeInfoView;
     _TVImageView *_coverArtImageView;
+    _TVImageView *_decorationImageView;
+    _TVImageView *_decorationImageGradientView;
     NSArray *_buttonViews;
     VUIComingSoonBannerCardView *_comingSoonView;
     VUIFocusableTextView *_descriptionTextView;
@@ -45,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (strong, nonatomic) _TVImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) _TVImageView *decorationImageGradientView; // @synthesize decorationImageGradientView=_decorationImageGradientView;
+@property (strong, nonatomic) _TVImageView *decorationImageView; // @synthesize decorationImageView=_decorationImageView;
 @property (strong, nonatomic) VUILabel *descComputationLabel; // @synthesize descComputationLabel=_descComputationLabel;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;

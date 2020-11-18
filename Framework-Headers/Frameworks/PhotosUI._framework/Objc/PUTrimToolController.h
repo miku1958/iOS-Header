@@ -117,7 +117,7 @@ __attribute__((visibility("hidden")))
 - (id)_playPauseButtonIfLoaded;
 - (struct CGRect)_presentationRectFromLoupeRect;
 - (void)_resetScrubberToStillPhotoFrame;
-- (void)_seekToTimeForElement:(long long)arg1;
+- (void)_seekToTimeForElement:(long long)arg1 exact:(BOOL)arg2;
 - (void)_setState:(unsigned long long)arg1;
 - (void)_showKeyFrameSelection;
 - (id)_slomoMapperForCurrentConfiguration;

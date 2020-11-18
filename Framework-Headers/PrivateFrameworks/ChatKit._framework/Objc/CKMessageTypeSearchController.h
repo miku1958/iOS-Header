@@ -29,10 +29,10 @@
 - (void).cxx_destruct;
 - (void)_IMSPIQueryMessageItemsWithGUIDs:(id)arg1 results:(CDUnknownBlockType)arg2;
 - (void)_asyncCheckIfResultsExistOnDisk:(id)arg1 firstBatch:(BOOL)arg2;
-- (void)_deleteResult:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (id)chatGUIDForSearchableItem:(id)arg1;
 - (void)checkIfResultsExistOnDiskAndNotify:(id)arg1;
+- (void)deleteAttachmentForResult:(id)arg1;
 - (Class)footerClass;
 - (void)fractionalWidth:(double *)arg1 count:(unsigned long long *)arg2 forLayoutWidth:(unsigned long long)arg3;
 - (unsigned long long)maxResultsForMode:(unsigned long long)arg1;

@@ -8,14 +8,16 @@
 
 #import <HomeUI/HUCameraSettingsModule-Protocol.h>
 
-@class HUCameraCloudStorageSettingsModule, HUCameraSmartDetectionSettingsModule, NSSet, NSString, UIViewController;
+@class HFStaticItem, HFStaticItemProvider, HUCameraCloudStorageSettingsModule, HUCameraSmartDetectionSettingsModule, NSSet, NSString, UIViewController;
 
 @interface HUCameraRecordingOptionsModule : HFItemModule <HUCameraSettingsModule>
 {
     NSSet *_itemProviders;
     HUCameraSmartDetectionSettingsModule *_smartDetectionModule;
     HUCameraCloudStorageSettingsModule *_cloudStorageModule;
+    HFStaticItem *_recordAudioItem;
     NSSet *_cameraProfiles;
+    HFStaticItemProvider *_recordAudioItemProvider;
 }
 
 @property (readonly, nonatomic) NSSet *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
@@ -26,6 +28,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (strong, nonatomic) UIViewController *presentingViewController;
+@property (strong, nonatomic) HFStaticItem *recordAudioItem; // @synthesize recordAudioItem=_recordAudioItem;
+@property (strong, nonatomic) HFStaticItemProvider *recordAudioItemProvider; // @synthesize recordAudioItemProvider=_recordAudioItemProvider;
 @property (readonly, nonatomic) HUCameraSmartDetectionSettingsModule *smartDetectionModule; // @synthesize smartDetectionModule=_smartDetectionModule;
 @property (readonly) Class superclass;
 
@@ -36,6 +40,7 @@
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 cameraProfiles:(id)arg2;
 - (BOOL)isItemHeader:(id)arg1;
+- (void)updateRecordAudioValue:(BOOL)arg1;
 
 @end
 

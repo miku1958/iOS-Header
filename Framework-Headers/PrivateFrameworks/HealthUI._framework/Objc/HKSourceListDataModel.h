@@ -13,6 +13,7 @@
     NSSet *_allSources;
     NSArray *_orderedAppSources;
     NSArray *_orderedUninstalledAppSources;
+    NSArray *_orderedResearchStudySources;
     NSArray *_orderedDeviceSources;
     NSArray *_orderedClinicalSources;
 }
@@ -21,10 +22,12 @@
 @property (readonly, copy, nonatomic) NSArray *orderedAppSources; // @synthesize orderedAppSources=_orderedAppSources;
 @property (readonly, copy, nonatomic) NSArray *orderedClinicalSources; // @synthesize orderedClinicalSources=_orderedClinicalSources;
 @property (readonly, copy, nonatomic) NSArray *orderedDeviceSources; // @synthesize orderedDeviceSources=_orderedDeviceSources;
+@property (readonly, copy, nonatomic) NSArray *orderedResearchStudySources; // @synthesize orderedResearchStudySources=_orderedResearchStudySources;
 @property (readonly, copy, nonatomic) NSArray *orderedUninstalledAppSources; // @synthesize orderedUninstalledAppSources=_orderedUninstalledAppSources;
 
 - (void).cxx_destruct;
 - (void)_sortSources:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSourceModels:(id)arg1;
 - (id)initWithSources:(id)arg1;
 

@@ -15,6 +15,7 @@
 - (void)_cancelImpressionsUpdate;
 - (id)customAnimatorForNavigationControllerOperation:(long long)arg1 fromViewController:(id)arg2;
 - (id)customAnimatorForNavigationControllerOperation:(long long)arg1 toViewController:(id)arg2;
+- (id)tv_impressionableElementsForDocument:(id)arg1;
 - (void)tv_setShowcaseConfig:(struct TVShowcaseConfig)arg1;
 - (void)tv_updateViewLayout;
 @end

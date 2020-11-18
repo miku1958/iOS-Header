@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSiriSearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
     NSMutableArray *_resultDetourInfos;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     BOOL _isChainResultSet;
     struct {
         unsigned int has_isChainResultSet:1;
@@ -57,6 +59,8 @@ __attribute__((visibility("hidden")))
 - (id)disambiguationLabelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)disambiguationLabelsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

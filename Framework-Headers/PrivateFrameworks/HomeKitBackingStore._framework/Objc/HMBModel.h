@@ -9,7 +9,7 @@
 #import <HomeKitBackingStore/HMBModelProperties-Protocol.h>
 #import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@class HMBModelContainer, HMFVersion, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID;
+@class HMBModelContainer, HMFVersion, NSMutableDictionary, NSSet, NSString, NSUUID;
 
 @interface HMBModel : HMFObject <HMFLogging, HMBModelProperties>
 {
@@ -40,7 +40,6 @@
 @property (weak, nonatomic) HMBModelContainer *hmbModelContainer; // @synthesize hmbModelContainer=_hmbModelContainer;
 @property (strong, nonatomic) NSUUID *hmbModelID; // @synthesize hmbModelID=_hmbModelID;
 @property (strong, nonatomic) NSUUID *hmbParentModelID; // @synthesize hmbParentModelID=_hmbParentModelID;
-@property (readonly, nonatomic) NSDictionary *hmbQueryableProperties;
 @property (strong, nonatomic) NSSet *hmbReadOnlyProperties; // @synthesize hmbReadOnlyProperties=_hmbReadOnlyProperties;
 @property (nonatomic) unsigned long long hmbRecordRow; // @synthesize hmbRecordRow=_hmbRecordRow;
 @property (strong, nonatomic) NSMutableDictionary *hmbReserved; // @synthesize hmbReserved=_hmbReserved;
@@ -54,6 +53,8 @@
 + (id)hmbExternalRecordType;
 + (Class)hmbGenericRepresentation;
 + (id)hmbProperties;
++ (id)hmbPropertyNames;
++ (id)hmbQueries;
 + (id)hmbReadOnlyBefore;
 + (id)hmbSchemaHashRoot;
 + (BOOL)hmbShouldLogPrivateInformation;
@@ -72,10 +73,9 @@
 - (void)hmbAssociateWithContainer:(id)arg1;
 - (BOOL)hmbCanonicalTypeInferred;
 - (id)hmbDefaultValueForPropertyNamed:(id)arg1;
-- (BOOL)hmbDiff:(id)arg1 differingFields:(id *)arg2;
-- (id)hmbMerge:(id)arg1 fromStorageLocation:(unsigned long long)arg2;
-- (void)hmbMergeMetadataFromModel:(id)arg1 fromStorageLocation:(unsigned long long)arg2;
-- (id)hmbPrepareFor:(unsigned long long)arg1;
+- (BOOL)hmbIsDifferentFromModel:(id)arg1 differingFields:(id *)arg2;
+- (id)hmbMerge:(id)arg1 isFromCloud:(BOOL)arg2;
+- (id)hmbPrepareForStorageLocation:(unsigned long long)arg1;
 - (BOOL)hmbPropertyIsAvailable:(id)arg1;
 - (BOOL)hmbPropertyIsExternal:(id)arg1;
 - (BOOL)hmbPropertyIsReadOnly:(id)arg1;
@@ -83,7 +83,7 @@
 - (id)hmbPropertyNamed:(id)arg1 isSet:(BOOL *)arg2;
 - (BOOL)hmbPropertyWasSet:(id)arg1;
 - (void)hmbSetProperty:(id)arg1 named:(id)arg2;
-- (void)hmbSetPropertyIfNotNil:(id)arg1 named:(id)arg2;
+- (void)hmbUnsetPropertyNamed:(id)arg1;
 - (BOOL)hmbValidForStorage:(id)arg1;
 - (id)initWithModelID:(id)arg1 parentModelID:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

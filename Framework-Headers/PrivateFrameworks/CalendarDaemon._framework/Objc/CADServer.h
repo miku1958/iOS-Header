@@ -42,6 +42,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
+- (void)_cleanupChangeTablesInDatabase:(struct CalDatabase *)arg1;
 - (void)_deactivateAndExitWithStatus:(int)arg1;
 - (void)_dumpState;
 - (void)_enableICloudBackups;
@@ -57,7 +58,6 @@
 - (void)_registerForBackgroundTaskAgentJobs;
 - (void)_registerForChangeTableCleanup;
 - (void)_registerForDatabaseCleanup;
-- (void)_registerForIdleChangeTrackingClientCleanup;
 - (void)_registerForNotifications;
 - (void)_registerMaintenanceActivities;
 - (void)_setUpSignalHandlers;
@@ -70,7 +70,6 @@
 - (void)clientConnectionDied:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
-- (void)idleChangeTrackingClientCleanupDatabase:(struct CalDatabase *)arg1;
 - (id)init;
 - (id)initWithModules:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

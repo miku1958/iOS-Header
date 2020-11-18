@@ -11,12 +11,13 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDMessageQueryHelper, EFCancelationToken, NSMutableDictionary, NSObject, NSString;
-@protocol EFScheduler, OS_dispatch_queue;
+@protocol EDRemoteSearchProvider, EFScheduler, OS_dispatch_queue;
 
 @interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
     BOOL _didCancel;
     BOOL _isInitialized;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDMessageQueryHelper *_currentQueryHelper;
     id<EFScheduler> _scheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInitialized; // @synthesize isInitialized=_isInitialized;
 @property (readonly, copy, nonatomic) NSMutableDictionary *oldestMessageIDsByMailboxObjectIDs; // @synthesize oldestMessageIDsByMailboxObjectIDs=_oldestMessageIDsByMailboxObjectIDs;
+@property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
@@ -56,7 +58,7 @@
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (void)dealloc;
 - (id)findMessagesByPreviousObjectIDForAddedMessages:(id)arg1 helper:(id)arg2;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 observer:(id)arg4 observationIdentifier:(id)arg5;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 observer:(id)arg5 observationIdentifier:(id)arg6;
 - (void)queryHelper:(id)arg1 conversationIDDidChangeForMessages:(id)arg2 fromConversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 conversationNotificationLevelDidChangeForConversation:(long long)arg2 conversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 didAddMessages:(id)arg2;

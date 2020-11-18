@@ -30,6 +30,7 @@
     NSSet *_bulletinSnapshotCharacteristics;
     NSSet *_proactiveSnapshotCharacterisitics;
     HMDCameraNotificationCharacteristicsAvailabilityListener *_characteristicsAvailabilityListener;
+    NSString *_clientIdentifier;
 }
 
 @property (readonly, weak) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
@@ -37,6 +38,7 @@
 @property (readonly) NSString *bulletinImagesDirectory; // @synthesize bulletinImagesDirectory=_bulletinImagesDirectory;
 @property (strong) NSSet *bulletinSnapshotCharacteristics; // @synthesize bulletinSnapshotCharacteristics=_bulletinSnapshotCharacteristics;
 @property (strong) HMDCameraNotificationCharacteristicsAvailabilityListener *characteristicsAvailabilityListener; // @synthesize characteristicsAvailabilityListener=_characteristicsAvailabilityListener;
+@property (readonly, copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly) HMDCameraProfileSettingsModel *currentCameraSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -77,7 +79,7 @@
 - (void)handleCameraSettingsDidUpdateNotification:(id)arg1;
 - (void)handleRemoteNotificationGenerated:(id)arg1;
 - (id)initWithSnapshotManager:(id)arg1 accessory:(id)arg2 workQueue:(id)arg3 msgDispatcher:(id)arg4;
-- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2 previousCharacteristics:(id)arg3;
+- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2;
 - (id)logIdentifier;
 - (void)processPostedBulletin:(id)arg1 responseTimer:(id)arg2;
 - (void)registerForMessages;

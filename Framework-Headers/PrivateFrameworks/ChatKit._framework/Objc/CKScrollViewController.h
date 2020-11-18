@@ -24,6 +24,7 @@
 
 @property (readonly, nonatomic) double bottomInsetPadding; // @synthesize bottomInsetPadding=_bottomInsetPadding;
 @property (readonly, nonatomic) struct CGRect keyboardFrame;
+@property (readonly, nonatomic) struct CGRect keyboardFrameInViewCoordinates;
 @property (nonatomic) BOOL keyboardInteractionCancelled; // @synthesize keyboardInteractionCancelled=_keyboardInteractionCancelled;
 @property (readonly, nonatomic, getter=isKeyboardOnscreenWithoutAccessoryView) BOOL keyboardOnscreenWithoutAccessoryView;
 @property (nonatomic) struct CGRect keyboardScreenFrame; // @synthesize keyboardScreenFrame=_keyboardScreenFrame;

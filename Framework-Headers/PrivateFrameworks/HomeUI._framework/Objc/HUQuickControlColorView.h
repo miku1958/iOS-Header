@@ -21,10 +21,10 @@
     unsigned long long _reachabilityState;
     id<HUQuickControlColorViewInteractionDelegate> _interactionDelegate;
     HFColorPalette *_colorPalette;
-    NSIndexPath *_linearPaletteViewSelectedColorIndexPath;
     HFColorPaletteColor *_selectedColor;
     id _originalValue;
     HFColorPalette *_originalPalette;
+    NSIndexPath *_originalSelectedColorIndexPath;
     HUColorLinearPaletteView *_colorLinearPaletteView;
     HUColorPickerView *_colorPickerView;
     UISegmentedControl *_colorPickerModeSegmentedControl;
@@ -39,9 +39,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlColorViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
-@property (strong, nonatomic) NSIndexPath *linearPaletteViewSelectedColorIndexPath; // @synthesize linearPaletteViewSelectedColorIndexPath=_linearPaletteViewSelectedColorIndexPath;
+@property (readonly, nonatomic) NSIndexPath *linearPaletteViewSelectedColorIndexPath;
 @property (readonly, nonatomic) unsigned long long mode;
 @property (strong, nonatomic) HFColorPalette *originalPalette; // @synthesize originalPalette=_originalPalette;
+@property (strong, nonatomic) NSIndexPath *originalSelectedColorIndexPath; // @synthesize originalSelectedColorIndexPath=_originalSelectedColorIndexPath;
 @property (strong, nonatomic) id originalValue; // @synthesize originalValue=_originalValue;
 @property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
@@ -62,6 +63,7 @@
 - (void)cancelColorPicking;
 - (void)controlView:(id)arg1 colorPaletteDidChange:(id)arg2;
 - (void)controlView:(id)arg1 colorPickerModeDidChange:(unsigned long long)arg2;
+- (void)controlView:(id)arg1 didSelectColorAtIndexPath:(id)arg2;
 - (void)controlView:(id)arg1 interactionStateDidChange:(BOOL)arg2 forFirstTouch:(BOOL)arg3;
 - (void)controlView:(id)arg1 valueDidChange:(id)arg2;
 - (id)initWithProfile:(id)arg1;
@@ -69,6 +71,8 @@
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)presentFullColorViewForControlView:(id)arg1 selectedColorIndexPath:(id)arg2;
+- (void)storeCurrentColorInformationAsOriginalValues;
+- (void)updateSelectedColorIndexPathToIndexPath:(id)arg1;
 
 @end
 

@@ -105,6 +105,7 @@
 
 + (long long)_numberOfCommandCentersWithTargets;
 + (id)commandCenterForPlayerID:(id)arg1;
++ (void)getPendingCommandTypesWithCompletion:(CDUnknownBlockType)arg1;
 + (id)sharedCommandCenter;
 + (void)updateLaunchCommandsWithConfigurationHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
@@ -118,6 +119,7 @@
 - (void)_stopMediaRemoteSync;
 - (void)dealloc;
 - (void)dispatchCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getPendingCommandTypesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPlayerID:(id)arg1;
 - (void)remoteCommandDidMutatePropagatableProperty:(id)arg1;
 

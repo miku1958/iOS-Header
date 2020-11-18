@@ -102,21 +102,14 @@
 	// class associated type access function
 	// method
  }
- protocol CryptoKit.HashFunction // 5 requirements
+ protocol CryptoKit.HashFunction // 6 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// class getter
 	// class init
 	// method
 	// method
- }
- protocol CryptoKit.HashFunctionImplementationDetails // 5 requirements
- {
-	// class base protocol
-	// class associated conformance access function
-	// getter
-	// setter
-	// modify coroutine
  }
  protocol CryptoKit.NISTECDSASignature // 4 requirements
  {
@@ -143,6 +136,19 @@
 	// getter
 	// method
  }
+ protocol CryptoKit.CoreCryptoHashFunction // 1 requirements
+ {
+	// class getter
+ }
+ protocol CryptoKit.HashFunctionImplementationDetails // 6 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class associated conformance access function
+	// getter
+	// setter
+	// modify coroutine
+ }
  protocol CryptoKit.MessageAuthenticationCode // 5 requirements
  {
 	// class base protocol
@@ -150,6 +156,152 @@
 	// class base protocol
 	// class base protocol
 	// getter
+ }
+
+ struct __C.ccdigest_ctx {
+
+	// Properties
+	var state : ccdigest_ctx.__Unnamed_union_state
+ }
+
+ struct __C.ccdigest_info {
+
+	// Properties
+	var output_size : Int
+	var state_size : Int
+	var block_size : Int
+	var oid_size : Int
+	var oid : UnsafePointer<UInt8>?
+	var initial_state : UnsafeRawPointer?
+	var compress : @convention(c) (_:_:_:)?
+	var final : @convention(c) (_:_:_:)?
+ }
+
+ struct __C.ccchacha20poly1305_ctx {
+
+	// Properties
+	var chacha20_ctx : ccchacha20_ctx
+	var poly1305_ctx : ccpoly1305_ctx
+	var aad_nbytes : UInt64
+	var text_nbytes : UInt64
+	var state : UInt8
+ }
+
+ struct __C.ccmode_gcm {
+
+	// Properties
+	var size : Int
+	var encdec : Int32
+	var block_size : Int
+	var init : @convention(c) (_:_:_:_:)?
+	var set_iv : @convention(c) (_:_:_:)?
+	var gmac : @convention(c) (_:_:_:)?
+	var gcm : @convention(c) (_:_:_:_:)?
+	var finalize : @convention(c) (_:_:_:)?
+	var reset : @convention(c) (_:)?
+	var custom : UnsafeRawPointer?
+ }
+
+ struct __C.ccgcm_ctx {
+
+	// Properties
+	var b : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+ }
+
+ struct __C.ccec_pub_ctx {
+
+	// Properties
+	var cp : UnsafePointer<ccec_cp>?
+	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+ }
+
+ struct __C.ccec_full_ctx {
+
+	// Properties
+	var cp : UnsafePointer<ccec_cp>? // +0x0
+	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8) // +0x0
+ }
+
+ class __C.CFString {
+ struct __C.__Unnamed_union_state { }
+
+ struct __C.ccdigest_state {
+
+	// Properties
+	var state : ccdigest_state.__Unnamed_union_state
+ }
+
+ struct __C.ccpoly1305_ctx {
+
+	// Properties
+	var r0 : UInt32
+	var r1 : UInt32
+	var r2 : UInt32
+	var r3 : UInt32
+	var r4 : UInt32
+	var s1 : UInt32
+	var s2 : UInt32
+	var s3 : UInt32
+	var s4 : UInt32
+	var h0 : UInt32
+	var h1 : UInt32
+	var h2 : UInt32
+	var h3 : UInt32
+	var h4 : UInt32
+	var buf : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+	var buf_used : Int
+	var key : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+ }
+
+ struct __C.ccchacha20_ctx {
+
+	// Properties
+	var state : (UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32)
+	var buffer : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
+	var leftover : Int
+ }
+
+ struct __C.ccec_cp {
+
+	// Properties
+	var n : Int
+	var options : UInt64
+	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
+ }
+
+ struct __C.__Unnamed_union_state { }
+
+ struct __C.cczp {
+
+	// Properties
+	var n : Int
+	var options : UInt64
+	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
+ }
+
+ struct __C.cc_ws {
+
+	// Properties
+	var start : UnsafeMutablePointer<UInt64>?
+	var end : UnsafeMutablePointer<UInt64>?
+ }
+
+ class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var ctx : UnsafeMutablePointer<ccgcm_ctx> // +0x10 (0x8)
+	let mode : UnsafePointer<ccmode_gcm> // +0x18 (0x8)
+
+	// Swift methods
+	0x2790  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
+	0x2d10  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
+	0x3300  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
+ }
+
+ struct CryptoKit.CoreCryptoGCMImpl {
+
+	// Properties
+	var context : Context // +0x0
  }
 
  enum CryptoKit.Curve25519 { }
@@ -238,10 +390,19 @@
 	let impl : CoreCryptoNISTCurvePrivateKeyImpl<P521.CurveDetails> // +0x0
  }
 
+ enum CryptoKit.CryptoTokenKitError {
+
+	// Properties
+	case underlyingCTKError : (error: Int)
+	case noSEP  
+	case incorrectToken  
+	case tokenObjectError  
+	case failedKeyGeneration  
+ }
+
  struct CryptoKit.HMAC {
 
 	// Properties
-	let blockByteCount : Int
 	var outerHasher : A
 	var innerHasher : A
  }
@@ -252,6 +413,26 @@
 	let digest : A.HashFunction.Digest
  }
 
+ struct CryptoKit.SecureBytes {
+
+	// Properties
+	var backing : Backing // +0x0
+ }
+
+ struct CryptoKit.Index {
+
+	// Properties
+	var offset : Int // +0x0
+ }
+
+ struct CryptoKit.BackingHeader {
+
+	// Properties
+	var count : Int // +0x0
+	var capacity : Int // +0x8
+ }
+
+ class CryptoKit.Backing {
  struct CryptoKit.CoreCryptoNISTCurvePrivateKeyImpl {
 
 	// Properties
@@ -330,12 +511,6 @@
 	let tokenObject : TKClientTokenObject // +0x18
  }
 
- struct CryptoKit.SecureBytes {
-
-	// Properties
-	var underlyingData : Data // +0x0
- }
-
  struct CryptoKit._CMAC {
 
 	// Properties
@@ -375,6 +550,23 @@
 
 	// Properties
 	let combined : Data // +0x0
+ }
+
+ class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let ctx : UnsafeMutablePointer<ccchacha20poly1305_ctx> // +0x10 (0x8)
+
+	// Swift methods
+	0x210a0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
+	0x21620  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
+	0x21d80  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
+ }
+
+ struct CryptoKit.CoreCryptoChaChaPolyImpl {
+
+	// Properties
+	var context : Context // +0x0
  }
 
  struct CryptoKit.Nonce {
@@ -455,18 +647,6 @@
 	var digestBuffer : CoreCryptoDigestBuffer
  }
 
- struct CryptoKit.CCDigestInfo {
-
-	// Properties
-	let digestInfo : UnsafePointer<ccdigest_info> // +0x0
- }
-
- struct CryptoKit.Typ {
-
-	// Properties
-	let repr : Int // +0x0
- }
-
  enum CryptoKit.CryptoKitError {
 
 	// Properties
@@ -474,16 +654,6 @@
 	case incorrectKeySize  
 	case incorrectParameterSize  
 	case authenticationFailure  
- }
-
- enum CryptoKit.CryptoTokenKitError {
-
-	// Properties
-	case underlyingCTKError : (error: Int)
-	case noSEP  
-	case incorrectToken  
-	case tokenObjectError  
-	case failedKeyGeneration  
  }
 
  enum CryptoKit.KeyAgreement { }
@@ -536,111 +706,4 @@
 
 	// Properties
 	var keyBytes : [UInt8] // +0x0
- }
-
- struct __C.ccdigest_ctx {
-
-	// Properties
-	var state : ccdigest_ctx.__Unnamed_union_state
- }
-
- struct __C.ccdigest_info {
-
-	// Properties
-	var output_size : Int
-	var state_size : Int
-	var block_size : Int
-	var oid_size : Int
-	var oid : UnsafePointer<UInt8>?
-	var initial_state : UnsafeRawPointer?
-	var compress : @convention(c) (_:_:_:)?
-	var final : @convention(c) (_:_:_:)?
- }
-
- struct __C.ccec_pub_ctx {
-
-	// Properties
-	var cp : UnsafePointer<ccec_cp>?
-	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
- }
-
- struct __C.ccec_full_ctx {
-
-	// Properties
-	var cp : UnsafePointer<ccec_cp>?
-	var pad : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
- }
-
- class __C.CFString {
- struct __C.ccchacha20poly1305_ctx {
-
-	// Properties
-	var chacha20_ctx : ccchacha20_ctx
-	var poly1305_ctx : ccpoly1305_ctx
-	var aad_nbytes : UInt64
-	var text_nbytes : UInt64
-	var state : UInt8
- }
-
- struct __C.__Unnamed_union_state { }
-
- struct __C.ccdigest_state {
-
-	// Properties
-	var state : ccdigest_state.__Unnamed_union_state
- }
-
- struct __C.ccec_cp {
-
-	// Properties
-	var n : Int
-	var options : UInt64
-	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
- }
-
- struct __C.ccpoly1305_ctx {
-
-	// Properties
-	var r0 : UInt32
-	var r1 : UInt32
-	var r2 : UInt32
-	var r3 : UInt32
-	var r4 : UInt32
-	var s1 : UInt32
-	var s2 : UInt32
-	var s3 : UInt32
-	var s4 : UInt32
-	var h0 : UInt32
-	var h1 : UInt32
-	var h2 : UInt32
-	var h3 : UInt32
-	var h4 : UInt32
-	var buf : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
-	var buf_used : Int
-	var key : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
- }
-
- struct __C.ccchacha20_ctx {
-
-	// Properties
-	var state : (UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32, UInt32)
-	var buffer : (UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8, UInt8)
-	var leftover : Int
- }
-
- struct __C.__Unnamed_union_state { }
-
- struct __C.cczp {
-
-	// Properties
-	var n : Int
-	var options : UInt64
-	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
- }
-
- struct __C.cc_ws {
-
-	// Properties
-	var start : UnsafeMutablePointer<UInt64>?
-	var end : UnsafeMutablePointer<UInt64>?
  }

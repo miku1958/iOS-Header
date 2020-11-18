@@ -8,20 +8,26 @@
 
 #import <UserNotificationsUI/_UNNotificationExtensionHostInterface-Protocol.h>
 
-@class UIColor;
-@protocol _UNNotificationExtensionHostDelegate;
+@class NSExtension, NSString, UIColor;
+@protocol NSCopying, _UNNotificationExtensionHostDelegate;
 
 @interface _UNNotificationExtensionHostViewController : _UIRemoteViewController <_UNNotificationExtensionHostInterface>
 {
     BOOL _wantsToBecomeFirstResponder;
     BOOL _wantsToReceiveActionResponses;
     id<_UNNotificationExtensionHostDelegate> _delegate;
+    NSExtension *_extension;
+    id<NSCopying> _extensionRequestIdentifier;
+    NSString *_notificationRequestIdentifier;
     unsigned long long _playPauseMediaButtonType;
     UIColor *_playPauseMediaButtonColor;
     struct CGRect _playPauseMediaButtonFrame;
 }
 
 @property (weak, nonatomic) id<_UNNotificationExtensionHostDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (copy, nonatomic) id<NSCopying> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
+@property (copy, nonatomic) NSString *notificationRequestIdentifier; // @synthesize notificationRequestIdentifier=_notificationRequestIdentifier;
 @property (strong, nonatomic) UIColor *playPauseMediaButtonColor; // @synthesize playPauseMediaButtonColor=_playPauseMediaButtonColor;
 @property (nonatomic) struct CGRect playPauseMediaButtonFrame; // @synthesize playPauseMediaButtonFrame=_playPauseMediaButtonFrame;
 @property (nonatomic) unsigned long long playPauseMediaButtonType; // @synthesize playPauseMediaButtonType=_playPauseMediaButtonType;

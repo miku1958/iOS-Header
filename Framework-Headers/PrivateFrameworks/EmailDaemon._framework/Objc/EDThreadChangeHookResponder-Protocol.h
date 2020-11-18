@@ -11,12 +11,12 @@
 @protocol EDThreadChangeHookResponder <NSObject>
 
 @optional
-- (void)persistenceCanResetThreadScope:(EMThreadScope *)arg1 replyBlock:(void (^)(BOOL))arg2;
 - (void)persistenceDidFinishThreadUpdates;
 - (void)persistenceIsAddingThreadWithObjectID:(EMThreadObjectID *)arg1 journaled:(BOOL)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsChangingThreadWithObjectID:(EMThreadObjectID *)arg1 changedKeyPaths:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsDeletingThreadWithObjectID:(EMThreadObjectID *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceIsMarkingThreadAsJournaledWithObjectID:(EMThreadObjectID *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceIsReconcilingJournaledThreadsWithObjectIDs:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
+- (void)persistenceWillResetThreadScope:(EMThreadScope *)arg1 denyBlock:(void (^)(BOOL))arg2;
 @end
 

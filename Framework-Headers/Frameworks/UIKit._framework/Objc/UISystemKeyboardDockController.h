@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)keyboardItemButtonWasTapped:(id)arg1 withEvent:(id)arg2;
 - (void)loadView;
 - (void)setKeyboardDockItem;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateDockItemsVisibility;
 - (void)viewDidLoad;
 

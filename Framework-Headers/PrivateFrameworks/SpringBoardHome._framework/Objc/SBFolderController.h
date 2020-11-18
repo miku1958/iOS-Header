@@ -124,6 +124,7 @@
 @property (readonly, nonatomic, getter=isScrollDragging) BOOL scrollDragging;
 @property (readonly, nonatomic, getter=isScrollTracking) BOOL scrollTracking;
 @property (readonly, nonatomic, getter=isScrolling) BOOL scrolling;
+@property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (strong, nonatomic) id<BSInvalidatable> statusBarAssertion; // @synthesize statusBarAssertion=_statusBarAssertion;
 @property (nonatomic) double statusBarHeight;

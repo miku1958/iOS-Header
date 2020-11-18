@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dequeueObject:(id)arg1 buffer:(id)arg2;
-- (void)enqueueObject:(id)arg1 buffer:(id)arg2;
+- (void)enqueueObject:(id)arg1 replaceIfExists:(BOOL)arg2 buffer:(id)arg3;
 - (id)initWithCapacity:(unsigned long long)arg1 overflowHandler:(CDUnknownBlockType)arg2;
 
 @end

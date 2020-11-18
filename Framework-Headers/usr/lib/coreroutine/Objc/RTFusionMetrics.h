@@ -35,7 +35,7 @@
 + (id)supportedMetricKeys;
 + (id)unsignedIntegerKeys;
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithLoggingEnabled:(BOOL)arg1;
 - (void)setDerivedMetrics;
 - (void)setInputMetrics:(id)arg1;
 - (void)setMetricsUsingInputCandidates:(id)arg1 outputFusedInferredMapItems:(id)arg2 bestFusedInferredMapItem:(id)arg3 outputError:(id)arg4;

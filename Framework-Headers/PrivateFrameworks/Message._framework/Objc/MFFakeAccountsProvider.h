@@ -27,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *mailAccounts; // @synthesize mailAccounts=_mailAccounts;
 @property (copy, nonatomic) NSArray *orderedAccounts; // @synthesize orderedAccounts=_orderedAccounts;
+@property (readonly, copy, nonatomic) NSArray *receivingAddresses;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

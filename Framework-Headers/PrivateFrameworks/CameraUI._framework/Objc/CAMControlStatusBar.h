@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 #import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 
-@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMFramerateStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
+@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
 @protocol CAMControlStatusBarDelegate;
 
-@interface CAMControlStatusBar : UIView <CAMControlStatusIndicatorDelegate>
+@interface CAMControlStatusBar : UIView <CAMControlStatusIndicatorDelegate, CAMAccessibilityHUDItemProvider>
 {
     BOOL _directionIndicatorVisible;
     BOOL __directionIndicatorHiddenForSpace;
@@ -37,7 +38,6 @@
 @property (nonatomic, getter=isDirectionIndicatorVisible) BOOL directionIndicatorVisible; // @synthesize directionIndicatorVisible=_directionIndicatorVisible;
 @property (readonly, nonatomic) CAMFilterStatusIndicator *filterIndicator;
 @property (readonly, nonatomic) CAMFlashStatusIndicator *flashIndicator;
-@property (readonly, nonatomic) CAMFramerateStatusIndicator *framerateIndicator;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CAMHDRStatusIndicator *hdrIndicator;
 @property (readonly, nonatomic) CAMIntensityStatusIndicator *intensityIndicator;
@@ -50,6 +50,7 @@
 @property (copy, nonatomic) NSArray *secondaryVisibleIndicatorTypes; // @synthesize secondaryVisibleIndicatorTypes=_secondaryVisibleIndicatorTypes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CAMTimerStatusIndicator *timerIndicator;
+@property (readonly, nonatomic) CAMVideoConfigurationStatusIndicator *videoConfigurationIndicator;
 
 - (void).cxx_destruct;
 - (id)_createIndicatorForType:(unsigned long long)arg1;
@@ -57,13 +58,13 @@
 - (void)_handleApertureStatusIndicatorTapped:(id)arg1;
 - (void)_handleFilterStatusIndicatorTapped:(id)arg1;
 - (void)_handleFlashStatusIndicatorTapped:(id)arg1;
-- (void)_handleFramerateStatusIndicatorTapped:(id)arg1;
 - (void)_handleHDRStatusIndicatorTapped:(id)arg1;
 - (void)_handleIntensityStatusIndicatorTapped:(id)arg1;
 - (void)_handleLivePhotoStatusIndicatorTapped:(id)arg1;
 - (void)_handleLowLightStatusIndicatorTapped:(id)arg1;
 - (void)_handleTimerStatusIndicatorTapped:(id)arg1;
 - (void)_installIndicatorIfNeededForType:(unsigned long long)arg1;
+- (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
 - (void)_layoutAllVisibleTypes:(id)arg1 atOrigin:(long long)arg2;
 - (void)_layoutVisibleViewsForTypes:(id)arg1 inVisibleTypes:(id)arg2 atOrigin:(long long)arg3;
 - (void)_loadIndicatorIfNeededForType:(unsigned long long)arg1;
@@ -72,9 +73,11 @@
 - (void)_updateIndicatorsVisibilityAnimated:(BOOL)arg1;
 - (void)controlStatusIndicatorDidChangeIntrinsicContentSize:(id)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isIndicatorVisibleForType:(unsigned long long)arg1;
 - (void)layoutSubviews;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setDirectionIndicatorVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setPrimaryVisibleIndicatorTypes:(id)arg1 secondaryVisibleIndicatorTypes:(id)arg2 animated:(BOOL)arg3;

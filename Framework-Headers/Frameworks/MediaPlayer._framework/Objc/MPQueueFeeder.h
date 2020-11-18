@@ -38,8 +38,8 @@
 - (id)init;
 - (id)playbackInfoForItem:(id)arg1;
 - (void)replaceIdentifierRegistry:(id)arg1;
-- (id)supplementalPlaybackContext;
 - (long long)supplementalPlaybackContextBehavior;
+- (id)supplementalPlaybackContextWithReason:(long long)arg1;
 
 @end
 

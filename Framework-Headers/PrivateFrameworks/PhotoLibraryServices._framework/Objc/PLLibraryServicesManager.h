@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager;
+@class NSError, NSMutableArray, NSMutableDictionary, NSProgress, NSString, NSURL, PLAssetsdCrashRecoverySupport, PLBackgroundJobService, PLChangeHandlingContainer, PLClientServerTransaction, PLCloudPhotoLibraryManager, PLDatabaseContext, PLDupeManager, PLImageWriter, PLJournalManager, PLKeywordManager, PLLazyObject, PLLibraryServicesCPLReadiness, PLLibraryServicesStateNode, PLModelMigrator, PLMomentGenerationDataManager, PLPairing, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryPathManager, PLQuickActionManager, PLReframeService, PLRelationshipOrderKeyManager, PLSearchIndexManager;
 @protocol OS_dispatch_queue, PLLibraryServicesDelegate, PLMigrationServiceProtocol;
 
 @interface PLLibraryServicesManager : NSObject
@@ -29,6 +29,7 @@
     PLLazyObject *_lazyCrashRecoverySupport;
     PLLazyObject *_lazyPairingManager;
     PLLazyObject *_lazyReframeService;
+    PLLazyObject *_lazyCPLReadiness;
     PLClientServerTransaction *_serverTransaction;
     NSObject<OS_dispatch_queue> *_albumCountQueue;
     NSMutableDictionary *_externalWaiterCompletionBlocksByState;
@@ -55,6 +56,7 @@
 @property (readonly) PLChangeHandlingContainer *changeHandlingContainer;
 @property (readonly, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly) PLCloudPhotoLibraryManager *cloudPhotoLibraryManager;
+@property (readonly) PLLibraryServicesCPLReadiness *cplReadiness;
 @property (readonly) PLAssetsdCrashRecoverySupport *crashRecoverySupport;
 @property (getter=isCreateMode) BOOL createMode; // @synthesize createMode=_createMode;
 @property (strong, nonatomic, setter=_setCurrentStateNode:) PLLibraryServicesStateNode *currentStateNode; // @synthesize currentStateNode=_currentStateNode;
@@ -93,6 +95,7 @@
 + (Class)libraryServicesDelegateClass;
 + (id)libraryServicesManagerForLibraryURL:(id)arg1;
 + (void)setLibraryServicesDelegateClass:(Class)arg1;
++ (id)userDefaults;
 - (void).cxx_destruct;
 - (void)_addPendingOperationsForStateNode:(id)arg1;
 - (void)_awaitLibraryState:(long long)arg1 sync:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -109,6 +112,7 @@
 - (void)_invalidate;
 - (void)_invalidateAlbumCountCoalescer;
 - (void)_invalidateBackgroundJobService;
+- (void)_invalidateCPLReadiness;
 - (void)_invalidateCloudPhotoLibraryManager;
 - (void)_invalidateCrashRecoverySupport;
 - (void)_invalidateDatabaseContext;
@@ -138,7 +142,7 @@
 - (id)activeOperations;
 - (void)awaitLibraryState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)awaitLibraryState:(long long)arg1 error:(id *)arg2;
-- (void)currentLocaleDidChange:(id)arg1;
+- (void)currentLocaleDidChangeNotification:(id)arg1;
 - (void)deactivateWithInvalidationError:(id)arg1;
 - (void)didBecomeNonSystemPhotoLibrary;
 - (BOOL)enqueueOperation:(id)arg1 error:(id *)arg2;
@@ -147,7 +151,7 @@
 - (id)initWithLibraryBundle:(id)arg1 backgroundJobService:(id)arg2 delegateClass:(Class)arg3;
 - (void)initializeChangeHandling;
 - (void)initializeConstraintsDirector;
-- (BOOL)isReadyForCloudPhotoLibrary;
+- (void)invalidateReverseLocationDataOnAllAssets;
 - (id)newAlbumCountCoalescer:(id)arg1;
 - (id)newCloudPhotoLibraryManager;
 - (id)newCrashRecoverySupport;
@@ -159,8 +163,10 @@
 - (id)pendingOperations;
 - (void)refreshAlbumCountForAlbumIDs:(id)arg1;
 - (void)setICloudPhotosEnabledInternal:(BOOL)arg1;
+- (void)shutdownLibraryWithDescription:(id)arg1;
 - (id)statusDescription;
 - (BOOL)transitionToState:(long long)arg1 error:(id *)arg2;
+- (BOOL)updateSavedLocaleIfNeeded;
 
 @end
 

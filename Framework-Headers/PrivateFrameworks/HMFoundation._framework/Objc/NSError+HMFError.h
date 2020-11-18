@@ -28,6 +28,7 @@
 + (id)hmfErrorWithCode:(long long)arg1 reason:(id)arg2 suggestion:(id)arg3;
 + (id)hmfErrorWithCode:(long long)arg1 reason:(id)arg2 suggestion:(id)arg3 underlyingError:(id)arg4;
 + (id)hmfErrorWithCode:(long long)arg1 userInfo:(id)arg2;
++ (id)hmf_errorWithException:(id)arg1;
 + (id)hmf_unarchiveFromData:(id)arg1 error:(id *)arg2;
 + (id)shortDescription;
 @end

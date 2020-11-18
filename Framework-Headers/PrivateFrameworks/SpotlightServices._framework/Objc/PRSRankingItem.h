@@ -16,8 +16,8 @@
     BOOL _eligibleForDemotion;
     BOOL _shouldHideUnderShowMore;
     BOOL _matchedQueryTerms;
-    unsigned char _bundleIDType;
     BOOL _isPrepared;
+    unsigned short _bundleIDType;
     float _rawScore;
     float _feedbackScore;
     float _score;
@@ -28,7 +28,7 @@
     NSData *_serverFeaturesJSON;
     double _mostRecentUsedDate;
     double _closestUpComingDate;
-    // Error: parsing type: '^{?=[2Q]TT[0^v]}', name: _attributes
+    // Error: parsing type: '^{?=q[2Q]TT[0^v]}', name: _attributes
     PRSRankingSpanCalculator *_spanCalculator;
     NSMutableArray *_matchedSenders;
     NSMutableArray *_matchedVipSenders;
@@ -43,9 +43,9 @@
 
 @property (strong, nonatomic) PRSL2FeatureVector *L2FeatureVector; // @synthesize L2FeatureVector=_L2FeatureVector;
 // Error parsing type for property attributes:
-// Property attributes: T^{?=[2Q]TT[0^v]},N,V_attributes
+// Property attributes: T^{?=q[2Q]TT[0^v]},N,V_attributes
 
-@property (nonatomic) unsigned char bundleIDType; // @synthesize bundleIDType=_bundleIDType;
+@property (nonatomic) unsigned short bundleIDType; // @synthesize bundleIDType=_bundleIDType;
 @property (nonatomic) double closestUpComingDate; // @synthesize closestUpComingDate=_closestUpComingDate;
 @property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy) NSString *debugDescription;
@@ -74,19 +74,10 @@
 @property (readonly) Class superclass;
 @property (nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
 
-+ (id)deviceClass;
 + (unsigned short)featureFromVirtualIdx:(unsigned long long)arg1;
 + (unsigned long long)indexOfShortcutBit;
 + (void)initialize;
 + (id)rankingDescriptorForBundleFeature:(unsigned long long)arg1;
-+ (id)requiredAttributes;
-+ (id)requiredContactAttributes;
-+ (int *)requiredContactAttributesIndexes;
-+ (id)requiredMailAttributes;
-+ (id)requiredOtherAttributes;
-+ (id)requiredSMSAttributes;
-+ (id)requiredTextFeatureAttributes;
-+ (int *)requiredTextFeatureAttributesIndexes;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1 currentTime:(double)arg2;
 - (long long)compareWithDates:(id)arg1 currentTime:(double)arg2;
@@ -96,7 +87,7 @@
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
 - (id)displayName;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
--     // Error parsing type: @24@0:8^{?=[2Q]TT[0^v]}16, name: initWithAttrs:
+-     // Error parsing type: @24@0:8^{?=q[2Q]TT[0^v]}16, name: initWithAttrs:
 - (id)interestingDate;
 - (id)likelyDisplayTitle;
 - (id)moreRecentDateFromDate1:(id)arg1 date2:(id)arg2;

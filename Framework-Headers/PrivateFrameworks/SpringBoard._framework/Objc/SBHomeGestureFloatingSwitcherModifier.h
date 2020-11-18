@@ -51,6 +51,7 @@
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
@@ -59,7 +60,6 @@
 - (double)shadowOpacityForIndex:(unsigned long long)arg1;
 - (id)topMostAppLayouts;
 - (double)unconditionalDistanceThresholdForHome;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;
 

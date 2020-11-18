@@ -6,16 +6,16 @@
 
 #import <HealthRecordsUI/WDMedicalRecordGroupableCell.h>
 
-@class NSString, UIImageView, UILabel;
+@class NSString, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface WDMedicalRecordStandaloneCell : WDMedicalRecordGroupableCell
 {
     UILabel *_titleLabel;
-    UIImageView *_disclosureChevronView;
+    UIView *_chevronView;
 }
 
-@property (strong, nonatomic) UIImageView *disclosureChevronView; // @synthesize disclosureChevronView=_disclosureChevronView;
+@property (strong, nonatomic) UIView *chevronView; // @synthesize chevronView=_chevronView;
 @property (copy, nonatomic) NSString *title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 

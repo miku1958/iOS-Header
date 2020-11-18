@@ -16,8 +16,9 @@
 - (void)_pu_setCachedDuration:(id)arg1;
 - (CDStruct_1b6d18a9)pu_duration;
 - (void)pu_loadDurationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (CDStruct_8e0628e6)pu_perspectiveTransform:(CDStruct_8e0628e6)arg1 rescaledForMetadata:(id)arg2 currentAssetDimensions:(struct CGSize)arg3;
 - (CDStruct_8e0628e6)pu_perspectiveTransformForMetadata:(id)arg1;
-- (id)pu_stillAssetTransformMetadata;
+- (struct TransformMetadataItemPair)pu_stillAssetTransformMetadataPair;
 - (id)pu_stillImageTransformAssetTrack;
 - (id)pu_vitalityVideoComposition;
 @end

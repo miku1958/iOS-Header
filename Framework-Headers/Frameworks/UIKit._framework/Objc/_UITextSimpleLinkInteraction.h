@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowItemInteractions;
 - (BOOL)_beginInteractionSessionForLinkAtPoint:(struct CGPoint)arg1 asTap:(BOOL)arg2;
 - (BOOL)_canBeginInteractionSessionForLinkAtPoint:(struct CGPoint)arg1 asTap:(BOOL)arg2;
-- (BOOL)_presentActionsForTextInteractableItem:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (id)gesturesForFailureRequirements;
 - (void)highlight:(id)arg1;

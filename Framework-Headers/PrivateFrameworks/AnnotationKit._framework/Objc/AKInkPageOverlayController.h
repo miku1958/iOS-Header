@@ -52,7 +52,7 @@
 - (void)_toolStatusUpdated:(id)arg1;
 - (void)_updateAllowedTouchTypesAllEnabled:(BOOL)arg1 pencilEnabled:(BOOL)arg2;
 - (void)_updateGestureDependencyPriority;
-- (void)annotationEditingDidEnd;
+- (void)annotationEditingDidEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginIgnoringAnnotationSelectionObservation:(id)arg1;
 - (void)didToggleRuler;
 - (void)endIgnoringAnnotationSelectionObservation:(id)arg1;

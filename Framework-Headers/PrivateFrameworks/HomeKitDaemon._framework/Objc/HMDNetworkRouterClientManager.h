@@ -16,6 +16,7 @@
 {
     BOOL _started;
     BOOL _initialConfigureNeeded;
+    BOOL _managedNetworkEnabled;
     BOOL _staleClientIdentifiersResetNeeded;
     BOOL _staleClientIdentifiersResetInProgress;
     BOOL _startPending;
@@ -33,6 +34,7 @@
 @property (readonly, weak) HMDHome *home;
 @property (nonatomic) BOOL initialConfigureNeeded; // @synthesize initialConfigureNeeded=_initialConfigureNeeded;
 @property (readonly) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (nonatomic) BOOL managedNetworkEnabled; // @synthesize managedNetworkEnabled=_managedNetworkEnabled;
 @property (weak) HMDHAPAccessory *networkRouterAccessory; // @synthesize networkRouterAccessory=_networkRouterAccessory;
 @property (readonly) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly) HMDNetworkRouterController *routerController;
@@ -45,19 +47,17 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)__deregisterForNetworkRouterAccessoryReachability:(id)arg1;
-- (void)__registerForNetworkRouterAccessoryReachability:(id)arg1;
+- (void)__deregisterForNetworkRouterAccessoryReachable:(id)arg1;
+- (void)__registerForNetworkRouterAccessoryReachable:(id)arg1;
 - (void)_configure;
 - (void)_createClientConfigurationForAccessory:(id)arg1 clientStatus:(id)arg2;
 - (void)_createClientConfigurationForAccessory:(id)arg1 credential:(id)arg2;
 - (void)_createClientConfigurationWithSavedPSKForAccessory:(id)arg1;
 - (void)_deregisterForChangesToManagedAccessory:(id)arg1;
-- (void)_disableHomeNetworkProtection;
-- (void)_enableHomeNetworkProtection;
 - (void)_evaluateManagement;
 - (void)_fetchFirewallRulesForAccessory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getNetworkConfigurationForAccessory:(id)arg1 targetProtectionMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_handleAccessoryLocallyReachable:(id)arg1;
+- (void)_handleAccessoryConfigured:(id)arg1;
 - (void)_handleRouterAccessoryReachable:(id)arg1;
 - (void)_handleUnreachableAccessory:(id)arg1;
 - (void)_reconcileClientConfigurationForAccessory:(id)arg1 clientStatusList:(id)arg2 networkRouterUUID:(id)arg3;
@@ -70,19 +70,18 @@
 - (void)_start;
 - (void)_startManagingAccessory:(id)arg1;
 - (void)_stop;
-- (void)_stopManagingAccessory:(id)arg1;
 - (id)_transactionBlockForAccessoriesWithStaleClientIdentifier;
 - (void)_unregisterForNetworkProtectionChangesToGroup:(id)arg1;
 - (void)_unregisterInterestForFirewallRulesForAccessory:(id)arg1;
 - (void)_unregisterInterestForFirewallRulesForProductData:(id)arg1 firmwareVersion:(id)arg2;
+- (void)_updateClientConfigurationForAccessory:(id)arg1;
 - (void)_updateClientConfigurationForAccessory:(id)arg1 protectionMode:(long long)arg2 clientIdentifier:(id)arg3;
-- (void)_updateClientConfigurationWithSavedTargetProtectionForAccessory:(id)arg1;
+- (void)_updateClientConfigurationForAllAccessories;
 - (void)_updateExistingClientConfigurationForAccessory:(id)arg1;
-- (void)_updateExistingClientConfigurationForAccessory:(id)arg1 protectionMode:(long long)arg2;
 - (void)evaluateManagement;
 - (void)handleAccessoryAdded:(id)arg1;
+- (void)handleAccessoryConfigured:(id)arg1;
 - (void)handleAccessoryFirmwareVersionUpdated:(id)arg1;
-- (void)handleAccessoryLocallyReachable:(id)arg1;
 - (void)handleAccessoryRemoved:(id)arg1;
 - (void)handleFirewallRulesUpdated:(id)arg1;
 - (void)handleHomeNetworkProtectionChanged:(id)arg1;

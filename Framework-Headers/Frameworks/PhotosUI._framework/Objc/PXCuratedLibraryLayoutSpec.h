@@ -25,6 +25,7 @@
     PXMonthsLayoutMetrics *_monthsLayoutMetrics;
     double _spacingBetweenSafeAreaTopAndFirstYearCard;
     double _spacingBetweenSafeAreaTopAndFirstMonthTitle;
+    double _spacingBetweenHeaderLastBaselineAndAllPhotosTop;
 }
 
 @property (readonly, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *allPhotosFloatingHeaderSpec; // @synthesize allPhotosFloatingHeaderSpec=_allPhotosFloatingHeaderSpec;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) PXCuratedLibrarySectionHeaderLayoutSpec *daysTopHeaderSpec; // @synthesize daysTopHeaderSpec=_daysTopHeaderSpec;
 @property (readonly, nonatomic) PXMonthsLayoutMetrics *monthsLayoutMetrics; // @synthesize monthsLayoutMetrics=_monthsLayoutMetrics;
 @property (readonly, nonatomic) PXAssetsSectionLayoutSpec *sectionLayoutSpec; // @synthesize sectionLayoutSpec=_sectionLayoutSpec;
+@property (readonly, nonatomic) double spacingBetweenHeaderLastBaselineAndAllPhotosTop; // @synthesize spacingBetweenHeaderLastBaselineAndAllPhotosTop=_spacingBetweenHeaderLastBaselineAndAllPhotosTop;
 @property (readonly, nonatomic) double spacingBetweenSafeAreaTopAndFirstMonthTitle; // @synthesize spacingBetweenSafeAreaTopAndFirstMonthTitle=_spacingBetweenSafeAreaTopAndFirstMonthTitle;
 @property (readonly, nonatomic) double spacingBetweenSafeAreaTopAndFirstYearCard; // @synthesize spacingBetweenSafeAreaTopAndFirstYearCard=_spacingBetweenSafeAreaTopAndFirstYearCard;
 @property (readonly, nonatomic) PXYearsLayoutMetrics *yearsLayoutMetrics; // @synthesize yearsLayoutMetrics=_yearsLayoutMetrics;

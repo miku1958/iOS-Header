@@ -20,6 +20,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_createErrorWithCode:(unsigned long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 - (void)_updateConfigurationForCount:(unsigned long long)arg1;
 - (unsigned long long)countForValue:(id)arg1;
 - (id)init;

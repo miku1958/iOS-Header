@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 
 - (void)dealloc;
+- (id)description;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 atTime:(CDStruct_1b6d18a9)arg2;
 
 @end

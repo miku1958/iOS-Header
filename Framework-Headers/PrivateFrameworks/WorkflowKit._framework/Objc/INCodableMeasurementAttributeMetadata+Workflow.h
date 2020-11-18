@@ -6,7 +6,12 @@
 
 #import <Intents/INCodableMeasurementAttributeMetadata.h>
 
+@class NSString;
+
 @interface INCodableMeasurementAttributeMetadata (Workflow)
+
+@property (readonly, nonatomic) NSString *wf_measurementType;
+
 - (Class)wf_objectClass;
 - (Class)wf_parameterClass;
 - (id)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(id)arg2;

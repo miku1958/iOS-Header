@@ -40,6 +40,7 @@
 - (void)finishedRecording;
 - (void)handleInterruption:(id)arg1;
 - (struct AudioRecorderImpl *)impl;
+- (id)init;
 - (id)initWithURL:(id)arg1 format:(id)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 settings:(id)arg2 error:(id *)arg3;
 - (void)pause;

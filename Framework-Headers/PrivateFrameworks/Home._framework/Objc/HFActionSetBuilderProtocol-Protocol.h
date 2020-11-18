@@ -6,7 +6,7 @@
 
 #import <Home/NSObject-Protocol.h>
 
-@class HFActionBuilder, HFMediaPlaybackActionBuilder, NSArray;
+@class HFActionBuilder, HFMediaPlaybackActionBuilder, NAFuture, NSArray;
 
 @protocol HFActionSetBuilderProtocol <NSObject>
 
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 
 - (void)addAction:(HFActionBuilder *)arg1;
+- (NAFuture *)deleteActionSet;
 - (void)removeAction:(HFActionBuilder *)arg1;
 - (void)removeAllActions;
 - (void)updateAction:(HFActionBuilder *)arg1;

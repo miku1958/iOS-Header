@@ -23,6 +23,7 @@
     long long _photoEncodingBehavior;
     long long _videoEncodingBehavior;
     long long _aspectRatioCrop;
+    long long _photoQualityPrioritization;
 }
 
 @property (readonly, nonatomic) long long aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) BOOL enableAutoLowLightVideoIfSupported; // @synthesize enableAutoLowLightVideoIfSupported=_enableAutoLowLightVideoIfSupported;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
+@property (readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
 @property (readonly, nonatomic) unsigned long long previewConfiguration; // @synthesize previewConfiguration=_previewConfiguration;
 @property (readonly, nonatomic) NSArray *previewFilters; // @synthesize previewFilters=_previewFilters;
 @property (readonly, nonatomic) long long previewSampleBufferVideoFormat; // @synthesize previewSampleBufferVideoFormat=_previewSampleBufferVideoFormat;
@@ -43,7 +45,7 @@
 - (void).cxx_destruct;
 - (id)completeDescription;
 - (id)description;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoLowLightVideoIfSupported:(BOOL)arg11 videoHDRSuspended:(BOOL)arg12 aspectRatioCrop:(long long)arg13;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoLowLightVideoIfSupported:(BOOL)arg11 videoHDRSuspended:(BOOL)arg12 aspectRatioCrop:(long long)arg13 photoQualityPrioritization:(long long)arg14;
 - (id)shortDescription;
 
 @end

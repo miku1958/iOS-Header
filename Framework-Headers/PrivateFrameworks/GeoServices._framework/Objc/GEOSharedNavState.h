@@ -13,14 +13,17 @@
 @interface GEOSharedNavState : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapItemStorage *_destinationInfo;
     GEOSharedNavETAInfo *_etaInfo;
     NSString *_groupIdentifier;
+    double _localUpdatedTimestamp;
     GEOSharedNavRouteInfo *_routeInfo;
     GEOSharedNavSenderInfo *_senderInfo;
     double _updatedTimestamp;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _protocolVersion;
     int _referenceFrame;
     unsigned int _transportType;
@@ -28,6 +31,7 @@
     BOOL _closed;
     BOOL _muted;
     struct {
+        unsigned int has_localUpdatedTimestamp:1;
         unsigned int has_updatedTimestamp:1;
         unsigned int has_protocolVersion:1;
         unsigned int has_referenceFrame:1;
@@ -45,6 +49,7 @@
         unsigned int wrote_destinationInfo:1;
         unsigned int wrote_etaInfo:1;
         unsigned int wrote_groupIdentifier:1;
+        unsigned int wrote_localUpdatedTimestamp:1;
         unsigned int wrote_routeInfo:1;
         unsigned int wrote_senderInfo:1;
         unsigned int wrote_updatedTimestamp:1;
@@ -67,6 +72,7 @@
 @property (readonly, nonatomic) BOOL hasDestinationInfo;
 @property (readonly, nonatomic) BOOL hasEtaInfo;
 @property (readonly, nonatomic) BOOL hasGroupIdentifier;
+@property (nonatomic) BOOL hasLocalUpdatedTimestamp;
 @property (nonatomic) BOOL hasMuted;
 @property (nonatomic) BOOL hasProtocolVersion;
 @property (nonatomic) BOOL hasReferenceFrame;
@@ -74,6 +80,7 @@
 @property (readonly, nonatomic) BOOL hasSenderInfo;
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) BOOL hasUpdatedTimestamp;
+@property (nonatomic) double localUpdatedTimestamp;
 @property (nonatomic) BOOL muted;
 @property (nonatomic) unsigned int protocolVersion;
 @property (nonatomic) int referenceFrame;
@@ -98,6 +105,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

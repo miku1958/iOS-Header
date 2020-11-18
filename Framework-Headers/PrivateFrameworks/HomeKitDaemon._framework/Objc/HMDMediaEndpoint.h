@@ -20,12 +20,13 @@
     NSString *_localizedName;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_logID;
+    HMDMediaBrowser *_browser;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDMediaBrowser *_mediaBrowser;
     NSMutableArray *_pendingBlocks;
 }
 
 @property (readonly, nonatomic) NSArray *advertisements;
+@property (weak) HMDMediaBrowser *browser; // @synthesize browser=_browser;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (nonatomic) unsigned int connectionState; // @synthesize connectionState=_connectionState;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +35,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property (readonly, weak, nonatomic) HMDMediaBrowser *mediaBrowser; // @synthesize mediaBrowser=_mediaBrowser;
 @property (strong, nonatomic) NSSet *outputDeviceIdentifiers; // @synthesize outputDeviceIdentifiers=_outputDeviceIdentifiers;
 @property (strong, nonatomic) NSMutableArray *pendingBlocks; // @synthesize pendingBlocks=_pendingBlocks;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
@@ -58,15 +58,15 @@
 - (BOOL)doesContainAnyAccessory:(id)arg1;
 - (void)evaluateIfMediaPlaybackStateChanged:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithEndpoint:(void *)arg1 mediaBrowser:(id)arg2;
+- (id)initWithEndpoint:(void *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEndpoint:(void *)arg1;
 - (id)logIdentifier;
 - (void)registerForNowPlayingUpdates:(BOOL)arg1;
 - (void)setPlaybackState:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setRetainedEndpoint:(void *)arg1;
-- (void)updateEndpoint:(void *)arg1;
 - (void)updateOutputDevicesAndConnectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateWithEndpoint:(id)arg1;
 
 @end
 

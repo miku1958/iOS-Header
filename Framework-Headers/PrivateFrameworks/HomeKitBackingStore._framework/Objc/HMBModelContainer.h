@@ -56,7 +56,6 @@
 - (id)modelFromData:(id)arg1 encoding:(unsigned long long)arg2 storageLocation:(unsigned long long)arg3 type:(id)arg4 error:(id *)arg5;
 - (id)modelFromDictionary:(id)arg1 storageLocation:(unsigned long long)arg2 typeName:(id)arg3 error:(id *)arg4;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)queryFieldsForClass:(Class)arg1;
 - (id)readOnlyVersionsForModelClass:(Class)arg1;
 - (id)schemaHashForModel:(id)arg1;
 - (id)typeNameForModelClass:(Class)arg1;

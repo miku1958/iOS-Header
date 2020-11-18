@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
     int _lastDisplayedFromImageQueueCount;
     int _lastDroppedFromImageQueueCount;
     int _networkInterfaceType;
+    int _channelSequenceCountWithInactiveSlots;
 }
 
 @property (readonly, nonatomic) NSArray *compoundStreamIDs; // @synthesize compoundStreamIDs=_compoundStreamIDs;

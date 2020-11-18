@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL hasPaymentAmount;
 @property (readonly, nonatomic) BOOL hasReferencedMessage;
 @property (readonly, nonatomic) BOOL hasSender;
+@property (readonly, nonatomic) BOOL hasServiceName;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (nonatomic) BOOL hasType;
 @property (copy, nonatomic) NSString *identifier;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (strong, nonatomic) _INPBMessage *referencedMessage;
 @property (strong, nonatomic) _INPBContact *sender;
+@property (copy, nonatomic) NSString *serviceName;
 @property (strong, nonatomic) _INPBDataString *speakableGroupName;
 @property (nonatomic) int type;
 

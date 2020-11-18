@@ -31,8 +31,8 @@
 - (void).cxx_destruct;
 - (BOOL)_allowRowInteractionForIndexPath:(id)arg1;
 - (id)_musicAppURL;
-- (void)_presentMediaPicker;
 - (void)_presentMediaPickerUnavailablePromptWithReason:(long long)arg1 storeKitErrorObject:(id)arg2;
+- (void)_presentMediaPickerWithOptionsShowsLibraryContent:(BOOL)arg1 pickingForExternalPlayer:(BOOL)arg2;
 - (void)applyAccessory:(long long)arg1 toItem:(id)arg2 onTableView:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)initWithActionSetBuilder:(id)arg1;

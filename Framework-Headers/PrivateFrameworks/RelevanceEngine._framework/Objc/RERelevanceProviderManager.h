@@ -47,6 +47,12 @@
 + (void)setProviderManagerClassesLoadingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)supportsHistoricProviders;
 - (void).cxx_destruct;
+- (void)_accessQueue_appendCompletionHandlerForScheduledUpdate:(id)arg1;
+- (void)_accessQueue_performImmediateUpdate:(id)arg1;
+- (void)_accessQueue_performPendingUpdatesAndScheduleTimerIfNeeded;
+- (void)_accessQueue_performUpdate:(id)arg1;
+- (void)_accessQueue_resetTimer;
+- (void)_accessQueue_scheduleUpdate:(id)arg1;
 - (void)_addedProvider:(id)arg1;
 - (void)_closeDataStoresAndObserveChanges;
 - (BOOL)_dataSourcesOpened;
@@ -59,12 +65,9 @@
 - (void)_openDataStoresAndObserveChanges;
 - (void)_prepareForUpdate;
 - (void)_prepareForUpdateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performPendingUpdatesAndScheduleTimerIfNeeded;
-- (void)_queue_performUpdate:(id)arg1;
-- (void)_queue_resetTimer;
-- (void)_queue_scheduleUpdate:(id)arg1;
 - (float)_relevanceForHistoricProvider:(id)arg1;
 - (float)_relevanceForProvider:(id)arg1;
+- (void)_relevanceQueue_openDataStores;
 - (void)_removeAllPendingUpdates;
 - (void)_removeProvider:(id)arg1;
 - (void)_scheduleUpdate:(id)arg1;

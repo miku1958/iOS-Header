@@ -16,6 +16,7 @@
 {
     BOOL _firstMessageReceived;
     id<HMDDataStreamDelegate> _delegate;
+    NSString *_logIdentifier;
     id<HMDDataStreamTransport> _transport;
     HAPSecuritySessionEncryption *_sessionEncryption;
     NSMapTable *_protocols;
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL firstMessageReceived; // @synthesize firstMessageReceived=_firstMessageReceived;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMFTimer *helloMessageResponseTimer; // @synthesize helloMessageResponseTimer=_helloMessageResponseTimer;
+@property (readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (nonatomic) unsigned long long nextRequestIdentifier; // @synthesize nextRequestIdentifier=_nextRequestIdentifier;
 @property (readonly, nonatomic) NSMutableSet *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (strong, nonatomic) NSMapTable *protocols; // @synthesize protocols=_protocols;
@@ -51,7 +53,7 @@
 - (void)fulfillPendingRequestWithResponseHeader:(id)arg1 payload:(id)arg2;
 - (BOOL)handleFirstMessageReceivedOnDataStream:(id)arg1 payload:(id)arg2;
 - (void)handlePendingRequests;
-- (id)initWithTransport:(id)arg1 sessionEncryption:(id)arg2 workQueue:(id)arg3;
+- (id)initWithTransport:(id)arg1 sessionEncryption:(id)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
 - (id)protocolDelegateHandle;
 - (void)sendEventForProtocol:(id)arg1 topic:(id)arg2 payload:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendRequestForProtocol:(id)arg1 topic:(id)arg2 identifier:(unsigned long long)arg3 payload:(id)arg4 completion:(CDUnknownBlockType)arg5;

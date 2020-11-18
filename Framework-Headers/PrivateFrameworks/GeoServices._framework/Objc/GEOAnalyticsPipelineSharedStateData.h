@@ -19,6 +19,7 @@
 - (void)_populateWithGEOTransitPlaceCard:(id)arg1;
 - (void)clearPlaceCardStateData;
 - (void)clearSuggestionsData;
+- (BOOL)hasMapRestoreData;
 - (BOOL)hasMapsServerData;
 - (BOOL)hasPlaceCardStateData;
 - (BOOL)hasPlaceCard_PlaceActionDetails;

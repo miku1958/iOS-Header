@@ -6,48 +6,82 @@
 
 #import <UIKit/UIControl.h>
 
-@class MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, NSString, UILabel, UIView;
+#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MediaControlsExpandableButton : UIControl
+@class MTVisualStylingProvider, MediaControlsExpandableButtonOption, NSArray, NSMutableArray, NSString, NSTimer, UILabel, UIView;
+
+@interface MediaControlsExpandableButton : UIControl <MTVisualStylingProviderObservingPrivate>
 {
     BOOL _expanded;
     BOOL _toggleEnabled;
+    BOOL _displayMessage;
+    BOOL _resetTracking;
     NSArray *_options;
-    MediaControlsExpandableButtonOption *_selectedOption;
+    long long _selectedOptionIndex;
     NSString *_title;
     long long _axis;
-    MTVisualStylingProvider *_visualStylingProvider;
     NSMutableArray *_buttons;
-    UIView *_materialView;
+    UIView *_backgroundView;
+    UIView *_overlaySelectionView;
+    UIView *_selectionView;
+    UIView *_clippingView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
+    UILabel *_messageLabel;
+    NSTimer *_messageTimer;
+    MTVisualStylingProvider *_visualStylingProvider;
     struct CGSize _maximumExpandedSize;
 }
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
+@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;
+@property (strong, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL displayMessage; // @synthesize displayMessage=_displayMessage;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
-@property (strong, nonatomic) UIView *materialView; // @synthesize materialView=_materialView;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize maximumExpandedSize; // @synthesize maximumExpandedSize=_maximumExpandedSize;
+@property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
+@property (strong, nonatomic) NSTimer *messageTimer; // @synthesize messageTimer=_messageTimer;
 @property (strong, nonatomic) NSArray *options; // @synthesize options=_options;
-@property (strong, nonatomic) MediaControlsExpandableButtonOption *selectedOption; // @synthesize selectedOption=_selectedOption;
+@property (strong, nonatomic) UIView *overlaySelectionView; // @synthesize overlaySelectionView=_overlaySelectionView;
+@property (nonatomic) BOOL resetTracking; // @synthesize resetTracking=_resetTracking;
+@property (readonly, nonatomic) MediaControlsExpandableButtonOption *selectedOption;
+@property (nonatomic) long long selectedOptionIndex; // @synthesize selectedOptionIndex=_selectedOptionIndex;
+@property (strong, nonatomic) UIView *selectionView; // @synthesize selectionView=_selectionView;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) BOOL toggleEnabled; // @synthesize toggleEnabled=_toggleEnabled;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
 - (void).cxx_destruct;
+- (void)_animateSelectedGlyphState;
 - (long long)_buttonLayoutAxis;
 - (void)_contentSizeCategoryDidChange;
 - (void)_layoutLabels;
-- (void)_updateSelection;
-- (void)_updateVisiblity;
-- (void)didMoveToWindow;
+- (void)_layoutSelectionView;
+- (void)_resetSelectionView;
+- (void)_springAnimate:(CDUnknownBlockType)arg1;
+- (void)_updateButtonsVisiblity;
+- (void)_updateLabelVisualStyling;
+- (void)_updateSelectionVisiblity;
+- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)cancelTrackingWithEvent:(id)arg1;
+- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)didTapButton:(id)arg1;
+- (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)initForControlCenter;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)providedStylesDidChangeForProvider:(id)arg1;
+- (void)setHighlighted:(BOOL)arg1;
+- (void)showMessage:(id)arg1;
 
 @end
 

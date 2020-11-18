@@ -64,7 +64,6 @@
 @property (nonatomic) struct CGRect visibleContentRect; // @synthesize visibleContentRect=_visibleContentRect;
 
 + (id)fetchQueue;
-+ (id)placeholderFilters;
 + (void)preloadResources;
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;

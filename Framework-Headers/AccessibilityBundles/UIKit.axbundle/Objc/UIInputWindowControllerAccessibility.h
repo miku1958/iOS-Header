@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)resetBackdropHeight;
+- (void)updateInputAssistantViewForInputViewSet:(id)arg1;
 
 @end
 

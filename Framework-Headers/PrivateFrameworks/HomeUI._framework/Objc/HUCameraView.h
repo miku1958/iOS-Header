@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HMCameraSource, HMCameraView, HUCameraBadgeView, HUCameraErrorContent, HUCameraErrorView, HURemoteContextHostingView, NADecayingTimer, NSArray, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UIImageView, UIVisualEffectView;
+@class HMCameraSource, HMCameraView, HUCameraBadgeView, HUCameraErrorContent, HUCameraErrorView, HURemoteContextHostingView, NADecayingTimer, NSArray, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UIImageView;
 
 @interface HUCameraView : UIView
 {
@@ -18,7 +18,7 @@
     HURemoteContextHostingView *_cameraContainerView;
     HUCameraBadgeView *_badgeView;
     UIView *_cameraOverlayView;
-    UIVisualEffectView *_cameraDimmingView;
+    UIView *_cameraDimmingView;
     UIView *_backgroundView;
     HUCameraErrorView *_errorView;
     UIActivityIndicatorView *_activityIndicatorView;
@@ -41,7 +41,7 @@
 @property (strong, nonatomic) NSLayoutConstraint *cameraAspectRatioConstraint; // @synthesize cameraAspectRatioConstraint=_cameraAspectRatioConstraint;
 @property (readonly, nonatomic) HURemoteContextHostingView *cameraContainerView; // @synthesize cameraContainerView=_cameraContainerView;
 @property (readonly, nonatomic) struct CGRect cameraContentFrame;
-@property (strong, nonatomic) UIVisualEffectView *cameraDimmingView; // @synthesize cameraDimmingView=_cameraDimmingView;
+@property (strong, nonatomic) UIView *cameraDimmingView; // @synthesize cameraDimmingView=_cameraDimmingView;
 @property (readonly, nonatomic) UIView *cameraOverlaySnapshot;
 @property (readonly, nonatomic) UIView *cameraOverlayView; // @synthesize cameraOverlayView=_cameraOverlayView;
 @property (strong, nonatomic) HMCameraSource *cameraSource;
@@ -74,6 +74,7 @@
 - (void)setCameraContentMode:(long long)arg1;
 - (void)setCameraSource:(id)arg1 animated:(BOOL)arg2;
 - (void)setCameraSource:(id)arg1 withDemoSnapshotURL:(id)arg2 animated:(BOOL)arg3;
+- (void)setContentMode:(long long)arg1;
 - (void)setErrorContent:(id)arg1 animated:(BOOL)arg2;
 - (void)setShowActivityIndicator:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateConstraints;

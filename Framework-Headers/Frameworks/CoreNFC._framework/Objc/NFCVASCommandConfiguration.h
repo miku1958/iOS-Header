@@ -23,6 +23,7 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)init;
 - (id)initWithVASMode:(long long)arg1 passTypeIdentifier:(id)arg2 url:(id)arg3;
 

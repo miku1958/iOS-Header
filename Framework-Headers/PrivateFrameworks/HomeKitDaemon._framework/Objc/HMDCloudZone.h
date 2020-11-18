@@ -45,6 +45,7 @@
 - (void)_initializeServerChangeToken:(id)arg1;
 - (void)_initializeSubscription:(id)arg1;
 - (void)addCloudRecord:(id)arg1 ownerID:(id)arg2;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cloudRecordWithName:(id)arg1;
 - (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -67,6 +68,7 @@
 - (void)markMigratedObjectsAsMigrated;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateServerChangeToken:(id)arg1;
 
 @end

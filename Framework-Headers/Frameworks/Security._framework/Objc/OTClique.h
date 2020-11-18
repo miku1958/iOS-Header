@@ -21,6 +21,7 @@
 
 + (id)findOptimalBottleIDsWithContextData:(id)arg1 error:(id *)arg2;
 + (id)newFriendsWithContextData:(id)arg1 error:(id *)arg2;
++ (id)newFriendsWithContextData:(id)arg1 resetReason:(long long)arg2 error:(id *)arg3;
 + (id)performEscrowRecoveryWithContextData:(id)arg1 escrowArguments:(id)arg2 error:(id *)arg3;
 + (BOOL)platformSupportsSOS;
 + (void)recoverOctagonUsingData:(id)arg1 recoveryKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -45,13 +46,12 @@
 - (id)peerDeviceNamesByPeerID:(id *)arg1;
 - (BOOL)peersHaveViewsEnabled:(id)arg1 error:(id *)arg2;
 - (void)performedCDPStateMachineRun:(id)arg1 success:(BOOL)arg2 error:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)performedCoreFollowUp:(id)arg1 error:(id)arg2;
 - (void)performedFailureCDPStateMachineRun:(id)arg1 error:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)performedSuccessfulCDPStateMachineRun:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)removeFriendsInClique:(id)arg1 error:(id *)arg2;
 - (void)removePairingDefault;
 - (BOOL)requestToJoinCircle:(id *)arg1;
-- (BOOL)resetAndEstablish:(id *)arg1;
+- (BOOL)resetAndEstablish:(long long)arg1 error:(id *)arg2;
 - (BOOL)safariPasswordSyncingEnabled:(id *)arg1;
 - (void)setPairingDefault:(BOOL)arg1;
 - (BOOL)setUserCredentialsAndDSID:(id)arg1 password:(id)arg2 error:(id *)arg3;

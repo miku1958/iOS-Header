@@ -31,7 +31,7 @@
 - (void).cxx_destruct;
 - (double)calculateEntropyOfProbVector:(id)arg1;
 - (id)getUUIDForPotentialRelabelingItemUsingInputCandidate:(struct RTPair *)arg1 relabeledProbVector:(id)arg2;
-- (id)init;
+- (id)initWithLoggingEnabled:(BOOL)arg1;
 - (id)initWithRelabeler:(id)arg1;
 - (double)logMax2ConfidenceRatioOfRelabeledProbVector:(id)arg1;
 - (id)maxUUIDOfProbVector:(id)arg1;

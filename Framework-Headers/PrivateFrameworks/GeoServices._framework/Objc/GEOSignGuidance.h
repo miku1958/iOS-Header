@@ -13,13 +13,15 @@
 @interface GEOSignGuidance : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOJunctionInfo *_junctionInfo;
     NSMutableArray *_secondarySigns;
     GEONameInfo *_shieldName;
     NSMutableArray *_signDetails;
     NSMutableArray *_signTitles;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _maneuverArrowOverride;
     unsigned int _stackRanking;
     struct {
@@ -81,6 +83,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)maneuverArrowOverrideAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

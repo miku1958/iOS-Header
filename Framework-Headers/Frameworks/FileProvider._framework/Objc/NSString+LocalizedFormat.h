@@ -26,6 +26,7 @@
 - (id)fp_filenameFromDisplayNameWithExtension:(id)arg1;
 - (id)fp_formatStringWithValues:(id)arg1 error:(id *)arg2;
 - (id)fp_fpIdentifier;
+- (BOOL)fp_isCJKLanguageIdentifier;
 - (id)fp_libnotifyPerUserNotificationName;
 - (id)fp_localizedFormatWithKeys:(id)arg1 fromDictionary:(id)arg2 error:(id *)arg3;
 - (id)fp_obfuscatedFilename;

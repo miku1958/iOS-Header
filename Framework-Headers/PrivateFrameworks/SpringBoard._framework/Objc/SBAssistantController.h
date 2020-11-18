@@ -11,14 +11,15 @@
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBFAuthenticationResponder-Protocol.h>
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
+#import <SpringBoard/SBFluidGestureDismissable-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SiriPresentationSpringBoardMainScreenViewControllerDelegate-Protocol.h>
 
-@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantWindow, SBFAuthenticationAssertion, SBHomeGestureParticipant, SBSystemAnimationSettings, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion;
+@class BSEventQueue, FBDisplayLayoutElement, NSHashTable, NSMutableArray, NSSet, NSString, SBAssistantWindow, SBFAuthenticationAssertion, SBFluidDismissalState, SBHomeGestureParticipant, SBSystemAnimationSettings, SiriPresentationSpringBoardMainScreenViewController, UIApplicationSceneDeactivationAssertion;
 @protocol BSInvalidatable, SBIdleTimer, SBIdleTimerCoordinating;
 
-@interface SBAssistantController : NSObject <CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
+@interface SBAssistantController : NSObject <SBFluidGestureDismissable, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, PTSettingsKeyObserver, SBHomeGestureParticipantDelegate, SBFAuthenticationResponder, SiriPresentationSpringBoardMainScreenViewControllerDelegate, SBIdleTimerProviding, CSCoverSheetOverlaying>
 {
     BSEventQueue *_operationQueue;
     NSString *_appDisplayIDBeingHosted;
@@ -35,20 +36,26 @@
     BOOL _visible;
     BOOL _dismissing;
     FBDisplayLayoutElement *_mainDisplayLayoutElement;
+    SBFluidDismissalState *_fluidDismissalState;
     NSSet *_audioCategoriesDisablingVolumeHUD;
     id<BSInvalidatable> _hideApplicationModalAlertsAssertion;
     SBSystemAnimationSettings *_settings;
     id<SBIdleTimer> _idleTimer;
     NSMutableArray *_windowLevelAssertions;
     id<SBIdleTimerCoordinating> _idleTimerCoordinator;
+    id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
 }
 
 @property (readonly, copy, nonatomic) NSString *coverSheetIdentifier;
 @property (readonly, nonatomic) double customIdleExpirationTimeout;
 @property (readonly, nonatomic) double customIdleWarningTimeout;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
+@property (strong, nonatomic) SBFluidDismissalState *fluidDismissalState;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic, getter=_idleTimerCoordinator, setter=_setIdleTimerCoordinator:) id<SBIdleTimerCoordinating> idleTimerCoordinator; // @synthesize idleTimerCoordinator=_idleTimerCoordinator;
 @property (readonly, nonatomic) long long idleTimerDuration;
@@ -60,6 +67,8 @@
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly, nonatomic) long long scrollingStrategy;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) id<BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 @property (readonly, nonatomic) BOOL unlockedDevice; // @synthesize unlockedDevice=_unlockedDevice;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
@@ -82,6 +91,7 @@
 - (void)_prototypeSettingsChanged;
 - (void)_remoteLocked:(id)arg1;
 - (void)_restoreOrientation;
+- (void)_setStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setUnlockedDevice:(BOOL)arg1;
 - (void)_setVisible:(BOOL)arg1;
 - (void)_toggleModalAlertHidingAssertion:(BOOL)arg1;

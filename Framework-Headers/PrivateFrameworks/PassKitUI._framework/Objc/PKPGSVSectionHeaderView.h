@@ -13,6 +13,7 @@
 
 @interface PKPGSVSectionHeaderView : UIView <PKPGSVSectionHeaderView>
 {
+    BOOL _sizesDirty;
     UILabel *_titleView;
     UILabel *_environmentLabel;
     UIButton *_actionButton;
@@ -40,6 +41,7 @@
 - (id)leadingView;
 - (BOOL)needsUpdate;
 - (id)trailingView;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

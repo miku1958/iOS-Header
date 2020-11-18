@@ -37,9 +37,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;
 - (void)_createTitleLabelIfNecessary;
-- (void)_updateTitleFont;
-- (void)_updateTitleFontSize;
-- (void)_updateTitleTextColor;
+- (void)_updateTitleLabel;
 - (void)_updateUIHighlightedOverlayView;
 - (void)dealloc;
 - (id)initWithStyle:(unsigned long long)arg1 orientation:(unsigned long long)arg2 controlSize:(unsigned long long)arg3;

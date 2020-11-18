@@ -8,13 +8,14 @@
 
 #import <HomeUI/HUFeatureOnboardingFlow-Protocol.h>
 
-@class NAFuture, NSString, UIViewController;
+@class HMHome, NAFuture, NSString, UIViewController;
 @protocol HUConfigurationViewController;
 
 @interface HUHomeAssistantDevicesUnsupportedLanguageFlow : NSObject <HUFeatureOnboardingFlow>
 {
     BOOL _shouldAbortThisOnboardingFlowGroup;
     BOOL _shouldAbortAllOnboarding;
+    HMHome *_home;
     NAFuture *_onboardingFuture;
     UIViewController<HUConfigurationViewController> *_initialViewController;
 }
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController; // @synthesize initialViewController=_initialViewController;
 @property (strong, nonatomic) NAFuture *onboardingFuture; // @synthesize onboardingFuture=_onboardingFuture;
 @property (nonatomic) BOOL shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;
@@ -29,7 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1;
+- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1 home:(id)arg2;
 - (id)processUserInput:(id)arg1;
 
 @end

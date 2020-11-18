@@ -76,6 +76,7 @@
 
 + (id)_fetchPhotosHighlightUUIDByAssetUUIDForAssetUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (BOOL)cleanupEmptyHighlights;
++ (id)dateRangeTitleGenerator;
 + (id)entityKeyMap;
 + (id)fetchChildDayGroupHighlightsForHighlight:(id)arg1 options:(id)arg2;
 + (id)fetchChildHighlightsForHighlight:(id)arg1 options:(id)arg2;

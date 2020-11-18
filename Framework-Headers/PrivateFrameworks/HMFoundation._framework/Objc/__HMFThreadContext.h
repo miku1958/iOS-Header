@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)currentContext;
 - (void).cxx_destruct;
 - (id)__init;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

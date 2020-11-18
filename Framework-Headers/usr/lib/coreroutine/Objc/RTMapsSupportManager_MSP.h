@@ -8,43 +8,49 @@
 
 #import <coreroutine/MSPQueryDelegate-Protocol.h>
 
-@class NSString, NewMSPQuery, RTInvocationDispatcher;
+@class NSMutableDictionary, NSString, RTTimer, RTTimerManager;
 
 @interface RTMapsSupportManager_MSP : RTMapsSupportManager <MSPQueryDelegate>
 {
-    RTInvocationDispatcher *_favoritesDispatcher;
-    RTInvocationDispatcher *_historyPlaceDisplaysDispatcher;
-    RTInvocationDispatcher *_historyRoutesDispatcher;
-    RTInvocationDispatcher *_pinnedPlacesDispatcher;
-    NewMSPQuery *_favoritesQuery;
-    NewMSPQuery *_historyPlaceDisplaysQuery;
-    NewMSPQuery *_historyRoutesQuery;
-    NewMSPQuery *_pinnedPlacesQuery;
-    BOOL _favoritesContainerLoaded;
-    BOOL _historyPlaceDisplaysContainerLoaded;
-    BOOL _historyRoutesContainerLoaded;
-    BOOL _pinnedPlacesContainerLoaded;
+    RTTimerManager *_timerManager;
+    RTTimer *_queryTimer;
+    NSMutableDictionary *_queryMap;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableDictionary *queryMap; // @synthesize queryMap=_queryMap;
+@property (strong, nonatomic) RTTimer *queryTimer; // @synthesize queryTimer=_queryTimer;
 @property (readonly) Class superclass;
 
++ (id)createQueryWithContainer:(id)arg1 delegate:(id)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_clearParkedCarBulletin;
+- (void)_createFavoritesQuery:(id)arg1;
+- (void)_createHistoryPlaceDisplaysQuery:(id)arg1;
+- (void)_createHistoryRoutesQuery:(id)arg1;
+- (void)_createPinnedPlacesQuery:(id)arg1;
+- (void)_createQueries;
 - (void)_fetchFavoritePlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchHistoryEntryPlaceDisplaysWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchHistoryEntryRoutesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_handleQueryTimerExpiry;
+- (void)_invalidateQueryTimer;
+- (void)_queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
+- (void)_setup;
 - (void)_showParkedCarBulletinForEvent:(id)arg1;
 - (void)_showParkedCarReplacementBulletinForEvent:(id)arg1 replacingEvent:(id)arg2;
+- (void)_startQueryTimer;
+- (void)dealloc;
 - (id)favoritesContainer;
 - (id)historyContainer;
-- (id)initWithMapServiceManager:(id)arg1;
+- (id)initWithMapServiceManager:(id)arg1 timerManager:(id)arg2;
 - (id)pinnedPlacesContainer;
 - (void)queryContentsDidChange:(id)arg1 contentsVersion:(unsigned long long)arg2;
 - (void)queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
+- (void)setup;
 
 @end
 

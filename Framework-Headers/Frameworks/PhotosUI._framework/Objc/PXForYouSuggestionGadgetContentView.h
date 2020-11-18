@@ -59,7 +59,9 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
-+ (id)placeholderFilters;
++ (id)_gaussianBlurFilter;
++ (id)darkPlaceholderFilters;
++ (id)lightPlaceholderFilters;
 + (void)preloadResources;
 + (double)scaledSubtitleBaselineDistance;
 + (double)scaledSuggestionBaselineDistance;

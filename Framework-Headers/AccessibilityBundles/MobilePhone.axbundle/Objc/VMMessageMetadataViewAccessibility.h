@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)_accessibilityExpandedStatus;
 - (BOOL)_axIsVoiceMailUnread;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;

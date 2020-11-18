@@ -37,6 +37,7 @@
 - (id)_axCurrentLocationText;
 - (id)_axElements;
 - (BOOL)_axElementsInvalidForVisibleBounds;
+- (void)_axHandleLabelsDidLayout;
 - (void)_axInitializeTimers;
 - (struct CGPoint)_axIntersectionBetweenRoad:(id)arg1 andOtherRoad:(id)arg2;
 - (id)_axLastSummaryForVisibleBounds;
@@ -114,8 +115,9 @@
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
 - (void)explorationStateChanged:(long long)arg1;
-- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 contentScale:(double)arg3;
+- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 contentScale:(double)arg3 auditToken:(id)arg4;
 - (BOOL)isAccessibilityElement;
+- (void)labelManagerDidLayout;
 - (void)mapLabelsDidLayout:(id)arg1;
 - (void)setCurrentLocationText:(id)arg1;
 - (void)setMapType:(int)arg1;

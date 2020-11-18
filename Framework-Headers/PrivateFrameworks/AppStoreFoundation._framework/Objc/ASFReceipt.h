@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSString;
 
 @interface ASFReceipt : NSObject
 {
@@ -55,6 +55,7 @@
 @property (readonly) NSString *parentalControls; // @synthesize parentalControls=_parentalControls;
 @property (readonly) NSString *path; // @synthesize path=_path;
 @property (readonly) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
+@property (readonly) NSData *receiptData;
 @property (readonly) NSString *receiptDataString;
 @property (readonly) NSString *receiptType; // @synthesize receiptType=_receiptType;
 @property (readonly) NSDate *renewalDate; // @synthesize renewalDate=_renewalDate;

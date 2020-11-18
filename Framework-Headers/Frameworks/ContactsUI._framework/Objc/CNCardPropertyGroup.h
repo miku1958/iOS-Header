@@ -63,6 +63,7 @@
 - (BOOL)labelsAreUnique;
 - (id)labelsForItem:(id)arg1 options:(unsigned long long)arg2;
 - (id)labelsInUseByGroup;
+- (id)lastEditingItem;
 - (id)nextAvailableLabel;
 - (id)policyForItem:(id)arg1;
 - (Class)propertyGroupItemClass;

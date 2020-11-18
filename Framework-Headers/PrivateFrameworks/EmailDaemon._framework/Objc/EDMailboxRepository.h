@@ -33,6 +33,8 @@
 - (void)cancelObservation:(id)arg1;
 - (void)getMailboxesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithMailboxPersistence:(id)arg1;
+- (void)mailboxObjectIDsForMailboxType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)mailboxTypeForMailboxObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performMailboxChangeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)refreshMailboxList;
 - (void)startObservingMailboxChangesWithChangeObserver:(id)arg1 observationIdentifier:(id)arg2;

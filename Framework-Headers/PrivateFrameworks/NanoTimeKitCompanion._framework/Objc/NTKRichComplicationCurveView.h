@@ -28,6 +28,7 @@
 - (void)_setupGradientLayer:(id)arg1;
 - (double)_shapeLineWidth;
 - (BOOL)_shouldReverseGradient;
+- (void)_updatePath;
 - (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 beginAngle:(double)arg3 endAngle:(double)arg4 forDevice:(id)arg5 withFilterStyle:(long long)arg6;
 - (void)layoutSubviews;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDateInterval, NSMutableSet, PLFrequentLocationManager, PLHighlightHierarchy, PLLocalCreationDateCreator, PLPhotosHighlightClusterGenerator;
+@class NSDateInterval, NSMutableSet, PLDateRangeTitleGenerator, PLFrequentLocationManager, PLHighlightHierarchy, PLLocalCreationDateCreator, PLPhotosHighlightClusterGenerator;
 @protocol PLMomentGenerationDataManagement><PLHighlightItemModelReader;
 
 @interface PLPhotosHighlightGenerator : NSObject
@@ -15,6 +15,7 @@
     NSDateInterval *_recentHighlightsDateInterval;
     PLFrequentLocationManager *_frequentLocationManager;
     PLLocalCreationDateCreator *_localCreationDateCreator;
+    PLDateRangeTitleGenerator *_dateRangeTitleGenerator;
     PLHighlightHierarchy *_entitiesToUpdate;
     NSMutableSet *_highlightsWithDeletedAssets;
     NSMutableSet *_upsertedHighlights;
@@ -24,6 +25,7 @@
 }
 
 @property (weak, nonatomic) id<PLMomentGenerationDataManagement><PLHighlightItemModelReader> dataManager; // @synthesize dataManager=_dataManager;
+@property (readonly, nonatomic) PLDateRangeTitleGenerator *dateRangeTitleGenerator; // @synthesize dateRangeTitleGenerator=_dateRangeTitleGenerator;
 @property (nonatomic) BOOL didCallBeginGeneration; // @synthesize didCallBeginGeneration=_didCallBeginGeneration;
 @property (strong, nonatomic) PLHighlightHierarchy *entitiesToUpdate; // @synthesize entitiesToUpdate=_entitiesToUpdate;
 @property (readonly, nonatomic) PLFrequentLocationManager *frequentLocationManager; // @synthesize frequentLocationManager=_frequentLocationManager;
@@ -47,7 +49,7 @@
 + (void)initialize;
 + (id)provisionalKeyAssetForHighlight:(id)arg1;
 + (void)updateKeyAssetForHighlights:(id)arg1;
-+ (void)updateTitleForHighlights:(id)arg1 forKind:(unsigned short)arg2 forceUpdateLocale:(BOOL)arg3;
++ (void)updateTitleForHighlights:(id)arg1 forKind:(unsigned short)arg2 forceUpdateLocale:(BOOL)arg3 dateRangeTitleGenerator:(id)arg4;
 + (id)userDefaults;
 - (void).cxx_destruct;
 - (id)_collectMomentsRequiringReprocessingFromMoments:(id)arg1 withAllMoments:(id)arg2;

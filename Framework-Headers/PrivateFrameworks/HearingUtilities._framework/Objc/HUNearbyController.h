@@ -8,7 +8,7 @@
 
 #import <HearingUtilities/HUNearbyDeviceDelegate-Protocol.h>
 
-@class AXRemoteHearingAidDevice, NSArray, NSObject, NSString, RPCompanionLinkClient, SFDeviceDiscovery;
+@class AXDispatchTimer, AXRemoteHearingAidDevice, NSArray, NSObject, NSString, RPCompanionLinkClient, SFDeviceDiscovery;
 @protocol HUNearbyControllerDelegate, OS_dispatch_queue;
 
 @interface HUNearbyController : HUDeviceController <HUNearbyDeviceDelegate>
@@ -23,6 +23,7 @@
     RPCompanionLinkClient *_client;
     AXRemoteHearingAidDevice *_localDevice;
     NSObject<OS_dispatch_queue> *_mediaQueue;
+    AXDispatchTimer *_sendConnectionToCompanionTimer;
 }
 
 @property (copy, nonatomic) NSArray *availableDevices; // @synthesize availableDevices=_availableDevices;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) AXRemoteHearingAidDevice *localDevice; // @synthesize localDevice=_localDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property (nonatomic, getter=isSearching) BOOL searching; // @synthesize searching=_searching;
+@property (strong, nonatomic) AXDispatchTimer *sendConnectionToCompanionTimer; // @synthesize sendConnectionToCompanionTimer=_sendConnectionToCompanionTimer;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
@@ -60,10 +62,12 @@
 - (id)nearbyDeviceWithPeerDevice:(id)arg1;
 - (void)registerMediaNotifications;
 - (void)relinquishConnectionForReason:(long long)arg1;
+- (BOOL)representsLocalDevices;
 - (void)requestConnectionForReason:(long long)arg1;
 - (void)requestHandoffForMedia;
 - (void)routesDidChange:(id)arg1;
 - (void)sendConnectionToCompanionIfPossible;
+- (void)sendConnectionToCompanionIfPossible:(BOOL)arg1;
 - (void)sendConnectionUpdateToPeers;
 - (void)sendMessage:(id)arg1 toDevices:(id)arg2;
 - (void)sendMessageToAllDevices:(id)arg1;

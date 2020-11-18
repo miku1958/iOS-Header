@@ -28,9 +28,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WFVariableInputCoordinator *variableCoordinator; // @synthesize variableCoordinator=_variableCoordinator;
 
-+ (BOOL)supportsLongPressGestureForSlotWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)negateText;
 - (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
@@ -45,7 +44,6 @@
 - (BOOL)textEntryShouldChangeText:(id)arg1;
 - (void)textEntryTextDidChange:(id)arg1;
 - (void)textEntryWillBegin:(id)arg1 allowMultipleLines:(BOOL *)arg2;
-- (id)variableStateForVariablePicker;
 
 @end
 

@@ -23,9 +23,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_reallyPlaySound;
+- (void)_reallyStopSound;
 - (id)initWithType:(long long)arg1 duration:(double)arg2;
-- (void)playSound;
-- (void)stopSound;
 
 @end
 

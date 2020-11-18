@@ -30,6 +30,7 @@
 - (void)_notifyDelegateOfColorPaletteChangeIfNecessary;
 - (void)cancelButtonTappedToDismissColorViewController;
 - (void)controlView:(id)arg1 colorPaletteDidChange:(id)arg2;
+- (void)controlView:(id)arg1 didSelectColorAtIndexPath:(id)arg2;
 - (void)controlView:(id)arg1 interactionStateDidChange:(BOOL)arg2 forFirstTouch:(BOOL)arg3;
 - (void)controlView:(id)arg1 showAuxiliaryView:(id)arg2;
 - (void)hideAuxiliaryViewForControlView:(id)arg1;

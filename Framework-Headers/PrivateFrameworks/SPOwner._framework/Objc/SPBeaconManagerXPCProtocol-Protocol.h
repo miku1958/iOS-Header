@@ -7,14 +7,13 @@
 #import <SPOwner/NSObject-Protocol.h>
 #import <SPOwner/SPLocalBeaconManagerXPCProtocol-Protocol.h>
 
-@class NSArray, NSDateInterval, NSString, NSUUID;
+@class NSDateInterval, NSString, NSUUID;
 
 @protocol SPBeaconManagerXPCProtocol <NSObject, SPLocalBeaconManagerXPCProtocol>
+- (oneway void)allBeaconsOfType:(unsigned long long)arg1 completion:(void (^)(NSSet *))arg2;
 - (oneway void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (oneway void)beaconingKeysForUUID:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
-- (oneway void)commandKeysForUUIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
-- (oneway void)commandKeysForUUIDs:(NSArray *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSDictionary *))arg3;
 - (oneway void)notificationBeaconForSubscriptionId:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (oneway void)primaryAccountModified;
 - (oneway void)removeLocalAccountDataWithCompletion:(void (^)(BOOL))arg1;

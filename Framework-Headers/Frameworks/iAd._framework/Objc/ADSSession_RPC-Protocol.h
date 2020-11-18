@@ -23,6 +23,7 @@
 - (void)_remote_disablePolicyEngine;
 - (void)_remote_enablePolicyEngine;
 - (void)_remote_reportContentImpressionForAdSpaceWithIdenfier:(NSString *)arg1;
+- (void)_remote_reportErrorEvent:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2 errorDetails:(NSString *)arg3 badURLs:(NSArray *)arg4;
 - (void)_remote_reportNativeClickEventForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_reportPreRollDidStartForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_reportPreRollDidStopForAdSpaceWithIdentifier:(NSString *)arg1;

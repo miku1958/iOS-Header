@@ -31,5 +31,7 @@
 + (id)mailSubtitleGrayColor;
 + (id)mf_colorNamed:(id)arg1;
 + (id)quoteColorsForSupportedInterfaceStyle;
+- (double)mf_contrastRatioTo:(id)arg1;
+- (double)mf_luminance;
 @end
 

@@ -18,6 +18,7 @@
 - (UITraitCollection *)traitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 
 @optional
+- (BOOL)allowsPresentationWithOnlySettings;
 - (id<HUOpenURLHandling>)detailViewURLHandlerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 - (UIViewController<HUDetailsPresentationDelegateHost> *)detailsViewControllerForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 item:(HFItem *)arg2;
 - (long long)preferredModalPresentationStyleForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;

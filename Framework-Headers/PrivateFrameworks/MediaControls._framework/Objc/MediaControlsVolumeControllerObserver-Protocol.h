@@ -12,6 +12,7 @@
 - (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didUpdateSplitRoute:(BOOL)arg2;
 
 @optional
+- (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didChangeUserInteractionEnabled:(BOOL)arg2 forRoute:(unsigned long long)arg3;
 - (void)mediaControlsVolumeController:(MediaControlsVolumeController *)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
 @end
 

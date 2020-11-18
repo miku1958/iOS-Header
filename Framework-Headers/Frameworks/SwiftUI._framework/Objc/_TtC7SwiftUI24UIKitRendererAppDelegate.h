@@ -8,18 +8,14 @@
 
 #import <SwiftUI/UIApplicationDelegate-Protocol.h>
 
-@class MISSING_TYPE, UIWindow;
-
 __attribute__((visibility("hidden")))
 @interface _TtC7SwiftUI24UIKitRendererAppDelegate : UIResponder <UIApplicationDelegate>
 {
-    MISSING_TYPE *window;
 }
-
-@property (nonatomic, strong) UIWindow *window; // @synthesize window;
 
 - (void).cxx_destruct;
 - (void)_application:(id)arg1 statusBarTouchesEnded:(id)arg2;
+- (id)application:(id)arg1 configurationForConnectingSceneSession:(id)arg2 options:(id)arg3;
 - (BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2;
 - (id)init;
 

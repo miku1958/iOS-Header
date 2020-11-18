@@ -25,6 +25,9 @@
     PKPaymentPass *_currentlySelectedPaymentPass;
     UISwitch *_peerPaymentAccountPaymentSwitch;
     NSArray *_latestPreferences;
+    BOOL _keyboardVisible;
+    unsigned short _layoutRecursionCounter;
+    BOOL _preferredContentSizeUpdateDeferred;
     NSArray *_preferences;
     long long _style;
     UITableView *_tableView;
@@ -110,6 +113,7 @@
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

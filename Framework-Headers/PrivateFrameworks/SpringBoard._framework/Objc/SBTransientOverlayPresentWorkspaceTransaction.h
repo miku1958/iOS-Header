@@ -25,6 +25,7 @@
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
 - (void)_didComplete;
+- (void)_logForInterruptAttemptReason:(id)arg1;
 - (void)_performStandardPresentationAnimated:(BOOL)arg1;
 - (void)_willBegin;
 - (void)animationControllerDidFinishAnimation:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <Photos/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableSet, NSNumber, NSPredicate, NSSet, NSString, PHPhotoLibrary;
+@class NSArray, NSMutableSet, NSNumber, NSPredicate, NSSet, NSString, PHPhotoLibrary, PHQueryChangeDetectionCriteria;
 
 @interface PHFetchOptions : NSObject <NSCopying>
 {
@@ -53,6 +53,7 @@
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
+    PHQueryChangeDetectionCriteria *_changeDetectionCriteria;
     NSString *_transientIdentifier;
     NSPredicate *_internalPredicate;
     NSArray *_internalSortDescriptors;
@@ -62,6 +63,7 @@
 }
 
 @property (nonatomic) long long cacheSizeForFetch;
+@property (copy) PHQueryChangeDetectionCriteria *changeDetectionCriteria; // @synthesize changeDetectionCriteria=_changeDetectionCriteria;
 @property (nonatomic) long long chunkSizeForFetch;
 @property (nonatomic) long long curationType;
 @property (strong, nonatomic) NSArray *customObjectIDSortOrder; // @synthesize customObjectIDSortOrder=_customObjectIDSortOrder;

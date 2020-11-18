@@ -25,7 +25,7 @@
 + (CDStruct_b8464340)event;
 + (id)supportedMetricKeys;
 + (id)unsignedIntegerKeys;
-- (id)init;
+- (id)initWithLoggingEnabled:(BOOL)arg1;
 - (double)safeFraction:(double)arg1 denominator:(double)arg2;
 - (void)setBucketedPercentageMetricsWithMappings:(id)arg1 sharedDenominator:(double)arg2 sharedBins:(id)arg3;
 - (void)setDerivedMetrics;

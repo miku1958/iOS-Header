@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/RESectionDelegate-Protocol.h>
+#import <RelevanceEngine/RESectionProperties-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, REElementQueue, REMLElementComparator, _RESectionDescriptor;
 @protocol RESectionDelegate;
 
-@interface RESection : NSObject <RESectionDelegate>
+@interface RESection : NSObject <RESectionDelegate, RESectionProperties>
 {
     _RESectionDescriptor *_descriptor;
     REElementQueue *_queue;
@@ -31,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RESectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *elements;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long maximumElements;
 @property (readonly, nonatomic) NSString *name;

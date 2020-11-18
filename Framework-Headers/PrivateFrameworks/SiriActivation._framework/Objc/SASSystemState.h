@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
+@class AFNotifyObserver, NSHashTable, SASLockStateMonitor, SUICApplicationStateHelper;
 
 @interface SASSystemState : NSObject
 {
@@ -16,6 +16,8 @@
     SASLockStateMonitor *_lockStateMonitor;
     SUICApplicationStateHelper *_applicationStateHelper;
     NSHashTable *_listeners;
+    AFNotifyObserver *_observerWirelessSplitter;
+    AFNotifyObserver *_observerBluetoothGuestConnected;
 }
 
 @property (nonatomic) BOOL accessibilityShortcutEnabled; // @synthesize accessibilityShortcutEnabled=_accessibilityShortcutEnabled;
@@ -24,7 +26,10 @@
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property (strong, nonatomic) SASLockStateMonitor *lockStateMonitor; // @synthesize lockStateMonitor=_lockStateMonitor;
+@property (strong, nonatomic) AFNotifyObserver *observerBluetoothGuestConnected; // @synthesize observerBluetoothGuestConnected=_observerBluetoothGuestConnected;
+@property (strong, nonatomic) AFNotifyObserver *observerWirelessSplitter; // @synthesize observerWirelessSplitter=_observerWirelessSplitter;
 
++ (id)new;
 + (id)sharedSystemState;
 - (void).cxx_destruct;
 - (void)_updateAccessibilityState;
@@ -38,8 +43,10 @@
 - (id)init;
 - (BOOL)isConnectedToCarPlay;
 - (BOOL)isConnectedToTrustedCarPlay;
+- (BOOL)isGuestConnected;
 - (BOOL)isInActiveCall;
 - (BOOL)isPad;
+- (BOOL)isWirelessSplitterOn;
 - (void)monitorCarSessions;
 - (void)removeStateChangeListener:(id)arg1;
 - (BOOL)siriIsEnabled;

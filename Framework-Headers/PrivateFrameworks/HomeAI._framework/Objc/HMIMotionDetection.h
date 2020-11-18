@@ -13,8 +13,8 @@
 
 @property (readonly) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
 
+- (BOOL)applyEventTypeAndCheckIfSubBoundingIsStatic:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
 - (id)initWithBoundingBox:(struct CGRect)arg1;
-- (BOOL)isSubBoundingBoxStatic:(struct CGRect)arg1 forMetric:(long long)arg2;
 
 @end
 

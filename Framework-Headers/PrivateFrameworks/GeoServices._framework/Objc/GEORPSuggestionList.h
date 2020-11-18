@@ -13,11 +13,13 @@
 @interface GEORPSuggestionList : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_autocompleteRequest;
     GEOPDPlaceResponse *_autocompleteResponse;
     NSMutableArray *_entrys;
     NSString *_query;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_autocompleteRequest:1;
         unsigned int read_autocompleteResponse:1;
@@ -55,6 +57,8 @@
 - (id)entryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entrysCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

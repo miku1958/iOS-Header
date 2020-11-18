@@ -31,7 +31,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setAvailabilityRequestInProgressState;
 - (void)setInitialSearchInProgressState;
-- (void)setNoAvailableTimesStateWithNumberOfExistingTimes:(unsigned long long)arg1;
+- (void)setNoAvailableTimesStateWithNumberOfExistingTimes:(unsigned long long)arg1 hasError:(BOOL)arg2;
 - (void)setShowMoreState;
 - (void)updateConstraints;
 

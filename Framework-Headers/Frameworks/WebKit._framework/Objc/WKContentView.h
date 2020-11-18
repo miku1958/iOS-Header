@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
     BOOL _preventsPanningInXAxis;
     BOOL _preventsPanningInYAxis;
     struct RetainPtr<WKSyntheticTapGestureRecognizer> _singleTapGestureRecognizer;
-    struct RetainPtr<_UIWebHighlightLongPressGestureRecognizer> _highlightLongPressGestureRecognizer;
+    struct RetainPtr<WKHighlightLongPressGestureRecognizer> _highlightLongPressGestureRecognizer;
     struct RetainPtr<UILongPressGestureRecognizer> _longPressGestureRecognizer;
     struct RetainPtr<WKSyntheticTapGestureRecognizer> _doubleTapGestureRecognizer;
     struct RetainPtr<UITapGestureRecognizer> _nonBlockingDoubleTapGestureRecognizer;
@@ -47,6 +47,10 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UITapGestureRecognizer> _stylusSingleTapGestureRecognizer;
     struct RetainPtr<WKInspectorNodeSearchGestureRecognizer> _inspectorNodeSearchGestureRecognizer;
     struct RetainPtr<WKTouchActionGestureRecognizer> _touchActionGestureRecognizer;
+    struct RetainPtr<UISwipeGestureRecognizer> _touchActionLeftSwipeGestureRecognizer;
+    struct RetainPtr<UISwipeGestureRecognizer> _touchActionRightSwipeGestureRecognizer;
+    struct RetainPtr<UISwipeGestureRecognizer> _touchActionUpSwipeGestureRecognizer;
+    struct RetainPtr<UISwipeGestureRecognizer> _touchActionDownSwipeGestureRecognizer;
     struct RetainPtr<UIWKTextInteractionAssistant> _textSelectionAssistant;
     struct OptionSet<WebKit::SuppressSelectionAssistantReason> _suppressSelectionAssistantReasons;
     struct RetainPtr<UITextInputTraits> _traits;
@@ -119,9 +123,11 @@ __attribute__((visibility("hidden")))
     BOOL _isBlurringFocusedElement;
     BOOL _focusRequiresStrongPasswordAssistance;
     BOOL _waitingForEditDragSnapshot;
+    long long _dropAnimationCount;
     BOOL _hasSetUpInteractions;
     unsigned long long _ignoreSelectionCommandFadeCount;
     long long _suppressNonEditableSingleTapTextInteractionCount;
+    long long _processingChangeSelectionWithGestureCount;
     CompletionHandler_2aa2525f _domPasteRequestHandler;
     struct BlockPtr<void (UIWKAutocorrectionContext *)> _pendingAutocorrectionContextHandler;
     struct DragDropInteractionState _dragDropInteractionState;
@@ -152,6 +158,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL _shouldAvoidResizingWhenInputViewBoundsChange;
 @property (readonly, nonatomic) BOOL _shouldAvoidScrollingWhenFocusedContentIsVisible;
 @property (readonly, nonatomic) BOOL _shouldUseContextMenus;
+@property (readonly, nonatomic) BOOL _shouldUseLegacySelectPopoverDismissalBehavior;
 @property (nonatomic) long long _textInputSource;
 @property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
 @property (nonatomic) BOOL acceptsDictationSearchResults;
@@ -321,7 +328,7 @@ __attribute__((visibility("hidden")))
 - (void)_createAndConfigureLongPressGestureRecognizer;
 - (unique_ptr_54a90528)_createDrawingAreaProxy:(struct WebProcessProxy *)arg1;
 - (id)_createTargetedPreviewIfPossible;
-- (BOOL)_currentPositionInformationIsApproximatelyValidForRequest:(const struct InteractionInformationRequest *)arg1;
+- (BOOL)_currentPositionInformationIsApproximatelyValidForRequest:(const struct InteractionInformationRequest *)arg1 radiusForApproximation:(int)arg2;
 - (BOOL)_currentPositionInformationIsValidForRequest:(const struct InteractionInformationRequest *)arg1;
 - (id)_dataDetectionResults;
 - (id)_dataForPreviewItemController:(id)arg1 atPosition:(struct CGPoint)arg2 type:(long long *)arg3;
@@ -337,6 +344,7 @@ __attribute__((visibility("hidden")))
 - (void)_deliverDelayedDropPreviewIfPossible:(Optional_bb099823)arg1;
 - (void)_didChangeDragCaretRect:(struct CGRect)arg1 currentRect:(struct CGRect)arg2;
 - (void)_didChangeDragInteractionPolicy;
+- (void)_didChangeLinkPreviewAvailability;
 - (void)_didChangeWebViewEditability;
 - (void)_didCommitLayerTree:(const struct RemoteLayerTreeTransaction *)arg1;
 - (void)_didCommitLoadForMainFrame;
@@ -381,6 +389,7 @@ __attribute__((visibility("hidden")))
 - (id)_formInputSession;
 - (void)_handleAutocorrectionContext:(const struct WebAutocorrectionContext *)arg1;
 - (BOOL)_handleDOMPasteRequestWithResult:(unsigned char)arg1;
+- (BOOL)_handleDropByInsertingImagePlaceholders:(id)arg1 session:(id)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect *)arg2 fitEntireRect:(BOOL)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5;
 - (void)_handleTouchActionsForTouchEvent:(const struct NativeWebTouchEvent *)arg1;
@@ -488,6 +497,7 @@ __attribute__((visibility("hidden")))
 - (void)_shareForWebView:(id)arg1;
 - (BOOL)_shouldShowAutomaticKeyboardUIIgnoringInputMode;
 - (BOOL)_shouldSuppressSelectionCommands;
+- (BOOL)_shouldToggleSelectionCommandsAfterTapAt:(struct CGPoint)arg1;
 - (void)_showAttachmentSheet;
 - (void)_showDataDetectorsSheet;
 - (void)_showDictionary:(id)arg1;
@@ -528,8 +538,10 @@ __attribute__((visibility("hidden")))
 - (void)_updateInitialWritingDirectionIfNecessary;
 - (void)_updateInputContextAfterBlurringAndRefocusingElement;
 - (void)_updateInteractionTintColor;
+- (void)_updateLongPressAndHighlightLongPressGestures;
 - (void)_updateSelectionAssistantSuppressionState;
 - (void)_updateTapHighlight;
+- (BOOL)_waitForDrawToPDFCallback;
 - (void)_webTouchEvent:(const struct NativeWebTouchEvent *)arg1 preventsNativeGestures:(BOOL)arg2;
 - (void)_webTouchEventsRecognized:(id)arg1;
 - (void)_webViewDestroyed;
@@ -654,6 +666,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 canPreventGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldIgnoreWebTouchWithEvent:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerMayDoubleTapToZoomWebView:(id)arg1;
@@ -717,7 +730,7 @@ __attribute__((visibility("hidden")))
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
 - (id)positionFromPosition:(id)arg1 toBoundary:(long long)arg2 inDirection:(long long)arg3;
-- (Optional_2b0652bb)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_d40c49cf)positionInformationForActionSheetAssistant:(id)arg1;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
 - (id)previousUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (id)rangeEnclosingPosition:(id)arg1 withGranularity:(long long)arg2 inDirection:(long long)arg3;

@@ -26,17 +26,21 @@
     NSString *_iconImageName;
     NSString *_title;
     NSSet *_possibleTitles;
+    NSString *_caption;
     struct UIEdgeInsets _imageEdgeInsets;
+    struct UIEdgeInsets _hitTestOutsets;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
 @property (strong, nonatomic) PXCuratedLibraryActionPerformer *actionPerformer; // @synthesize actionPerformer=_actionPerformer;
+@property (copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property (readonly, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIColor *highlightedContentColor; // @synthesize highlightedContentColor=_highlightedContentColor;
 @property (readonly, nonatomic) UIImage *highlightedIconImage; // @synthesize highlightedIconImage=_highlightedIconImage;
+@property (nonatomic) struct UIEdgeInsets hitTestOutsets; // @synthesize hitTestOutsets=_hitTestOutsets;
 @property (readonly, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (readonly, nonatomic) NSString *iconImageName; // @synthesize iconImageName=_iconImageName;
 @property (nonatomic) struct UIEdgeInsets imageEdgeInsets; // @synthesize imageEdgeInsets=_imageEdgeInsets;

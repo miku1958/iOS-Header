@@ -9,20 +9,14 @@
 #import <AssistantUI/AFUISiriRemoteViewHosting-Protocol.h>
 #import <AssistantUI/SiriUISiriStatusViewDelegate-Protocol.h>
 
-@class AFUIStarkGradientView, NSString, SiriUIAudioRoutePickerButton, SiriUIConfiguration, SiriUIContentButton, SiriUIHelpButton, SiriUIVisualEffectView, UIImageView, UILabel, _UIBackdropView, _UIVisualEffectBackdropView;
+@class AFUISiriCarPlayView, NSString, SiriUIAudioRoutePickerButton, SiriUIConfiguration, SiriUIContentButton, SiriUIHelpButton, SiriUIVisualEffectView, UIImageView, UILabel, _UIBackdropView;
 @protocol AFUISiriViewDataSource, AFUISiriViewDelegate, SiriUISiriStatusViewProtocol;
 
 @interface AFUISiriView : UIView <SiriUISiriStatusViewDelegate, AFUISiriRemoteViewHosting>
 {
     _UIBackdropView *_backdropView;
     BOOL _backdropViewVisible;
-    UIView *_carPlayContainerView;
-    UIView *_carPlayBackgroundView;
-    UIImageView *_carPlayAuraView;
-    AFUIStarkGradientView *_carPlayGradientView;
-    _UIVisualEffectBackdropView *_carPlayGatekeeperBackdropView;
-    BOOL _carPlayGatekeeperBackdropViewVisible;
-    UIView *_carPlaySystemBackgroundView;
+    AFUISiriCarPlayView *_carPlayView;
     struct UIEdgeInsets _suspendedSafeAreaInsets;
     BOOL _safeAreaInsetsSuspended;
     UIView *_dimmingAndLockContainer;
@@ -47,22 +41,18 @@
     BOOL _keepStatusViewHidden;
     BOOL _flamesViewDeferred;
     BOOL _helpButtonDeferred;
-    BOOL _carDisplaySnippetVisible;
     BOOL _inFluidDismissal;
     UIView *_remoteContentView;
     UIView *_foregroundView;
     UIView *_foregroundContainerView;
     id<AFUISiriViewDataSource> _dataSource;
     id<AFUISiriViewDelegate> _delegate;
-    long long _carDisplaySnippetMode;
     long long _siriSessionState;
     long long _mode;
     UIView<SiriUISiriStatusViewProtocol> *_siriStatusView;
 }
 
 @property (readonly, nonatomic) _UIBackdropView *backgroundBlurView;
-@property (nonatomic) long long carDisplaySnippetMode; // @synthesize carDisplaySnippetMode=_carDisplaySnippetMode;
-@property (nonatomic) BOOL carDisplaySnippetVisible; // @synthesize carDisplaySnippetVisible=_carDisplaySnippetVisible;
 @property (weak, nonatomic) id<AFUISiriViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AFUISiriViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -98,9 +88,9 @@
 - (void)_destroyAssistantVersionLabelIfNecessary;
 - (BOOL)_helpButtonIsVisible;
 - (void)_helpButtonTapped:(id)arg1;
+- (BOOL)_isCarPlayMode:(long long)arg1;
 - (BOOL)_isTextInputEnabled;
 - (void)_layoutReportBugButton;
-- (void)_loadCarPlayAuraIfNeededWhenHidden:(BOOL)arg1;
 - (void)_loadReportBugButtonTemplateImageInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
 - (struct CGRect)_lockViewFrame;
 - (void)_preferencesDidChange:(id)arg1;
@@ -114,6 +104,7 @@
 - (BOOL)_showsReportBugButton;
 - (struct CGRect)_statusViewContainerFrame;
 - (void)_updateControlsAppearance;
+- (void)_updateSiriStatusViewForMode:(long long)arg1;
 - (float)audioLevelForSiriStatusView:(id)arg1;
 - (void)cancelShowingPasscodeUnlock;
 - (void)configureReportBugButtonToShowHoldToTalkState:(BOOL)arg1;
@@ -122,7 +113,6 @@
 - (void)fadeOutCurrentAura;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
-- (BOOL)isCarPlayMode;
 - (void)layoutSubviews;
 - (void)pulseHelpButton;
 - (void)reloadData;
@@ -133,7 +123,7 @@
 - (void)setBackdropShouldRasterize:(BOOL)arg1;
 - (void)setBackdropVisible:(BOOL)arg1;
 - (void)setBugReportingAvailable:(BOOL)arg1;
-- (void)setCarPlayGatekeeperBackdropVisible:(BOOL)arg1;
+- (void)setCarDisplaySnippetMode:(long long)arg1;
 - (void)setHelpButtonEmphasized:(BOOL)arg1;
 - (void)setShowAudioRoutePicker:(BOOL)arg1;
 - (void)setStatusViewUserInteractionEnabled:(BOOL)arg1;

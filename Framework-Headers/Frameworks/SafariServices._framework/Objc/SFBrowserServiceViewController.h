@@ -8,11 +8,12 @@
 
 #import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
 #import <SafariServices/_SFActivityDelegate-Protocol.h>
+#import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
 
 @class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFUserNotification, WKProcessPool, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
-@interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, SFServiceViewControllerProtocol>
+@interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, _SFLinkPreviewHeaderDelegate, SFServiceViewControllerProtocol>
 {
     CDUnknownBlockType _activityViewControllerInfoFetchCompletionHandler;
     _SFWebViewUsageMonitor *_usageMonitor;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _touchEventsShouldStopRedirectNotifications;
     BOOL _isExpectingClientRedirect;
     BOOL _hasBegunFirstNavigation;
+    BOOL _hasConnectedToHostApplication;
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
     BOOL _hostApplicationIsForeground;
@@ -68,7 +70,9 @@ __attribute__((visibility("hidden")))
 - (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didDetectUserInteractionFromHostApp;
 - (void)didFetchCustomActivities:(id)arg1 excludedActivityTypes:(id)arg2;
+- (void)didRequestShowLinkPreviews:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
 - (void)loadURL:(id)arg1;
 - (void)openCurrentURLInSafari;
 - (id)processPool;
@@ -76,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)repostNotificationInViewService:(id)arg1;
 - (void)safariActivity:(id)arg1 didFinish:(BOOL)arg2;
 - (void)setDismissButtonStyle:(long long)arg1;
+- (void)setDisplayMode:(long long)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
 - (void)startResolveRedirectionForURL:(id)arg1;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;

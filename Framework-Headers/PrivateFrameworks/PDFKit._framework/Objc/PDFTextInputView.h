@@ -84,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)textInRange:(id)arg1;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;
 - (void)unmarkText;
+- (void)updateGestureRecognizerDependencies;
 - (void)updateTextSelectionGraphics;
 
 @end

@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *quality;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *type;
 @property (nonatomic) BOOL useServer;
 
 + (id)speechSynthesisVoice;

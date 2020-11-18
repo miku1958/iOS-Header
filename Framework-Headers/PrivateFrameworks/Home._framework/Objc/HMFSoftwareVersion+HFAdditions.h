@@ -9,7 +9,6 @@
 @interface HMFSoftwareVersion (HFAdditions)
 
 @property (readonly, nonatomic) BOOL hf_softwareUpdateWouldSupportHomePodPairing;
-@property (readonly, nonatomic) BOOL hf_supportsResetHomePodOption;
 
 @end
 

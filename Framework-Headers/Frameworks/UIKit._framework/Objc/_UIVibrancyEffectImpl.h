@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)implementationForUserInterfaceStyle:(long long)arg1;
+- (id)implementationReplacingTintColor:(id)arg1;
 - (BOOL)invertAutomaticStyle;
 - (BOOL)isEqual:(id)arg1;
 - (void)setEffect:(id)arg1;

@@ -19,6 +19,7 @@
 
 @property (copy, nonatomic) NSString *albumArtistName;
 @property (copy, nonatomic) NSString *albumName;
+@property (copy, nonatomic) NSString *albumYear;
 @property (nonatomic, getter=isAlwaysLiveItem) BOOL alwaysLiveItem;
 @property (strong, nonatomic) MPMediaItemArtwork *artwork; // @dynamic artwork;
 @property (strong, nonatomic) id<MPNowPlayingContentItemArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;

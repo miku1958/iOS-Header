@@ -47,6 +47,7 @@
 - (id)initWithFirstName:(id)arg1 lastName:(id)arg2 avatar:(id)arg3;
 - (id)initWithMeContact:(id)arg1;
 - (id)initWithPublicDictionaryRepresentationWithoutAvatar:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isUpdateFromNickname:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)publicDictionaryRepresentation;
 - (id)publicDictionaryRepresentationWithoutAvatar;

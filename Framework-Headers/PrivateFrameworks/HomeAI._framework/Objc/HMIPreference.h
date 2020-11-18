@@ -7,12 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeAI/HMFLogging-Protocol.h>
+#import <HomeAI/HMFTimerDelegate-Protocol.h>
 
-@class HMFUnfairLock, NSDictionary, NSMutableDictionary, NSString;
+@class HMFTimer, HMFUnfairLock, NSDictionary, NSMutableDictionary, NSString;
 
-@interface HMIPreference : HMFObject <HMFLogging>
+@interface HMIPreference : HMFObject <HMFTimerDelegate, HMFLogging>
 {
     HMFUnfairLock *_lock;
+    HMFTimer *_preferenceCacheFlushTimer;
+    NSMutableDictionary *_preferenceCache;
     NSMutableDictionary *_preferenceLoggedValues;
     NSMutableDictionary *_preferenceOverridesInternal;
 }
@@ -21,13 +24,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly, nonatomic) NSMutableDictionary *preferenceCache; // @synthesize preferenceCache=_preferenceCache;
+@property (readonly) HMFTimer *preferenceCacheFlushTimer; // @synthesize preferenceCacheFlushTimer=_preferenceCacheFlushTimer;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceLoggedValues; // @synthesize preferenceLoggedValues=_preferenceLoggedValues;
 @property (readonly) NSDictionary *preferenceOverrides;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceOverridesInternal; // @synthesize preferenceOverridesInternal=_preferenceOverridesInternal;
 @property (readonly) Class superclass;
 @property (readonly) BOOL usesCPUOnly;
 
-+ (BOOL)isProductTypeJ105A;
++ (BOOL)isProductTypeB238;
++ (BOOL)isProductTypeJ105;
++ (BOOL)isProductTypeJ42;
 + (id)logCategory;
 + (id)qosMap;
 + (id)sharedInstance;
@@ -41,8 +48,10 @@
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2 withMap:(id)arg3;
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2 withParser:(CDUnknownBlockType)arg3;
 - (void)removeAllPreferenceOverrides;
+- (void)setPreferenceOverrideFromDictionary:(id)arg1;
 - (id)stringPreferenceForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)systemPreferenceValueForKey:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 - (id)valuePreferenceForKey:(id)arg1 defaultValue:(id)arg2 withMap:(id)arg3;
 - (id)valuePreferenceForKey:(id)arg1 defaultValue:(id)arg2 withParser:(CDUnknownBlockType)arg3;
 

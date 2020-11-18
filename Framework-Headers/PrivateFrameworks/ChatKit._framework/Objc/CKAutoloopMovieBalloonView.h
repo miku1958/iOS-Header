@@ -59,6 +59,8 @@
 - (void)layoutSubviews;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)prepareForAcknowledgementDismissal;
+- (void)prepareForAcknowledgementDisplay;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)previewDidChange:(id)arg1;

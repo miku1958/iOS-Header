@@ -66,6 +66,7 @@
 - (void)finishInstantReplayAtIndex:(unsigned long long)arg1;
 - (void)freezeAllDynamicFingerPaths;
 - (void)freezeAllDynamicFingerPathsWithInstantReplayOffset:(unsigned long long)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)hideStaticView;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

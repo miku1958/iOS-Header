@@ -8,38 +8,30 @@
 
 #import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 
-@class MTVisualStylingProvider, NSString, UIButton, UIColor, UIImage, UILabel, UIView;
+@class CCUICAPackageView, MTVisualStylingProvider, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface MediaControlsRoundButton : UIControl <MTVisualStylingProviderObservingPrivate>
 {
-    BOOL _shouldInsetOnHighlight;
+    BOOL _labelHidden;
     NSString *_title;
-    NSString *_subtitle;
-    UIImage *_image;
-    UIColor *_selectedBackgroundColor;
+    NSString *_packageName;
+    NSString *_glyphState;
     MTVisualStylingProvider *_visualStylingProvider;
     long long _axis;
-    UIButton *_button;
+    CCUICAPackageView *_packageView;
     UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
-    UIView *_highlightView;
-    UIView *_selectedView;
 }
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
-@property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) struct CGRect imageFrame;
-@property (strong, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
-@property (strong, nonatomic) UIView *selectedView; // @synthesize selectedView=_selectedView;
-@property (nonatomic) BOOL shouldInsetOnHighlight; // @synthesize shouldInsetOnHighlight=_shouldInsetOnHighlight;
-@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (nonatomic, getter=isLabelHidden) BOOL labelHidden; // @synthesize labelHidden=_labelHidden;
+@property (copy, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
+@property (strong, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -47,16 +39,16 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;
-- (void)_endHighlight;
-- (void)_startHighlight;
-- (void)_updateBackgroundFrames;
 - (void)_updateLabelVisualStyling;
-- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)didTapButton;
+- (void)_updatePackageColors;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)providedStylesDidChangeForProvider:(id)arg1;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

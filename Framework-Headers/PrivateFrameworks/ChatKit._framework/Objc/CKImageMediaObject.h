@@ -34,7 +34,6 @@
 + (BOOL)isPreviewable;
 - (void).cxx_destruct;
 - (id)_getIrisBundleLocation;
-- (id)_getIrisBundleURL;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
 - (id)calculateIrisVideoPath;

@@ -250,6 +250,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldShowSendButton:(BOOL)arg3 shouldShowSubject:(BOOL)arg4 shouldShowPluginButtons:(BOOL)arg5 shouldShowCharacterCount:(BOOL)arg6 traitCollection:(id)arg7;
 - (BOOL)is3rdPartyKeyboardVisible;
 - (BOOL)isPredictionBarEnabled;
+- (BOOL)isRunningInNotificationExtension;
 - (void)keyCommandSend:(id)arg1;
 - (BOOL)layoutIsCurrentlyCompact;
 - (void)layoutSubviews;
@@ -291,6 +292,7 @@
 - (void)setEntryFieldCollapsed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setShowAppStrip:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setupKnockoutVisualEffect;
 - (BOOL)shouldRecordForService:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)snapshotForCompactBrowserAnimation;
@@ -302,6 +304,7 @@
 - (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
 - (void)touchUpInsideSendButton:(id)arg1;
 - (void)updateAppStripFrame;
+- (void)updateBackgroundBlurVisualEffect;
 - (void)updateEntryView;
 - (void)updateTextViewsForShouldHideCaret:(BOOL)arg1;
 

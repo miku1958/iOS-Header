@@ -6,20 +6,20 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDVendorModelEntry, NSMutableArray;
+@class HMDVendorModelEntry, NSMutableSet;
 
 @interface HMDVendorModelCollection : HMFObject
 {
-    NSMutableArray *_vendorModelCollection;
     HMDVendorModelEntry *_defaultEntry;
+    NSMutableSet *_entries;
 }
 
 @property (strong, nonatomic) HMDVendorModelEntry *defaultEntry; // @synthesize defaultEntry=_defaultEntry;
-@property (readonly, nonatomic) NSMutableArray *vendorModelCollection; // @synthesize vendorModelCollection=_vendorModelCollection;
+@property (readonly, nonatomic) NSMutableSet *entries; // @synthesize entries=_entries;
 
 - (void).cxx_destruct;
 - (void)addEntry:(id)arg1;
-- (id)description;
+- (id)attributeDescriptions;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (id)lookupModel:(id)arg1;

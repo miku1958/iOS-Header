@@ -52,6 +52,7 @@
 - (void)_performActionsDelayedUntilReaderWebViewIsReadyDidTimeout:(id)arg1;
 - (BOOL)_readerWebViewIsReady;
 - (void)_saveConfigurationAndSendToWebProcess;
+- (void)_sendReaderAvailabilityNotificationForReason:(long long)arg1;
 - (void)_setUpReaderActivityListener;
 - (void)_updateJavaScriptEnabled;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;

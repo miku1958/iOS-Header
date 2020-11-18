@@ -31,6 +31,8 @@
     long long _itemType;
     NSString *_groupID;
     NSString *_chatIdentifier;
+    NSString *_body;
+    NSString *_summary;
     NSString *_displayName;
     NSString *_service;
     IMSPIMessage *_referencedMessage;
@@ -44,6 +46,7 @@
 @property (readonly) BOOL allowedByScreenTime;
 @property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
+@property (strong) NSString *body; // @synthesize body=_body;
 @property (strong) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
 @property (strong) NSString *chatIdentifier; // @synthesize chatIdentifier=_chatIdentifier;
@@ -71,6 +74,7 @@
 @property (strong) IMSPIHandle *sender; // @synthesize sender=_sender;
 @property (strong) NSString *service; // @synthesize service=_service;
 @property (strong) NSString *subject; // @synthesize subject=_subject;
+@property (strong) NSString *summary; // @synthesize summary=_summary;
 @property (strong) NSString *text; // @synthesize text=_text;
 @property (readonly) NSURL *url;
 

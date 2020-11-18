@@ -26,10 +26,10 @@
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 afterContentItemID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
+- (void)addPlaybackContext:(MPPlaybackContext *)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 userModification:(BOOL)arg4 completion:(void (^)(NSError *))arg5;
 - (BOOL)canSkipItem:(MPAVItem *)arg1;
 - (NSString *)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
 - (long long)displayIndexForContentItemID:(NSString *)arg1;
-- (void)finalizeStateRestorationWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)handlePlaybackFailureForItem:(MPAVItem *)arg1;
 - (BOOL)isPlaceholderItemForContentItemID:(NSString *)arg1;
 - (MPAVItem *)itemForContentItemID:(NSString *)arg1;

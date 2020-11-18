@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL recursively; // @synthesize recursively=_recursively;
 
 + (BOOL)supportsSecureCoding;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

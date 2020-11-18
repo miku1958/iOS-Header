@@ -25,7 +25,6 @@
 - (id)initWithModelObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)valueForProperty:(id)arg1;
-- (id)valuesForProperties:(id)arg1;
 
 @end
 

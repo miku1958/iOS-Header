@@ -16,6 +16,7 @@
 @interface RPServer : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPAuthenticatable>
 {
     BOOL _activateCalled;
+    BOOL _changesPending;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
@@ -65,6 +66,8 @@
 - (void)_ensureXPCStarted;
 - (void)_interrupted;
 - (void)_invalidated;
+- (void)_update;
+- (void)_updateIfNeededWithBlock:(CDUnknownBlockType)arg1;
 - (void)activate;
 - (void)dealloc;
 - (id)description;
@@ -75,6 +78,8 @@
 - (void)invalidate;
 - (void)tryPassword:(id)arg1;
 - (void)xpcServerAcceptSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)xpcServerHidePassword:(unsigned int)arg1;
+- (void)xpcServerShowPassword:(id)arg1 flags:(unsigned int)arg2;
 
 @end
 

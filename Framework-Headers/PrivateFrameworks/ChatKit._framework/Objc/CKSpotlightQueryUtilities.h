@@ -14,7 +14,7 @@
 + (unsigned long long)countOfNonSpaceCharsInSearchString:(id)arg1;
 + (id)defaultSearchControllers;
 + (id)detailsSearchControllers;
-+ (id)matchedRankingQueriesForResult:(id)arg1 withRankingQueryCount:(unsigned long long)arg2;
++ (id)matchedRankingQueriesForResult:(id)arg1 withRankingQueryCount:(unsigned long long)arg2 maxRankingQuery:(unsigned long long *)arg3;
 + (id)queryStringForSearchString:(id)arg1 attributes:(id)arg2 matchType:(unsigned long long)arg3;
 + (id)rankingQueriesForSearchString:(id)arg1 attributes:(id)arg2;
 + (id)rankingQueryForField:(id)arg1 matchType:(unsigned long long)arg2 searchString:(id)arg3;

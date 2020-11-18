@@ -26,11 +26,11 @@
 @property (weak, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsLongPressGestureForSlotWithIdentifier:(id)arg1;
 + (unsigned long long)variableResultTypeForParameter:(id)arg1;
 - (void).cxx_destruct;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
+- (void)beginVariableMenuForSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)contextHome;
 - (void)presentCharacteristicPickerFromSourceViewController:(id)arg1 sourceView:(id)arg2 sourceRect:(struct CGRect)arg3;

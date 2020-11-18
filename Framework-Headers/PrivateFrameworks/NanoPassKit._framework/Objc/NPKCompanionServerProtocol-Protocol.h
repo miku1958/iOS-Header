@@ -51,5 +51,6 @@
 - (void)transitStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKTransitAppletState *))arg3;
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
 - (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(NSString *)arg2;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

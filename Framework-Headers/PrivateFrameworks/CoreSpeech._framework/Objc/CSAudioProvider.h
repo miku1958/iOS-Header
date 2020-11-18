@@ -15,12 +15,11 @@
 #import <CoreSpeech/CSAudioSessionProviding-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProviding-Protocol.h>
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
-#import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
-@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecorder, CSOSTransaction, NSHashTable, NSMutableArray, NSString, NSUUID;
+@class CSAudioCircularBuffer, CSAudioPreprocessor, CSAudioRecordContext, CSAudioRecorder, CSOSTransaction, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol CSAudioAlertProvidingDelegate, CSAudioProviderDelegate, CSAudioSessionProvidingDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface CSAudioProvider : NSObject <CSAudioRecorderDelegate, CSAudioServerCrashMonitorDelegate, CSAudioPreprocessorDelegate, CSAudioStreamProviding, CSAudioSessionProviding, CSAudioMetricProviding, CSAudioAlertProviding, CSAudioMeterProviding, CSTriggerInfoProviding, CSVoiceTriggerDelegate>
+@interface CSAudioProvider : NSObject <CSAudioRecorderDelegate, CSAudioServerCrashMonitorDelegate, CSAudioPreprocessorDelegate, CSAudioStreamProviding, CSAudioSessionProviding, CSAudioMetricProviding, CSAudioAlertProviding, CSAudioMeterProviding, CSTriggerInfoProviding>
 {
     BOOL _audioSystemRecovering;
     BOOL _waitingForAlertFinish;
@@ -29,12 +28,14 @@
     CSAudioRecorder *_audioRecorder;
     unsigned long long _streamState;
     NSHashTable *_startPendingStreams;
+    NSHashTable *_startPendingOnStoppingStreams;
     NSHashTable *_alertPlaybackFinishWaitingStreams;
     NSHashTable *_streams;
     NSHashTable *_stopPendingStreams;
     NSMutableArray *_pendingStartCompletions;
     NSMutableArray *_alertPlaybackFinishWaitingCompletions;
     NSMutableArray *_pendingStopCompletions;
+    NSMutableDictionary *_startPendingOnStoppingStreamToCompletionDict;
     id<CSAudioProviderDelegate> _providerDelegate;
     id<CSAudioSessionProvidingDelegate> _sessionDelegate;
     NSMutableArray *_streamHolders;
@@ -77,6 +78,8 @@
 @property (strong, nonatomic) CSOSTransaction *recordingTransaction; // @synthesize recordingTransaction=_recordingTransaction;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *recordingWillStartGroup; // @synthesize recordingWillStartGroup=_recordingWillStartGroup;
 @property (weak, nonatomic) id<CSAudioSessionProvidingDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
+@property (strong, nonatomic) NSMutableDictionary *startPendingOnStoppingStreamToCompletionDict; // @synthesize startPendingOnStoppingStreamToCompletionDict=_startPendingOnStoppingStreamToCompletionDict;
+@property (strong, nonatomic) NSHashTable *startPendingOnStoppingStreams; // @synthesize startPendingOnStoppingStreams=_startPendingOnStoppingStreams;
 @property (strong, nonatomic) NSHashTable *startPendingStreams; // @synthesize startPendingStreams=_startPendingStreams;
 @property (strong, nonatomic) NSUUID *startRecordingWatchDogToken; // @synthesize startRecordingWatchDogToken=_startRecordingWatchDogToken;
 @property (strong, nonatomic) NSHashTable *stopPendingStreams; // @synthesize stopPendingStreams=_stopPendingStreams;
@@ -99,15 +102,19 @@
 - (BOOL)_deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)_didPlayStartAlertSoundForSiri:(id)arg1 audioStream:(id)arg2;
 - (void)_didReceiveFinishStartAlertPlaybackAt:(unsigned long long)arg1;
+- (void)_fetchHistoricalAudioAndForwardToStream:(id)arg1 remoteVAD:(id)arg2;
 - (void)_forwardAudioChunk:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3 toStream:(id)arg4;
 - (void)_handleAudioSystemFailure;
 - (void)_handleDidStartAudioStreamWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_handleDidStopAudioStreamWithReason:(long long)arg1;
 - (void)_holdRecordingTransactionIfNeeded;
 - (BOOL)_isVoiceTriggerInfoAvailableLocally:(id)arg1;
+- (void)_postEpilogueAudioStream;
+- (void)_preEpilogueAudioStream;
 - (void)_prepareAudioStream:(id)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_prepareAudioStreamSync:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (void)_processAudioBuffer:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
+- (void)_processAudioBufferForWatch:(id)arg1 remoteVAD:(id)arg2 atTime:(unsigned long long)arg3;
 - (void)_releaseRecordingTransactionIfNeeded;
 - (void)_resetCircularBufferStartTime;
 - (void)_saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
@@ -116,6 +123,7 @@
 - (void)_scheduleDidStartRecordingDelegateWatchDog;
 - (void)_scheduleDidStopRecordingDelegateWatchDog;
 - (void)_scheduleDidStopRecordingDelegateWatchDog:(id)arg1;
+- (BOOL)_shouldHandleStartPendingOnStopping:(unsigned long long)arg1 withStopReason:(long long)arg2;
 - (BOOL)_shouldStopRecording;
 - (void)_startAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_stopAudioStream:(id)arg1 option:(id)arg2 completion:(CDUnknownBlockType)arg3;

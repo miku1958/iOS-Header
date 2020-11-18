@@ -13,6 +13,7 @@
 
 @interface AAUIAchievementDetailTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 {
+    BOOL _shouldAdjustForInset;
     BOOL _shouldPlayFlipInAnimation;
     BOOL _shouldDismissGracefullyForTextSizeChange;
     BOOL _reduceMotion;
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) CDUnknownBlockType presentBlock; // @synthesize presentBlock=_presentBlock;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (nonatomic) BOOL reduceMotion; // @synthesize reduceMotion=_reduceMotion;
+@property (nonatomic) BOOL shouldAdjustForInset; // @synthesize shouldAdjustForInset=_shouldAdjustForInset;
 @property (nonatomic) BOOL shouldDismissGracefullyForTextSizeChange; // @synthesize shouldDismissGracefullyForTextSizeChange=_shouldDismissGracefullyForTextSizeChange;
 @property (nonatomic) BOOL shouldPlayFlipInAnimation; // @synthesize shouldPlayFlipInAnimation=_shouldPlayFlipInAnimation;
 @property (readonly) Class superclass;

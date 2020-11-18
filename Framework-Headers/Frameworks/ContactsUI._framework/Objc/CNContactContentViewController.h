@@ -468,6 +468,7 @@
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)favoritesDidChangeWithNotification:(id)arg1;
 - (void)finishEditing:(id)arg1;
+- (void)focusOnLastEditingItemInGroup:(id)arg1;
 - (void)geminiDataSourceDidUpdate:(id)arg1;
 - (double)globalHeaderHeightForContentOffset:(double)arg1 contentInset:(struct UIEdgeInsets)arg2;
 - (Class)groupClassForProperty:(id)arg1;
@@ -517,6 +518,7 @@
 - (void)propertyCell:(id)arg1 performActionForItem:(id)arg2 withTransportType:(long long)arg3;
 - (void)propertyCellDidChangeLayout:(id)arg1;
 - (void)propertyItem:(id)arg1 willChangeValue:(id)arg2;
+- (BOOL)propertyItemCanIgnoreGuardianRestrictions;
 - (void)reloadCardGroup:(id)arg1 forTableView:(id)arg2;
 - (BOOL)reloadDataIfNeeded;
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
@@ -556,6 +558,7 @@
 - (id)sharedActionsDataSource;
 - (void)sharingStatusDidChange;
 - (BOOL)shouldDisplayAvatarHeaderView;
+- (BOOL)shouldIgnoreGuardianRestrictions;
 - (void)shouldPresentFullscreen:(BOOL)arg1;
 - (BOOL)shouldReallyShowLinkedContactsForEditingState:(BOOL)arg1;
 - (BOOL)shouldShowActionsForAvatarView:(id)arg1;

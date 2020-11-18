@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 @interface IMItemsController : NSObject
 {
     struct __CFArray *_items;
     unsigned long long _capacity;
 }
 
+@property (readonly, copy, nonatomic) NSArray *_items;
 @property (nonatomic) unsigned long long capacity; // @synthesize capacity=_capacity;
 @property (readonly, nonatomic) BOOL isMoreToLoad;
 
@@ -21,7 +24,6 @@
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (id)_initWithItems:(id)arg1;
 - (id)_itemForGUID:(id)arg1;
-- (id)_items;
 - (void)_itemsDidChange:(id)arg1;
 - (id)_lastFinishedMessage;
 - (id)_lastIncomingFinishedMessage;

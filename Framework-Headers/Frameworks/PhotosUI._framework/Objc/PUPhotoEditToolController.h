@@ -116,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForSave:(BOOL)arg1;
 - (void)prepareForToolTransitionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reloadToolbarButtons:(BOOL)arg1;
+- (void)removeEditActionActivity:(id)arg1;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;

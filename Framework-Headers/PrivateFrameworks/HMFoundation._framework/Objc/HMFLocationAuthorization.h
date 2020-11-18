@@ -49,6 +49,7 @@
 - (id)initWithBundleIdentifier:(id)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (id)logIdentifier;
+- (void)mark;
 - (void)registerObserver:(id)arg1;
 - (void)requestAuthorization:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterObserver:(id)arg1;

@@ -96,6 +96,7 @@
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end
 

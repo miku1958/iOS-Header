@@ -30,6 +30,7 @@
 - (void)_setUpServiceProxyIfNeeded;
 - (void)autoFillWithExternalCredential:(id)arg1;
 - (void)dealloc;
+- (void)getCredentialForExternalCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)presentExternalPasswordCredentialRemoteViewController:(id)arg1;
 - (void)viewDidLoad;

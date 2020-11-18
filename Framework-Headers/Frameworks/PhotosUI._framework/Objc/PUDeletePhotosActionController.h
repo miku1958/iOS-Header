@@ -20,14 +20,12 @@
     NSArray *__plAssets;
     NSArray *__plAdditionalAssetsToDelete;
     UIAlertController *__mainAlertController;
-    UIAlertController *__overQuotaConfirmationAlertController;
     UIAlertController *__oneTimeConfirmationAlertController;
 }
 
 @property (readonly, copy, nonatomic) NSArray *_assets; // @synthesize _assets=__assets;
 @property (strong, nonatomic, setter=_setMainAlertController:) UIAlertController *_mainAlertController; // @synthesize _mainAlertController=__mainAlertController;
 @property (strong, nonatomic, setter=_setOneTimeConfirmationAlertController:) UIAlertController *_oneTimeConfirmationAlertController; // @synthesize _oneTimeConfirmationAlertController=__oneTimeConfirmationAlertController;
-@property (strong, nonatomic, setter=_setOverQuotaConfirmationAlertController:) UIAlertController *_overQuotaConfirmationAlertController; // @synthesize _overQuotaConfirmationAlertController=__overQuotaConfirmationAlertController;
 @property (readonly, copy, nonatomic) NSArray *_plAdditionalAssetsToDelete; // @synthesize _plAdditionalAssetsToDelete=__plAdditionalAssetsToDelete;
 @property (readonly, copy, nonatomic) NSArray *_plAssets; // @synthesize _plAssets=__plAssets;
 @property (readonly, nonatomic) long long action; // @synthesize action=_action;
@@ -37,15 +35,12 @@
 - (void).cxx_destruct;
 - (void)_ensureMainAlertController;
 - (void)_ensureOneTimeConfirmationAlertController;
-- (void)_ensureOverQuotaConfirmationAlertController;
 - (void)_getDeleteActionSheetTitle:(id *)arg1 destructiveButtonTitle:(id *)arg2 cancelButtonTitle:(id *)arg3 forAssets:(id)arg4 additionalPhotoStreamAssets:(id)arg5;
 - (void)_handleFinalUserDecisionShouldDelete:(BOOL)arg1;
 - (void)_handleMainAlertConfirmed:(BOOL)arg1;
 - (void)_handleOneTimeAlertConfirmed;
-- (void)_handleOverQuotaAlertConfirmed:(BOOL)arg1;
 - (void)_runDestructiveActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_showOnetimeConfirmation;
-- (void)_showOverQuotaConfirmationSheet;
 - (id)initWithAction:(long long)arg1 assets:(id)arg2 delegate:(id)arg3;
 - (void)performWithWillDeleteHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)ppt_performDeleteWithoutUserConfirmationWithCompletionHandler:(CDUnknownBlockType)arg1;

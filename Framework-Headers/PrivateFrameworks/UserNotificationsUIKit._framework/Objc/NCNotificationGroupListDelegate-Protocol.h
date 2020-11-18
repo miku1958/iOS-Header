@@ -14,5 +14,6 @@
 - (id<NCAuxiliaryOptionsProviding>)notificationGroupList:(NCNotificationGroupList *)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(NCNotificationRequest *)arg2 isLongLook:(BOOL)arg3;
 - (void)notificationGroupList:(NCNotificationGroupList *)arg1 requestsScrollToTopOfGroupWithCompletion:(void (^)(void))arg2;
 - (void)notificationGroupListDidRemoveAllNotificationRequests:(NCNotificationGroupList *)arg1;
+- (BOOL)notificationGroupListShouldScrollToTop:(NCNotificationGroupList *)arg1;
 @end
 

@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/HMFObject-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDevice, HMFUnfairLock, HMHome, NSString, NSUUID, _HMContext;
+@class HMDevice, HMFUnfairLock, HMHome, NSArray, NSString, NSUUID, _HMContext;
 @protocol HMResidentDeviceDelegate;
 
-@interface HMResidentDevice : NSObject <HMObjectMerge, NSSecureCoding>
+@interface HMResidentDevice : NSObject <HMFLogging, HMFObject, HMObjectMerge, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     BOOL _enabled;
@@ -28,6 +30,7 @@
 }
 
 @property (copy, nonatomic) NSUUID *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property unsigned long long capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, getter=isCurrentDevice) BOOL currentDevice;
@@ -39,11 +42,16 @@
 @property (readonly) unsigned long long hash;
 @property (weak) HMHome *home; // @synthesize home=_home;
 @property (readonly, copy) NSString *name;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)logCategory;
++ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
@@ -52,6 +60,7 @@
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)logIdentifier;
 - (void)updatedEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -6,35 +6,44 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFActivity, HMFUnfairLock, NSOperationQueue, NSURL;
+#import <HomeKitBackingStore/HMFLogging-Protocol.h>
 
-@interface HMBSQLContext : HMFObject
+@class HMFUnfairLock, NSOperationQueue, NSString, NSURL;
+
+@interface HMBSQLContext : HMFObject <HMFLogging>
 {
     struct sqlite3_stmt *_begin;
     struct sqlite3_stmt *_commit;
     struct sqlite3_stmt *_rollback;
     BOOL _readOnly;
+    BOOL _finalized;
+    NSString *_logIdentifier;
     NSURL *_url;
     struct sqlite3 *_context;
     NSOperationQueue *_queue;
     HMFUnfairLock *_lock;
-    HMFActivity *_activity;
     unsigned long long _mutation;
 }
 
-@property (strong, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property (nonatomic) struct sqlite3 *context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL finalized; // @synthesize finalized=_finalized;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (strong, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (nonatomic) unsigned long long mutation; // @synthesize mutation=_mutation;
 @property (readonly, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) BOOL readOnly; // @synthesize readOnly=_readOnly;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (id)logCategory;
 - (void).cxx_destruct;
+- (void)_finalize;
 - (id)_prepareFrom:(id)arg1;
-- (void)_unprepare;
 - (id)begin;
-- (id)close;
+- (void)close;
 - (id)commit;
 - (void)dealloc;
 - (id)execSQLite3:(struct sqlite3_stmt *)arg1;
@@ -42,6 +51,7 @@
 - (BOOL)fetchSQLite3:(struct sqlite3_stmt *)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)fetchSQLite3:(struct sqlite3_stmt *)arg1 limit:(unsigned long long)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)fetchSQLite3One:(struct sqlite3_stmt *)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)finalize;
 - (id)initWithURL:(id)arg1 readOnly:(BOOL)arg2;
 - (id)initialize;
 - (unsigned long long)insertSQLite3:(struct sqlite3_stmt *)arg1 error:(id *)arg2;

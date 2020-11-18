@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <RealityKit/UIGestureRecognizerDelegate-Protocol.h>
+@class MISSING_TYPE;
 
-@class CALayer, MISSING_TYPE;
-
-@interface _TtC10RealityKit6ARView : UIView <UIGestureRecognizerDelegate>
+@interface _TtC10RealityKit6ARView : UIView
 {
     MISSING_TYPE *_scene;
     MISSING_TYPE *__delegatePrivate;
@@ -39,24 +37,10 @@
     MISSING_TYPE *__disableStatisticsRendering;
 }
 
-@property (nonatomic) double contentScaleFactor;
-@property (nonatomic, readonly) CALayer *renderLayer;
-
-+ (Class)layerClass;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)didMoveToSuperview;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (void)handleSingleTapWithRecognizer:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (void)restartEngineWithNotification:(id)arg1;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (void)willResignActiveWithNotification:(id)arg1;
 
 @end
 

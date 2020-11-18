@@ -10,6 +10,7 @@
 
 @interface ARPositionalTrackingConfiguration : ARConfiguration
 {
+    BOOL _relocalizationEnabled;
     BOOL _vioFusionEnabled;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property (nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
+@property (nonatomic, getter=isRelocalizationEnabled) BOOL relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
 @property (nonatomic, getter=isVIOFusionEnabled) BOOL vioFusionEnabled; // @synthesize vioFusionEnabled=_vioFusionEnabled;
 
 + (BOOL)isSupported;

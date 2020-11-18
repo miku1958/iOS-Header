@@ -17,10 +17,13 @@
 + (id)fp_supportDirectory;
 + (id)fp_tempDirectory;
 - (id)_fp_componentsRelativeToRoot:(id)arg1;
+- (id)_fp_lookupURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2;
 - (BOOL)_fp_partOfAppInboxWithURLComponents:(id)arg1;
+- (id)_fp_scanForURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2 maximumBounceNumber:(id *)arg3;
 - (id)fp_addDocumentTrackingWithError:(id *)arg1;
 - (BOOL)fp_associateThumbnailFromDocumentAtURL:(id)arg1 error:(id *)arg2;
 - (void)fp_attachSecurityScopeFromURL:(id)arg1;
+- (BOOL)fp_checkSandboxFileMetadataRead;
 - (void)fp_coordinatedDeleteWithHandler:(CDUnknownBlockType)arg1;
 - (id)fp_copyToTempFolderWithFilename:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fp_copyToURL:(id)arg1 queue:(id)arg2 precomputedItemSize:(unsigned long long)arg3 replacePlaceholder:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
@@ -30,7 +33,7 @@
 - (BOOL)fp_deleteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)fp_directorySizeWithError:(id *)arg1;
 - (id)fp_existingURLOfChildWithName:(id)arg1;
-- (id)fp_existingURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2;
+- (id)fp_existingURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2 maximumBounceNumber:(id *)arg3 forceFetchingBounceNumber:(BOOL)arg4;
 - (id)fp_fpfsRootURL;
 - (BOOL)fp_getSize:(unsigned long long *)arg1 error:(id *)arg2;
 - (void)fp_hideExtension:(BOOL)arg1;

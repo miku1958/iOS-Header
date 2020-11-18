@@ -15,6 +15,9 @@
 - (oneway void)failedToPresentSiriWithError:(NSError *)arg1;
 - (oneway void)handleMarkBulletinWithIdentifier:(NSString *)arg1 asRead:(NSNumber *)arg2;
 - (oneway void)registerPresentationIdentifier:(SiriPresentationIdentifierTransport *)arg1;
+- (oneway void)speechRequestCancelledFromSiriOrb;
+- (oneway void)speechRequestStartedFromSiriOrb;
 - (oneway void)unregisterPresentationIdentifier:(SiriPresentationIdentifierTransport *)arg1;
+- (oneway void)willDismiss;
 @end
 

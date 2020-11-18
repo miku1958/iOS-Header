@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDate, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
+@class NSDate, NSTimeZone, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
 @interface SBFLockScreenDateView : UIView
 {
@@ -15,6 +15,7 @@
     double _subtitleAlpha;
     SBFLockScreenDateSubtitleDateView *_dateSubtitleView;
     SBFLockScreenDateSubtitleView *_customSubtitleView;
+    NSTimeZone *_timeZone;
     BOOL _useCompactDateFormat;
     NSDate *_date;
     UIColor *_overrideTextColor;
@@ -48,6 +49,7 @@
 + (CDStruct_91d2e2b9)timeFontMetrics;
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_cachedGlyphInsetsTimeFontForString:(id)arg1;
+- (void)_setDate:(id)arg1 inTimeZone:(id)arg2;
 - (void)_setSubtitleAlpha:(double)arg1;
 - (struct CGRect)_subtitleViewFrameForView:(id)arg1 alignmentPercent:(double)arg2;
 - (id)_timeLabel;

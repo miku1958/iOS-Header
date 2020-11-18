@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTileSetVersion : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_availableTiles;
     unsigned long long _availableTilesCount;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     struct GEOGenericTile *_genericTiles;
     unsigned long long _genericTilesCount;
     unsigned long long _genericTilesSpace;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _identifier;
     unsigned int _supportedLanguagesVersion;
     unsigned int _timeToLiveSeconds;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (struct GEOGenericTile)genericTileAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

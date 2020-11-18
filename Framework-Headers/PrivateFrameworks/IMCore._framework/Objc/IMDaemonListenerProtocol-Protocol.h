@@ -55,6 +55,7 @@
 - (void)accountRemoved:(NSString *)arg1;
 - (void)activeAccountsChanged:(NSArray *)arg1 forService:(NSString *)arg2;
 - (void)attachmentQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4;
+- (void)blackholedChatsExist:(BOOL)arg1;
 - (void)chat:(NSString *)arg1 displayNameUpdated:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 engramIDUpdated:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 isFilteredUpdated:(BOOL)arg2;
@@ -97,6 +98,7 @@
 - (void)loadedChats:(NSArray *)arg1;
 - (void)markAsSpamQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSNumber *)arg4;
 - (void)messageQuery:(NSString *)arg1 finishedWithResult:(IMMessageItem *)arg2 chatGUIDs:(NSArray *)arg3;
+- (void)networkDataAvailabilityChanged:(BOOL)arg1;
 - (void)nicknameRequestResponse:(NSString *)arg1 encodedNicknameData:(NSData *)arg2;
 - (void)oneTimeCodesDidChange:(NSArray *)arg1;
 - (void)pagedHistoryQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 finishedWithResult:(NSArray *)arg6;

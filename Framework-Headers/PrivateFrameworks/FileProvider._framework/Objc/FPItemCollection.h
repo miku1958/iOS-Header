@@ -95,6 +95,7 @@
 - (void)dataSource:(id)arg1 receivedUpdatedItems:(id)arg2 deletedItems:(id)arg3 hasMoreChanges:(BOOL)arg4;
 - (void)dataSource:(id)arg1 replaceContentsWithItems:(id)arg2 hasMoreChanges:(BOOL)arg3;
 - (void)dataSource:(id)arg1 wasInvalidatedWithError:(id)arg2;
+- (BOOL)dataSourceShouldAlwaysReplaceContents:(id)arg1;
 - (void)dealloc;
 - (id)indexPathFromIndex:(long long)arg1;
 - (id)indexPathsFromIndexSet:(id)arg1;

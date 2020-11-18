@@ -10,21 +10,28 @@
 #import <HomeAI/HMICameraVideoFrameSamplerDelegate-Protocol.h>
 
 @class HMICameraVideoFrameSampler, NSArray, NSMutableArray, NSString;
+@protocol HMICameraVideoFrameSelectorDelegate, HMIMotionDetector;
 
 @interface HMICameraVideoFrameSelector : HMFObject <HMICameraVideoFrameSamplerDelegate, HMFLogging>
 {
+    id<HMICameraVideoFrameSelectorDelegate> _delegate;
     HMICameraVideoFrameSampler *_sampler;
     NSMutableArray *_framesInternal;
     long long _maxFrameCount;
+    NSMutableArray *_predictedFrames;
+    id<HMIMotionDetector> _detector;
     CDStruct_1b6d18a9 _sampleRate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak) id<HMICameraVideoFrameSelectorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) id<HMIMotionDetector> detector; // @synthesize detector=_detector;
 @property (readonly) NSArray *frames;
 @property (readonly) NSMutableArray *framesInternal; // @synthesize framesInternal=_framesInternal;
 @property (readonly) unsigned long long hash;
 @property (readonly) long long maxFrameCount; // @synthesize maxFrameCount=_maxFrameCount;
+@property (readonly) NSMutableArray *predictedFrames; // @synthesize predictedFrames=_predictedFrames;
 @property (readonly) CDStruct_1b6d18a9 sampleRate; // @synthesize sampleRate=_sampleRate;
 @property (readonly) HMICameraVideoFrameSampler *sampler; // @synthesize sampler=_sampler;
 @property (readonly) Class superclass;
@@ -34,8 +41,9 @@
 - (void)finish;
 - (BOOL)handleVideoFrame:(id)arg1 error:(id *)arg2;
 - (id)initWithResourceAttributes:(id)arg1 sampleRate:(CDStruct_1b6d18a9)arg2;
+- (BOOL)isFinishedEarly;
+- (void)sampler:(id)arg1 didDiscardFrame:(id)arg2;
 - (void)sampler:(id)arg1 didFindSample:(id)arg2 target:(id)arg3;
-- (BOOL)willHandleFrames;
 
 @end
 

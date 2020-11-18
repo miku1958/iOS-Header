@@ -16,6 +16,7 @@
 {
     BOOL _connectionHasBeenResumed;
     NSArray *_audioCategoriesDisablingVolumeHUD;
+    BOOL _expectingInvalidation;
     id<AFUISiriRemoteSceneViewControllerDataSource> _dataSource;
     id<AFUISiriRemoteSceneViewControllerDelegate> _delegate;
     AFApplicationInfo *_viewServiceApplicationInfo;
@@ -36,9 +37,9 @@
 - (void).cxx_destruct;
 - (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (id)_connection;
+- (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (void)_interrupted;
-- (void)_invalidate;
-- (void)_noteSceneDidInvalidate;
+- (void)_invalidated;
 - (void)applicationDidBecomeActive;
 - (void)applicationWillEnterForeground;
 - (void)applicationWillResignActive;
@@ -56,6 +57,7 @@
 - (void)preloadPluginBundles;
 - (void)preloadPresentationBundleWithIdentifier:(id)arg1;
 - (void)pulseHelpButton;
+- (void)sceneController:(id)arg1 willInvalidateScene:(id)arg2 forReason:(unsigned long long)arg3;
 - (void)serviceBulletinWithIdentifier:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)serviceDidDetectAudioRoutePickerTap;
 - (void)serviceDidDetectMicButtonLongPressBegan;
@@ -97,7 +99,6 @@
 - (id)sessionDelegate;
 - (void)setBugReportingAvailable:(BOOL)arg1;
 - (void)setCarDisplaySnippetMode:(long long)arg1;
-- (void)setCarDisplaySnippetVisible:(BOOL)arg1;
 - (void)setHelpButtonEmphasized:(BOOL)arg1;
 - (void)setRequestOptions:(id)arg1;
 - (void)setRunningPPT:(BOOL)arg1 withTestName:(id)arg2 testOptions:(id)arg3;
@@ -128,6 +129,7 @@
 - (void)updateRemoteSceneWithFrontMostAppInterfaceOrientation:(long long)arg1;
 - (void)updateToPresentationWithIdentifier:(id)arg1 presentationProperties:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 
 @end
 

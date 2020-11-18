@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) SBUILegibilityLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property (readonly, nonatomic) NSLayoutConstraint *timeLeadingConstraint; // @synthesize timeLeadingConstraint=_timeLeadingConstraint;
 
++ (double)_topMarginFromTimeFont;
 + (id)dateFont;
 + (CDStruct_d2b197d1)dateFontMetrics;
 + (id)timeFont;
@@ -48,6 +49,7 @@
 - (void)enableUpdates;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

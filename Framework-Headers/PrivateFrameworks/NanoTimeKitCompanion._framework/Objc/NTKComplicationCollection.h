@@ -16,6 +16,7 @@
     NSMutableDictionary *_localizeableSampleDataTemplates;
     NSLock *_templatesLock;
     NSHashTable *_observers;
+    NSMutableArray *_loadCallbacks;
     NSLock *_observersLock;
     BOOL _updatesSuspended;
     NSMutableArray *_updatesEnqueuedWhileSuspended;
@@ -48,6 +49,7 @@
 - (void)dealloc;
 - (id)initWithCollectionIdentifier:(id)arg1 deviceUUID:(id)arg2;
 - (void)loadFullCollectionWithLocalizableSampleTemplates:(id)arg1 seqId:(id)arg2;
+- (void)performAfterLoad:(CDUnknownBlockType)arg1;
 - (void)removeAllComplicationsExceptThoseWithClientIdentifiers:(id)arg1;
 - (void)removeComplicationForClientIdentifier:(id)arg1;
 - (void)removeComplicationForClientIdentifier:(id)arg1 seqId:(id)arg2;

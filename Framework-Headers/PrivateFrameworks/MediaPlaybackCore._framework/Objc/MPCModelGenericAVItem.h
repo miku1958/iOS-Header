@@ -9,13 +9,12 @@
 #import <MediaPlaybackCore/AVAssetResourceLoaderDelegate-Protocol.h>
 #import <MediaPlaybackCore/AVPlayerItemMetadataOutputPushDelegate-Protocol.h>
 #import <MediaPlaybackCore/ICEnvironmentMonitorObserver-Protocol.h>
-#import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
 @class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
-@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
+@interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPRTCReportingItemSessionCreating>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _allowsAirPlayFromCloud;
@@ -45,7 +44,6 @@
     MPCModelGenericAVItemTimedMetadataResponse *_timedMetadataResponse;
     NSOperationQueue *_timedMetadataOperationQueue;
     BOOL _isMusicCellularStreamingAllowed;
-    NSNumber *_maximumSizeAllowedForCellularAccess;
     BOOL _isHLSAsset;
     BOOL _isiTunesStoreStream;
     ICStoreRequestContext *_storeRequestContext;
@@ -57,6 +55,7 @@
     BOOL supportsRadioTrackActions;
     BOOL _radioPlayback;
     BOOL _radioStreamPlayback;
+    BOOL _subscriptionRequired;
     long long _leasePlaybackPreventionState;
     ICMusicSubscriptionLeaseStatus *_leaseStatus;
     id<MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
@@ -79,8 +78,6 @@
 @property (strong, nonatomic) MPModelGenericObject *genericObject; // @synthesize genericObject=_genericObject;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSData *jingleTimedMetadata; // @synthesize jingleTimedMetadata=_jingleTimedMetadata;
-@property (readonly, nonatomic) long long leasePlaybackPreventionState; // @synthesize leasePlaybackPreventionState=_leasePlaybackPreventionState;
-@property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus; // @synthesize leaseStatus=_leaseStatus;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (readonly, copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 @property (nonatomic, getter=isRadioPlayback) BOOL radioPlayback; // @synthesize radioPlayback=_radioPlayback;
@@ -91,6 +88,7 @@
 @property (readonly, nonatomic) BOOL shouldReportPlayEventsToStore;
 @property (copy, nonatomic, getter=isSiriInitiated) NSNumber *siriInitiated; // @synthesize siriInitiated=_siriInitiated;
 @property (nonatomic) long long stationItemLikedState; // @synthesize stationItemLikedState=_stationItemLikedState;
+@property (nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @synthesize subscriptionRequired=_subscriptionRequired;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRadioTrackActions; // @synthesize supportsRadioTrackActions;
 @property (strong, nonatomic) NSDictionary *trackInfo; // @synthesize trackInfo=_trackInfo;
@@ -127,6 +125,7 @@
 - (void)_subscriptionLeaseStatusDidChangeNotification:(id)arg1;
 - (void)_suzeLeaseSessionRenewDidFailNotification:(id)arg1;
 - (void)_timedMetadataResponseDidInvalidateNotification:(id)arg1;
+- (CDStruct_4a9aa5a8)_timeoutValues;
 - (void)_updateAutomaticSubscriptionLeaseRefresh;
 - (void)_updateBookmarkTime:(double)arg1 isCheckpoint:(BOOL)arg2;
 - (void)_updateHasBeenPlayedWithElapsedTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
@@ -141,6 +140,7 @@
 - (long long)albumStoreID;
 - (unsigned long long)albumTrackCount;
 - (unsigned long long)albumTrackNumber;
+- (long long)albumYear;
 - (BOOL)allowsAirPlayFromCloud;
 - (BOOL)allowsEQ;
 - (BOOL)allowsExternalPlayback;
@@ -177,6 +177,8 @@
 - (BOOL)isRadioItem;
 - (BOOL)isStreamable;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
+- (long long)leasePlaybackPreventionState;
+- (id)leaseStatus;
 - (id)libraryLyrics;
 - (void)loadAssetAndPlayerItem;
 - (id)mainTitle;

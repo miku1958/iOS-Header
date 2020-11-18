@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityMoveDownAction;
 - (BOOL)_accessibilityMoveUpAction;
 - (void)_accessibilityReorderActionAtIndex:(long long)arg1 toIndex:(struct _NSRange)arg2;
+- (id)_accessibilityUserTestingChildren;
 - (id)_axEditingController;
 - (long long)_axIndexForThisAction;
 - (id)_axWorkflowActions;

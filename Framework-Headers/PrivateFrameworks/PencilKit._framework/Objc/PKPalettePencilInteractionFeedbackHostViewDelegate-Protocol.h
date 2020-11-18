@@ -9,12 +9,12 @@
 @class PKPaletteView, UIColor;
 
 @protocol PKPalettePencilInteractionFeedbackHostViewDelegate <NSObject>
+- (double)minimizedPaletteScaleFactor;
 - (struct CGSize)minimizedPaletteSize;
 - (UIColor *)paletteBorderColor;
 - (double)paletteBorderWidth;
 - (double)paletteEdgeSpacing;
 - (double)paletteEdgeSpacingForMinimized;
-- (double)paletteScaleFactor;
 - (UIColor *)paletteShadowColor;
 - (struct CGSize)paletteShadowOffset;
 - (double)paletteShadowOpacity;

@@ -10,6 +10,9 @@
 
 @interface BKSLocalDefaults : BSAbstractDefaultDomain
 {
+    BOOL _disableStudyLogAccelerometerLogging;
+    BOOL _disableStudyLogALSLogging;
+    BOOL _disableStudyLogGyroLogging;
 }
 
 @property (nonatomic) float ALSDelayOnUnlock; // @dynamic ALSDelayOnUnlock;
@@ -24,10 +27,15 @@
 @property (nonatomic) BOOL disableCAScaling; // @dynamic disableCAScaling;
 @property (nonatomic) BOOL disableCAYUV; // @dynamic disableCAYUV;
 @property (nonatomic) BOOL disableCloneMirroring; // @dynamic disableCloneMirroring;
+@property (nonatomic) BOOL disableStudyLogALSLogging; // @synthesize disableStudyLogALSLogging=_disableStudyLogALSLogging;
+@property (nonatomic) BOOL disableStudyLogAccelerometerLogging; // @synthesize disableStudyLogAccelerometerLogging=_disableStudyLogAccelerometerLogging;
 @property (nonatomic) BOOL disableStudyLogBTKeyboardEventLogging; // @dynamic disableStudyLogBTKeyboardEventLogging;
 @property (nonatomic) BOOL disableStudyLogBTKeyboardEventRedirection; // @dynamic disableStudyLogBTKeyboardEventRedirection;
 @property (nonatomic) BOOL disableStudyLogButtonLogging; // @dynamic disableStudyLogButtonLogging;
+@property (nonatomic) BOOL disableStudyLogCameraKeyLogging; // @dynamic disableStudyLogCameraKeyLogging;
+@property (nonatomic) BOOL disableStudyLogGyroLogging; // @synthesize disableStudyLogGyroLogging=_disableStudyLogGyroLogging;
 @property (nonatomic) BOOL disableStudyLogHomeButtonLogging; // @dynamic disableStudyLogHomeButtonLogging;
+@property (nonatomic) BOOL disableStudyLogPowerButtonLogging; // @dynamic disableStudyLogPowerButtonLogging;
 @property (nonatomic) BOOL disableStudyLogVolumeKeyLogging; // @dynamic disableStudyLogVolumeKeyLogging;
 @property (nonatomic, getter=isDitheringEnabled) BOOL ditheringEnabled; // @dynamic ditheringEnabled;
 @property (nonatomic) float fenceArbiterTimeoutInterval; // @dynamic fenceArbiterTimeoutInterval;

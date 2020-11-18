@@ -44,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property (readonly, nonatomic) BOOL isServerSearchResult;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (readonly) NSSet *labels;
 @property (readonly, nonatomic) long long libraryID;
@@ -111,7 +112,7 @@
 - (void)setMessageFlagsWithoutCommitting:(unsigned long long)arg1;
 - (void)setMutableInfoFromMessage:(id)arg1;
 - (void)setPriorityFromHeaders:(id)arg1;
-- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 messageIDHash:(long long)arg8 conversationIDHash:(long long)arg9 summary:(id)arg10 withOptions:(unsigned int)arg11;
+- (void)setSubject:(id)arg1 to:(id)arg2 cc:(id)arg3 bcc:(id)arg4 sender:(id)arg5 dateReceived:(double)arg6 dateSent:(double)arg7 summary:(id)arg8 withOptions:(unsigned int)arg9;
 - (void)setSummary:(id)arg1;
 - (BOOL)shouldSetSummary;
 

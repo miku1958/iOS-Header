@@ -27,11 +27,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 - (void).cxx_destruct;
 - (void)_performUserInteractionTask;
-- (id)_presentingViewControllerForExpungeConfirmation;
+- (void)deletePhotosActionController:(id)arg1 dismissConfirmationViewController:(id)arg2;
 - (void)deletePhotosActionController:(id)arg1 presentConfirmationViewController:(id)arg2;
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
-- (long long)preferredAlertControllerStyle;
 
 @end
 

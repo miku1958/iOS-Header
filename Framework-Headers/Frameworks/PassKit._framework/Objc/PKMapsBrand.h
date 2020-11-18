@@ -22,12 +22,16 @@
     NSString *_detailedCategory;
     MKWalletMerchantStylingInfo *_stylingInfo;
     NSURL *_logoURL;
+    NSURL *_heroImageURL;
+    NSString *_heroImageAttributionName;
     NSURL *_businessChatURL;
 }
 
 @property (copy, nonatomic) NSURL *businessChatURL; // @synthesize businessChatURL=_businessChatURL;
 @property (nonatomic) long long category; // @synthesize category=_category;
 @property (copy, nonatomic) NSString *detailedCategory; // @synthesize detailedCategory=_detailedCategory;
+@property (copy, nonatomic) NSString *heroImageAttributionName; // @synthesize heroImageAttributionName=_heroImageAttributionName;
+@property (strong, nonatomic) NSURL *heroImageURL; // @synthesize heroImageURL=_heroImageURL;
 @property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSURL *logoURL; // @synthesize logoURL=_logoURL;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

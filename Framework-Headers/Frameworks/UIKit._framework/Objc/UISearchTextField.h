@@ -36,6 +36,7 @@
     long long __textInputSource;
 }
 
+@property (nonatomic, setter=_setIgnoresDynamicType:) BOOL _ignoresDynamicType;
 @property (nonatomic, setter=_setPreventSelectionViewActivation:) BOOL _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
 @property (weak, nonatomic, setter=_setSearchBar:) UISearchBar *_searchBar; // @synthesize _searchBar;
 @property (strong, nonatomic, setter=_setSearchTextOffetValue:) NSValue *_searchTextOffsetValue;
@@ -100,6 +101,7 @@
 - (BOOL)_shouldDetermineInterfaceStyleTextColor;
 - (BOOL)_shouldResignOnEditingDidEndOnExit;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
+- (BOOL)_shouldSuppressSelectionHandles;
 - (struct CGRect)_suffixFrame;
 - (long long)_suffixLabelTextAlignment;
 - (Class)_systemBackgroundViewClass;
@@ -121,7 +123,6 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)deleteBackward;
-- (BOOL)drawsAsAtom;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fieldEditorDidChangeSelection:(id)arg1;

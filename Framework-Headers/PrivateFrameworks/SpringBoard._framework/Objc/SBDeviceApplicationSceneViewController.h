@@ -26,7 +26,9 @@
     id<BSInvalidatable> _liveContentDisableAssertion;
     SBFHomeGrabberSettings *_homeGrabberSettings;
     BOOL _rendersWhileLocked;
+    BOOL _shouldRasterizeSceneHostView;
     NSHashTable *_statusBarAssertions;
+    NSString *_sceneHostViewMinificationFilter;
     long long _homeGrabberDisplayMode;
     MTLumaDodgePillSettings *_homeGrabberPillSettings;
 }
@@ -46,7 +48,9 @@
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
 @property (nonatomic) BOOL rendersWhileLocked; // @synthesize rendersWhileLocked=_rendersWhileLocked;
 @property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (copy, nonatomic) NSString *sceneHostViewMinificationFilter; // @synthesize sceneHostViewMinificationFilter=_sceneHostViewMinificationFilter;
 @property (readonly, nonatomic, getter=_sceneView) SBDeviceApplicationSceneView *sceneView; // @dynamic sceneView;
+@property (nonatomic) BOOL shouldRasterizeSceneHostView; // @synthesize shouldRasterizeSceneHostView=_shouldRasterizeSceneHostView;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (strong, nonatomic, getter=_statusBarAssertions, setter=_setStatusBarAssertions:) NSHashTable *statusBarAssertions; // @synthesize statusBarAssertions=_statusBarAssertions;
 @property (readonly) Class superclass;

@@ -19,7 +19,6 @@
 
 + (id)identityWithIdentityData:(id)arg1 prekeyData:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (id)debugDescription;
 - (id)description;
 - (id)identityData;
 - (id)initWithPrekey:(id)arg1 signingKey:(id)arg2;

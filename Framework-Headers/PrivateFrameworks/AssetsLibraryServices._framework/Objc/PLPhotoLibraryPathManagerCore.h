@@ -40,6 +40,7 @@
 @property (copy) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property (readonly) Class superclass;
 
++ (id)_constructLegacySystemPhotoLibraryURLFromUnresolvableBookmark:(id)arg1;
 + (id)_legacySystemLibraryBookmarkData;
 + (id)_legacySystemLibraryPath;
 + (void)_updateSystemLibraryURLWithOldValue:(id)arg1;

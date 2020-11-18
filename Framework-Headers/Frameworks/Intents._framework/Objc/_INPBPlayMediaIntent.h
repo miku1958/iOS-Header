@@ -26,6 +26,8 @@
     BOOL __encodeLegacyGloryData;
     int _playbackQueueLocation;
     int _playbackRepeatMode;
+    NSArray *_alternativeResults;
+    NSArray *_audioSearchResults;
     _INPBString *_audiobookAuthor;
     _INPBString *_audiobookTitle;
     NSArray *_buckets;
@@ -45,6 +47,10 @@
 }
 
 @property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (copy, nonatomic) NSArray *alternativeResults; // @synthesize alternativeResults=_alternativeResults;
+@property (readonly, nonatomic) unsigned long long alternativeResultsCount;
+@property (copy, nonatomic) NSArray *audioSearchResults; // @synthesize audioSearchResults=_audioSearchResults;
+@property (readonly, nonatomic) unsigned long long audioSearchResultsCount;
 @property (strong, nonatomic) _INPBString *audiobookAuthor; // @synthesize audiobookAuthor=_audiobookAuthor;
 @property (strong, nonatomic) _INPBString *audiobookTitle; // @synthesize audiobookTitle=_audiobookTitle;
 @property (copy, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
@@ -90,6 +96,8 @@
 @property (strong, nonatomic) _INPBString *showTitle; // @synthesize showTitle=_showTitle;
 @property (readonly) Class superclass;
 
++ (Class)alternativeResultsType;
++ (Class)audioSearchResultsType;
 + (Class)bucketType;
 + (Class)hashedRouteUIDsType;
 + (Class)mediaItemsType;
@@ -97,10 +105,16 @@
 - (void).cxx_destruct;
 - (int)StringAsPlaybackQueueLocation:(id)arg1;
 - (int)StringAsPlaybackRepeatMode:(id)arg1;
+- (void)addAlternativeResults:(id)arg1;
+- (void)addAudioSearchResults:(id)arg1;
 - (void)addBucket:(id)arg1;
 - (void)addHashedRouteUIDs:(id)arg1;
 - (void)addMediaItems:(id)arg1;
+- (id)alternativeResultsAtIndex:(unsigned long long)arg1;
+- (id)audioSearchResultsAtIndex:(unsigned long long)arg1;
 - (id)bucketAtIndex:(unsigned long long)arg1;
+- (void)clearAlternativeResults;
+- (void)clearAudioSearchResults;
 - (void)clearBuckets;
 - (void)clearHashedRouteUIDs;
 - (void)clearMediaItems;

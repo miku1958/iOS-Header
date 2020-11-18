@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFWorkflowReferencingResource-Protocol.h>
 
-@class NSError, NSString, UIImage, WFDatabase, WFWorkflow;
+@class NSDictionary, NSError, NSString, WFDatabase, WFImage, WFWorkflow;
 @protocol NSObject, WFAccessResourcePerWorkflowState;
 
 @interface WFAccessResource : WFResource <WFWorkflowReferencingResource>
@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) NSError *globalLevelAvailabilityError;
 @property (readonly, nonatomic) unsigned long long globalLevelStatus;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) NSString *localizedWorkflowLevelDeniedStatusMessage;
 @property (readonly, nonatomic) NSString *localizedWorkflowLevelMessageTemplate;
 @property (readonly, nonatomic) NSString *localizedWorkflowLevelNotDeterminedStatusMessage;
@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) NSString *protectedResourceDescription;
 @property (readonly, nonatomic) id<NSObject> resourceAvailabilityChangedNotificationObserver; // @synthesize resourceAvailabilityChangedNotificationObserver=_resourceAvailabilityChangedNotificationObserver;
 @property (readonly, nonatomic) NSString *resourceName;
+@property (readonly, nonatomic) NSDictionary *settingsUIDefinition;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *username;

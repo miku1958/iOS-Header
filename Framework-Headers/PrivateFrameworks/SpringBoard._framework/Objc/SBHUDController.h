@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/BSDescriptionProviding-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/UIViewControllerTransitioningDelegate-Protocol.h>
 #import <SpringBoard/_SBHUDHostViewControllerDelegate-Protocol.h>
 
 @class NSCountedSet, NSString, SBHUDSettings, SBMainScreenActiveInterfaceOrientationWindow, UIScreen, _SBHUDHostViewController;
+@protocol BSInvalidatable;
 
-@interface SBHUDController : NSObject <_SBHUDHostViewControllerDelegate, PTSettingsKeyObserver, UIViewControllerTransitioningDelegate>
+@interface SBHUDController : NSObject <_SBHUDHostViewControllerDelegate, PTSettingsKeyObserver, BSDescriptionProviding, UIViewControllerTransitioningDelegate>
 {
     NSCountedSet *_hudHiddenAssertions;
+    id<BSInvalidatable> _stateCaptureHandle;
     UIScreen *_screen;
     SBMainScreenActiveInterfaceOrientationWindow *_hudWindow;
     _SBHUDHostViewController *_hudViewController;
@@ -37,13 +40,17 @@
 - (void)_createHUDWindowIfNeeded;
 - (void)_dismissHUD:(id)arg1 animated:(BOOL)arg2;
 - (void)_finishedTransitionForHUD:(id)arg1 intendedState:(long long)arg2 finalState:(long long)arg3;
+- (void)_notificationWhichWeWantToUseToTearEverythingDown:(id)arg1;
 - (void)_presentHUD:(id)arg1 animated:(BOOL)arg2;
+- (void)_setupStateCapture;
 - (void)_tearDown;
 - (void)_tearDownIfNoHuds;
 - (id)acquireHUDHiddenAssertionForIdentifier:(id)arg1 withReason:(id)arg2;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)dismissHUDs:(BOOL)arg1;
 - (void)hudViewController:(id)arg1 didDismissHUD:(id)arg2;
 - (void)hudViewController:(id)arg1 didPresentHUD:(id)arg2;
@@ -57,6 +64,8 @@
 - (id)presentedHUDs;
 - (id)presentingHUDs;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

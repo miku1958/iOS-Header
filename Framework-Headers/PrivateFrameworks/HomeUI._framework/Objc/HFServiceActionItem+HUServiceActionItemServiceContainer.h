@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)hu_containedAccessories;
 - (id)hu_containedServices;
 @end
 

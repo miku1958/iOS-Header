@@ -211,6 +211,7 @@
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (BOOL)openMapsWithItems:(id)arg1 launchOptions:(id)arg2;
 + (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)openMapsWithItems:(id)arg1 launchOptions:(id)arg2 fromScene:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)plistCompatibleDictionaryFromStandardOptions:(id)arg1;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)sanitizeArray:(id)arg1 forKey:(id)arg2;
@@ -291,6 +292,7 @@
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)openInMapsWithLaunchOptions:(id)arg1;
 - (void)openInMapsWithLaunchOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openInMapsWithLaunchOptions:(id)arg1 fromScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadTransitInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sharingURL;
 - (id)thumbnailWithSize:(struct CGSize)arg1 annotationView:(id)arg2;

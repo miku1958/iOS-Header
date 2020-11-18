@@ -23,6 +23,7 @@
 - (BOOL)_shouldAutoDownloadAttachment:(id)arg1;
 - (void)addAttachmentAttributesToAttributeSet:(id)arg1;
 - (id)fetchIndexableAttachments;
+- (void)setNeedsAllAttributesIndexingType;
 - (BOOL)shouldExcludeFromIndex;
 
 @end

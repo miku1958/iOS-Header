@@ -38,6 +38,7 @@
 @property (copy, nonatomic) NSURL *directoryURL; // @synthesize directoryURL=_directoryURL;
 @property (nonatomic) unsigned long long documentPickerMode; // @synthesize documentPickerMode=_documentPickerMode;
 @property (copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
+@property (nonatomic, getter=_forPickingDownloadsFolder, setter=_setForPickingDownloadsFolder:) BOOL forPickingDownloadsFolder;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_isContentManaged, setter=_setIsContentManaged:) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (nonatomic) unsigned long long pickerUserInterfaceStyle;

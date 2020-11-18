@@ -24,6 +24,7 @@
     BOOL _wifiAssociated;
     BOOL _networkConstrained;
     BOOL _ethernetWired;
+    BOOL _remoteServerReachable;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
     NSString *_telephonyStatusIndicator;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic, getter=isNetworkConstrained) BOOL networkConstrained; // @synthesize networkConstrained=_networkConstrained;
 @property (readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
 @property (readonly, nonatomic, getter=isRemoteServerLikelyReachable) BOOL remoteServerLikelyReachable; // @synthesize remoteServerLikelyReachable=_isRemoteServerLikelyReachable;
+@property (readonly, nonatomic, getter=isRemoteServerReachable) BOOL remoteServerReachable; // @synthesize remoteServerReachable=_remoteServerReachable;
 @property (readonly, copy, nonatomic) NSString *telephonyOperatorName; // @synthesize telephonyOperatorName=_telephonyOperatorName;
 @property (readonly, copy, nonatomic) NSString *telephonyRegistrationStatus; // @synthesize telephonyRegistrationStatus=_telephonyRegistrationStatus;
 @property (readonly, copy, nonatomic) NSString *telephonyStatusIndicator; // @synthesize telephonyStatusIndicator=_telephonyStatusIndicator;

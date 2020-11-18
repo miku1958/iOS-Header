@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotosUICore/PXCPLServiceUIDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryFooterControllerDelegate-Protocol.h>
@@ -23,10 +24,10 @@
 #import <PhotosUICore/UIDropInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, PHPhotoLibrary, PXAssetReference, PXChangeDirectionNumberFilter, PXContentUnavailableView, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMovieProvider, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIContextMenuInteraction, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UITargetedPreview;
+@class NSString, PHPhotoLibrary, PXAssetReference, PXCPLServiceUI, PXChangeDirectionNumberFilter, PXContentUnavailableView, PXCuratedLibraryBarsController, PXCuratedLibrarySecondaryToolbarController, PXCuratedLibrarySkimmingController, PXCuratedLibraryViewProvider, PXCuratedLibraryZoomLevelControl, PXCuratedLibraryZoomLevelPinchFilter, PXGTransition, PXGView, PXMovieProvider, PXProgrammaticNavigationRequest, PXRelaxedScreenEdgePanGestureRecognizer, PXSwipeSelectionManager, PXTouchingUIGestureRecognizer, UIContextMenuInteraction, UIPanGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer, UITargetedPreview;
 @protocol UIDragSession;
 
-@interface PXCuratedLibraryUIViewController : UIViewController <UIDragInteractionDelegate, UIDropInteractionDelegate, PXUserInterfaceFeatureViewController, PXScrollViewControllerObserver, PXOneUpPresentationDelegate, UIGestureRecognizerDelegate, PXSwipeSelectionManagerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXTouchingUIGestureRecognizerDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXChangeObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibraryActionPerformerDelegate, PXMovieProviderDelegate, UIContextMenuInteractionDelegate>
+@interface PXCuratedLibraryUIViewController : UIViewController <UIDragInteractionDelegate, UIDropInteractionDelegate, PXUserInterfaceFeatureViewController, PXScrollViewControllerObserver, PXOneUpPresentationDelegate, UIGestureRecognizerDelegate, PXSwipeSelectionManagerDelegate, PXCuratedLibrarySkimmingControllerDelegate, PXTouchingUIGestureRecognizerDelegate, PXCuratedLibraryZoomLevelControlDelegate, PXChangeObserver, PXPhotosGlobalFooterViewDelegate, PXCuratedLibraryFooterControllerDelegate, PXCuratedLibraryActionPerformerDelegate, PXMovieProviderDelegate, PXCPLServiceUIDelegate, UIContextMenuInteractionDelegate>
 {
     BOOL _isGridViewReady;
     BOOL __previewCommitting;
@@ -51,6 +52,7 @@
     PXMovieProvider *_movieProvider;
     PXCuratedLibraryZoomLevelPinchFilter *_zoomLevelPinchFilter;
     PXProgrammaticNavigationRequest *_initialNavigationRequest;
+    PXCPLServiceUI *_cplServiceUI;
     PXContentUnavailableView *_emptyPlaceHolderView;
     UIContextMenuInteraction *__contextMenuInteraction;
     PXAssetReference *__interactionAssetReference;
@@ -68,6 +70,7 @@
 @property (readonly, nonatomic) PXCuratedLibraryBarsController *barsController; // @synthesize barsController=_barsController;
 @property (readonly, nonatomic) BOOL canDragIn;
 @property (readonly, nonatomic) BOOL canDragOut;
+@property (strong, nonatomic) PXCPLServiceUI *cplServiceUI; // @synthesize cplServiceUI=_cplServiceUI;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
@@ -101,6 +104,7 @@
 - (BOOL)_addDraggedAssetReferences:(id)arg1;
 - (id)_assetReferenceForDragItem:(id)arg1;
 - (id)_buttonHitTestResultAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)_conditionallyUpdateEmptyPlaceholder;
 - (void)_createAnimationForSkimmingWithDuration:(double)arg1 indicatorsDidChangeVisibility:(BOOL)arg2;
 - (id)_createDragItemForAssetReference:(id)arg1;
 - (id)_dominantAssetCollectionReferenceForSkimming;
@@ -164,7 +168,6 @@
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
-- (BOOL)footerController:(id)arg1 performCPLAction:(long long)arg2;
 - (void)footerControllerRevealFooter:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -200,6 +203,8 @@
 - (BOOL)scrollViewControllerShouldScrollToTop:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
 - (void)scrollViewControllerWillEndScrolling:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (BOOL)serviceUI:(id)arg1 performAction:(long long)arg2;
+- (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
 - (void)skimmingController:(id)arg1 willHideSkimmingHintsForAssetCollectionReference:(id)arg2 animationDuration:(double)arg3;
 - (void)skimmingController:(id)arg1 willShowSkimmingHintsForAssetCollectionReference:(id)arg2 animationDuration:(double)arg3;
 - (void)skimmingController:(id)arg1 willStartSkimmingAssetCollectionReference:(id)arg2 animationDuration:(double)arg3;
@@ -210,6 +215,7 @@
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint)arg2;
 - (BOOL)swipeSelectionManager:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2;
 - (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(id)arg1;
+- (void)swipeSelectionManagerDidAutoScroll:(id)arg1;
 - (BOOL)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (void)touchingUIGestureRecognizerDidBeginTouching:(id)arg1;
 - (void)touchingUIGestureRecognizerDidEndTouching:(id)arg1;

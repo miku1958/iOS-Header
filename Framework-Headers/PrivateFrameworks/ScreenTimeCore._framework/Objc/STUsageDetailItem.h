@@ -16,11 +16,14 @@
 }
 
 @property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) BOOL isAllAppsOrCategories;
 @property (nonatomic) float quantity; // @synthesize quantity=_quantity;
+@property (readonly) float sortQuantity;
 @property long long type; // @synthesize type=_type;
 
++ (id)keyPathsForValuesAffectingIsAllAppsOrCategories;
++ (id)keyPathsForValuesAffectingSortQuantity;
 - (void).cxx_destruct;
-- (long long)compare:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

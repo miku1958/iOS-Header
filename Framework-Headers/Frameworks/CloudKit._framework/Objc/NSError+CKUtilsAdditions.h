@@ -16,6 +16,7 @@
 - (id)CKClientSuitableUnderlyingError;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (BOOL)CKHasCKErrorInChildChain;
+- (BOOL)CKHasTopLevelUnderlyingError;
 - (BOOL)CKIsCKError;
 - (BOOL)CKIsNotFoundError;
 - (BOOL)CKIsPOSIXErrorCode:(long long)arg1;

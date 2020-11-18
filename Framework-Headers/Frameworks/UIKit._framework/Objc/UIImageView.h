@@ -43,6 +43,7 @@
 @property (nonatomic, setter=_setLayeredImageCornerRadius:) double _layeredImageCornerRadius;
 @property (readonly, nonatomic) BOOL _layoutShouldFlipHorizontalOrientations;
 @property (nonatomic, setter=_setMasksTemplateImages:) BOOL _masksTemplateImages;
+@property (strong, nonatomic, setter=_setOverridingSymbolConfiguration:) UIImageSymbolConfiguration *_overridingSymbolConfiguration;
 @property (nonatomic, setter=_setSymbolImagesIgnoreAccessibilitySizes:) BOOL _symbolImagesIgnoreAccessibilitySizes; // @synthesize _symbolImagesIgnoreAccessibilitySizes=__symbolImagesIgnoreAccessibilitySizes;
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property (readonly, nonatomic) BOOL _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
@@ -53,7 +54,6 @@
 @property (nonatomic) double animationDuration;
 @property (copy, nonatomic) NSArray *animationImages;
 @property (nonatomic) long long animationRepeatCount;
-@property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) long long contentMode; // @dynamic contentMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -90,6 +90,7 @@
 - (void)_applySettingsForLegibilityStyle:(long long)arg1;
 - (double)_baselineOffsetFromBottom;
 - (void)_baselineOffsetParametersDidChangeHasBaselinePropertyChanged:(BOOL)arg1;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (id)_cachedPretiledImageForImage:(id)arg1;
 - (BOOL)_canDrawContent;
 - (id)_checkHighlightedImageForAdaptation:(id)arg1 hadAdapted:(BOOL *)arg2;
@@ -119,10 +120,10 @@
 - (void)_invalidateImageLayouts;
 - (void)_invalidateTemplateSettings;
 - (BOOL)_isHasBaselinePropertyChangeable;
-- (id)_layoutForImage:(id)arg1;
+- (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2;
+- (id)_layoutForImage:(id)arg1 inSize:(struct CGSize)arg2 cachePerSize:(BOOL)arg3 forBaselineOffset:(BOOL)arg4;
 - (BOOL)_needsImageEffectsForImage:(id)arg1;
 - (BOOL)_needsImageEffectsForImage:(id)arg1 suppressColorizing:(BOOL)arg2;
-- (id)_overridingSymbolConfiguration;
 - (BOOL)_recomputePretilingState;
 - (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(BOOL)arg4;
 - (BOOL)_resolveImageForTrait:(id)arg1;
@@ -135,9 +136,9 @@
 - (BOOL)_setImageViewContentsForAnimatedImage:(id)arg1;
 - (void)_setLayeredImageContainer:(id)arg1;
 - (void)_setOverlayContentView:(id)arg1;
-- (void)_setOverridingSymbolConfiguration:(id)arg1;
 - (void)_setViewGeometry:(struct CGRect)arg1 forMetric:(int)arg2;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (BOOL)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (BOOL)_shouldTreatImageAsTemplate:(id)arg1;
 - (id)_symbolConfigurationForImage:(id)arg1;
 - (void)_teardownLayeredImage;

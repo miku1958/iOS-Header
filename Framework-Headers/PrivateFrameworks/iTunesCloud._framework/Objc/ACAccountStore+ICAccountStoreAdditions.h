@@ -23,6 +23,7 @@
 - (void)ic_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)ic_allStoreAccountsWithError:(id *)arg1;
 - (void)ic_localStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)ic_localStoreAccountWithError:(id *)arg1;
 - (void)ic_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ic_setActiveLockerAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ic_setActiveStoreAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;

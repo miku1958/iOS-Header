@@ -11,5 +11,6 @@
 - (void)dataSource:(id<FPCollectionDataSource>)arg1 receivedUpdatedItems:(NSArray *)arg2 deletedItems:(NSArray *)arg3 hasMoreChanges:(BOOL)arg4;
 - (void)dataSource:(id<FPCollectionDataSource>)arg1 replaceContentsWithItems:(NSArray *)arg2 hasMoreChanges:(BOOL)arg3;
 - (void)dataSource:(id<FPCollectionDataSource>)arg1 wasInvalidatedWithError:(NSError *)arg2;
+- (BOOL)dataSourceShouldAlwaysReplaceContents:(id<FPCollectionDataSource>)arg1;
 @end
 

@@ -59,8 +59,8 @@
 + (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1 ofType:(id)arg2;
 + (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1 ofType:(id)arg2 fromOrganization:(id)arg3;
 + (id)fetchRequestMatchingBlueprintsForUserWithDSID:(id)arg1 ofType:(id)arg2 withIdentifier:(id)arg3 fromOrganization:(id)arg4;
-+ (id)fetchRequestMatchingDeletedBlueprints;
 + (id)fetchRequestMatchingExpiredBlueprints;
++ (id)fetchRequestMatchingOrphanedBlueprints;
 + (id)fetchRequestMatchingUnexpiredOneMoreMinuteBlueprints;
 + (id)fetchResultsRequestsForChangesToBlueprints;
 + (id)fetchResultsRequestsForChangesToBlueprintsForUserWithDSID:(id)arg1;
@@ -72,6 +72,7 @@
 + (BOOL)saveManagedUserBlueprintForUser:(id)arg1 error:(id *)arg2;
 + (BOOL)saveUsageLimitWithIdentifier:(id)arg1 user:(id)arg2 bundleIdentifiers:(id)arg3 webDomains:(id)arg4 categoryIdentifiers:(id)arg5 dailyBudgetLimit:(double)arg6 budgetLimitByWeekday:(id)arg7 enabled:(BOOL)arg8 behaviorType:(unsigned long long)arg9 error:(id *)arg10;
 + (id)scheduleTextWithLocale:(id)arg1 weekdayScheduleComparator:(CDUnknownBlockType)arg2 scheduleTimeGetter:(CDUnknownBlockType)arg3;
++ (id)simpleScheduleTimeRangeWithStartTimeComponents:(id)arg1 endTimeComponents:(id)arg2;
 - (void)_didFetchAppInfo:(id)arg1;
 - (void)_limitedApplicationsDidChange:(id)arg1;
 - (id)_webFilterBlacklistStringsForURL:(id)arg1;

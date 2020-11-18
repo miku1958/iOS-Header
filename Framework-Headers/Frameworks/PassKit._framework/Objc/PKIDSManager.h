@@ -59,7 +59,7 @@
 - (void)_paymentSetupRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_populateDevicesIfNeeded;
 - (void)_postCTLMThrottleUncapNotification;
-- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1;
+- (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1 userDisabled:(BOOL)arg2;
 - (void)_promptDetailsForVirtualCardRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_queue_addThumbnailCompletionHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)_queue_cancelRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

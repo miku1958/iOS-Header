@@ -15,6 +15,7 @@
     HUGridLayoutOptions *_layoutOptions;
     HUWallpaperView *_wallpaperView;
     HFWallpaperSlice *_blurredWallpaperSlice;
+    HFWallpaperSlice *_darkModeBlurredWallpaperSlice;
     NSMutableDictionary *_indexPathsByItems;
     NSMutableDictionary *_overrideAttributesByIndexPath;
     NSHashTable *_childGridLayouts;
@@ -23,6 +24,7 @@
 
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice; // @synthesize blurredWallpaperSlice=_blurredWallpaperSlice;
 @property (strong, nonatomic) NSHashTable *childGridLayouts; // @synthesize childGridLayouts=_childGridLayouts;
+@property (strong, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice; // @synthesize darkModeBlurredWallpaperSlice=_darkModeBlurredWallpaperSlice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

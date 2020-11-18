@@ -13,7 +13,6 @@
 @interface GEORPProblemContext : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOSessionID _sessionId;
     NSMutableArray *_autocompleteSuggestionLists;
     NSMutableArray *_auxiliaryControls;
@@ -37,6 +36,9 @@
     NSString *_tileStateLog;
     GEORPTransitLineTileInfo *_transitLineTileInfo;
     NSMutableArray *_visibleTileSets;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _deviceGmtOffset;
     int _pinType;
     struct {
@@ -200,6 +202,8 @@
 - (id)directionsWaypointPlaceInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)directionsWaypointPlaceInfosCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)pinTypeAsString:(int)arg1;

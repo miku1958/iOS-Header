@@ -14,12 +14,14 @@
 #import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsMasterVolumeSliderDelegate-Protocol.h>
 #import <MediaControls/MediaControlsPanelViewControllerDelegate-Protocol.h>
+#import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
 
 @class FBSDisplayLayoutMonitor, MPAVEndpointRoute, MPAVRoutingViewController, MPArtworkCatalog, MPMediaControls, MPVolumeGroupSliderCoordinator, MRMediaControlsVideoPickerFooterView, MRMediaControlsVideoPickerHeaderView, MSVTimer, MTVisualStylingProvider, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsLanguageOptionsViewController, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsTransitioningDelegate, MediaControlsVolumeContainerView, NSArray, NSMutableArray, NSString, SFShareAudioViewController, UIView;
 @protocol MRPlatterViewControllerDelegate;
 
-@interface MRPlatterViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsActionsDelegate, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate, MTVisualStylingRequiring, MediaControlsCollectionItemViewController>
+@interface MRPlatterViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsActionsDelegate, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsPanelViewControllerDelegate, MTVisualStylingRequiring, _MCStateDumpPropertyListTransformable, MediaControlsCollectionItemViewController>
 {
+    unsigned long long _stateHandle;
     MTVisualStylingProvider *_visualStylingProvider;
     BOOL _selected;
     BOOL _allowsNowPlayingAppLaunch;
@@ -34,6 +36,8 @@
     NSString *_routeUID;
     long long _style;
     double __continuousCornerRadius;
+    NSString *_placeholderString;
+    NSString *_placeholderDeviceIdentifier;
     MRMediaControlsVideoPickerFooterView *_videoPickerFooterView;
     MRMediaControlsVideoPickerHeaderView *_videoPickerHeaderView;
     MediaControlsRoutingCornerView *_routingCornerView;
@@ -90,6 +94,8 @@
 @property (strong, nonatomic) MediaControlsHeaderView *nowPlayingHeaderView; // @synthesize nowPlayingHeaderView=_nowPlayingHeaderView;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (strong, nonatomic) MediaControlsParentContainerView *parentContainerView; // @synthesize parentContainerView=_parentContainerView;
+@property (strong, nonatomic) NSString *placeholderDeviceIdentifier; // @synthesize placeholderDeviceIdentifier=_placeholderDeviceIdentifier;
+@property (strong, nonatomic) NSString *placeholderString; // @synthesize placeholderString=_placeholderString;
 @property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (strong, nonatomic) MPAVEndpointRoute *route; // @synthesize route=_route;
 @property (readonly, nonatomic) NSString *routeName;
@@ -127,6 +133,7 @@
 - (BOOL)_shouldUseViewServiceToPresentTVRemote;
 - (void)_showPlaceholderArtwork;
 - (void)_showShareAudioViewController;
+- (id)_stateDumpObject;
 - (id)_tvAirplayIdentifier;
 - (id)_tvMediaRemoteIdentifier;
 - (void)_updateConfiguration;
@@ -156,6 +163,7 @@
 - (id)initWithRouteUID:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutMonitor:(id)arg1 didUpdateDisplayLayout:(id)arg2 withContext:(id)arg3;
+- (void)loadView;
 - (long long)lockScreenInternalRoutePickerOverrideWithDefaultStyle:(long long)arg1;
 - (BOOL)lockScreenPresentsOverrideRoutePicker;
 - (void)presentLanguageOptions;

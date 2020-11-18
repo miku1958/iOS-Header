@@ -8,15 +8,17 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, PKPeerPaymentQuote;
+@class NSArray, NSString, PKPeerPaymentQuote;
 
 @interface PKPaymentRequestPaymentMethodUpdate : PKPaymentRequestUpdate <NSSecureCoding>
 {
     NSArray *_errors;
     PKPeerPaymentQuote *_peerPaymentQuote;
+    NSString *_installmentGroupIdentifier;
 }
 
 @property (copy, nonatomic) NSArray *errors; // @synthesize errors=_errors;
+@property (copy, nonatomic) NSString *installmentGroupIdentifier; // @synthesize installmentGroupIdentifier=_installmentGroupIdentifier;
 @property (strong, nonatomic) PKPeerPaymentQuote *peerPaymentQuote; // @synthesize peerPaymentQuote=_peerPaymentQuote;
 
 + (BOOL)supportsSecureCoding;

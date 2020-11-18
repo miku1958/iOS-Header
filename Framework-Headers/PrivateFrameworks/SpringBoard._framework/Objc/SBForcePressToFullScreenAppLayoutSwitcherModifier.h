@@ -16,7 +16,6 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (long long)backdropBlurType;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 effectiveStartingEnvironmentMode:(long long)arg4;
 - (BOOL)isContainerStatusBarVisible;
@@ -28,6 +27,7 @@
 - (BOOL)isWallpaperRequiredForSwitcher;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (long long)wallpaperStyle;
 
 @end

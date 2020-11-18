@@ -45,7 +45,7 @@
 + (id)getExplicitOnlyEnrollmentUtterancesFromDirectory:(id)arg1;
 + (id)getFixedHighPrioritySerialQueueWithLabel:(id)arg1;
 + (id)getFixedPrioritySerialQueueWithLabel:(id)arg1 fixedPriority:(int)arg2;
-+ (id)getHomeUserIdForVoiceProfile:(id)arg1;
++ (void)getHomeUserIdForVoiceProfile:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 + (double)getHostClockFrequency;
 + (id)getImplicitEnrollmentUtterancesFromDirectory:(id)arg1;
 + (id)getImplicitEnrollmentUtterancesPriorTo:(id)arg1 forType:(unsigned long long)arg2 forLanguageCode:(id)arg3 forProfileID:(id)arg4;
@@ -145,6 +145,7 @@
 + (BOOL)supportBluetoothDeviceVoiceTrigger;
 + (BOOL)supportCSTwoShotDecision;
 + (BOOL)supportCircularBuffer;
++ (BOOL)supportCompactPlus;
 + (BOOL)supportContinuousVoiceTrigger;
 + (BOOL)supportHearstVoiceTrigger;
 + (BOOL)supportHybridEndpointer;

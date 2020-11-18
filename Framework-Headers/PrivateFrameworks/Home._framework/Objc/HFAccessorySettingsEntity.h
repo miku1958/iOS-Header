@@ -14,6 +14,8 @@
     BOOL _previewAccessory;
     BOOL _alwaysShowGroup;
     BOOL _wantsSeparateSectionPerGroup;
+    BOOL _showInSeperateSection;
+    BOOL _isSoftwareVersionNeeded;
     NSString *_keyPath;
     NSString *_sortKey;
     NSString *_localizedHeader;
@@ -33,6 +35,7 @@
 @property (readonly, copy, nonatomic) NSArray *booleanKeyPathDependencies; // @synthesize booleanKeyPathDependencies=_booleanKeyPathDependencies;
 @property (readonly, copy, nonatomic) NSFormatter *footerTitleFormatter; // @synthesize footerTitleFormatter=_footerTitleFormatter;
 @property (readonly, nonatomic) long long interfaceModality; // @synthesize interfaceModality=_interfaceModality;
+@property (readonly, nonatomic) BOOL isSoftwareVersionNeeded; // @synthesize isSoftwareVersionNeeded=_isSoftwareVersionNeeded;
 @property (readonly, copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (readonly, copy, nonatomic) NSString *localizedFooter; // @synthesize localizedFooter=_localizedFooter;
 @property (readonly, copy, nonatomic) NSString *localizedHeader; // @synthesize localizedHeader=_localizedHeader;
@@ -41,6 +44,7 @@
 @property (readonly, copy, nonatomic) NSFormatter *previewValueFormatter; // @synthesize previewValueFormatter=_previewValueFormatter;
 @property (readonly, copy, nonatomic) NSString *previewValueKeyPath; // @synthesize previewValueKeyPath=_previewValueKeyPath;
 @property (readonly, nonatomic) BOOL requiresDependenciesToShowSetting; // @synthesize requiresDependenciesToShowSetting=_requiresDependenciesToShowSetting;
+@property (readonly, nonatomic) BOOL showInSeperateSection; // @synthesize showInSeperateSection=_showInSeperateSection;
 @property (readonly, copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;
 @property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) BOOL wantsSeparateSectionPerGroup; // @synthesize wantsSeparateSectionPerGroup=_wantsSeparateSectionPerGroup;

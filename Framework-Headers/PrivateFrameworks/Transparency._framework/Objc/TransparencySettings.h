@@ -17,6 +17,8 @@
 
 + (BOOL)allowsInternalSecurityPolicies;
 + (double)defaultNetworkTimeout;
++ (double)defaultQueryCacheTimeout;
++ (id)deviceUserAgent;
 + (BOOL)getBool:(id)arg1;
 - (void).cxx_destruct;
 

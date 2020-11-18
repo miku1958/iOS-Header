@@ -18,7 +18,7 @@
 
 - (void)dealloc;
 - (id)description;
-- (void)enqueueRequestsWithSpriteIndexRange:(struct _PXGSpriteIndexRange)arg1 textureRequestIDs:(struct _NSRange)arg2 displayAssetFetchResult:(id)arg3 targetSize:(struct CGSize)arg4;
+- (void)enqueueRequestsWithItemRange:(struct _NSRange)arg1 textureRequestIDs:(struct _NSRange)arg2 displayAssetFetchResult:(id)arg3 targetSize:(struct CGSize)arg4;
 - (id)init;
 - (void)removeAllRequests;
 - (void)sortRequests;

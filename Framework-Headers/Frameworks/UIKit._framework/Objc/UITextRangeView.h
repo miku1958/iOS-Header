@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL willBeginMagnifying; // @synthesize willBeginMagnifying=m_willBeginMagnifying;
 
 - (void).cxx_destruct;
+- (void)_cancelGrabberTransitionOutAnimations:(id)arg1;
 - (void)_createGestureTuningIfNecessary;
 - (struct CGRect)_endEdgeHitRect;
 - (BOOL)_endIsHorizontal;

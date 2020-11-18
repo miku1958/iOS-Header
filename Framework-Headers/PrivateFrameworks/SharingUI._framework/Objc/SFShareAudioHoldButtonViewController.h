@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface SFShareAudioHoldButtonViewController : SFShareAudioBaseViewController
 {
-    BOOL _active;
     unsigned int _colorCode;
     unsigned int _productID;
     UIImageView *_productImageView;

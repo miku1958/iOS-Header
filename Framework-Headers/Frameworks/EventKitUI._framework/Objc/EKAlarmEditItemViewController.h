@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_storeChanged:(id)arg1;
-- (void)alarmTableDidChangeAlarm:(id)arg1;
+- (void)alarmTable:(id)arg1 didSelectRowAtIndexPath:(id)arg2 commitSelectionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)customSelected;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 - (void)loadView;

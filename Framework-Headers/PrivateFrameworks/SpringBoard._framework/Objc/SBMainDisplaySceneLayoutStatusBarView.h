@@ -85,7 +85,6 @@
 - (void)_setupDebugging;
 - (struct CGRect)_statusBarAvoidanceFrame;
 - (struct CGRect)_statusBarFrameForOrientation:(long long)arg1;
-- (BOOL)_statusBarNeedsLayoutForRotationToDifferentOrientation;
 - (BOOL)_statusBarNeedsSpecialLayoutForClassic;
 - (void)_statusBarScrollToTop:(id)arg1;
 - (void)_statusBarShowDebug:(id)arg1;

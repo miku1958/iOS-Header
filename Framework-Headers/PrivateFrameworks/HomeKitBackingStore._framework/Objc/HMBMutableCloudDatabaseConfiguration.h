@@ -6,12 +6,13 @@
 
 #import <HomeKitBackingStore/HMBCloudDatabaseConfiguration.h>
 
-@class CKOperationConfiguration, NSString;
+@class CKOperationConfiguration, HMFScheduler, NSString;
 
 @interface HMBMutableCloudDatabaseConfiguration : HMBCloudDatabaseConfiguration
 {
 }
 
+@property (strong, nonatomic) HMFScheduler *apsRegistrationScheduler; // @dynamic apsRegistrationScheduler;
 @property (copy) CKOperationConfiguration *defaultOperationConfiguration; // @dynamic defaultOperationConfiguration;
 @property (getter=isManateeContainer) BOOL manateeContainer; // @dynamic manateeContainer;
 @property (copy) NSString *sourceApplicationBundleIdentifier; // @dynamic sourceApplicationBundleIdentifier;

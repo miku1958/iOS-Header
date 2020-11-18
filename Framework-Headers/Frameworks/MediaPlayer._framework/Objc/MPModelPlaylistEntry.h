@@ -32,8 +32,6 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
-+ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
@@ -46,8 +44,6 @@
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
-- (id)storeItemMetadataRequestItemIdentifier;
-- (BOOL)storeItemMetadataRequestNeedsPersonalization;
 - (long long)type;
 
 @end

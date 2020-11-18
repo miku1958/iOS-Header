@@ -29,7 +29,6 @@
 - (void)arrayParameter:(id)arg1 itemWasAppended:(id)arg2;
 - (void)arrayParameter:(id)arg1 itemWasMovedFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)arrayParameter:(id)arg1 itemWasUpdatedAtIndex:(unsigned long long)arg2 toValue:(id)arg3;
-- (id)attributedLocalizedName;
 - (id)createAccompanyingActions;
 - (id)defaultOutputName;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;

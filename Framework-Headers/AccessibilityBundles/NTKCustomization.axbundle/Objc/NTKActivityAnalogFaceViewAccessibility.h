@@ -16,7 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateLabel:(id)arg1 percentageValue:(double)arg2 prefix:(id)arg3 unit:(id)arg4;
 - (void)_addOrRemoveChronoViewsIfNecessary;
-- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(BOOL)arg3 animated:(BOOL)arg4;
+- (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(BOOL)arg3 ignoreScreenBlanked:(BOOL)arg4 animated:(BOOL)arg5;
 - (void)_loadSnapshotContentViews;
 
 @end

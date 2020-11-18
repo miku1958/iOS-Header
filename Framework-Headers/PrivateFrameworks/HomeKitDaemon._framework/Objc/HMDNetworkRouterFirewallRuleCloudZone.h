@@ -46,7 +46,7 @@
 - (void)__zoneChangesCompleted:(id)arg1 fetchInfo:(id)arg2;
 - (void)__zoneFetchCompletedWithChangeToken:(id)arg1 error:(id)arg2 moreComing:(BOOL)arg3 fetchInfo:(id)arg4;
 - (id)attributeDescriptions;
-- (id)decodeModelFrom:(id)arg1 fullyPopulatedRecord:(BOOL)arg2 error:(id *)arg3;
+- (id)decodeModelFrom:(id)arg1 recordSource:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithCloudDatabase:(id)arg1 state:(id)arg2 useAnonymousRequests:(BOOL)arg3 watchedRecordIDs:(id)arg4 signatureVerificationPublicKeys:(id)arg5;
 - (id)performCloudPullWithFetchToken:(id)arg1 options:(id)arg2;
 - (void)startUpWithLocalZone:(id)arg1;

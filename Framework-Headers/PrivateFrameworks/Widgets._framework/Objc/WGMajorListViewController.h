@@ -34,6 +34,7 @@
 @property (strong, nonatomic) UIViewController *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
 @property (readonly, nonatomic) WGWidgetListHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (nonatomic, getter=isHeaderVisible) BOOL headerVisible; // @synthesize headerVisible=_headerVisible;
+@property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (readonly) Class superclass;
 

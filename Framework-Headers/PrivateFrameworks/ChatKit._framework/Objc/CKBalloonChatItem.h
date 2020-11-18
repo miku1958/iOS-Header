@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL failed;
 @property (readonly, nonatomic, getter=isFromMe) BOOL fromMe;
 @property (readonly, nonatomic) Class impactBalloonViewClass;
+@property (readonly, nonatomic) BOOL isBlackholed;
 @property (readonly, nonatomic) IMHandle *sender;
 @property (readonly, nonatomic) BOOL shouldCacheSize;
 @property (readonly, nonatomic) BOOL tailShape;

@@ -8,7 +8,7 @@
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 
-@class BSMutableSettings, NSString;
+@class BSMutableSettings, NSString, XBDisplayEdgeInsetsWrapper;
 
 @interface XBApplicationSnapshotPredicate : NSObject <BSDescriptionProviding>
 {
@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) unsigned long long contentTypeMask;
+@property (copy, nonatomic) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen;

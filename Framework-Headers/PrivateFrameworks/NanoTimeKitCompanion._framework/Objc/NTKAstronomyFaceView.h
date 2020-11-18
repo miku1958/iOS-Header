@@ -90,6 +90,7 @@
 - (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_disableCrown;
 - (void)_enableCrownForAstronomyVista:(unsigned long long)arg1;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_handleInteractiveModeGesture:(id)arg1;
 - (void)_handleSpheroidPanGesture:(id)arg1;

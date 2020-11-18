@@ -9,13 +9,14 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUCameraRecordingIntroViewController : HUImageOBWelcomeController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
     unsigned long long _variant;
+    HMHome *_home;
     OBTrayButton *_setupButton;
     OBLinkTrayButton *_notNowButton;
 }
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (strong, nonatomic) OBLinkTrayButton *notNowButton; // @synthesize notNowButton=_notNowButton;
 @property (strong, nonatomic) OBTrayButton *setupButton; // @synthesize setupButton=_setupButton;
@@ -35,7 +37,7 @@
 - (void)_buttonTwo:(id)arg1;
 - (id)hu_preloadContent;
 - (id)init;
-- (id)initWithIntroVariant:(unsigned long long)arg1;
+- (id)initWithIntroVariant:(unsigned long long)arg1 home:(id)arg2;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentImage:(id)arg4;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -18,6 +18,7 @@
 - (void)didScrollPastBottomOfContent;
 - (void)didTapInEmptyRegion;
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)dismissIfNecessaryForIconDrag;
 - (void)getUserActivityForResult:(SFSearchResult *)arg1 completionHandler:(void (^)(NSUserActivity *))arg2;
 - (BOOL)hasShortLookViewControllerForResult:(SFSearchResult *)arg1;
 - (BOOL)sectionIsClearable:(SFResultSection *)arg1;

@@ -8,13 +8,14 @@
 
 #import <CoreHandwriting/CHRecognizing-Protocol.h>
 
-@class CHCutpointModel, CHDrawing, CHPatternNetwork, CHRecognitionInsight, CHRecognitionInsightRequest, CHRecognizerConfiguration, CHSpellChecker, CHStrokeTransitionModel, NSCharacterSet, NSDictionary, NSLocale, NSMutableDictionary, NSMutableIndexSet, NSString, NSURL;
+@class CHCutpointModel, CHDrawing, CHPatternNetwork, CHRecognitionInsight, CHRecognitionInsightRequest, CHRecognizerConfiguration, CHSpellChecker, CHStrokeTransitionModel, NSArray, NSCharacterSet, NSDictionary, NSLocale, NSMutableDictionary, NSMutableIndexSet, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CHRecognizer : NSObject <CHRecognizing>
 {
     CHRecognitionInsightRequest *_nextRecognitionInsightRequest;
     CHRecognitionInsight *_activeRecognitionInsight;
+    NSArray *_whitelistMecabraRareCharacters;
     BOOL _saveDrawingUntilNextCandidateAccepted;
     int _recognitionType;
     unsigned long long _maxRecognitionResultCount;
@@ -186,8 +187,8 @@
 - (id)initWithType:(int)arg1 mode:(int)arg2 learningDictionaryURL:(id)arg3;
 - (id)initWithType:(int)arg1 mode:(int)arg2 locale:(struct __CFLocale *)arg3;
 - (id)initWithType:(int)arg1 mode:(int)arg2 locale:(struct __CFLocale *)arg3 learningDictionaryURL:(id)arg4;
-- (BOOL)isMecabraRareEntry:(id)arg1;
 - (BOOL)isOVSString:(id)arg1;
+- (BOOL)isRareChineseEntry:(id)arg1;
 - (id)lineCandidateResultForDrawing:(id)arg1 candidate:(struct CHCandidateResult *)arg2 rejectionResult:(id *)arg3;
 - (void)logCandidateIfAppropriate:(void *)arg1;
 - (id)manhattanLineCandidateResultForDrawing:(id)arg1 candidate:(struct CHCandidateResult *)arg2 rejectionResult:(id *)arg3;
@@ -221,6 +222,7 @@
 - (void)updateAddressBookLexicon:(id)arg1;
 - (void)updateMecabraWithRegionalOTAAssets:(id)arg1 nonRegionalOTAAssets:(id)arg2;
 - (void)updateUserDictionaryLexicon:(id)arg1;
+- (id)whitelistMecabraRareCharacters;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, RPCompanionLinkClient, RPCompanionLinkDevice;
+@class NSMutableDictionary, NSSet, RPCompanionLinkClient, RPCompanionLinkDevice;
 
 @interface HUNearbyDevice : NSObject
 {
@@ -16,9 +16,11 @@
     unsigned long long _connectionStatus;
     RPCompanionLinkClient *_client;
     NSMutableDictionary *_previousMessageCache;
+    NSSet *_cachableKeys;
 }
 
 @property (nonatomic, getter=isActivating) BOOL activating; // @synthesize activating=_activating;
+@property (strong, nonatomic) NSSet *cachableKeys; // @synthesize cachableKeys=_cachableKeys;
 @property (strong) RPCompanionLinkClient *client; // @synthesize client=_client;
 @property (nonatomic) unsigned long long connectionStatus; // @synthesize connectionStatus=_connectionStatus;
 @property (strong, nonatomic) RPCompanionLinkDevice *device; // @synthesize device=_device;

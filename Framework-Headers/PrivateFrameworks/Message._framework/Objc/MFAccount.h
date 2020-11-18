@@ -41,6 +41,7 @@
 @property (copy, nonatomic) NSString *password;
 @property (readonly) ACAccount *persistentAccount;
 @property (strong, nonatomic) ECAuthenticationScheme *preferredAuthScheme;
+@property (readonly, nonatomic) BOOL primaryiCloudAccount;
 @property (readonly) NSDictionary *properties;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *statisticsKind;

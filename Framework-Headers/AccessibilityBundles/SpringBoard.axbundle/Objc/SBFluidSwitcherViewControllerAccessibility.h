@@ -62,6 +62,7 @@
 - (BOOL)_axShouldReverseElements;
 - (id)_axSortedElementArray:(id)arg1;
 - (id)_axTetheredViewController;
+- (void)_axUpdateElementOrderingIfNecessary;
 - (id)_axVisibleAppLayouts;
 - (BOOL)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
@@ -72,7 +73,7 @@
 - (void)beginTetheringWithViewController:(id)arg1 asTetheree:(BOOL)arg2;
 - (void)dealloc;
 - (void)endTetheringWithViewController:(id)arg1;
-- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

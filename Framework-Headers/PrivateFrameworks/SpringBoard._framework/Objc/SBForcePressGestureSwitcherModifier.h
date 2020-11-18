@@ -48,13 +48,13 @@
 - (BOOL)isWallpaperRequiredForSwitcher;
 - (long long)keyboardSuppressionMode;
 - (id)layoutSettings;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (id)scaleSettingsForIndex:(unsigned long long)arg1;
 - (long long)sceneDeactivationReason;
 - (double)wallpaperScale;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;
 

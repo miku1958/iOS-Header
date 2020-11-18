@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface SFShareAudioErrorViewController : SFShareAudioBaseViewController
 {
     UILabel *_infoLabel;
+    UILabel *_internalLabel;
     UIButton *_dismissButton;
     NSError *_error;
 }
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
+@property (strong, nonatomic) UILabel *internalLabel; // @synthesize internalLabel=_internalLabel;
 
 - (void).cxx_destruct;
 - (void)eventDismiss:(id)arg1;

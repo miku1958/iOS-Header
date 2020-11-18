@@ -22,6 +22,7 @@
 @property (nonatomic) long long shouldAllowExperimentalMode;
 @property (nonatomic) long long shouldAllowPhoneNumberAccounts;
 @property (nonatomic) long long shouldAllowTestApplication;
+@property (nonatomic) long long shouldAlwaysShowWelcome;
 @property (nonatomic) long long shouldAutocycleAppsInTiburon;
 @property (nonatomic) long long shouldAutocycleAppsInWebTakeover;
 @property (nonatomic) long long shouldDisablePETs;

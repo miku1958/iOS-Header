@@ -10,6 +10,8 @@
 - (id)__im_apfsCompatibleFilename;
 - (id)__im_engramDataRepresentation;
 - (id)__im_filePathWithVariant:(id)arg1;
+- (id)__im_stringBySafelyAppendingPathComponent:(id)arg1;
+- (id)im_lastPathComponent;
 - (id)im_stripSpamLabel;
 - (BOOL)isArchivable_im;
 @end

@@ -10,22 +10,20 @@
 {
 }
 
-+ (id)_addressesFromAccountsProvider:(id)arg1;
 + (id)_objectIDsFromRightExpression:(id)arg1;
-+ (id)_predicateForRecipientMessagesAddressesKey:(id)arg1 accountsProvider:(id)arg2;
-+ (id)predicateForAnyMailboxWithPredicate:(id)arg1;
++ (id)_predicateForAnyMailboxWithPredicate:(id)arg1;
++ (id)_predicateForRecipientMessagesAddressesKey:(id)arg1 addresses:(id)arg2;
 + (id)predicateForAnyRecipientPredicate:(id)arg1;
 + (id)predicateForBody:(id)arg1;
-+ (id)predicateForCCMeMessagesWithAccountsProvider:(id)arg1;
-+ (id)predicateForIncludesMeMessagesWithAccountsProvider:(id)arg1;
-+ (id)predicateForMailboxTypePredicate:(id)arg1 mailboxPersistence:(id)arg2;
++ (id)predicateForMailboxTypePredicate:(id)arg1 mailboxes:(id)arg2;
 + (id)predicateForMessageIDHeaderHashPredicate:(id)arg1;
-+ (id)predicateForMessagesWithObjectIDsPredicate:(id)arg1 messagePersistence:(id)arg2;
++ (id)predicateForMessagesFromVIPs:(id)arg1;
++ (id)predicateForMessagesThatCCAddresses:(id)arg1;
++ (id)predicateForMessagesToAddresses:(id)arg1;
++ (id)predicateForMessagesWithObjectIDsPredicate:(id)arg1 objectIDConverter:(id)arg2;
 + (id)predicateForSenderPredicate:(id)arg1;
 + (id)predicateForSpotlightPredicate:(id)arg1;
 + (id)predicateForSubjectPredicate:(id)arg1;
-+ (id)predicateForToMeMessagesWithAccountsProvider:(id)arg1;
-+ (id)predicateForVIPMessagesWithVIPManager:(id)arg1;
 
 @end
 

@@ -97,6 +97,7 @@
 @property (nonatomic) double presentationHomeGrabberAlpha; // @synthesize presentationHomeGrabberAlpha=_presentationHomeGrabberAlpha;
 @property (readonly, nonatomic) BOOL presentationPrefersStatusBarHidden; // @synthesize presentationPrefersStatusBarHidden=_presentationPrefersStatusBarHidden;
 @property (readonly, copy, nonatomic) SBDisplayItem *representedDisplayItem; // @synthesize representedDisplayItem=_representedDisplayItem;
+@property (readonly, copy, nonatomic) CDUnknownBlockType sceneDeactivationPredicate;
 @property (readonly, nonatomic) BOOL shouldDisableBanners; // @synthesize shouldDisableBanners=_shouldDisableBanners;
 @property (readonly, nonatomic) BOOL shouldDisableControlCenter; // @synthesize shouldDisableControlCenter=_shouldDisableControlCenter;
 @property (readonly, nonatomic) BOOL shouldDisableInteractiveScreenshotGesture; // @synthesize shouldDisableInteractiveScreenshotGesture=_shouldDisableInteractiveScreenshotGesture;

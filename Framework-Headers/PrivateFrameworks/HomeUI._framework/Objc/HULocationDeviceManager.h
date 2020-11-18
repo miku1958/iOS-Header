@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_updateActiveFMFDevice:(id)arg1;
 - (void)addObserver:(id)arg1;

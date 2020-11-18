@@ -16,7 +16,8 @@
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;
 - (double)opacityForIndex:(unsigned long long)arg1;
-- (BOOL)wantsAsynchronousRenderingAssertion;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (long long)transitionLiveContentRasterizationStyle;
 - (BOOL)wantsMinificationFilter;
 
 @end

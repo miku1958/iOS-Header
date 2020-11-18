@@ -18,6 +18,7 @@
 
 @interface HMDCameraClipManager : HMFObject <HMBLocalZoneModelObserver, HMFLogging, HMFMessageReceiver, HMFTimerDelegate, HMDCloudShareParticipantsManagerDataSource, HMDDatabaseZoneManagerDelegate>
 {
+    BOOL _hasWriteAccess;
     id<HMDCameraClipManagerDelegate> _delegate;
     HMBLocalZone *_localZone;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -38,6 +39,7 @@
 @property (weak) id<HMDCameraClipManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property unsigned long long fetchClipsBatchLimit; // @synthesize fetchClipsBatchLimit=_fetchClipsBatchLimit;
+@property (nonatomic) BOOL hasWriteAccess; // @synthesize hasWriteAccess=_hasWriteAccess;
 @property (readonly) unsigned long long hash;
 @property (strong) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
 @property (readonly) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
@@ -50,9 +52,12 @@
 @property (readonly) HMDDatabaseZoneManager *zoneManager; // @synthesize zoneManager=_zoneManager;
 
 + (id)logCategory;
++ (double)maximumClipDuration;
 - (void).cxx_destruct;
+- (void)_cleanUpClipsLeftInProgress;
 - (void)_fetchAssetContextForMessage:(id)arg1 propertyName:(id)arg2;
 - (id)_fetchAssetContextForProperty:(id)arg1 forClipModel:(id)arg2;
+- (BOOL)_fetchClipsAfterDate:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_handleChangedClipModel:(id)arg1;
 - (void)_handleNewSignificantEventNotificationModel:(id)arg1;
 - (void)_handleNewSignificantEventNotificationModel:(id)arg1 withHeroFrameURL:(id)arg2 forClipModel:(id)arg3;
@@ -61,6 +66,7 @@
 - (void)_performCloudPull;
 - (id)_significantEventsForClipModel:(id)arg1;
 - (void)_updateCloudFetchTimer;
+- (BOOL)areShareModificationsEnabledForManager:(id)arg1;
 - (void)configureWithHome:(id)arg1;
 - (id)disableCloudStorage;
 - (id)enableCloudStorage;
@@ -71,6 +77,7 @@
 - (void)handleFetchClipForSignificantEventMessage:(id)arg1;
 - (void)handleFetchClipMessage:(id)arg1;
 - (void)handleFetchClipsMessage:(id)arg1;
+- (void)handleFetchCountOfClipsMessage:(id)arg1;
 - (void)handleFetchPosterFramesAssetContextMessage:(id)arg1;
 - (void)handleFetchVideoSegmentsAssetContextMessage:(id)arg1;
 - (void)handleImportClipsMessage:(id)arg1;
@@ -79,6 +86,7 @@
 - (void)handleUserCamerasAccessLevelDidChange:(id)arg1;
 - (void)handleUserPrivilegeDidChange:(id)arg1;
 - (void)handleUserRemoteAccessDidChange:(id)arg1;
+- (id)heroFrameURLForSignificantEventWithUUID:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1;
 - (id)initWithZoneManager:(id)arg1 quotaManager:(id)arg2 messageDispatcher:(id)arg3 workQueue:(id)arg4;
 - (id)localZone:(id)arg1 didProcessModelCreation:(id)arg2;

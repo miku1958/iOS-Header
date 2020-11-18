@@ -122,7 +122,6 @@
 + (id)assistantSyncDataChangedNotificationName;
 + (id)autoupdatingSharedLibrary;
 + (id)autoupdatingSharedLibraryPath;
-+ (BOOL)companionDeviceActiveStoreAccountIsSubscriber;
 + (id)databasePathForUnitTest:(id)arg1 withBasePath:(id)arg2;
 + (long long)devicePreferredImageFormat;
 + (BOOL)deviceSupportsASTC;
@@ -158,7 +157,6 @@
 + (id)sectionIndexTitleForSectionHeader:(id)arg1;
 + (id)sectionIndexTitles;
 + (void)setAutoupdatingSharedLibraryPath:(id)arg1;
-+ (void)setCompanionDeviceActiveStoreAccountSubscriber:(BOOL)arg1;
 + (void)setSharedLibraryDatabasePath:(id)arg1;
 + (id)sharedLibrary;
 + (id)sharedLibraryDatabasePath;

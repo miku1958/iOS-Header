@@ -10,6 +10,7 @@
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewControllerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <HomeUI/UITraitEnvironment-Protocol.h>
 #import <HomeUI/UIViewControllerTransitioningDelegate-Protocol.h>
@@ -19,7 +20,7 @@
 @class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUIconView, HUItemTableViewController, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlNavigationController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
-@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, HUCardViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIClickPresentationInteractionDelegate, UIViewControllerTransitioningDelegate, _UISheetPresentationControllerDelegate, UITraitEnvironment>
+@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, HUCardViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIClickPresentationInteractionDelegate, UIViewControllerTransitioningDelegate, _UISheetPresentationControllerDelegate, UINavigationControllerDelegate, UITraitEnvironment>
 {
     HUCardViewController *_cardViewController;
     HUQuickControlPresentationContext *_presentationContext;
@@ -37,6 +38,7 @@
     NSMapTable *_pressedItemContexts;
     _UIClickPresentationInteraction *_presentationInteraction;
     UIVisualEffectView *_pressedTileBlurEffectView;
+    UIView *_pressedTilePrerenderedView;
     HUIconView *_transitionIconView;
     HUIconView *_transitionIconViewVibrant;
     UILabel *_transitionPrimaryLabel;
@@ -69,6 +71,7 @@
 @property (readonly, nonatomic) NSMapTable *pressedItemContexts; // @synthesize pressedItemContexts=_pressedItemContexts;
 @property (strong, nonatomic) HUGridServiceCell *pressedTile; // @synthesize pressedTile=_pressedTile;
 @property (strong, nonatomic) UIVisualEffectView *pressedTileBlurEffectView; // @synthesize pressedTileBlurEffectView=_pressedTileBlurEffectView;
+@property (strong, nonatomic) UIView *pressedTilePrerenderedView; // @synthesize pressedTilePrerenderedView=_pressedTilePrerenderedView;
 @property (readonly, nonatomic, getter=isQuickControlPresented) BOOL quickControlIsPresented;
 @property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property (strong, nonatomic) HUItemTableViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
@@ -89,7 +92,8 @@
 @property (strong, nonatomic) HUGridActionSetTitleAndDescriptionView *transitionTitleAndDescriptionView; // @synthesize transitionTitleAndDescriptionView=_transitionTitleAndDescriptionView;
 
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
+- (BOOL)_allowsCardPresentationWithOnlySettings;
 - (id)_beginControlPresentationAnimated:(BOOL)arg1;
 - (void)_cleanupForQuickControlDismissal;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(BOOL)arg2;
@@ -97,7 +101,7 @@
 - (void)_createTransitionViewsForDismissal;
 - (void)_createTransitionViewsForPresentation;
 - (id)_dismissCardViewController;
-- (void)_dismissChildViewController;
+- (id)_dismissChildViewController;
 - (id)_dismissQuickControlViewControllerAnimated:(BOOL)arg1;
 - (id)_dismissServiceDetailsViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)_gestureInstallationView;
@@ -107,22 +111,25 @@
 - (void)_handleSingleTapGesture:(id)arg1;
 - (void)_initiateProgrammaticBounceForItem:(id)arg1;
 - (void)_installGestureRecognizer;
+- (BOOL)_isRTL;
 - (void)_logUserMetricsAfterPress;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (void)_preparePressedItemContextForItem:(id)arg1 startApplier:(BOOL)arg2;
 - (id)_prepareSettingsViewController;
 - (void)_pressGestureDidBecomeActive;
 - (void)_pressGestureDidBeginWithLocation:(struct CGPoint)arg1;
 - (void)_pressGestureDidEnd:(BOOL)arg1;
 - (void)_pressedStateDidEndForItem:(id)arg1 clearPresentationContext:(BOOL)arg2;
+- (void)_restoreOriginalTile;
 - (id)_sheetPresentationControllerViewForTouchContinuation:(id)arg1;
+- (BOOL)_shouldCancelPresentation;
 - (void)_updateOverrideAttributesWithScale:(double)arg1 forItem:(id)arg2;
 - (void)_updateOverrideAttributesWithTransform:(struct CGAffineTransform)arg1 alpha:(double)arg2 forItem:(id)arg3;
 - (void)_validatePresentationContext:(id)arg1;
 - (void)addMutuallyExclusiveGestureRecognizer:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)cardViewControllerRequestingDismissal:(id)arg1;
+- (id)cardViewControllerRequestingDismissal:(id)arg1;
 - (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
 - (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
@@ -145,6 +152,7 @@
 - (id)initWithTargetView:(id)arg1 delegate:(id)arg2;
 - (BOOL)isActionSetTile;
 - (BOOL)isTileOff;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)playBounceForItem:(id)arg1;
 - (id)presentQuickControlWithContext:(id)arg1 animated:(BOOL)arg2;
 - (void)presentationControllerWillDismiss:(id)arg1;

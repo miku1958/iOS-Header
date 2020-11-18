@@ -9,13 +9,14 @@
 #import <HomeUI/HUCameraSettingsModule-Protocol.h>
 #import <HomeUI/ICQUpgradeFlowManagerDelegate-Protocol.h>
 
-@class HFItem, HFStaticItemProvider, HUCameraUsageOptionItemProvider, NSArray, NSSet, NSString, UIViewController;
+@class HFItem, HFStaticItemProvider, HMHome, HUCameraUsageOptionItemProvider, NSArray, NSSet, NSString, UIViewController;
 
 @interface HUCameraPresenceRecordingSettingsModule : HUExpandableItemModule <ICQUpgradeFlowManagerDelegate, HUCameraSettingsModule>
 {
     BOOL _didCompleteCloudUpgradeOffer;
     NSSet *_itemProviders;
     HFItem *_showOptionsItem;
+    NSString *_longestCameraUsageOptionItemTitle;
     NSSet *_cameraProfiles;
     unsigned long long _presenceEventType;
     UIViewController *_presentingViewController;
@@ -23,6 +24,7 @@
     HFStaticItemProvider *_itemProvider;
     UIViewController *_viewController;
     NSArray *_optionItems;
+    HMHome *_home;
 }
 
 @property (readonly, nonatomic) unsigned long long accessModeSetting;
@@ -32,7 +34,9 @@
 @property (nonatomic) BOOL didCompleteCloudUpgradeOffer; // @synthesize didCompleteCloudUpgradeOffer=_didCompleteCloudUpgradeOffer;
 @property (readonly, nonatomic) unsigned long long displayStyle;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HFStaticItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
+@property (readonly, nonatomic) NSString *longestCameraUsageOptionItemTitle; // @synthesize longestCameraUsageOptionItemTitle=_longestCameraUsageOptionItemTitle;
 @property (strong, nonatomic) NSArray *optionItems; // @synthesize optionItems=_optionItems;
 @property (readonly, nonatomic) unsigned long long presenceEventType; // @synthesize presenceEventType=_presenceEventType;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
@@ -42,6 +46,7 @@
 
 - (void).cxx_destruct;
 - (void)_buildItemProvider;
+- (void)_clearItemsUpdating;
 - (void)_dispatchUpdateForCameraProfile:(id)arg1;
 - (id)_titleString;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
@@ -51,6 +56,7 @@
 - (BOOL)isItemHeader:(id)arg1;
 - (id)itemProviders;
 - (void)presentCloudUpgradeFlowWithCameraCount:(unsigned long long)arg1;
+- (void)presentGenericError;
 - (void)presentInsufficientPrivilegesAlert;
 - (void)presentMissingSupportedHubAlert;
 - (id)showOptionsItem;

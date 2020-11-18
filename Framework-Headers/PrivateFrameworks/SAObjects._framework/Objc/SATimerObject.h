@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSNumber *isFiring;
 @property (copy, nonatomic) NSString *state;
 @property (copy, nonatomic) NSNumber *timerValue;
 @property (copy, nonatomic) NSString *title;

@@ -15,6 +15,7 @@
     NSUUID *_identifier;
     NSUUID *_parentIdentifier;
     NSString *_name;
+    NSString *_keyPath;
     NSMutableSet *_settingsInternal;
     NSMutableSet *_groupsInternal;
 }
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSArray *groups;
 @property (strong) NSMutableSet *groupsInternal; // @synthesize groupsInternal=_groupsInternal;
 @property (readonly) unsigned long long hash;
+@property (copy) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (readonly, copy) NSArray *settings;
 @property (strong) NSMutableSet *settingsInternal; // @synthesize settingsInternal=_settingsInternal;
 @property (readonly) Class superclass;

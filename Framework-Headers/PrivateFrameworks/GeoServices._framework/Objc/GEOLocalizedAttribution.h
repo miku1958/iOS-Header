@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOLocalizedAttribution : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_displayName;
     NSString *_language;
     NSMutableArray *_logoURLs;
     NSMutableArray *_snippetLogoURLs;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_displayName:1;
         unsigned int read_language:1;
@@ -58,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)logoURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logoURLsCount;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UIBezierPath *_actionScrubPath;
     double _currentDistanceToActionScrubPath;
     struct CGPoint _initialLocationInsidePreview;
+    BOOL _actionsViewIsVisible;
     BOOL _enabled;
     UIViewSpringAnimationBehavior *_animationBehavior;
     id<_UIPreviewPlatterPanControllerDelegate> _delegate;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSArray *_detents;
     unsigned long long _initialDetentIndex;
     unsigned long long _rubberbandingEdges;
+    NSArray *_accessoryViews;
     UIView *_containerView;
     UIView *_platterView;
     UIView *_actionsView;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
     CDStruct_6f807b77 _menuAnchor;
 }
 
+@property (strong, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
 @property (weak, nonatomic) UIView *actionsView; // @synthesize actionsView=_actionsView;
 @property (readonly, nonatomic) UIViewSpringAnimationBehavior *animationBehavior; // @synthesize animationBehavior=_animationBehavior;
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
@@ -57,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionScrubPathWithInitialLocation:(struct CGPoint)arg1;
 - (void)_animationsForActionsStyleWithLocation:(struct CGPoint)arg1 ended:(BOOL)arg2;
+- (void)_animationsForAnyAttachedAccessoryViews;
 - (void)_animationsForPreviewPlusActionsStyleWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2;
 - (BOOL)_canBeginDraggingWithTranslation:(struct CGPoint)arg1 location:(struct CGPoint)arg2;
 - (BOOL)_canSwipeDownToDismiss;

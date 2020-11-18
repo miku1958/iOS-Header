@@ -23,7 +23,9 @@
 - (id)initWithTransitionID:(id)arg1 multitaskingModifier:(id)arg2 selectedAppLayout:(id)arg3;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;
+- (long long)liveContentRasterizationStyle;
 - (id)transitionWillBegin;
+- (BOOL)wantsMinificationFilter;
 
 @end
 

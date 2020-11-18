@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_calculateFirstAndLastEvents;
 - (long long)compareToDate:(id)arg1;
+- (id)description;
 - (id)initWith:(id)arg1;
 - (BOOL)isCompatibleWith:(id)arg1;
 

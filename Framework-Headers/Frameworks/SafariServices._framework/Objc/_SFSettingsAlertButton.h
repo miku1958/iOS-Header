@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSString *_text;
     NSAttributedString *_attributedText;
     NSArray *_contentConstraints;
+    NSArray *_componentsArrangement;
     NSString *_textStyle;
     UIImage *_image;
     UIImageView *_imageView;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (copy, nonatomic) NSAttributedString *attributedText;
+@property (copy, nonatomic) NSArray *componentsArrangement;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled;

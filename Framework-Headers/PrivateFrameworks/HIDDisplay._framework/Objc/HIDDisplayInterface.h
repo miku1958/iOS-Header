@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (BOOL)commit:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (id)description;
 - (id)device;
 - (BOOL)extract:(id)arg1 error:(id *)arg2;
 - (id)extractContainerIDFromService:(unsigned int)arg1;

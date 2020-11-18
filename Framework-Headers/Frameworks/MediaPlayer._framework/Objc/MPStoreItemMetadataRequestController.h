@@ -13,6 +13,8 @@
     NSOperationQueue *_operationQueue;
     unsigned long long _lastExpiredMetadataPurgeMachTime;
     NSMutableDictionary *_itemCaches;
+    struct os_unfair_lock_s _transactionLock;
+    long long _transactionCount;
     long long _cacheSize;
 }
 
@@ -23,6 +25,8 @@
 - (void).cxx_destruct;
 - (void)_removeExpiredItemsPeriodically;
 - (void)addStoreItemMetadata:(id)arg1;
+- (void)beginTransaction;
+- (void)endTransaction;
 - (id)getStoreItemMetadataForRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)requestStoreItemMetadataForReason:(unsigned long long)arg1 withItemIdentifiers:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;

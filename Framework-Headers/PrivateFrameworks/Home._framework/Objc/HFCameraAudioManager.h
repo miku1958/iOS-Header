@@ -19,6 +19,7 @@
 @property (strong, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (strong, nonatomic) HMCameraStream *cameraStream; // @synthesize cameraStream=_cameraStream;
 @property (readonly, nonatomic, getter=isIncomingAudioEnabled) BOOL incomingAudioEnabled;
+@property (readonly, nonatomic) float incomingAudioVolume;
 @property (readonly, nonatomic, getter=isOutgoingAudioEnabled) BOOL outgoingAudioEnabled;
 @property (strong, nonatomic) HFCharacteristicValueManager *valueManager; // @synthesize valueManager=_valueManager;
 
@@ -30,6 +31,7 @@
 - (id)enableRemoteSpeakerIfNecessary;
 - (id)initWithCameraProfile:(id)arg1 cameraStream:(id)arg2 valueManager:(id)arg3;
 - (id)setIncomingAudioEnabled:(BOOL)arg1;
+- (id)setIncomingAudioVolume:(float)arg1;
 - (id)setOutgoingAudioEnabled:(BOOL)arg1;
 - (id)updateAudioStreamSetting:(unsigned long long)arg1;
 

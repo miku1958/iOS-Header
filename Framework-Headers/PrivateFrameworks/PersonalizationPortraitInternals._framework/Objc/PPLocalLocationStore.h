@@ -9,12 +9,13 @@
 #import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 #import <PersonalizationPortraitInternals/PPFeedbackProcessing-Protocol.h>
 
-@class PPLocationCache, PPLocationStorage, PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, PPMLocationDonation, PPMObjectsDeletion;
+@class PPLocationCache, PPLocationStorage, PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, PPMLocationDonation, PPMLocationScored, PPMObjectsDeletion;
 
 @interface PPLocalLocationStore : NSObject <PPFeedbackAccepting, PPFeedbackProcessing>
 {
     PPLocationStorage *_storage;
     PPLocationCache *_cache;
+    PPMLocationScored *_adoptionTracker;
     PPMLocationDonation *_donationTracker;
     PPMObjectsDeletion *_deletionTracker;
     PPMFeedbackRegistered *_feedbackTracker;
@@ -35,6 +36,7 @@
 + (void)sortAndTruncate:(id)arg1 queryLimit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)_init;
+- (void)_petLoggingForQuery:(id)arg1 resultCount:(unsigned long long)arg2 hasError:(BOOL)arg3;
 - (id)_unlimitedLocationRecordsWithQuery:(id)arg1 error:(id *)arg2;
 - (BOOL)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
 - (BOOL)deleteAllLocationsFromSourcesWithBundleId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;

@@ -36,10 +36,11 @@
 - (id)description;
 - (unsigned long long)indexOfSection:(id)arg1;
 - (BOOL)indexPathExists:(id)arg1;
-- (id)indexPathForResult:(id)arg1;
+- (id)indexPathForRowModel:(id)arg1;
 - (id)initWithQueryId:(unsigned long long)arg1;
 - (long long)numberOfRowsForSection:(long long)arg1;
 - (unsigned long long)numberOfSections;
+- (id)removeRowModel:(id)arg1;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)resultForIndexPath:(id)arg1;
 - (id)rowModelForIndexPath:(id)arg1;

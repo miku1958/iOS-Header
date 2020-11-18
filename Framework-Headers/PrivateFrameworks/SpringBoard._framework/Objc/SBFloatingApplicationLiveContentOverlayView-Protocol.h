@@ -13,6 +13,6 @@
 - (void)configureWithWorkspaceEntity:(SBWorkspaceEntity *)arg1 referenceFrame:(struct CGRect)arg2 interfaceOrientation:(long long)arg3;
 - (UIViewController<SBLayoutStateTransitionObserver> *)contentViewController;
 - (void)invalidate;
-- (void)setAsynchronousRenderingDisabled:(BOOL)arg1;
+- (void)setLiveContentRasterizationDisabled:(BOOL)arg1;
 @end
 

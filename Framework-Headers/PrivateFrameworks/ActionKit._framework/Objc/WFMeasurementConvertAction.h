@@ -12,7 +12,7 @@
 
 - (id)currentUnitType;
 - (void)initializeParameters;
-- (id)outputMeasurementUnit;
+- (id)outputMeasurementUnitType;
 - (id)parametersRequiringUserInputAlongsideParameter:(id)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;

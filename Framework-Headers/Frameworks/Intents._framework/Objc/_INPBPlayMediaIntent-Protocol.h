@@ -6,10 +6,14 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBString, _INPBTimestamp;
 
 @protocol _INPBPlayMediaIntent <NSObject>
 
+@property (copy, nonatomic) NSArray *alternativeResults;
+@property (readonly, nonatomic) unsigned long long alternativeResultsCount;
+@property (copy, nonatomic) NSArray *audioSearchResults;
+@property (readonly, nonatomic) unsigned long long audioSearchResultsCount;
 @property (strong, nonatomic) _INPBString *audiobookAuthor;
 @property (strong, nonatomic) _INPBString *audiobookTitle;
 @property (copy, nonatomic) NSArray *buckets;
@@ -51,15 +55,23 @@
 @property (nonatomic) BOOL resumePlayback;
 @property (strong, nonatomic) _INPBString *showTitle;
 
++ (Class)alternativeResultsType;
++ (Class)audioSearchResultsType;
 + (Class)bucketType;
 + (Class)hashedRouteUIDsType;
 + (Class)mediaItemsType;
 - (int)StringAsPlaybackQueueLocation:(NSString *)arg1;
 - (int)StringAsPlaybackRepeatMode:(NSString *)arg1;
+- (void)addAlternativeResults:(_INPBMediaItemGroup *)arg1;
+- (void)addAudioSearchResults:(_INPBMediaItemGroup *)arg1;
 - (void)addBucket:(_INPBDataString *)arg1;
 - (void)addHashedRouteUIDs:(_INPBString *)arg1;
 - (void)addMediaItems:(_INPBMediaItemValue *)arg1;
+- (_INPBMediaItemGroup *)alternativeResultsAtIndex:(unsigned long long)arg1;
+- (_INPBMediaItemGroup *)audioSearchResultsAtIndex:(unsigned long long)arg1;
 - (_INPBDataString *)bucketAtIndex:(unsigned long long)arg1;
+- (void)clearAlternativeResults;
+- (void)clearAudioSearchResults;
 - (void)clearBuckets;
 - (void)clearHashedRouteUIDs;
 - (void)clearMediaItems;

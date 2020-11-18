@@ -60,6 +60,7 @@
 - (long long)availabilityState;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)date;
+- (id)loggingString;
 - (void)setDate:(id)arg1;
 - (id)templateForComplicationFamily:(long long)arg1;
 

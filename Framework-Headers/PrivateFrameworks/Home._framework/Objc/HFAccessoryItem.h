@@ -12,7 +12,7 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, NSArray, NSSet, NSString;
+@class HMAccessory, HMHome, NSArray, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFAccessoryItem : HFItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol, HFCompoundItemProtocol>
@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) BOOL isCompoundItem;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
@@ -59,6 +60,7 @@
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)init;
 - (id)initWithAccessory:(id)arg1 valueSource:(id)arg2;
+- (BOOL)isMultiLightDevice;
 - (BOOL)isMultiSensorDevice;
 - (id)namingComponentForHomeKitObject;
 - (id)serviceItemForService:(id)arg1;

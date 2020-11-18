@@ -162,7 +162,7 @@
 - (BOOL)_isMemoryCategoryTriggered:(unsigned long long)arg1;
 - (id)_keywordsSortedByPriority:(id)arg1;
 - (id)_libraryDateInterval;
-- (void)_loadGraph;
+- (void)_loadGraphWithProgressBlock:(CDUnknownBlockType)arg1;
 - (id)_locationForAsset:(id)arg1 fromNearbyAssetsInAssets:(id)arg2;
 - (id)_locationTripKeywordsForMemory:(id)arg1 momentNodes:(id)arg2;
 - (id)_memoriesWithOptions:(id)arg1 isFinalOne:(BOOL)arg2;
@@ -201,7 +201,7 @@
 - (id)_relatedCollectionBetweenMoment:(id)arg1 andAssetCollection:(id)arg2 relatedType:(unsigned long long)arg3 needsDebugInfo:(BOOL)arg4 needsDiversityInfo:(BOOL)arg5;
 - (id)_relatedCollectionsForDefaultAssetCollection:(id)arg1 relatedType:(unsigned long long)arg2 options:(id)arg3 assetCollectionForKeywords:(id)arg4 error:(id *)arg5;
 - (id)_relatedCollectionsForMemoryTripOrWeekend:(id)arg1 relatedType:(unsigned long long)arg2 options:(id)arg3 assetCollectionForKeywords:(id)arg4 error:(id *)arg5;
-- (void)_reloadGraph;
+- (void)_reloadGraphWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)_removePrefetchBlock;
 - (id)_roiLabelsForMomentNodes:(id)arg1;
 - (id)_sanitizeGraphDataDictionaryForArchiving:(id)arg1 referencedMemory:(id)arg2;
@@ -259,10 +259,10 @@
 - (BOOL)canAddM5KeywordToMemory:(id)arg1 currentKeywords:(id)arg2;
 - (BOOL)canProceedWithFullGraphRebuildStamp:(_Atomic unsigned long long)arg1;
 - (void)cancelAllCurationPrefetches;
-- (void)cancelLibraryAnalysisWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)cancelLibraryAnalysisWithCompletionBlock:(CDUnknownBlockType)arg1 progessBlock:(CDUnknownBlockType)arg2;
 - (id)celebrationOverTimeMemoriesForLocalDate:(id)arg1;
 - (void)checkCallsToProgressForJob:(id)arg1 progress:(double)arg2 stop:(BOOL)arg3 loggingConnection:(id)arg4;
-- (void)commonInit;
+- (void)commonInitWithProgressBlock:(CDUnknownBlockType)arg1;
 - (double)contentScoreForAssetCollection:(id)arg1 precision:(unsigned long long)arg2;
 - (double)contentScoreForAssetFeeder:(id)arg1 precision:(unsigned long long)arg2;
 - (id)createMemoriesWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
@@ -314,8 +314,7 @@
 - (id)init;
 - (id)initForTesting;
 - (id)initWithGraph:(id)arg1;
-- (id)initWithGraphName:(id)arg1 photoLibrary:(id)arg2;
-- (id)initWithPhotoLibrary:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (id)initWithReadonlyPhotoLibrary:(id)arg1;
 - (void)invalidateCurationCacheForCollectionWithIdentifier:(id)arg1;
 - (void)invalidateCurationCacheForMoment:(id)arg1;

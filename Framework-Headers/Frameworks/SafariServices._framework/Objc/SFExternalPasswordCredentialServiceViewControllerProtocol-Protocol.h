@@ -10,5 +10,6 @@
 
 @protocol SFExternalPasswordCredentialServiceViewControllerProtocol <NSObject>
 - (void)autoFillWithCredentialIdentity:(SFPasswordCredentialIdentity *)arg1;
+- (void)getCredentialForCredentialIdentity:(SFPasswordCredentialIdentity *)arg1 completion:(void (^)(SFSafariCredential *, BOOL, NSError *))arg2;
 @end
 

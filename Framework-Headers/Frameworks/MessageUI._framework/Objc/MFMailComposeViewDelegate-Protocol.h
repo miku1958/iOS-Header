@@ -48,6 +48,7 @@
 - (BOOL)canShowContentVariationPicker;
 - (void)composeBodyFieldDidChangeFontAttributes:(NSDictionary *)arg1;
 - (void)composeBodyFieldDidFinishLoad;
+- (void)composeBodyFieldDidResignFirstResponder;
 - (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
 - (NSString *)contentVariationName;
 - (void)showContentVariationPickerFromRect:(struct CGRect)arg1 inView:(UIView *)arg2;

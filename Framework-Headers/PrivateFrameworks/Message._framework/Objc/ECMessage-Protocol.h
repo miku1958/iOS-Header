@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSArray *from;
 @property (readonly, nonatomic) id<ECMessageHeaders> headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property (readonly, nonatomic) BOOL isServerSearchResult;
 @property (readonly) NSSet *labels;
 @property (readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
 @property (readonly, copy, nonatomic) NSArray *listUnsubscribe;

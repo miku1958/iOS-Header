@@ -42,15 +42,15 @@
 - (void).cxx_destruct;
 - (unsigned long long)_countOfMessagesMatchingCriteria:(id)arg1 includingDuplicates:(BOOL)arg2;
 - (void)_iterateMessagesMatchingQuery:(id)arg1 cancelationToken:(id)arg2 resultHandler:(id)arg3 monitor:(id)arg4;
-- (id)_libraryMessageForMessageObjectID:(id)arg1;
 - (id)_requestSummaryForLibraryMessage:(id)arg1;
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithMessageIDHeaderHash:(id)arg1 matchingQuery:(id)arg2;
 - (id)enabledAccountMailboxesExpression;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
-- (id)initWithConversationPersistence:(id)arg1 mailboxPersistence:(id)arg2 database:(id)arg3 vipManager:(id)arg4 library:(id)arg5 remoteSearchProvider:(id)arg6 blockedSenderManager:(id)arg7;
+- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 library:(id)arg3;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)iteratePersistedMessagesMatchingQuery:(id)arg1 limit:(long long)arg2 cancelationToken:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)libraryMessageForMessageObjectID:(id)arg1;
 - (id)messagesForPersistedMessages:(id)arg1 mailboxScope:(id)arg2;
 - (id)persistedMessageForOutgoingMessage:(id)arg1 isDraft:(BOOL)arg2;
 - (id)persistedMessagesForDatabaseIDs:(id)arg1 requireProtectedData:(BOOL)arg2 temporarilyUnavailableDatabaseIDs:(id *)arg3;

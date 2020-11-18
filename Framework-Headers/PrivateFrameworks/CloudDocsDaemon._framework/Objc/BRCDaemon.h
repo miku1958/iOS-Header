@@ -96,6 +96,8 @@
 - (void)localeDidChange;
 - (void)networkReachabilityChanged:(BOOL)arg1;
 - (void)networkReachabilityFlagsChanged:(unsigned int)arg1;
+- (unsigned long long)nonPurgeableSizeGivenPurgeableSize:(unsigned long long)arg1;
+- (unsigned long long)recursivelySizeDirectoryAtPath:(id)arg1;
 - (id)registerShareAcceptOperation:(id)arg1 forURL:(id)arg2;
 - (void)restart;
 - (void)resumeIPCAcceptation;
@@ -105,6 +107,7 @@
 - (void)setUpSandbox;
 - (void)start;
 - (void)suspendIPCAcceptation;
+- (unsigned long long)totalSize;
 - (void)waitForConfiguration;
 - (void)waitOnAccountResumedQueue;
 

@@ -117,7 +117,7 @@
 - (id)coveredCharacterSet;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)familyNameForCSSFontFamilyValue;
+- (id)familyNameForCSSFontFamilyValueForWebKit:(BOOL)arg1;
 - (id)fontWithSize:(double)arg1;
 - (void)getAdvancements:(struct CGSize *)arg1 forCGGlyphs:(const unsigned short *)arg2 count:(unsigned long long)arg3;
 - (void)getBoundingRects:(struct CGRect *)arg1 forCGGlyphs:(const unsigned short *)arg2 count:(unsigned long long)arg3;
@@ -137,6 +137,7 @@
 - (BOOL)isVertical;
 - (id)lastResortFont;
 - (id)markupDescription;
+- (id)markupDescriptionForWebKit:(BOOL)arg1 pointSize:(float)arg2 sizeUnit:(id)arg3;
 - (unsigned long long)mostCompatibleStringEncoding;
 - (unsigned long long)numberOfGlyphs;
 - (double)readableWidth;

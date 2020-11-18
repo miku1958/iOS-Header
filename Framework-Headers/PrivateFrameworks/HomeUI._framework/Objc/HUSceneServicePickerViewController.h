@@ -31,7 +31,6 @@
 - (id)initWithServiceGridItemManager:(id)arg1;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)layoutOptionsForSection:(long long)arg1;
-- (BOOL)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
 
 @end
 

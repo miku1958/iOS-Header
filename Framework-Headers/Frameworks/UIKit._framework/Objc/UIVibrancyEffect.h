@@ -28,9 +28,13 @@
 + (id)effectForBlurEffect:(id)arg1 style:(long long)arg2;
 + (id)lightVibrantEffectWithBurnColor:(id)arg1 darkenColor:(id)arg2 compositingColor:(id)arg3;
 + (BOOL)supportsSecureCoding;
++ (id)vibrantChromeShadowEffect;
 + (id)vibrantEffectWithCompositingMode:(long long)arg1 compositingColor:(id)arg2;
++ (id)vibrantHeavyShadowEffect;
++ (id)vibrantMediumShadowEffect;
 - (void).cxx_destruct;
 - (long long)_blurStyle;
+- (id)_effectReplacingTintColor:(id)arg1;
 - (long long)_expectedUsage;
 - (id)_initWithImplementation:(id)arg1;
 - (BOOL)_isATVStyle;

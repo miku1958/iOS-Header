@@ -16,7 +16,7 @@
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoardHome/_UISettingsKeyObserver-Protocol.h>
 
-@class NSArray, NSDate, NSHashTable, NSMapTable, NSString, SBCloseBoxView, SBFParallaxSettings, SBFolderIcon, SBFolderIconImageCache, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBIcon, SBIconImageCrossfadeView, SBIconImageView, UIColor, UIContextMenuConfiguration, UIContextMenuInteraction, UIDragInteraction, UIFont, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer, UIViewPropertyAnimator, _UILegibilitySettings, _UIStatesFeedbackGenerator;
+@class NSArray, NSCountedSet, NSDate, NSHashTable, NSMapTable, NSString, NSURL, SBCloseBoxView, SBFParallaxSettings, SBFolderIcon, SBFolderIconImageCache, SBHIconImageCache, SBHRecentsDocumentExtensionProvider, SBIcon, SBIconImageCrossfadeView, SBIconImageView, UIColor, UIContextMenuConfiguration, UIContextMenuInteraction, UIDragInteraction, UIFont, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer, UIViewPropertyAnimator, _UILegibilitySettings, _UIStatesFeedbackGenerator;
 @protocol BSInvalidatable, SBIconAccessoryView, SBIconContinuityInfo, SBIconLabelAccessoryView, SBIconLabelView, SBIconListLayout, SBIconListLayoutProvider, SBIconViewDelegate;
 
 @interface SBIconView : UIView <_UISettingsKeyObserver, UIGestureRecognizerDelegate, UIDragInteractionDelegate, SBCloseBoxViewDelegate, UIContextMenuInteractionDelegate, SBSHardwareButtonEventConsuming, SBIconObserver, SBReusableView, SBIconAccessoryInfoProvider>
@@ -62,10 +62,13 @@
     unsigned int _disableContextMenuInteraction:1;
     unsigned int _contextMenuInteractionPending:1;
     unsigned int _contextMenuInteractionActive:1;
+    unsigned int _disallowsBlockedForScreenTimeExpiration:1;
+    unsigned int _imageLoadingBehavior:2;
     double _iconContentScale;
     UIView *_scalingContainer;
     struct CGRect _visibleImageRect;
     NSHashTable *_observers;
+    NSCountedSet *_forbidEditingModeReasons;
     struct SBIconImageInfo _iconImageInfo;
     UIFont *_labelFont;
     SBHRecentsDocumentExtensionProvider *_recentsDocumentExtensionProvider;
@@ -104,6 +107,7 @@
 @property (strong, nonatomic) UIViewPropertyAnimator *accessoryViewAnimator; // @synthesize accessoryViewAnimator=_accessoryViewAnimator;
 @property (strong, nonatomic) UIContextMenuConfiguration *activeContextMenuConfiguration; // @synthesize activeContextMenuConfiguration=_activeContextMenuConfiguration;
 @property (weak, nonatomic) SBIconView *activePreviewIcon; // @synthesize activePreviewIcon=_activePreviewIcon;
+@property (nonatomic) BOOL allowsBlockedForScreenTimeExpiration;
 @property (nonatomic) BOOL allowsCloseBox;
 @property (nonatomic) BOOL allowsEditingAnimation;
 @property (readonly, nonatomic) BOOL allowsLabelAccessoryView;
@@ -111,9 +115,12 @@
 @property (nonatomic) BOOL allowsPassthroughHitTesting;
 @property (readonly, nonatomic) BOOL allowsTapWhileEditing;
 @property (readonly, nonatomic, getter=isAnimatingScrolling) BOOL animatingScrolling;
-@property (strong, nonatomic) NSArray *applicationShortcutItems; // @synthesize applicationShortcutItems=_applicationShortcutItems;
+@property (readonly, copy, nonatomic) NSString *applicationBundleIdentifierForShortcuts;
+@property (readonly, copy, nonatomic) NSURL *applicationBundleURLForShortcuts;
+@property (copy, nonatomic) NSArray *applicationShortcutItems; // @synthesize applicationShortcutItems=_applicationShortcutItems;
 @property (readonly, nonatomic) SBFParallaxSettings *badgeParallaxSettings;
 @property (readonly, nonatomic) double baselineOffsetFromBottom;
+@property (readonly, nonatomic) BOOL canBeginDrags;
 @property (readonly, nonatomic) BOOL canShowCloseBox;
 @property (readonly, nonatomic) unsigned long long centerVisibleMiniIconIndex;
 @property (nonatomic) unsigned long long configurationOptions;
@@ -135,6 +142,7 @@
 @property (readonly, nonatomic) double dragInteractionLiftDelay;
 @property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *editingModeGestureRecognizer; // @synthesize editingModeGestureRecognizer=_editingModeGestureRecognizer;
+@property (readonly, copy, nonatomic) NSArray *effectiveApplicationShortcutItems;
 @property (readonly, nonatomic) double effectiveIconImageAlpha;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) Class expectedIconImageViewClass;
@@ -162,6 +170,7 @@
 @property (readonly, nonatomic) struct CGSize iconImageVisibleSize;
 @property (nonatomic) double iconLabelAlpha; // @synthesize iconLabelAlpha=_iconLabelAlpha;
 @property (readonly, nonatomic) struct CGSize iconViewSize;
+@property (nonatomic) unsigned long long imageLoadingBehavior;
 @property (nonatomic, getter=isInDock) BOOL inDock;
 @property (nonatomic, getter=isLabelAccessoryHidden) BOOL labelAccessoryHidden;
 @property (readonly, nonatomic) double labelAccessoryTotalWidth;
@@ -214,6 +223,7 @@
 + (id)defaultIconLocation;
 + (struct CGSize)defaultIconViewSize;
 + (struct CGSize)defaultIconViewSizeForIconImageSize:(struct CGSize)arg1 configurationOptions:(unsigned long long)arg2;
++ (unsigned long long)defaultImageLoadingBehavior;
 + (double)defaultMaxLabelHeight;
 + (double)defaultMaxLabelWidthDeltaForContentSizeCategory:(id)arg1;
 + (Class)defaultViewClassForAccessoryType:(long long)arg1;
@@ -232,7 +242,6 @@
 + (BOOL)supportsTapGesture;
 - (void).cxx_destruct;
 - (void)_acquireHomeButtonPressConsumingAssertionIfNecessary;
-- (void)_activateAndCoolDownContextMenuInteractionNegativeHaptic;
 - (double)_additionalLiftScale;
 - (void)_applyAdditonalLiftScale:(BOOL)arg1;
 - (void)_applyEditingStateAnimated:(BOOL)arg1;
@@ -254,7 +263,7 @@
 - (void)_configureViewAsFolderIconImageView:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
-- (id)_contextMenuInteraction:(id)arg1 previewForIconWithConfigurationOptions:(unsigned long long)arg2;
+- (id)_contextMenuInteraction:(id)arg1 previewForIconWithConfigurationOptions:(unsigned long long)arg2 highlighted:(BOOL)arg3;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (BOOL)_contextMenuInteractionShouldAllowDragAfterDismiss:(id)arg1;
 - (void)_createAccessoryViewIfNecessary;
@@ -269,7 +278,6 @@
 - (void)_dragInteraction:(id)arg1 liftAnimationDidChangeDirection:(long long)arg2;
 - (BOOL)_dragInteraction:(id)arg1 shouldDelayCompetingGestureRecognizer:(id)arg2;
 - (void)_enableContentContainerView;
-- (id)_fetchApplicationShortcutItems;
 - (id)_folderIconImageView;
 - (struct CGRect)_frameForImageView;
 - (struct CGRect)_frameForLabel;
@@ -311,14 +319,11 @@
 - (void)_updateLabelAccessoryView;
 - (void)_updateLaunchDisabled;
 - (void)_updateProgressAnimated:(BOOL)arg1;
-- (void)_warmUpContextMenuInteractionNegativeHaptic;
 - (struct CGPoint)accessoryOffset;
 - (struct CGSize)accessorySize;
 - (void)addGesturesAndInteractionsIfNecessary;
 - (void)addObserver:(id)arg1;
 - (void)addPendingAnimatorCompletionForConfiguration:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (id)applicationBundleIdentifier;
-- (id)applicationBundleURL;
 - (id)applicationShortcutWidgetBundleIdentifier;
 - (BOOL)canReceiveGrabbedIcon:(id)arg1;
 - (void)cancelDrag;
@@ -326,6 +331,7 @@
 - (void)cleanUpAfterDropAnimation;
 - (void)cleanupAfterCrossfade;
 - (void)cleanupAfterFloatyFolderCrossfade;
+- (void)cleanupAnimatorCompletionForConfiguration:(id)arg1;
 - (BOOL)closeBoxShouldTrack:(id)arg1;
 - (void)configureForLabelAllowed:(BOOL)arg1;
 - (void)configureLabelImageParametersBuilder:(id)arg1;
@@ -366,7 +372,9 @@
 - (double)effectiveBrightness;
 - (double)effectiveIconAccessoryAlpha;
 - (double)effectiveIconLabelAlpha;
+- (id)effectiveListLayoutProvider;
 - (double)effectiveOverallAlpha;
+- (void)endForbiddingEditingModeWithReason:(id)arg1;
 - (id)folder;
 - (struct CGRect)frameForMiniIconAtIndex:(unsigned long long)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -379,6 +387,7 @@
 - (void)iconInteractedWhenDisabled;
 - (void)iconLaunchEnabledDidChange:(id)arg1;
 - (id)initWithConfigurationOptions:(unsigned long long)arg1;
+- (id)initWithConfigurationOptions:(unsigned long long)arg1 listLayoutProvider:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isContextMenuInteractionActiveOrPending;
@@ -429,7 +438,9 @@
 - (void)setTouchDownInIcon:(BOOL)arg1;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (BOOL)shouldActivateApplicationShortcutItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)startForbiddingEditingModeWithReason:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)tapGestureDidChange:(id)arg1;

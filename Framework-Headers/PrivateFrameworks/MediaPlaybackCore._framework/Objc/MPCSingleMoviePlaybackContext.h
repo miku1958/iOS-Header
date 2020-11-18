@@ -17,6 +17,7 @@
 
 + (Class)queueFeederClass;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMovie:(id)arg1;
 
 @end

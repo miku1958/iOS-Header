@@ -27,6 +27,7 @@
 - (unsigned long long)tv_elementType;
 - (struct UIEdgeInsets)tv_focusMargin;
 - (id)tv_highlightColor;
+- (id)tv_impressionableElementsForDocument:(id)arg1;
 - (double)tv_interitemSpacing;
 - (BOOL)tv_isAnimationDisabledForProperty:(id)arg1;
 - (BOOL)tv_isPrototypeView;

@@ -18,7 +18,7 @@
 
 + (id)contentTypesToPatternsMapping;
 + (id)cursorByAdvancingWithString:(id)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
-+ (id)cursorByAdvancingWithSymbol:(id)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
++ (id)cursorByAdvancingWithSymbol:(unsigned long long)arg1 fromCursor:(id)arg2 inNetwork:(id)arg3;
 + (id)patternToSymbolMap;
 + (id)rootCursorForContentType:(int)arg1 inNetwork:(id)arg2 forFirstSegmentGroup:(BOOL)arg3;
 - (id)advanceCursor:(id)arg1 withSymbol:(unsigned long long)arg2;

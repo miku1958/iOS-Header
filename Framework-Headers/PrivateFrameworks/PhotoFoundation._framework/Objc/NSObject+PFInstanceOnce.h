@@ -16,7 +16,6 @@
 + (void)setExecutionContextCheck:(int)arg1 forInstanceMethod:(SEL)arg2;
 + (void)setExecutionContextCheckForAllClassMethods:(int)arg1;
 + (void)setExecutionContextCheckForAllInstanceMethods:(int)arg1;
-- (void)PF_mainThreadReleaseWrapper:(CDUnknownFunctionPointerType)arg1;
 - (id)associatedObjectForKey:(id)arg1;
 - (BOOL)currentContextCanExecuteSelector:(SEL)arg1;
 - (void)handleInvalidExecutionContextForSelector:(SEL)arg1 requirement:(int)arg2;

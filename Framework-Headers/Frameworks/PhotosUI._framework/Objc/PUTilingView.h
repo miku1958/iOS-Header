@@ -61,7 +61,6 @@
     double __pagingSpringPullAdjustment;
     double __pagingFrictionAdjustment;
     NSMutableDictionary *__postLayoutBlocks;
-    CDUnknownBlockType _transitionAnimationStartHandler;
     CDUnknownBlockType _onNextTileControllersUpdateBlock;
     struct UIEdgeInsets _loadingInsets;
 }
@@ -99,7 +98,6 @@
 @property (weak, nonatomic) id<PUTilingViewTileSource> tileSource; // @synthesize tileSource=_tileSource;
 @property (weak, nonatomic) id<PUTilingViewTileTransitionDelegate> tileTransitionDelegate; // @synthesize tileTransitionDelegate=_tileTransitionDelegate;
 @property (weak, nonatomic) id<PUTilingViewTileUseDelegate> tileUseDelegate; // @synthesize tileUseDelegate=_tileUseDelegate;
-@property (copy, nonatomic) CDUnknownBlockType transitionAnimationStartHandler; // @synthesize transitionAnimationStartHandler=_transitionAnimationStartHandler;
 
 + (unsigned long long)_defaultEdgesScrollingContentIntoSafeArea;
 - (void).cxx_destruct;
@@ -147,7 +145,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;
 - (void)insertItemAtIndexPath:(id)arg1 dataSource:(id)arg2;
-- (void)installTransitionAnimationStartHandler:(CDUnknownBlockType)arg1;
 - (void)invalidateLayout:(id)arg1 withContext:(id)arg2;
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)moveItemFromIndexPath:(id)arg1 toIndexPath:(id)arg2 dataSource:(id)arg3;
@@ -161,7 +158,6 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)tileControllerDidEndAnimating:(id)arg1;
 - (id)tileControllerWithIndexPath:(id)arg1 kind:(id)arg2 dataSourceIdentifier:(id)arg3;
-- (void)transitionAnimationDidStart;
 - (void)transitionToLayout:(id)arg1;
 - (void)transitionToLayout:(id)arg1 withContext:(id)arg2 animationSetupCompletionHandler:(CDUnknownBlockType)arg3;
 

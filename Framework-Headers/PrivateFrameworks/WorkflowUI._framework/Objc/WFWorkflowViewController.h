@@ -9,12 +9,13 @@
 #import <WorkflowUI/CKComponentProvider-Protocol.h>
 #import <WorkflowUI/CKSupplementaryViewDataSource-Protocol.h>
 #import <WorkflowUI/WFCollectionViewDelegateModulesLayout-Protocol.h>
+#import <WorkflowUI/WFModuleDelegate-Protocol.h>
 #import <WorkflowUI/WFVariableUIDelegate-Protocol.h>
 
-@class CKCollectionViewTransactionalDataSource, NSIndexPath, NSString, UICollectionView, WFContentClassesToolbar, WFModulesCollectionViewLayout, WFScrollPositionPinningCollectionView, WFWorkflow;
-@protocol UIScrollViewDelegate, WFComponentNavigationContext, WFContentClassesToolbarDelegate, WFModuleIndentationProvider, WFModuleModelProvider, WFModulesCollectionViewDelegate, WFModulesSupplementaryViewDataSource, WFWorkflowViewControllerDelegate;
+@class CKCollectionViewTransactionalDataSource, NSIndexPath, NSString, UICollectionView, WFContentClassesToolbar, WFModulesCollectionViewLayout, WFScrollPositionPinningCollectionView, WFWorkflow, WFWorkflowModuleIndentationCache;
+@protocol UIScrollViewDelegate, WFComponentNavigationContext, WFContentClassesToolbarDelegate, WFModuleModelProvider, WFModulesCollectionViewDelegate, WFModulesSupplementaryViewDataSource, WFWorkflowViewControllerDelegate;
 
-@interface WFWorkflowViewController : UIViewController <CKComponentProvider, CKSupplementaryViewDataSource, WFCollectionViewDelegateModulesLayout, WFVariableUIDelegate>
+@interface WFWorkflowViewController : UIViewController <CKComponentProvider, CKSupplementaryViewDataSource, WFCollectionViewDelegateModulesLayout, WFVariableUIDelegate, WFModuleDelegate>
 {
     BOOL _alwaysBounceCollectionViewVertically;
     BOOL _allowsAcceptsToolbar;
@@ -33,7 +34,7 @@
     id<WFModulesCollectionViewDelegate> _collectionViewDelegate;
     id<WFModulesSupplementaryViewDataSource> _supplementaryViewDataSource;
     id<WFModuleModelProvider> _modelProvider;
-    id<WFModuleIndentationProvider> _indentationProvider;
+    WFWorkflowModuleIndentationCache *_indentationCache;
     id<UIScrollViewDelegate> _scrollViewDelegate;
     double _maximumModuleWidth;
     double _maximumContentWidth;
@@ -58,7 +59,7 @@
 @property (weak, nonatomic) id<WFWorkflowViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<WFModuleIndentationProvider> indentationProvider; // @synthesize indentationProvider=_indentationProvider;
+@property (readonly, nonatomic) WFWorkflowModuleIndentationCache *indentationCache; // @synthesize indentationCache=_indentationCache;
 @property (nonatomic) double maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
 @property (nonatomic) double maximumModuleWidth; // @synthesize maximumModuleWidth=_maximumModuleWidth;
 @property (weak, nonatomic) id<WFModuleModelProvider> modelProvider; // @synthesize modelProvider=_modelProvider;
@@ -86,6 +87,7 @@
 - (id)createModelForAction:(id)arg1;
 - (void)dealloc;
 - (void)generateNewModelsAndReload;
+- (unsigned long long)indentationLevelForModule:(id)arg1 withAction:(id)arg2;
 - (id)indexPathOfCellContainingResponder:(id)arg1;
 - (id)indexPathOfCellWithSubview:(id)arg1;
 - (id)initWithWorkflow:(id)arg1 style:(unsigned long long)arg2;

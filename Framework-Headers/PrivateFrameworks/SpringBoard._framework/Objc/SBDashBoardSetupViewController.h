@@ -8,13 +8,14 @@
 
 #import <SpringBoard/CSEventHandling-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController;
+@class CSCoverSheetViewController, NSArray, NSDictionary, NSMutableArray, NSString, NSTimer, SBActivationInfoViewController, SBSetupManager, SBSetupRegulatoryInfoViewController;
 
 @interface SBDashBoardSetupViewController : CSCoverSheetViewControllerBase <CSEventHandling>
 {
     SBActivationInfoViewController *_activationInfoViewController;
     SBSetupRegulatoryInfoViewController *_regulatoryInfoViewController;
     SBSetupManager *_setupManager;
+    CSCoverSheetViewController *_coverSheetViewController;
     NSString *_configureKey;
     NSString *_wifiPrimaryLanguage;
     NSString *_telephonyPrimaryLanguage;
@@ -55,7 +56,7 @@
 - (void)aggregateAppearance:(id)arg1;
 - (void)aggregateBehavior:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
-- (id)init;
+- (id)initWithCoverSheetViewController:(id)arg1;
 - (void)loadView;
 - (long long)presentationPriority;
 - (long long)presentationType;

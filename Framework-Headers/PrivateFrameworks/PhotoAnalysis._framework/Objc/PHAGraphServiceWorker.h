@@ -198,7 +198,7 @@
 - (void)requestUtilityAssetInformationWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestWriteAdditionalDataToSnapshotResults:(id)arg1 forFilenameKey:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (BOOL)retryStartup;
-- (void)setupGraphManager;
+- (void)setupGraphManagerWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)setupPredicateValidator;
 - (BOOL)shouldAllowBackgroundActivityWithDescription:(id)arg1;
 - (BOOL)shouldStopOperationInProgress;
@@ -215,7 +215,7 @@
 - (long long)unavailableErrorCodeForCurrentState;
 - (BOOL)wantsGraphUpdateNotifications;
 - (BOOL)wantsLiveGraphUpdates;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 
 @end
 

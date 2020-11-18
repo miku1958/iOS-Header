@@ -46,7 +46,6 @@
 + (id)onDemand_installOriginalSOCVideoPresentForAsset:(id)arg1 referencedResourceURLs:(id)arg2;
 + (id)onDemand_installOriginalVideoComplementResourceIfPresentForAsset:(id)arg1;
 + (id)onDemand_installPrimaryImageResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3;
-+ (id)onDemand_installPrimaryMovieResourceWithRecipe:(id)arg1 version:(unsigned int)arg2 forAsset:(id)arg3;
 + (unsigned int)recipeIDFromCPLResourceType:(unsigned long long)arg1 assetType:(short)arg2 fromAdjustedSet:(BOOL)arg3;
 + (BOOL)reconsiderSavedAssetTypeInStore:(id)arg1 migrator:(id)arg2;
 + (BOOL)recoverSupplementalResourcesForAsset:(id)arg1 usingSidecarFinder:(id)arg2 outResourcesStoreCount:(unsigned long long *)arg3 error:(id *)arg4;

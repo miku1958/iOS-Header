@@ -13,28 +13,40 @@
 @interface SGM2ContactDetailExtraction : PBCodable <NSCopying>
 {
     int _detail;
+    unsigned int _extractionModelVersion;
+    int _extractionSignatureSource;
     int _foundInSenderCNContact;
     NSString *_key;
     int _outcome;
     int _source;
+    BOOL _isUnlikelyPhone;
     BOOL _signature;
     struct {
         unsigned int detail:1;
+        unsigned int extractionModelVersion:1;
+        unsigned int extractionSignatureSource:1;
         unsigned int foundInSenderCNContact:1;
         unsigned int outcome:1;
         unsigned int source:1;
+        unsigned int isUnlikelyPhone:1;
         unsigned int signature:1;
     } _has;
 }
 
 @property (nonatomic) int detail; // @synthesize detail=_detail;
+@property (nonatomic) unsigned int extractionModelVersion; // @synthesize extractionModelVersion=_extractionModelVersion;
+@property (nonatomic) int extractionSignatureSource; // @synthesize extractionSignatureSource=_extractionSignatureSource;
 @property (nonatomic) int foundInSenderCNContact; // @synthesize foundInSenderCNContact=_foundInSenderCNContact;
 @property (nonatomic) BOOL hasDetail;
+@property (nonatomic) BOOL hasExtractionModelVersion;
+@property (nonatomic) BOOL hasExtractionSignatureSource;
 @property (nonatomic) BOOL hasFoundInSenderCNContact;
+@property (nonatomic) BOOL hasIsUnlikelyPhone;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasOutcome;
 @property (nonatomic) BOOL hasSignature;
 @property (nonatomic) BOOL hasSource;
+@property (nonatomic) BOOL isUnlikelyPhone; // @synthesize isUnlikelyPhone=_isUnlikelyPhone;
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) int outcome; // @synthesize outcome=_outcome;
 @property (nonatomic) BOOL signature; // @synthesize signature=_signature;
@@ -42,6 +54,7 @@
 
 - (void).cxx_destruct;
 - (int)StringAsDetail:(id)arg1;
+- (int)StringAsExtractionSignatureSource:(id)arg1;
 - (int)StringAsFoundInSenderCNContact:(id)arg1;
 - (int)StringAsOutcome:(id)arg1;
 - (int)StringAsSource:(id)arg1;
@@ -50,6 +63,7 @@
 - (id)description;
 - (id)detailAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (id)extractionSignatureSourceAsString:(int)arg1;
 - (id)foundInSenderCNContactAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

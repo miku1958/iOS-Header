@@ -9,7 +9,7 @@
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 #import <WorkflowKit/WFVariableStringContent-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSString, UIImage;
+@class NSArray, NSDictionary, NSHashTable, NSString, WFImage;
 @protocol WFVariableProvider;
 
 @interface WFVariable : NSObject <WFVariableStringContent, WFVariableSerialization>
@@ -30,7 +30,7 @@
 @property (copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *nameIncludingPropertyName;
 @property (readonly, nonatomic) NSString *propertyName;

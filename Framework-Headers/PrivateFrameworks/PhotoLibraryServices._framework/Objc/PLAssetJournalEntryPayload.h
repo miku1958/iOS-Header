@@ -25,6 +25,8 @@
 + (id)nonPersistedModelPropertiesDescription;
 + (id)payloadClassID;
 + (unsigned int)payloadVersion;
++ (BOOL)shouldPersistForChangedKeys:(id)arg1 entityName:(id)arg2;
++ (id)snapshotSortDescriptors;
 - (void).cxx_destruct;
 - (void)_fixAdjustedAssetUTI;
 - (void)_fixLocationData;

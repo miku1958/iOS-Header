@@ -17,10 +17,10 @@
     BOOL __queue_appActive;
     BOOL _lastAnnouncementPartial;
     AVCaptureSession *_captureSession;
-    UIView *_sceneObjectElementContainerView;
-    NSObject<OS_dispatch_queue> *__resultsQueue;
-    AXMVisionEngine *_visionEngine;
     AXMAVCaptureSessionNode *_captureSessionNode;
+    UIView *_sceneObjectElementContainerView;
+    NSObject<OS_dispatch_queue> *_axResultsQueue;
+    AXMVisionEngine *_visionEngine;
     AXMVisionAnalysisOptions *_lastDesiredAnalysisOptions;
     unsigned long long _currentFrameCount;
     long long _interfaceOrientation;
@@ -57,8 +57,8 @@
 @property (readonly, nonatomic) NSMutableDictionary *_mostRecentVisionFeatures; // @synthesize _mostRecentVisionFeatures=__mostRecentVisionFeatures;
 @property (readonly, nonatomic) NSMutableDictionary *_mostRecentVisionFeaturesUpdateTimes; // @synthesize _mostRecentVisionFeaturesUpdateTimes=__mostRecentVisionFeaturesUpdateTimes;
 @property (nonatomic) BOOL _queue_appActive; // @synthesize _queue_appActive=__queue_appActive;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_resultsQueue; // @synthesize _resultsQueue=__resultsQueue;
 @property (nonatomic, getter=isAppActive) BOOL appActive; // @synthesize appActive=_appActive;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *axResultsQueue; // @synthesize axResultsQueue=_axResultsQueue;
 @property (nonatomic) long long cameraDevicePosition; // @synthesize cameraDevicePosition=_cameraDevicePosition;
 @property (nonatomic) long long cameraMode; // @synthesize cameraMode=_cameraMode;
 @property (weak, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;

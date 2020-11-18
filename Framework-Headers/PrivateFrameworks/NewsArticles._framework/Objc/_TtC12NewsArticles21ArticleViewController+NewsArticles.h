@@ -13,9 +13,12 @@
 @property (nonatomic, readonly) BOOL canBecomeFirstResponder;
 @property (nonatomic, readonly) NSArray *keyCommands;
 
+- (BOOL)becomeFirstResponder;
 - (void)handleKeyCommandWithKeyCommand:(id)arg1;
+- (BOOL)resignFirstResponder;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

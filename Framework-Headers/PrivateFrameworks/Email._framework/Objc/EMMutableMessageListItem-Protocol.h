@@ -11,6 +11,7 @@
 
 @protocol EMMutableMessageListItem <EMMessageListItem>
 
+@property long long _internalID;
 @property (copy) NSArray *ccList;
 @property long long conversationID;
 @property long long conversationNotificationLevel;

@@ -25,9 +25,9 @@
 @property (readonly, copy, nonatomic) NSString *stateCaptureTitle;
 @property (readonly) Class superclass;
 
++ (id)_hardCodedEntitlements;
 - (void).cxx_destruct;
 - (id)_entitlementsForProcess:(id)arg1;
-- (id)_hardCodedEntitlements;
 - (void)_removeRestrictedEntitlements:(id)arg1 forProcess:(id)arg2;
 - (BOOL)_secTask:(struct __SecTask *)arg1 hasEntitlement:(id)arg2;
 - (id)allEntitlements;

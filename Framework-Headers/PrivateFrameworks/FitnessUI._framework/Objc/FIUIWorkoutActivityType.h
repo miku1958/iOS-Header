@@ -36,6 +36,7 @@
 + (unsigned long long)mapWheelchairUserActivityType:(unsigned long long)arg1 isWheelchairUser:(BOOL)arg2;
 + (id)optimizedActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
 + (id)possibleActivityTypesForIdentifier:(unsigned long long)arg1 locationType:(long long)arg2 swimmingLocationType:(long long)arg3 wheelchairUser:(BOOL)arg4;
++ (BOOL)shouldDisambiguateOnLocationType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)swimmingOptimizedActivityTypes;
 + (id)swimmingOtherActivityTypes;

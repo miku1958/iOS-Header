@@ -15,7 +15,6 @@
 - (id)newBoundAssetsdServicesTable;
 - (id)newChangePublisher;
 - (id)newLibraryServicesManager;
-- (void)shutdownWithReason:(id)arg1;
 
 @end
 

@@ -26,5 +26,6 @@
 - (long long)compare:(id<EDIndexableItem>)arg1;
 - (EFFuture *)fetchIndexableAttachments;
 - (CSSearchableItem *)searchableItem;
+- (void)setNeedsAllAttributesIndexingType;
 @end
 

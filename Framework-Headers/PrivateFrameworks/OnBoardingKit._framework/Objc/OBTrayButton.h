@@ -12,6 +12,7 @@
 
 + (id)buttonWithType:(long long)arg1;
 + (double)standardHeight;
+- (id)_buttonFont;
 - (id)_fontTextStyle;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

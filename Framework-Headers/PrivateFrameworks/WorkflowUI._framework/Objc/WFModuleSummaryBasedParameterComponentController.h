@@ -27,7 +27,7 @@
 - (void)summaryEditor:(id)arg1 didCommitParameterState:(id)arg2;
 - (void)summaryEditor:(id)arg1 didStageParameterState:(id)arg2;
 - (void)summaryEditor:(id)arg1 willUpdateVariable:(id)arg2;
-- (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(BOOL)arg2;
+- (void)summaryEditorDidFinish:(id)arg1 returnToKeyboard:(BOOL)arg2 withTextAttachmentToEdit:(id)arg3;
 - (void)summaryEditorDidRequestTextEntry:(id)arg1;
 
 @end

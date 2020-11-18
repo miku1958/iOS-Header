@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) BOOL supportsAssistantAccessControl;
 @property (readonly, nonatomic) BOOL supportsCameraRecording;
 @property (readonly, nonatomic) BOOL supportsCloudDataSync;
+@property (readonly, nonatomic) BOOL supportsCompanionInitiatedRestart;
 @property (readonly, nonatomic) BOOL supportsDeviceSetup;
 @property (readonly, nonatomic) BOOL supportsHomeInvitation;
 @property (readonly, nonatomic) BOOL supportsKeyTransferClient;
@@ -75,7 +76,6 @@
 - (id)initWithProductInfo:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)modelBackedObjects;
-- (id)modelCopyWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

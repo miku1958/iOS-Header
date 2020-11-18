@@ -8,7 +8,7 @@
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, UIImage;
+@class NSDictionary, NSString, NSURL, WFImage;
 
 @interface WFGiphyImage : MTLModel <MTLJSONSerializing>
 {
@@ -17,10 +17,10 @@
     unsigned long long _fileSize;
     unsigned long long _width;
     unsigned long long _height;
-    UIImage *_cachedImage;
+    WFImage *_cachedImage;
 }
 
-@property (strong, nonatomic) UIImage *cachedImage; // @synthesize cachedImage=_cachedImage;
+@property (strong, nonatomic) WFImage *cachedImage; // @synthesize cachedImage=_cachedImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryValue;

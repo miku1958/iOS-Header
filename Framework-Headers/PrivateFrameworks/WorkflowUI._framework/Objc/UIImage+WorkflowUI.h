@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (WorkflowUI)
++ (id)wf_imageWithColor:(id)arg1;
 + (id)wf_workflowUIImageNamed:(id)arg1;
 + (id)workflowMinusImage;
 + (id)workflowPlusImage;

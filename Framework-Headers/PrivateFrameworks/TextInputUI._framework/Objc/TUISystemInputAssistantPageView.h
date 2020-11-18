@@ -52,6 +52,7 @@
 - (void)layoutSubviews;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setSecondaryViewVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSecondaryViewVisible:(BOOL)arg1 withAnimationType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateScrollEnabled;

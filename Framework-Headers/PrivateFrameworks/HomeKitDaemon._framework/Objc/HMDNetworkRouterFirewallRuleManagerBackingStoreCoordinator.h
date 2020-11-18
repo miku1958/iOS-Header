@@ -10,14 +10,14 @@
 #import <HomeKitDaemon/HMDNetworkRouterFirewallRuleManagerBackingStoreCoordinator-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBLocalZone, NSMutableDictionary, NSNotificationCenter, NSObject, NSString;
+@class HMBLocalZone, NSCountedSet, NSNotificationCenter, NSObject, NSString;
 @protocol HMDNetworkRouterFirewallRuleManager, HMDNetworkRouterFirewallRuleManagerBackingStoreCloudFetchScheduler, HMDNetworkRouterFirewallRuleManagerBackingStoreMirror, OS_dispatch_queue;
 
 @interface HMDNetworkRouterFirewallRuleManagerBackingStoreCoordinator : HMFObject <HMDNetworkRouterFirewallRuleManagerBackingStoreCloudFetchSchedulerDelegate, HMFLogging, HMDNetworkRouterFirewallRuleManagerBackingStoreCoordinator>
 {
     id<HMDNetworkRouterFirewallRuleManager> _firewallRuleManager;
     id<HMDNetworkRouterFirewallRuleManagerBackingStoreMirror> _mirror;
-    NSMutableDictionary *_recordIDRefcountDictionary;
+    NSCountedSet *_watchedRecordIDs;
     NSNotificationCenter *_notificationCenter;
     id<HMDNetworkRouterFirewallRuleManagerBackingStoreCloudFetchScheduler> _cloudFetchScheduler;
     NSObject<OS_dispatch_queue> *_ownerQueue;
@@ -33,9 +33,9 @@
 @property (strong, nonatomic) HMBLocalZone *mirroredLocalZone; // @synthesize mirroredLocalZone=_mirroredLocalZone;
 @property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ownerQueue; // @synthesize ownerQueue=_ownerQueue;
-@property (readonly, nonatomic) NSMutableDictionary *recordIDRefcountDictionary; // @synthesize recordIDRefcountDictionary=_recordIDRefcountDictionary;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSCountedSet *watchedRecordIDs; // @synthesize watchedRecordIDs=_watchedRecordIDs;
 
 + (id)__createProcessingOptionsWithLabel:(id)arg1;
 + (id)__createProcessingOptionsWithLabel:(id)arg1 qualityOfService:(long long)arg2;
@@ -43,11 +43,9 @@
 + (id)__jsonFromRecords:(id)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
 + (id)__jsonStringFromDictionary:(struct NSDictionary *)arg1 rawOutput:(BOOL)arg2 error:(id *)arg3;
 + (id)__jsonValueForCKRecordValue:(id)arg1;
-+ (id)__recordIDsFromAccessories:(id)arg1;
 + (long long)ckContainerEnvironment;
 + (id)ckContainerIdentifier;
 + (BOOL)ckUseAnonymousAccount;
-+ (void)initialize;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__cloudFetchSchedulerFired:(CDUnknownBlockType)arg1;
@@ -59,26 +57,26 @@
 - (void)_dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct NSDictionary *)_fetchAllNetworkDeclarationDataForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (struct NSDictionary *)_fetchAllOverridesForProductGroup:(id)arg1 productNumber:(id)arg2 options:(id)arg3 error:(id *)arg4;
-- (void)_fetchCloudChangesWithQualityOfService:(long long)arg1 forceChangeNotifications:(BOOL)arg2 xpcActivity:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_fetchCloudChangesWithQualityOfService:(long long)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 forceChangeNotifications:(BOOL)arg3 xpcActivity:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_fetchNetworkDeclarationsForAccessories:(id)arg1 options:(id)arg2 ignoreOverrides:(BOOL)arg3 error:(id *)arg4;
 - (void)_listCloudRecordsForProductGroup:(id)arg1 rawOutput:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addInterestedAccessories:(id)arg1;
 - (BOOL)addOverrides:(id)arg1 replace:(BOOL)arg2 error:(id *)arg3;
 - (void)cloudFetchSchedulerFired:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dumpCloudRecordsForProductGroup:(id)arg1 productNumber:(id)arg2 rawOutput:(BOOL)arg3 listOnly:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)dumpLocalRulesForProductGroup:(id)arg1 productNumber:(id)arg2 firmwareVersion:(id)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 error:(id *)arg6;
-- (void)fetchCloudChangesWithQualityOfService:(long long)arg1 forceChangeNotifications:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchCloudChangesWithQualityOfService:(long long)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 forceChangeNotifications:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchRulesForAccessories:(id)arg1 qualityOfService:(long long)arg2 ignoreOverrides:(BOOL)arg3 error:(id *)arg4;
 - (id)initWithFirewallRuleManager:(id)arg1 notificationCenter:(id)arg2 cloudFetchInterval:(double)arg3 cloudFetchRetryInterval:(double)arg4 ownerQueue:(id)arg5;
 - (id)initWithFirewallRuleManager:(id)arg1 notificationCenter:(id)arg2 cloudFetchScheduler:(id)arg3 ownerQueue:(id)arg4;
 - (id)initWithFirewallRuleManager:(id)arg1 notificationCenter:(id)arg2 ownerQueue:(id)arg3;
 - (BOOL)removeAllLocalRulesWithError:(id *)arg1;
 - (BOOL)removeAllOverridesWithError:(id *)arg1;
+- (void)removeInterestedAccessories:(id)arg1;
 - (BOOL)removeOverridesForProductGroup:(id)arg1 productNumber:(id)arg2 error:(id *)arg3;
 - (id)ruleConfigurationForAccessory:(id)arg1 declarations:(id)arg2;
 - (void)shutdownWithCompletion:(CDUnknownBlockType)arg1;
-- (void)startWatchingAccessories:(id)arg1;
 - (void)startupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)stopWatchingAccessories:(id)arg1;
 
 @end
 

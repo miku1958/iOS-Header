@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *simulatedChatIdentifier; // @synthesize simulatedChatIdentifier=_simulatedChatIdentifier;
 @property (readonly, nonatomic) NSString *simulatedGUID; // @synthesize simulatedGUID=_simulatedGUID;
 
++ (id)prepopulatedChat;
 - (void).cxx_destruct;
 - (BOOL)_handleIncomingItem:(id)arg1;
 - (id)_messageWithGUID:(id)arg1;

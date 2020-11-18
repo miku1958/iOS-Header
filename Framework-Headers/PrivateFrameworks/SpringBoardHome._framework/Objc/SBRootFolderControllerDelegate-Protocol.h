@@ -18,6 +18,7 @@
 - (SBIconListView *)externalDockIconListViewForRootFolderController:(SBRootFolderController *)arg1;
 - (double)maxExternalDockHeightForRootFolderController:(SBRootFolderController *)arg1;
 - (double)preferredExternalDockVerticalMarginForRootFolderController:(SBRootFolderController *)arg1;
+- (void)rootFolderController:(SBRootFolderController *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderController:(SBRootFolderController *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;

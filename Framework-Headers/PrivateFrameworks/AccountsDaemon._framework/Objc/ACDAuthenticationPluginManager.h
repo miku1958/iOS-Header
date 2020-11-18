@@ -33,6 +33,7 @@
 - (void)_handleRenewalCompletionResult:(long long)arg1 forAccount:(id)arg2 renewalID:(id)arg3 accountStore:(id)arg4 error:(id)arg5;
 - (void)_handleVerificationCompletionForAccount:(id)arg1 verifiedAccount:(id)arg2 error:(id)arg3 store:(id)arg4 shouldSave:(BOOL)arg5;
 - (id)_pluginForAuthenticationType:(id)arg1;
+- (BOOL)_renewalRequestIsWithinLimitsForAccount:(id)arg1 accountStore:(id)arg2;
 - (id)_sanitizeError:(id)arg1;
 - (id)_unsanitizeOptionsDictionary:(id)arg1;
 - (void)credentialForAccount:(id)arg1 client:(id)arg2 store:(id)arg3 handler:(CDUnknownBlockType)arg4;

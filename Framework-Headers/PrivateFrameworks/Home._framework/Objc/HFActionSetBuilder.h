@@ -36,12 +36,14 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
+- (id)_deleteActionSet:(id)arg1 fromHome:(id)arg2;
 - (id)_lazilyUpdateActions;
 - (id)_lazilyUpdateFavorite;
 - (id)_lazilyUpdateIcon;
 - (id)_performValidation;
 - (void)addAction:(id)arg1;
 - (id)commitItem;
+- (id)deleteActionSet;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (id)initWithHome:(id)arg1;
 - (void)removeAction:(id)arg1;

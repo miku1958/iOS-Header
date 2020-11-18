@@ -20,6 +20,9 @@
     HMAudioControl *_audioControl;
     NSString *_routeUID;
     id<HMMediaSessionDelegate> _delegate;
+    long long _shuffleState;
+    long long _repeatState;
+    NSString *_mediaUniqueIdentifier;
     _HMMediaSession *_mediaSession;
     HMMediaProfile *_mediaProfile;
 }
@@ -31,8 +34,11 @@
 @property (readonly) unsigned long long hash;
 @property (weak) HMMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 @property (strong, nonatomic) _HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
+@property (readonly, copy) NSString *mediaUniqueIdentifier; // @synthesize mediaUniqueIdentifier=_mediaUniqueIdentifier;
 @property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (readonly) long long repeatState; // @synthesize repeatState=_repeatState;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
+@property (readonly) long long shuffleState; // @synthesize shuffleState=_shuffleState;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -45,6 +51,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (void)mediaSession:(id)arg1 didUpdateMediaState:(id)arg2;
 - (void)mediaSession:(id)arg1 didUpdatePlaybackState:(long long)arg2;
 - (void)mediaSession:(id)arg1 didUpdateRouteUID:(id)arg2;
 - (id)messageTargetUUID;

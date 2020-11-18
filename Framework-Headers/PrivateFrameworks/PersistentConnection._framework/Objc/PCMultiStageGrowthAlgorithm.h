@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     double _serverStatsMinKeepAliveInterval;
     double _serverStatsMaxKeepAliveInterval;
     double _serverStatsExpectedKeepAliveInterval;
+    double _minimumIntervalFallbackStateTimeout;
     BOOL _usingServerStatsAggressively;
 }
 
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lastSuccessfulKeepAliveInterval; // @synthesize lastSuccessfulKeepAliveInterval=_lastSuccessfulKeepAliveInterval;
 @property (nonatomic) double maximumKeepAliveInterval; // @synthesize maximumKeepAliveInterval=_maximumKeepAliveInterval;
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
+@property (nonatomic) double minimumIntervalFallbackStateTimeout; // @synthesize minimumIntervalFallbackStateTimeout=_minimumIntervalFallbackStateTimeout;
 @property (nonatomic) double minimumKeepAliveInterval; // @synthesize minimumKeepAliveInterval=_minimumKeepAliveInterval;
 @property (nonatomic) double serverStatsExpectedKeepAliveInterval; // @synthesize serverStatsExpectedKeepAliveInterval=_serverStatsExpectedKeepAliveInterval;
 @property (nonatomic) double serverStatsMaxKeepAliveInterval; // @synthesize serverStatsMaxKeepAliveInterval=_serverStatsMaxKeepAliveInterval;

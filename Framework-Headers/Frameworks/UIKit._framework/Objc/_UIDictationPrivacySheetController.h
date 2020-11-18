@@ -6,18 +6,24 @@
 
 #import <UIKitCore/UINavigationController.h>
 
+@class OBPrivacyPresenter;
 @protocol _UIDictationPrivacySheetControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIDictationPrivacySheetController : UINavigationController
 {
     id<_UIDictationPrivacySheetControllerDelegate> _privacyDelegate;
+    OBPrivacyPresenter *_privacyPresenter;
+    long long _sheetType;
 }
 
 @property (nonatomic) id<_UIDictationPrivacySheetControllerDelegate> privacyDelegate; // @synthesize privacyDelegate=_privacyDelegate;
+@property (strong, nonatomic) OBPrivacyPresenter *privacyPresenter; // @synthesize privacyPresenter=_privacyPresenter;
+@property (nonatomic) long long sheetType; // @synthesize sheetType=_sheetType;
 
+- (void)dealloc;
 - (void)dismiss;
-- (id)init;
+- (id)initWithType:(long long)arg1;
 
 @end
 

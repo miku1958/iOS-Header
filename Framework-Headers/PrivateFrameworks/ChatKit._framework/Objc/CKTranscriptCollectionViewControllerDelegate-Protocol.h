@@ -44,6 +44,7 @@
 
 @optional
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willDisplayBalloonForGUID:(NSString *)arg2;
+- (BOOL)transcriptCollectionViewControllerShouldForceOpaqueMask:(CKTranscriptCollectionViewController *)arg1;
 - (void)transcriptCollectionViewDidBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
 - (BOOL)transcriptCollectionViewShouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
 @end

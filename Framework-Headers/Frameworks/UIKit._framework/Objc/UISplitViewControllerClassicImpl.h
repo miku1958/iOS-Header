@@ -257,7 +257,6 @@ __attribute__((visibility("hidden")))
 - (long long)preferredLeadingStatusBarStyle;
 - (long long)preferredTrailingStatusBarStyle;
 - (double)primaryColumnWidth;
-- (long long)primaryIsSidebar;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;

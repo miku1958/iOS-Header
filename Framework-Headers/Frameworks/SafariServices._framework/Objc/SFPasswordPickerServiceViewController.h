@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)displayMessageAsTitleForContext:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)passcodePromptForContext:(id)arg1;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)setAuthenticationGracePeriod:(double)arg1;

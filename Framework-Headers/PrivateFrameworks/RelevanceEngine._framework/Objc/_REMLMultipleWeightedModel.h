@@ -17,6 +17,7 @@
     float _priorMean;
     float _varianceEpsilon;
     NSMutableDictionary *_models;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, nonatomic) NSDictionary *models;

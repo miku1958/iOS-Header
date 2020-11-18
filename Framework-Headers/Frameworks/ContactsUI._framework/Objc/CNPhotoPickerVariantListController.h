@@ -17,18 +17,21 @@
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerVariantListController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CNPhotoPickerProviderItemDelegate>
 {
+    BOOL _wantsScrollingHeader;
     BOOL _showSelection;
     BOOL _showPreview;
     BOOL _shouldShowCaptions;
     id<CNPhotoPickerVariantListControllerDelegate> _delegate;
     CNPhotoPickerProviderItem *_originalItem;
+    UICollectionView *_collectionView;
+    UIView *_sectionHeaderView;
     CDUnknownBlockType _numberOfItemsPerRowProvider;
     unsigned long long _cellStyle;
     NSString *_rightBarButtonTitle;
-    UICollectionView *_collectionView;
     UIView *_headerView;
     UIImageView *_previewImageView;
     CNPhotoPickerPreviewView *_posePreview;
+    NSString *_selectedVariantIdentifier;
     NSArray *_providerItems;
     CNPhotoPickerVariantsManager *_variantsManager;
 }
@@ -46,11 +49,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *previewImageView; // @synthesize previewImageView=_previewImageView;
 @property (strong, nonatomic) NSArray *providerItems; // @synthesize providerItems=_providerItems;
 @property (nonatomic) NSString *rightBarButtonTitle; // @synthesize rightBarButtonTitle=_rightBarButtonTitle;
+@property (strong, nonatomic) UIView *sectionHeaderView; // @synthesize sectionHeaderView=_sectionHeaderView;
+@property (strong, nonatomic) NSString *selectedVariantIdentifier; // @synthesize selectedVariantIdentifier=_selectedVariantIdentifier;
 @property (nonatomic) BOOL shouldShowCaptions; // @synthesize shouldShowCaptions=_shouldShowCaptions;
 @property (nonatomic) BOOL showPreview; // @synthesize showPreview=_showPreview;
 @property (nonatomic) BOOL showSelection; // @synthesize showSelection=_showSelection;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *variantsDisplayTitle;
 @property (strong, nonatomic) CNPhotoPickerVariantsManager *variantsManager; // @synthesize variantsManager=_variantsManager;
+@property (nonatomic) BOOL wantsScrollingHeader; // @synthesize wantsScrollingHeader=_wantsScrollingHeader;
 
 + (struct CGRect)frameForHeaderInBounds:(struct CGRect)arg1;
 + (long long)topMarginForBounds:(struct CGRect)arg1 shouldShowCaptions:(BOOL)arg2;
@@ -63,16 +70,20 @@ __attribute__((visibility("hidden")))
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)done;
+- (void)didFinishSelectingVariant;
 - (void)generateProviderItems;
 - (id)initWithVariantsManager:(id)arg1 originalItem:(id)arg2;
+- (id)initWithVariantsManager:(id)arg1 originalItem:(id)arg2 selectedVariantIdentifier:(id)arg3;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)providerItemDidUpdate:(id)arg1;
+- (id)scrollView;
 - (void)updateFlowLayoutItemSize;
+- (void)updateForNewOriginalItem:(id)arg1;
 - (void)updatePreviewWithItem:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

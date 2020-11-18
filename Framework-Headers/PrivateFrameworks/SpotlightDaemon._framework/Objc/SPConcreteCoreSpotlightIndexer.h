@@ -103,6 +103,7 @@
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 forBundleID:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)initWithQueue:(id)arg1 protectionClass:(id)arg2 cancelPtr:(int *)arg3;
 - (void)issueConsistencyCheck;
+- (void)issueDefrag:(id)arg1;
 - (void)issueRepair;
 - (void)issueSplit;
 - (void)mergeWithCompletionHandler:(CDUnknownBlockType)arg1;

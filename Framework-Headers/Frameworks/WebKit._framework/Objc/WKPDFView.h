@@ -83,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
 - (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
-- (Optional_2b0652bb)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_d40c49cf)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;

@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (readonly, nonatomic) int presentationStyle;
 @property (readonly, nonatomic) int skinTone;
+@property (readonly, nonatomic) NSArray *skinToneChooserVariants;
+@property (readonly, nonatomic) NSArray *skinToneSpecifiers;
 @property (readonly, copy, nonatomic) NSArray *skinToneVariants;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property (readonly, nonatomic) BOOL supportsSkinToneVariants;
@@ -41,6 +43,7 @@
 - (void)_createEmojiTokenRefIfNecessary;
 - (id)copyWithPresentationStyle:(int)arg1;
 - (id)copyWithSkinToneVariant:(int)arg1;
+- (id)copyWithSkinToneVariantSpecifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithoutModifiers;
 - (void)dealloc;

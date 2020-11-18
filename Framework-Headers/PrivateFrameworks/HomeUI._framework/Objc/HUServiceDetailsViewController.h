@@ -15,6 +15,7 @@
 #import <HomeUI/HUControlPanelControllerDelegate-Protocol.h>
 #import <HomeUI/HUDetailsPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUEditRoomViewControllerPresentationDelegate-Protocol.h>
+#import <HomeUI/HUHomeAssistantDeviceSplitAccountActionDelegate-Protocol.h>
 #import <HomeUI/HUMediaSystemEditorViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUPickerCellDelegate-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
@@ -25,11 +26,12 @@
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 #import <HomeUI/HUTriggerEditorDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 
-@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUCameraSettingsModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NSHashTable, NSString, UIButton, UILongPressGestureRecognizer;
+@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUCameraSettingsModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NAFuture, NSHashTable, NSString, UIButton, UILongPressGestureRecognizer;
 @protocol HFServiceLikeItem, HUPresentationDelegate;
 
-@interface HUServiceDetailsViewController : HUItemTableViewController <HUControlPanelControllerDelegate, HUPresentationDelegate, HUServiceDetailsItemManagerDelegate, HUSwitchCellDelegate, HUServiceGroupEditorViewControllerDelegate, HUContainedServiceGridViewControllerDelegate, HUEditRoomViewControllerPresentationDelegate, HUTriggerEditorDelegate, HFAccessoryObserver, UIGestureRecognizerDelegate, HUAccessorySettingsItemModuleControllerDelegate, HUSoftwareUpdateItemModuleControllerDelegate, HUMediaSystemEditorViewControllerDelegate, HUContainedMediaAccessoriesGridViewControllerDelegate, HUChildServiceModuleControllerDelegate, HFHomeObserver, HUPickerCellDelegate, HUDetailsPresentationDelegateHost, HUServiceLikeItemDetailsViewControllerProtocol>
+@interface HUServiceDetailsViewController : HUItemTableViewController <HUControlPanelControllerDelegate, HUPresentationDelegate, HUServiceDetailsItemManagerDelegate, HUSwitchCellDelegate, HUServiceGroupEditorViewControllerDelegate, HUContainedServiceGridViewControllerDelegate, HUEditRoomViewControllerPresentationDelegate, HUTriggerEditorDelegate, HFAccessoryObserver, UIGestureRecognizerDelegate, HUAccessorySettingsItemModuleControllerDelegate, HUSoftwareUpdateItemModuleControllerDelegate, HUMediaSystemEditorViewControllerDelegate, HUContainedMediaAccessoriesGridViewControllerDelegate, HUChildServiceModuleControllerDelegate, HFHomeObserver, HUPickerCellDelegate, HUHomeAssistantDeviceSplitAccountActionDelegate, UINavigationControllerDelegate, HUDetailsPresentationDelegateHost, HUServiceLikeItemDetailsViewControllerProtocol>
 {
     BOOL _requiresPresentingViewControllerDismissal;
     BOOL _isMultiServiceAccessory;
@@ -56,10 +58,12 @@
     HFNamingComponents *_namingComponent;
     HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
     UIButton *_closeButton;
+    NAFuture *_accountFuture;
 }
 
 @property (strong, nonatomic) HUChildServiceItemModuleController *accessoryServicesEditorItemModuleController; // @synthesize accessoryServicesEditorItemModuleController=_accessoryServicesEditorItemModuleController;
 @property (strong, nonatomic) HUAccessorySettingsItemModuleController *accessorySettingsItemModuleController; // @synthesize accessorySettingsItemModuleController=_accessorySettingsItemModuleController;
+@property (strong, nonatomic) NAFuture *accountFuture; // @synthesize accountFuture=_accountFuture;
 @property (strong, nonatomic) HUCameraSettingsModuleController *cameraSettingsModuleController; // @synthesize cameraSettingsModuleController=_cameraSettingsModuleController;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (readonly, nonatomic) HUControlPanelController *controlPanelController; // @synthesize controlPanelController=_controlPanelController;
@@ -105,9 +109,9 @@
 - (void)_notifyOfHomePodPairingIfNecessary;
 - (void)_presentContainedItems;
 - (void)_presentGroupPicker;
-- (void)_presentRemoveConfirmation;
+- (void)_presentRemoveConfirmation:(id)arg1;
 - (void)_presentRemoveRouterConfirmation;
-- (void)_presentResetHomePodConfirmation;
+- (void)_presentResetHomePodConfirmation:(id)arg1;
 - (void)_presentTriggerEditorForProgrammableSwitchEventOptionItem:(id)arg1;
 - (id)_primaryStatusTextForLatestResults:(id)arg1 showingSecondaryStatus:(BOOL)arg2;
 - (id)_recoverItemBuilder:(id)arg1 fromError:(id)arg2;
@@ -115,6 +119,8 @@
 - (void)_restartGroupedHomePodAccessory;
 - (void)_restartHomePod;
 - (id)_secondaryStatusTextForLatestResults:(id)arg1;
+- (void)_separateOrUnifyTile;
+- (void)_setDismissedHomePodHasNonMemberMediaAccountWarning:(BOOL)arg1;
 - (void)_setupProgrammableSwitchCell:(id)arg1 forItem:(id)arg2;
 - (BOOL)_shouldPresentRemoveRouterConfirmation;
 - (BOOL)_shouldShowAddButtonForOptionItem:(id)arg1;
@@ -135,9 +141,11 @@
 - (void)commitChanges;
 - (void)controlPanelController:(id)arg1 didEndPossibleWritesForControlItem:(id)arg2;
 - (void)controlPanelController:(id)arg1 willBeginPossibleWritesForControlItem:(id)arg2;
+- (void)dealloc;
 - (id)detailsViewControllerForContainedMediaAccessoryGridViewController:(id)arg1 item:(id)arg2;
 - (id)detailsViewControllerForContainedServiceGridViewController:(id)arg1 item:(id)arg2;
-- (void)didSelectHeaderWarningAction;
+- (void)didSelectHeaderWarningAction:(id)arg1;
+- (void)didSelectHomeAssistantDeviceSplitAccountAction:(unsigned long long)arg1;
 - (void)dismissPrivacyController;
 - (void)dismissTriggerActionEditorViewController:(id)arg1;
 - (void)editRoomViewControllerDidFinish:(id)arg1 withNewRoom:(id)arg2;
@@ -158,6 +166,7 @@
 - (id)itemModuleControllers;
 - (void)mediaSystemEditor:(id)arg1 didAbortMediaSystemCreationDueToAccessoryNeedingUpdate:(id)arg2;
 - (void)mediaSystemEditor:(id)arg1 didCreateMediaSystem:(id)arg2;
+- (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (long long)numberOfValuesForPickerViewCell:(id)arg1;
 - (void)pickerViewCell:(id)arg1 didSelectValueAtIndex:(long long)arg2;
 - (id)pickerViewCell:(id)arg1 titleForValueAtIndex:(long long)arg2;
@@ -182,6 +191,7 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

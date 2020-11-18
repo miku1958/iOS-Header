@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKComposition, CKEntity, IMChat, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString, STConversationContext;
+@class CKComposition, CKEntity, IMChat, IMService, NSArray, NSAttributedString, NSDate, NSNumber, NSSet, NSString;
 
 @interface CKConversation : NSObject
 {
@@ -27,7 +27,6 @@
     NSString *_selectedLastAddressedSIMID;
     NSSet *_pendingRecipients;
     NSAttributedString *_groupName;
-    STConversationContext *_screenTimeConversationContext;
     NSString *_previewText;
     NSNumber *_businessConversation;
     NSDate *_dateLastViewed;
@@ -75,7 +74,6 @@
 @property (readonly, nonatomic) unsigned long long recipientCount;
 @property (readonly, copy, nonatomic) NSArray *recipientStrings;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
-@property (weak, nonatomic) STConversationContext *screenTimeConversationContext; // @synthesize screenTimeConversationContext=_screenTimeConversationContext;
 @property (strong, nonatomic) NSString *selectedLastAddressedHandle; // @synthesize selectedLastAddressedHandle=_selectedLastAddressedHandle;
 @property (strong, nonatomic) NSString *selectedLastAddressedSIMID; // @synthesize selectedLastAddressedSIMID=_selectedLastAddressedSIMID;
 @property (readonly, nonatomic, getter=shouldSendReadReceipts) BOOL sendReadReceipts;
@@ -112,6 +110,7 @@
 + (id)newPendingConversation;
 + (BOOL)pinnedConversationsEnabled;
 - (void).cxx_destruct;
+- (BOOL)_allowedByScreenTime;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatPropertiesChanged:(id)arg1;
 - (BOOL)_chatSupportsTypingIndicators;
@@ -195,7 +194,6 @@
 - (void)setPendingComposeRecipients:(id)arg1;
 - (void)setSendReadReceipts:(BOOL)arg1;
 - (id)shortDescription;
-- (id)summaryTextForBlockedConversation;
 - (BOOL)supportsSurf;
 - (id)uniqueIdentifier;
 - (void)unmute;

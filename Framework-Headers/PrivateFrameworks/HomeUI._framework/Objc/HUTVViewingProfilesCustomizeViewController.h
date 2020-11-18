@@ -9,12 +9,13 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUTVViewingProfilesCustomizeViewController : HUItemTableOBWelcomeController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
+    HMHome *_home;
     OBTrayButton *_usePRButton;
     OBLinkTrayButton *_customizeButton;
 }
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) OBTrayButton *usePRButton; // @synthesize usePRButton=_usePRButton;
@@ -32,7 +34,7 @@
 - (void)_dontSetupTVViewingProfiles:(id)arg1;
 - (void)_setupTVViewingProfiles:(id)arg1;
 - (id)hu_preloadContent;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

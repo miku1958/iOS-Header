@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSInvocation, NSTimer;
+@protocol UIRepeatedActionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIRepeatedAction : NSObject
@@ -21,8 +22,10 @@ __attribute__((visibility("hidden")))
     NSInvocation *_invocation;
     id _invocationArgument;
     NSTimer *_timer;
+    NSObject<UIRepeatedActionDelegate> *_delegate;
 }
 
+@property (weak, nonatomic) NSObject<UIRepeatedActionDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL disableRepeat; // @synthesize disableRepeat=_disableRepeat;
 @property (strong, nonatomic) NSInvocation *invocation; // @synthesize invocation=_invocation;
 @property (strong, nonatomic) id invocationArgument; // @synthesize invocationArgument=_invocationArgument;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (id)_invocationForTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 + (id)actionWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
 - (void).cxx_destruct;
+- (void)_adjustInvocationForPhase:(unsigned long long)arg1;
 - (void)_invocationTimerFire;
 - (void)_preInvocationTimerFire;
 - (void)_repeatedTimerFire;

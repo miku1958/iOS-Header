@@ -35,13 +35,17 @@
 - (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
+- (long long)faceTrackingMaxFaces;
 - (id)init;
 - (BOOL)isFaceTrackingMetadataObjectTypesAvailable;
 - (BOOL)isFaceTrackingSupported;
+- (BOOL)isFaceTrackingUsesFaceRecognition;
 - (BOOL)isOfflineVideoStabilizationMotionMetadataObjectTypesAvailable;
 - (BOOL)isOfflineVideoStabilizationMotionMetadataSupported;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
+- (void)setFaceTrackingMaxFaces:(long long)arg1;
 - (void)setFaceTrackingMetadataObjectTypesAvailable:(BOOL)arg1;
+- (void)setFaceTrackingUsesFaceRecognition:(BOOL)arg1;
 - (void)setMetadataObjectsDelegate:(id)arg1 queue:(id)arg2;
 - (void)setOfflineVideoStabilizationMotionMetadataObjectTypesAvailable:(BOOL)arg1;
 

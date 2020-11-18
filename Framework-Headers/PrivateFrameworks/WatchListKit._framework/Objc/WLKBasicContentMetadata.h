@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL, WLKArtworkVariantListing, WLKVideo;
+@class NSArray, NSDictionary, NSNumber, NSString, NSURL, WLKArtworkVariantListing, WLKContentRating, WLKVideo;
 
 @interface WLKBasicContentMetadata : NSObject
 {
@@ -26,6 +26,7 @@
     WLKVideo *_backgroundVideo;
     NSArray *_trailers;
     NSDictionary *_rolesSummary;
+    WLKContentRating *_contentRating;
 }
 
 @property (readonly, nonatomic, getter=isAppleOriginal) BOOL appleOriginal; // @synthesize appleOriginal=_appleOriginal;
@@ -33,6 +34,7 @@
 @property (readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property (readonly, copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (readonly, nonatomic) NSNumber *commonSenseRecommendedAge; // @synthesize commonSenseRecommendedAge=_commonSenseRecommendedAge;
+@property (readonly, nonatomic) WLKContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (readonly, nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy, nonatomic) NSString *descriptiveText; // @synthesize descriptiveText=_descriptiveText;
 @property (readonly, copy, nonatomic) NSArray *genres; // @synthesize genres=_genres;

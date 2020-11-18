@@ -50,7 +50,6 @@
 - (void)archive;
 - (void)configureHomeManager:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)fetchNotificationUUIDsForClipBulletinWithIdentifier:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)insertBulletinForIncomingInvitation:(id)arg1;
@@ -60,6 +59,7 @@
 - (void)insertCameraSignificantEventBulletin:(id)arg1;
 - (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
+- (id)notificationUUIDsForClipBulletinWithIdentifier:(id)arg1;
 - (void)refreshHomeBadgeNumber;
 - (void)removeAllBulletins;
 - (void)removeBulletinWithRecordID:(id)arg1;

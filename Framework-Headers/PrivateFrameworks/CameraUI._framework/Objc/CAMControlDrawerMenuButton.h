@@ -48,18 +48,24 @@
 - (void)_updateLabels;
 - (void)_updateSubviewAlphas;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)didChangeContentSize;
 - (void)didSelectMenuItem:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
+- (id)hudItemForMenuHeader;
+- (id)hudItemForMenuItem:(id)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (BOOL)isExpandable;
 - (BOOL)isMenuItemSelected:(id)arg1;
 - (void)layoutSubviews;
 - (id)loadMenuItems;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setNeedsLoadMenuItems;
+- (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldScaleImageWhileHighlighted;
 - (void)updateLabelsIfNeeded;
 

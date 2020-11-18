@@ -6,16 +6,24 @@
 
 #import <CameraUI/CAMControlStatusIndicator.h>
 
+@class CAMLivePhotoAnimationCache;
+
 @interface CAMLivePhotoStatusIndicator : CAMControlStatusIndicator
 {
     long long _livePhotoMode;
+    CAMLivePhotoAnimationCache *__animationCache;
 }
 
+@property (strong, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
 @property (nonatomic) long long livePhotoMode; // @synthesize livePhotoMode=_livePhotoMode;
 
-- (id)_imageNameForLivePhotoMode:(long long)arg1;
+- (void).cxx_destruct;
+- (BOOL)canAnimate;
+- (id)imageAnimationFramesForCurrentState;
 - (id)imageNameForCurrentState;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)preloadAnimationFrames;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (BOOL)shouldUseOutline;
 

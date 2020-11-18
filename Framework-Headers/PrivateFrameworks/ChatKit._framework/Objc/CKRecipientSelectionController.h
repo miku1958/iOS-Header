@@ -12,7 +12,7 @@
 #import <ChatKit/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <ChatKit/CNContactPickerDelegate-Protocol.h>
 
-@class CKComposeRecipientView, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, UILabel, UIScrollView, UIView;
+@class CKComposeRecipientView, CKManualUpdater, CKPendingConversation, CKRecipientSearchListController, CNComposeRecipient, CNContactPickerViewController, CNContactStore, NSMutableDictionary, NSString, STConversationContext, UILabel, UIScrollView, UIView;
 @protocol CKRecipientSelectionControllerDelegate;
 
 @interface CKRecipientSelectionController : CKViewController <CNComposeRecipientTextViewDelegate, CKComposeRecipientViewDelegate, CKRecipientSearchListControllerDelegate, CNAutocompleteGroupDetailViewControllerDelegate, CNContactPickerDelegate>
@@ -21,6 +21,7 @@
     CNContactStore *_contactStore;
     BOOL _peoplePickerHidden;
     BOOL _editable;
+    BOOL _allowedByScreenTime;
     BOOL _forceMMS;
     BOOL _isDisambiguating;
     BOOL _preventAtomization;
@@ -32,6 +33,7 @@
     CKComposeRecipientView *_toField;
     UIView *_toFieldContainerView;
     CKRecipientSearchListController *_searchListController;
+    STConversationContext *_currentConversationContext;
     CDUnknownBlockType _gameCenterPickerBlock;
     UIScrollView *_toFieldScrollingView;
     UILabel *_toFieldPlaceholderLabel;
@@ -43,10 +45,12 @@
 }
 
 @property (strong, nonatomic) CKManualUpdater *addressBookNotificationUpdater; // @synthesize addressBookNotificationUpdater=_addressBookNotificationUpdater;
+@property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property (readonly, nonatomic) double collapsedHeight;
 @property (strong, nonatomic) CNContactPickerViewController *contactPickerViewController; // @synthesize contactPickerViewController=_contactPickerViewController;
 @property (readonly, nonatomic) CNContactStore *contactStore;
 @property (strong, nonatomic) CKPendingConversation *conversation; // @synthesize conversation=_conversation;
+@property (strong, nonatomic) STConversationContext *currentConversationContext; // @synthesize currentConversationContext=_currentConversationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CKRecipientSelectionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -136,13 +140,14 @@
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
-- (id)conversationForAddresses:(id)arg1;
+- (id)conversationForRecipients:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)expandedRecipientsForGroupRecipient:(id)arg1;
 - (BOOL)finishedComposingRecipients;
 - (id)handleForRecipientNormalizedAddress:(id)arg1;
 - (void)handlePendingRecipient:(id)arg1;
+- (id)handlesForScreenTimePolicyCheck;
 - (BOOL)hasEmailRecipientsInAddresses:(id)arg1;
 - (BOOL)hasFailediMessageRecipients;
 - (BOOL)hasIDSResultsForAllRecipients:(id)arg1;
@@ -156,6 +161,7 @@
 - (BOOL)lastSentMessageWasNotDeliveredForConversation:(id)arg1;
 - (struct UIEdgeInsets)layoutMarginsForComposeRecipientView:(id)arg1;
 - (void)loadView;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)parentControllerDidResume:(BOOL)arg1 animating:(BOOL)arg2;
 - (id)preferredColorTypeForExistingConversation:(id)arg1;
 - (id)preferredRecipientForExistingConversationOfRecipients:(id)arg1;
@@ -185,6 +191,7 @@
 - (void)setGameCenterPickedHandles:(id)arg1 playerNames:(id)arg2;
 - (void)stopCheckingRecipientAvailabilityAndRemoveAllTimers;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateScreenTimePolicy;
 - (void)viewDidAppearDeferredSetup;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

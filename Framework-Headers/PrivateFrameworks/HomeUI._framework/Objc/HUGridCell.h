@@ -51,6 +51,7 @@
 - (void)_setupCommonCellAppearance;
 - (void)_updateForegroundStyle;
 - (void)_updateTintColorSettingsForSubviewsOfView:(id)arg1 desiredDisplayStyle:(unsigned long long)arg2;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)displayStyleDidChange;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

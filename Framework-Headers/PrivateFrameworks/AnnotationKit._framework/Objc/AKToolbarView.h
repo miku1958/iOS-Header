@@ -14,7 +14,7 @@
 #import <AnnotationKit/PKPaletteViewPrivateDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKAttributePickerViewController, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, NSLayoutConstraint, NSString, PKPaletteHostView, PKPaletteView, PKToolPicker, UIAlertController, UIBarButtonItem, UIButton, UIToolbar;
+@class AKAttributePickerViewController, AKAttributesPickerButton, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, NSLayoutConstraint, NSString, PKPaletteHostView, PKPaletteView, PKToolPicker, UIAlertController, UIBarButtonItem, UIToolbar;
 @protocol AKToolbarViewOpacityEditingDelegate;
 
 @interface AKToolbarView : UIView <AKToolsListViewControllerDelegate, AKAttributePickerViewControllerDelegate, AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate, PKPaletteViewAnnotationDelegate, PKPaletteViewPrivateDelegate>
@@ -42,7 +42,7 @@
     BOOL _showAttributePicker;
     BOOL _shouldUseCachedSafeAreaInsets;
     struct UIEdgeInsets _cachedSafeAreaInsets;
-    UIButton *_attributesPickerButton;
+    AKAttributesPickerButton *_attributesPickerButton;
     NSLayoutConstraint *_attributesPickerButtonWidthConstraint;
     NSLayoutConstraint *_attributesPickerButtonHeigthConstraint;
     PKToolPicker *_toolPicker;
@@ -84,6 +84,7 @@
 - (void)_dismissCurrentlyPresentedPopoverAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_forceToolPickerVisible:(BOOL)arg1;
 - (void)_installAttributesPickerButtonInPaletteContextEditingViewIfNeeded;
+- (void)_keyWindowDidBecomeActive:(id)arg1;
 - (void)_presentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_redo:(id)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsWithCachingIfNeeded;
@@ -121,6 +122,7 @@
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissPresentedPopovers;
 - (void)endOpacityEditing;
+- (void)forceHideRuler;
 - (struct CGRect)frameObscuredInView:(id)arg1;
 - (void)hideModernToolbarView;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

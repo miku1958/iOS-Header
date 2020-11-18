@@ -14,10 +14,14 @@ __attribute__((visibility("hidden")))
 @interface _UIClickHighlightInteractionEffect : NSObject <UIInteractionEffect>
 {
     long long _phase;
-    _UIAnchoredClickHighlightPlatterView *_highlightPlatter;
+    long long _inflightAnimationCount;
+    BOOL _isActive;
     UITargetedPreview *_targetedPreview;
+    _UIAnchoredClickHighlightPlatterView *_highlightPlatter;
+    CDUnknownBlockType _completionBlock;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,8 +31,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITargetedPreview *targetedPreviewForEffectContinuation;
 
 - (void).cxx_destruct;
+- (void)_completeHighlightEffect;
 - (void)_createHighlightPlatter;
-- (id)initWithTargetedPreview:(id)arg1;
+- (id)initWithTargetedPreview:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 
 @end

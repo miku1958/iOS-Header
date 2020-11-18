@@ -8,6 +8,8 @@
 
 @interface UIImage (TelephonyUI)
 + (id)_tpImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
++ (BOOL)cappedSizedImagesAreValid;
++ (void)clearCachedCappedSizeImagesIfNeeded;
 + (id)favoritesAudioGlyphImage;
 + (id)favoritesGlyphForSymbolType:(long long)arg1;
 + (id)favoritesMailGlyphImage;
@@ -43,6 +45,7 @@
 + (id)telephonyUI_speakerAudioRouteGlyphImage;
 + (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
 + (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 cappedAt:(id)arg3;
 + (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(BOOL)arg4;
 + (id)tpImageNamed:(id)arg1 inBundle:(id)arg2;
 + (id)voicemailAudioRouteGlyphImage;

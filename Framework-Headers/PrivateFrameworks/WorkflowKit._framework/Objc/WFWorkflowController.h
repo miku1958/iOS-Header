@@ -16,6 +16,7 @@
 @interface WFWorkflowController : NSObject <WFRemoteQuarantinePolicyEvaluatorDelegate, WFVariableDataSource, WFActionParameterInputProvider>
 {
     WFWorkflowController *_strongSelf;
+    BOOL _donateInteraction;
     BOOL _paused;
     BOOL _running;
     BOOL _stepping;
@@ -24,17 +25,21 @@
     WFContentCollection *_output;
     id<WFWorkflowControllerDelegate> _delegate;
     NSProgress *_progress;
+    NSString *_runSource;
+    NSString *_automationType;
     unsigned long long _currentIndex;
     NSMapTable *_variableTable;
     WFWorkflowControllerState *_pendingState;
     NSDictionary *_pendingProcessedParameters;
 }
 
+@property (copy, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (nonatomic) unsigned long long currentIndex; // @synthesize currentIndex=_currentIndex;
 @property (strong, nonatomic) WFWorkflowControllerState *currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL donateInteraction; // @synthesize donateInteraction=_donateInteraction;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFContentCollection *input; // @synthesize input=_input;
 @property (strong, nonatomic) WFContentCollection *output; // @synthesize output=_output;
@@ -42,6 +47,7 @@
 @property (strong, nonatomic) NSDictionary *pendingProcessedParameters; // @synthesize pendingProcessedParameters=_pendingProcessedParameters;
 @property (strong, nonatomic) WFWorkflowControllerState *pendingState; // @synthesize pendingState=_pendingState;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property (copy, nonatomic) NSString *runSource; // @synthesize runSource=_runSource;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (nonatomic, getter=isStepping) BOOL stepping; // @synthesize stepping=_stepping;
 @property (readonly) Class superclass;
@@ -57,14 +63,16 @@
 - (id)contentForVariableWithName:(id)arg1;
 - (id)currentAction;
 - (void)evaluateRemoteQuarantinePolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)init;
+- (void)logRunEvent:(BOOL)arg1;
+- (void)logStartEvent;
 - (id)parameterInputProviderForAction:(id)arg1;
-- (void)pause;
 - (void)reset;
 - (void)retainSelf;
 - (void)run;
 - (BOOL)setContent:(id)arg1 forVariableWithName:(id)arg2;
+- (void)setFinishedRunningWithSuccess:(BOOL)arg1;
 - (id)stateWithActionIndex:(unsigned long long)arg1 input:(id)arg2 processedParameters:(id)arg3;
-- (void)step;
 - (void)stop;
 - (id)userInterfaceForAction:(id)arg1;
 - (id)userInterfaceToPresentAlertForEvaluator:(id)arg1;

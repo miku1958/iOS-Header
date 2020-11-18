@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class PKDocumentRequest, UIImage;
+@class PKDocumentRequest, UIImage, UIViewController;
 @protocol PKPaymentDocumentSubmissionControllerDelegate, PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentDocumentSubmissionController : NSObject
 {
     long long _state;
     long long _side;
-    id<PKPaymentDocumentSubmissionControllerDelegate> _delegate;
+    UIViewController<PKPaymentDocumentSubmissionControllerDelegate> *_delegate;
     PKDocumentRequest *_selectedDocument;
     UIImage *_frontID;
     UIImage *_backID;
@@ -24,11 +24,11 @@
 
 @property (strong, nonatomic) UIImage *backID; // @synthesize backID=_backID;
 @property (nonatomic) long long context; // @synthesize context=_context;
-@property (weak, nonatomic) id<PKPaymentDocumentSubmissionControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) UIViewController<PKPaymentDocumentSubmissionControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 @property (strong, nonatomic) UIImage *frontID; // @synthesize frontID=_frontID;
 @property (strong, nonatomic) PKDocumentRequest *selectedDocument; // @synthesize selectedDocument=_selectedDocument;
-@property (strong, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (nonatomic) long long side; // @synthesize side=_side;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
@@ -40,14 +40,13 @@
 - (id)nextViewController;
 - (void)scanAgain;
 - (void)stateChanged;
-- (void)terminateSetupFlowFromViewController:(id)arg1;
+- (void)terminateSetupFlow;
 - (void)tryUploadAgain;
 - (void)uploadID;
 - (void)userApprovedCapturedID;
 - (void)userRejectedCapturedID;
-- (void)userWantsToCancelFromViewController:(id)arg1;
+- (void)userWantsToCancel;
 - (void)userWantsToContinue;
-- (void)userWantsToWithdraw;
 
 @end
 

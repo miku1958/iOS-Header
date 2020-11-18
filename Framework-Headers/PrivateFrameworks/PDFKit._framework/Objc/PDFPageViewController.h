@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setRenderingProperties:(id)arg1;
 - (void)setScaleFactor:(double)arg1;
 - (void)setSelection:(id)arg1;
+- (id)textInputView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (id)viewForZoomingInScrollView:(id)arg1;

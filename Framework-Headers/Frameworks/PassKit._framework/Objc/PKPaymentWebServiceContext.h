@@ -70,8 +70,8 @@
 - (id)_regionWithPeerPaymentServiceURL;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
 - (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
-- (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;
-- (id)applyServicePreferredLangaugeForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServiceLocalizationBundleForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServicePreferredLanguageForFeatureIdentifier:(unsigned long long)arg1;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
 - (BOOL)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (BOOL)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;

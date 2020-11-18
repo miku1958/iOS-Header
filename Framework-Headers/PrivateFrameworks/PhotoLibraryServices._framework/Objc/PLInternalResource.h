@@ -137,6 +137,7 @@
 + (BOOL)supportsTrashedStateForResourceIdentity:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_colorSpaceIsNativeForDisplay;
+- (id)_libraryID;
 - (void)applyTrashedState:(short)arg1;
 - (void)applyTrashedState:(short)arg1 trashedDate:(id)arg2;
 - (BOOL)canRepresentAsSidecar;
@@ -167,7 +168,7 @@
 - (id)referenceMediaFileURL;
 - (BOOL)repairResourceValidationErrors:(id)arg1 managedObjectContext:(id)arg2;
 - (void)setCloudAttributesWithExternalResource:(id)arg1;
-- (void)setQualitySortValueBasedOnAssetWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2;
 - (void)setResourceIdentity:(id)arg1 managedObjectContext:(id)arg2;
 - (BOOL)shouldPersistTrashedState;
 - (BOOL)supportsCloudUpload;

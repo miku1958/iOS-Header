@@ -16,6 +16,7 @@
 
 @property (weak) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property (strong, nonatomic) NSNumber *needsZoneCreation; // @dynamic needsZoneCreation;
+@property (strong, nonatomic) NSNumber *needsZoneDeletion; // @dynamic needsZoneDeletion;
 @property (strong, nonatomic) HMBCloudZoneRebuilderStatus *rebuilderStatus; // @synthesize rebuilderStatus=_rebuilderStatus;
 @property (strong, nonatomic) NSSet *subscriptions;
 @property (strong, nonatomic) NSData *subscriptionsData; // @dynamic subscriptionsData;

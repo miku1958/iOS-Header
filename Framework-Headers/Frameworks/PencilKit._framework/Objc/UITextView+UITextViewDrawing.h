@@ -34,6 +34,7 @@
 - (id)_insertEmptyDrawingAttachmentAtLocation:(long long)arg1;
 - (id)_pkTiledView;
 - (void)_removeDrawingAttachment:(id)arg1 withView:(id)arg2 forDeletion:(BOOL)arg3;
+- (void)_setSelectedInkColor:(id)arg1;
 - (id)_textRangeFromRange:(struct _NSRange)arg1;
 - (void)_undoDrawingBounds:(struct CGRect)arg1 viewBounds:(struct CGRect)arg2 ofAttachmentUUID:(id)arg3;
 - (void)_willBeginNewStrokeForTouch:(id)arg1;

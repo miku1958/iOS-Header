@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSString *longDescription; // @dynamic longDescription;
 
 + (id)entityName;
++ (id)listOfSyncedProperties;
+- (BOOL)isSyncableChange;
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
 - (void)prepareForDeletion;

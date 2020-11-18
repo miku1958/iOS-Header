@@ -8,7 +8,7 @@
 
 @interface RBSDefineRelativeStartTimeGrant (RBProcessState)
 - (void)applyToAssertionIntransientState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
-- (BOOL)conflictsWithAttribute:(id)arg1;
+- (void)applyToProcessState:(id)arg1 attributePath:(unsigned long long)arg2 context:(id)arg3;
 - (BOOL)isValidForContext:(id)arg1 withError:(id *)arg2;
 @end
 

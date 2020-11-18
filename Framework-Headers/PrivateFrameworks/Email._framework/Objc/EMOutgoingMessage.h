@@ -6,20 +6,29 @@
 
 #import <Email/EMObject.h>
 
-@class NSData;
+@class EMMessageObjectID, NSData;
 
 @interface EMOutgoingMessage : EMObject
 {
+    BOOL _shouldSign;
+    BOOL _shouldEncrypt;
     NSData *_messageData;
+    long long _action;
+    EMMessageObjectID *_originalMessageID;
 }
 
+@property (nonatomic) long long action; // @synthesize action=_action;
 @property (readonly, copy, nonatomic) NSData *messageData; // @synthesize messageData=_messageData;
+@property (strong, nonatomic) EMMessageObjectID *originalMessageID; // @synthesize originalMessageID=_originalMessageID;
+@property (nonatomic) BOOL shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
+@property (nonatomic) BOOL shouldSign; // @synthesize shouldSign=_shouldSign;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMessageData:(id)arg1;
+- (id)initWithMessageData:(id)arg1 action:(long long)arg2 originalMessageID:(id)arg3 shouldSign:(BOOL)arg4 shouldEncrypt:(BOOL)arg5;
 
 @end
 

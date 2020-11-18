@@ -93,7 +93,7 @@
 - (id)work_nodeForName:(id)arg1;
 - (id)work_nodeNameForAttributeWithKeyID:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (id)work_nodesContainingAttribute:(id)arg1 withValue:(id)arg2 error:(id *)arg3;
-- (id)work_nodesContainingAttributeWithID:(long long)arg1 withValue:(id)arg2 error:(id *)arg3;
+- (id)work_nodesContainingAttributeWithID:(long long)arg1 limit:(long long)arg2 withValue:(id)arg3 error:(id *)arg4;
 - (id)work_nodesForIDs:(id)arg1 error:(id *)arg2;
 - (id)work_nodesForNames:(id)arg1 error:(id *)arg2;
 - (id)work_nodesWithRelationship:(id)arg1 fromNodeWithID:(id)arg2 error:(id *)arg3;

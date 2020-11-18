@@ -24,6 +24,7 @@
 - (unsigned long long)customInfoType;
 - (id)initWithSuggestion:(id)arg1 customInfoType:(unsigned long long)arg2;
 - (id)input;
+- (BOOL)isEqual:(id)arg1;
 - (id)label;
 
 @end

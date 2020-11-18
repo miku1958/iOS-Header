@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)performTraitCollectionUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

@@ -19,7 +19,7 @@
 - (struct CGSize)_expectedSize;
 - (id)initWithNickname:(id)arg1;
 - (void)loadView;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 
 @end
 

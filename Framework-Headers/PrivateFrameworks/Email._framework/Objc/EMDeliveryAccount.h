@@ -12,6 +12,7 @@
 
 @interface EMDeliveryAccount : EMAccount <EMDeliveryAccountBuilder>
 {
+    BOOL _primaryiCloudAccount;
     NSString *_name;
     NSString *_username;
     NSString *_hostname;
@@ -23,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (nonatomic) unsigned long long maximumMessageBytes; // @synthesize maximumMessageBytes=_maximumMessageBytes;
+@property (nonatomic, getter=isPrimaryiCloudAccount) BOOL primaryiCloudAccount; // @synthesize primaryiCloudAccount=_primaryiCloudAccount;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 

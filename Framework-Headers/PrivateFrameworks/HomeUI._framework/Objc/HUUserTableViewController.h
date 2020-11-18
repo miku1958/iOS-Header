@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUSplitAccountDelegate-Protocol.h>
 
-@class HFItemManager, HMHome, NSAttributedString, NSString, _HUUserAvatarHeaderView;
+@class HFItemManager, HMHome, NAFuture, NSAttributedString, NSString, _HUUserAvatarHeaderView;
 @protocol HUUserItemManager;
 
 @interface HUUserTableViewController : HUItemTableViewController <HUSplitAccountDelegate>
@@ -17,6 +17,7 @@
     NSAttributedString *_headerMessage;
     _HUUserAvatarHeaderView *_userAvatarHeaderView;
     HMHome *_home;
+    NAFuture *_mediaAccountFuture;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,13 +25,14 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSAttributedString *headerMessage; // @synthesize headerMessage=_headerMessage;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) NAFuture *mediaAccountFuture; // @synthesize mediaAccountFuture=_mediaAccountFuture;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _HUUserAvatarHeaderView *userAvatarHeaderView; // @synthesize userAvatarHeaderView=_userAvatarHeaderView;
 @property (readonly, nonatomic) HFItemManager<HUUserItemManager> *userItemManager; // @synthesize userItemManager=_userItemManager;
 
 - (void).cxx_destruct;
-- (id)_fetchAccountsForHome:(id)arg1;
-- (void)_refreshSplitAccountsHeaderViewIfNeeded;
+- (id)_fetchAccountsForHome:(id)arg1 forceCloudKitFetch:(BOOL)arg2;
+- (void)_refreshSplitAccountsHeaderViewIfNeeded:(BOOL)arg1;
 - (void)applicationWillEnterForeground;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)dealloc;
@@ -39,7 +41,6 @@
 - (void)performRemovalAction:(id)arg1;
 - (void)setAMSiTunesAccount:(id)arg1 forHome:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
-- (BOOL)shouldResizeHeaderWhenLayoutSubviews;
 - (id)userHandle;
 
 @end

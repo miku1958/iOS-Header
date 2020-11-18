@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSString;
+@class BBSectionIcon, BBSectionInfoSettings, NSArray, NSData, NSDictionary, NSString;
 
 @interface BBSectionInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -67,6 +67,7 @@
 @property (nonatomic) BOOL showsCustomSettingsLink;
 @property (nonatomic) BOOL showsOnExternalDevices;
 @property (nonatomic) long long spokenNotificationSetting;
+@property (readonly, copy, nonatomic) NSDictionary *stateCapture;
 @property (copy, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property (nonatomic) long long subsectionPriority; // @synthesize subsectionPriority=_subsectionPriority;
 @property (copy, nonatomic) NSArray *subsections; // @synthesize subsections=_subsections;
@@ -88,6 +89,7 @@
 - (BOOL)_isDeliveredQuietly;
 - (void)_replaceSubsection:(id)arg1;
 - (id)_subsectionForID:(id)arg1;
+- (id)_suppressedSettingsList:(unsigned long long)arg1;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (id)copyFromManagedSettings;
 - (id)copyWithZone:(struct _NSZone *)arg1;

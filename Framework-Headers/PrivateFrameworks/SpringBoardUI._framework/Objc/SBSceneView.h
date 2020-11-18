@@ -25,6 +25,7 @@
     long long _hostingPriority;
     NSString *_hostingIdentifier;
     id<SBScenePlaceholderContentContext> _placeholderContentContext;
+    UIView *_sceneContentContainerView;
     UIView *_customContentView;
     UIView<SBScenePlaceholderContentView> *_placeholderContentView;
     UIView<UISceneSnapshotPresentation> *_liveSnapshotView;
@@ -33,7 +34,9 @@
     UIView *_backgroundView;
     NSCountedSet *_liveContentDisableReasons;
     BOOL _placeholderContentEnabled;
+    BOOL _shouldRasterizeHostView;
     id<SBScenePlaceholderContentViewProvider> _placeholderContentProvider;
+    NSString *_hostViewMinificationFilter;
     id<SBSceneViewDelegate> _delegate;
 }
 
@@ -45,6 +48,7 @@
 @property (readonly, nonatomic) long long displayMode; // @synthesize displayMode=_requestedDisplayMode;
 @property (readonly, nonatomic) long long effectiveDisplayMode; // @synthesize effectiveDisplayMode=_effectiveDisplayMode;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostViewMinificationFilter; // @synthesize hostViewMinificationFilter=_hostViewMinificationFilter;
 @property (readonly, nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext; // @synthesize placeholderContentContext=_placeholderContentContext;
 @property (nonatomic) BOOL placeholderContentEnabled; // @synthesize placeholderContentEnabled=_placeholderContentEnabled;
@@ -53,6 +57,7 @@
 @property (readonly, nonatomic) id<UIScenePresenter> presenter; // @synthesize presenter=_presenter;
 @property (readonly, nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
 @property (readonly, nonatomic) SBSceneHandle *sceneHandle; // @synthesize sceneHandle=_sceneHandle;
+@property (nonatomic) BOOL shouldRasterizeHostView; // @synthesize shouldRasterizeHostView=_shouldRasterizeHostView;
 @property (readonly) Class superclass;
 
 + (id)defaultDisplayModeAnimationFactory;
@@ -86,10 +91,12 @@
 - (BOOL)_shouldViewBeInHierarchyForTransition:(id)arg1;
 - (void)_transitionFromDisplayMode:(long long)arg1 showingView:(id)arg2 toDisplayMode:(long long)arg3 showingView:(id)arg4 withAnimationFactory:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_transitionViewForHostView;
+- (void)_updateLiveContentRasterization;
 - (void)_updateReferenceSize:(struct CGSize)arg1 andOrientation:(long long)arg2;
 - (id)_viewForDisplayMode:(long long)arg1;
 - (id)acquireLiveContentDisableAssertionForReason:(id)arg1;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)initWithSceneHandle:(id)arg1 referenceSize:(struct CGSize)arg2 orientation:(long long)arg3;
 - (id)initWithSceneHandle:(id)arg1 referenceSize:(struct CGSize)arg2 orientation:(long long)arg3 hostRequester:(id)arg4;
 - (void)invalidate;

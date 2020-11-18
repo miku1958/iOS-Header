@@ -13,6 +13,7 @@
 {
     BOOL _enabled;
     NSString *_name;
+    NSString *_displayName;
     HFTriggerActionSetsBuilder *_triggerActionSets;
     id<HFTriggerBuilderContextProviding> _context;
     HFConditionCollection *_conditionCollection;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property (strong, nonatomic) id<HFTriggerBuilderContextProviding> context; // @synthesize context=_context;
 @property (readonly, nonatomic) HFDurationEventBuilder *designatedDurationEventBuilder;
+@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) NSArray *endEventBuilders;
 @property (strong, nonatomic) HFMutableSetDiff *endEventBuildersDiff; // @synthesize endEventBuildersDiff=_endEventBuildersDiff;

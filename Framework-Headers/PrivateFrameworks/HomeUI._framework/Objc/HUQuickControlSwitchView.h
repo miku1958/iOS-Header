@@ -41,13 +41,13 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
 - (BOOL)_createDecorationIconViewIfNecessary;
 - (void)_createSupplementaryValueLabelIfNecessary;
 - (struct CGPoint)_knobCenterForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
 - (struct CGRect)_knobFrameForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
 - (struct CGSize)_knobSizeForMetrics:(CDStruct_2418a849)arg1;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateKnobViewTintColorAnimated:(BOOL)arg1;
 - (void)_updateSupplementaryValueLabelAnimated:(BOOL)arg1;

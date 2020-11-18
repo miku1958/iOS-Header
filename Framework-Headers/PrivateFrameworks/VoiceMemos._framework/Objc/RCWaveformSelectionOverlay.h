@@ -38,7 +38,6 @@
     BOOL _overviewTrimHandleStyle;
     BOOL _playBarOnly;
     BOOL _isOverView;
-    BOOL _changeAXValue;
     id<RCWaveformSelectionOverlayDelegate> _delegate;
     double _selectedTimeRangeMinimumDuration;
     double _selectedTimeRangeMaximumDuration;
@@ -61,7 +60,6 @@
 @property (nonatomic) double axSegment; // @synthesize axSegment=_axSegment;
 @property (nonatomic) BOOL barMatchesKnobRadius; // @synthesize barMatchesKnobRadius=_barMatchesKnobRadius;
 @property (readonly, nonatomic) long long beginTimeIndicatorSelectionAffinity;
-@property (nonatomic) BOOL changeAXValue; // @synthesize changeAXValue=_changeAXValue;
 @property (readonly, nonatomic) double currentTimeIndicatorCoordinate;
 @property (weak, nonatomic) id<RCWaveformSelectionOverlayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isEditingEnabled) BOOL editingEnabled; // @synthesize editingEnabled=_editingEnabled;
@@ -122,6 +120,7 @@
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)changeAXValue;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDelegate:(id)arg1 height:(double)arg2 selectionAreaInsets:(struct UIEdgeInsets)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;

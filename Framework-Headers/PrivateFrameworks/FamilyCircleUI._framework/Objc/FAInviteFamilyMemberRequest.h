@@ -20,9 +20,9 @@
 @property (copy, nonatomic) NSString *inviteeShortName; // @synthesize inviteeShortName=_inviteeShortName;
 
 - (void).cxx_destruct;
+- (id)_endpoint;
+- (id)_queryString;
 - (BOOL)isUserInitiated;
-- (id)url;
-- (id)urlRequest;
 
 @end
 

@@ -17,13 +17,19 @@
     NSDate *_expirationDate;
     NSArray *_fileAssetInfoList;
     MPStoreHLSAssetInfo *_hlsAssetInfo;
+    BOOL _liveRadioStream;
+    NSArray *_radioStreamAssetInfoList;
     id _suzeLeaseID;
+    BOOL _subscriptionRequired;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, copy, nonatomic) NSArray *fileAssetInfoList; // @synthesize fileAssetInfoList=_fileAssetInfoList;
 @property (readonly, nonatomic) MPStoreHLSAssetInfo *hlsAssetInfo; // @synthesize hlsAssetInfo=_hlsAssetInfo;
+@property (readonly, nonatomic, getter=isLiveRadioStream) BOOL liveRadioStream; // @synthesize liveRadioStream=_liveRadioStream;
+@property (readonly, copy, nonatomic) NSArray *radioStreamAssetInfoList; // @synthesize radioStreamAssetInfoList=_radioStreamAssetInfoList;
+@property (readonly, nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @synthesize subscriptionRequired=_subscriptionRequired;
 @property (readonly, nonatomic) id suzeLeaseID; // @synthesize suzeLeaseID=_suzeLeaseID;
 
 - (void).cxx_destruct;

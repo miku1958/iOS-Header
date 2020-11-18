@@ -13,6 +13,7 @@
 - (void)pictureInPictureDidToggleMicrophone;
 
 @optional
+- (void)playbackControlsDidChangePlayerVolume:(float)arg1;
 - (void)playbackControlsDidToggleMuted:(BOOL)arg1;
 - (void)playbackControlsDidUpdateVisibilityOfLoadingIndicator:(BOOL)arg1;
 @end

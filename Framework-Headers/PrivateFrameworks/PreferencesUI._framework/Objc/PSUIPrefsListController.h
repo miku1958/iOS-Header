@@ -71,13 +71,19 @@
     CoreTelephonyClient *_coreTelephonyClient;
     BOOL skipSelectingDefaultCategoryOnLaunch;
     BOOL _deferredURLLoadForThirdPartyApp;
+    BOOL __cellularDataSettingInitialized;
+    BOOL __cellularDataSetting;
     NSString *_bluetoothString;
     NSArray *_followupSpecifiers;
     PSKeyboardNavigationSearchController *_spotlightSearchController;
     SUIKSearchResultsCollectionViewController *_searchResultsController;
     NSString *_wifiString;
+    struct __CTServerConnection *__ctConnection;
 }
 
+@property (nonatomic) BOOL _cellularDataSetting; // @synthesize _cellularDataSetting=__cellularDataSetting;
+@property (nonatomic) BOOL _cellularDataSettingInitialized; // @synthesize _cellularDataSettingInitialized=__cellularDataSettingInitialized;
+@property (nonatomic) struct __CTServerConnection *_ctConnection; // @synthesize _ctConnection=__ctConnection;
 @property (copy, nonatomic) NSString *bluetoothString; // @synthesize bluetoothString=_bluetoothString;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deferredURLLoadForThirdPartyApp; // @synthesize deferredURLLoadForThirdPartyApp=_deferredURLLoadForThirdPartyApp;
@@ -159,6 +165,7 @@
 - (void)didSelectRowAtIndexPath:(id)arg1;
 - (void)dismissPopover;
 - (void)displayIdentifiersChanged;
+- (void)fetchCellularDataEnabled;
 - (id)generalViewController;
 - (id)getAirplaneMode:(id)arg1;
 - (id)getAllSpecifiers;
@@ -173,6 +180,7 @@
 - (void)insertMovedThirdPartySpecifiersAnimated:(BOOL)arg1;
 - (void)insertOrderedSpecifier:(id)arg1 animated:(BOOL)arg2;
 - (long long)insertionIndexForSpecifier:(id)arg1 inSpecifiers:(id)arg2;
+- (BOOL)isCellularDataEnabled;
 - (id)keyCommands;
 - (void)lazyLoadSpecialBundleForSpecifier:(id)arg1;
 - (void)loadPPTTestSpecifiers:(int)arg1;

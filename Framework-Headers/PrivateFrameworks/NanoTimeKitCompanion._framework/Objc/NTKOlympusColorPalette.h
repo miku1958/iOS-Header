@@ -45,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long dial; // @synthesize dial=_dial;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isBlackBackground;
 @property (strong, nonatomic) UIColor *largeHandsColor; // @synthesize largeHandsColor=_largeHandsColor;
 @property (strong, nonatomic) UIColor *lightMainColor; // @synthesize lightMainColor=_lightMainColor;
 @property (strong, nonatomic) UIColor *mainColor; // @synthesize mainColor=_mainColor;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_dismissBannerCompleted:(id)arg1;
+- (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
 
 @end
 

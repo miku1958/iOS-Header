@@ -13,7 +13,6 @@
 @interface GEOPlaceSearchRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _additionalPlaceTypes;
     CDStruct_62a50c50 _businessIDs;
@@ -51,7 +50,11 @@
     double _timestamp;
     NSString *_viewportCenterCountryCode;
     NSData *_zilchPoints;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _businessSortOrder;
+    int _businessSortDirection;
     int _knownAccuracy;
     int _localSearchProviderID;
     int _mapMode;
@@ -93,6 +96,7 @@
         unsigned int has_timeSinceMapViewportChanged:1;
         unsigned int has_timestamp:1;
         unsigned int has_businessSortOrder:1;
+        unsigned int has_businessSortDirection:1;
         unsigned int has_knownAccuracy:1;
         unsigned int has_localSearchProviderID:1;
         unsigned int has_mapMode:1;
@@ -195,6 +199,7 @@
         unsigned int wrote_viewportCenterCountryCode:1;
         unsigned int wrote_zilchPoints:1;
         unsigned int wrote_businessSortOrder:1;
+        unsigned int wrote_businessSortDirection:1;
         unsigned int wrote_knownAccuracy:1;
         unsigned int wrote_localSearchProviderID:1;
         unsigned int wrote_mapMode:1;
@@ -238,6 +243,7 @@
 @property (readonly, nonatomic) unsigned long long *businessIDs;
 @property (readonly, nonatomic) unsigned long long businessIDsCount;
 @property (strong, nonatomic) GEOBusinessOptions *businessOptions;
+@property (nonatomic) int businessSortDirection;
 @property (nonatomic) int businessSortOrder;
 @property (strong, nonatomic) GEOClientCapabilities *clientCapabilities;
 @property (strong, nonatomic) NSString *deviceCountryCode;
@@ -250,6 +256,7 @@
 @property (readonly, nonatomic) BOOL hasAdditionalEnabledMarkets;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasBusinessOptions;
+@property (nonatomic) BOOL hasBusinessSortDirection;
 @property (nonatomic) BOOL hasBusinessSortOrder;
 @property (readonly, nonatomic) BOOL hasClientCapabilities;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
@@ -376,6 +383,7 @@
 + (Class)serviceTagType;
 - (void).cxx_destruct;
 - (int)StringAsAdditionalPlaceTypes:(id)arg1;
+- (int)StringAsBusinessSortDirection:(id)arg1;
 - (int)StringAsBusinessSortOrder:(id)arg1;
 - (int)StringAsKnownAccuracy:(id)arg1;
 - (int)StringAsMapMode:(id)arg1;
@@ -430,6 +438,7 @@
 - (int)additionalPlaceTypeAtIndex:(unsigned long long)arg1;
 - (id)additionalPlaceTypesAsString:(int)arg1;
 - (unsigned long long)businessIDAtIndex:(unsigned long long)arg1;
+- (id)businessSortDirectionAsString:(int)arg1;
 - (id)businessSortOrderAsString:(int)arg1;
 - (void)clearAdditionalPlaceTypes;
 - (void)clearBusinessIDs;
@@ -448,6 +457,8 @@
 - (id)filterByBusinessCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)filterByBusinessCategorysCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)knownAccuracyAsString:(int)arg1;

@@ -34,6 +34,7 @@
 + (id)internalBag;
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
+- (id)URLForKey:(id)arg1 account:(id)arg2;
 - (id)arrayForKey:(id)arg1;
 - (id)boolForKey:(id)arg1;
 - (void)createSnapshotWithCompletion:(CDUnknownBlockType)arg1;

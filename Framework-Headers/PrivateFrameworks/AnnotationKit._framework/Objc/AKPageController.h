@@ -84,6 +84,7 @@
 - (id)stickyContainerForNoteEditor:(id)arg1;
 - (struct CGRect)stickyViewFrameForNoteEditor:(id)arg1;
 - (void)teardown;
+- (void)unregisterFromUndoManager:(id)arg1;
 - (void)updateOverlayViewLayers;
 - (void)updateScaleFactor:(double)arg1 isLiveUpdate:(BOOL)arg2 forceUpdate:(BOOL)arg3;
 - (struct CGRect)visibleRectOfOverlay;

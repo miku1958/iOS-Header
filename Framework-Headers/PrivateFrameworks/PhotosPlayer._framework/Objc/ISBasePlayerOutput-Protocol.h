@@ -9,8 +9,14 @@
 @class ISPlayerOutputContent, ISPlayerOutputTransitionOptions, ISPlayerState;
 
 @protocol ISBasePlayerOutput <NSObject>
+
+@property (readonly, nonatomic) BOOL isVideoReadyForDisplay;
+@property (copy, nonatomic) CDUnknownBlockType videoLayerReadyForDisplayChangeHandler;
+
 - (void)applyOutputInfo:(ISPlayerState *)arg1 withTransitionOptions:(ISPlayerOutputTransitionOptions *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)applyScale:(double)arg1 withTransitionOptions:(ISPlayerOutputTransitionOptions *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)setContent:(ISPlayerOutputContent *)arg1;
+
+@optional
 @end
 

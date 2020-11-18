@@ -6,28 +6,17 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/WFExpandingParameterHintProvider-Protocol.h>
-
-@class NSDateFormatter, NSString;
-
-@interface WFAddNewEventAction : WFAction <WFExpandingParameterHintProvider>
+@interface WFAddNewEventAction : WFAction
 {
-    NSDateFormatter *_dateFormatter;
 }
 
-@property (readonly, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 + (double)relativeOffsetFromTimeString:(id)arg1;
-- (void).cxx_destruct;
 - (id)endDateByCorrectingDate:(id)arg1 withStartDate:(id)arg2;
-- (id)hintForExpandingParameter:(id)arg1;
 - (void)initializeParameters;
 - (void)runWithInput:(id)arg1 error:(id *)arg2;
+- (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (void)updateCalendars;
+- (void)updateForcesAllDayFlags;
 - (void)wasAddedToWorkflow:(id)arg1;
 - (void)wasRemovedFromWorkflow:(id)arg1;
 

@@ -11,8 +11,8 @@
 }
 
 + (id)_saveToCameraRollActionForFutureRepresentations:(id)arg1 title:(id)arg2 image:(id)arg3;
-+ (id)markupDocumentActionForFutureRepresentation:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
-+ (id)quicklookActionForFutureRepresentation:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
++ (id)markupDocumentActionForURL:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
++ (id)quicklookActionForURL:(id)arg1 contentRepresentationHandlingDelegate:(id)arg2;
 + (id)saveAllAttachmentsActionWithTitle:(id)arg1 futureRepresentations:(id)arg2;
 + (id)saveImageActionForFutureRepresentation:(id)arg1;
 + (id)saveVideoActionForFutureRepresentation:(id)arg1;

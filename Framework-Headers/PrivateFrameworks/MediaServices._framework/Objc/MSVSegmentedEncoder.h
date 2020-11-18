@@ -6,7 +6,7 @@
 
 #import <Foundation/NSCoder.h>
 
-@class MSVSegmentedCodingPackage, NSMutableDictionary;
+@class MSVSegmentedCodingPackage, NSDictionary, NSMutableDictionary;
 @protocol MSVSegmentedCoding;
 
 @interface MSVSegmentedEncoder : NSCoder
@@ -15,12 +15,14 @@
     MSVSegmentedCodingPackage *_package;
     id<MSVSegmentedCoding> _rootObject;
     NSMutableDictionary *_subcoders;
+    NSDictionary *_userInfo;
 }
 
 @property (nonatomic) BOOL hasFinished; // @synthesize hasFinished=_hasFinished;
 @property (strong, nonatomic) MSVSegmentedCodingPackage *package; // @synthesize package=_package;
 @property (strong, nonatomic) id<MSVSegmentedCoding> rootObject; // @synthesize rootObject=_rootObject;
 @property (strong, nonatomic) NSMutableDictionary *subcoders; // @synthesize subcoders=_subcoders;
+@property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;
 - (id)_coderForKey:(id)arg1;
@@ -35,6 +37,9 @@
 - (void)encodeRootObject:(id)arg1;
 - (void)finishEncoding;
 - (id)initWithCodingPackage:(id)arg1;
+- (id)initWithCodingPackage:(id)arg1 userInfo:(id)arg2;
+- (void)msv_setUserInfo:(id)arg1;
+- (id)msv_userInfo;
 
 @end
 

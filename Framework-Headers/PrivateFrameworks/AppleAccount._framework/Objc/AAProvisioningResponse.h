@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) NSNumber *primaryEmailVerified;
 @property (readonly, nonatomic) NSArray *provisionedDataclasses;
 @property (readonly, nonatomic) NSDictionary *regionInfo;
+@property (readonly, nonatomic, getter=isRemindersMigrated) BOOL remindersMigrated;
 @property (readonly, nonatomic, getter=isSandboxAccount) BOOL sandboxAccount;
 @property (readonly, nonatomic) NSString *searchPartyToken;
 

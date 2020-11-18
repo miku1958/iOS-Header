@@ -13,7 +13,6 @@
 @interface GEOActiveTileGroup : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _activeScales;
     CDStruct_95bda58d _activeScenarios;
@@ -79,6 +78,9 @@
     NSString *_wifiConnectionQualityProbeURLLegacy;
     NSMutableArray *_xmlChecksums;
     NSMutableArray *_xmls;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _identifier;
     unsigned int _locationShiftVersion;
     unsigned int _modelVersion;
@@ -524,6 +526,8 @@
 - (id)iconChecksumAtIndex:(unsigned long long)arg1;
 - (unsigned long long)iconChecksumsCount;
 - (unsigned long long)iconsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHybridModeAvailableForTileKey:(const struct _GEOTileKey *)arg1;

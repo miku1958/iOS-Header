@@ -14,16 +14,19 @@
     UIImage *_staticImage;
     long long _layoutMode;
     AVTUIAnimatingImageView *_imageViewsContainer;
+    UIView *_borderMaskView;
     struct CGSize _aspectRatio;
 }
 
 @property (nonatomic) struct CGSize aspectRatio; // @synthesize aspectRatio=_aspectRatio;
+@property (readonly, nonatomic) UIView *borderMaskView; // @synthesize borderMaskView=_borderMaskView;
 @property (readonly, nonatomic) AVTUIAnimatingImageView *imageViewsContainer; // @synthesize imageViewsContainer=_imageViewsContainer;
 @property (readonly, nonatomic) long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property (strong, nonatomic) UIView *liveView; // @synthesize liveView=_liveView;
 @property (strong, nonatomic) UIImage *staticImage; // @synthesize staticImage=_staticImage;
 @property (readonly, nonatomic) UIView *staticView;
 
++ (struct CGRect)borderMaskRectForContentRect:(struct CGRect)arg1;
 + (struct CGRect)imageViewRectForContentRect:(struct CGRect)arg1 liveViewRect:(struct CGRect)arg2 imageSize:(struct CGSize)arg3 scale:(double)arg4;
 + (struct CGRect)liveViewRectForContentRect:(struct CGRect)arg1 aspectRatio:(struct CGSize)arg2 layoutMode:(long long)arg3 scale:(double)arg4;
 - (void).cxx_destruct;

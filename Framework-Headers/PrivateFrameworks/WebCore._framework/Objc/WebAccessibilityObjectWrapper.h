@@ -196,6 +196,7 @@ __attribute__((visibility("hidden")))
 - (long long)lengthForTextMarkers:(id)arg1;
 - (id)lineEndMarkerForMarker:(id)arg1;
 - (id)lineStartMarkerForMarker:(id)arg1;
+- (id)misspellingTextMarkerRange:(id)arg1 forward:(BOOL)arg2;
 - (id)nextMarkerForCharacterOffset:(struct CharacterOffset *)arg1;
 - (id)nextMarkerForMarker:(id)arg1;
 - (long long)positionForTextMarker:(id)arg1;

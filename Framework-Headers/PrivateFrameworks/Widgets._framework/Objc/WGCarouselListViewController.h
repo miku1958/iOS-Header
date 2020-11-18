@@ -15,6 +15,7 @@
     id _sizeChangeObserver;
     BOOL _revealed;
     BOOL _visuallyRevealed;
+    BOOL _visuallyRevealedPriorToEditingIcons;
     BOOL _footerVisible;
     double _revealProgress;
     double _dismissProgress;
@@ -41,6 +42,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WGWidgetPinningTeachingView *teachingView; // @synthesize teachingView=_teachingView;
 @property (nonatomic, getter=isVisuallyRevealed) BOOL visuallyRevealed; // @synthesize visuallyRevealed=_visuallyRevealed;
+@property (nonatomic) BOOL visuallyRevealedPriorToEditingIcons; // @synthesize visuallyRevealedPriorToEditingIcons=_visuallyRevealedPriorToEditingIcons;
 
 - (void).cxx_destruct;
 - (struct CGRect)_cellFrameInScrollBoundsForCell:(id)arg1;
@@ -73,14 +75,17 @@
 - (void)_updateTeachingViewVisibilityAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (double)easedOutValueForValue:(double)arg1;
+- (id)extraViews;
 - (BOOL)headerVisible;
 - (id)initWithWidgetDiscoveryController:(id)arg1 listSettings:(struct WGWidgetListSettings)arg2;
 - (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setContainerView:(id)arg1;
+- (void)setEditingIcons:(BOOL)arg1;
 - (void)setHeaderVisible:(BOOL)arg1;
 - (void)setVisuallyRevealed:(BOOL)arg1 withSlowAnimation:(BOOL)arg2;
+- (BOOL)shouldAnimateFirstTwoViewsAsOne;
 - (BOOL)shouldShowTeachingView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

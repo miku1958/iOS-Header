@@ -22,7 +22,7 @@
 - (void)play;
 - (void)requestPlayerItemWithCompletion:(void (^)(AVPlayerItem *))arg1;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
-- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(BOOL)arg2;
+- (void)seekToTime:(CDStruct_1b6d18a9)arg1 untrimmed:(BOOL)arg2 exact:(BOOL)arg3;
 - (void)startPeriodicTimeObserver;
 - (void)stopPeriodicTimeObserver;
 @end

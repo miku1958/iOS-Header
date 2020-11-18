@@ -132,6 +132,7 @@
 - (void)locationTracker:(id)arg1 didChangeState:(int)arg2;
 - (void)locationTracker:(id)arg1 didFailRerouteWithError:(id)arg2;
 - (void)locationTracker:(id)arg1 didReroute:(id)arg2 newAlternateRoutes:(id)arg3 rerouteReason:(unsigned long long)arg4 request:(id)arg5 response:(id)arg6;
+- (void)locationTracker:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)locationTracker:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3 request:(id)arg4 response:(id)arg5;
 - (void)locationTracker:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateETAForRoute:(id)arg2;

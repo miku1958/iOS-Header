@@ -53,6 +53,7 @@
     BOOL _autoPlayBackgroundTaskAssertionEnabled;
     long long _autoPlayBackgroundTaskCount;
     BOOL _appHasBeenSuspended;
+    unsigned long long _deactivationReasons;
     unsigned long long _autoPlayBackgroundTaskIdentifier;
     NSObject<OS_dispatch_source> *_autoPlayTimeoutSource;
     double _nextFadeOutDuration;
@@ -112,8 +113,8 @@
     BOOL _shouldEnforceHDCP;
     NSMutableSet *_clientsWantingExternalPlayback;
     long long _currentItemRevisionID;
-    BOOL _shouldResetQueueWhenReachingEnd;
     BOOL _muted;
+    BOOL _shouldPostCompatibilityNotifications;
     BOOL _useAirPlayMusicMode;
     BOOL _managesAirPlayBehaviors;
     BOOL _shouldConnectToAVPlayer;
@@ -171,7 +172,7 @@
 @property (readonly, nonatomic) BOOL shouldConnectToAVPlayer; // @synthesize shouldConnectToAVPlayer=_shouldConnectToAVPlayer;
 @property (readonly, nonatomic) BOOL shouldDisplayAsPlaying;
 @property (nonatomic) BOOL shouldEnforceHDCP; // @synthesize shouldEnforceHDCP=_shouldEnforceHDCP;
-@property (nonatomic) BOOL shouldResetQueueWhenReachingEnd; // @synthesize shouldResetQueueWhenReachingEnd=_shouldResetQueueWhenReachingEnd;
+@property (nonatomic) BOOL shouldPostCompatibilityNotifications; // @synthesize shouldPostCompatibilityNotifications=_shouldPostCompatibilityNotifications;
 @property (readonly, nonatomic) BOOL showPlaybackStateOverlaysOnTVOut;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) long long stateBeforeInterruption; // @synthesize stateBeforeInterruption=_stateBeforeInterruption;
@@ -248,8 +249,6 @@
 - (void)_itemPlayerItemDidChangeNotification:(id)arg1;
 - (void)_itemPlayerItemWillChangeNotification:(id)arg1;
 - (void)_itemReadyToPlay:(id)arg1;
-- (void)_itemSecureKeyDeliverDidFinishNotification:(id)arg1;
-- (void)_itemShouldPreventPlaybackDidChangeNotification:(id)arg1;
 - (void)_itemTimeMarkersAvailableNotification:(id)arg1;
 - (void)_itemTypeAvailableNotification:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
@@ -266,6 +265,7 @@
 - (void)_postMPAVControllerSizeDidChangeNotificationWithItem:(id)arg1;
 - (void)_postPlaybackStateChangedNotificationWithOriginalState:(long long)arg1 newState:(long long)arg2 delayable:(BOOL)arg3;
 - (void)_prepareToPlayItem:(id)arg1;
+- (void)_queueDidEndWithReason:(id)arg1 lastItem:(id)arg2;
 - (void)_rateDidChange:(id)arg1;
 - (void)_readyForDisplayDidChange:(id)arg1;
 - (void)_registerForAVItemNotifications:(id)arg1;
@@ -288,7 +288,7 @@
 - (void)_setState:(long long)arg1;
 - (void)_setValid:(BOOL)arg1;
 - (void)_setVideoLayerAttachedToPlayer:(BOOL)arg1 force:(BOOL)arg2 pauseIfNecessary:(BOOL)arg3;
-- (void)_setVideoLayersEnabledForCurrentPlayerItemIfNeeded:(BOOL)arg1;
+- (BOOL)_shouldPausePlaybackForDeactivationReasons:(unsigned long long)arg1;
 - (BOOL)_shouldProvideAudiblePlaybackPerformance;
 - (BOOL)_showsPlayingWhenInState:(long long)arg1;
 - (void)_sizeDidChange:(id)arg1;
@@ -360,6 +360,7 @@
 - (void)queueController:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
 - (void)queueController:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)queueController:(id)arg1 didChangeShuffleType:(long long)arg2;
+- (void)queueController:(id)arg1 didIncrementVersionForSegment:(id)arg2;
 - (void)queueController:(id)arg1 failedToLoadItem:(id)arg2;
 - (void)queueControllerDidChangeContents:(id)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1;

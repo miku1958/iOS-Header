@@ -123,6 +123,7 @@
 - (void)enumerateSpritesInRange:(struct _PXGSpriteIndexRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSpritesInRect:(struct CGRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)handleDisplayLink:(id)arg1;
+- (void)handleScreensDidWakeNotification:(id)arg1;
 - (id)init;
 - (id)initWithAnimator:(id)arg1 textureManager:(id)arg2 metalRenderer:(id)arg3 viewRenderer:(id)arg4 displayLinkClass:(Class)arg5;
 - (void)layoutNeedsUpdate:(id)arg1;

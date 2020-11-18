@@ -6,41 +6,22 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/UIDocumentInteractionControllerDelegate-Protocol.h>
-#import <ActionKit/UIDocumentInteractionControllerDelegatePrivate-Protocol.h>
+@class NSArray;
 
-@class NSArray, NSString, UIDocumentInteractionController, WFFileRepresentation;
-
-@interface WFOpenInAction : WFAction <UIDocumentInteractionControllerDelegatePrivate, UIDocumentInteractionControllerDelegate>
+@interface WFOpenInAction : WFAction
 {
-    WFFileRepresentation *_sendingFile;
-    WFFileRepresentation *_retainedFile;
     NSArray *_contentClasses;
-    UIDocumentInteractionController *_document;
 }
 
 @property (strong, nonatomic) NSArray *contentClasses; // @synthesize contentClasses=_contentClasses;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UIDocumentInteractionController *document; // @synthesize document=_document;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) WFFileRepresentation *retainedFile; // @synthesize retainedFile=_retainedFile;
-@property (weak, nonatomic) WFFileRepresentation *sendingFile; // @synthesize sendingFile=_sendingFile;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)documentInteractionController:(id)arg1 didEndSendingToApplication:(id)arg2;
-- (void)documentInteractionController:(id)arg1 willBeginSendingToApplication:(id)arg2;
-- (void)documentInteractionControllerDidDismissOpenInMenu:(id)arg1;
-- (id)excludedActivityTypesForDocumentInteractionController:(id)arg1;
 - (id)inputContentClasses;
-- (void)openContent:(id)arg1 inApp:(id)arg2;
+- (void)openContentInSelectedApp:(id)arg1;
 - (id)outputContentClasses;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
-- (void)runWithUIKitWidgetUserInterface:(id)arg1 input:(id)arg2;
+- (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)selectedApp;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
-- (BOOL)showsAppPicker;
 - (void)updateContentClasses;
 
 @end

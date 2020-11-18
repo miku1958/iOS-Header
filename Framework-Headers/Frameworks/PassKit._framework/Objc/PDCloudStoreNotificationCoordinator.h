@@ -11,7 +11,7 @@
 #import <PassKitCore/PDScheduledActivityClient-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoordinatorDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PDApplePayCloudStoreContainer, PDPassCloudStoreContainer, PDPushNotificationManager;
+@class NSHashTable, NSMutableArray, NSSet, NSString, PDApplePayCloudStoreContainer, PDPassCloudStoreContainer, PDPushNotificationManager;
 @protocol OS_dispatch_queue;
 
 @interface PDCloudStoreNotificationCoordinator : NSObject <PDPushNotificationConsumer, PDCloudStoreContainerDelegate, PDScheduledActivityClient, PKCloudStoreCoordinatorDelegate>
@@ -21,8 +21,6 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSSet *_pushTopics;
     NSMutableArray *_containers;
-    NSMutableDictionary *_containersCurrentlyProcessingPushNotifications;
-    NSMutableDictionary *_containersThatShouldProcessPushNotifications;
     PDApplePayCloudStoreContainer *_applePayContainer;
     PDPassCloudStoreContainer *_passContainer;
 }
@@ -34,7 +32,6 @@
 @property (strong, nonatomic) PDPassCloudStoreContainer *passContainer; // @synthesize passContainer=_passContainer;
 @property (readonly) Class superclass;
 
-+ (void)invalidateServerChangeTokens;
 - (void).cxx_destruct;
 - (id)_backgroundActivityNameForBackgroundInterval:(unsigned long long)arg1;
 - (id)_containerForItemType:(unsigned long long)arg1;
@@ -66,6 +63,7 @@
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePushNotificationForTopic:(id)arg1 userInfo:(id)arg2;
 - (id)initWithPushNotificationManager:(id)arg1;
+- (void)invalidateServerChangeTokens;
 - (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)noteAccountDeleted;
 - (void)noteCloudSyncPassesSwitchChanged;

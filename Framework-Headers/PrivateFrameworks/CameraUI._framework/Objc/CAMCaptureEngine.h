@@ -9,7 +9,7 @@
 #import <CameraUI/AVCaptureVideoThumbnailContentsDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaProcessorDelegate-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, AVSpatialOverCaptureVideoPreviewLayer, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaConfiguration, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, AVSpatialOverCaptureVideoPreviewLayer, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaConfiguration, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface CAMCaptureEngine : NSObject <CAMPanoramaProcessorDelegate, AVCaptureVideoThumbnailContentsDelegate>
@@ -40,6 +40,7 @@
     NSMutableSet *__sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue;
     NSMutableDictionary *__sessionQueueCachedPhotoInitiationSettings;
     NSMutableDictionary *__sessionQueueRequestsBeingRecorded;
+    NSURL *__sessionQueueLastCompletedVideoURL;
     NSObject<OS_dispatch_queue> *__captureServicesQueue;
     NSMutableArray *__servicesQueueCaptureServices;
     NSObject<OS_dispatch_queue> *__metadataObjectsQueue;
@@ -82,6 +83,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_recoveryMutexQueue; // @synthesize _recoveryMutexQueue=__recoveryMutexQueue;
 @property (readonly, nonatomic) NSMutableArray *_servicesQueueCaptureServices; // @synthesize _servicesQueueCaptureServices=__servicesQueueCaptureServices;
 @property (readonly, nonatomic) NSMutableDictionary *_sessionQueueCachedPhotoInitiationSettings; // @synthesize _sessionQueueCachedPhotoInitiationSettings=__sessionQueueCachedPhotoInitiationSettings;
+@property (strong, nonatomic, setter=_setSessionQueueLastCompletedVideoURL:) NSURL *_sessionQueueLastCompletedVideoURL; // @synthesize _sessionQueueLastCompletedVideoURL=__sessionQueueLastCompletedVideoURL;
 @property (readonly, nonatomic) NSMutableDictionary *_sessionQueueRegisteredStillImageRequests; // @synthesize _sessionQueueRegisteredStillImageRequests=__sessionQueueRegisteredStillImageRequests;
 @property (readonly, nonatomic) NSMutableSet *_sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue; // @synthesize _sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue=__sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue;
 @property (readonly, nonatomic) NSMutableDictionary *_sessionQueueRequestsBeingRecorded; // @synthesize _sessionQueueRequestsBeingRecorded=__sessionQueueRequestsBeingRecorded;

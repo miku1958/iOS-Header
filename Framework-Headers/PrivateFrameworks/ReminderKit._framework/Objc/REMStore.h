@@ -47,9 +47,9 @@
 - (BOOL)_isUserInteractiveStore;
 - (void)_respondToCalDAVSharedList:(id)arg1 withResponse:(long long)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_saveAccountChangeItems:(id)arg1 listChangeItems:(id)arg2 reminderChangeItems:(id)arg3 author:(id)arg4 replicaManagerProvider:(id)arg5 synchronously:(BOOL)arg6 performer:(id)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)_triggerSyncForcingCloudKitReload:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_triggerSyncWithReason:(id)arg1 forcingCloudKitReload:(BOOL)arg2 discretionary:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_withInProgressSaveRequestContainer:(CDUnknownBlockType)arg1;
-- (id)_xpcSyncStorePerformerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_xpcSyncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)acceptCalDAVSharedList:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)acceptShareWithMetadata:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
@@ -127,7 +127,7 @@
 - (void)stopShare:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)storeGeneration;
 - (void)triggerSyncForDataAccessAccountsWithAccountIDs:(id)arg1;
-- (void)triggerThrottledSyncWithCompletion:(CDUnknownBlockType)arg1;
+- (void)triggerThrottledSyncWithReason:(id)arg1 discretionary:(BOOL)arg2 WithCompletion:(CDUnknownBlockType)arg3;
 - (void)updateAccountWithAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateAccountWithAccountID:(id)arg1 restartDA:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAccountsAndFetchMigrationState:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

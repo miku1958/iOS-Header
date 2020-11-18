@@ -146,7 +146,7 @@
 - (void)_handleRequestFetchNewAccessories:(id)arg1;
 - (void)_handleRequestSearchForNewAccessories:(id)arg1;
 - (void)_handleSetupCodeAvailable:(id)arg1;
-- (void)_handleXPCConnectionInvalidated:(id)arg1;
+- (void)_handleWACAccessoryFound;
 - (BOOL)_isAccessoryServerTombstoned:(id)arg1;
 - (BOOL)_isBrowsingAllowed;
 - (void)_notifyDelegatesOfAccessoryServer:(id)arg1 didDiscoverAccessories:(id)arg2 transaction:(id)arg3 error:(id)arg4;
@@ -273,6 +273,7 @@
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleSetupCodeAvailable:(id)arg1;
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(BOOL)arg1 forTransport:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)handleXPCConnectionInvalidated:(id)arg1;
 - (BOOL)hasClientRequestedMediaAccessoryControl:(id)arg1;
 - (void)homeLocationChangeNotification:(id)arg1;
 - (id)initWithMessageDispatcher:(id)arg1;
@@ -309,7 +310,6 @@
 - (void)stopDiscoveringAccessories;
 - (void)stopDiscoveringMediaAccessories;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(id)arg1;
-- (void)tearDownSessionForAccesoryServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)timerDidFire:(id)arg1;
 - (void)tombstoneAccessoryServer:(id)arg1;
 - (id)unassociatedAccessoriesForClientRequest:(id)arg1;

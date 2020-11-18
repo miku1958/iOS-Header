@@ -65,6 +65,7 @@
 @property (nonatomic) int externalTrackingStatus;
 @property (readonly, nonatomic) NSURL *externalURL;
 @property (nonatomic) BOOL firedTTL;
+@property (readonly, nonatomic) BOOL hasAttachmentChanges;
 @property (readonly, nonatomic) BOOL hasPredictedLocation;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSDate *initialEndDate;
@@ -77,6 +78,7 @@
 @property (readonly, nonatomic) BOOL isEndDateDirty;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL isPhantom;
+@property (readonly, nonatomic) BOOL isPrivateEventSharedToMe;
 @property (readonly, nonatomic) BOOL isSignificantlyDetached;
 @property (readonly, nonatomic) BOOL isSignificantlyDetachedIgnoringParticipation;
 @property (readonly, nonatomic) BOOL isStartDateDirty;

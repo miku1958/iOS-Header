@@ -57,12 +57,12 @@
 - (void)iconViewShortcutsPresentationDidCancel:(SBIconView *)arg1;
 - (void)iconViewShortcutsPresentationDidFinish:(SBIconView *)arg1;
 - (BOOL)iconViewShouldBeginShortcutsPresentation:(SBIconView *)arg1;
+- (void)iconViewWasRecycled:(SBIconView *)arg1;
 - (void)iconViewWillBeginDrag:(SBIconView *)arg1 session:(id<UIDragSession>)arg2;
 - (SBIconView *)iconViewWillCancelDrag:(SBIconView *)arg1;
 - (SBIconImageView *)imageViewForIconView:(SBIconView *)arg1;
 - (NSSet *)launchActionsForIconView:(SBIconView *)arg1;
 - (NSURL *)launchURLForIconView:(SBIconView *)arg1;
-- (SBFParallaxSettings *)parallaxSettingsForShortcutsPresentationWithIconView:(SBIconView *)arg1;
 - (double)scale;
 @end
 

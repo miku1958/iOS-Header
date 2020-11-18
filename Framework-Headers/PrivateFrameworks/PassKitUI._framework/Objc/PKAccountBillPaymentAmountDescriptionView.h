@@ -10,7 +10,7 @@
 #import <PassKitUI/PKNumberPadSuggestionsViewDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentAmountContainerView, PKBillPaymentSuggestedAmountList, PKNumberPadSuggestionsView, UILabel, UITextView;
+@class NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentAmountContainerView, PKAccountServiceAccountResolutionCofiguration, PKBillPaymentSuggestedAmountList, PKNumberPadSuggestionsView, UILabel, UITextView;
 @protocol PKAccountBillPaymentAmountDescriptionViewDelegate;
 
 @interface PKAccountBillPaymentAmountDescriptionView : UIView <PKNumberPadSuggestionsViewDelegate, UITextViewDelegate, PKEnterCurrencyAmountViewDelegate>
@@ -22,6 +22,7 @@
     NSString *_learnMoreString;
     PKBillPaymentSuggestedAmountList *_suggestionList;
     PKAccount *_account;
+    PKAccountServiceAccountResolutionCofiguration *_configuration;
     BOOL _showDescriptionLabels;
     BOOL _showDescriptionSubtitle;
     id<PKAccountBillPaymentAmountDescriptionViewDelegate> _delegate;
@@ -58,7 +59,7 @@
 - (void)dismissKeyboard;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
-- (id)initWithSuggestedAmountList:(id)arg1 account:(id)arg2;
+- (id)initWithSuggestedAmountList:(id)arg1 account:(id)arg2 configuration:(id)arg3;
 - (void)layoutSubviews;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;
 - (void)showKeyboard;

@@ -8,7 +8,7 @@
 
 #import <MediaServices/MSVSegmentedSubEncoder-Protocol.h>
 
-@class NSData, NSMapTable, NSMutableArray, NSString;
+@class NSData, NSDictionary, NSMapTable, NSMutableArray, NSString;
 
 @interface MSVOPACKEncoder : NSCoder <MSVSegmentedSubEncoder>
 {
@@ -17,6 +17,7 @@
     NSMutableArray *_objects;
     NSMapTable *_objectLookupTable;
     NSMutableArray *_wrapperStack;
+    NSDictionary *_userInfo;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,9 +29,11 @@
 @property (readonly, nonatomic) NSMapTable *objectLookupTable; // @synthesize objectLookupTable=_objectLookupTable;
 @property (readonly, nonatomic) NSMutableArray *objects; // @synthesize objects=_objects;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly, nonatomic) NSMutableArray *wrapperStack; // @synthesize wrapperStack=_wrapperStack;
 
 + (id)encodedDataWithRootObject:(id)arg1 error:(id *)arg2;
++ (id)encodedDataWithRootObject:(id)arg1 userInfo:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_convertNumber:(id)arg1;
 - (id)_convertObject:(id)arg1;
@@ -46,9 +49,13 @@
 - (void)encodeInt:(int)arg1 forKey:(id)arg2;
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (void)encodeRootObject:(id)arg1;
+- (id)encodedDataWithError:(id *)arg1;
 - (void)finishEncoding;
 - (void)finishEncodingPartialTopLevelObject;
+- (void)finishEncodingWithError:(id *)arg1;
 - (id)init;
+- (void)msv_setUserInfo:(id)arg1;
+- (id)msv_userInfo;
 - (BOOL)requiresSecureCoding;
 
 @end

@@ -20,9 +20,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_reallyPlaySound;
+- (void)_reallyStopSound;
 - (id)initForSystemSoundID:(unsigned int)arg1 duration:(double)arg2;
-- (void)playSound;
-- (void)stopSound;
 
 @end
 

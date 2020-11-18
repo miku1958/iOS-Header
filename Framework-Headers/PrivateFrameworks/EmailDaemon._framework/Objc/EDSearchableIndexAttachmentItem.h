@@ -55,6 +55,7 @@
 - (id)fetchIndexableAttachments;
 - (id)initWithAttachmentPersistentID:(id)arg1 messagePersistentID:(id)arg2 metadatum:(id)arg3;
 - (id)searchableItem;
+- (void)setNeedsAllAttributesIndexingType;
 
 @end
 

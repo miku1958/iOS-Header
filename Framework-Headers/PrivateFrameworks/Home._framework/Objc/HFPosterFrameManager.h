@@ -15,10 +15,12 @@
     HFPosterFrameImageCache *_imageCache;
     NSMutableDictionary *_posterFrameObservers;
     NSMutableDictionary *_generationObservers;
+    NSMutableDictionary *_inProgressOperations;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *generationObservers; // @synthesize generationObservers=_generationObservers;
 @property (strong, nonatomic) HFPosterFrameImageCache *imageCache; // @synthesize imageCache=_imageCache;
+@property (strong, nonatomic) NSMutableDictionary *inProgressOperations; // @synthesize inProgressOperations=_inProgressOperations;
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (strong, nonatomic) NSMutableDictionary *posterFrameObservers; // @synthesize posterFrameObservers=_posterFrameObservers;
 @property (strong, nonatomic) NSOperationQueue *posterFrameQueue; // @synthesize posterFrameQueue=_posterFrameQueue;
@@ -31,25 +33,21 @@
 - (id)_cachedPosterFrameImageForClip:(id)arg1 offset:(double)arg2;
 - (void)_fetchPosterFrameImageForObserver:(id)arg1 forClip:(id)arg2 offset:(double)arg3;
 - (void)_generateImagesUsingAsset:(id)arg1 clip:(id)arg2 observer:(id)arg3;
-- (void)_generateMissingPosterFrameImagesForClip:(id)arg1 clipManager:(id)arg2 observer:(id)arg3;
+- (void)_generateMissingPosterFrameImagesForClip:(id)arg1 observer:(id)arg2;
 - (id)_posterFrameForClip:(id)arg1 atOffset:(double)arg2;
 - (id)_posterFrameObserversForKey:(id)arg1;
 - (double)_timeScaleAdjustedOffset:(double)arg1;
+- (void)addDemoPosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
 - (void)addOperationForObserver:(id)arg1 clip:(id)arg2 posterFrame:(id)arg3 withKey:(id)arg4;
+- (void)addPosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
 - (void)cacheDemoPosterFramesForAsset:(id)arg1 forClip:(id)arg2;
 - (id)cachedPosterFrameImageForClip:(id)arg1 offset:(double)arg2;
 - (void)dealloc;
-- (id)demoPosterFramesForClip:(id)arg1 forLength:(double)arg2 minimumWidth:(double)arg3;
 - (id)init;
 - (id)keyForClip:(id)arg1;
-- (id)keyForClip:(id)arg1 posterFrame:(id)arg2;
-- (id)placeholderImageForClip:(id)arg1 offset:(double)arg2;
-- (id)posterFrameImagesForObserver:(id)arg1 fromClip:(id)arg2 clipManager:(id)arg3 forLength:(double)arg4 minimumWidth:(double)arg5;
+- (id)keyForClip:(id)arg1 timeOffset:(double)arg2;
 - (void)purgePosterFrames;
 - (void)removePosterFrameImageObserver:(id)arg1 forClip:(id)arg2 atOffset:(double)arg3;
-- (void)removePosterFrameImageObserver:(id)arg1 forClip:(id)arg2 withPosterFrame:(id)arg3;
-- (void)requestPosterFrameImageForObserver:(id)arg1 atOffset:(double)arg2 fromClip:(id)arg3;
-- (void)requestPosterFrameImageForObserver:(id)arg1 withPosterFrame:(id)arg2 fromClip:(id)arg3;
 
 @end
 

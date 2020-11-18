@@ -49,6 +49,7 @@
 @property (readonly, nonatomic) NSDate *fireDate;
 @property (copy, nonatomic) id<MTTimerTime> fireTime; // @synthesize fireTime=_fireTime;
 @property (copy, nonatomic) NSDate *firedDate; // @synthesize firedDate=_firedDate;
+@property (readonly, nonatomic, getter=isFiring) BOOL firing;
 @property (readonly, nonatomic) BOOL hasDefaultTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -102,6 +103,7 @@
 - (id)nextTrigger;
 - (id)nextTriggerAfterDate:(id)arg1;
 - (void)serializeWithSerializer:(id)arg1;
+- (void)setFiring:(BOOL)arg1;
 - (BOOL)shouldBeScheduled;
 - (id)timerByRestarting;
 - (id)timerByUpdatingWithState:(unsigned long long)arg1;

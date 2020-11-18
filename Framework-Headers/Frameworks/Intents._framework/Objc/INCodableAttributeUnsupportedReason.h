@@ -18,6 +18,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)cacheGroup;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentationForLanguage:(id)arg1;

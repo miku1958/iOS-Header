@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class WFActionDrawerAppsTableViewCell, WFActionDrawerSection;
+@class NSString, WFActionDrawerAppsTableViewCell;
 
 @protocol WFActionDrawerAppsTableViewCellDelegate
-- (void)appsTableViewCell:(WFActionDrawerAppsTableViewCell *)arg1 didSelectSection:(WFActionDrawerSection *)arg2;
+- (void)appsTableViewCell:(WFActionDrawerAppsTableViewCell *)arg1 didSelectAppWithBundleIdentifier:(NSString *)arg2;
 @end
 

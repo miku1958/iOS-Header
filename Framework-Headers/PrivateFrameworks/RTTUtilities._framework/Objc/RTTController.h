@@ -19,9 +19,11 @@
     NSObject<OS_dispatch_queue> *_workerQueue;
     NSMutableDictionary *_localSettingsCache;
     AXDispatchTimer *_preferredRelayCoalescer;
+    AXDispatchTimer *_callUpdateCoalescer;
     BOOL _shouldSuppressIncomingNotification;
     NSMutableArray *_rttCalls;
     id<HCHeardControllerProtocol> _delegate;
+    CDUnknownBlockType _serverInvalidateCallback;
     CDUnknownBlockType _actionCompletionBlock;
 }
 
@@ -31,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *rttCalls; // @synthesize rttCalls=_rttCalls;
+@property (copy, nonatomic) CDUnknownBlockType serverInvalidateCallback; // @synthesize serverInvalidateCallback=_serverInvalidateCallback;
 @property (nonatomic) BOOL shouldSuppressIncomingNotification; // @synthesize shouldSuppressIncomingNotification=_shouldSuppressIncomingNotification;
 @property (readonly) Class superclass;
 
@@ -55,7 +58,7 @@
 - (id)handleSettingsRequest:(id)arg1;
 - (void)handleUpdatedCalls:(id)arg1;
 - (id)init;
-- (void)invalidateServerCaches:(id)arg1;
+- (BOOL)invalidateServerCaches:(id)arg1;
 - (void)ttyCall:(id)arg1 didReceiveString:(id)arg2 forUtterance:(id)arg3;
 - (void)ttyCall:(id)arg1 didSendRemoteString:(id)arg2 forUtterance:(id)arg3;
 - (void)ttyCall:(id)arg1 shouldDisplayServiceMessage:(id)arg2;

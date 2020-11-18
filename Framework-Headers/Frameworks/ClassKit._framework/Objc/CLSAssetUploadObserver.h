@@ -10,7 +10,6 @@
 
 @interface CLSAssetUploadObserver : NSObject
 {
-    BOOL _uploaded;
     CLSAsset *_asset;
     double _uploadProgress;
     NSError *_uploadError;
@@ -29,7 +28,7 @@
 @property (strong) NSError *uploadError; // @synthesize uploadError=_uploadError;
 @property (strong, nonatomic) NSOperationQueue *uploadObserverQueue; // @synthesize uploadObserverQueue=_uploadObserverQueue;
 @property double uploadProgress; // @synthesize uploadProgress=_uploadProgress;
-@property (nonatomic, getter=isUploaded) BOOL uploaded; // @synthesize uploaded=_uploaded;
+@property (nonatomic, getter=isUploaded) BOOL uploaded;
 
 - (void).cxx_destruct;
 - (void)_notifyOfChange;

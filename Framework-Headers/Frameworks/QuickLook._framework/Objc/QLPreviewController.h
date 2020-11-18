@@ -52,7 +52,7 @@
     BOOL _allowInteractiveTransitions;
     BOOL _canShowToolbar;
     BOOL _canShowNavBar;
-    BOOL _currentPreviewHasUnsavedEdits;
+    BOOL _currentPreviewHasRemoteUnsavedEdits;
     BOOL _isObtainingEditsFromServiceBeforeDismissing;
     BOOL _isContentManaged;
     BOOL _useCustomActionButton;
@@ -105,7 +105,7 @@
 @property BOOL canShowToolbar; // @synthesize canShowToolbar=_canShowToolbar;
 @property (strong) QLTransitionController *currentAnimator; // @synthesize currentAnimator=_currentAnimator;
 @property (strong) QLActivityItemProvider *currentItemProvider; // @synthesize currentItemProvider=_currentItemProvider;
-@property (nonatomic) BOOL currentPreviewHasUnsavedEdits; // @synthesize currentPreviewHasUnsavedEdits=_currentPreviewHasUnsavedEdits;
+@property (nonatomic) BOOL currentPreviewHasRemoteUnsavedEdits; // @synthesize currentPreviewHasRemoteUnsavedEdits=_currentPreviewHasRemoteUnsavedEdits;
 @property (readonly) id<QLPreviewItem> currentPreviewItem;
 @property long long currentPreviewItemIndex; // @synthesize currentPreviewItemIndex=_currentPreviewItemIndex;
 @property (strong) NSString *currentTitleFromItemViewController; // @synthesize currentTitleFromItemViewController=_currentTitleFromItemViewController;
@@ -276,6 +276,7 @@
 - (id)childViewControllerForStatusBarHidden;
 - (id)currentItem;
 - (unsigned long long)currentOrbMode;
+- (BOOL)currentPreviewHasUnsavedEdits;
 - (void)currentPreviewItemViewControllerHasUnsavedEdits:(BOOL)arg1;
 - (id)currentTracker;
 - (void)dealloc;

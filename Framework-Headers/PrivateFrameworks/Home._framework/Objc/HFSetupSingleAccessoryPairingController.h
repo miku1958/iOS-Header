@@ -9,17 +9,15 @@
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFSetupPairingController-Protocol.h>
 
-@class HFDiscoveredAccessory, HFSetupAccessoryResult, HMAccessorySetupCompletedInfo, HMHome, HMSetupAccessoryDescription, NAFuture, NSDate, NSHashTable, NSSet, NSString;
-@protocol HMSetupRemoteService;
+@class HFDiscoveredAccessory, HFSetupAccessoryResult, HFSetupPairingContext, HMAccessorySetupCompletedInfo, HMHome, NAFuture, NSDate, NSHashTable, NSSet, NSString;
 
 @interface HFSetupSingleAccessoryPairingController : NSObject <HFHomeObserver, HFSetupPairingController>
 {
     BOOL _accessoryRequiresCode;
+    HFSetupPairingContext *_context;
     HFSetupAccessoryResult *_setupResult;
     HMAccessorySetupCompletedInfo *_completedInfo;
     HFDiscoveredAccessory *_discoveredAccessoryToPair;
-    id<HMSetupRemoteService> _setupRemoteService;
-    HMSetupAccessoryDescription *_setupAccessoryDescription;
     unsigned long long _phase;
     NSString *_statusTitle;
     NSString *_statusDescription;
@@ -32,6 +30,7 @@
 
 @property (nonatomic) BOOL accessoryRequiresCode; // @synthesize accessoryRequiresCode=_accessoryRequiresCode;
 @property (readonly, nonatomic) HMAccessorySetupCompletedInfo *completedInfo; // @synthesize completedInfo=_completedInfo;
+@property (readonly, nonatomic) HFSetupPairingContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HFDiscoveredAccessory *discoveredAccessoryToPair; // @synthesize discoveredAccessoryToPair=_discoveredAccessoryToPair;
@@ -42,8 +41,6 @@
 @property (strong, nonatomic) NSHashTable *pairingObservers; // @synthesize pairingObservers=_pairingObservers;
 @property (nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 @property (strong, nonatomic) NSDate *phaseStartDate; // @synthesize phaseStartDate=_phaseStartDate;
-@property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
-@property (weak, nonatomic) id<HMSetupRemoteService> setupRemoteService; // @synthesize setupRemoteService=_setupRemoteService;
 @property (strong, nonatomic) HFSetupAccessoryResult *setupResult; // @synthesize setupResult=_setupResult;
 @property (strong, nonatomic) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
 @property (strong, nonatomic) NSString *statusTitle; // @synthesize statusTitle=_statusTitle;
@@ -59,7 +56,7 @@
 - (void)addPairingObserver:(id)arg1;
 - (id)cancel;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
-- (id)initWithDiscoveredAccessory:(id)arg1 setupRemoteService:(id)arg2 setupAccessoryDescription:(id)arg3;
+- (id)initWithContext:(id)arg1 discoveredAccessory:(id)arg2;
 - (void)removePairingObserver:(id)arg1;
 - (void)startWithHome:(id)arg1;
 

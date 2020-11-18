@@ -69,6 +69,7 @@
 
 - (void).cxx_destruct;
 - (void)_addSceneGeometryObserver:(id)arg1;
+- (void)_adjustInitialSettings:(id)arg1;
 - (void)_applyUpdateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_beginTransaction;
 - (void)_dispatchClientMessageWithBlock:(CDUnknownBlockType)arg1;

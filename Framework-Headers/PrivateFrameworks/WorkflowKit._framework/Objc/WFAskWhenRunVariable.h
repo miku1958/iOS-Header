@@ -10,6 +10,7 @@
 {
 }
 
+- (id)icon;
 - (id)init;
 - (BOOL)isAvailable;
 - (id)name;

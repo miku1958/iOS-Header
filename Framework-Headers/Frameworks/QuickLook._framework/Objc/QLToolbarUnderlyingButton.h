@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGRect)_selectedIndicatorBounds;
-- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 
 @end
 

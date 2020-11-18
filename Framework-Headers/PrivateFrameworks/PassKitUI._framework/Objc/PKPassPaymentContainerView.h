@@ -49,12 +49,13 @@
     BOOL _authenticating;
     BOOL _recognizing;
     BOOL _returnToSummaryOnFingerOff;
-    long long _pearlState;
+    long long _faceIDState;
     BOOL _transitioning;
     NSMutableArray *_transitionCompletionHandlers;
     NSMutableArray *_pendingGlyphStateCompletionHandlers;
     BOOL _glyphStateDirty;
     BOOL _presentationWasForced;
+    BOOL _presentationWasForFieldDetect;
     BOOL _waitingForGlyphView;
     long long _transactionSubstate;
     BOOL _holdingTerminalSubstate;
@@ -90,11 +91,12 @@
 
 + (BOOL)initialUserIntentRequiredAssumptionForPass:(id)arg1 context:(id)arg2 paymentService:(id)arg3;
 + (BOOL)shouldAutomaticallyAuthorizeForPass:(id)arg1 withContext:(id)arg2;
-+ (BOOL)userIntentPotentiallyRequiredForPass:(id)arg1;
++ (BOOL)userIntentPotentiallyRequiredForPass:(id)arg1 fieldDetect:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_activateForPayment;
 - (void)_activateForPaymentWithApplication:(id)arg1;
 - (void)_activatePaymentApplication:(id)arg1 forPaymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_addPasscodeButtonPressed:(id)arg1;
 - (void)_addTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_applyLatestContentToViews;
 - (void)_applyPayState:(long long)arg1;
@@ -189,7 +191,7 @@
 - (void)_updateVASInfoViewSuppressedTransactionIfNecessary;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;
@@ -221,6 +223,7 @@
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)payStateView:(id)arg1 revealingCheckmark:(BOOL)arg2;
+- (void)payStateViewDidUpdateLayout:(id)arg1;
 - (void)paymentApplicationView:(id)arg1 didSelectApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;

@@ -22,6 +22,7 @@
     id<RCSSavedRecordingServiceProtocol> _serviceProxy;
     id<RCSSavedRecordingServiceProtocol> _synchronousServiceProxy;
     NSMutableDictionary *_pendingServiceCompletionHandlers;
+    NSMutableDictionary *_pendingSynchronousServiceCompletionHandlers;
     NSSet *_compositionAVURLsBeingExported;
     NSSet *_compositionAVURLsBeingModified;
 }
@@ -34,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDatabaseAvailable;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (id)changeToken;
 + (BOOL)isRunningInSavedRecordingDaemon;
@@ -44,6 +46,7 @@
 - (oneway void)_fetchAllAccessTokens:(CDUnknownBlockType)arg1;
 - (void)_handleCompositionAVURLsBeingExportedDidChange;
 - (void)_handleCompositionAVURLsBeingModifiedDidChange;
+- (void)_invalidatePendingSynchronousCompletionHandlersWithError:(id)arg1;
 - (struct NSNumber *)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
 - (void)_onQueueCloseServiceConnection;
 - (void)_onQueueInvalidatePendingCompletionHandlerWithToken:(id)arg1 withError:(id)arg2;

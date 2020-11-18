@@ -19,6 +19,8 @@
     NSObject<OS_dispatch_queue> *_pruneStatsQueue;
     _CPLPruneRequestCounter *_pruneRequests;
     _CPLPruneRequestCounter *_purgeabilityCheckRequests;
+    BOOL _shouldCreateTempFolder;
+    BOOL _shouldCheckFilesForUpload;
     CPLEngineFileStorage *_fileStorage;
 }
 
@@ -27,9 +29,11 @@
 @property (readonly, nonatomic) CPLEngineFileStorage *fileStorage; // @synthesize fileStorage=_fileStorage;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
+@property (nonatomic) BOOL shouldCheckFilesForUpload; // @synthesize shouldCheckFilesForUpload=_shouldCheckFilesForUpload;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_clearAndCreateTempFolderIfNecessaryWithError:(id *)arg1;
 - (BOOL)checkIsEmpty;
 - (BOOL)compactWithError:(id *)arg1;
 - (id)createTempDestinationURLForResource:(id)arg1 error:(id *)arg2;
@@ -49,7 +53,7 @@
 - (id)statusDictionary;
 - (BOOL)storeDownloadedResource:(id)arg1 atURL:(id)arg2 error:(id *)arg3;
 - (BOOL)storeResourceCopyForUpload:(id)arg1 error:(id *)arg2;
-- (BOOL)storeResourceForUpload:(id)arg1 error:(id *)arg2;
+- (BOOL)storeResourceForUpload:(id)arg1 shouldCheckResource:(BOOL)arg2 error:(id *)arg3;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

@@ -12,7 +12,7 @@
 #import <HomeUI/HUFeedbackConsentViewControllerDelegate-Protocol.h>
 #import <HomeUI/NSURLSessionDelegate-Protocol.h>
 
-@class CADisplayLink, HFCameraPlaybackEngine, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UIView;
+@class CADisplayLink, HFCameraPlaybackEngine, HMCameraClipFetchVideoAssetContextOperation, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UIView;
 
 @interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraClipFeedbackObserving, HFCameraPlaybackEngineObserver>
 {
@@ -38,6 +38,7 @@
     NSLayoutConstraint *_selectionPlatterTopAnchorConstraint;
     CADisplayLink *_scrubberUpdateDisplayLink;
     unsigned long long _lastEngineMode;
+    HMCameraClipFetchVideoAssetContextOperation *_exportDownloadOperation;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType accessoryButtonHandler; // @synthesize accessoryButtonHandler=_accessoryButtonHandler;
@@ -49,6 +50,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deletionHandler; // @synthesize deletionHandler=_deletionHandler;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType endEditingHandler; // @synthesize endEditingHandler=_endEditingHandler;
+@property (weak, nonatomic) HMCameraClipFetchVideoAssetContextOperation *exportDownloadOperation; // @synthesize exportDownloadOperation=_exportDownloadOperation;
 @property (strong, nonatomic) UIButton *feedbackButton; // @synthesize feedbackButton=_feedbackButton;
 @property (strong, nonatomic) UIView *feedbackPlatter; // @synthesize feedbackPlatter=_feedbackPlatter;
 @property (strong, nonatomic) NSLayoutConstraint *feedbackPlatterTopAnchorConstraint; // @synthesize feedbackPlatterTopAnchorConstraint=_feedbackPlatterTopAnchorConstraint;
@@ -94,7 +96,6 @@
 - (void)loadView;
 - (void)manager:(id)arg1 didSubmitCameraClip:(id)arg2;
 - (void)manager:(id)arg1 didSubmitCameraClips:(id)arg2;
-- (void)manager:(id)arg1 failedToSubmitClipWithIdentifier:(id)arg2 error:(id)arg3;
 - (id)outputURLForClip:(id)arg1;
 - (id)platterWithView:(id)arg1;
 - (void)playbackEngine:(id)arg1 didUpdateClipManager:(id)arg2;
@@ -120,6 +121,7 @@
 - (void)verifySubmitAllClips;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

@@ -60,7 +60,6 @@
 @property (strong, nonatomic) NSMutableDictionary *widgetIDsToPendingTestTearDowns; // @synthesize widgetIDsToPendingTestTearDowns=_widgetIDsToPendingTestTearDowns;
 @property (readonly, nonatomic, getter=_widgetIDsToWidgets) NSMutableDictionary *widgetIDsToWidgets; // @synthesize widgetIDsToWidgets=_widgetIDsToWidgets;
 
-+ (BOOL)hasWidgetForBundleID:(id)arg1 containingBundleID:(id)arg2;
 + (long long)layoutModeForSize:(struct CGSize)arg1;
 + (id)widgetViewControllerWithWidgetBundleID:(id)arg1 containingBundleID:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;

@@ -13,10 +13,12 @@
 
 @interface SearchUIMapPlaceCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate, _MKPlaceViewControllerDelegate>
 {
+    BOOL _alreadyDispatchedOnMainQueue;
     SearchUIMapsViewController *_mapViewController;
     struct CGSize _placecardBoundsSize;
 }
 
+@property BOOL alreadyDispatchedOnMainQueue; // @synthesize alreadyDispatchedOnMainQueue=_alreadyDispatchedOnMainQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

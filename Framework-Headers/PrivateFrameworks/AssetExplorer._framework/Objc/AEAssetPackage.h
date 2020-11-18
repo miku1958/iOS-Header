@@ -82,6 +82,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)_sendSourceFromMediaOrigin:(long long)arg1;
+- (id)_sidecarObjectForKey:(id)arg1;
 - (id)browserItemPayload;
 - (BOOL)containsLivePhotoContent;
 - (BOOL)containsSuppressedLivePhoto;
@@ -99,8 +100,12 @@
 - (long long)mediaOrigin;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)reviewAssetFromPackageMetadata;
-- (id)sidecarObjectForKey:(id)arg1;
+- (id)sidecarDateForKey:(id)arg1;
+- (id)sidecarImageForKey:(id)arg1;
+- (id)sidecarNumberForKey:(id)arg1;
+- (id)sidecarPropertyListForKey:(id)arg1;
 - (id)sidecarSnapshot;
+- (CDStruct_198678f7)sidecarTimeForKey:(id)arg1;
 - (id)suppressedTypesSnapshot;
 
 @end

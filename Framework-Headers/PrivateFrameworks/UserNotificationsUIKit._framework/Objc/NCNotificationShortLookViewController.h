@@ -74,7 +74,6 @@
 - (void)_presentLongLookForScrollAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentLongLookViaClickPresentationInteraction:(CDUnknownBlockType)arg1;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
-- (BOOL)_setDelegate:(id)arg1;
 - (BOOL)_setNotificationRequest:(id)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (BOOL)_shouldUseHapticTouch;
@@ -107,6 +106,7 @@
 - (BOOL)hasCommittedToPresentingCustomContentProvidingViewController;
 - (BOOL)isCoalescedNotificationBundle;
 - (BOOL)isContentExtensionVisible:(id)arg1;
+- (BOOL)isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
 - (BOOL)isShortLook;
 - (void)notificationViewControllerDidDismiss:(id)arg1;
 - (void)notificationViewControllerDidPresent:(id)arg1;

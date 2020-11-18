@@ -12,6 +12,7 @@
 
 + (id)calendarWithSourceClientIdentifier:(id)arg1 inEventStore:(id)arg2;
 + (void)clearSharedCalendarInvitationResponseWithSourceClientIdentifier:(id)arg1 inEventStore:(id)arg2;
++ (id)eventWithSourceClientIdentifier:(id)arg1 inEventStore:(id)arg2;
 + (void)hideCalendarFromNotificationCenter:(id)arg1 inEventStore:(id)arg2;
 + (id)notificationReferenceOfType:(int)arg1 withSourceClientIdentifier:(id)arg2 inEventStore:(id)arg3 withNotificationReferenceProvider:(id)arg4;
 + (id)objectIDWithSourceClientIdentifier:(id)arg1;

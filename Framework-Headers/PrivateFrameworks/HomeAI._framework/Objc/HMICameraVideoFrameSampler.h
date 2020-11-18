@@ -13,6 +13,7 @@
 
 @interface HMICameraVideoFrameSampler : HMFObject <HMFLogging>
 {
+    BOOL _markedAsFinished;
     id<HMICameraVideoFrameSamplerDelegate> _delegate;
     HMICameraVideoResourceAttributes *_attributes;
     NSMutableArray *_unmatchedSampleFrames;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong) HMICameraVideoFrame *frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
+@property (getter=isMarkedAsFinished) BOOL markedAsFinished; // @synthesize markedAsFinished=_markedAsFinished;
 @property (readonly) CDStruct_1b6d18a9 sampleInterval; // @synthesize sampleInterval=_sampleInterval;
 @property (readonly) Class superclass;
 @property (readonly) CDStruct_1b6d18a9 targetInterval; // @synthesize targetInterval=_targetInterval;
@@ -38,6 +40,7 @@
 - (BOOL)appendFrame:(id)arg1 error:(id *)arg2;
 - (void)finish;
 - (id)initWithResourceAttributes:(id)arg1 sampleRate:(CDStruct_1b6d18a9)arg2 targetInterval:(CDStruct_1b6d18a9)arg3;
+- (BOOL)isFinishedEarly;
 
 @end
 

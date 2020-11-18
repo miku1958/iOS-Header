@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSValue;
+@class NSString, NSValue;
 
 @interface CRCarPlayCapabilities : NSObject
 {
@@ -16,6 +16,7 @@
     NSValue *_viewAreaInsets;
     NSValue *_dashboardRoundedCorners;
     long long _userInterfaceStyle;
+    NSString *_version;
 }
 
 @property (strong, nonatomic) NSValue *dashboardRoundedCorners; // @synthesize dashboardRoundedCorners=_dashboardRoundedCorners;
@@ -23,16 +24,22 @@
 @property (nonatomic) long long nowPlayingAlbumArtMode; // @synthesize nowPlayingAlbumArtMode=_nowPlayingAlbumArtMode;
 @property (nonatomic) BOOL persisted; // @synthesize persisted=_persisted;
 @property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
+@property (nonatomic) NSString *version; // @synthesize version=_version;
 @property (strong, nonatomic) NSValue *viewAreaInsets; // @synthesize viewAreaInsets=_viewAreaInsets;
 
++ (void)_resetCapabilitiesGlobalDomain;
 + (id)capabilitiesIdentifier;
++ (id)capabilitiesVersion;
 + (id)fetchCarCapabilities;
 + (id)newCapabilitiesFromGlobalDomain;
 + (void)setCapabilitiesIdentifier:(id)arg1;
++ (void)setCapabilitiesVersion:(id)arg1;
++ (void)waitForCarCapabilitiesValues;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)informativeText;
 - (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

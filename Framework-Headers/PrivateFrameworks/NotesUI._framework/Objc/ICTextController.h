@@ -62,6 +62,7 @@
 - (void)applyAuthorHighlightsWithPercentage:(double)arg1 forRange:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)applySortFromOriginalParagraphs:(id)arg1 sortedTrackedParagraphs:(id)arg2 forTextView:(struct ICTextView *)arg3 checklistRange:(struct _NSRange)arg4;
 - (BOOL)attachmentsExistInRange:(struct _NSRange)arg1 textStorage:(id)arg2;
+- (void)autoSortChecklistForUnitTestAtIndex:(unsigned long long)arg1 textView:(struct ICTextView *)arg2;
 - (void)autoSortChecklistIfNecessaryForTrackedParagraph:(id)arg1 textView:(struct ICBaseTextView *)arg2 analyticsHandler:(CDUnknownBlockType)arg3;
 - (BOOL)canChangeStyleForSelectedRanges:(id)arg1 inTextStorage:(id)arg2;
 - (BOOL)canIndentTextView:(struct UITextView *)arg1 byDelta:(long long)arg2;

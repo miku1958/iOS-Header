@@ -11,7 +11,7 @@
 #import <Email/EMCollectionChangeObserver-Protocol.h>
 #import <Email/EMMessageListQueryResultsObserver-Protocol.h>
 
-@class EFLazyCache, EMMailboxScope, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
+@class EFLazyCache, EMMailboxScope, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
 @interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMMessageListQueryResultsObserver>
@@ -25,9 +25,11 @@
     id<EFScheduler> _observerScheduler;
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     EMMessageList *_unfilteredMessageList;
+    EMMessageListChangeObserverHelper *_changeObserverHelper;
 }
 
 @property (readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
+@property (strong, nonatomic) EMMessageListChangeObserverHelper *changeObserverHelper; // @synthesize changeObserverHelper=_changeObserverHelper;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *contentProtectionQueue; // @synthesize contentProtectionQueue=_contentProtectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -59,6 +61,7 @@
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;
 - (void)collection:(id)arg1 changedItemIDs:(id)arg2;
+- (void)collection:(id)arg1 changedItemIDs:(id)arg2 itemIDsWithCountChanges:(id)arg3;
 - (void)collection:(id)arg1 deletedItemIDs:(id)arg2;
 - (void)collection:(id)arg1 movedItemIDs:(id)arg2 after:(id)arg3;
 - (void)collection:(id)arg1 movedItemIDs:(id)arg2 before:(id)arg3;
@@ -73,7 +76,9 @@
 - (void)finishRecovery;
 - (id)initWithObjectID:(id)arg1 query:(id)arg2 repository:(id)arg3;
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
+- (void)invalidateCacheForItemIDs:(id)arg1;
 - (id)itemIDForObjectID:(id)arg1;
+- (id)itemIDOfFirstMessageListItemMatchingPredicate:(id)arg1;
 - (id)itemIDOfMessageListItemWithDisplayMessage:(id)arg1;
 - (id)messageListItemForItemID:(id)arg1;
 - (id)messageListItemForItemID:(id)arg1 ifAvailable:(BOOL)arg2;
@@ -81,9 +86,10 @@
 - (id)messageListItemsForItemIDs:(id)arg1 ifAvailable:(BOOL)arg2;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
-- (void)queryMatchedChangedObjectIDs:(id)arg1;
+- (void)queryMatchedChangesByObjectIDs:(id)arg1;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 after:(id)arg2;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;
 - (void)queryMatchedOldestItemsUpdatedForMailboxesObjectIDs:(id)arg1;

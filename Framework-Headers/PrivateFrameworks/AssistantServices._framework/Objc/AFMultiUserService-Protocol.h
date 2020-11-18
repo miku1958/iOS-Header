@@ -9,6 +9,8 @@
 @class NSString;
 
 @protocol AFMultiUserService <NSObject>
+- (oneway void)getConformingSharedUserIdForHomeUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
+- (oneway void)getConformingSharedUserIds:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getHomeUserIdForSharedUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (oneway void)getSharedUserIdForHomeUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end

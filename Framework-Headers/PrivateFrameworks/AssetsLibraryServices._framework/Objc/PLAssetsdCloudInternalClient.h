@@ -18,6 +18,7 @@
 - (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)forceSyncMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
+- (unsigned long long)getResetSyncStatusWithError:(id *)arg1;
 - (void)getSystemBudgetsWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)isReadyForCloudPhotoLibrary;
 - (long long)keyForEmailAddress:(id)arg1 error:(id *)arg2;

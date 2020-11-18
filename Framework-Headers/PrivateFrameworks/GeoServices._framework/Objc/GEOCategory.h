@@ -13,11 +13,13 @@
 @interface GEOCategory : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_alias;
     long long _geoOntologyId;
     NSMutableArray *_localizedNames;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _level;
     struct {
         unsigned int has_geoOntologyId:1;
@@ -53,6 +55,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithPlaceDataCategory:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedNamesAtIndex:(unsigned long long)arg1;

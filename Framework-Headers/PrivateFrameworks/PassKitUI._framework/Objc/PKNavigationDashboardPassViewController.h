@@ -130,6 +130,7 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)groupView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
 - (void)groupView:(id)arg1 didUpdatePassView:(id)arg2;
+- (void)groupView:(id)arg1 faceViewFrameDidChangeForFrontmostPassView:(id)arg2;
 - (void)groupView:(id)arg1 frontmostPassViewDidChange:(id)arg2 withContext:(id)arg3;
 - (long long)groupViewContentModeForFrontmostPassWhenPiled:(id)arg1 withDefaultContentMode:(long long)arg2;
 - (long long)groupViewContentModeForFrontmostPassWhenStacked:(id)arg1;
@@ -157,6 +158,7 @@
 - (struct CGPoint)preferredContentOffset;
 - (void)presentBalanceDetailsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentDailyCashForComponents:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentInstallmentPlan:(id)arg1;
 - (void)presentPassDetailsAnimated:(BOOL)arg1 action:(unsigned long long)arg2;
 - (void)presentSpendingSummaryWithType:(unsigned long long)arg1 unit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTransaction:(id)arg1 forPaymentPass:(id)arg2;

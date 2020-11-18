@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (double)appRowSpacing;
 - (BOOL)canSetupKeyboardHandler;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (BOOL)isExpandable;
 - (void)layoutSubviews;

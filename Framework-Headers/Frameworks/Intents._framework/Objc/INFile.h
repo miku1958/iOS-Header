@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileURLEnumerable-Protocol.h>
+#import <Intents/INFileEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
 
 @class NSData, NSString, NSURL;
 
-@interface INFile : NSObject <INFileURLEnumerable, INJSONSerializable>
+@interface INFile : NSObject <INFileEnumerable, INJSONSerializable>
 {
     NSData *_memoryMappedFileData;
+    BOOL _deletesFileOnDeallocationIfNeeded;
     NSData *_data;
     NSString *_filename;
     NSURL *_fileURL;
     NSString *_typeIdentifier;
 }
 
+@property (nonatomic, setter=_setDeletesFileOnDeallocationIfNeeded:) BOOL _deletesFileOnDeallocationIfNeeded; // @synthesize _deletesFileOnDeallocationIfNeeded;
+@property (readonly, nonatomic) BOOL _hasAssociatedAuditToken;
 @property (readonly, nonatomic) BOOL _isFileURLBased;
+@property (nonatomic, getter=_isMarkedForDeletionOnDeallocation, setter=_setMarkedForDeletionOnDeallocation:) BOOL _markedForDeletionOnDeallocation;
 @property (readonly, copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,14 +41,19 @@
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (id)fileWithData:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3;
 + (id)fileWithFileURL:(id)arg1 filename:(id)arg2 typeIdentifier:(id)arg3;
++ (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_associatedAuditTokenIsEqualToAuditToken:(CDStruct_6ad76789)arg1;
 - (id)_dictionaryRepresentation;
-- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
 - (id)_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
+- (void)_setAssociatedAuditToken:(CDStruct_6ad76789)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

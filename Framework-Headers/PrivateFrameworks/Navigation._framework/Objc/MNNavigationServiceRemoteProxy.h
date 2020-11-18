@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)_restorePredictionSession;
 - (BOOL)_shouldReconnectWithInterruptionOnDate:(id)arg1;
 - (void)_updateConnection;
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
 - (void)changeSettings:(id)arg1;
 - (void)checkinForNavigationService:(CDUnknownBlockType)arg1;
 - (void)closeForClient:(id)arg1;

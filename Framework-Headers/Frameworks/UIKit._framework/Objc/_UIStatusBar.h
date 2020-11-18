@@ -71,11 +71,12 @@
 @property (strong, nonatomic, getter=_visualProviderClass, setter=_setVisualProviderClass:) Class visualProviderClass; // @synthesize visualProviderClass=_visualProviderClass;
 @property (strong, nonatomic, getter=_visualProviderClassName, setter=_setVisualProviderClassName:) NSString *visualProviderClassName;
 
-+ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2;
++ (struct CGSize)intrinsicContentSizeForTargetScreen:(id)arg1 orientation:(long long)arg2 onLockScreen:(BOOL)arg3;
 + (id)stringForStatusBarStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
+- (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldBeginAtPoint:(struct CGPoint)arg2;
 - (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldTerminateHUDGestureForOtherGestureRecognizer:(id)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 showHUDItem:(id)arg2;

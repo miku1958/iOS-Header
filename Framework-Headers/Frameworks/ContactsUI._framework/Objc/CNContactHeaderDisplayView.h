@@ -78,6 +78,7 @@
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (void)createGeminiViewIfNeeded;
+- (double)defaultMaxHeight;
 - (id)descriptorForRequiredKeys;
 - (void)disablePhotoTapGesture;
 - (id)downtimeTextAttributes;

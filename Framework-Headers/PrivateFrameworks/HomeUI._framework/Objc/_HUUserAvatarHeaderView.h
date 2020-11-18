@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class ACAccountStore, HUContactView, HUSplitAccountHeaderTableView, NSArray, NSAttributedString;
+@class ACAccountStore, HUContactView, HUSplitAccountHeaderTableView, NAFuture, NSArray, NSAttributedString;
 @protocol HUSplitAccountDelegate;
 
 @interface _HUUserAvatarHeaderView : UITableViewHeaderFooterView
@@ -16,17 +16,20 @@
     ACAccountStore *_accountStore;
     NSArray *_layoutConstraints;
     id<HUSplitAccountDelegate> _splitAccountDelegate;
+    NAFuture *_mediaAccountFuture;
 }
 
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) HUContactView *contactView; // @synthesize contactView=_contactView;
 @property (strong, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
+@property (strong, nonatomic) NAFuture *mediaAccountFuture; // @synthesize mediaAccountFuture=_mediaAccountFuture;
 @property (strong, nonatomic) NSAttributedString *message;
 @property (weak, nonatomic) id<HUSplitAccountDelegate> splitAccountDelegate; // @synthesize splitAccountDelegate=_splitAccountDelegate;
 @property (strong, nonatomic) HUSplitAccountHeaderTableView *splitAccountHeaderView; // @synthesize splitAccountHeaderView=_splitAccountHeaderView;
 
 - (void).cxx_destruct;
 - (id)_keyDescriptors;
+- (void)dealloc;
 - (void)dismissSplitAccountView;
 - (id)initWithUserHandle:(id)arg1 home:(id)arg2 delegate:(id)arg3;
 - (void)setAccounts:(id)arg1 forHome:(id)arg2;

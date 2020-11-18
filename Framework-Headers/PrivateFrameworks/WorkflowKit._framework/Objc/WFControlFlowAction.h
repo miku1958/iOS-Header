@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 
 - (id)createAccompanyingActionWithMode:(long long)arg1;
+- (BOOL)displaysParameterSummary;
 - (void)generateGroupingIdentifierIfNecessary;
 - (id)groupedCloseAction;
 - (id)groupedIntermediaryActions;

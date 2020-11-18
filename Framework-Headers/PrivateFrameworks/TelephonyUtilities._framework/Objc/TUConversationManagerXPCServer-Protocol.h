@@ -14,6 +14,7 @@
 - (oneway void)buzzMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (oneway void)conversationsByGroupUUID:(void (^)(NSDictionary *))arg1;
 - (void)registerClient:(id<TUConversationManagerXPCClient>)arg1;
+- (oneway void)setDownlinkMuted:(BOOL)arg1 forRemoteParticipantsInConversationWithUUID:(NSUUID *)arg2;
 - (void)unregisterClient:(id<TUConversationManagerXPCClient>)arg1;
 @end
 

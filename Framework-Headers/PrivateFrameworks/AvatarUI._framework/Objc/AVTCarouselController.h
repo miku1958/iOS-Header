@@ -67,7 +67,6 @@
 + (id)displayingCarouselForRecordDataSource:(id)arg1;
 + (id)recordingCarouselForRecordDataSource:(id)arg1;
 + (id)sessionProviderForMode:(long long)arg1 environment:(id)arg2;
-+ (void)setupAVTView:(id)arg1;
 - (void).cxx_destruct;
 - (id)avatarActionsViewController:(id)arg1 recordUpdateForDeletingRecord:(id)arg2;
 - (void)avatarActionsViewControllerDidFinish:(id)arg1;
@@ -87,7 +86,6 @@
 - (id)initWithMode:(long long)arg1 dataSource:(id)arg2;
 - (id)initWithMode:(long long)arg1 sessionProvider:(id)arg2 dataSource:(id)arg3 environment:(id)arg4;
 - (void)loadView;
-- (void)lockOnFocusedViewAnimated:(BOOL)arg1;
 - (void)notifyDelegateDidFocusRecord:(id)arg1 avtView:(id)arg2;
 - (void)notifyDelegateDidUpdateWithRecord:(id)arg1;
 - (void)notifyDelegateNearnessFactorDidChange:(double)arg1 towardRecord:(id)arg2;
@@ -97,12 +95,12 @@
 - (void)reloadData;
 - (void)reloadDataCenteringToAvatarRecord:(id)arg1;
 - (void)setAllowsCreate:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSingleAvatarMode:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setSingleAvatarMode:(BOOL)arg1 fillContainer:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)setupAVTView:(id)arg1;
 - (void)showMultiAvatarControllerAnimated:(BOOL)arg1;
 - (void)showSingleAvatarControllerAnimated:(BOOL)arg1;
 - (void)significantRecordChangeInDataSource:(id)arg1;
 - (id)snapshotProviderFocusedOnRecordWithIdentifier:(id)arg1 size:(struct CGSize)arg2;
-- (void)unlockFromFocusedViewAnimated:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)willBeginFocus:(id)arg1;
 - (void)willEndFocus:(id)arg1;

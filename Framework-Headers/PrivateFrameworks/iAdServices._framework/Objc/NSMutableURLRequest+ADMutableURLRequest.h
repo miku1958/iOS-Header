@@ -7,6 +7,10 @@
 #import <Foundation/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (ADMutableURLRequest)
+- (id)adSpaceIdentifier;
+- (id)advertisingIdentifier;
+- (id)maximumRequestCount;
+- (void)setAdSpaceIdentifier:(id)arg1;
 - (void)setAdvertisingIdentifier:(id)arg1;
 - (void)setMaximumRequestCount:(id)arg1;
 @end

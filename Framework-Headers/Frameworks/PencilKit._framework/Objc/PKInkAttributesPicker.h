@@ -18,6 +18,7 @@
     _PKInkAttributesPickerView *_pickerView;
 }
 
+@property (nonatomic) long long colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<PKInkAttributesPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -31,8 +32,10 @@
 - (BOOL)_canShowWhileLocked;
 - (void)_inkAttributesPickerViewUserDidEndDraggingSlider:(id)arg1;
 - (void)_inkAttributesPickerViewUserDidStartDraggingSlider:(id)arg1;
+- (void)_notifyInkAttributesPickerDidChangeInk;
 - (id)initWithInk:(id)arg1;
-- (void)selectedInkDidChange:(id)arg1;
+- (void)inkAttributesPickerViewDidChangeInkOpacity:(id)arg1;
+- (void)inkAttributesPickerViewDidChangeInkThickness:(id)arg1;
 - (void)setSelectedInk:(id)arg1 animated:(BOOL)arg2;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

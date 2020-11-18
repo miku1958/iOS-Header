@@ -260,6 +260,7 @@
 - (unsigned int)internalIndexToExternal:(unsigned int)arg1;
 - (id)internalInputContext;
 - (id)internalStringToExternal:(id)arg1;
+- (BOOL)isContinuousPathCandidate:(id)arg1 replacementForOriginalConversion:(id)arg2;
 - (BOOL)isEditingExistingWord;
 - (BOOL)isHardwareKeyboardAutocorrectionEnabled;
 - (BOOL)isLinguisticResourceUpdateScheduled;
@@ -292,6 +293,7 @@
 - (id)nonstopPunctuationCharacters;
 - (void)openCandidateGenerationContextWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)openingQuotes;
+- (id)originatingAutocorrectionListForCandidate:(id)arg1;
 - (id)pathToDeltaStaticDictionary;
 - (id)pathToDynamicDictionary;
 - (id)pathToPhraseDictionary;

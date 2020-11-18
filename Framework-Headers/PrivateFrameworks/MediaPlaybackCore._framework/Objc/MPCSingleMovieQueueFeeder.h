@@ -20,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) BOOL containsLiveStream;
+@property (readonly, nonatomic) BOOL containsTransportableContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

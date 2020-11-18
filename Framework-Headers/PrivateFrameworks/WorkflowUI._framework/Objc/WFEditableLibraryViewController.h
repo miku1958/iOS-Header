@@ -41,14 +41,15 @@
 - (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
 - (void)beginEditingFromIndexPath:(id)arg1;
 - (BOOL)collectionView:(id)arg1 canHandleDropSession:(id)arg2;
+- (void)collectionView:(id)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 dragPreviewParametersForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 dragSessionDidEnd:(id)arg2;
 - (void)collectionView:(id)arg1 dragSessionWillBegin:(id)arg2;
 - (id)collectionView:(id)arg1 dropPreviewParametersForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 dropSessionDidEnd:(id)arg2;
 - (void)collectionView:(id)arg1 dropSessionDidEnter:(id)arg2;
-- (void)collectionView:(id)arg1 dropSessionDidExit:(id)arg2;
 - (id)collectionView:(id)arg1 dropSessionDidUpdate:(id)arg2 withDestinationIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)collectionView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;

@@ -16,7 +16,14 @@
 - (BOOL)_accessibilityAppearanceAnnouncementHandledByEnclosingEntity;
 - (BOOL)_accessibilityShouldPostScreenChangedOnPresentation;
 - (void)_axAnnounceNotification;
+- (void)_axHandleAnnouncementFinished;
+- (BOOL)_axHasFinishedAnnouncement;
+- (BOOL)_axHasSentAnnouncement;
 - (id)_axLongLookView;
+- (void)_axNotifyDidEndUserInteraction;
+- (void)_axNotifyWillBeginUserInteraction:(BOOL)arg1;
+- (void)_axSetHasFinishedAnnouncement:(BOOL)arg1;
+- (void)_axSetHasSentAnnouncement:(BOOL)arg1;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

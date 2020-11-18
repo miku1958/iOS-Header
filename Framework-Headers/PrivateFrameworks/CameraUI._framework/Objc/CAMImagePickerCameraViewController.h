@@ -59,6 +59,7 @@
 - (long long)_cameraFlashMode;
 - (id)_cameraOverlayView;
 - (struct CGAffineTransform)_cameraViewTransform;
+- (BOOL)_canShowWhileLocked;
 - (long long)_captureDeviceForImagePickerCameraDevice:(long long)arg1;
 - (long long)_captureModeForImagePickerCameraCaptureMode:(long long)arg1;
 - (id)_containingImagePickerController;

@@ -36,7 +36,6 @@
     NSCache *_mailboxURLsToMailboxIDs;
     NSCache *_optionsToQueries;
     BOOL _allowedToAccessProtectedData;
-    BOOL _hasUnreconciledMessages;
     EDPersistence *_persistence;
     MFPersistenceDatabase_iOS *_database;
     MFMessageChangeManager_iOS *_messageChangeManager;
@@ -53,7 +52,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<EFScheduler> fileRemovalAfterCompactionScheduler; // @synthesize fileRemovalAfterCompactionScheduler=_fileRemovalAfterCompactionScheduler;
-@property BOOL hasUnreconciledMessages; // @synthesize hasUnreconciledMessages=_hasUnreconciledMessages;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry;
 @property (readonly) MFMessageChangeManager_iOS *messageChangeManager; // @synthesize messageChangeManager=_messageChangeManager;
@@ -136,7 +134,7 @@
 - (id)_stringsForIndexSet:(id)arg1;
 - (BOOL)_writeEmlxFile:(id)arg1 withBodyData:(id)arg2 protectionClass:(int)arg3;
 - (id)accountForMessage:(id)arg1;
-- (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(BOOL)arg3 newMessagesByOldMessage:(id)arg4 remoteIDs:(id)arg5 setFlags:(unsigned long long)arg6 clearFlags:(unsigned long long)arg7 messageFlagsForMessages:(id)arg8 copyFiles:(BOOL)arg9 addPOPUIDs:(BOOL)arg10 dataSectionsByMessage:(id)arg11 generationWindow:(id)arg12;
+- (id)addMessages:(id)arg1 withMailbox:(id)arg2 newMessagesByOldMessage:(id)arg3 remoteIDs:(id)arg4 setFlags:(unsigned long long)arg5 addPOPUIDs:(BOOL)arg6 dataSectionsByMessage:(id)arg7 generationWindow:(id)arg8;
 - (long long)addReferenceForContext:(id)arg1 usingDatabaseConnection:(id)arg2 generationWindow:(id)arg3 mergeHandler:(CDUnknownBlockType)arg4;
 - (id)allMailboxURLStrings;
 - (unsigned int)allNonDeleteCountForMailbox:(id)arg1 includeServerSearchResults:(BOOL)arg2 includeThreadSearchResults:(BOOL)arg3;
@@ -230,6 +228,7 @@
 - (id)mailboxURLsForIDs:(id)arg1;
 - (id)mailboxUidForMessage:(id)arg1;
 - (unsigned int)maximumRemoteIDForMailbox:(id)arg1;
+- (BOOL)messageDataExistsInDatabaseForMessageLibraryID:(long long)arg1 part:(id)arg2 length:(unsigned long long *)arg3;
 - (id)messageIdsForConversationId:(long long)arg1 limit:(unsigned long long)arg2;
 - (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3 temporarilyUnavailable:(BOOL *)arg4;
 - (id)messageWithMessageID:(id)arg1 inMailbox:(id)arg2;

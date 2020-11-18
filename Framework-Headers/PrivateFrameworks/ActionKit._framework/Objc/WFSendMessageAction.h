@@ -6,29 +6,18 @@
 
 #import <WorkflowKit/WFHandleSystemIntentAction.h>
 
-#import <ActionKit/MFMessageComposeViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFSendMessageAction : WFHandleSystemIntentAction <MFMessageComposeViewControllerDelegate>
+@interface WFSendMessageAction : WFHandleSystemIntentAction
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
 - (void)getContentFromInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getRecipients:(CDUnknownBlockType)arg1;
 - (id)localizedKeyParameterDisplayName;
-- (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (id)minimumSupportedClientVersion;
 - (BOOL)opensInApp;
 - (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)runAsynchronouslyWithInput:(id)arg1;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 - (id)serializedParametersForDonatedIntent:(id)arg1 allowDroppingUnconfigurableValues:(BOOL)arg2;
 - (BOOL)skipsProcessingHiddenParameters;
 

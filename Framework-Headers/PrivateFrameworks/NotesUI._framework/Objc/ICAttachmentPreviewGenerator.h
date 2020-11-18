@@ -56,6 +56,7 @@
 + (void)setImageClassificationTemporarilyDisabled:(BOOL)arg1;
 + (id)sharedGenerator;
 - (void).cxx_destruct;
+- (void)adjustUserTitleIfNecessaryForAttachment:(id)arg1;
 - (void)attachmentDidLoad:(id)arg1;
 - (void)attachmentNeedsPostProcessingNotification:(id)arg1;
 - (void)attachmentNeedsPreviewGenerationNotification:(id)arg1;

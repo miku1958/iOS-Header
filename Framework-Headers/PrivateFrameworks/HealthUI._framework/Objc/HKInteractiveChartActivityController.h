@@ -9,7 +9,7 @@
 #import <HealthUI/HKActivityBarSeriesDelegate-Protocol.h>
 #import <HealthUI/HKInteractiveChartViewObserver-Protocol.h>
 
-@class HKActivitySummaryAnnotationViewDataSource, HKActivitySummaryDataProvider, NSMapTable, NSString, _ActivityCurrentValueView, _HKWheelchairUseCharacteristicCache;
+@class HKActivitySummaryAnnotationViewDataSource, HKActivitySummaryDataProvider, HKInteractiveChartDisplayType, NSMapTable, NSString, _ActivityCurrentValueView, _HKWheelchairUseCharacteristicCache;
 @protocol HKInteractiveChartCurrentValueViewCallbacks;
 
 @interface HKInteractiveChartActivityController : HKInteractiveChartViewController <HKInteractiveChartViewObserver, HKActivityBarSeriesDelegate>
@@ -21,6 +21,12 @@
     _HKWheelchairUseCharacteristicCache *_wheelchairUseCharacteristicCache;
     _ActivityCurrentValueView *_activityCurrentValueView;
     id<HKInteractiveChartCurrentValueViewCallbacks> _activityCurrentValueViewCallbacks;
+    HKInteractiveChartDisplayType *_moveValueDisplayType;
+    HKInteractiveChartDisplayType *_moveGoalDisplayType;
+    HKInteractiveChartDisplayType *_exerciseValueDisplayType;
+    HKInteractiveChartDisplayType *_exerciseGoalDisplayType;
+    HKInteractiveChartDisplayType *_standValueDisplayType;
+    HKInteractiveChartDisplayType *_standGoalDisplayType;
 }
 
 @property (strong, nonatomic) HKActivitySummaryAnnotationViewDataSource *activityAnnotationDataSource; // @synthesize activityAnnotationDataSource=_activityAnnotationDataSource;
@@ -30,7 +36,13 @@
 @property (nonatomic) long long currentTimeScope; // @synthesize currentTimeScope=_currentTimeScope;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *exerciseGoalDisplayType; // @synthesize exerciseGoalDisplayType=_exerciseGoalDisplayType;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *exerciseValueDisplayType; // @synthesize exerciseValueDisplayType=_exerciseValueDisplayType;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *moveGoalDisplayType; // @synthesize moveGoalDisplayType=_moveGoalDisplayType;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *moveValueDisplayType; // @synthesize moveValueDisplayType=_moveValueDisplayType;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *standGoalDisplayType; // @synthesize standGoalDisplayType=_standGoalDisplayType;
+@property (readonly, nonatomic) HKInteractiveChartDisplayType *standValueDisplayType; // @synthesize standValueDisplayType=_standValueDisplayType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) _HKWheelchairUseCharacteristicCache *wheelchairUseCharacteristicCache; // @synthesize wheelchairUseCharacteristicCache=_wheelchairUseCharacteristicCache;
 @property (strong, nonatomic) NSMapTable *yAxisAccessoryViewsByGraphSeries; // @synthesize yAxisAccessoryViewsByGraphSeries=_yAxisAccessoryViewsByGraphSeries;
@@ -45,7 +57,9 @@
 - (id)_lineColorForActivityValue:(long long)arg1;
 - (id)_metGoalFillStyleForActivityValue:(long long)arg1;
 - (id)_missedGoalFillStyleForActivityValue:(long long)arg1;
+- (id)_rangeValueAsNumber:(id)arg1;
 - (long long)_representativeDataTypeForActivityValue:(long long)arg1;
+- (id)_spanForValueDisplayType:(id)arg1 title:(id)arg2;
 - (id)_titleForActivityValue:(long long)arg1 wheelchairUseCharacteristicCache:(id)arg2;
 - (id)_unitForActivityValue:(long long)arg1 displayTypeController:(id)arg2 unitPreferenceController:(id)arg3;
 - (id)_zeroStringForActivityValue:(long long)arg1 displayTypeController:(id)arg2 unitPreferenceController:(id)arg3;
@@ -55,6 +69,7 @@
 - (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
 - (id)descriptionForChartData:(id)arg1 timeScope:(long long)arg2;
 - (id)descriptionSeriesForGraphView:(id)arg1;
+- (id)descriptionSpansForGraphView:(id)arg1;
 - (void)didUpdateFromDateZoom:(long long)arg1 toDateZoom:(long long)arg2 newVisibleRange:(id)arg3;
 - (long long)graphSeriesTimeScope;
 - (id)initWithHealthStore:(id)arg1 unitPreferenceController:(id)arg2 dateCache:(id)arg3 chartDataCacheController:(id)arg4 selectedTimeScopeController:(id)arg5 wheelchairUseCharacteristicCache:(id)arg6 initialXValue:(id)arg7;

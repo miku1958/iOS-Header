@@ -57,6 +57,7 @@
 - (oneway void)mediaPrioritiesChangedForConversation:(id)arg1;
 - (void)registerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)setDownlinkMuted:(BOOL)arg1 forRemoteParticipantsInConversation:(id)arg2;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)updateConversationWithUUID:(id)arg1 participantPresentationContexts:(id)arg2;
 - (oneway void)updateConversationsByGroupUUID:(id)arg1;

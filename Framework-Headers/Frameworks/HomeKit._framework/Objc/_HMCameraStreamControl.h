@@ -34,7 +34,7 @@
 - (void)_startStreamWithPreferences:(id)arg1;
 - (void)_stopStream;
 - (void)dealloc;
-- (void)homedRestarted;
+- (void)homedRestarted:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
 - (void)setCameraStream:(id)arg1;
 - (void)startStreamWithPreferences:(id)arg1;

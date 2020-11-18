@@ -184,6 +184,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)verifyAccountForGroup:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

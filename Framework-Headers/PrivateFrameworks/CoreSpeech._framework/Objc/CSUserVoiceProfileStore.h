@@ -6,38 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSpeech/CSLanguageCodeUpdateMonitorDelegate-Protocol.h>
-#import <CoreSpeech/CSVoiceTriggerAssetDownloadMonitorDelegate-Protocol.h>
-
-@class NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
-
-@interface CSUserVoiceProfileStore : NSObject <CSLanguageCodeUpdateMonitorDelegate, CSVoiceTriggerAssetDownloadMonitorDelegate>
+@interface CSUserVoiceProfileStore : NSObject
 {
     unsigned long long _numberOfBaseProfileUtterancesToUpload;
-    NSMutableArray *_voiceProfileArray;
-    NSString *_languageCode;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (readonly, nonatomic) unsigned long long numberOfBaseProfileUtterancesToUpload; // @synthesize numberOfBaseProfileUtterancesToUpload=_numberOfBaseProfileUtterancesToUpload;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly) Class superclass;
-@property (strong) NSMutableArray *voiceProfileArray; // @synthesize voiceProfileArray=_voiceProfileArray;
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
+- (void)_logVoiceProfileConfusionForAsset:(id)arg1 withCleanup:(BOOL)arg2;
 - (void)addImplicitUtterance:(id)arg1 toVoiceProfile:(id)arg2 withTriggerSource:(id)arg3 withAudioInput:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)addUserVoiceProfile:(id)arg1 fromUtteranceCache:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addiTunesAccountForVoiceProfile:(id)arg1 withMultiUserToken:(id)arg2 withDsid:(id)arg3 withAltDsid:(id)arg4 withHomeId:(id)arg5 withHomeUserId:(id)arg6 withCompletionBlock:(CDUnknownBlockType)arg7;
 - (BOOL)checkIfVoiceProfile:(id)arg1 needsUpdatedWith:(id)arg2 withCategory:(unsigned long long)arg3;
+- (id)cleanupInvalidCloudOnBoardedProfilesWithDryRun:(BOOL)arg1;
 - (id)deleteUserVoiceProfile:(id)arg1;
-- (void)reevaluateAndCleanupImplicitUtterances;
-- (void)retrainVoiceProfile:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resyncVoiceProfilesOnboardedThroughCloud;
 - (void)retrainVoiceProfilesForLanguage:(id)arg1 withForceRetrain:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)userVoiceProfileForSharedSiriDebugID:(id)arg1;
 - (id)userVoiceProfileForSiriProfileId:(id)arg1;

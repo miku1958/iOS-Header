@@ -18,7 +18,7 @@
 - (BOOL)forwardGeocodePostalAddress:(id)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
 - (BOOL)resolveMapItemHandleData:(struct NSData *)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
 - (BOOL)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
+- (BOOL)searchPOIWithName:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id<GEOVenueIdentifier>)arg3 maxResults:(unsigned int)arg4 completion:(void (^)(struct NSArray *, NSError *))arg5;
 - (BOOL)searchString:(NSString *)arg1 maxResults:(unsigned int)arg2 completion:(void (^)(struct NSArray *, NSError *))arg3;
-- (BOOL)searchString:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id<GEOVenueIdentifier>)arg3 maxResults:(unsigned int)arg4 completion:(void (^)(struct NSArray *, NSError *))arg5;
 @end
 

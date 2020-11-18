@@ -30,13 +30,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_accessorySupportsMultiUser;
 - (id)_appleMusicFooterMessage;
+- (id)_appleMusicFooterView;
 - (void)appleMusicModuleController:(id)arg1 willPresentContext:(id)arg2 account:(id)arg3;
 - (void)appleMusicModuleControllerDidUpdateAuthenticationState:(id)arg1;
+- (void)appleMusicModuleControllerPresentSignInFlow:(id)arg1;
 - (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)itemModuleControllers;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)viewDidLoad;
 

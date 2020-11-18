@@ -19,6 +19,7 @@
 @property BOOL cachedShouldRequestMoreTime; // @synthesize cachedShouldRequestMoreTime=_cachedShouldRequestMoreTime;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) BOOL isRestrictionsPasscodeSet;
+@property (readonly) BOOL needsToSetRestrictionsPasscode;
 @property (readonly, nonatomic) BOOL shouldRequestMoreTime;
 
 - (void).cxx_destruct;

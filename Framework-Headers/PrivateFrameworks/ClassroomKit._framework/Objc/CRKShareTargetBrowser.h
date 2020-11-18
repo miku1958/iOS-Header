@@ -8,63 +8,61 @@
 
 #import <ClassroomKit/CATTaskClientDelegate-Protocol.h>
 #import <ClassroomKit/CATTaskOperationNotificationDelegate-Protocol.h>
+#import <ClassroomKit/CRKShareTargetCollectorDelegate-Protocol.h>
 
-@class CATOperationQueue, CATRemoteTaskOperation, CATTaskClient, NSSet, NSString;
-@protocol CRKShareTargetBrowserDelegate, CRKTransportProviding, OS_dispatch_queue;
+@class CATOperationQueue, CATTaskClient, CRKShareTargetBrowserTransportFactory, CRKShareTargetCollector, NSString;
+@protocol CRKShareTargetBrowserDelegate, OS_dispatch_queue;
 
-@interface CRKShareTargetBrowser : NSObject <CATTaskClientDelegate, CATTaskOperationNotificationDelegate>
+@interface CRKShareTargetBrowser : NSObject <CATTaskClientDelegate, CATTaskOperationNotificationDelegate, CRKShareTargetCollectorDelegate>
 {
     NSObject<OS_dispatch_queue> *mDelegateQueue;
     id<CRKShareTargetBrowserDelegate> mDelegate;
-    CATTaskClient *mStudentClient;
-    CATTaskClient *mInstructorClient;
     CATOperationQueue *mOperationQueue;
-    CATRemoteTaskOperation *mBrowseForStudentTargetsOperation;
-    CATRemoteTaskOperation *mBrowseForInstructorTargetsOperation;
-    NSSet *mInstructorTargets;
-    NSSet *mStudentTargets;
     BOOL mBrowsing;
     BOOL mIsValid;
-    unsigned long long mSessionIdentifier;
+    CATTaskClient *_studentClient;
+    CATTaskClient *_instructorClient;
+    CRKShareTargetBrowserTransportFactory *_transportFactory;
+    CRKShareTargetCollector *_shareTargetCollector;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<CRKTransportProviding> instructorTransportProvider;
-@property (readonly, nonatomic) id<CRKTransportProviding> studentdTransportProvider;
+@property (strong, nonatomic) CATTaskClient *instructorClient; // @synthesize instructorClient=_instructorClient;
+@property (readonly, nonatomic) CRKShareTargetCollector *shareTargetCollector; // @synthesize shareTargetCollector=_shareTargetCollector;
+@property (strong, nonatomic) CATTaskClient *studentClient; // @synthesize studentClient=_studentClient;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CRKShareTargetBrowserTransportFactory *transportFactory; // @synthesize transportFactory=_transportFactory;
 
 - (void).cxx_destruct;
 - (void)acquireStudentActivityAssertion;
-- (void)browseForInstructorTargetsOperationDidFinish:(id)arg1;
-- (void)browseForStudentTargetsOperationDidFinish:(id)arg1;
+- (void)acquireStudentActivityAssertionOperationDidFail:(id)arg1;
+- (void)browseForInstructorTargetsOperationDidFail:(id)arg1;
+- (void)browseForStudentTargetsOperationDidFail:(id)arg1;
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)clientDidConnect:(id)arg1;
-- (void)clientDidDisconnect:(id)arg1;
-- (void)connectToInstructorMacOS;
-- (void)connectToInstructoriOS;
+- (void)connectToInstructord;
 - (void)connectToStudentd;
 - (void)dealloc;
 - (void)delegateDidFindTargets:(id)arg1;
 - (void)delegateDidInterruptWithError:(id)arg1;
 - (void)delegateDidRemoveTargets:(id)arg1;
-- (void)didFetchInstructorTransport:(id)arg1 error:(id)arg2;
-- (void)didFetchStudentdTransport:(id)arg1 error:(id)arg2;
-- (void)fetchInstructorEndpointOperationDidFinish:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
-- (void)instructorTargetsDidChange:(id)arg1;
 - (void)invalidate;
+- (void)invalidateClient:(id)arg1;
+- (BOOL)isClientInvalidationError:(id)arg1;
 - (id)makeShareTargetsWithDictionaries:(id)arg1 taskClient:(id)arg2;
 - (void)resume;
-- (void)startBrowsingForInstructorTargetsIfNeeded;
-- (void)startBrowsingForStudentTargetsIfNeeded;
-- (void)stopBrowsingForInstructorTargets;
-- (void)stopBrowsingForStudentTargets;
-- (void)studentTargetsDidChange:(id)arg1;
+- (void)shareTargetCollector:(id)arg1 didFindTargets:(id)arg2;
+- (void)shareTargetCollector:(id)arg1 didRemoveTargets:(id)arg2;
+- (void)startBrowsingForInstructorTargets;
+- (void)startBrowsingForStudentTargets;
 - (void)suspend;
 - (void)taskOperation:(id)arg1 didPostNotificationWithName:(id)arg2 userInfo:(id)arg3;
+- (void)tearDownInstructorClient;
+- (void)tearDownStudentClient;
 
 @end
 

@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSString *contentItemID;
 @property (copy, nonatomic) NSString *handoffCorrelationID;
 @property (copy, nonatomic) NSString *lyricsID;
+@property (nonatomic, getter=isPlaceholder) BOOL placeholder;
 @property (nonatomic) BOOL shouldExcludeFromShuffle;
 @property (copy, nonatomic) NSString *vendorID;
 

@@ -13,7 +13,7 @@
 #import <SiriActivation/SASRequestOptionsBuilderDataSource-Protocol.h>
 #import <SiriActivation/SASStateChangeListener-Protocol.h>
 
-@class AFMyriadCoordinator, AFPreferences, AFSiriTether, AFWatchdogTimer, NSMutableDictionary, NSMutableSet, NSString, NSTimer, SASBulletinManager, SASHeater, SASLockStateMonitor, SASRemoteRequestManager, SASSystemState, SASTestingInputController;
+@class AFMyriadCoordinator, AFPreferences, AFSiriTether, AFWatchdogTimer, NSMutableDictionary, NSMutableSet, NSString, NSTimer, SASBulletinManager, SASHeater, SASLockStateMonitor, SASMyriadController, SASRemoteRequestManager, SASSystemState, SASTestingInputController;
 @protocol OS_dispatch_queue;
 
 @interface SiriActivationService : NSObject <SASRequestOptionsBuilderDataSource, SASHeaterDelegate, AFMyriadDelegate, SASLockStateMonitorDelegate, SASBulletinManagerDelegate, SASStateChangeListener>
@@ -25,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_voiceTriggerDispatchQueue;
     NSObject<OS_dispatch_queue> *_watchdogQueue;
     NSTimer *_B188ActivationTimer;
+    SASMyriadController *_myriadController;
     BOOL _xcTestingActive;
     BOOL _siriTetherIsAttached;
     BOOL _voiceTriggerNotifyTokenIsValid;
@@ -92,6 +93,7 @@
 - (void)_cancelPendingActivationEventWithReason:(unsigned long long)arg1;
 - (void)_cancelTTS;
 - (void)_dismissSiri:(id)arg1;
+- (void)_handleDesignModeRequest;
 - (void)_handlePocketStateFetchForScreenWakeForPresentationServer:(id)arg1 requestOptions:(id)arg2 presentationOptions:(id)arg3;
 - (void)_handleTapSynthesisIfNeededForButtonIdentifier:(long long)arg1 buttonUpTimestamp:(double)arg2;
 - (id)_init;
@@ -157,6 +159,8 @@
 - (void)siriPresentationDismissedWithIdentifier:(long long)arg1;
 - (void)siriPresentationDisplayedWithIdentifier:(long long)arg1;
 - (void)siriPresentationFailureWithIdentifier:(long long)arg1 error:(id)arg2;
+- (void)siriPresentationWillDismissWithIdentifier:(long long)arg1;
+- (void)speechRequestStateDidChange:(long long)arg1;
 - (void)startActivationWatchdogTimerForPresentationServer:(id)arg1;
 - (void)startDismissalWatchdogTimer;
 - (void)stopActivationWatchdogTimerIfNeeded;

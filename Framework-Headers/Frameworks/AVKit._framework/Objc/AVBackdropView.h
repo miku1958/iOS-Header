@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface AVBackdropView : AVView
 {
     NSArray *_temporaryArrangedSubviews;
+    BOOL _prefersLowQualityEffects;
     BOOL _disablesAutoLayout;
     long long _axis;
     unsigned long long _shapeStyle;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AVCABackdropLayerView *backdropLayerView; // @synthesize backdropLayerView=_backdropLayerView;
 @property (nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
 @property (nonatomic) BOOL disablesAutoLayout; // @synthesize disablesAutoLayout=_disablesAutoLayout;
+@property (nonatomic) BOOL prefersLowQualityEffects; // @synthesize prefersLowQualityEffects=_prefersLowQualityEffects;
 @property (strong, nonatomic) UIVisualEffectView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
 @property (strong, nonatomic) NSArray *secondaryMaterialOverlayViewConstraints; // @synthesize secondaryMaterialOverlayViewConstraints=_secondaryMaterialOverlayViewConstraints;
 @property (nonatomic) unsigned long long shapeStyle; // @synthesize shapeStyle=_shapeStyle;

@@ -18,10 +18,9 @@
 - (id)localizedAttribution;
 - (id)localizedDefaultOutputName;
 - (id)localizedDescriptionSummary;
-- (id)localizedFooter;
 - (id)localizedName;
 - (id)outputContentClasses;
-- (id)outputMeasurementUnit;
+- (id)outputMeasurementUnitType;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (BOOL)setParameterState:(id)arg1 forKey:(id)arg2;
 - (void)updateCharacteristicsEnumeration;

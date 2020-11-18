@@ -72,6 +72,7 @@
 + (BOOL)killDaemonForTesting;
 + (void)pauseCoordinatorForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)pauseCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
++ (BOOL)postNSCurrentLocaleDidChangeNotification;
 + (void)prioritizeCoordinatorForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)prioritizeCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (BOOL)purgeAllCoordinatorsAndPromisesForCreator:(unsigned long long)arg1;

@@ -11,6 +11,7 @@
 @protocol SFRemoteViewControllerProtocol <NSObject>
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(NSURL *)arg1 shouldCancel:(BOOL)arg2;
+- (void)didDecideShouldShowLinkPreviews:(BOOL)arg1;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
 - (void)didResolveRedirectionWithURL:(NSURL *)arg1 appLink:(LSAppLink *)arg2;

@@ -6,49 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, TransparencyManagedDataStore, TransparencyTrustedKeyStore, VRFPublicKey;
 
 @interface KTApplicationPublicKeyStore : NSObject
 {
     int _vrfType;
-    NSData *_vrfKey;
-    NSDictionary *_trustedAppSigningKeys;
-    NSDictionary *_trustedTltSigningKeys;
+    VRFPublicKey *_vrfKey;
+    TransparencyTrustedKeyStore *_appKeyStore;
+    TransparencyTrustedKeyStore *_tltKeyStore;
+    unsigned long long _patLogBeginningMs;
+    unsigned long long _tltLogBeginningMs;
     NSString *_application;
-    NSData *_vrfPublicKeyBytes;
-    NSData *_vrfSignature;
-    NSData *_vrfSignatureKeySPKI;
-    struct __CFString *_vrfSignatureAlgorithm;
+    TransparencyManagedDataStore *_dataStore;
+    NSData *_patConfigProof;
+    NSDictionary *_trustedAppSigningKeys;
     NSArray *_trustedAppLeafs;
+    NSDictionary *_trustedTltSigningKeys;
     NSArray *_trustedTltLeafs;
     NSArray *_trustedIntermediates;
 }
 
+@property (strong) TransparencyTrustedKeyStore *appKeyStore; // @synthesize appKeyStore=_appKeyStore;
 @property (strong) NSString *application; // @synthesize application=_application;
+@property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property (strong) NSData *patConfigProof; // @synthesize patConfigProof=_patConfigProof;
+@property unsigned long long patLogBeginningMs; // @synthesize patLogBeginningMs=_patLogBeginningMs;
 @property (readonly) BOOL ready;
+@property (strong) TransparencyTrustedKeyStore *tltKeyStore; // @synthesize tltKeyStore=_tltKeyStore;
+@property unsigned long long tltLogBeginningMs; // @synthesize tltLogBeginningMs=_tltLogBeginningMs;
 @property (strong) NSArray *trustedAppLeafs; // @synthesize trustedAppLeafs=_trustedAppLeafs;
 @property (strong) NSDictionary *trustedAppSigningKeys; // @synthesize trustedAppSigningKeys=_trustedAppSigningKeys;
 @property (strong) NSArray *trustedIntermediates; // @synthesize trustedIntermediates=_trustedIntermediates;
 @property (strong) NSArray *trustedTltLeafs; // @synthesize trustedTltLeafs=_trustedTltLeafs;
 @property (strong) NSDictionary *trustedTltSigningKeys; // @synthesize trustedTltSigningKeys=_trustedTltSigningKeys;
-@property (strong) NSData *vrfKey; // @synthesize vrfKey=_vrfKey;
-@property (strong) NSData *vrfPublicKeyBytes; // @synthesize vrfPublicKeyBytes=_vrfPublicKeyBytes;
-@property (strong) NSData *vrfSignature; // @synthesize vrfSignature=_vrfSignature;
-@property struct __CFString *vrfSignatureAlgorithm; // @synthesize vrfSignatureAlgorithm=_vrfSignatureAlgorithm;
-@property (strong) NSData *vrfSignatureKeySPKI; // @synthesize vrfSignatureKeySPKI=_vrfSignatureKeySPKI;
+@property (strong) VRFPublicKey *vrfKey; // @synthesize vrfKey=_vrfKey;
 @property int vrfType; // @synthesize vrfType=_vrfType;
 
 - (void).cxx_destruct;
 - (void)clearState:(id *)arg1;
 - (id)copyKeyStoreState;
-- (id)copyVRFKeyFromResponse:(id)arg1 error:(id *)arg2;
-- (id)copyVRFKeySignatureFromResponse:(id)arg1 error:(id *)arg2;
-- (id)copyVRFKeySigningKeySPKIFromResponse:(id)arg1 error:(id *)arg2;
-- (id)initWithApplication:(id)arg1 diskState:(id)arg2 error:(id *)arg3;
-- (id)initWithApplication:(id)arg1 response:(id)arg2 error:(id *)arg3;
+- (id)copyVRFKeyFromConfigProof:(id)arg1 error:(id *)arg2;
+- (BOOL)detectEpochChangeAndResetData:(unsigned long long)arg1 patLogBeginningMs:(unsigned long long)arg2 error:(id *)arg3;
+- (id)initWithApplication:(id)arg1 dataStore:(id)arg2 diskState:(id)arg3 error:(id *)arg4;
+- (id)initWithApplication:(id)arg1 dataStore:(id)arg2 response:(id)arg3 error:(id *)arg4;
 - (BOOL)processDiskState:(id)arg1 error:(id *)arg2;
-- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 vrfPublicKeyBytes:(id)arg4 vrfSignatureBytes:(id)arg5 vrfSPKIHash:(id)arg6 vrfSignatureAlgorithm:(struct __CFString *)arg7 error:(id *)arg8;
+- (BOOL)processKeyData:(id)arg1 tltLeafs:(id)arg2 intermediates:(id)arg3 patConfigProof:(id)arg4 error:(id *)arg5;
 - (BOOL)processPublicKeysResponse:(id)arg1 error:(id *)arg2;
+- (void)startLogBeginTimesSampler;
 - (BOOL)verifyCertificates:(id)arg1 intermediates:(id)arg2 application:(id)arg3 error:(id *)arg4;
 
 @end

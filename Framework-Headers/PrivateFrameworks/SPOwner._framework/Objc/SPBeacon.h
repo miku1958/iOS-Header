@@ -24,9 +24,11 @@
     NSDictionary *_taskInformation;
     NSString *_stableIdentifier;
     NSDate *_pairingDate;
+    NSString *_correlationIdentifier;
 }
 
 @property (nonatomic) BOOL accepted; // @synthesize accepted=_accepted;
+@property (copy, nonatomic) NSString *correlationIdentifier; // @synthesize correlationIdentifier=_correlationIdentifier;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) SPLostModeInfo *lostModeInfo; // @synthesize lostModeInfo=_lostModeInfo;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;

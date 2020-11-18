@@ -7,15 +7,17 @@
 #import <UIKit/UIView.h>
 
 #import <PassKitUI/PKDiscoveryCardViewDelegate-Protocol.h>
+#import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPGSVSectionSubheaderView-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKDiscoveryCardView, PKDiscoveryDataSource, UIImage, UIPageControl, UIScrollView;
+@class NSArray, NSMutableArray, NSString, PKDiscoveryCardView, PKDiscoveryDataSource, UIImage, UIPageControl, UIScrollView;
 @protocol PKPGSVSectionSubheaderDelegate;
 
-@interface PKDiscoveryGalleryView : UIView <PKDiscoveryCardViewDelegate, UIScrollViewDelegate, PKPGSVSectionSubheaderView>
+@interface PKDiscoveryGalleryView : UIView <PKDiscoveryCardViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPGSVSectionSubheaderView>
 {
     NSMutableArray *_cardViews;
+    NSArray *_displayedCardViews;
     NSMutableArray *_discoveryCardViews;
     id<PKPGSVSectionSubheaderDelegate> _subheaderDelegate;
     PKDiscoveryCardView *_passWelcomeView;
@@ -32,6 +34,10 @@
         unsigned int hasDiscoveryCards:1;
     } _layoutState;
     BOOL _welcomeCardStateIsDirty;
+    NSString *_lastReportedDiscoveryItemIdentifier;
+    CDStruct_973bafd3 _foregroundState;
+    double _lastTimeForegroundActive;
+    BOOL _articleLayoutsUpdatedAfterEnteringForegroundActive;
     BOOL _animatingCard;
     PKDiscoveryCardView *_pressedDiscoveryCardView;
     PKDiscoveryDataSource *_dataSource;
@@ -58,20 +64,23 @@
 - (void)_pageControlChanged:(id)arg1;
 - (void)_removeCardView:(id)arg1 animated:(BOOL)arg2;
 - (void)_reportCurrentDiscoveryCardToDiscoveryService;
+- (BOOL)_requestDismissalIfNecessaryAfterLayoutStateUpdate;
 - (void)_scanCodePressed;
-- (void)_shouldDismiss;
+- (void)_updateCardViews;
 - (void)_updateCardViewsAnimated:(BOOL)arg1;
-- (void)_updateDiscoveryCardViewsForUpdatedArticleLayouts:(id)arg1 animated:(BOOL)arg2;
+- (void)_updateCardViewsAnimated:(BOOL)arg1 overrideFrontmostCardToIdentifier:(id)arg2;
+- (void)_updateDiscoveryCardViewsForUpdatedArticleLayouts:(id)arg1 overrideFrontmostCardToIdentifier:(id)arg2 animated:(BOOL)arg3;
 - (void)_updatePageControlVisibilityWithDelay:(double)arg1;
 - (void)_updatePageControlWithDisplayIndex;
+- (void)_updateScrollViewToCardIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (id)cardViewForCardWithItemIdentifier:(id)arg1;
 - (void)dealloc;
 - (void)discoveryCardViewCTATapped:(id)arg1 callToAction:(id)arg2;
 - (void)discoveryCardViewRemoveTapped:(id)arg1;
 - (void)discoveryCardViewTapped:(id)arg1;
 - (unsigned long long)displayIndex;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
 - (BOOL)needsUpdate;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

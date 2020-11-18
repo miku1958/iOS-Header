@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUFeatureOnboardingFlow-Protocol.h>
 
-@class NAFuture, NSString, UIViewController;
+@class HMHome, NAFuture, NSString, UIViewController;
 @protocol HUConfigurationViewController;
 
 @interface HUVoiceProfileOnboardingFlow : NSObject <HUFeatureOnboardingFlow>
@@ -16,6 +16,7 @@
     BOOL _shouldAbortThisOnboardingFlowGroup;
     BOOL _shouldAbortAllOnboarding;
     BOOL _initialCheckedResult;
+    HMHome *_home;
     NAFuture *_onboardingFuture;
     UIViewController<HUConfigurationViewController> *_initialViewController;
     NSString *_initialCheckedLanguage;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *initialCheckedLanguage; // @synthesize initialCheckedLanguage=_initialCheckedLanguage;
 @property (nonatomic) BOOL initialCheckedResult; // @synthesize initialCheckedResult=_initialCheckedResult;
 @property (strong, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController; // @synthesize initialViewController=_initialViewController;
@@ -34,7 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)checkIfStillRequiredFromCurrentResults:(id)arg1;
-- (id)initWithUsageOptions:(id)arg1;
+- (id)initWithUsageOptions:(id)arg1 home:(id)arg2;
 - (id)processUserInput:(id)arg1;
 
 @end

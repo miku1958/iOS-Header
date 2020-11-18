@@ -46,6 +46,7 @@
 - (id)_croppedImageFromImageData:(id)arg1;
 - (void)_setBusinessInfoForMutableContact:(id)arg1 enlargedImageData:(id)arg2;
 - (id)cnContactWithKeys:(id)arg1;
+- (id)cnContactWithKeys:(id)arg1 shouldFetchSuggestedContact:(BOOL)arg2;
 - (void)contactStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (id)description;

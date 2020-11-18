@@ -66,7 +66,7 @@
 - (void)performPuppetStoreWork:(CDUnknownBlockType)arg1;
 - (void)postChangeNotificationForRecordWithIdentifiers:(id)arg1 remote:(BOOL)arg2;
 - (id)recentStickersForFetchRequest:(id)arg1 error:(id *)arg2;
-- (void)saveAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)saveAvatarRecord:(id)arg1 thumbnailAvatar:(id)arg2 completionBlock:(CDUnknownBlockType)arg3 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg4;
 
 @end
 

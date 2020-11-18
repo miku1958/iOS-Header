@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+@class NSDate, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface BCSBusinessQueryService : NSObject
 {
     NSXPCConnection *_connection;
+    NSDate *_lastTimeoutDate;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong) NSDate *lastTimeoutDate; // @synthesize lastTimeoutDate=_lastTimeoutDate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 
 - (void).cxx_destruct;

@@ -14,12 +14,14 @@
 @interface GEOCompanionWalkStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
     NSMutableArray *_maneuverNames;
     NSMutableArray *_signposts;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _junctionType;
     int _maneuverType;
     CDStruct_6da46726 _flags;
@@ -69,6 +71,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (struct GEOJunctionElement)junctionElementAtIndex:(unsigned long long)arg1;
 - (id)junctionTypeAsString:(int)arg1;

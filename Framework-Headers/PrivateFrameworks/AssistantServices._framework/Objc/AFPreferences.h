@@ -65,6 +65,7 @@
 - (BOOL)databaseSyncEnabled;
 - (void)dealloc;
 - (BOOL)debugButtonIsEnabled;
+- (BOOL)designModeIsEnabled;
 - (BOOL)dictationIsEnabled;
 - (id)dictationSLSLanguagesEnabled;
 - (BOOL)disableAssistantWhilePasscodeLocked;
@@ -116,6 +117,7 @@
 - (id)nanoOutputVoice;
 - (BOOL)nanoPhraseSpotterEnabled;
 - (BOOL)nanoRaiseToSpeakEnabled;
+- (long long)nanoSiriDataSharingOptInStatus;
 - (float)nanoTTSSpeakerVolume;
 - (long long)nanoUseDeviceSpeakerForTTS;
 - (BOOL)networkLoggingEnabled;
@@ -146,6 +148,7 @@
 - (void)setCurrentNavigationState:(unsigned long long)arg1;
 - (void)setDatabaseSyncEnabled:(BOOL)arg1;
 - (void)setDebugButtonIsEnabled:(BOOL)arg1;
+- (void)setDesignModeEnabled:(BOOL)arg1;
 - (void)setDictationIsEnabled:(BOOL)arg1;
 - (void)setDictationSLSLanguagesEnabled:(id)arg1;
 - (void)setDisableAssistantWhilePasscodeLocked:(BOOL)arg1;
@@ -185,6 +188,7 @@
 - (void)setNanoOutputVoice:(id)arg1;
 - (void)setNanoPhraseSpotterEnabled:(BOOL)arg1;
 - (void)setNanoRaiseToSpeakEnabled:(BOOL)arg1;
+- (void)setNanoSiriDataSharingOptInStatus:(long long)arg1;
 - (void)setNanoTTSSpeakerVolume:(float)arg1;
 - (void)setNanoUseDeviceSpeakerForTTS:(long long)arg1;
 - (void)setNetworkLoggingEnabled:(BOOL)arg1;
@@ -194,9 +198,10 @@
 - (void)setOpportuneSpeakingTimeoutInterval:(double)arg1;
 - (void)setOutputVoice:(id)arg1;
 - (void)setRespectsSystemMute:(BOOL)arg1;
-- (void)setShouldLoadNativeMessagesExtensionAsBundle:(BOOL)arg1;
 - (void)setShowServerOnUI:(BOOL)arg1;
 - (void)setShowsHoldToTalkIndicator:(BOOL)arg1;
+- (void)setSiriDataSharingOptInAlertPresented:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSiriDebugUIEnabled:(BOOL)arg1;
 - (void)setSiriSpeakerGradingDebugUIEnabled:(BOOL)arg1;
 - (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
@@ -212,10 +217,11 @@
 - (void)setUseDeviceSpeakerForTTS:(long long)arg1;
 - (void)setUseSASAutoSelectionFeature:(BOOL)arg1;
 - (void)setValue:(id)arg1 forSessionContextKey:(id)arg2;
-- (BOOL)shouldLoadNativeMessagesExtensionAsBundle;
 - (BOOL)shouldLogForQA;
+- (BOOL)shouldSuppressSiriDataSharingOptInAlert;
 - (BOOL)showServerOnUI;
 - (BOOL)showsHoldToTalkIndicator;
+- (long long)siriDataSharingOptInStatus;
 - (BOOL)siriDebugUIEnabled;
 - (BOOL)siriSpeakerGradingDebugUIEnabled;
 - (BOOL)spokenNotificationSkipTriggerlessReplyConfirmation;

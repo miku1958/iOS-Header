@@ -30,7 +30,6 @@
 - (void)_abPartialChanged:(id)arg1;
 - (id)_alreadyTrackedConversationForChat:(id)arg1;
 - (void)_beginTrackingAllExistingChatsIfNeeded;
-- (void)_beginTrackingAllExistingChatsIfNeededAsync;
 - (id)_beginTrackingConversationWithChat:(id)arg1;
 - (void)_beginTrackingConversationWithChat:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_chatItemsDidChange:(id)arg1;
@@ -47,10 +46,12 @@
 - (void)_handleRegistryDidRegisterChatNotification:(id)arg1;
 - (void)_handleRegistryWillUnregisterChatNotification:(id)arg1;
 - (BOOL)_isUnreadChat:(id)arg1 ignoringMessages:(id)arg2;
+- (BOOL)_messageFilteringEnabled;
 - (void)_postConversationListChangedNotification;
 - (void)_postConversationListUpdateVisibleConversationsNotificationForUID:(id)arg1;
+- (BOOL)_shouldBailBeginTrackingForCurrentProcess;
 - (BOOL)_shouldFilterForParticipants:(id)arg1;
-- (id)activeConversations;
+- (id)_testingTrackedConversations;
 - (void)beginTrackingConversation:(id)arg1 forChat:(id)arg2;
 - (id)conversationForExistingChat:(id)arg1;
 - (id)conversationForExistingChatWithGUID:(id)arg1;

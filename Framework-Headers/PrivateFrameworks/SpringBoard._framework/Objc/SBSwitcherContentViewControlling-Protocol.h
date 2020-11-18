@@ -7,42 +7,41 @@
 #import <SpringBoard/SBLayoutStateTransitionObserver-Protocol.h>
 #import <SpringBoard/SBSwitcherAnimatedTransitioning-Protocol.h>
 
-@class NSArray, NSString, NSUUID, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherGesture, SBMainWorkspaceTransitionRequest, SBSwitcherModifierAction, SBTransientOverlayViewController, SBUIAnimationController, SBWorkspaceApplicationSceneTransitionContext;
+@class NSArray, NSString, NSUUID, SBAppLayout, SBApplicationSceneHandle, SBBestAppSuggestion, SBFluidSwitcherAnimationController, SBFluidSwitcherGesture, SBMainWorkspaceTransitionRequest, SBSwitcherModifierAction, SBTransientOverlayViewController, SBWorkspaceApplicationSceneTransitionContext;
 @protocol SBSwitcherContentViewControllerDataSource, SBSwitcherContentViewControllerDelegate;
 
 @protocol SBSwitcherContentViewControlling <SBLayoutStateTransitionObserver, SBSwitcherAnimatedTransitioning>
 
-@property (nonatomic, getter=isAsynchronousRenderingDisabled) BOOL asynchronousRenderingDisabled;
 @property (strong, nonatomic) SBBestAppSuggestion *bestAppSuggestion;
 @property (nonatomic) long long contentOrientation;
 @property (weak, nonatomic) id<SBSwitcherContentViewControllerDataSource> dataSource;
 @property (weak, nonatomic) id<SBSwitcherContentViewControllerDelegate> delegate;
+@property (nonatomic, getter=isLiveContentRasterizationDisabled) BOOL liveContentRasterizationDisabled;
 @property (nonatomic, getter=isShowingModifierTimeline) BOOL showModifierTimeline;
 
 - (void)acquiredViewController:(SBTransientOverlayViewController *)arg1 forTransientOverlayAppLayout:(SBAppLayout *)arg2;
-- (SBUIAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
-- (SBSwitcherModifierAction *)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
-- (SBSwitcherModifierAction *)dispatchAndReturnTetheredRemovalEventIfNeededWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
+- (SBFluidSwitcherAnimationController *)animationControllerForTransitionRequest:(SBMainWorkspaceTransitionRequest *)arg1;
+- (SBSwitcherModifierAction *)dispatchAndReturnTetheredInsertionEventWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
+- (SBSwitcherModifierAction *)dispatchAndReturnTetheredRemovalEventWithID:(NSUUID *)arg1 phase:(unsigned long long)arg2;
 - (SBSwitcherModifierAction *)enterAppExposeForBundleID:(NSString *)arg1;
 - (SBSwitcherModifierAction *)handleGestureDidBegin:(SBFluidSwitcherGesture *)arg1;
 - (SBSwitcherModifierAction *)handleGestureDidEnd:(SBFluidSwitcherGesture *)arg1;
 - (SBSwitcherModifierAction *)handleGestureDidUpdate:(SBFluidSwitcherGesture *)arg1;
 - (void)handleModifierAction:(SBSwitcherModifierAction *)arg1;
-- (BOOL)hasInteractiveContentAtBottomOfScreen;
 - (BOOL)isStatusBarHiddenForAppLayout:(SBAppLayout *)arg1;
 - (BOOL)isUserInteractionEnabled;
 - (BOOL)isWindowVisible;
 - (double)minimumHomeScreenScale;
 - (void)noteAppLayoutsDidChange;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
-- (SBSwitcherModifierAction *)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
+- (SBSwitcherModifierAction *)noteModelDidMutateForInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 willAnimate:(BOOL)arg3;
 - (SBSwitcherModifierAction *)noteModelDidMutateForRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
 - (void)performAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2 completion:(void (^)(BOOL, BOOL))arg3;
 - (void)performAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2 completion:(void (^)(BOOL, BOOL))arg3;
 - (SBSwitcherModifierAction *)prepareAnimatedInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;
 - (SBSwitcherModifierAction *)prepareAnimatedRemovalOfAppLayout:(SBAppLayout *)arg1 forReason:(long long)arg2;
 - (void)relinquishTransientOverlayViewController:(SBTransientOverlayViewController *)arg1;
-- (void)respondToInAppStatusBarRequestedHiddenUpdate;
+- (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(BOOL)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAddAppLayoutToFront:(SBAppLayout *)arg1 forTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg2 transitionCompleted:(BOOL)arg3;
 - (BOOL)shouldAnimateInsertionOfAppLayouts:(NSArray *)arg1 atIndexes:(NSArray *)arg2;

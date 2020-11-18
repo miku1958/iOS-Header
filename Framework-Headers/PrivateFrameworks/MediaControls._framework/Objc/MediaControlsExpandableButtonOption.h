@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIColor, UIImage;
+@class NSString, UIColor;
 
-__attribute__((visibility("hidden")))
 @interface MediaControlsExpandableButtonOption : NSObject
 {
     NSString *_identifier;
-    UIImage *_image;
+    NSString *_packageName;
     NSString *_title;
-    NSString *_subtitle;
     UIColor *_selectedBackgroundColor;
 }
 
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) NSString *packageName; // @synthesize packageName=_packageName;
 @property (strong, nonatomic) UIColor *selectedBackgroundColor; // @synthesize selectedBackgroundColor=_selectedBackgroundColor;
-@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

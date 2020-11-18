@@ -40,6 +40,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleMediaResponses:(id)arg1 message:(id)arg2;
 - (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
+- (void)handleSessionUpdatedNotification:(id)arg1;
+- (void)handleSessionVolumeUpdatedNotification:(id)arg1;
 - (void)handleSetValue:(id)arg1 withRequestProperty:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithAccessory:(id)arg1;
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;

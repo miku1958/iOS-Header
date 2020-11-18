@@ -60,12 +60,14 @@
 - (void)_overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)_overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_overrideScheme:(id)arg1;
 - (void)_popAllBridgedNavigationViewControllers;
 - (void)_popBridgedViewControllersToIndex:(unsigned long long)arg1;
 - (void)_presentBridgedViewController;
 - (void)_pushBridgedViewControllerAnimated:(BOOL)arg1 options:(id)arg2;
 - (void)_requestRemoteViewController;
 - (void)_setBridgedNavigationItemWithOptions:(id)arg1;
+- (void)_setupNavigationItem;
 - (void)_setupNotificationCenter;
 - (void)_setupPreWarmedViewController;
 - (void)_setupRemoteViewController:(BOOL)arg1;
@@ -82,6 +84,7 @@
 - (void)redeemCameraViewController:(id)arg1 didFinishWithRedeem:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 

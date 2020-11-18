@@ -17,8 +17,7 @@
 - (void).cxx_destruct;
 - (id)UIDsToDeleteInMailbox:(id)arg1;
 - (id)accountForMessage:(id)arg1;
-- (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(BOOL)arg3 newMessagesByOldMessage:(id)arg4;
-- (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(BOOL)arg3 newMessagesByOldMessage:(id)arg4 remoteIDs:(id)arg5 setFlags:(unsigned long long)arg6 clearFlags:(unsigned long long)arg7 messageFlagsForMessages:(id)arg8 copyFiles:(BOOL)arg9 addPOPUIDs:(BOOL)arg10 dataSectionsByMessage:(id)arg11 generationWindow:(id)arg12;
+- (id)addMessages:(id)arg1 withMailbox:(id)arg2 newMessagesByOldMessage:(id)arg3 remoteIDs:(id)arg4 setFlags:(unsigned long long)arg5 addPOPUIDs:(BOOL)arg6 dataSectionsByMessage:(id)arg7 generationWindow:(id)arg8;
 - (unsigned int)allNonDeleteCountForMailbox:(id)arg1 includeServerSearchResults:(BOOL)arg2 includeThreadSearchResults:(BOOL)arg3;
 - (id)allUIDsInMailbox:(id)arg1;
 - (BOOL)areMessageContentsLocallyAvailable:(id)arg1 fullContentsAvailble:(BOOL *)arg2;
@@ -50,6 +49,7 @@
 - (void)deletePOPUID:(id)arg1 inMailbox:(id)arg2;
 - (unsigned int)deletedCountForMailbox:(id)arg1;
 - (id)duplicateMessages:(id)arg1 newRemoteIDs:(id)arg2 forMailbox:(id)arg3 setFlags:(unsigned long long)arg4 clearFlags:(unsigned long long)arg5 messageFlagsForMessages:(id)arg6 createNewCacheFiles:(BOOL)arg7;
+- (id)duplicateMessages:(id)arg1 newRemoteIDs:(id)arg2 forMailbox:(id)arg3 setFlags:(unsigned long long)arg4 createNewCacheFiles:(BOOL)arg5;
 - (id)fileAttributesForMessage:(id)arg1;
 - (id)filterContiguousMessages:(id)arg1 forCriterion:(id)arg2 options:(unsigned int)arg3;
 - (void)flagsChangedForMessages:(id)arg1 flags:(id)arg2 oldFlagsByMessage:(id)arg3;

@@ -105,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)updateClient:(id)arg1;
 - (BOOL)updateStateWithAudioIOClient:(id)arg1;
 - (unsigned int)vpOperationModeForConferenceOperatingMode:(int)arg1 deviceRole:(int)arg2;
+- (void)waitIdleForClient:(id)arg1;
 
 @end
 

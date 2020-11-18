@@ -8,13 +8,14 @@
 
 #import <HomeUI/HUFeatureOnboardingFlow-Protocol.h>
 
-@class HFUserItem, NAFuture, NSString, UIViewController;
+@class HFUserItem, HMHome, NAFuture, NSString, UIViewController;
 @protocol HUConfigurationViewController;
 
 @interface HUCameraRecordingOnboardingFlow : NSObject <HUFeatureOnboardingFlow>
 {
     BOOL _shouldAbortThisOnboardingFlowGroup;
     BOOL _shouldAbortAllOnboarding;
+    HMHome *_home;
     NAFuture *_onboardingFuture;
     UIViewController<HUConfigurationViewController> *_initialViewController;
     HFUserItem *_userItem;
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController; // @synthesize initialViewController=_initialViewController;
 @property (strong, nonatomic) NAFuture *onboardingFuture; // @synthesize onboardingFuture=_onboardingFuture;
 @property (nonatomic) BOOL shouldAbortAllOnboarding; // @synthesize shouldAbortAllOnboarding=_shouldAbortAllOnboarding;
@@ -33,7 +35,7 @@
 - (void).cxx_destruct;
 - (id)_determineInitialViewController;
 - (void)_setThisUserDismissedCameraOnboardingAndReminder;
-- (id)initWithUsageOptions:(id)arg1;
+- (id)initWithUsageOptions:(id)arg1 home:(id)arg2;
 - (id)processUserInput:(id)arg1;
 
 @end

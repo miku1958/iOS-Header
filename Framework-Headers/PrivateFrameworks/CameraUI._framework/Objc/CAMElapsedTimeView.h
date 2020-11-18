@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL usingBadgeAppearance; // @synthesize usingBadgeAppearance=_usingBadgeAppearance;
 
 - (void).cxx_destruct;
+- (id)_backgroundRedColor;
 - (void)_beginRecordingAnimation;
 - (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1 usingBadgeAppearance:(BOOL)arg2;
 - (void)_endRecordingAnimation;

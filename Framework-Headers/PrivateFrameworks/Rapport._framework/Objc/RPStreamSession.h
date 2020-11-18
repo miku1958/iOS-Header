@@ -23,6 +23,7 @@
     BOOL _prepareOnly;
     RPConnection *_rpCnx;
     CUTCPServer *_tcpServer;
+    BOOL _trafficRegistrationCalled;
     CUWiFiManager *_wifiManager;
     BOOL _serverMode;
     int _flowControlState;
@@ -37,6 +38,8 @@
     NSUUID *_nwClientID;
     CDUnknownBlockType _receivedEventHandler;
     CDUnknownBlockType _receivedRequestHandler;
+    CDUnknownBlockType _statusChangedHandler;
+    unsigned long long _statusFlags;
     NSString *_streamID;
     NSData *_streamKey;
     NSString *_trafficSessionID;
@@ -56,6 +59,8 @@
 @property (copy, nonatomic) CDUnknownBlockType receivedEventHandler; // @synthesize receivedEventHandler=_receivedEventHandler;
 @property (copy, nonatomic) CDUnknownBlockType receivedRequestHandler; // @synthesize receivedRequestHandler=_receivedRequestHandler;
 @property (nonatomic) BOOL serverMode; // @synthesize serverMode=_serverMode;
+@property (copy, nonatomic) CDUnknownBlockType statusChangedHandler; // @synthesize statusChangedHandler=_statusChangedHandler;
+@property (readonly, nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
 @property (copy, nonatomic) CDUnknownBlockType streamAcceptHandler; // @synthesize streamAcceptHandler=_streamAcceptHandler;
 @property (nonatomic) unsigned int streamFlags; // @synthesize streamFlags=_streamFlags;
 @property (copy, nonatomic) NSString *streamID; // @synthesize streamID=_streamID;

@@ -115,6 +115,7 @@
 + (id)fetchKeyFacesGroupedByPersons:(id)arg1;
 + (id)fetchRejectedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchSingletonFacesWithOptions:(id)arg1;
++ (id)fetchSuggestedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;

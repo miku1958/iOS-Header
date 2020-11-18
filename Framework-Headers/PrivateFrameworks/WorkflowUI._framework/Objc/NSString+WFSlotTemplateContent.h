@@ -15,5 +15,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (BOOL)wf_hasStrongRTLCharacter;
 @end
 

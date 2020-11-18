@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)formattedPhoneNumber:(id)arg1;
++ (BOOL)supportsWiFiCalling:(id)arg1;
 
 @end
 

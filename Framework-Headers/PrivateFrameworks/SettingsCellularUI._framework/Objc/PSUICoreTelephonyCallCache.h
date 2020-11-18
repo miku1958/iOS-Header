@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (id)currentCallTypes;
+- (void)dealloc;
 - (id)init;
 - (id)initPrivate;
 - (id)localizedPhoneNumber:(id)arg1 context:(id)arg2;

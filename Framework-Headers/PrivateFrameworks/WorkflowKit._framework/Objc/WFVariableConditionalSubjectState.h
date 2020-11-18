@@ -39,7 +39,7 @@
 - (id)serializedRepresentation;
 - (id)supportedComparisonOperators;
 - (unsigned long long)tense;
-- (id)unit;
+- (id)unitType;
 
 @end
 

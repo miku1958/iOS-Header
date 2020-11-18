@@ -9,7 +9,7 @@
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/HFPosterFrameImageObserver-Protocol.h>
 
-@class HFCameraPlaybackEngine, HMCameraClip, HMCameraClipManager, NSString, UIImageView;
+@class HFCameraPlaybackEngine, HMCameraClip, NSString, UIImageView;
 
 @interface HUCameraPlayerPlaceholderContentViewController : UIViewController <HFCameraPlaybackEngineObserver, HFPosterFrameImageObserver>
 {
@@ -20,7 +20,6 @@
 }
 
 @property (nonatomic) BOOL cameraPlayerHasContentToShow; // @synthesize cameraPlayerHasContentToShow=_cameraPlayerHasContentToShow;
-@property (readonly, nonatomic) HMCameraClipManager *clipManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,7 +35,7 @@
 - (void)_updateStateAnimated:(BOOL)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)hu_reloadData;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (void)manager:(id)arg1 didUpdateImage:(id)arg2 withTimeOffset:(double)arg3 fromClip:(id)arg4;
+- (void)manager:(id)arg1 didFindImage:(id)arg2 atTimeOffset:(double)arg3 forClip:(id)arg4;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;

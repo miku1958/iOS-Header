@@ -59,6 +59,7 @@
 + (id)assetResourcesForAsset:(id)arg1;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2 includeMetadata:(BOOL)arg3;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2 includeMetadata:(BOOL)arg3 includeAdjustmentOverflowDataBlob:(BOOL)arg4;
 + (id)assetResourcesForLivePhoto:(id)arg1;
 - (void).cxx_destruct;
 - (id)debugDescription;

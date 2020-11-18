@@ -7,17 +7,18 @@
 #import <UIKit/UIViewController.h>
 
 #import <AppSSOUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <AppSSOUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <AppSSOUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSString;
+@class NSString, _UIRemoteViewController;
 @protocol SOUIAuthorizationViewControllerDelegate;
 
-@interface SOUIAuthorizationViewController : UIViewController <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
+@interface SOUIAuthorizationViewController : UIViewController <_UIRemoteViewControllerContaining, UIGestureRecognizerDelegate>
 {
     UIViewController *_extensionViewController;
     id<SOUIAuthorizationViewControllerDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SOUIAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -29,7 +30,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithExtensionViewController:(id)arg1 hints:(id)arg2;
 - (void)loadView;
-- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

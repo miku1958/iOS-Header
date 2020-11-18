@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitLabel : PBCodable <GEOTransitLabelItem, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPBTransitArtwork *_labelArtwork;
     NSString *_labelTextString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _labelType;
     struct {
         unsigned int has_labelType:1;
@@ -57,6 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)labelTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

@@ -41,6 +41,7 @@
     BOOL _shouldUseNavigationTitle;
     BOOL _shouldUseAbbreviatedDates;
     BOOL _shouldShowLocationNames;
+    BOOL _ready;
     BOOL _filteringContainerContent;
     NSDictionary *_defaultAttributes;
     NSDictionary *_emphasizedAttributes;
@@ -85,6 +86,7 @@
 @property (copy, nonatomic) NSString *navigationTitle; // @synthesize navigationTitle=_navigationTitle;
 @property (readonly, nonatomic) NSString *noFilteringResultsPlaceholderText; // @synthesize noFilteringResultsPlaceholderText=_noFilteringResultsPlaceholderText;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic, getter=isReady) BOOL ready; // @synthesize ready=_ready;
 @property (copy, nonatomic) NSString *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) PXSelectedItemsStack *selectedAssetsStack; // @synthesize selectedAssetsStack=_selectedAssetsStack;
 @property (copy, nonatomic) NSDictionary *selectionAttributes; // @synthesize selectionAttributes=_selectionAttributes;

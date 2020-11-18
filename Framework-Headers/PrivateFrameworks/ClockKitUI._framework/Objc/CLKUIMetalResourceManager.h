@@ -14,6 +14,7 @@
     id<MTLTexture> _nilTexture;
 }
 
++ (id)sharedCommandQueue;
 + (id)sharedDevice;
 + (id)sharedMetalInstance;
 + (id)sharedNilTexture;

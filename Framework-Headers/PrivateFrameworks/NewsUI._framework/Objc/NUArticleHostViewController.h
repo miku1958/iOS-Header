@@ -11,7 +11,7 @@
 #import <NewsUI/NUPageable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIScrollView, UIView;
+@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIResponder, UIScrollView, UIView;
 @protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
 @interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
@@ -19,6 +19,7 @@
     NSString *_pageIdentifier;
     id<NULoadingDelegate> _loadingDelegate;
     FCObservable *_articleViewStyler;
+    UIResponder *_responder;
     FCArticle *_article;
     FCIssue *_issue;
     id<NUArticleViewControllerFactory> _articleViewControllerFactory;
@@ -49,11 +50,13 @@
 @property (strong, nonatomic) UIView<NULoadingViewProviding> *loadingView; // @synthesize loadingView=_loadingView;
 @property (readonly, nonatomic) NFMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
 @property (readonly, copy, nonatomic) NSString *pageIdentifier; // @synthesize pageIdentifier=_pageIdentifier;
+@property (strong, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property (readonly, nonatomic) UIScrollView *scrollView;
 @property (readonly, copy, nonatomic) id<NUSettings> settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)becomeFirstResponder;
 - (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 contentSizeManager:(id)arg5;
 - (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6 contentSizeManager:(id)arg7;
 - (void)loadArticleAndEmbedArticleViewController;
@@ -63,6 +66,7 @@
 - (id)loadingTextForArticle:(id)arg1;
 - (void)loadingWillStart;
 - (void)reportEvent:(id)arg1;
+- (BOOL)resignFirstResponder;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

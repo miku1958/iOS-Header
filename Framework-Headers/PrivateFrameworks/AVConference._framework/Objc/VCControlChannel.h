@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
     int _maxReceivedRate;
     int _minReceivedRate;
     double _lastUpdateTimestamp;
+    unsigned int _reliableMessageResendInterval;
     NSObject<OS_dispatch_queue> *_asyncProcessingQueue;
 }
 
 @property (nonatomic) id dataReceivedDelegate;
 @property (nonatomic) id messageReceivedDelegate; // @synthesize messageReceivedDelegate=_messageReceivedDelegate;
+@property (readonly, nonatomic) unsigned int reliableMessageResendInterval; // @synthesize reliableMessageResendInterval=_reliableMessageResendInterval;
 
 - (void)broadcastUnreliableMessage:(id)arg1;
 - (void)dealloc;

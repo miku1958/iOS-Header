@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyboardDockItem *leftDockItem; // @synthesize leftDockItem=_leftDockItem;
 @property (strong, nonatomic) UIKeyboardDockItem *rightDockItem; // @synthesize rightDockItem=_rightDockItem;
 
-+ (long long)_effectiveHandBias;
++ (long long)_currentInterfaceOrientation;
 + (CDStruct_b7523c42)_itemFramesForBoundingSize:(struct CGSize)arg1;
 + (id)dockViewHomeGestureExclusionZones;
 - (void).cxx_destruct;

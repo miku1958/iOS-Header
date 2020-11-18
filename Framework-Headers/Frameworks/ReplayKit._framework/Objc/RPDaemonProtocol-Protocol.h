@@ -11,6 +11,8 @@
 @protocol RPDaemonProtocol <NSObject>
 - (oneway void)discardRecordingWithHandler:(void (^)(void))arg1;
 - (oneway void)getSystemBroadcastExtensionInfo:(void (^)(NSArray *, NSError *))arg1;
+- (oneway void)macApplicationDidBecomeActiveWithContextID:(unsigned int)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (oneway void)macApplicationDidResignActive;
 - (oneway void)pauseRecording;
 - (oneway void)reportCameraUsage:(long long)arg1;
 - (oneway void)resumeRecordingWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(void (^)(BOOL))arg2;

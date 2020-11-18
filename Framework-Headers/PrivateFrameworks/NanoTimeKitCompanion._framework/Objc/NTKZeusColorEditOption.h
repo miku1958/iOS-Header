@@ -20,7 +20,7 @@
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
-- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (BOOL)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

@@ -43,6 +43,7 @@
 - (id)createInteractiveChartForType:(id)arg1 secondaryTypeIdentifier:(id)arg2 displayDateInterval:(id)arg3;
 - (id)createListViewController:(id)arg1;
 - (id)createProfileViewController;
+- (id)createResearchStudySourcesViewControllerUsingInsetStyling:(BOOL)arg1 restorationStudyBundleIdentifier:(id)arg2;
 - (id)createSourcesViewControllerUsingInsetStyling:(BOOL)arg1;
 - (id)createUnitPreferencesController:(id)arg1;
 - (void)fetchUserDefaultForKey:(id)arg1 withCallback:(CDUnknownBlockType)arg2;

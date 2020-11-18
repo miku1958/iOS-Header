@@ -16,11 +16,13 @@
 + (id)asset;
 + (id)dictionaryWithPlistAssetPath:(id)arg1;
 + (id)dictionaryWithPlistFilename:(id)arg1;
++ (id)dpRecorderRules;
 + (id)mappings;
 + (id)metricsConfig;
 + (id)quickResponses;
 + (void)registerOnUpdateBlock:(CDUnknownBlockType)arg1;
 + (id)rules;
++ (id)signatureRules;
 
 @end
 

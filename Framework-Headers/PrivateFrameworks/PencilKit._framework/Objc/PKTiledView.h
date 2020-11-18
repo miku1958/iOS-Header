@@ -138,6 +138,7 @@
 - (void)_toggleDebugPane:(id)arg1;
 - (long long)_totalVisibleStrokes;
 - (void)_transientlyUpdateHeightOfAttachment:(id)arg1 delta:(double)arg2;
+- (void)_updateAllowedTouchesForDrawingGestureRecognizer;
 - (void)_updateAttachmentHeightIfNecessaryForDrawing:(id)arg1;
 - (BOOL)_updateHeightOfAttachmentIfNecessary:(id)arg1;
 - (id)_visibleTilesForAttachment:(id)arg1 includePartiallyVisible:(BOOL)arg2;

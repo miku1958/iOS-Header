@@ -6,17 +6,17 @@
 
 #import <ContentKit/WFAlertButton.h>
 
-@class NSString, UIImage;
+@class NSString, WFImage;
 
 @interface WFSelectableAlertButton : WFAlertButton
 {
     BOOL _selected;
     BOOL _stickySelection;
     NSString *_subtitle;
-    UIImage *_image;
+    WFImage *_image;
 }
 
-@property (readonly, copy, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, copy, nonatomic) WFImage *image; // @synthesize image=_image;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (readonly, nonatomic) BOOL stickySelection; // @synthesize stickySelection=_stickySelection;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;

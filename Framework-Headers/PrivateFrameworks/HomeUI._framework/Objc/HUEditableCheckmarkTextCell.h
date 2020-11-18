@@ -10,7 +10,7 @@
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 #import <HomeUI/HUEditableTextCellProtocol-Protocol.h>
 
-@class HFItem, HUCheckmarkAccessoryView, NSArray, NSString, UITapGestureRecognizer, UITextField;
+@class HFItem, HUCheckmarkAccessoryView, NSArray, NSString, UITapGestureRecognizer, UITextField, UIView;
 @protocol HUEditableCheckmarkDelegate, HUResizableCellDelegate;
 
 @interface HUEditableCheckmarkTextCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol, HUEditableTextCellProtocol>
@@ -19,6 +19,7 @@
     BOOL _disableCheckmark;
     BOOL _isChecked;
     BOOL _allowCheckmarkSelectionWhileDisabled;
+    UIView *_accessoryView;
     UITextField *_textField;
     HFItem *_item;
     HUCheckmarkAccessoryView *_checkmarkView;
@@ -48,9 +49,11 @@
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_checkmarkTapped:(id)arg1;
+- (id)accessoryView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setAccessoryView:(id)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;

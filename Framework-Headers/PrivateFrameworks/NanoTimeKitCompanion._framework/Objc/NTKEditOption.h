@@ -32,7 +32,7 @@
 - (id)initWithDevice:(id)arg1;
 - (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 - (BOOL)isValidOption;
-- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (BOOL)optionExistsInDevice:(id)arg1;
 
 @end
 

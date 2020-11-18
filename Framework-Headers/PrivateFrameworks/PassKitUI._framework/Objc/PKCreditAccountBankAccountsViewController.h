@@ -32,6 +32,7 @@
 - (void)_didSelectDeleteBroadwayBankAccountAtIndexPath:(id)arg1;
 - (void)_editButtonPressed:(id)arg1;
 - (BOOL)_isBankAccountIndexPath:(id)arg1;
+- (void)_toggleEditingMode;
 - (void)_updateEditButtonIfNecessary;
 - (void)addBankAccountInformationViewController:(id)arg1 didAddFundingSource:(id)arg2;
 - (void)addBankAccountInformationViewController:(id)arg1 didFailWithError:(id)arg2;

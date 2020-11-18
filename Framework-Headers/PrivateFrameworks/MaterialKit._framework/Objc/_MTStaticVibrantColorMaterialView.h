@@ -29,7 +29,6 @@
 - (void)_updateContentVisualStylingWithProvider:(id)arg1;
 - (void)_updateCoreMaterialVisualStylingProviders;
 - (CDUnknownBlockType)backdropScaleAdjustment;
-- (BOOL)forceCrossfadeIfNecessary;
 - (BOOL)ignoresScreenClip;
 - (BOOL)isBlurEnabled;
 - (BOOL)isCaptureOnly;
@@ -41,14 +40,13 @@
 - (void)setBlurEnabled:(BOOL)arg1;
 - (void)setCaptureOnly:(BOOL)arg1;
 - (void)setContentReplacedWithSnapshot:(BOOL)arg1;
-- (void)setForceCrossfadeIfNecessary:(BOOL)arg1;
 - (void)setIgnoresScreenClip:(BOOL)arg1;
 - (void)setRecipe:(long long)arg1;
-- (void)setShouldCrossfadeIfNecessary:(BOOL)arg1;
+- (void)setShouldCrossfade:(BOOL)arg1;
 - (void)setUseBuiltInAlphaTransformerAndBackdropScaleAdjustment:(BOOL)arg1;
 - (void)setUseBuiltInAlphaTransformerAndBackdropScaleAdjustmentIfNecessary:(BOOL)arg1;
 - (void)setZoomEnabled:(BOOL)arg1;
-- (BOOL)shouldCrossfadeIfNecessary;
+- (BOOL)shouldCrossfade;
 - (BOOL)useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
 - (BOOL)useBuiltInAlphaTransformerAndBackdropScaleAdjustmentIfNecessary;
 

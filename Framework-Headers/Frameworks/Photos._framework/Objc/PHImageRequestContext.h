@@ -16,6 +16,7 @@
     PHImageRequest *_finalRequest;
     PHMediaResourceRequest *_resourceRequest;
     struct atomic_flag _firstNonFastResultWasObserved;
+    struct atomic_flag _finalResultSent;
     PHCompositeMediaResult *_delayedFinalInvalidDataResult;
     PHImageRequestOptions *_imageOptions;
 }

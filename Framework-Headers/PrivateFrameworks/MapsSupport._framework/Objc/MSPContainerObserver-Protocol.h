@@ -14,6 +14,7 @@
 
 @optional
 - (void)containerDidEraseContents:(MSPContainer *)arg1 fromStorageTypes:(unsigned long long)arg2;
+- (void)containerDidLoadFromPersister:(MSPContainer *)arg1;
 - (void)containerWillEraseContents:(MSPContainer *)arg1;
 - (void)containerWillEraseContents:(MSPContainer *)arg1 fromStorageTypes:(unsigned long long)arg2;
 - (NSObject<OS_dispatch_queue> *)observationQueueForContainer:(MSPContainer *)arg1;

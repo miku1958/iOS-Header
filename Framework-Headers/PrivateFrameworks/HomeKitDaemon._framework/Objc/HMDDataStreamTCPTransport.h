@@ -21,6 +21,7 @@
     HMFNetAddress *_remoteAddress;
     NSObject<OS_tcp_connection> *_tcpConnection;
     HMDDataStreamFrameReader *_byteReader;
+    NSString *_logIdentifier;
 }
 
 @property (strong, nonatomic) HMDDataStreamFrameReader *byteReader; // @synthesize byteReader=_byteReader;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) id<HMDDataStreamTransportDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong, nonatomic) HMFNetAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_tcp_connection> *tcpConnection; // @synthesize tcpConnection=_tcpConnection;
@@ -42,7 +44,7 @@
 - (void)close;
 - (void)connect;
 - (void)dealloc;
-- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3;
+- (id)initWithAddress:(id)arg1 port:(long long)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
 - (void)sendRawFrame:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

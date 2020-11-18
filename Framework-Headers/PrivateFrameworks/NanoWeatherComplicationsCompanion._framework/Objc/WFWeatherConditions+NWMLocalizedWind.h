@@ -26,8 +26,8 @@
 @property (readonly, nonatomic) NSString *nwm_localizedWindspeedWithoutUnit;
 @property (readonly, nonatomic) unsigned long long nwm_ultravioletIndexCategory;
 
-+ (id)_localizedArrayForWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
-+ (id)_localizedStringForWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
++ (id)_defaultWindSpeedWithUnit:(double)arg1;
++ (id)_localizedWindspeed:(double)arg1 withUnit:(int)arg2 forLocale:(id)arg3;
 + (id)_nwc_prefixForFamily:(long long)arg1;
 + (id)_nwm_shortSuffixedKey:(id)arg1;
 + (int)_preferredWindSpeedUnitForLocale:(id)arg1;

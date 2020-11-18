@@ -72,6 +72,7 @@
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (id)createPrivateZoneWithID:(id)arg1;
 - (id)databaseStateForDatabaseScope:(long long)arg1;
+- (void)deallocForZoneWithID:(id)arg1;
 - (id)declineInvitation:(id)arg1;
 - (id)fetchParticipants:(id)arg1;
 - (id)fetchShareMetadataForInvitations:(id)arg1;
@@ -86,10 +87,11 @@
 - (id)initWithLocalDatabase:(id)arg1 configuration:(id)arg2;
 - (id)initWithLocalDatabase:(id)arg1 stateZone:(id)arg2 container:(id)arg3 configuration:(id)arg4 databaseStateModelsByScope:(id)arg5 zoneStateModels:(id)arg6;
 - (id)logIdentifier;
-- (id)openExistingPrivateZoneWithID:(id)arg1 shouldRebuildOnManateeKeyLoss:(BOOL)arg2 delegate:(id)arg3 error:(id *)arg4;
-- (id)openExistingSharedZoneWithID:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
-- (id)openOrCreatePrivateZoneWithID:(id)arg1 shouldRebuildOnManateeKeyLoss:(BOOL)arg2 delegate:(id)arg3 error:(id *)arg4;
+- (id)openExistingPrivateZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
+- (id)openExistingSharedZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
+- (id)openOrCreatePrivateZoneWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (id)operationConfigurationWithProcessingOptions:(id)arg1;
+- (id)peformFunctionInvokeOperationWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3;
 - (id)performAdministrativeFetchForAllDatabases:(BOOL)arg1;
 - (id)performAdministrativeFetchForDatabaseScope:(long long)arg1 withForce:(BOOL)arg2;
 - (id)performCloudPullForScope:(long long)arg1;
@@ -99,8 +101,9 @@
 - (id)registerSharedSubscriptionForExternalRecordType:(id)arg1;
 - (id)registerSubscription:(id)arg1 forZoneWithID:(id)arg2;
 - (id)registerSubscriptionForExternalRecordType:(id)arg1 databaseState:(id)arg2;
+- (id)removePrivateZoneWithID:(id)arg1;
 - (void)removeStateForZoneID:(id)arg1;
-- (id)removeZoneWithID:(id)arg1 removeState:(BOOL)arg2;
+- (id)removeZoneWithID:(id)arg1;
 - (BOOL)retryCloudKitOperationAfterError:(id)arg1 retryBlock:(CDUnknownBlockType)arg2;
 - (id)serverChangeTokenForZoneWithID:(id)arg1;
 - (id)shutdown;
@@ -108,9 +111,11 @@
 - (id)subscriptionIDForZoneID:(id)arg1 recordType:(id)arg2;
 - (id)subscriptionsForZoneWithID:(id)arg1;
 - (id)unregisterPrivateSubscriptionForExternalRecordType:(id)arg1;
+- (id)unregisterPrivateSubscriptionForSubscriptionID:(id)arg1;
 - (id)unregisterSharedSubscriptionForExternalRecordType:(id)arg1;
+- (id)unregisterSharedSubscriptionForSubscriptionID:(id)arg1;
 - (id)unregisterSubscription:(id)arg1 forZoneWithID:(id)arg2;
-- (id)unregisterSubscriptionForExternalRecordType:(id)arg1 databaseState:(id)arg2;
+- (void)updateNeedsZoneDeletion:(BOOL)arg1 forZoneWithID:(id)arg2;
 - (void)updateRebuildStatus:(id)arg1 forZoneWithID:(id)arg2;
 - (void)updateServerChangeToken:(id)arg1 forDatabaseWithScope:(long long)arg2;
 - (void)updateServerChangeToken:(id)arg1 forZoneWithID:(id)arg2;

@@ -17,18 +17,18 @@
     BOOL _allowCopyValueToPasteboard;
     UILabel *_titleLabel;
     UILabel *_valueLabel;
+    UIStackView *_labelsStackView;
     NSString *_titleText;
     UIFont *_titleFont;
     NSString *_valueText;
     UIFont *_valueFont;
     NSArray *_stackViewConstraints;
-    UIStackView *_labelsStackView;
 }
 
 @property (nonatomic) BOOL allowCopyValueToPasteboard; // @synthesize allowCopyValueToPasteboard=_allowCopyValueToPasteboard;
 @property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
 @property (nonatomic) BOOL hideValue; // @synthesize hideValue=_hideValue;
-@property (strong, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
+@property (readonly, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
 @property (strong, nonatomic) NSArray *stackViewConstraints; // @synthesize stackViewConstraints=_stackViewConstraints;
 @property (nonatomic) BOOL titleColorFollowsTintColor; // @synthesize titleColorFollowsTintColor=_titleColorFollowsTintColor;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;

@@ -47,6 +47,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_access_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_access_addSnapshotToGroup:(id)arg1;
 - (void)_access_deletePaths:(id)arg1;
 - (void)_access_deleteSnapshots:(id)arg1;
 - (void)_access_doArchiveWithCompletions:(id)arg1;
@@ -58,10 +59,10 @@
 - (id)_access_snapshotsMatchingPredicate:(id)arg1;
 - (BOOL)_access_validateWithContainerIdentity:(id)arg1;
 - (void)_access_workloop_reapExpiredAndInvalidSnapshots;
+- (void)_addSnapshotToGroup:(id)arg1;
 - (id)_allSnapshotGroups;
 - (void)_commonInit;
 - (id)_createSnapshotWithGroupID:(id)arg1 generationContext:(id)arg2;
-- (id)_createSnapshotWithGroupID:(id)arg1 newSnapshotCreator:(CDUnknownBlockType)arg2;
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
 - (void)_handleMemoryPressure;
 - (BOOL)_imageAccessQueue_saveData:(id)arg1 forSnapshot:(id)arg2;

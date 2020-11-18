@@ -40,9 +40,9 @@
     BOOL _allowsAutoscrollToTodayView;
     BOOL _showsDoneButton;
     BOOL _todayViewPageHidden;
+    BOOL _sidebarEffectivelyVisible;
     BOOL _todayViewBouncing;
     BOOL _shiftsPullDownSearchForVisibility;
-    BOOL _sidebarHiddenForOrientation;
     BOOL _sidebarSlideGestureActive;
     BOOL _sidebarVisibleWhenScrollingBegan;
     BOOL _allowsFreeScrollingUntilScrollingEnds;
@@ -53,7 +53,6 @@
     UIView *_portraitHeaderView;
     double _sidebarVisibilityProgress;
     double _sidebarPinned;
-    double _sidebarEffectivelyVisible;
     double _todayViewVisibilityProgress;
     double _pullDownSearchVisibilityProgress;
     unsigned long long _sidebarAllowedOrientations;
@@ -78,6 +77,7 @@
 @property (nonatomic, getter=isDockViewBorrowed) BOOL dockViewBorrowed; // @synthesize dockViewBorrowed=_dockViewBorrowed;
 @property (readonly, nonatomic, getter=isDockVisible) BOOL dockVisible;
 @property (strong, nonatomic) SBTitledHomeScreenButton *doneButton; // @synthesize doneButton=_doneButton;
+@property (readonly, nonatomic) double effectiveSidebarVisibilityProgress;
 @property (strong, nonatomic) id<SBIconListViewIconLocationTransitioning> firstListViewIconLocationTransitionHandler; // @synthesize firstListViewIconLocationTransitionHandler=_firstListViewIconLocationTransitionHandler;
 @property (strong, nonatomic) SBRootFolder *folder; // @dynamic folder;
 @property (strong, nonatomic) SBHRootFolderSettings *folderSettings; // @synthesize folderSettings=_folderSettings;
@@ -99,12 +99,12 @@
 @property (readonly, nonatomic) BOOL shouldFadePageControlOutDuringTransitionToTodayView;
 @property (nonatomic) BOOL showsDoneButton; // @synthesize showsDoneButton=_showsDoneButton;
 @property (readonly, nonatomic) unsigned long long sidebarAllowedOrientations; // @synthesize sidebarAllowedOrientations=_sidebarAllowedOrientations;
-@property (nonatomic, getter=isSidebarEffectivelyVisible) double sidebarEffectivelyVisible; // @synthesize sidebarEffectivelyVisible=_sidebarEffectivelyVisible;
-@property (nonatomic, getter=isSidebarHiddenForOrientation) BOOL sidebarHiddenForOrientation; // @synthesize sidebarHiddenForOrientation=_sidebarHiddenForOrientation;
+@property (nonatomic, getter=isSidebarEffectivelyVisible) BOOL sidebarEffectivelyVisible; // @synthesize sidebarEffectivelyVisible=_sidebarEffectivelyVisible;
 @property (readonly, nonatomic) long long sidebarPageIndex;
 @property (nonatomic, getter=isSidebarPinned) double sidebarPinned; // @synthesize sidebarPinned=_sidebarPinned;
 @property (nonatomic, getter=isSidebarSlideGestureActive) BOOL sidebarSlideGestureActive; // @synthesize sidebarSlideGestureActive=_sidebarSlideGestureActive;
 @property (readonly, nonatomic) UIView *sidebarView;
+@property (readonly, nonatomic, getter=isSidebarVisibilityGestureActive) BOOL sidebarVisibilityGestureActive;
 @property (nonatomic) double sidebarVisibilityProgress; // @synthesize sidebarVisibilityProgress=_sidebarVisibilityProgress;
 @property (nonatomic, getter=wasSidebarVisibleWhenScrollingBegan) BOOL sidebarVisibleWhenScrollingBegan; // @synthesize sidebarVisibleWhenScrollingBegan=_sidebarVisibleWhenScrollingBegan;
 @property (readonly) Class superclass;
@@ -127,14 +127,13 @@
 - (void)_animateViewsForScrollingToTodayView;
 - (void)_animateViewsForScrollingToTodayViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)_captureInitialSearchScrollTrackingState;
+- (void)_checkSidebarVisibilityProgressAfterScroll;
 - (void)_cleanUpAfterOverscrollScrollGestureEnded:(id)arg1;
 - (void)_cleanUpAfterScrolling;
 - (void)_cleanupAfterExtraScrollGesturesCompleted;
 - (void)_cleanupAfterSidebarSlideGestureCompleted:(id)arg1;
 - (void)_configureParallax;
-- (void)_currentPageIndexDidChange;
-- (void)_disableUserInteractionBeforeSignificantAnimation;
-- (void)_enableUserInteractionAfterSignificantAnimation;
+- (void)_currentPageIndexDidChangeFromPageIndex:(long long)arg1;
 - (struct CGRect)_iconListFrameForPageRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)_isSidebarCollapsed;
 - (BOOL)_isSidebarEnabledForCurrentOrientation;
@@ -159,6 +158,7 @@
 - (double)_scrollOffsetForPageAtIndex:(long long)arg1 pageWidth:(double)arg2;
 - (struct CGRect)_scrollViewFrameForDockEdge:(unsigned long long)arg1;
 - (void)_setParallaxDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)_setSidebarViewHidden:(BOOL)arg1;
 - (void)_setupSearchBackdropViewIfNecessary;
 - (void)_setupStateDumper;
 - (BOOL)_shouldHideSidebarView;
@@ -174,7 +174,8 @@
 - (void)_updateIconListIndexSearchableAndTodayViewsWithLayout:(BOOL)arg1;
 - (void)_updateIconListLegibilitySettings;
 - (void)_updateScrollingState:(BOOL)arg1;
-- (void)_willAnimateScrollToPageIndex:(long long)arg1;
+- (void)_updateSidebarViewHidden;
+- (void)_willScrollToPageIndex:(long long)arg1 animated:(BOOL)arg2;
 - (id)accessibilityTintColorForDockView:(id)arg1;
 - (id)additionalIconListViews;
 - (double)additionalScrollWidthToKeepVisibleInOneDirection;
@@ -184,7 +185,6 @@
 - (void)clientDidChangeDockOffScreenFraction:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (double)effectiveSidebarVisibilityProgress;
 - (double)effectiveStatusBarHeight;
 - (void)fadeContentForMinificationFraction:(double)arg1;
 - (void)folderDidChange;
@@ -198,10 +198,12 @@
 - (BOOL)iconScrollView:(id)arg1 shouldSetContentOffset:(struct CGPoint *)arg2 animated:(BOOL)arg3;
 - (void)iconScrollViewDidCancelTouchTracking:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
+- (BOOL)isModifyingDockOfScreenFraction;
 - (BOOL)isOnSidebarPage;
 - (BOOL)isPageIndexCustomAndRightmost:(long long)arg1;
 - (void)layoutDockViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(BOOL)arg3;
+- (void)layoutPageControlWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)layoutPortraitHeaderViewWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
 - (void)layoutSearchableViews;
 - (void)layoutSearchableViewsWithMetrics:(const struct SBRootFolderViewMetrics *)arg1;
@@ -234,6 +236,7 @@
 - (BOOL)shouldScrollDockDuringTransitionToTodayView;
 - (BOOL)shouldScrollPageControlDuringTransitionToTodayView;
 - (double)sidebarViewPageScrollOffsetUsingPageWidth:(double)arg1;
+- (double)sidebarVisibilityProgressForLayout;
 - (double)sidebarWidthUsingPageWidth:(double)arg1;
 - (struct UIEdgeInsets)statusBarInsetsForDockEdge:(unsigned long long)arg1;
 - (void)tearDownListViews;
@@ -241,6 +244,7 @@
 - (void)updateAccessibilityTintColors;
 - (void)updateDockViewOrientation;
 - (void)updateIconListIndexAndVisibility:(BOOL)arg1;
+- (void)updateIconListViews;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

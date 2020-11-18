@@ -7,6 +7,7 @@
 #import <PassKitCore/PKImage.h>
 
 @interface PKImage (NanoPassKit)
+- (id)npkImageByMemoryMappingDataWithTemporaryFilePrefix:(id)arg1;
 - (id)resizedImageToCover:(struct CGSize)arg1;
 - (id)resizedImageToFit:(struct CGSize)arg1;
 - (id)resizedImageWithSize:(struct CGSize)arg1 shouldCover:(BOOL)arg2;

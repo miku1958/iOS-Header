@@ -189,6 +189,7 @@
 - (BOOL)hasSessionWaitingForSIPInvite;
 - (id)initWithClientPid:(int)arg1;
 - (unsigned int)initializeNewCallWithDeviceRole:(int)arg1;
+- (unsigned int)initializeNewCallWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (BOOL)initiateResolutionChangeToWidth:(int)arg1 height:(int)arg2 rate:(int)arg3;
 - (void)inviteDataForParticipantID:(id)arg1 callID:(unsigned int)arg2 remoteInviteData:(id)arg3 nonCellularCandidateTimeout:(unsigned long long)arg4 block:(CDUnknownBlockType)arg5 queue:(id)arg6 caller:(id)arg7;
 - (id)inviteDataForParticipantID:(id)arg1 callID:(unsigned int *)arg2 remoteInviteData:(id)arg3 nonCellularCandidateTimeout:(double)arg4 error:(id *)arg5;
@@ -205,7 +206,7 @@
 - (int)natType;
 - (int)natTypeForCallSessions:(const char *)arg1;
 - (double)networkQualityForCallID:(unsigned int)arg1;
-- (id)newSessionWithDeviceRole:(int)arg1;
+- (id)newSessionWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (void)notifyDelegateOfLocalVariablesChange;
 - (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (id)openSessionForParticipant:(id)arg1;

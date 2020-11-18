@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (copy) NSArray *contactsHandles; // @synthesize contactsHandles=_contactsHandles;
 @property (strong) STConversation *conversation; // @synthesize conversation=_conversation;
 @property (strong) STConversationContext *conversationContext; // @synthesize conversationContext=_conversationContext;
+@property (readonly) BOOL needsToSetRestrictionsPasscode;
 @property (readonly) BOOL shouldAllowOneMoreMinute;
 @property (copy, nonatomic) NSURL *websiteURL; // @synthesize websiteURL=_websiteURL;
 

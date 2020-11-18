@@ -17,6 +17,7 @@
     NSSet *_operationalAccountsCache;
     BOOL _isLoading;
     BOOL _isFirstLoad;
+    BOOL _networkDataAvailable;
 }
 
 @property (readonly, nonatomic) NSArray *accounts;
@@ -29,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isLoading; // @synthesize isLoading=_isLoading;
 @property (readonly, nonatomic) NSDictionary *loadOldStatusStore;
+@property (nonatomic) BOOL networkDataAvailable; // @synthesize networkDataAvailable=_networkDataAvailable;
 @property (readonly) Class superclass;
 
 + (id)sharedAccountController;

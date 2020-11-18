@@ -26,6 +26,8 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)recentAndRelevantAchievementAtIndexPath:(id)arg1;
+- (void)startFetching;
+- (void)stopFetching;
 
 @end
 

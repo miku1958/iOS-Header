@@ -6,7 +6,7 @@
 
 #import <SiriInstrumentation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSNumber, PBCodable, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDictationContext, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
+@class NSData, NSDictionary, NSNumber, PBCodable, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationContext, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
 
 @protocol SISchemaClientEvent <NSObject>
 
@@ -16,6 +16,7 @@
 @property (strong, nonatomic) SISchemaClientFlow *clientFlow;
 @property (strong, nonatomic) SISchemaDeviceDynamicContext *deviceDynamicContext;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *deviceFixedContext;
+@property (strong, nonatomic) SISchemaDialogOutput *dialogOutput;
 @property (strong, nonatomic) SISchemaDictationContext *dictationContext;
 @property (strong, nonatomic) SISchemaClientEventMetadata *eventMetadata;
 @property (strong, nonatomic) SISchemaInvocation *invocation;

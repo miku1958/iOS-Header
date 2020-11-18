@@ -81,10 +81,10 @@
 - (void)_applicationEntityWasRemovedFromAppSwitcher:(id)arg1;
 - (id)_applicationForIdentifier:(id)arg1;
 - (BOOL)_applicationProcessExited:(id)arg1 withContext:(id)arg2;
+- (void)_applyCommonActivationSettings:(id)arg1 forRequestWithOptions:(id)arg2 clientProcess:(id)arg3;
 - (void)_attemptUnlockToApplication:(id)arg1 showPasscode:(BOOL)arg2 origin:(id)arg3 givenOrigin:(id)arg4 options:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_broadcastCurrentTransaction;
 - (BOOL)_canImplicitlyUnlockAtLockScreenWhileAuthenticatedFromOrigin:(id)arg1 givenOrigin:(id)arg2 trustedRequest:(BOOL)arg3 outReason:(id *)arg4;
-- (id)_commonActivationSettingsForRequestWithOptions:(id)arg1 isTrustedRequest:(BOOL)arg2 clientProcess:(id)arg3;
 - (void)_coversheetDidDismiss;
 - (void)_coversheetDidPresent;
 - (void)_destroyApplicationSceneEntity:(id)arg1;
@@ -97,9 +97,11 @@
 - (void)_finishInitialization;
 - (id)_generateIdleTimerBehaviorForReason:(id)arg1;
 - (void)_handleBuddyLaunchFinished;
-- (void)_handleOpenApplicationRequest:(id)arg1 options:(id)arg2 origin:(id)arg3 withResult:(CDUnknownBlockType)arg4;
-- (void)_handleOpenURLRequest:(id)arg1 application:(id)arg2 options:(id)arg3 activationSettings:(id)arg4 origin:(id)arg5 withResult:(CDUnknownBlockType)arg6;
+- (void)_handleOpenApplicationRequest:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
 - (BOOL)_handleSetupExited:(id)arg1;
+- (void)_handleTrustedOpenRequestForApplication:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_handleUntrustedOpenRequestForApplication:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
+- (void)_handleUserActionRequest:(id)arg1 options:(id)arg2 activationSettings:(id)arg3 origin:(id)arg4 withResult:(CDUnknownBlockType)arg5;
 - (id)_handlerForExtensionPoint:(id)arg1;
 - (void)_initializeAndObserveDefaults;
 - (BOOL)_isApplicationRunningAsViewService:(id)arg1;
@@ -180,7 +182,7 @@
 - (id)transientOverlayPresentationManager:(id)arg1 acquireControlCenterWindowLevelAssertionWithReason:(id)arg2 windowLevel:(double)arg3;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireDeviceOrientationUpdateDeferralAssertionWithReason:(id)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireDisableAutoUnlockAssertionWithReason:(id)arg2;
-- (id)transientOverlayPresentationManager:(id)arg1 acquireHideAppStatusBarAssertionWithReason:(id)arg2;
+- (id)transientOverlayPresentationManager:(id)arg1 acquireHideAppStatusBarAssertionWithReason:(id)arg2 animated:(BOOL)arg3;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireInteractiveScreenshotGestureDisabledAssertionWithReason:(id)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireProximitySensorEnabledAssertionWithReason:(id)arg2;
 - (id)transientOverlayPresentationManager:(id)arg1 acquireSiriWindowLevelAssertionWithReason:(id)arg2 windowLevel:(double)arg3;

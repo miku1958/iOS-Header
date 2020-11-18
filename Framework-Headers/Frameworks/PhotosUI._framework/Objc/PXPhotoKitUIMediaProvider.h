@@ -6,14 +6,24 @@
 
 #import <PhotosUICore/PXUIMediaProvider.h>
 
-@class NSArray, PHAssetResourceQualityClass, PHCachingImageManager, PHImageManager;
+@class NSArray, NSMutableArray, NSObject, PHAssetResourceQualityClass, PHCachingImageManager, PHImageManager, PXPhotoKitThumbnailCache;
+@protocol OS_dispatch_queue;
 
 @interface PXPhotoKitUIMediaProvider : PXUIMediaProvider
 {
     NSArray *_thumbnailQualityClasses;
-    struct CGSize _lastTargetSize;
-    PHAssetResourceQualityClass *_lastResourceQualityClass;
+    NSArray *_thumbnailCaches;
     struct CGSize _masterThumbnailSize;
+    _Atomic long long _lastActivity;
+    struct os_unfair_lock_s _preheatlock;
+    NSMutableArray *_preheatLock_preheatStates;
+    NSObject<OS_dispatch_queue> *_preheatQueue;
+    unsigned long long _preheatQueue_state;
+    struct os_unfair_lock_s _lock;
+    struct CGSize _lock_lastTargetSize;
+    long long _lock_lastQualityClassIndex;
+    PHAssetResourceQualityClass *_lock_lastResourceQualityClass;
+    PXPhotoKitThumbnailCache *_lock_lastThumbnailCache;
     PHImageManager *_imageManager;
     PHCachingImageManager *_cachingImageManager;
 }
@@ -21,14 +31,23 @@
 @property (readonly, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
 @property (readonly, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
 
++ (id)defaultMediaProvider;
 - (void).cxx_destruct;
-- (id)_qualityClassForTargetSize:(struct CGSize)arg1;
+- (void)_getQualityClass:(id *)arg1 cache:(id *)arg2 qualityClassIndex:(long long *)arg3 forTargetSize:(struct CGSize)arg4;
+- (void)_noteActivity;
+- (id)_preheatInfoForQualityClassIndex:(long long)arg1;
+- (void)_preheatQueue_schedulePreheat;
+- (void)_preheatQueue_scheduleUpdateAfterDelay;
+- (void)_preheatQueue_update;
+- (void)_schedulePreheat;
+- (void)_setPreheatInfo:(id)arg1 forQualityClassIndex:(long long)arg2;
+- (id)_thumbnailDataForAsset:(id)arg1 qualityClass:(id)arg2 cache:(id)arg3 onlyFromCache:(BOOL)arg4 outDataSpec:(struct PXMediaProviderThumbnailDataSpec *)arg5;
 - (void)cancelImageRequest:(long long)arg1;
 - (void)enumerateAvailableThumbnailDataFormats:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithImageManager:(id)arg1;
 - (struct CGSize)masterThumbnailSize;
-- (void)preheatDataForThumbnailIndexes:(id)arg1 targetSize:(struct CGSize)arg2;
+- (void)preheatThumbnailDataForAssets:(id)arg1 origin:(long long)arg2 targetSize:(struct CGSize)arg3;
 - (long long)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
@@ -38,7 +57,7 @@
 - (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)stopCachingImagesForAllAssets;
 - (void)stopCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
-- (id)thumbnailDataForAsset:(id)arg1 targetSize:(struct CGSize)arg2 outDataSpec:(struct PXMediaProviderThumbnailDataSpec *)arg3;
+- (id)thumbnailDataForAsset:(id)arg1 targetSize:(struct CGSize)arg2 onlyFromCache:(BOOL)arg3 outDataSpec:(struct PXMediaProviderThumbnailDataSpec *)arg4;
 
 @end
 

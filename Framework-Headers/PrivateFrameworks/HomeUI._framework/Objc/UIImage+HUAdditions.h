@@ -8,6 +8,7 @@
 
 @interface UIImage (HUAdditions)
 + (id)hu_cameraErrorImage;
++ (id)hu_cellCheckmarkImage;
 + (id)hu_flatWhiteResizableTemplateImage;
 + (id)hu_largeQRBadgeTemplateImage;
 + (id)hu_locationArrowTemplate;
@@ -16,6 +17,7 @@
 + (id)hu_navigationBarGlyphPlus;
 + (struct CGSize)hu_scaleSize:(struct CGSize)arg1 toSize:(struct CGSize)arg2 contentMode:(long long)arg3;
 + (id)hu_smallQRBadgeTemplateImage;
++ (id)hu_standardSymbolConfiguration;
 - (id)hu_imageScaledToSize:(struct CGSize)arg1 contentMode:(long long)arg2;
 @end
 

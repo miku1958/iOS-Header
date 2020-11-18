@@ -154,6 +154,7 @@
 - (void)composeEmailWithSubject:(id)arg1 body:(id)arg2;
 - (void)composeReviewWithURL:(id)arg1 itemIdentifier:(id)arg2 type:(id)arg3;
 - (struct OpaqueJSContext *)copyJavaScriptContext;
+- (id)currentAttestationVersion;
 - (void)dealloc;
 - (void)deallocAuthentication;
 - (void)deallocCarrierBundlingController;
@@ -240,6 +241,7 @@
 - (id)makeWindow;
 - (id)makeXMLHTTPRequest;
 - (id)makeXMLHTTPStoreRequest;
+- (id)minimumAttestationVersionForAction:(unsigned long long)arg1;
 - (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
 - (void)openFamilyCircleSetupWithClientName:(id)arg1 completionFunction:(id)arg2;
 - (void)openURL:(id)arg1;

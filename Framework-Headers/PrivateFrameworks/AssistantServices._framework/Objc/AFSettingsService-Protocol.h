@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFRequestInfo, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
+@class AFAudioPlaybackRequest, AFDeleteSiriHistoryContext, AFRequestInfo, AFVoiceInfo, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL, NSUUID;
 
 @protocol AFSettingsService <NSObject>
 - (oneway void)_clearSyncNeededForKey:(NSString *)arg1;
@@ -15,14 +15,17 @@
 - (oneway void)_runServiceMaintenance;
 - (oneway void)_setSyncNeededForReason:(NSString *)arg1;
 - (void)_setSyncVerificationNeededAndFullReportNeeded:(BOOL)arg1 shouldPostNotification:(BOOL)arg2 completion:(void (^)(NSArray *))arg3;
+- (oneway void)_shutdownSessionIfIdle;
 - (oneway void)_startDeepSyncVerificationForKeys:(NSArray *)arg1;
 - (oneway void)_syncDataWithAnchorKeys:(NSArray *)arg1 forceReset:(BOOL)arg2 reason:(NSString *)arg3 reply:(void (^)(NSArray *))arg4;
 - (oneway void)addMultiUserUser:(NSString *)arg1 sharedId:(NSString *)arg2 loggableSharedId:(NSString *)arg3 enrollmentName:(NSString *)arg4 isPrimary:(BOOL)arg5 completion:(void (^)(NSError *))arg6;
 - (oneway void)barrierWithReply:(void (^)(void))arg1;
+- (oneway void)clearOpportuneSpeakingEdgeDetectorSignalOverride;
 - (oneway void)clearSpokenNotificationTemporarilyDisabledStatus;
 - (oneway void)configOverrides:(void (^)(NSDictionary *))arg1;
 - (oneway void)createOfflineSpeechProfileWithLanguage:(NSString *)arg1 JSONData:(NSData *)arg2 completion:(void (^)(NSData *, NSError *))arg3;
 - (oneway void)deleteAccountWithIdentifier:(NSString *)arg1;
+- (oneway void)deleteSiriHistoryWithContext:(AFDeleteSiriHistoryContext *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (oneway void)disableAndDeleteCloudSyncWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)dismissUI;
 - (oneway void)fetchEventRecordsFromAnalyticsStoreAtPath:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
@@ -39,12 +42,14 @@
 - (oneway void)getDevicesWithAvailablePHSAssetsForLanguage:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getDevicesWithAvailablePHSAssetsOnDeviceCheck:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getHomeUserIdForSharedUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (oneway void)getMeCard:(void (^)(SAPerson *, NSError *))arg1;
 - (oneway void)getOfflineDictationStatusWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getPairedBluetoothDeviceInfoArrayWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)getPeerIdentifiers:(void (^)(NSArray *))arg1;
 - (oneway void)getSharedCompanionInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getSharedUserID:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (oneway void)getSharedUserIdForHomeUserId:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (oneway void)getSiriDataSharingOptInStatusWithCompletion:(void (^)(long long))arg1;
 - (oneway void)getSiriOutputVolumeForAudioRoute:(NSString *)arg1 completion:(void (^)(float, NSError *))arg2;
 - (oneway void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(void (^)(BOOL))arg1;
@@ -56,6 +61,7 @@
 - (oneway void)getSupplementalLanguagesDictionary:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)getSupplementalLanguagesForProduct:(NSString *)arg1 forBuildVersion:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (oneway void)getSupplementalLanguagesModificationDate:(void (^)(NSDate *, NSError *))arg1;
+- (oneway void)homeOnboardingFlowInvoked:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)purgeAnalyticsStoreWithCompletion:(void (^)(NSError *))arg1;
 - (oneway void)removeMultiUserUser:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)removeMultiUserUserWithSharedUserId:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
@@ -77,10 +83,15 @@
 - (oneway void)setNanoOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoPhraseSpotterEnabled:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoRaiseToSpeakEnabled:(BOOL)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setNanoSiriDataSharingOptInStatus:(long long)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoTTSSpeakerVolume:(NSNumber *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setNanoUseDeviceSpeakerForTTS:(NSNumber *)arg1 withCompletion:(void (^)(void))arg2;
 - (oneway void)setOfflineDictationProfileOverridePath:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)setOpportuneSpeakingEdgeDetectorSignalOverride:(long long)arg1;
 - (oneway void)setOutputVoice:(AFVoiceInfo *)arg1 withCompletion:(void (^)(void))arg2;
+- (oneway void)setSiriDataSharingOptInAlertPresented:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (oneway void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(void (^)(void))arg2;
+- (oneway void)setSiriDesignModeEnabled:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (oneway void)setSiriOutputVolume:(float)arg1 forAudioRoute:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
 - (oneway void)setSpokenNotificationShouldSkipTriggerlessReplies:(BOOL)arg1;
@@ -88,7 +99,9 @@
 - (oneway void)setSpokenNotificationTemporarilyDisabledUntil:(NSDate *)arg1;
 - (oneway void)setSupplementalLanguageDictionary:(NSDictionary *)arg1 forProduct:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)setSupplementalLanguages:(NSArray *)arg1 forProduct:(NSString *)arg2 forBuildVersion:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
+- (oneway void)shouldSuppressSiriDataSharingOptInAlertWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)showMultiUsers:(void (^)(NSArray *))arg1;
+- (oneway void)siriDesignModeIsEnabled:(void (^)(BOOL))arg1;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)startObservingBluetoothWirelessSplitterSession;
 - (oneway void)startRemoteRequest:(AFRequestInfo *)arg1 onPeer:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

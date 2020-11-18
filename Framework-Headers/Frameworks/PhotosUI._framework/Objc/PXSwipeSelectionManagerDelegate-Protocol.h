@@ -20,5 +20,6 @@
 - (BOOL)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 shouldBeginSelectionAtLocation:(struct CGPoint)arg2;
 - (BOOL)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 shouldSelectItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(PXSwipeSelectionManager *)arg1;
+- (void)swipeSelectionManagerDidAutoScroll:(PXSwipeSelectionManager *)arg1;
 @end
 

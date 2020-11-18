@@ -26,9 +26,10 @@
 - (id)_queue_changesByTypeWithDatabase:(id)arg1 sinceAnchor:(long long)arg2 error:(id *)arg3;
 - (void)_queue_deliverError:(id)arg1;
 - (void)_queue_deliverQueryAnchor:(id)arg1 sampleTypeChanges:(id)arg2;
-- (id)_queue_detailedChangeUsingAnchorIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 database:(id)arg3 error:(id *)arg4;
-- (id)_queue_detailedChangeUsingDateIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 database:(id)arg3 error:(id *)arg4;
+- (id)_queue_detailedChangeUsingAnchorIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 hasUnfrozenSeries:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
+- (id)_queue_detailedChangeUsingDateIndexStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 hasUnfrozenSeries:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
 - (long long)_queue_queryStrategyForType:(id)arg1 sinceAnchor:(long long)arg2 currentAnchor:(long long)arg3;
+- (id)_queue_sampleTypeCodesWithUnfrozenSeriesWithAuthorizedTypes:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (void)_queue_start;
 - (BOOL)_shouldListenForUpdates;
 - (void)didAddSamplesOfTypes:(id)arg1 anchor:(id)arg2;

@@ -37,12 +37,14 @@
 - (void)_enqueueRequestForAppIconForIdentifier:(id)arg1;
 - (BOOL)_fetchIconFromLaunchServicesWithIdentifier:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)cacheAppIcon:(id)arg1 forIdentifier:(id)arg2;
+- (id)cachedIconForIdentifier:(id)arg1;
 - (void)cancelLoadAppImageAtURL:(id)arg1;
 - (void)clearImageCache;
 - (id)defaultAppIcon;
 - (id)init;
 - (void)loadAppIconForIdentifier:(id)arg1 onCompletion:(CDUnknownBlockType)arg2;
 - (void)loadAppImageAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)loadResearchStudyIconForSource:(id)arg1;
 
 @end
 

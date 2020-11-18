@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (BOOL)_accessibilityCanPerformAction:(int)arg1;
 - (id)_accessibilityCustomActionGroupIdentifier;
+- (BOOL)_accessibilityIsVisibleByCompleteHitTest;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollAncestor;

@@ -28,7 +28,6 @@
 - (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom;
 - (double)_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge;
 - (id)_settingsByInterpolatingBetween:(id)arg1 and:(id)arg2 progress:(double)arg3;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (long long)backdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
@@ -50,6 +49,7 @@
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)topMostAppLayouts;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;

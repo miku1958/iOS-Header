@@ -38,6 +38,7 @@
     NCNotificationListSectionRevealHintView *_revealHintView;
     double _headerViewHeight;
     unsigned long long _dynamicGroupingThreshold;
+    NSMutableSet *_groupListsToSort;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
@@ -51,6 +52,7 @@
 @property (nonatomic, getter=isDynamicGroupingActive) BOOL dynamicGroupingActive; // @synthesize dynamicGroupingActive=_dynamicGroupingActive;
 @property (nonatomic) unsigned long long dynamicGroupingThreshold; // @synthesize dynamicGroupingThreshold=_dynamicGroupingThreshold;
 @property (strong, nonatomic) NSMutableDictionary *filteredNotificationRequests; // @synthesize filteredNotificationRequests=_filteredNotificationRequests;
+@property (strong, nonatomic) NSMutableSet *groupListsToSort; // @synthesize groupListsToSort=_groupListsToSort;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationListSectionHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
@@ -119,6 +121,7 @@
 - (id)notificationGroupList:(id)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 isLongLook:(BOOL)arg3;
 - (void)notificationGroupList:(id)arg1 requestsScrollToTopOfGroupWithCompletion:(CDUnknownBlockType)arg2;
 - (void)notificationGroupListDidRemoveAllNotificationRequests:(id)arg1;
+- (BOOL)notificationGroupListShouldScrollToTop:(id)arg1;
 - (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1;
 - (double)notificationListView:(id)arg1 heightForItemAtIndex:(unsigned long long)arg2;
 - (id)notificationListView:(id)arg1 viewForItemAtIndex:(unsigned long long)arg2;
@@ -135,6 +138,7 @@
 - (void)sectionHeaderViewDidPresentForceTouchView:(id)arg1;
 - (void)sectionHeaderViewDidReceiveClearAllAction:(id)arg1;
 - (void)sectionHeaderViewDidTransitionToClearState:(id)arg1;
+- (void)sortNotificationGroupListsIfNecessary;
 - (void)toggleFilteringForSectionIdentifier:(id)arg1 shouldFilter:(BOOL)arg2;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 

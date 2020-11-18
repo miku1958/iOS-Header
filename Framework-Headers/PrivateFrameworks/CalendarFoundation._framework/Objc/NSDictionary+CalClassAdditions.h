@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (CalClassAdditions)
+- (id)CalDictionaryWithEmptyObjectsRemoved;
 - (BOOL)CalHasKeyIn:(id)arg1;
 - (id)CalMutableRecursiveCopy;
 - (id)filteredDictionaryPassingTest:(CDUnknownBlockType)arg1;

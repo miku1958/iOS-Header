@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentMerchantSession;
+@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentInstallmentConfiguration, PKPaymentMerchantSession;
 
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
@@ -65,6 +65,7 @@
     NSString *_passTypeIdentifier;
     NSString *_passSerialNumber;
     double _clientCallbackTimeout;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 @property (nonatomic) unsigned long long APIType; // @synthesize APIType=_APIType;
@@ -88,6 +89,7 @@
 @property (nonatomic) BOOL deviceSupportsPeerPaymentAccountPayment; // @synthesize deviceSupportsPeerPaymentAccountPayment=_deviceSupportsPeerPaymentAccountPayment;
 @property (nonatomic) BOOL expectsMerchantSession; // @synthesize expectsMerchantSession=_expectsMerchantSession;
 @property (copy, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
+@property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property (copy, nonatomic) NSString *localizedBiometricConfirmationTitle; // @synthesize localizedBiometricConfirmationTitle=_localizedBiometricConfirmationTitle;
 @property (copy, nonatomic) NSString *localizedConfirmationTitle; // @synthesize localizedConfirmationTitle=_localizedConfirmationTitle;
 @property (copy, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;

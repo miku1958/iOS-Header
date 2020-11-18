@@ -35,6 +35,7 @@
 - (id)_fileTransferCenter;
 - (BOOL)_hasMessagesWithGUIDs:(id)arg1;
 - (BOOL)_isUsingStingRay;
+- (BOOL)_isValidPhoneNumber:(id)arg1 forCountryCode:(id)arg2;
 - (BOOL)_itemClassShouldUpdateTransferForItem:(id)arg1;
 - (id)_itemsWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(BOOL)arg2;
 - (id)_itemsWithGUIDs:(id)arg1;

@@ -49,6 +49,7 @@
 - (void)dealloc;
 - (void)done:(id)arg1;
 - (id)initWithCalendar:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3 limitedToSource:(id)arg4;
+- (BOOL)isModalInPresentation;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)owningNavigationController;

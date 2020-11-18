@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
-- (void)setContentInsetAdjustmentBehavior:(long long)arg1;
 - (void)setDocument:(id)arg1;
 - (void)setForcesTopAlignment:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;

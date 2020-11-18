@@ -30,9 +30,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPredicates:(id)arg1;
-- (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 
 @end
 

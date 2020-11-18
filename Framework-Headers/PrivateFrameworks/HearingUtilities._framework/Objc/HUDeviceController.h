@@ -31,6 +31,7 @@
 - (id)hearingAidForDeviceID:(id)arg1;
 - (id)init;
 - (void)registerForPropertyUpdates:(CDUnknownBlockType)arg1;
+- (BOOL)representsLocalDevices;
 - (void)stopPropertyUpdates;
 - (void)updateProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
 - (void)writeValue:(id)arg1 forProperty:(unsigned long long)arg2 andDeviceID:(id)arg3;

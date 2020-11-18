@@ -71,6 +71,7 @@
 - (BOOL)startRunningWorkflow:(id)arg1 forTrigger:(id)arg2 eventInfo:(id)arg3 error:(out id *)arg4;
 - (void)unregisterAllTriggers;
 - (void)unregisterCallbackForIdentifier:(id)arg1;
+- (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

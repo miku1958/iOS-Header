@@ -8,15 +8,17 @@
 
 #import <LinkPresentation/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, UIColor;
 
 @interface LPImageProperties : NSObject <NSCopying>
 {
     NSString *_accessibilityText;
     long long _type;
+    UIColor *_overlaidTextColor;
 }
 
 @property (copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
+@property (strong, nonatomic) UIColor *overlaidTextColor; // @synthesize overlaidTextColor=_overlaidTextColor;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

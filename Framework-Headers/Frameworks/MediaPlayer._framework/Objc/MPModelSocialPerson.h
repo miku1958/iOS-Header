@@ -28,7 +28,6 @@
 + (id)__uncensoredName_KEY;
 + (id)__verified_KEY;
 + (id)kind;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
 
 @end

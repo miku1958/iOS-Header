@@ -34,7 +34,9 @@
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (id)__cloudRecordWithObjectID:(id)arg1;
+- (void)_cloudRecordsForParentIDs:(id)arg1 recursive:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addCloudRecord:(id)arg1;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cloudRecordWithName:(id)arg1;
 - (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -54,6 +56,7 @@
 - (id)rootRecordModelObject;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

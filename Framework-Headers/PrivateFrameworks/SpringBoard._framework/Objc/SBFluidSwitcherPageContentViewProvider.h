@@ -32,6 +32,7 @@
 - (id)_containerViewController;
 - (long long)_interfaceOrientation;
 - (struct CGSize)_pageViewSizeForAppLayout:(id)arg1;
+- (long long)_preferredContentInterfaceOrientationForViewController:(id)arg1 preferredInterfaceOrientation:(long long)arg2;
 - (void)_relinquishTransientOverlayViewController:(id)arg1 forPageContentView:(id)arg2;
 - (id)_snapshotViewDelegate;
 - (id)_snapshotViewForAppLayout:(id)arg1 setActive:(BOOL)arg2;

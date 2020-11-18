@@ -29,6 +29,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClientData:(id)arg1;
 - (id)initWithCoder:(id)arg1;

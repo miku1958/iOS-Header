@@ -9,7 +9,7 @@
 #import <RelevanceEngineUI/NSCopying-Protocol.h>
 #import <RelevanceEngineUI/NSSecureCoding-Protocol.h>
 
-@class INIntent, INRelevantShortcut, NSString, NSUserActivity, REDonatedAction, UIImage;
+@class INIntent, INInteraction, INRelevantShortcut, NSString, NSUserActivity, REDonatedAction, UIImage;
 
 @interface REUIDonatedElementProperties : NSObject <NSSecureCoding, NSCopying>
 {
@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) unsigned long long donationType;
 @property (readonly, nonatomic) UIImage *fullsizeAppIcon; // @synthesize fullsizeAppIcon=_fullsizeAppIcon;
 @property (readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property (readonly, nonatomic) INInteraction *interaction;
 @property (readonly, nonatomic) BOOL isBeginWorkoutDonation;
 @property (readonly, nonatomic) BOOL isEndWorkoutDonation;
 @property (readonly, nonatomic) BOOL isMediaDonation;

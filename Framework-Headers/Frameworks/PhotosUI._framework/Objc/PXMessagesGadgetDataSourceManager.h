@@ -7,16 +7,19 @@
 #import <PhotosUICore/PXGadgetDataSourceManager.h>
 
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
+@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCPLStatus, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
 @protocol PXGadgetDelegate, PXGadgetTransition, PXPhotoLibraryPresenting;
 
-@interface PXMessagesGadgetDataSourceManager : PXGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate>
+@interface PXMessagesGadgetDataSourceManager : PXGadgetDataSourceManager <PXChangeObserver, PXCMMCloudGadgetViewControllerDelegate>
 {
     PXMessagesExtensionViewModel *_viewModel;
     PXCloudWelcomeGadgetProvider *_cloudWelcomeGadgeProvider;
     PXMessagesCMMSuggestionsCollectionGadgetProvider *_suggestionsCollectionGadgetProvider;
     NSArray *_cachedGadgetProviders;
+    PXCPLStatus *_cplStatusProvider;
+    BOOL _cmmIsAvailable;
     PXCMMSuggestionsDataSourceManager *_suggestionsDataSourceManager;
     UIViewController<PXPhotoLibraryPresenting> *_recentPhotosViewController;
     double _recentPhotosHeight;
@@ -42,7 +45,9 @@
 - (void)didUpdateCloudPhotoLibraryEnablement:(id)arg1;
 - (id)gadgetProviders;
 - (id)initWithViewModel:(id)arg1 dataSourceManager:(id)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)presentationRequestForWelcomeCloudViewController:(id)arg1;
+- (void)removeCachedProviders;
 
 @end
 

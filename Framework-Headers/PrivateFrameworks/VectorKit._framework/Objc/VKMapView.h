@@ -220,7 +220,7 @@
 - (void)goToTileX:(int)arg1 Y:(int)arg2 Z:(int)arg3 tileSize:(int)arg4;
 - (BOOL)gridDisabled;
 - (id)iconForStyleAttributes:(id)arg1 contentScale:(double)arg2 size:(long long)arg3 transparent:(BOOL)arg4;
-- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 contentScale:(double)arg3;
+- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 contentScale:(double)arg3 auditToken:(id)arg4;
 - (void)insertOverlay:(id)arg1 aboveOverlay:(id)arg2;
 - (void)insertOverlay:(id)arg1 belowOverlay:(id)arg2;
 - (BOOL)isDimmingBaseMap;

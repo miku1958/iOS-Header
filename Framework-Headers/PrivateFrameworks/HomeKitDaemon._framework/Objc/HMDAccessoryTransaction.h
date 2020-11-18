@@ -24,6 +24,9 @@
 @property (strong, nonatomic) NSNumber *currentNetworkProtectionMode; // @dynamic currentNetworkProtectionMode;
 @property (strong, nonatomic) NSString *firmwareVersion; // @dynamic firmwareVersion;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (strong, nonatomic) NSNumber *initialCategoryIdentifier; // @dynamic initialCategoryIdentifier;
+@property (strong, nonatomic) NSString *initialManufacturer; // @dynamic initialManufacturer;
+@property (strong, nonatomic) NSString *initialModel; // @dynamic initialModel;
 @property (strong, nonatomic) NSNumber *lastNetworkAccessViolationOccurrenceSince1970; // @dynamic lastNetworkAccessViolationOccurrenceSince1970;
 @property (strong, nonatomic) NSNumber *lastNetworkAccessViolationResetSince1970; // @dynamic lastNetworkAccessViolationResetSince1970;
 @property (strong, nonatomic) NSString *manufacturer; // @dynamic manufacturer;
@@ -32,6 +35,7 @@
 @property (strong, nonatomic) NSNumber *networkClientIdentifier; // @dynamic networkClientIdentifier;
 @property (strong, nonatomic) NSNumber *networkClientLAN; // @dynamic networkClientLAN;
 @property (strong, nonatomic) NSString *networkRouterUUID; // @dynamic networkRouterUUID;
+@property (strong, nonatomic) NSString *primaryProfileVersion; // @dynamic primaryProfileVersion;
 @property (strong, nonatomic) NSString *productData; // @dynamic productData;
 @property (strong, nonatomic) NSString *providedName; // @dynamic providedName;
 @property (strong, nonatomic) NSString *roomUUID; // @dynamic roomUUID;

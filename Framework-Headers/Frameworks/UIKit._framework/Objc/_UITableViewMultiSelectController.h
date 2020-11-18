@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleAutoScrollFromPoint:(struct CGPoint)arg1;
 - (BOOL)_isPointInsideEditControl:(struct CGPoint)arg1;
 - (void)_selectIndexPaths:(id)arg1;
+- (BOOL)_shouldBeginInteractionAtPoint:(struct CGPoint)arg1;
 - (id)_tableViewDelegate;
 - (void)_updateSelectedIndexPaths:(id)arg1;
 - (void)_updateSelectedIndexPathsForCurrentSelection;
@@ -47,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)multiSelectInteractionGestureShouldPreventDragLiftGesture:(id)arg1;
 - (void)selectedIndexPathsChanged:(id)arg1;
 - (BOOL)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
-- (BOOL)shouldBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
+- (BOOL)shouldBeginMultiSelectInteraction:(id)arg1 ofType:(long long)arg2 atPoint:(struct CGPoint)arg3 withVelocity:(struct CGPoint)arg4;
 - (BOOL)supportsMultiSelectInteraction:(id)arg1;
 - (void)toggleSelectionStateUpToIndexPath:(id)arg1;
 - (void)uninstallFromTableView;

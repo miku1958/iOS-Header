@@ -25,6 +25,7 @@
 - (void)_frecencySearch;
 - (void)_updateNavigationButton;
 - (BOOL)alwaysShowSearchResultsTable;
+- (id)handlesForScreenTimePolicyCheck;
 - (BOOL)homogenizePreferredServiceForiMessage;
 - (id)initWithConversation:(id)arg1;
 - (void)loadView;

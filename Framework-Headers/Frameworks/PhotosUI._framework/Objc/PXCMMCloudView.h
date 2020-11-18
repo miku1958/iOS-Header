@@ -22,6 +22,7 @@
     UIImageView *_graphicImageView;
     UILabel *_bodyLabel;
     UIButton *_learnMoreButton;
+    unsigned long long _style;
 }
 
 @property (readonly, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) PXGradientView *graphicGradientView; // @synthesize graphicGradientView=_graphicGradientView;
 @property (readonly, nonatomic) UIImageView *graphicImageView; // @synthesize graphicImageView=_graphicImageView;
 @property (readonly, nonatomic) UIButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (id)_constrainedFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
@@ -39,7 +41,7 @@
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(BOOL)arg2;
 - (void)_setupSubviews;
 - (void)_updateFontAndStyle;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

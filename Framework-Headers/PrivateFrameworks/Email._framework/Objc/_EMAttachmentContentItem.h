@@ -10,7 +10,7 @@
 #import <Email/EMMutableContentItem-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class EMObjectID, NSArray, NSDate, NSString;
+@class EMMailDropMetadata, EMObjectID, NSArray, NSString;
 
 @interface _EMAttachmentContentItem : EMObject <EFPubliclyDescribable, EMMutableContentItem, NSSecureCoding>
 {
@@ -24,7 +24,7 @@
     CDUnknownBlockType _loaderBlock;
     long long _storageByteCount;
     NSString *_UTType;
-    NSDate *_expiryDate;
+    EMMailDropMetadata *_mailDropMetadata;
 }
 
 @property (readonly, copy, nonatomic) NSString *UTType;
@@ -36,11 +36,11 @@
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (readonly, nonatomic) int exchangeEventUID;
-@property (readonly, nonatomic) NSDate *expiryDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAvailableLocally;
 @property (nonatomic) BOOL isSinglePagePDF; // @synthesize isSinglePagePDF=_isSinglePagePDF;
 @property (copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
+@property (readonly, copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property (readonly, copy, nonatomic) EMObjectID *objectID;
 @property (readonly, nonatomic) long long storageByteCount;
 @property (readonly) Class superclass;
@@ -57,8 +57,8 @@
 - (void)setDataTransferByteCount:(long long)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)setExchangeEventUID:(int)arg1;
-- (void)setExpiryDate:(id)arg1;
 - (void)setIsAvailableLocally:(BOOL)arg1;
+- (void)setMailDropMetadata:(id)arg1;
 - (void)setStorageByteCount:(long long)arg1;
 - (void)setUTType:(id)arg1;
 

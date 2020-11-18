@@ -13,7 +13,7 @@
 #import <Email/EMMessageListItem-Protocol.h>
 #import <Email/EMMutableMessageListItem-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString, NSUUID;
+@class ECMessageFlags, ECSubject, EMMailDropMetadata, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString, NSUUID;
 @protocol ECEmailAddressConvertible, EMCollectionItemID;
 
 @interface EMMessage : EMRepositoryObject <EFLoggable, EMMessageBuilder, EMExtendedContentItem, EMMutableMessageListItem, EMMessageListItem, EMContentItem>
@@ -39,14 +39,16 @@
     NSArray *_ccList;
     long long _dataTransferByteCount;
     long long _storageByteCount;
-    NSDate *_expiryDate;
+    EMMailDropMetadata *_mailDropMetadata;
     CDUnknownBlockType _loaderBlock;
+    long long __internalID;
     id<ECEmailAddressConvertible> _senderAddress;
     NSArray *_bccList;
     NSUUID *_documentID;
 }
 
 @property (readonly, copy, nonatomic) NSString *UTType;
+@property long long _internalID; // @synthesize _internalID=__internalID;
 @property (readonly, copy, nonatomic) NSArray *availableRepresentations;
 @property (copy, nonatomic) NSArray *bccList; // @synthesize bccList=_bccList;
 @property (readonly, copy) NSArray *ccList;
@@ -66,7 +68,6 @@
 @property (copy, nonatomic) NSUUID *documentID; // @synthesize documentID=_documentID;
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (readonly, nonatomic) int exchangeEventUID;
-@property (readonly, nonatomic) NSDate *expiryDate;
 @property (readonly, copy) NSIndexSet *flagColors;
 @property (readonly) ECMessageFlags *flags;
 @property (readonly) BOOL hasAttachments;
@@ -81,6 +82,7 @@
 @property (readonly) BOOL isVIP;
 @property (readonly, nonatomic) id<EMCollectionItemID> itemID;
 @property (copy, nonatomic) CDUnknownBlockType loaderBlock; // @synthesize loaderBlock=_loaderBlock;
+@property (readonly, copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property (readonly, copy) NSArray *mailboxObjectIDs;
 @property (readonly, copy) NSArray *mailboxes;
 @property (readonly, copy, nonatomic) EMObjectID *objectID;
@@ -104,6 +106,7 @@
 + (id)log;
 + (id)predicateForExcludingMessageWithObjectID:(id)arg1;
 + (id)predicateForExcludingMessagesWithObjectIDs:(id)arg1;
++ (id)predicateForMessageWithInternalID:(long long)arg1;
 + (id)predicateForMessageWithItemID:(id)arg1 mailboxPredicate:(id)arg2 mailboxTypeResolver:(id)arg3;
 + (id)predicateForMessageWithMIMEMessageIDHeader:(id)arg1;
 + (id)predicateForMessageWithObjectID:(id)arg1;
@@ -131,7 +134,6 @@
 - (void)setDisplayMessageItemID:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)setExchangeEventUID:(int)arg1;
-- (void)setExpiryDate:(id)arg1;
 - (void)setFlagColors:(id)arg1;
 - (void)setFlags:(id)arg1;
 - (void)setHasAttachments:(BOOL)arg1;
@@ -141,6 +143,7 @@
 - (void)setIsCCMe:(BOOL)arg1;
 - (void)setIsToMe:(BOOL)arg1;
 - (void)setIsVIP:(BOOL)arg1;
+- (void)setMailDropMetadata:(id)arg1;
 - (void)setMailboxObjectIDs:(id)arg1;
 - (void)setMailboxes:(id)arg1;
 - (void)setRepository:(id)arg1;

@@ -25,7 +25,7 @@
 - (void)_createDefaultDownloadsFolderInParent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_createErrorForCode:(long long)arg1 localizedDescription:(id)arg2 underlyingError:(id)arg3;
 - (void)_fetchAvailableProviders:(CDUnknownBlockType)arg1;
-- (void)_fetchDefaultFallbackDownloadLocation:(CDUnknownBlockType)arg1;
+- (void)_fetchDefaultFallbackDownloadLocationWithPreferredDomain:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchProviders:(CDUnknownBlockType)arg1;
 - (void)_preferredProvidersIn:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeCurrentDownloadsLocationFromFavorites;

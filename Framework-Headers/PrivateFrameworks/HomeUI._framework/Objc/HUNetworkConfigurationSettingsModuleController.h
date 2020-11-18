@@ -20,7 +20,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)_presentNetworkConfigurationSettingsMismatchAlert;
 - (id)_presentNetworkConfigurationSettingsMismatchViewController;
 - (BOOL)canSelectItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;

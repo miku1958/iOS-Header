@@ -85,7 +85,7 @@
 - (void)logDidFinishEditingWithSuccess;
 - (void)logDidResetZoneWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)logDiscoveredDuplicates:(id)arg1 count:(unsigned long long)arg2;
-- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1;
+- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1 handlersCount:(unsigned long long)arg2;
 - (void)logDonePreLoadingPreset:(id)arg1 task:(id)arg2;
 - (void)logDonePreLoadingThumbnailForPreLoadingTask:(id)arg1;
 - (void)logDroppingUnsupportedAvatarRecord:(id)arg1;
@@ -156,6 +156,7 @@
 - (void)logParsingMetadataDefinitionsError:(id)arg1;
 - (void)logPerformTransition:(id)arg1;
 - (void)logPerformedRecentStickersMigration:(BOOL)arg1;
+- (void)logPersistentChangeNotOfInterest:(id)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(id)arg1;
 - (void)logPreLoadingNeededForIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)logPreLoadingPreset:(id)arg1 task:(id)arg2;

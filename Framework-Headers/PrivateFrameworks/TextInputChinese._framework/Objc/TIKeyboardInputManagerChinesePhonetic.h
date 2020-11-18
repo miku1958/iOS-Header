@@ -20,6 +20,7 @@
     BOOL _isInAmbiguousMode;
     BOOL _lockingFirstPinyinSyllable;
     BOOL _filterCandidatesUsingInputIndex;
+    BOOL _shouldClearBeforeContinuousPath;
     BOOL _skipSetMarkedTextDuringInput;
     TIConversionHistory *_conversionHistory;
     NSString *_remainingInput;
@@ -46,6 +47,7 @@
 @property (copy, nonatomic) NSString *replacedAmbiguousPinyinSyllable; // @synthesize replacedAmbiguousPinyinSyllable=_replacedAmbiguousPinyinSyllable;
 @property (copy, nonatomic) NSString *replacementUnambiguousPinyinSyllable; // @synthesize replacementUnambiguousPinyinSyllable=_replacementUnambiguousPinyinSyllable;
 @property (nonatomic) unsigned long long selectedPinyinSyllableCandidateIndex; // @synthesize selectedPinyinSyllableCandidateIndex=_selectedPinyinSyllableCandidateIndex;
+@property (nonatomic) BOOL shouldClearBeforeContinuousPath; // @synthesize shouldClearBeforeContinuousPath=_shouldClearBeforeContinuousPath;
 @property (nonatomic) BOOL skipSetMarkedTextDuringInput; // @synthesize skipSetMarkedTextDuringInput=_skipSetMarkedTextDuringInput;
 @property (readonly, nonatomic) NSString *unconvertedInput;
 @property (readonly, nonatomic) BOOL usesGeometryModelData;
@@ -62,9 +64,11 @@
 - (id)addInput:(id)arg1 flags:(unsigned int)arg2 point:(struct CGPoint)arg3 firstDelete:(unsigned long long *)arg4;
 - (void)addInput:(id)arg1 withContext:(id)arg2;
 - (void)addInputToInternal:(id)arg1;
+- (long long)addTouch:(id)arg1 shouldHitTest:(BOOL)arg2;
 - (struct _NSRange)analysisStringRange;
 - (BOOL)canStartSentenceAfterString:(id)arg1;
 - (id)candidateResultSet;
+- (id)candidateResultSetByWaitingForResults:(BOOL)arg1;
 - (void)checkAutocorrectionDictionaries;
 - (void)clearDynamicDictionary;
 - (void)clearInput;
@@ -140,7 +144,7 @@
 - (void)suspend;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(BOOL)arg3;
 - (void)syncToLayoutState:(id)arg1;
-- (BOOL)updateCandidates;
+- (BOOL)updateCandidatesByWaitingForResults:(BOOL)arg1;
 - (void)updateComposedText;
 - (BOOL)usesAutoDeleteWord;
 - (BOOL)usesCandidateSelection;

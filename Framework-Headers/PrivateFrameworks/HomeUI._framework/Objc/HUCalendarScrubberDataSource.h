@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
+- (void)_updateDateBoundariesIfNeeded;
 - (void)addChangeObserver:(id)arg1;
 - (id)dateAtIndexPath:(id)arg1;
 - (long long)dayOfMonthForItemAtIndexPath:(id)arg1;

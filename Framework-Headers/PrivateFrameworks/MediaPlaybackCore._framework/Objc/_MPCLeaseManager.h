@@ -6,21 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngine;
+#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 
-@interface _MPCLeaseManager : NSObject
+@class MPCPlaybackEngine, NSMutableSet, NSString;
+
+@interface _MPCLeaseManager : NSObject <MPCPlaybackEngineEventObserving>
 {
     BOOL _isPreparingForImminentPlaybackIntent;
     MPCPlaybackEngine *_playbackEngine;
+    NSMutableSet *_leaseEndIgnoreReasons;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableSet *leaseEndIgnoreReasons; // @synthesize leaseEndIgnoreReasons=_leaseEndIgnoreReasons;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_playerDidPauseForPlaybackPreventionNotification:(id)arg1;
-- (void)dealloc;
+- (void)_itemShouldPreventPlaybackDidChangeNotification:(id)arg1;
+- (void)_updateStateForPlaybackPrevention;
+- (void)beginIgnoringLeaseEndEventsForReason:(id)arg1;
+- (void)endIgnoringLeaseEndEventsForReason:(id)arg1;
+- (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
+- (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
 - (id)initWithPlaybackEngine:(id)arg1;
+- (void)prepareForCurrentItemPlayback;
 - (void)prepareForPlaybackWithUserIdentity:(id)arg1;
+- (void)setCanStealLeaseIfNeeded;
 
 @end
 

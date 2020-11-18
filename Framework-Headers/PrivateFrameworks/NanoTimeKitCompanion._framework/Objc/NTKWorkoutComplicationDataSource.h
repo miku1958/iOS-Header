@@ -16,7 +16,6 @@
     BOOL _deviceIsLocked;
     int _workoutStateNotifyToken;
     NSArray *_animationImages;
-    BOOL _frozen;
     BOOL _loadingLastWorkout;
     BOOL _hasKnownLastWorkoutState;
     HKWorkout *_lastWorkout;
@@ -53,8 +52,9 @@
 - (void)_startObserving;
 - (void)_stopLastWorkoutQuerySynchronously:(BOOL)arg1;
 - (void)_stopObservingSynchronously:(BOOL)arg1;
-- (id)_templateForActiveWorkout;
+- (id)_templateForActiveWorkoutInSwitcher:(BOOL)arg1;
 - (void)_updateActiveWorkoutState;
+- (BOOL)alwaysShowIdealizedTemplateInSwitcher;
 - (id)complicationApplicationIdentifier;
 - (id)currentSwitcherTemplate;
 - (void)dealloc;
@@ -63,8 +63,8 @@
 - (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
-- (void)pause;
 - (void)resume;
+- (void)resumeAnimations;
 - (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 
 @end

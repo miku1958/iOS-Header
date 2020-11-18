@@ -77,6 +77,7 @@
 - (id)cardViewController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (void)cardViewControllerDidDismiss:(id)arg1;
 - (void)cardViewControllerWillDismiss:(id)arg1;
+- (void)cleanupAfterDisplay;
 - (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
 - (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;

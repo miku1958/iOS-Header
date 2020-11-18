@@ -41,5 +41,7 @@
 - (void)siriViewController:(AFUISiriViewController *)arg1 requestsPresentation:(void (^)(BOOL))arg2;
 - (void)siriViewController:(AFUISiriViewController *)arg1 willStartTest:(NSString *)arg2;
 - (void)siriViewControllerDidFinishDismissing:(AFUISiriViewController *)arg1;
+- (void)siriViewControllerSpeechRequestCancelledFromSiriOrb;
+- (void)siriViewControllerSpeechRequestStartedFromSiriOrb;
 @end
 

@@ -54,6 +54,7 @@
 + (id)supportedLanguagesForOptions:(id)arg1 revision:(long long)arg2 error:(id *)arg3;
 + (id)textResultsForCGImage:(struct CGImage *)arg1 numberOfCandidates:(long long)arg2;
 + (id)textResultsForCGImage:(struct CGImage *)arg1 numberOfCandidates:(long long)arg2 title:(id *)arg3;
++ (id)textResultsForCGImage:(struct CGImage *)arg1 numberOfCandidates:(long long)arg2 title:(id *)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (long long)_fkcrIndexOfBestModelForAspectRatio:(float)arg1;
 - (long long)_indexOfBestModelForAspectRatio:(float)arg1;

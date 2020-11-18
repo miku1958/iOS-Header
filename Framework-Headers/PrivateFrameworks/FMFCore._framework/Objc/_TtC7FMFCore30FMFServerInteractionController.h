@@ -14,6 +14,7 @@
     MISSING_TYPE *authenticationProvider;
     MISSING_TYPE *serverInteractionQueue;
     MISSING_TYPE *networkInitializationCompleted;
+    MISSING_TYPE *lastActiveTimestamp;
     MISSING_TYPE *delegate;
     MISSING_TYPE *alertDelegate;
     MISSING_TYPE *serverContext;

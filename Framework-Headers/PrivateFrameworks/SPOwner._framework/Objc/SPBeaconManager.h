@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <SPOwner/SPBLEStateMonitorDelegate-Protocol.h>
 #import <SPOwner/SPMonitorsWrapperDelegate-Protocol.h>
 
-@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSString, SPMonitorsWrapper;
+@class FMXPCServiceDescription, FMXPCSession, FMXPCTimer, NSString, SPBLEStateMonitor, SPMonitorsWrapper;
 @protocol OS_dispatch_queue, OS_dispatch_source, SPBeaconManagerXPCProtocol;
 
-@interface SPBeaconManager : NSObject <SPMonitorsWrapperDelegate>
+@interface SPBeaconManager : NSObject <SPMonitorsWrapperDelegate, SPBLEStateMonitorDelegate>
 {
     BOOL _currentBeaconingState;
     BOOL _forceBeaconingOff;
@@ -33,11 +34,13 @@
     FMXPCTimer *_periodicActionXpcTimer;
     NSObject<OS_dispatch_source> *_periodicActionDispatchTimer;
     SPMonitorsWrapper *_monitorWrapper;
+    SPBLEStateMonitor *_bleMonitor;
     long long _cachedLocalBeaconManagerState;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType beaconingKeyChangedBlock; // @synthesize beaconingKeyChangedBlock=_beaconingKeyChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType beaconingKeyChangedBlockWithCompletion; // @synthesize beaconingKeyChangedBlockWithCompletion=_beaconingKeyChangedBlockWithCompletion;
+@property (strong, nonatomic) SPBLEStateMonitor *bleMonitor; // @synthesize bleMonitor=_bleMonitor;
 @property (nonatomic) long long cachedLocalBeaconManagerState; // @synthesize cachedLocalBeaconManagerState=_cachedLocalBeaconManagerState;
 @property (nonatomic) BOOL currentBeaconingState; // @synthesize currentBeaconingState=_currentBeaconingState;
 @property (nonatomic) unsigned char currentStatus; // @synthesize currentStatus=_currentStatus;
@@ -66,12 +69,14 @@
 + (id)scheduleDateInterval:(id)arg1;
 - (void).cxx_destruct;
 - (void)_invalidate;
+- (void)allBeaconsOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allBeaconsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beaconForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beaconingStateChanged:(long long)arg1;
 - (void)beaconingStateChangedNotification:(id)arg1;
 - (void)beaconsChanged:(id)arg1;
+- (void)bleMonitor:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)checkInPeriodicActionXpcTimer;
 - (void)dealloc;
 - (id)init;

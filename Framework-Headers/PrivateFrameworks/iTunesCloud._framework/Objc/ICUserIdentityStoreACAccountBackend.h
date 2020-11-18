@@ -38,7 +38,9 @@
 - (void)_activeStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_allStoreAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applyIdentityProperties:(id)arg1 toAccount:(id)arg2;
+- (void)_applyLocalStoreAccountProperties:(id)arg1 toAccount:(id)arg2;
 - (void)_handleITunesStoreAccountsChanged;
+- (id)_newLocalStoreAccountPropertiesFromAccount:(id)arg1;
 - (id)_newUserIdentityPropertiesForAccount:(id)arg1;
 - (id)_primaryICloudAccountIdentityProperties;
 - (void)_storeAccountForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -54,9 +56,12 @@
 - (id)init;
 - (id)initWithACAccountStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)localStoreAccountPropertiesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)localStoreAccountPropertiesWithError:(id *)arg1;
 - (void)removeIdentityForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setLocalStoreAccountProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;

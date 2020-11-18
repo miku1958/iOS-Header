@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) PGGraphUpdateManager *updateManager; // @synthesize updateManager=_updateManager;
 
 - (void).cxx_destruct;
-- (void)_configureGraphManager;
+- (void)_configureGraphManagerWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)_graphBecameReady:(id)arg1;
 - (void)_performRebuildFullRebuild:(BOOL)arg1 withProgressBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_startListeningWithClient:(id)arg1;
@@ -39,11 +39,11 @@
 - (void)dealloc;
 - (BOOL)graphNeedsRebuild;
 - (id)initWithManager:(id)arg1;
-- (id)loadGraph;
+- (id)loadGraphWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)multicasterHasNoReceivers:(id)arg1 invalidateBlock:(CDUnknownBlockType)arg2;
 - (void)performFullRebuildWithProgressBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)performLightWeightRebuildWithProgressBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (id)registerGraphClient:(id)arg1;
+- (id)registerGraphClient:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)shutdown;
 - (id)statusAsDictionary;
 - (void)suspendGraphUpdateAndPerformBlock:(CDUnknownBlockType)arg1;

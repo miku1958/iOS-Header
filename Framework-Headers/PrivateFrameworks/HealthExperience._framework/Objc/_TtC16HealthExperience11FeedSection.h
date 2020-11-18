@@ -6,17 +6,9 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSOrderedSet, NSString, _TtC16HealthExperience4Feed;
-
 @interface _TtC16HealthExperience11FeedSection : NSManagedObject
 {
 }
-
-@property (nonatomic, strong) _TtC16HealthExperience4Feed *feed; // @dynamic feed;
-@property (nonatomic, strong) NSOrderedSet *feedItems; // @dynamic feedItems;
-@property (nonatomic, copy) NSString *identifier; // @dynamic identifier;
-@property (nonatomic) BOOL isCollapsible; // @dynamic isCollapsible;
-@property (nonatomic) long long sortOrder; // @dynamic sortOrder;
 
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 

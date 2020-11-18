@@ -65,7 +65,6 @@
 + (BOOL)participatesInInsertion;
 + (id)predicateForObjectsFromAppleWatchSources:(BOOL)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)predicateForObjectsFromLocalSourceWithBundleIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)predicateForObjectsWithSourcePredicate:(id)arg1 matchSource:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)predicateMatchingPreferredEntityTypeIfRequiredWithPredicate:(id)arg1;
 + (long long)preferredEntityType;
 + (id)propertyForSyncProvenance;

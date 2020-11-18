@@ -17,6 +17,8 @@
 - (void)_clearConnection;
 - (id)_multiUserServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)getConformingSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getConformingSharedUserIds:(CDUnknownBlockType)arg1;
 - (void)getHomeUserIdForSharedUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSharedUserProfileLimitWithCompletion:(CDUnknownBlockType)arg1;

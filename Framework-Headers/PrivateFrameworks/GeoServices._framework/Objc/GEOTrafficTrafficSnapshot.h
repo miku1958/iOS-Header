@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficTrafficSnapshot : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_colors;
     NSMutableArray *_incidents;
     unsigned long long _receivedTime;
     GEOTrafficSnapshotMetaData *_snapshotMetaData;
     NSMutableArray *_speeds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_receivedTime:1;
         unsigned int read_colors:1;
@@ -69,6 +71,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)incidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)incidentsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -165,6 +165,7 @@
 - (BOOL)notificationViewControllerShouldAllowLongPressGesture:(id)arg1;
 - (BOOL)notificationViewControllerShouldInterpretTapAsDefaultAction:(id)arg1;
 - (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
+- (void)notificationViewControllerWillDismissForCancelAction:(id)arg1;
 - (void)recycleView:(id)arg1;
 - (void)reloadNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;

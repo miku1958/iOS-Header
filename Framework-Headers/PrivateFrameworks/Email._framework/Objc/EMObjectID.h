@@ -15,6 +15,7 @@
 
 @interface EMObjectID : NSObject <EFCacheable, NSSecureCoding, NSCopying>
 {
+    struct os_unfair_lock_s _lock;
     unsigned long long _hash;
     BOOL _ephemeral;
     id<NSObject><NSSecureCoding><NSCopying> _representedObjectID;
@@ -23,10 +24,10 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEphemeral) BOOL ephemeral; // @synthesize ephemeral=_ephemeral;
+@property (readonly, getter=isEphemeral) BOOL ephemeral; // @synthesize ephemeral=_ephemeral;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) id<NSObject><NSSecureCoding><NSCopying> representedObjectID; // @synthesize representedObjectID=_representedObjectID;
-@property (readonly, nonatomic) EFStringHash *stringHash; // @synthesize stringHash=_stringHash;
+@property (readonly) EFStringHash *stringHash; // @synthesize stringHash=_stringHash;
 @property (readonly) Class superclass;
 
 + (id)_decodableClasses;

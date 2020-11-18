@@ -22,10 +22,10 @@
     NSDictionary *_eventIndexes;
     NSUUID *_injectedUUID;
     id<MNAnnoucementStrategy> _announcementStrategy;
-    NSMutableDictionary *_announcementDurations;
     NSMutableDictionary *_announcementsSpoken;
     NSMutableSet *_exclusiveSetAnnouncementsSpoken;
     NSMutableDictionary *_hapticsTriggered;
+    NSMutableSet *_announcementsSynthesized;
     GEOComposedGuidanceEvent *_currentLaneGuidanceEvent;
     MNGuidanceSignInfo *_signInfo;
     GEOComposedGuidanceEvent *_pendingJunctionViewGuidanceEvent;
@@ -64,7 +64,10 @@
 
 - (void).cxx_destruct;
 - (double)_adjustedVehicleSpeed;
-- (double)_calculateDurationToSpeakEvent:(id)arg1 announcementIndex:(unsigned long long)arg2 distance:(double)arg3;
+- (void)_cacheAudioEventIfNecessary:(id)arg1;
+- (void)_cacheEndingAudioEvents;
+- (void)_cacheStartingAudioEvents;
+- (void)_cacheValidAudioEvents;
 - (void)_considerAnnouncements;
 - (void)_considerHaptics;
 - (void)_considerJunctionViewGuidance;
@@ -72,7 +75,6 @@
 - (void)_considerSignGuidance;
 - (void)_considerStickiness;
 - (void)_filterValidEvents;
-- (void)_handleDuration:(double)arg1 forEventID:(id)arg2 index:(unsigned long long)arg3;
 - (void)_handleJunctionViewInfo:(id)arg1;
 - (BOOL)_hasSpokenEvent:(id)arg1;
 - (int)_indexForEventUUID:(id)arg1;
@@ -84,7 +86,6 @@
 - (void)_markEventSpoken:(id)arg1;
 - (void)_notifyAnalyticsForNewEvents:(id)arg1 previousEvents:(id)arg2;
 - (void)_notifySpeechEvent:(id)arg1 variant:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3;
-- (void)_precalcuateDurations;
 - (id)_selectAnnouncementForEvent:(id)arg1 withTimeRemaining:(double)arg2 withMinIndex:(unsigned long long)arg3 selectedIndex:(out unsigned long long *)arg4;
 - (id)_serverStringDictionaryForEvent:(id)arg1 spoken:(BOOL)arg2;
 - (BOOL)_shouldUseLocation:(id)arg1;

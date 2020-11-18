@@ -8,7 +8,7 @@
 
 #import <CoverSheet/CSEventHandling-Protocol.h>
 
-@class NSMutableSet, NSString;
+@class NSHashTable, NSMutableSet, NSString;
 @protocol BSInvalidatable, SBUIBiometricResource;
 
 @interface CSUserPresenceMonitor : NSObject <CSEventHandling>
@@ -16,6 +16,7 @@
     id<SBUIBiometricResource> _biometricResource;
     NSMutableSet *_activationReasons;
     id<BSInvalidatable> _faceDetectAssertion;
+    NSHashTable *_observers;
     BOOL _userPresenceDetectedSinceWake;
 }
 
@@ -28,13 +29,16 @@
 - (void).cxx_destruct;
 - (BOOL)_handleBiometricEvent:(unsigned long long)arg1;
 - (BOOL)_isFaceDetectPermitted;
+- (void)_setUserPresenceDetectedSinceWake:(BOOL)arg1;
 - (void)_updateFaceDetectionState;
+- (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)disableDetectionForReason:(id)arg1;
 - (void)enableDetectionForReason:(id)arg1;
 - (BOOL)handleEvent:(id)arg1;
 - (id)initWithBiometricResource:(id)arg1;
 - (BOOL)isUserPresenceDetectionSupported;
+- (void)removeObserver:(id)arg1;
 - (BOOL)wouldHandleButtonEvent:(id)arg1;
 
 @end

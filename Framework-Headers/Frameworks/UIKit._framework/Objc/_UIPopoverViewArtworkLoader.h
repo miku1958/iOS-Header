@@ -17,6 +17,29 @@ __attribute__((visibility("hidden")))
 
 + (id)backgroundSelectorForBackgroundStyle:(long long)arg1;
 - (void).cxx_destruct;
+- (id)_bottomArrowLeftEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_bottomArrowPinnedViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_bottomArrowRightEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_bottomArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_rightArrowBottomEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_rightArrowPinnedBottomViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_rightArrowPinnedTopViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_rightArrowTopEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_rightArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortBottomArrowLeftEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortBottomArrowPinnedViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortBottomArrowRightEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortBottomArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortRightArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortTopArrowLeftEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortTopArrowPinnedViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortTopArrowRightEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_shortTopArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_templateImageForDirection:(id)arg1 shortArtwork:(BOOL)arg2 traitCollection:(id)arg3 rimShadow:(BOOL)arg4;
+- (id)_topArrowLeftEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_topArrowPinnedViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_topArrowRightEndCapViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
+- (id)_topArrowViewForTraitCollection:(id)arg1 withRimShadow:(BOOL)arg2;
 - (double)arrowBase;
 - (double)arrowHeight;
 - (double)arrowTopGradientEnd;
@@ -50,7 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)shortTopArrowRightEndCapView;
 - (id)shortTopArrowView;
 - (double)sideArrowStart;
-- (id)templateImageForDirection:(id)arg1 shortArtwork:(BOOL)arg2;
+- (id)templateImageForDirection:(id)arg1 shortArtwork:(BOOL)arg2 traitCollection:(id)arg3;
 - (id)topArrowLeftEndCapView;
 - (id)topArrowPinnedView;
 - (id)topArrowRightEndCapView;

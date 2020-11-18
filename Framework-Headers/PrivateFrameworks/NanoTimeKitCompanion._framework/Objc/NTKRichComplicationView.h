@@ -52,6 +52,7 @@
 - (void)_applyPausedUpdate;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_setEditingTransitionFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)_setWhistlerAnalogEditingAlphaTransitonFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3;

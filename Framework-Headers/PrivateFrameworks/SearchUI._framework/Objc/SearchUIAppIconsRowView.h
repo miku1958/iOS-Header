@@ -8,13 +8,12 @@
 
 #import <SearchUI/NUIArrangementContainer-Protocol.h>
 #import <SearchUI/NUIGridArrangementDataSource-Protocol.h>
-#import <SearchUI/SBIconViewDelegate-Protocol.h>
-#import <SearchUI/SBLeafIconDataSource-Protocol.h>
+#import <SearchUI/SearchUIHomeScreenEngagementDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSString, NUIGridArrangement, SBHIconImageCache;
+@class NSMutableArray, NSString, NUIGridArrangement;
 @protocol SearchUIFeedbackDelegate;
 
-@interface SearchUIAppIconsRowView : UIView <SBLeafIconDataSource, NUIGridArrangementDataSource, NUIArrangementContainer, SBIconViewDelegate>
+@interface SearchUIAppIconsRowView : UIView <SearchUIHomeScreenEngagementDelegate, NUIGridArrangementDataSource, NUIArrangementContainer>
 {
     id<SearchUIFeedbackDelegate> _delegate;
     NSMutableArray *_iconViews;
@@ -23,8 +22,6 @@
     NSMutableArray *_itemAtIndex;
     NSMutableArray *_spacerDebuggerViews;
     NUIGridArrangement *_arrangment;
-    SBHIconImageCache *_iconImageCache;
-    NSMapTable *_iconImageGenerationCountByView;
 }
 
 @property (strong, nonatomic) NUIGridArrangement *arrangment; // @synthesize arrangment=_arrangment;
@@ -33,47 +30,22 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *endsSpacingHelpers; // @synthesize endsSpacingHelpers=_endsSpacingHelpers;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
-@property (strong, nonatomic) NSMapTable *iconImageGenerationCountByView; // @synthesize iconImageGenerationCountByView=_iconImageGenerationCountByView;
 @property (strong, nonatomic) NSMutableArray *iconViews; // @synthesize iconViews=_iconViews;
 @property (strong, nonatomic) NSMutableArray *itemAtIndex; // @synthesize itemAtIndex=_itemAtIndex;
 @property (strong, nonatomic) NSMutableArray *spacerDebuggerViews; // @synthesize spacerDebuggerViews=_spacerDebuggerViews;
 @property (strong, nonatomic) NSMutableArray *spacingHelpers; // @synthesize spacingHelpers=_spacingHelpers;
 @property (readonly) Class superclass;
 
-+ (struct SBIconImageInfo)appIconImageInfo;
-+ (id)applicationShortcutService;
-+ (id)imageCache;
 + (double)numberOfIcons;
 - (void).cxx_destruct;
-- (void)appIconsChanged:(id)arg1;
-- (id)applicationBundleURLForShortcutsWithIconView:(id)arg1;
-- (id)applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(id)arg1;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
-- (void)dealloc;
-- (void)fetchApplicationShortcutInfoForIcon:(id)arg1;
-- (void)fetchIconImageForIcon:(id)arg1 iconView:(id)arg2;
+- (void)didEngageResult:(id)arg1;
+- (void)dismissIfNecessaryForIconDrag;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
-- (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
-- (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
-- (BOOL)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
-- (unsigned long long)iconImageGenerationCountForIconView:(id)arg1;
-- (void)iconTapped:(id)arg1;
-- (id)iconView:(id)arg1 applicationShortcutItemsWithProposedItems:(id)arg2;
-- (long long)iconView:(id)arg1 draggingStartLocationWithProposedStartLocation:(long long)arg2;
-- (BOOL)iconView:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3;
-- (BOOL)iconViewCanBeginDrags:(id)arg1;
-- (BOOL)iconViewShouldBeginShortcutsPresentation:(id)arg1;
-- (void)incrementIconImageGenerationCountForIconView:(id)arg1;
 - (id)init;
-- (BOOL)isTimedOutForIcon:(id)arg1;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;
 - (long long)numberOfItemsInGridArrangement:(id)arg1;
-- (id)parallaxSettingsForShortcutsPresentationWithIconView:(id)arg1;
-- (unsigned long long)priorityForIcon:(id)arg1;
-- (BOOL)shouldHideShortcutsForAppIcon:(id)arg1;
-- (BOOL)shouldUseSecureWindowForShortcutsPresentationWithIconView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)updateWithResultsForRow:(id)arg1;

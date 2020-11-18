@@ -20,8 +20,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableSet *messagesParticipants; // @synthesize messagesParticipants=_messagesParticipants;
 
 - (void).cxx_destruct;
-- (void)addMessagesParticipants:(id)arg1;
-- (void)removeMessagesParticipants:(id)arg1;
+- (void)_addMessagesParticipants:(id)arg1;
+- (void)_removeMessagesParticipants:(id)arg1;
+- (void)addParticipants:(id)arg1;
+- (id)participants;
+- (void)removeParticipants:(id)arg1;
 - (void)sendMessageIfNeeded;
 - (void)setState:(id)arg1;
 

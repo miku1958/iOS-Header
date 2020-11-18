@@ -230,6 +230,8 @@
 @property (readonly, nonatomic) UIImage *grayThumbsDownAckImage;
 @property (readonly, nonatomic) UIImage *grayThumbsUpAckImage;
 @property (readonly, nonatomic) BOOL handlesBalloonViewTitleTapsSeparately;
+@property (readonly, nonatomic) UIImage *hawkingWarningIcon;
+@property (readonly, nonatomic) UIImage *hawkingWarningIconRed;
 @property (readonly, nonatomic) UIFont *headerFont;
 @property (readonly, nonatomic) BOOL hidesUnreadIndicatorWhenEditing;
 @property (readonly, nonatomic) double horizontalBalloonBadgeInset;
@@ -362,6 +364,7 @@
 @property (readonly, nonatomic) BOOL resetsIdleTimer;
 @property (readonly, nonatomic) double resizeMessageEntryViewAnimationDuration;
 @property (readonly, nonatomic) double resumeToConversationListTimeInterval;
+@property (readonly, nonatomic) UIImage *screenTimeConversationListSummaryIcon;
 @property (readonly, nonatomic) double scrollInNewMessageAnimationDuration;
 @property (readonly, nonatomic) BOOL scrollToBottomStopsAtTopOfLastBubble;
 @property (readonly, nonatomic) UIFont *searchDetailsHeaderFont;
@@ -571,6 +574,7 @@
 - (id)business_chevronImage;
 - (id)chevronImageForColorType:(BOOL)arg1;
 - (double)composeBalloonMaxWidthForEntryContentViewWidth:(double)arg1;
+- (BOOL)contactPhotosEnabled;
 - (double)conversationListSenderBodyLeading;
 - (double)conversationListSummaryBodyLeading;
 - (id)disabledNavigationButtonStrokeColor;

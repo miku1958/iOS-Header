@@ -49,6 +49,7 @@
 - (void)siriSessionDidReceiveSpeechRecognizedCommand:(SASSpeechRecognized *)arg1;
 - (void)siriSessionDidReceiveUpdateViewsCommand:(SAUIUpdateViews *)arg1 completion:(void (^)(AceObject<SAAceCommand> *))arg2;
 - (void)siriSessionDidRecognizedAdditionalSpeechInterpretation:(AFSpeechInterpretation *)arg1 refId:(NSString *)arg2;
+- (void)siriSessionDidStartAcousticIDRequest;
 - (void)siriSessionDidStartNewTurn:(AFAnalyticsTurnBasedInstrumentationContext *)arg1;
 - (void)siriSessionDidTransitionFromState:(long long)arg1 toState:(long long)arg2 event:(long long)arg3;
 - (void)siriSessionDidUpdateRecognitionWithPhrases:(NSArray *)arg1 utterances:(NSArray *)arg2 refId:(NSString *)arg3;

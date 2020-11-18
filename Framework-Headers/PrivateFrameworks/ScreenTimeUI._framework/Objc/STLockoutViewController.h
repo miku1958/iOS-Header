@@ -9,7 +9,7 @@
 #import <ScreenTimeUI/CNContactViewControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STLockoutPolicyControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, SBSLockScreenService, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UILabel, UIVisualEffectView;
+@class NSObject, NSString, SBSLockScreenService, STBlockingBackdropView, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UILabel;
 @protocol OS_dispatch_group, STLockoutViewControllerDelegate;
 
 @interface STLockoutViewController : UIViewController <CNContactViewControllerDelegate, STLockoutPolicyControllerDelegate>
@@ -56,9 +56,9 @@
 @property (strong, nonatomic) STLockoutPolicyController *policyController; // @synthesize policyController=_policyController;
 @property (readonly) Class superclass;
 @property (weak) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong, nonatomic) UIVisualEffectView *view;
+@property (strong, nonatomic) STBlockingBackdropView *view;
 @property (weak, nonatomic) id<STLockoutViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
-@property (readonly, nonatomic) UIVisualEffectView *viewIfLoaded;
+@property (readonly, nonatomic) STBlockingBackdropView *viewIfLoaded;
 
 + (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (id)_applicationNameForWebsiteURL:(id)arg1;
@@ -122,6 +122,7 @@
 - (void)_stopListeningForRestrictionsPINEntryNotification;
 - (void)_undoApprovalAnimationIfNeeded;
 - (void)_unlockWithSuccessMainCompletion:(CDUnknownBlockType)arg1;
+- (void)_updateMainButtonVisibility;
 - (void)_updateOKButtonVisibility;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
@@ -130,6 +131,7 @@
 - (id)initWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 - (id)initWithWebsiteURL:(id)arg1;
+- (id)nextResponder;
 - (void)setDidFinishDismissing:(BOOL)arg1;
 - (void)stateDidChange:(unsigned long long)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

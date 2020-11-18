@@ -45,6 +45,7 @@
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (struct UIEdgeInsets)additionalContentInsetForBodyField:(id)arg1;
 - (void)composeBodyFieldDidChangeFontAttributes:(id)arg1;
+- (void)composeBodyFieldDidResignFirstResponder;
 - (void)composeStyleSelector:(id)arg1 didChangeFont:(id)arg2;
 - (void)composeStyleSelector:(id)arg1 didChangeFontSize:(double)arg2;
 - (void)composeStyleSelector:(id)arg1 didChangeTextColor:(id)arg2;

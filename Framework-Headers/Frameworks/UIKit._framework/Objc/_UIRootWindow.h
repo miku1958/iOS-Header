@@ -39,6 +39,7 @@
 - (BOOL)_transformLayerIncludesScreenRotation;
 - (void)_updateVisibility;
 - (void)_visibilityLock_enqueueUpdateIfNecessary;
+- (void)_visibilityLock_enqueueUpdateIfNecessary_body;
 - (id)_visibilityLock_environment;
 - (BOOL)_wantsSceneAssociation;
 - (void)dealloc;

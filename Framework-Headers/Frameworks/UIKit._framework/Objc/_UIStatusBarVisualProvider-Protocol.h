@@ -20,6 +20,7 @@
 - (_UIStatusBarStyleAttributes *)styleAttributesForStyle:(long long)arg1;
 
 @optional
++ (struct CGSize)intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
 - (void)actionable:(id<_UIStatusBarActionable>)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
 - (_UIStatusBarAnimation *)additionAnimationForDisplayItemWithIdentifier:(_UIStatusBarIdentifier *)arg1 itemAnimation:(_UIStatusBarAnimation *)arg2;
 - (void)avoidanceFrameUpdatedFromFrame:(struct CGRect)arg1;

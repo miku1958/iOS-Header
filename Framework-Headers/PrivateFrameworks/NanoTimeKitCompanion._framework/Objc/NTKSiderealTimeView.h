@@ -6,10 +6,17 @@
 
 #import <NanoTimeKitCompanion/NTKDualTimeView.h>
 
+@class CABackdropLayer, CAFilter;
+
 @interface NTKSiderealTimeView : NTKDualTimeView
 {
+    CABackdropLayer *_blurBackdrop;
+    CAFilter *_gaussianFilter;
+    CAFilter *_brightnessFilter;
+    CAFilter *_saturationFilter;
 }
 
+- (void).cxx_destruct;
 - (double)_analogTickInset;
 - (id)_customDialBackgroundView;
 - (void)_didFinishTimeViewSetup;
@@ -28,7 +35,10 @@
 - (struct CGSize)_secondTickSize;
 - (void)_setupAnalogHandsView;
 - (void)_setupDigitalTimeViews;
+- (void)setBrightnessFilterInputAmount:(double)arg1;
+- (void)setSaturationFilterInputAmount:(double)arg1;
 - (BOOL)shouldUseCustomDialBackground;
+- (void)updateFilters;
 
 @end
 

@@ -38,6 +38,7 @@
     NSMutableArray *_inFlightTickets;
     NSMutableArray *_pendingTickets;
     BOOL _shouldDisplayNoResults;
+    BOOL _shouldEnableRAPForNoResults;
     BOOL _autocompleteTopSectionIsQuerySuggestions;
     BOOL _showAutocompleteClientSource;
     BOOL _shouldPreloadTransitInfo;
@@ -73,6 +74,7 @@
 @property (readonly, nonatomic, getter=isSearching) BOOL searching;
 @property (readonly, nonatomic, getter=_sections) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly, nonatomic, getter=_shouldDisplayNoResults) BOOL shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
+@property (readonly, nonatomic, getter=_shouldEnableRAPForNoResults) BOOL shouldEnableRAPForNoResults; // @synthesize shouldEnableRAPForNoResults=_shouldEnableRAPForNoResults;
 @property (nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) BOOL shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
 @property (readonly, nonatomic, getter=_showAutocompleteClientSource) BOOL showAutocompleteClientSource; // @synthesize showAutocompleteClientSource=_showAutocompleteClientSource;
 @property (readonly, nonatomic, getter=_sortPriorityMapping) GEOSortPriorityMapping *sortPriorityMapping; // @synthesize sortPriorityMapping=_sortPriorityMapping;
@@ -85,11 +87,11 @@
 - (id)_completionTicketForFilterTypeWithTraits:(id)arg1;
 - (id)_completionTicketForPrivateFilterType:(long long)arg1 traits:(id)arg2;
 - (void)_fireRequest;
-- (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(BOOL)arg2 forTicket:(id)arg3;
+- (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(BOOL)arg2 shouldEnableRAPForNoResults:(BOOL)arg3 forTicket:(id)arg4;
 - (void)_handleError:(id)arg1 forTicket:(id)arg2;
 - (void)_markDirty;
 - (void)_markDirtyAndScheduleRequestWithTimeToNextRequest:(double)arg1;
-- (void)_notifyDelegatesWithResults:(id)arg1 sections:(id)arg2 shouldDisplayNoResults:(BOOL)arg3 ticket:(id)arg4;
+- (void)_notifyDelegatesWithResults:(id)arg1 sections:(id)arg2 shouldDisplayNoResults:(BOOL)arg3 shouldEnableRAPForNoResults:(BOOL)arg4 ticket:(id)arg5;
 - (void)_schedulePendingRequest;
 - (void)_scheduleRequestWithTimeToNextRequest:(double)arg1;
 - (void)_updateFilters;

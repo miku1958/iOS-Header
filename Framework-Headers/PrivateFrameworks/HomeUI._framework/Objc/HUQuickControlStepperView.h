@@ -52,11 +52,11 @@
 @property (strong, nonatomic) id value;
 
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
 - (void)_createSegmentAndSeparatorViews;
 - (void)_handleGesture:(id)arg1;
 - (void)_layoutSegmentViews;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (BOOL)_shouldRequireMinimumDragDistanceForGestureRecognizer:(id)arg1;
 - (id)_stepperViewMetricsForControlSize:(unsigned long long)arg1;
 - (void)_updateSegmentHighlightedState;
@@ -65,6 +65,7 @@
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithProfile:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)tintColorDidChange;

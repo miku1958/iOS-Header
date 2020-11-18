@@ -27,16 +27,13 @@ __attribute__((visibility("hidden")))
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
-- (id)accessibilityFontSizeConstraints;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)regularFontSizeConstraints;
 - (void)resetLayoutConstraints;
 - (void)setupLayoutConstraints;
 - (void)setupViews;
-- (id)stackViewEdgePinningConstraints;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateViewConstraints;
 - (void)updateViews;

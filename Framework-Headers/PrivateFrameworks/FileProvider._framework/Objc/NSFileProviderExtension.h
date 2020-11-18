@@ -59,6 +59,7 @@
 - (void)importDidFinishWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)importDocumentAtURL:(id)arg1 toParentItemIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)invalidate;
 - (void)itemChanged:(id)arg1 baseVersion:(id)arg2 changedFields:(unsigned long long)arg3 contents:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)itemChangedAtURL:(id)arg1;
 - (id)itemForIdentifier:(id)arg1 error:(id *)arg2;

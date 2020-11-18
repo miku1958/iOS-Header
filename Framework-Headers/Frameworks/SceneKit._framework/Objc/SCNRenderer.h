@@ -126,6 +126,7 @@
 - (id)_authoringEnvironment;
 - (struct CGSize)_backingSize;
 - (void)_beginFrame;
+- (void)_c3dBackgroundColorDidChange;
 - (void)_clearBackBuffer;
 - (BOOL)_collectCompilationErrors;
 - (id)_compilationErrors;
@@ -162,6 +163,7 @@
 - (BOOL)_installContext;
 - (void)_installGLContextAndSetViewport;
 - (void)_installViewport;
+- (void)_interfaceOrientationDidChange;
 - (void)_invalidateFramebuffer;
 - (BOOL)_isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2 viewport:(struct SCNVector4)arg3;
 - (void)_jitterAtStep:(unsigned long long)arg1 updateMainFramebuffer:(BOOL)arg2 redisplay:(BOOL)arg3 jitterer:(id)arg4;
@@ -257,6 +259,7 @@
 - (void)renderWithCommandBuffer:(id)arg1 viewPoints:(id)arg2;
 - (void)renderWithViewpoints:(id)arg1 events:(id)arg2;
 - (void)renderWithViewport:(struct CGRect)arg1 commandBuffer:(id)arg2 passDescriptor:(id)arg3;
+- (void)resolvedBackgroundColorDidChange;
 - (void)setAutoAdjustCamera:(BOOL)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setContext:(id)arg1;

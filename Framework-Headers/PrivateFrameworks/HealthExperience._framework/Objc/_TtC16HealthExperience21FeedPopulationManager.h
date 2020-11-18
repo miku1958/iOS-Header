@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *healthExperienceStore;
     MISSING_TYPE *childOperationQueue;
-    MISSING_TYPE *requestQueue;
+    MISSING_TYPE *requestCoalesceQueue;
     MISSING_TYPE *queue;
     MISSING_TYPE *relevanceEngineCoordinator;
     MISSING_TYPE *$__lazy_storage_$_liveFeedsPopulationDebouncer;

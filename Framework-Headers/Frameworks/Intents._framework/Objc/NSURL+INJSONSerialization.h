@@ -6,18 +6,24 @@
 
 #import <Foundation/NSURL.h>
 
+#import <Intents/INFileURLEnumerable-Protocol.h>
 #import <Intents/INJSONSerializable-Protocol.h>
 
 @class NSString;
 
-@interface NSURL (INJSONSerialization) <INJSONSerializable>
+@interface NSURL (INJSONSerialization) <INJSONSerializable, INFileURLEnumerable>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 @end
 

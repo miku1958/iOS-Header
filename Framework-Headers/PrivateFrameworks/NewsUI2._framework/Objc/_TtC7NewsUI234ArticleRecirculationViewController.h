@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *marginPipeline;
     MISSING_TYPE *existingMargin;
     MISSING_TYPE *layoutProvider;
+    MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *isPublisherHeaderVisible;
 }
 

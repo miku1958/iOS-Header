@@ -61,6 +61,7 @@
 - (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
 - (id)currentTableModel;
 - (void)deselectSelectedRows;
+- (void)dismissIfNecessaryForIconDrag;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fallbackPeekViewControllerForIndexPath:(id)arg1;
 - (BOOL)forwardFeedbackForSelector:(SEL)arg1;
@@ -78,10 +79,13 @@
 - (id)punchoutPickerTitleForIndexPath:(id)arg1;
 - (id)punchoutsForIndexPath:(id)arg1;
 - (void)purgeMemory;
+- (void)removeRowModel:(id)arg1;
 - (void)requestAuthIfNecessaryAndPresentViewController:(id)arg1 animated:(BOOL)arg2 forceModalPresentation:(BOOL)arg3;
 - (void)resignTextField;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (void)restoreResultsIfNeeded;
 - (id)resultForIndexPath:(id)arg1;
+- (void)sceneDidActivate:(id)arg1;
 - (struct CGRect)scrollToIndexPath:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)sendFeedbackForCardSectionEngagement:(id)arg1 atIndexPath:(id)arg2 withTriggerEvent:(unsigned long long)arg3;
@@ -94,12 +98,10 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tapAtIndexPath:(id)arg1;
 - (void)toggleShowMoreForSection:(unsigned long long)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentScrolledOffScreenStatus;
 - (void)updateLayoutMargins;
 - (void)updateLayoutMarginsWithSize:(struct CGSize)arg1 orientation:(long long)arg2;
 - (BOOL)updateMustAccountForLayout;
-- (void)updateSeparators;
 - (void)updateTableForNewCellHeightAnimated:(BOOL)arg1;
 - (void)updateViewControllerTitle:(id)arg1;
 - (id)viewControllerForIndexPath:(id)arg1 isPeek:(BOOL)arg2;

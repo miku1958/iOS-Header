@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryBusiness : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _distance;
     GEOPDMapsIdentifier *_mapsId;
     unsigned long long _muid;
     GEOPDPlace *_place;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _resultProviderId;
     struct {
         unsigned int has_distance:1;
@@ -60,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

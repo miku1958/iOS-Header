@@ -111,7 +111,9 @@
 - (void)_cleanupUnownedConnection;
 - (void)_clearAllTestingInputs;
 - (void)_clearSiriViewController;
+- (id)_createSiriViewControllerWithRequestOptions:(id)arg1;
 - (id)_dequeueTestingInput;
+- (void)_dismissDueToUnexpectedError:(id)arg1;
 - (void)_dismissSiriSetup;
 - (void)_dismissTest:(id)arg1 afterTimeoutWithTestOptions:(id)arg2 finishTest:(BOOL)arg3;
 - (void)_enableAudioInjection:(BOOL)arg1 audioFiles:(id)arg2;
@@ -151,7 +153,6 @@
 - (void)_runSyntheticButtonActivationTest;
 - (void)_scheduleConnectionHouseKeepingAfterDelay:(double)arg1;
 - (void)_sendTelephonyHasStartedAfterDelay:(double)arg1;
-- (void)_setSiriViewModeForRequestOptions:(id)arg1;
 - (void)_setUpUnownedConnectionIfNecessary;
 - (void)_setupSiriViewControllerPresentedSuccessHandler;
 - (BOOL)_shouldShowSetupViewController;
@@ -238,7 +239,8 @@
 - (void)siriViewControllerSessionDidResetContext:(id)arg1;
 - (BOOL)siriViewControllerShouldEndSession:(id)arg1;
 - (BOOL)siriViewControllerShouldSupportTextInput:(id)arg1;
-- (id)siriViewControllerWithRequestSource:(long long)arg1;
+- (void)siriViewControllerSpeechRequestCancelledFromSiriOrb;
+- (void)siriViewControllerSpeechRequestStartedFromSiriOrb;
 - (id)starkAppBundleIdentifierContextForSiriViewController:(id)arg1;
 - (void)startActivationWatchdogTimer;
 - (void)startGuidedAccessForSiriViewController:(id)arg1;
@@ -248,6 +250,7 @@
 - (oneway void)updateActiveInterfaceOrientation:(id)arg1 willAnimationWithDuration:(id)arg2;
 - (oneway void)updateCurrentLockState:(id)arg1;
 - (void)userRelevantEventDidOccurInSiriViewController:(id)arg1;
+- (long long)viewModeForRequestOptions:(id)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

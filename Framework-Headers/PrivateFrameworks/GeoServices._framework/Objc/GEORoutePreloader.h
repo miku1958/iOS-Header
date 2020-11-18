@@ -28,10 +28,11 @@
     id<GEORoutePreloadSessionDelegate> _delegate;
     CDUnknownBlockType _tileKeyIsDownloadedPredicate;
     double _stepSizeInMeters;
-    GEOApplicationAuditToken *_token;
     struct GEOOnce_s _didTearDown;
+    GEOApplicationAuditToken *_auditToken;
 }
 
+@property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (copy, nonatomic) CDUnknownBlockType batteryHandler; // @synthesize batteryHandler=_batteryHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<GEORoutePreloadSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -44,6 +45,7 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType tileKeyIsDownloadedPredicate; // @synthesize tileKeyIsDownloadedPredicate=_tileKeyIsDownloadedPredicate;
 
 + (id)preloaderForRoute:(id)arg1;
++ (id)preloaderForRoute:(id)arg1 auditToken:(id)arg2;
 - (void).cxx_destruct;
 - (void)_cancelPreloadTasks;
 - (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
@@ -54,6 +56,7 @@
 - (BOOL)fullDebuggingEnabled;
 - (void)getPreloadSetCoordinates:(CDStruct_c3b9c2ee *)arg1 maxLength:(unsigned long long)arg2 actualLength:(unsigned long long *)arg3;
 - (id)init;
+- (id)initWithRoute:(id)arg1 auditToken:(id)arg2 loggingEnabled:(BOOL)arg3 minimalDebugging:(BOOL)arg4 fullDebugging:(BOOL)arg5 batteryHandler:(CDUnknownBlockType)arg6;
 - (id)initWithRoute:(id)arg1 loggingEnabled:(BOOL)arg2 minimalDebugging:(BOOL)arg3 fullDebugging:(BOOL)arg4 batteryHandler:(CDUnknownBlockType)arg5;
 - (BOOL)isSufficientlyLoaded;
 - (BOOL)loggingEnabled;

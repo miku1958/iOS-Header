@@ -18,6 +18,7 @@
     unsigned int _homeButtonHapticKind;
     NSData *_nanoRegistryData;
     unsigned int _version;
+    NSData *_walletData;
     BOOL _autoUpdateEnabled;
     BOOL _didSeeTrueTonePane;
     BOOL _findMyiPhoneOptIn;
@@ -54,6 +55,7 @@
 @property (nonatomic) BOOL hasScreenTimeEnabled;
 @property (nonatomic) BOOL hasSiriOptIn;
 @property (nonatomic) BOOL hasUserInterfaceStyleMode;
+@property (readonly, nonatomic) BOOL hasWalletData;
 @property (nonatomic) unsigned int homeButtonHapticKind; // @synthesize homeButtonHapticKind=_homeButtonHapticKind;
 @property (nonatomic) BOOL locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property (strong, nonatomic) NSData *nanoRegistryData; // @synthesize nanoRegistryData=_nanoRegistryData;
@@ -61,6 +63,7 @@
 @property (nonatomic) BOOL siriOptIn; // @synthesize siriOptIn=_siriOptIn;
 @property (nonatomic) long long userInterfaceStyleMode; // @synthesize userInterfaceStyleMode=_userInterfaceStyleMode;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
+@property (strong, nonatomic) NSData *walletData; // @synthesize walletData=_walletData;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

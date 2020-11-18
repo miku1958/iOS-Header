@@ -14,6 +14,7 @@
 - (oneway void)cleanUnusedAssets:(void (^)(NSError *))arg1;
 - (oneway void)continueSpeechRequest;
 - (oneway void)endAudioPowerUpdate;
+- (oneway void)estimateDurationWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(double, NSError *))arg2;
 - (oneway void)forwardStreamObject:(SATTSSpeechSynthesisStreaming *)arg1;
 - (oneway void)getAutoDownloadedVoiceAssetsWithClientID:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (oneway void)getFootprintsForVoiceName:(NSString *)arg1 languageCode:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
@@ -33,7 +34,7 @@
 - (oneway void)setAutoDownloadedVoiceAssets:(NSArray *)arg1 withClientID:(NSString *)arg2;
 - (oneway void)setLogToFile:(BOOL)arg1;
 - (oneway void)startPresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg1;
-- (oneway void)startSpeechRequest:(VSSpeechRequest *)arg1;
+- (oneway void)startSpeechRequest:(VSSpeechRequest *)arg1 reply:(void (^)(void))arg2;
 - (oneway void)startSynthesisRequest:(VSSpeechRequest *)arg1;
 - (oneway void)stopPresynthesizedAudioRequest;
 - (oneway void)stopSpeechRequestAtMark:(long long)arg1;

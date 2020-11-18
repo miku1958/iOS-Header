@@ -47,6 +47,7 @@
 @property (nonatomic) struct WGWidgetListSettings listSettings; // @synthesize listSettings=_listSettings;
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) UIScrollView *majorScrollView;
+@property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property (readonly) Class superclass;

@@ -61,7 +61,6 @@
 - (void)_updateTimeZone:(id)arg1;
 - (void)accessoriesBecomeReachable;
 - (void)accessoriesBecomeUnreachable;
-- (void)accessoryAdded;
 - (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 - (void)dealloc;
 - (void)didDetermineBatchLocation:(id)arg1;
@@ -75,6 +74,7 @@
 - (BOOL)isLocation:(id)arg1 closeToLocation:(id)arg2;
 - (id)messageDestination;
 - (void)runTransactionWithLocation:(id)arg1 updateTime:(id)arg2;
+- (void)updateHomeLocation;
 
 @end
 

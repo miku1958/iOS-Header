@@ -8,20 +8,23 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, _MRContentItemProtobuf, _MRNowPlayingPlayerPathProtobuf;
+@class NSMutableArray, NSString, _MRContentItemProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackSessionRequestProtobuf;
 
 @interface _MRPlaybackSessionMigrateRequestProtobuf : PBCodable <NSCopying>
 {
     double _playbackPosition;
+    double _playbackRate;
     _MRContentItemProtobuf *_contentItem;
     int _endpointOptions;
     NSMutableArray *_events;
+    _MRPlaybackSessionRequestProtobuf *_playbackSessionRequest;
     int _playbackState;
     int _playerOptions;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
     NSString *_requestID;
     struct {
         unsigned int playbackPosition:1;
+        unsigned int playbackRate:1;
         unsigned int endpointOptions:1;
         unsigned int playbackState:1;
         unsigned int playerOptions:1;
@@ -34,11 +37,15 @@
 @property (readonly, nonatomic) BOOL hasContentItem;
 @property (nonatomic) BOOL hasEndpointOptions;
 @property (nonatomic) BOOL hasPlaybackPosition;
+@property (nonatomic) BOOL hasPlaybackRate;
+@property (readonly, nonatomic) BOOL hasPlaybackSessionRequest;
 @property (nonatomic) BOOL hasPlaybackState;
 @property (nonatomic) BOOL hasPlayerOptions;
 @property (readonly, nonatomic) BOOL hasPlayerPath;
 @property (readonly, nonatomic) BOOL hasRequestID;
 @property (nonatomic) double playbackPosition; // @synthesize playbackPosition=_playbackPosition;
+@property (nonatomic) double playbackRate; // @synthesize playbackRate=_playbackRate;
+@property (strong, nonatomic) _MRPlaybackSessionRequestProtobuf *playbackSessionRequest; // @synthesize playbackSessionRequest=_playbackSessionRequest;
 @property (nonatomic) int playbackState; // @synthesize playbackState=_playbackState;
 @property (nonatomic) int playerOptions; // @synthesize playerOptions=_playerOptions;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;

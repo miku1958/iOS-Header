@@ -35,7 +35,6 @@
 - (id)_copyHeroFrameAtURL:(id)arg1;
 - (BOOL)_createDirectoryAtPathIfNonExistent:(id)arg1;
 - (unsigned long long)_effectiveReasonForSignificantEvent:(id)arg1;
-- (void)_postSignificantEventNotification:(id)arg1 forCameraProfile:(id)arg2 postedNotificationUUIDs:(id)arg3 postedHeroFrameURL:(id)arg4;
 - (void)_removeFile:(id)arg1;
 - (id)initWithBulletinBoard:(id)arg1 fileManager:(id)arg2 dataSource:(id)arg3 workQueue:(id)arg4;
 - (void)postSignificantEventNotification:(id)arg1 forCameraProfile:(id)arg2;

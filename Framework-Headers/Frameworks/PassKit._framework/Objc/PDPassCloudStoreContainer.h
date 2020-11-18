@@ -14,7 +14,6 @@
     BOOL _canInitializeContainer;
 }
 
-+ (void)invalidateServerChangeTokens;
 - (void).cxx_destruct;
 - (BOOL)_canInitializeContainer;
 - (id)_catalogOfRecord;
@@ -25,13 +24,14 @@
 - (BOOL)canInitializeContainer;
 - (void)cloudStoreAccountChanged:(id)arg1;
 - (id)initWithDataSource:(id)arg1 passManager:(id)arg2;
-- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)invalidateServerChangeTokens;
+- (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 request:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)readCachedContainerValues;
 - (id)recordTypeForRecordID:(id)arg1;
 - (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 groupName:(id)arg3 groupNameSuffix:(id)arg4 qualityOfService:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

@@ -36,6 +36,7 @@
 + (BOOL)useNewPicker;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (void)_checkLibraryAuthorization;
 - (void)_forceDismissal;
 - (BOOL)_hasAddedRemoteView;
 - (long long)_keynote_preferredInterfaceOrientationForPresentation;
@@ -58,6 +59,7 @@
 - (long long)modalPresentationStyle;
 - (BOOL)pickingForExternalPlayer;
 - (BOOL)picksSingleCollectionEntity;
+- (id)playbackArchiveConfiguration;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (void)remoteMediaPickerDidCancel;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;
@@ -65,11 +67,15 @@
 - (long long)selectionMode;
 - (void)setPickingForExternalPlayer:(BOOL)arg1;
 - (void)setPicksSingleCollectionEntity:(BOOL)arg1;
+- (void)setPlaybackArchiveConfiguration:(id)arg1;
 - (void)setShowsCatalogContent:(BOOL)arg1;
+- (void)setShowsLibraryContent:(BOOL)arg1;
 - (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (BOOL)showsCatalogContent;
+- (BOOL)showsLibraryContent;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)typeIdentifiers;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (unsigned int)watchCompatibilityVersion;

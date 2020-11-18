@@ -15,7 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (long long)backdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
@@ -27,6 +26,7 @@
 - (id)layoutSettings;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;
 - (long long)wallpaperStyle;

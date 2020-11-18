@@ -23,9 +23,11 @@
 + (id)alertControllerForAddingRoomWithProceed:(CDUnknownBlockType)arg1;
 + (id)alertControllerForAddingServiceGroupWithProceed:(CDUnknownBlockType)arg1;
 + (id)alertControllerForAddingZoneWithProceed:(CDUnknownBlockType)arg1;
++ (id)hu_actionSheetWithTitle:(id)arg1 message:(id)arg2 anchorView:(id)arg3;
 + (id)hu_alertControllerForAcknowledgementWithTitle:(id)arg1 message:(id)arg2;
 + (id)hu_alertControllerForUnimplementedFeature:(id)arg1;
 + (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;
+- (void)anchorActionSheetIfNeededFrom:(id)arg1;
 - (id)hu_preloadContent;
 @end
 

@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <PhotosGraph/PGLibraryChangeProducer-Protocol.h>
+#import <PhotosGraph/PHPhotoLibraryAvailabilityObserver-Protocol.h>
 #import <PhotosGraph/PHPhotoLibraryChangeObserver-Protocol.h>
 
 @class NSCountedSet, NSHashTable, NSMapTable, NSMutableOrderedSet, NSString, PGLibraryChangeListenerStateStore, PHPersistentChangeToken, PHPhotoLibrary;
 @protocol OS_dispatch_queue, PGGraphUpdateHealthRecording;
 
-@interface PGLibraryChangeListener : NSObject <PHPhotoLibraryChangeObserver, PGLibraryChangeProducer>
+@interface PGLibraryChangeListener : NSObject <PHPhotoLibraryChangeObserver, PHPhotoLibraryAvailabilityObserver, PGLibraryChangeProducer>
 {
     NSObject<OS_dispatch_queue> *_changeObservationQueue;
+    BOOL _libraryBecameUnavailable;
     NSString *_clientIdentifier;
     PHPhotoLibrary *_photoLibrary;
     PGLibraryChangeListenerStateStore *_stateStore;
@@ -37,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHPersistentChangeToken *lastReadToken; // @synthesize lastReadToken=_lastReadToken;
+@property BOOL libraryBecameUnavailable; // @synthesize libraryBecameUnavailable=_libraryBecameUnavailable;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfMutationsToFetch; // @synthesize maximumNumberOfMutationsToFetch=_maximumNumberOfMutationsToFetch;
 @property unsigned long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) NSCountedSet *outstandingChangeTokenCounts; // @synthesize outstandingChangeTokenCounts=_outstandingChangeTokenCounts;
@@ -58,6 +61,7 @@
 - (void)consumer:(id)arg1 didIgnoreChangeTokens:(id)arg2;
 - (id)initWithPhotoLibrary:(id)arg1 clientIdentifier:(id)arg2;
 - (void)persistToken:(id)arg1;
+- (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)registerChangeConsumer:(id)arg1;
 - (void)startListening;

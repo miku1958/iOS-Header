@@ -44,7 +44,7 @@
 - (BOOL)carOwnsScreen;
 - (id)description;
 - (struct OpaqueFigEndpoint *)endpoint;
-- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
+- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 requiresCarCapabilities:(BOOL)arg2;
 - (id)lastNavigatingBundleIdentifier;
 - (unsigned long long)navigationOwner;
 - (BOOL)recognizingSpeech;

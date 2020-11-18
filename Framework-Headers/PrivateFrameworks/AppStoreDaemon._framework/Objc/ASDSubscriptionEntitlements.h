@@ -21,8 +21,10 @@
 - (id)_initWithServiceBroker:(id)arg1;
 - (void)dealloc;
 - (void)getAppStoreConsumedIntroOfferFamilyIdsWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)getCachedSubscriptionEntitlementsForSegment:(unsigned long long)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionEntitlementsForActiveAccountWithResultAndExpiryHandler:(CDUnknownBlockType)arg1;
 - (void)getSubscriptionEntitlementsForActiveAccountWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withCacheInfoResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 - (void)getSubscriptionEntitlementsIgnoreCaches:(BOOL)arg1 forActiveAccountWithResultAndExpiryHandler:(CDUnknownBlockType)arg2;
 - (void)getSubscriptionEntitlementsIgnoreCaches:(BOOL)arg1 forActiveAccountWithResultHandler:(CDUnknownBlockType)arg2;

@@ -36,7 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleNextStep;
-- (id)_localizedStringKeyForPerformedOperations;
+- (id)_localizedStringKeyForPerformedOperationsAndMadeDefault:(BOOL)arg1;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_presentViewController:(id)arg1;
 - (id)_setupLaterBodyString;

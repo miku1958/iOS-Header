@@ -129,7 +129,6 @@
 - (id)personModelPath;
 - (void)personPromoterStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)pingFaceWorkerWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
 - (BOOL)processDirtyFaceCrop:(id)arg1 error:(id *)arg2;
 - (void)processDirtyFaceCrops;
@@ -156,7 +155,7 @@
 - (void)terminatePhotoVision;
 - (void)updateKeyFacesOfPersonsWithLocalIdentifiers:(id)arg1 forceUpdate:(BOOL)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)validateClusterCacheWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 - (void)willCompleteJob:(id)arg1;
 - (id)workerStateFileURL;
 

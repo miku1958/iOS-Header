@@ -22,7 +22,7 @@
 - (void)_configureBackdropAnimatableProperty;
 - (void)_invalidateBackdropSnapshot;
 - (void)_resetHomeScreenBlurredContentSnapshotImage;
-- (void)_setupBackdropViewWithRecipe:(long long)arg1;
+- (void)_setupBackdropViewWithRecipe:(long long)arg1 scaleAdjustment:(CDUnknownBlockType)arg2;
 - (void)_updateBackdropViewIfNeeded;
 - (void)_updateBackdropViewIfNeededInvalidatingSnapshot:(BOOL)arg1;
 - (void)beginRequiringBackdropViewForReason:(id)arg1;
@@ -32,7 +32,7 @@
 - (void)endRequiringLiveBackdropViewForReason:(id)arg1;
 - (id)homeScreenBlurredContentSnapshotImage;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 withMaterialRecipe:(long long)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 materialRecipe:(long long)arg2 scaleAdjustment:(CDUnknownBlockType)arg3;
 - (BOOL)isOpaque;
 - (void)setBlurProgress:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 

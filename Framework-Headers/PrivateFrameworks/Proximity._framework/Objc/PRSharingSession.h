@@ -9,33 +9,21 @@
 #import <Proximity/PRBeaconDelegate-Protocol.h>
 #import <Proximity/PRProximityEstimatorDelegate-Protocol.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSSet, NSSortDescriptor, NSString, PRBeacon, PRProximityEstimator;
+@class NSMutableDictionary, NSString, PRBeacon, PRProximityEstimator, PRSharingChoice;
 @protocol OS_dispatch_queue, OS_os_log, PRSharingSessionDelegate;
 
 @interface PRSharingSession : NSObject <PRProximityEstimatorDelegate, PRBeaconDelegate>
 {
-    BOOL _currentlyInitiating;
     NSObject<OS_os_log> *_logger;
-    NSSet *_contacts;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    PRProximityEstimator *_btProxEstimator;
     NSMutableDictionary *_trackedBTPeers;
     NSMutableDictionary *_trackedBTPeersDevice;
-    PRProximityEstimator *_btProxEstimator;
     PRBeacon *_nearbyDaemonSession;
     BOOL _needToRestart;
-    NSMutableDictionary *_scores;
-    double _lastScoreReportMachContinuousTime;
-    double _lastBigHeadFirstReportTime;
-    NSData *_lastBigHeadMacAddress;
-    NSArray *_lastReportedScores;
-    struct SharingImportanceMeasurements _measurements;
-    BOOL _useRegionBasedEstimator;
-    NSSortDescriptor *_scoreSortDescriptor;
-    double _halfPointingAngleDegrees;
-    BOOL _outputScoreCalculatedWithAngle;
-    struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> _estimatorRangeOnly;
-    struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> _estimatorRangeAndAngle;
     CDUnknownBlockType _reportWatchdog;
+    BOOL _scoresReported;
+    PRSharingChoice *_sharingChoiceEstimator;
     id<PRSharingSessionDelegate> _delegate;
 }
 
@@ -45,19 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)HexStringToNSDataMac:(const basic_string_a1f69cfb *)arg1;
-+ (id)NSDataMacToUUID:(id)arg1;
-+ (unsigned long long)NSDataToUInt64:(id)arg1;
-+ (basic_string_a1f69cfb)UIntToHexString:(unsigned long long)arg1 len:(unsigned long long)arg2;
-+ (id)UUIDStringToNSDataMac:(const basic_string_a1f69cfb *)arg1 len:(unsigned long long)arg2;
-+ (id)UUIDToNSDataMac:(id)arg1 len:(unsigned long long)arg2;
-+ (id)convertMacStringToNSData:(const basic_string_a1f69cfb *)arg1;
-+ (id)reverseNSData:(id)arg1;
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)CoarseRangeToProx:(int)arg1;
-- (int)ProxToCoarseRange:(long long)arg1;
-- (id)ProxToString:(long long)arg1;
 - (BOOL)addRssiSample:(double)arg1 channel:(unsigned int)arg2 forPeer:(id)arg3 peerDeviceModel:(id)arg4 withError:(id *)arg5;
 - (void)beacon:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)beacon:(id)arg1 didFailWithError:(id)arg2;
@@ -68,14 +44,12 @@
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
 - (void)invokeDelegateBlock:(CDUnknownBlockType)arg1;
 - (void)logScores:(id)arg1;
-- (void)reportScoresToClientAlways:(BOOL)arg1;
+- (void)onNewSharingChoiceScores:(id)arg1;
 - (void)startInitiating;
 - (void)startWatchDogWithDuration:(long long)arg1;
 - (void)stopInitiating;
 - (void)stopProx;
 - (BOOL)trackNewBTPeer:(id)arg1 withDviceModel:(id)arg2 error:(id *)arg3;
-- (void)updateScoresForTime:(double)arg1;
-- (void)updateScoresWithNewMeasurement:(const struct NeighborMeasurements *)arg1;
 - (void)watchDogTimedOut;
 
 @end

@@ -25,14 +25,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_attemptToFixVoiceRecognitionOnboardingFailures:(id)arg1;
+- (void)_changeSiriLanguageOnlyForThisHomePod:(id)arg1 turnOffVoiceID:(BOOL)arg2;
 - (void)_clearSpinner;
-- (void)_presentAlertConfirmingLanguageChangeAndTurnOffVoiceRecognition:(id)arg1;
-- (void)_presentAlertConfirmingLanguageChangeForAllHomeMembers:(id)arg1;
-- (void)_presentAlertConfirmingLanguageChangeForThisORAllHomePods:(id)arg1;
+- (BOOL)_isAnyHomePodOnSupportedMultiUserLanguage;
+- (void)_presentAlertConfirmingLanguageChangeAndTurnOffVoiceRecognition:(id)arg1 indexPath:(id)arg2;
+- (void)_presentAlertConfirmingLanguageChangeForAllHomeMembers:(id)arg1 indexPath:(id)arg2;
+- (void)_presentAlertConfirmingLanguageChangeForThisORAllHomePods:(id)arg1 indexPath:(id)arg2;
 - (BOOL)_shouldPresentAlertRequestingToTurnOffVoiceRecognition:(id)arg1;
-- (void)_turnOffVoiceID;
 - (void)_turnOffVoiceIDAndChangeSiriLanguageForAllHomePods:(id)arg1;
-- (void)_turnOffVoiceIDAndChangeSiriLanguageForThisHomePod:(id)arg1;
+- (void)_turnOffVoiceIDForTargetLanguageOption:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;

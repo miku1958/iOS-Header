@@ -78,6 +78,7 @@
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(BOOL)arg4 localOnly:(BOOL)arg5 sync:(BOOL)arg6;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(BOOL)arg4;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
+- (BOOL)isDataVaulted;
 - (BOOL)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
 - (BOOL)isManagedObjectModel:(id)arg1 compatibleWithPersistentStoreAtURL:(id)arg2 error:(id *)arg3;
 - (id)managedObjectContextFor:(id)arg1;

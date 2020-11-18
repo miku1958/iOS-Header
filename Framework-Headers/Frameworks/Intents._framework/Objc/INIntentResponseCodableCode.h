@@ -24,6 +24,7 @@
 }
 
 @property (weak, nonatomic, setter=_setResponseCodableDescription:) INIntentResponseCodableDescription *_responseCodableDescription; // @synthesize _responseCodableDescription=__responseCodableDescription;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (copy, nonatomic) NSString *conciseFormatString; // @synthesize conciseFormatString=_conciseFormatString;
 @property (copy, nonatomic) NSString *conciseFormatStringLocID; // @synthesize conciseFormatStringLocID=_conciseFormatStringLocID;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 @property (copy, nonatomic) NSString *formatStringLocID; // @synthesize formatStringLocID=_formatStringLocID;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSArray *parameterNames;
 @property (nonatomic, getter=isSuccess) BOOL success; // @synthesize success=_success;
@@ -45,7 +47,6 @@
 - (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)keyPrefix;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

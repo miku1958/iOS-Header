@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSNumber, NSURL, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLConstraintsDirector, PLEmailAddressManager, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLManagedObjectLookupItemCache, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
+#import <PhotoLibraryServices/PLFileSystemVolumeUnmountObserver-Protocol.h>
 
-@interface PLPhotoLibraryBundle : NSObject
+@class NSArray, NSError, NSNumber, NSURL, PLAssetsdClient, PLAtomicObject, PLChangeHandlingContainer, PLConstraintsDirector, PLEmailAddressManager, PLFileSystemVolumeUnmountMonitor, PLIndicatorFileCoordinator, PLLazyObject, PLLibraryServicesManager, PLManagedObjectLookupItemCache, PLPersistentContainer, PLPersonInfoManager, PLPhotoAnalysisServiceClient, PLPhotoKitVariationCache, PLPhotoLibraryBundleController, PLPhotoLibraryPathManager;
+
+@interface PLPhotoLibraryBundle : NSObject <PLFileSystemVolumeUnmountObserver>
 {
     NSURL *_libraryURL;
     struct os_unfair_lock_s _lock;
@@ -29,6 +31,7 @@
     PLLazyObject *_lazyConstraintsDirector;
     NSNumber *_sqliteErrorIndicatorFileExists;
     struct os_unfair_lock_s _sqliteErrorIndicatorLock;
+    PLFileSystemVolumeUnmountMonitor *_volumeUnmountMonitor;
     PLPhotoLibraryPathManager *_pathManager;
     PLPhotoLibraryBundleController *_bundleController;
 }
@@ -53,6 +56,7 @@
 
 - (void).cxx_destruct;
 - (void)_invalidateChangeHandlingContainer;
+- (void)_invalidatePersistentContainer;
 - (BOOL)bindAssetsdService:(id)arg1 error:(id *)arg2;
 - (id)boundAssetsdServicesTable;
 - (void)close;
@@ -68,6 +72,7 @@
 - (void)shutdownWithReason:(id)arg1;
 - (BOOL)sqliteErrorIndicatorFileExists;
 - (void)unbindAssetsdService:(id)arg1;
+- (void)volumeWillUnmount:(id)arg1;
 
 @end
 

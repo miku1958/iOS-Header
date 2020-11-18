@@ -29,6 +29,7 @@
 @property (strong, nonatomic) MSPCloudSynchronizer *synchronizer; // @synthesize synchronizer=_synchronizer;
 
 - (void).cxx_destruct;
+- (void)cancelMergeWithError:(id)arg1;
 - (void)cloudContainerDidChange:(id)arg1;
 - (void)container:(id)arg1 didEditWithNewContents:(id)arg2 orderedEdits:(id)arg3 cause:(long long)arg4 context:(id)arg5;
 - (void)containerDidEraseContents:(id)arg1 fromStorageTypes:(unsigned long long)arg2;

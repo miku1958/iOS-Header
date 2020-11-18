@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <ChatKit/CKEditableSearchResultCell.h>
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class NSString, UIImage, UIImageView, UILabel;
 
-@interface CKPhotoSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKPhotoSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
     UIImage *_image;
     UIImageView *_imageView;
@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIImageView *durationGradientImage; // @synthesize durationGradientImage=_durationGradientImage;
 @property (strong, nonatomic) UILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
+@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;

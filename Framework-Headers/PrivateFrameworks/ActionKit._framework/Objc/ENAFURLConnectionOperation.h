@@ -26,7 +26,6 @@
     NSString *_responseString;
     long long _totalBytesRead;
     NSOutputStream *_outputStream;
-    unsigned long long _backgroundTaskIdentifier;
     CDUnknownBlockType _uploadProgress;
     CDUnknownBlockType _downloadProgress;
     CDUnknownBlockType _authenticationAgainstProtectionSpace;
@@ -38,7 +37,6 @@
 
 @property (copy, nonatomic) CDUnknownBlockType authenticationAgainstProtectionSpace; // @synthesize authenticationAgainstProtectionSpace=_authenticationAgainstProtectionSpace;
 @property (copy, nonatomic) CDUnknownBlockType authenticationChallenge; // @synthesize authenticationChallenge=_authenticationChallenge;
-@property (nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType cacheResponse; // @synthesize cacheResponse=_cacheResponse;
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (strong, nonatomic) NSURLConnection *connection; // @synthesize connection=_connection;
@@ -95,7 +93,6 @@
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setDownloadProgressBlock:(CDUnknownBlockType)arg1;
 - (void)setRedirectResponseBlock:(CDUnknownBlockType)arg1;
-- (void)setShouldExecuteAsBackgroundTaskWithExpirationHandler:(CDUnknownBlockType)arg1;
 - (void)setUploadProgressBlock:(CDUnknownBlockType)arg1;
 - (void)start;
 

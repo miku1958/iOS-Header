@@ -95,6 +95,7 @@
     NSNumber *_temporarySubtitleOverrideType;
     NSArray *_playbackEndTimeBoundaryObserverTokens;
     TVPAudioOption *_cachedSelectedAudioOption;
+    AVQueuePlayer *_earlyAVQueuePlayer;
     NSArray *_cachedLoadedTimeRanges;
     NSArray *_cachedSeekableTimeRanges;
     AVQueuePlayer *_AVQueuePlayer;
@@ -158,6 +159,7 @@
 @property (weak, nonatomic) id<TVPPlaybackDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
+@property (strong, nonatomic) AVQueuePlayer *earlyAVQueuePlayer; // @synthesize earlyAVQueuePlayer=_earlyAVQueuePlayer;
 @property (readonly, nonatomic) double elapsedTime;
 @property (strong, nonatomic) NSMutableDictionary *elapsedTimeObserverBlocks; // @synthesize elapsedTimeObserverBlocks=_elapsedTimeObserverBlocks;
 @property (nonatomic) long long errorBehavior; // @synthesize errorBehavior=_errorBehavior;
@@ -248,6 +250,7 @@
 + (void)setShouldDeactivateAVAudioSession:(BOOL)arg1;
 + (BOOL)shouldDeactivateAVAudioSession;
 - (void).cxx_destruct;
+- (id)AVQueuePlayerCreateIfNecessary:(BOOL)arg1;
 - (void)_HDCPStatusPollTimerFired:(id)arg1;
 - (void)_HDCPUnprotectedTooLongTimerFired:(id)arg1;
 - (void)_addBoundaryTimeObserversToAVQueuePlayer:(id)arg1;

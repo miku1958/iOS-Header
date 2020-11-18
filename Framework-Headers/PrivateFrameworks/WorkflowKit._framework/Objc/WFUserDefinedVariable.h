@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)UUID;
+- (id)icon;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;
 - (id)initWithName:(id)arg1 variableProvider:(id)arg2 aggrandizements:(id)arg3;
 - (BOOL)isAvailable;

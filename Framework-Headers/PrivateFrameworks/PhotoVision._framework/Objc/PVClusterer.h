@@ -103,7 +103,7 @@
 - (unsigned long long)numberOfAccumulatedClusterChanges;
 - (void)performClusteringWithCompletion:(CDUnknownBlockType)arg1;
 - (id)requestSuggestionsForFaceClusterSequenceNumbers:(id)arg1 withClusteringFlags:(id)arg2 updateHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
-- (long long)restoreClusterCacheAndSyncWithLibrary:(BOOL)arg1;
+- (long long)restoreClusterCacheAndSyncWithLibrary:(BOOL)arg1 error:(id *)arg2;
 - (void)scheduleClusteringAfterRemovingFaceCSNs:(id)arg1 addingFaceIdStrs:(id)arg2;
 - (id)status;
 - (id)suggestedFaceClusterSequenceNumbersForFaceClusterSequenceNumbersRepresentingClusters:(id)arg1 error:(id *)arg2;

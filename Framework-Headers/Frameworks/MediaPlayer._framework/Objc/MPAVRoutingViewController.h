@@ -11,11 +11,12 @@
 #import <MediaPlayer/MPAVRoutingTableViewCellDelegate-Protocol.h>
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class CARSessionStatus, MPAVClippingTableView, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingViewControllerUpdate, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSNumber, NSString, UIColor, UITableView;
 @protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
-@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate>
+@interface MPAVRoutingViewController : UIViewController <CARSessionObserving, UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, _MPStateDumpPropertyListTransformable>
 {
     MPAVClippingTableView *_tableView;
     MPAVRoutingViewControllerUpdate *_pendingUpdate;
@@ -109,6 +110,7 @@
 - (void)_setRouteDiscoveryMode:(long long)arg1;
 - (void)_setupUpdateTimerIfNecessary;
 - (BOOL)_shouldDisplayRouteAsPicked:(id)arg1;
+- (id)_stateDumpObject;
 - (double)_tableViewFooterViewHeight;
 - (double)_tableViewHeaderViewHeight;
 - (double)_tableViewHeightAccordingToDataSource;
@@ -120,9 +122,11 @@
 - (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enqueueRefreshUpdate;
+- (BOOL)hasCarKitRoute;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (id)initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
+- (BOOL)isInVehicle;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)resetDisplayedRoutes;

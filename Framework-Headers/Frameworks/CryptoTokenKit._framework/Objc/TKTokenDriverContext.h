@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)acquireTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)acquireTokenWithSlot:(id)arg1 AID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(BOOL)arg3;
 - (id)configurationForTokenID:(id)arg1;
 - (id)configurationProxy;
 - (void)configureWithReply:(CDUnknownBlockType)arg1;

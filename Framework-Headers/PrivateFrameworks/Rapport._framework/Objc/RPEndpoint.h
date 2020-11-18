@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUBonjourDevice, IDSDevice, NSArray, NSString, SFDevice;
+@class CUBonjourDevice, IDSDevice, NSArray, NSDictionary, NSString, SFDevice;
 
 @interface RPEndpoint : NSObject <NSSecureCoding>
 {
@@ -28,6 +28,7 @@
     BOOL _present;
     int _proximity;
     NSString *_homeKitUserIdentifier;
+    NSDictionary *_serviceInfo;
     NSString *_serviceType;
     IDSDevice *_idsDevice;
 }
@@ -46,6 +47,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
 @property (readonly, nonatomic) int proximity; // @synthesize proximity=_proximity;
+@property (readonly, copy, nonatomic) NSDictionary *serviceInfo; // @synthesize serviceInfo=_serviceInfo;
 @property (readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (copy, nonatomic) NSArray *serviceTypes; // @synthesize serviceTypes=_serviceTypes;
 @property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;

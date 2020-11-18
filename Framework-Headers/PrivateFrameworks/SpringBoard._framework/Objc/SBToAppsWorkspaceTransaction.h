@@ -42,7 +42,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSSet *toApplicationSceneEntities;
 
-+ (id)_copyTransitionRequest:(id)arg1;
 + (BOOL)canInterruptTransaction:(id)arg1 forTransitionRequest:(id)arg2;
 - (void).cxx_destruct;
 - (void)_acquireResignActiveAssertion;

@@ -14,9 +14,11 @@
 }
 
 @property (readonly, nonatomic) NSArray *capabilities; // @synthesize capabilities=_capabilities;
+@property (readonly, nonatomic) long long chipID;
 @property (readonly, nonatomic) long long idiom;
 @property (readonly, nonatomic) NSString *localizedModel;
 @property (readonly, nonatomic) NSString *localizedWiFiDisplayName;
+@property (readonly, nonatomic) NSString *marketingName;
 @property (readonly, nonatomic) NSString *model;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long platform;

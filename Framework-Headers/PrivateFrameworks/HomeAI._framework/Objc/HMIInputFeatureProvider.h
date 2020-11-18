@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)featureValueForName:(id)arg1;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 inputName:(id)arg2;
 

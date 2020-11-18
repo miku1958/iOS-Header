@@ -29,6 +29,7 @@
 + (id)mailboxScopeForPredicate:(id)arg1 withMailboxTypeResolver:(id)arg2;
 + (id)mailboxURLsForPredicate:(id)arg1;
 + (BOOL)predicate:(id)arg1 appliesToFlagChange:(id)arg2;
++ (id)predicateForAccount:(id)arg1;
 + (id)predicateForCCMeMessages;
 + (id)predicateForExcludingMessagesInMailbox:(id)arg1;
 + (id)predicateForExcludingMessagesInMailboxObjectID:(id)arg1;
@@ -52,6 +53,7 @@
 + (id)predicateForMessagesWithThreadScope:(id)arg1;
 + (id)predicateForMuteMessages;
 + (id)predicateForNotifyMessages;
++ (id)predicateForReadMessages;
 + (id)predicateForToMeMessages;
 + (id)predicateForTodayMessages;
 + (id)predicateForUnflaggedMessages;

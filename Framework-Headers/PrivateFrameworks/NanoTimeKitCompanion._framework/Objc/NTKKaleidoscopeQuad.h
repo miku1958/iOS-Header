@@ -19,7 +19,8 @@
     float _alpha;
     float _rotation;
     float _dialRadius;
-    CLKUITexture *_primaryTexture;
+    CLKUITexture *_primaryLumaTexture;
+    CLKUITexture *_primaryChromaTexture;
     CLKUITexture *_secondaryTexture;
     unsigned long long _shaderType;
     MISSING_TYPE *_sampleCenter;
@@ -28,7 +29,8 @@
 
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) float dialRadius; // @synthesize dialRadius=_dialRadius;
-@property (strong, nonatomic) CLKUITexture *primaryTexture; // @synthesize primaryTexture=_primaryTexture;
+@property (strong, nonatomic) CLKUITexture *primaryChromaTexture; // @synthesize primaryChromaTexture=_primaryChromaTexture;
+@property (strong, nonatomic) CLKUITexture *primaryLumaTexture; // @synthesize primaryLumaTexture=_primaryLumaTexture;
 @property (nonatomic) float rotation; // @synthesize rotation=_rotation;
 @property (nonatomic) MISSING_TYPE *sampleCenter; // @synthesize sampleCenter=_sampleCenter;
 @property (nonatomic) MISSING_TYPE *sampleRadius; // @synthesize sampleRadius=_sampleRadius;

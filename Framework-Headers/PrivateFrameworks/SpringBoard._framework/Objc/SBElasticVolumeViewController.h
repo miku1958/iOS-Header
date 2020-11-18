@@ -25,8 +25,6 @@
     UIView *_touchTrackingView;
     UIView *_dimmingView;
     double _startingValue;
-    double _startingHeight;
-    double _startingWidth;
     UIPanGestureRecognizer *_sliderViewPanGestureRecognizer;
     UILongPressGestureRecognizer *_shortLongPressGestureRecognizer;
     _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
@@ -38,6 +36,7 @@
     BOOL _lockState;
     BOOL _isDebugging;
     BOOL _isRotating;
+    BOOL _isDeflating;
     BOOL _startingDismissal;
     BOOL _reduceMotionEnabled;
     UIView *_debugContainerView;
@@ -103,10 +102,12 @@
 - (void)_actuallyDismiss;
 - (void)_animateFromState:(long long)arg1 toState:(long long)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_anyCallActive;
+- (void)_beginDeflatorDismissalSpringAnimation;
 - (void)_beginTrackingWithGestureRecognizer:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_changeVolumeLevel:(double)arg1;
 - (void)_clearLastHitDates;
+- (void)_completeDeflatorDismissalSpringAnimation;
 - (BOOL)_computeCachedAudioRouteDisplayInformation;
 - (void)_continueTrackingWithGestureRecognizer:(id)arg1;
 - (void)_createHapticFeedbackEngines;
@@ -124,7 +125,7 @@
 - (void)_forciblyResetMinMaxSprings;
 - (void)_handleShortLongPressGestureRecognizer:(id)arg1;
 - (void)_handleSliderViewPanGestureRecognizer:(id)arg1;
-- (void)_invalidateDismissalTimer;
+- (void)_invalidateDismissalTimerForReason:(id)arg1;
 - (BOOL)_isStateChangeAllowedFrom:(long long)arg1 toState:(long long)arg2;
 - (void)_markVolumeUpdateInRunningListOfVolumesUpdates:(double)arg1;
 - (void)_modifySpringsFromState:(long long)arg1 toState:(long long)arg2;
@@ -154,9 +155,8 @@
 - (void)_updateSliderViewMetricsForState:(long long)arg1 bounds:(struct CGRect)arg2 integralized:(BOOL)arg3 useSpringData:(BOOL)arg4;
 - (void)_updateSliderViewToCenter:(struct CGPoint)arg1 size:(struct CGSize)arg2 integralized:(BOOL)arg3 continuousCornerRadius:(double *)arg4;
 - (void)_updateTouchTrackingView;
-- (void)_updateValueForPanGestureRecognizer:(id)arg1;
 - (void)_updateViewsWithSpringData;
-- (void)_updateVolumeLevelSlider:(float)arg1 animated:(BOOL)arg2;
+- (unsigned long long)_updateVolumeLevelSlider:(float)arg1 animated:(BOOL)arg2;
 - (BOOL)_volumeUpdateIsMaximumOfPotentialVolumeUpdates;
 - (BOOL)_volumeUpdateIsMinimumOfPotentialVolumeUpdates;
 - (id)activeAudioCategory;

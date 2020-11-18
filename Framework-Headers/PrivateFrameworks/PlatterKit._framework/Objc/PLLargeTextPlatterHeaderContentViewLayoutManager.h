@@ -6,30 +6,32 @@
 
 #import <PlatterKit/PLPlatterHeaderContentViewLayoutManager.h>
 
-@class NSMutableDictionary, NSStringDrawingContext;
+@class NSStringDrawingContext;
 
 @interface PLLargeTextPlatterHeaderContentViewLayoutManager : PLPlatterHeaderContentViewLayoutManager
 {
-    NSMutableDictionary *_widthToStringToMeasuredNumLines;
     NSStringDrawingContext *_drawingContext;
+    double _referenceWidth;
+    struct CGSize _cachedTitleBoundingRectSize;
+    unsigned long long _cachedTitleNumberOfLines;
 }
 
 + (double)contentBaselineToBoundsBottomWithFont:(id)arg1 boundsWidth:(double)arg2 scale:(double)arg3;
 - (void).cxx_destruct;
+- (struct CGSize)_boundingRectSizeForLabel:(id)arg1 width:(double)arg2 numberOfLines:(inout unsigned long long *)arg3;
 - (double)_dateLabelBaselineOffset;
-- (struct CGRect)_dateLabelBoundsForSize:(struct CGSize)arg1;
+- (struct CGRect)_dateLabelBoundsThatFitsWidth:(double)arg1;
 - (id)_dateLabelFont;
-- (void)_invalidateNumberOfLinesCache;
 - (double)_largeTextLabelBaselineOffsetFromBottom;
 - (double)_largeTextUtilityLabelBaselineOffset;
-- (long long)_measuredNumberOfLinesForLabel:(id)arg1 withWidth:(double)arg2;
-- (long long)_numberOfLinesForLabel:(id)arg1 withSize:(struct CGSize)arg2;
 - (double)_titleLabelBaselineOffset;
-- (struct CGRect)_titleLabelBoundsForSize:(struct CGSize)arg1 withNumberOfLines:(double)arg2;
-- (struct CGRect)_utilityButtonTitleLabelBoundsForSize:(struct CGSize)arg1 withNumberOfLines:(double)arg2;
+- (struct CGRect)_titleLabelBoundsThatFitsWidth:(double)arg1;
+- (unsigned long long)_titleLabelNumberOfLinesThatFitsWidth:(double)arg1;
+- (void)_updateCachedTitleLabelSizeInfoIfNecessaryWithWidth:(double)arg1;
+- (struct CGSize)_utilityViewSizeThatFitsWidth:(double)arg1;
 - (double)contentBaseline;
 - (double)headerHeightForWidth:(double)arg1;
-- (id)initWithPlatterHeaderContentView:(id)arg1;
+- (void)invalidateCachedSizeInfo;
 - (void)layoutDateLabelWithScale:(double)arg1;
 - (void)layoutIconButtonsWithScale:(double)arg1;
 - (void)layoutTitleLabelWithTrailingXLimit:(double)arg1 scale:(double)arg2;

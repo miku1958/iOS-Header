@@ -55,6 +55,7 @@
 - (void)_logReminderInteractionSummaryForReminder:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (void)_updateLocationTypeFromInteractionsSummaryForEventKey:(id)arg1 locationType:(id)arg2;
 - (id)baseInteractionDictionaryForInterface:(unsigned short)arg1 actionType:(unsigned short)arg2;
+- (id)bucketizedRemindersCreatedAfterDate:(id)arg1 endDate:(id)arg2;
 - (id)createInteractionSummaryForEventKey:(id)arg1 expirationDate:(id)arg2 interactionKey:(id)arg3 interactionAttributes:(id)arg4 rtcCategory:(unsigned short)arg5;
 - (void)dealloc;
 - (id)descriptionForEntityType:(long long)arg1;
@@ -67,6 +68,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFilename:(id)arg1;
+- (id)interactionKeyForCategory:(unsigned short)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
 - (id)interactionKeyForInterface:(unsigned short)arg1 actionType:(unsigned short)arg2;
 - (id)interactionsWriteQueue;
 - (id)launchCountMessageAfterDate:(id)arg1;

@@ -83,6 +83,7 @@
 - (void)didTapInEmptyRegion;
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)dismissCancelButtonAnimated;
+- (void)dismissIfNecessaryForIconDrag;
 - (void)firstTimeExperienceContinueButtonPressed;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -91,7 +92,6 @@
 - (void)hideKeyboard;
 - (id)init;
 - (void)launchSiriWithUtteranceText:(id)arg1 source:(long long)arg2;
-- (void)loadView;
 - (void)performSearchWithQuery:(id)arg1 forSuggestions:(BOOL)arg2;
 - (void)performSearchWithSuggestion:(id)arg1;
 - (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
@@ -117,6 +117,7 @@
 - (void)shortLookViewController:(id)arg1 willDismissLongLookWithReason:(long long)arg2 actionCompleted:(BOOL)arg3 shouldClearAction:(BOOL)arg4;
 - (void)shortLookViewController:(id)arg1 willDisplayLongLookWithReason:(long long)arg2;
 - (id)shortLookViewControllerForResult:(id)arg1;
+- (void)showVerticalScrollIndicators:(BOOL)arg1;
 - (void)updateHeaderViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)userActivityFromIntent:(id)arg1;
 - (id)viewControllerForPresenting;

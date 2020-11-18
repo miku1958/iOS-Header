@@ -21,6 +21,7 @@
     BOOL _isFinished;
     BOOL _isFinishingOnCallbackQueue;
     BOOL _clouddConnectionInterrupted;
+    BOOL _isDiscretionarySuspended;
     BOOL _queueHasStarted;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CKOperationConfiguration *_resolvedConfiguration;
@@ -66,6 +67,7 @@
 @property (nonatomic) BOOL failedToScheduleDiscretionaryOperation; // @synthesize failedToScheduleDiscretionaryOperation=_failedToScheduleDiscretionaryOperation;
 @property (readonly, nonatomic) NSString *flowControlKey;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
+@property (nonatomic) BOOL isDiscretionarySuspended; // @synthesize isDiscretionarySuspended=_isDiscretionarySuspended;
 @property (nonatomic) BOOL isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 @property (readonly, nonatomic) BOOL isFinishingOnCallbackQueue; // @synthesize isFinishingOnCallbackQueue=_isFinishingOnCallbackQueue;

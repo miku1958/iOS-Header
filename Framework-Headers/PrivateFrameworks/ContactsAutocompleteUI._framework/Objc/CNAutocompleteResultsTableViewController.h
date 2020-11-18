@@ -21,6 +21,7 @@
     BOOL _deferTableViewUpdates;
     BOOL _inDisambiguationMode;
     BOOL _hasPerformedRecipientExpansion;
+    BOOL _isDeviceLocked;
     id<CNAutocompleteResultsTableViewControllerDelegate> _delegate;
     NSArray *_recipients;
     double _trailingButtonMidlineInsetFromLayoutMargin;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL hasPerformedRecipientExpansion; // @synthesize hasPerformedRecipientExpansion=_hasPerformedRecipientExpansion;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inDisambiguationMode; // @synthesize inDisambiguationMode=_inDisambiguationMode;
+@property (nonatomic) BOOL isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly) Class superclass;
 @property (nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
@@ -42,6 +44,7 @@
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)_combinedResults;
+- (BOOL)_deviceIsLockedWithPassword;
 - (id)_flattenedIndexPaths;
 - (id)_indexPathForRecipient:(id)arg1;
 - (id)_recipientAtIndexPath:(id)arg1;
@@ -63,6 +66,7 @@
 - (BOOL)recipientIsExpandedParent:(id)arg1;
 - (void)selectNextSearchResult;
 - (void)selectPreviousSearchResult;
+- (BOOL)shouldShowCheckmarkForRecipient:(id)arg1 preferredRecipient:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;

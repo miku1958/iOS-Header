@@ -43,7 +43,7 @@
 - (id)_proxyUpdater;
 - (id)_routeManager;
 - (id)_traceManager;
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
 - (void)addInjectedEvent:(id)arg1;
 - (void)audioOutputSettingsManager:(id)arg1 didUpdateCurrentSetting:(id)arg2;
 - (void)audioOutputSettingsManager:(id)arg1 didUpdateCurrentSettingForVoicePrompt:(id)arg2;

@@ -13,6 +13,7 @@
 
 @interface HMDMediaPlaybackAction : HMDAction <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
+    BOOL _encodePlaybackArchiveForExecution;
     NSSet *_mediaProfiles;
     NSNumber *_volume;
     MPPlaybackArchive *_playbackArchive;
@@ -23,6 +24,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL encodePlaybackArchiveForExecution; // @synthesize encodePlaybackArchiveForExecution=_encodePlaybackArchiveForExecution;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) NSSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
@@ -43,8 +45,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithModelObject:(id)arg1 parent:(id)arg2 error:(id *)arg3;
 - (id)initWithUUID:(id)arg1 mediaProfiles:(id)arg2 playbackState:(long long)arg3 volume:(id)arg4 playbackArchive:(id)arg5 actionSet:(id)arg6;
-- (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (Class)modelClass;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelObjectWithUpdatedMediaProfiles:(id)arg1;
 - (id)stateDump;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;

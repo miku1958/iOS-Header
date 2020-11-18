@@ -29,7 +29,9 @@
 + (id)unreadMailboxWithMailboxScope:(id)arg1;
 + (id)vipMailboxWithMailboxScope:(id)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithType:(long long)arg1 mailboxType:(long long)arg2 name:(id)arg3 mailboxScope:(id)arg4 predicateGenerator:(CDUnknownBlockType)arg5;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isSmartMailbox;
 - (id)makePredicate;
 - (BOOL)supportsSelectAll;

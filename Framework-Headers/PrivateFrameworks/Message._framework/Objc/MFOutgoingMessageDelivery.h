@@ -23,18 +23,26 @@
     NSDictionary *_compositionSpecification;
     MFMailDelivery *_currentDeliveryObject;
     BOOL _isUserRequested;
+    BOOL _shouldSign;
+    BOOL _shouldEncrypt;
     id<MFDeliveryDelegate> _delegate;
     MFAttachmentCompositionContext *_attachmentContext;
     unsigned long long _conversationFlags;
+    MFMailMessage *_originalMessage;
     long long _originalConversationId;
+    long long _action;
 }
 
+@property (nonatomic) long long action; // @synthesize action=_action;
 @property (strong, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
 @property (nonatomic) unsigned long long conversationFlags; // @synthesize conversationFlags=_conversationFlags;
 @property (weak, nonatomic) id<MFDeliveryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isUserRequested; // @synthesize isUserRequested=_isUserRequested;
 @property (nonatomic) long long originalConversationId; // @synthesize originalConversationId=_originalConversationId;
+@property (strong, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
+@property (nonatomic) BOOL shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
+@property (nonatomic) BOOL shouldSign; // @synthesize shouldSign=_shouldSign;
 
 + (id)newWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
 + (id)newWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(BOOL)arg3;
@@ -52,6 +60,7 @@
 - (id)initWithMessage:(id)arg1;
 - (id)message;
 - (id)originalHeaders;
+- (id)originalMessageObjectID;
 - (void)setAccount:(id)arg1;
 - (void)setArchiveAccount:(id)arg1;
 

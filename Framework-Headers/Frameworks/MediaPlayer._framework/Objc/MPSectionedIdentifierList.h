@@ -77,6 +77,7 @@
 - (void)dataSourceMoveItemToTail:(id)arg1 inSection:(id)arg2;
 - (void)dataSourceReloadItem:(id)arg1 inSection:(id)arg2;
 - (void)dataSourceRemoveItem:(id)arg1 fromSection:(id)arg2;
+- (void)dataSourceUpdateSection:(id)arg1;
 - (void)dealloc;
 - (id)debugDescriptionStartingAtItem:(id)arg1 inSection:(id)arg2;
 - (id)encodableNextEntriesWithExclusiveAccessToken:(id)arg1;
@@ -92,6 +93,7 @@
 - (BOOL)hasSection:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (BOOL)isDeletedItem:(id)arg1 inSection:(id)arg2;
 - (void)moveItem:(id)arg1 fromSection:(id)arg2 afterHeadOfSection:(id)arg3;
 - (void)moveItem:(id)arg1 fromSection:(id)arg2 afterItem:(id)arg3 inSection:(id)arg4;

@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/WFGalleryWorkflow.h>
 
-@class CKRecordID, NSDate, NSNumber, NSString, WFWorkflowIcon, WFWorkflowRecord;
+@class CKRecordID, NSDate, NSNumber, NSString, WFFileRepresentation, WFWorkflowIcon, WFWorkflowRecord;
 
 @interface WFMutableGalleryWorkflow : WFGalleryWorkflow
 {
@@ -14,22 +14,28 @@
     NSString *name;
     NSString *shortDescription;
     NSString *longDescription;
-    NSDate *createdAt;
     NSNumber *searchable;
     WFWorkflowRecord *workflowRecord;
+    NSDate *modifiedAt;
     NSString *language;
     CKRecordID *base;
+    NSString *persistentIdentifier;
+    WFFileRepresentation *shortcutFile;
+    WFFileRepresentation *iconFile;
 }
 
 @property (strong, nonatomic) CKRecordID *base; // @synthesize base;
-@property (copy, nonatomic) NSDate *createdAt; // @synthesize createdAt;
 @property (strong, nonatomic) WFWorkflowIcon *icon; // @dynamic icon;
+@property (strong, nonatomic) WFFileRepresentation *iconFile; // @synthesize iconFile;
 @property (copy, nonatomic) CKRecordID *identifier; // @synthesize identifier;
 @property (copy, nonatomic) NSString *language; // @synthesize language;
 @property (copy, nonatomic) NSString *longDescription; // @synthesize longDescription;
+@property (strong, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
+@property (copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property (strong, nonatomic) NSNumber *searchable; // @synthesize searchable;
 @property (copy, nonatomic) NSString *shortDescription; // @synthesize shortDescription;
+@property (strong, nonatomic) WFFileRepresentation *shortcutFile; // @synthesize shortcutFile;
 @property (strong, nonatomic) WFWorkflowRecord *workflowRecord; // @synthesize workflowRecord;
 
 - (void).cxx_destruct;

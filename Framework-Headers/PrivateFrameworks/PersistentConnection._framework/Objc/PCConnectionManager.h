@@ -156,6 +156,7 @@
 - (void)resumeManagerWithAction:(int)arg1;
 - (void)resumeManagerWithAction:(int)arg1 forceGrow:(BOOL)arg2;
 - (void)setEnableNonCellularConnections:(BOOL)arg1;
+- (void)setKeepAliveOverrideOnInterface:(long long)arg1 interval:(double)arg2 timeout:(double)arg3;
 - (void)setOnlyAllowedStyle:(int)arg1;
 - (void)setOperatorMinimumIntervalFallbackAllowed:(BOOL)arg1;
 - (void)setPollingIntervalOverride:(double)arg1;

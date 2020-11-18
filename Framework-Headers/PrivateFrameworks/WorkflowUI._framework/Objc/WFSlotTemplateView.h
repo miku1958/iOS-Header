@@ -39,6 +39,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFSlotTemplateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *disabledSlotBackgroundColor;
+@property (readonly, nonatomic) UIColor *disabledSlotTitleColor;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL extendSlotBackgroundOffEdges;
 @property (strong, nonatomic) UIFont *font;
@@ -86,11 +88,15 @@
 - (id)selectedSlot;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContents:(id)arg1 animated:(BOOL)arg2;
+- (void)setDisabledSlotTitleColor:(id)arg1 backgroundColor:(id)arg2 animated:(BOOL)arg3;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)slotAtPoint:(struct CGPoint)arg1;
 - (id)slotIdentifierForAttachmentInteraction:(id)arg1 characterRange:(struct _NSRange)arg2;
 - (void)slotTemplateStorageDidInvalidateDisplay:(id)arg1;
+- (void)slotTemplateTypingTextViewDidCopy:(id)arg1 withOriginalBlock:(CDUnknownBlockType)arg2;
+- (void)slotTemplateTypingTextViewDidCut:(id)arg1 withOriginalBlock:(CDUnknownBlockType)arg2;
 - (void)slotTemplateTypingTextViewDidDelete:(id)arg1;
+- (void)slotTemplateTypingTextViewDidPaste:(id)arg1 withOriginalBlock:(CDUnknownBlockType)arg2;
 - (id)slotWithIdentifier:(id)arg1;
 - (struct CGRect)sourceRectForSlot:(id)arg1;
 - (struct CGRect)sourceRectForSlotWithIdentifier:(id)arg1;

@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_exportGeneratedVideo;
+- (void)_finishWithSuccess:(BOOL)arg1 cancelled:(BOOL)arg2;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_sucessfullyFinishedSaving:(BOOL)arg1 error:(id)arg2;
 - (id)_systemImageName;

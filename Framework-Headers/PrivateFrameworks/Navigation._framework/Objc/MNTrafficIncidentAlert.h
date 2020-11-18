@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <Navigation/NSSecureCoding-Protocol.h>
+
 @class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEORouteIncident, NSArray, NSData, NSDate;
 
-@interface MNTrafficIncidentAlert : NSObject
+@interface MNTrafficIncidentAlert : NSObject <NSSecureCoding>
 {
     NSData *_alertID;
     NSData *_etaResponseID;
     unsigned long long _alertType;
     GEOETARoute *_oldETARoute;
     GEOComposedRoute *_originalRoute;
+    GEOComposedRouteTraffic *_originalRouteTraffic;
     GEOComposedRoute *_alternateRoute;
+    GEOComposedRouteTraffic *_alternateRouteTraffic;
     CDStruct_3f2a7a20 _startValidCoordinateRange;
     CDStruct_3f2a7a20 _endValidCoordinateRange;
     CDStruct_3f2a7a20 _incidentCoordinate;
@@ -24,8 +28,6 @@
     double _distanceToIncident;
     NSDate *_eta;
     BOOL _isAutomaticReroute;
-    GEOComposedRouteTraffic *_originalRouteTraffic;
-    GEOComposedRouteTraffic *_alternateRouteTraffic;
 }
 
 @property (readonly, nonatomic) NSDate *alertDate; // @synthesize alertDate=_alertDate;
@@ -53,12 +55,15 @@
 @property (readonly, nonatomic) NSArray *spokenTexts;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 
++ (BOOL)supportsSecureCoding;
 + (id)trafficIncidentAlertForDetails:(id)arg1;
 - (void).cxx_destruct;
 - (CDStruct_c3b9c2ee)_divergenceCoordinate;
 - (id)_dynamicStringValues;
 - (void)_findRouteDivergence;
 - (CDStruct_3f2a7a20)_routeCoordinateAtDuration:(double)arg1 beforeRouteCoordinate:(CDStruct_3f2a7a20)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithRoute:(id)arg1 traffic:(id)arg2 etaRoute:(id)arg3 etaResponse:(id)arg4;
 - (id)initWithTrafficIncidentAlertDetails:(id)arg1;
 - (BOOL)isSimilarTo:(id)arg1;

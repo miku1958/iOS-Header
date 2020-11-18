@@ -20,7 +20,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIScrollView, UITraitCollection;
+@class NSMutableArray, NSOrderedSet, NSString, SXComponentAnimationController, SXComponentBehaviorController, SXComponentView, SXContext, SXDocumentProvider, SXFontIndex, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXScrollPosition, SXTangierController, SXVideoPlayerViewControllerManager, SXViewControllerPresentingManager, SXViewport, SXViewportDebugger, UIResponder, UIScrollView, UITraitCollection;
 @protocol SXAdControllerContainer, SXAdDocumentStateManager, SXAnalyticsReportingContainer, SXAppStateMonitor, SXComponentController, SXComponentInteractionManager, SXContextMenuManager, SXDOMObjectProviding, SXDocumentControllerContainer, SXDocumentSectionBlueprint, SXDocumentSectionManager, SXDocumentStyleRenderer, SXFormatInteractor, SXMediaSharingPolicyProvider, SXPresentationAttributesManager, SXPresentationDelegateContainer, SXResourceDataSourceContainer, SXScrollPositionManager, SXScrollReporting, SXScrollViewControllerDelegate, SXTextSelectionManager, SXTransitionDataSourceProvider, UIViewControllerPreviewing;
 
 @interface SXScrollViewController : UIViewController <SXFormatInteractorDelegate, SXDocumentSectionHosting, SXPresentationDelegate, STScrollViewDelegate, SXComponentHosting, UIGestureRecognizerDelegate, SXTangierControllerDelegate, SXViewportChangeListener, SXAdControllerPresentationDelegate, SXContextMenuManagerDelegate, SXPresentationEnvironment, SXKeyboardSupport, SXScrollPositionRestoring>
@@ -117,6 +117,7 @@
 @property (readonly, nonatomic) id<SXPresentationDelegateContainer> presentationDelegateContainer; // @synthesize presentationDelegateContainer=_presentationDelegateContainer;
 @property (strong, nonatomic) id<UIViewControllerPreviewing> previewingContext; // @synthesize previewingContext=_previewingContext;
 @property (readonly, nonatomic) id<SXResourceDataSourceContainer> resourceDataSourceContainer; // @synthesize resourceDataSourceContainer=_resourceDataSourceContainer;
+@property (readonly, nonatomic) UIResponder *responder;
 @property (nonatomic) BOOL restoreScrollPositionOnNextLayout; // @synthesize restoreScrollPositionOnNextLayout=_restoreScrollPositionOnNextLayout;
 @property (strong, nonatomic) SXScrollPosition *restoredScrollPosition; // @synthesize restoredScrollPosition=_restoredScrollPosition;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsets;
@@ -148,6 +149,7 @@
 - (void)applyFooterBlueprint:(id)arg1;
 - (void)applyHeaderBlueprint:(id)arg1;
 - (void)assistiveTechnologyStatusDidChange:(id)arg1;
+- (BOOL)becomeFirstResponder;
 - (id)canvasViewController;
 - (void)dealloc;
 - (void)dictionaryWithComponentOffsets:(id)arg1 forComponentViews:(id)arg2;
@@ -173,6 +175,7 @@
 - (void)removeInteractivityFocusForComponent:(id)arg1;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 canvasController:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (id)requestFullScreenCanvasViewControllerForComponent:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (BOOL)resignFirstResponder;
 - (id)scrollPosition;
 - (id)scrollPositionForComponentViews:(id)arg1;
 - (id)scrollPositionForPlayingVideoComponentInComponentViews:(id)arg1;

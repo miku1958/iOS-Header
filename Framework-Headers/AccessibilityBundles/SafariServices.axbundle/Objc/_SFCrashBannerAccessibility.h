@@ -16,7 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
-- (id)initUsingLightControls:(BOOL)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

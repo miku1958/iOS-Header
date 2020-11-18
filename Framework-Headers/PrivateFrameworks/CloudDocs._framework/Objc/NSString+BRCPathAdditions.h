@@ -41,5 +41,6 @@
 - (id)brc_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
 - (id)brc_stringByBackslashEscapingCharactersInString:(id)arg1;
 - (id)brc_stringByDeletingPathExtension;
+- (id)removingROSPPrefix;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASAuthorizationProviderExtensionAuthorizationRequest, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosRealmSettings, SONetworkIdentity, SORealmSettingManager, SOSiteCode;
+@class ASAuthorizationProviderExtensionAuthorizationRequest, NSData, NSDate, NSString, NSUUID, SOKerberosExtensionData, SOKerberosExtensionUserData, SOKerberosRealmSettings, SONetworkIdentity, SORealmSettingManager, SOSiteCode;
 @protocol OS_dispatch_group;
 
 @interface SOKerberosContext : NSObject
@@ -22,8 +22,10 @@
     NSString *_userName;
     NSString *_realm;
     SOKerberosExtensionData *_extensionData;
+    SOKerberosExtensionUserData *_extensionUserData;
     NSString *_hostName;
     NSString *_servicePrincipalName;
+    NSString *_serviceName;
     NSString *_password;
     NSString *_changedPassword;
     NSUUID *_credentialUUID;
@@ -54,6 +56,7 @@
 @property (readonly, nonatomic) SOKerberosRealmSettings *currentSettings;
 @property (strong) NSObject<OS_dispatch_group> *dispatchGroup; // @synthesize dispatchGroup=_dispatchGroup;
 @property (strong, nonatomic) SOKerberosExtensionData *extensionData; // @synthesize extensionData=_extensionData;
+@property (strong, nonatomic) SOKerberosExtensionUserData *extensionUserData; // @synthesize extensionUserData=_extensionUserData;
 @property (nonatomic) BOOL forceLoginViewController; // @synthesize forceLoginViewController=_forceLoginViewController;
 @property (strong, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
 @property (strong, nonatomic) NSDate *loginTimeStamp; // @synthesize loginTimeStamp=_loginTimeStamp;
@@ -63,6 +66,7 @@
 @property (nonatomic) BOOL requestCancelled; // @synthesize requestCancelled=_requestCancelled;
 @property (nonatomic) BOOL requestStarted; // @synthesize requestStarted=_requestStarted;
 @property (nonatomic) BOOL returnCredentialOnly; // @synthesize returnCredentialOnly=_returnCredentialOnly;
+@property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (strong, nonatomic) NSString *servicePrincipalName; // @synthesize servicePrincipalName=_servicePrincipalName;
 @property (strong, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property (strong, nonatomic) SOSiteCode *siteCode; // @synthesize siteCode=_siteCode;
@@ -75,6 +79,7 @@
 - (void)cancelRequest;
 - (void)cancelRequest:(BOOL)arg1;
 - (void)completeRequest;
+- (void)completeRequestWithDoNotHandle;
 - (void)completeRequestWithError:(id)arg1;
 - (void)completeRequestWithHTTPResponse:(id)arg1 httpBody:(id)arg2;
 - (void)completeRequestWithHTTPResponseHeaders:(id)arg1;

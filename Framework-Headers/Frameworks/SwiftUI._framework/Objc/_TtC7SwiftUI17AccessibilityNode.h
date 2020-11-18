@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SwiftUI/UIAccessibilityIdentification-Protocol.h>
-
-@class MISSING_TYPE, NSArray, NSAttributedString, NSString, UIBezierPath;
+@class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7SwiftUI17AccessibilityNode : NSObject <UIAccessibilityIdentification>
+@interface _TtC7SwiftUI17AccessibilityNode : NSObject
 {
     MISSING_TYPE *children;
     MISSING_TYPE *parent;
@@ -23,37 +21,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *focusableAncestor;
 }
 
-@property (nonatomic) struct CGPoint accessibilityActivationPoint;
-@property (nonatomic, strong) NSAttributedString *accessibilityAttributedHint;
-@property (nonatomic, strong) NSAttributedString *accessibilityAttributedLabel;
-@property (nonatomic, strong) NSAttributedString *accessibilityAttributedValue;
-@property (nonatomic, copy) NSArray *accessibilityCustomActions;
-@property (nonatomic, copy) NSArray *accessibilityElements;
-@property (nonatomic) BOOL accessibilityElementsHidden;
-@property (nonatomic) struct CGRect accessibilityFrame;
-@property (nonatomic, copy) NSString *accessibilityHint;
-@property (nonatomic, copy) NSString *accessibilityIdentifier;
-@property (nonatomic, copy) NSString *accessibilityLabel;
-@property (nonatomic, copy) NSString *accessibilityLanguage;
-@property (nonatomic, strong) UIBezierPath *accessibilityPath;
-@property (nonatomic) unsigned long long accessibilityTraits;
-@property (nonatomic, copy) NSString *accessibilityValue;
-@property (nonatomic) BOOL accessibilityViewIsModal;
-@property (nonatomic) BOOL isAccessibilityElement;
-@property (nonatomic) BOOL shouldGroupAccessibilityChildren;
-
 - (void).cxx_destruct;
-- (unsigned long long)_accessibilityAutomationType;
-- (BOOL)_accessibilityScrollToVisible;
-- (BOOL)_internal_handleCustomActionWithUiAction:(id)arg1;
-- (BOOL)accessibilityActivate;
-- (void)accessibilityDecrement;
-- (void)accessibilityElementDidBecomeFocused;
-- (void)accessibilityElementDidLoseFocus;
-- (void)accessibilityIncrement;
-- (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityPerformMagicTap;
-- (BOOL)accessibilityScroll:(long long)arg1;
 - (void)dealloc;
 - (id)init;
 

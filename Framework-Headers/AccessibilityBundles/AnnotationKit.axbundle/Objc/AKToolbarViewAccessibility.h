@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;
 

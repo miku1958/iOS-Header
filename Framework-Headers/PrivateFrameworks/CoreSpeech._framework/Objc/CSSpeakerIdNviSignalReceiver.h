@@ -9,22 +9,23 @@
 #import <CoreSpeech/NviSignalProviderDelegate-Protocol.h>
 
 @class NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CSSpeakerIdNviSignalReceiver : NSObject <NviSignalProviderDelegate>
 {
     NSMutableArray *_signalBuffer;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSMutableArray *signalBuffer; // @synthesize signalBuffer=_signalBuffer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)clearSignalBuffer;
-- (id)init;
-- (void)pushSignalToBuffer:(float)arg1;
+- (id)initWithQueue:(id)arg1;
 - (void)signalProvider:(id)arg1 hasSignalData:(id)arg2;
 
 @end

@@ -15,13 +15,13 @@
 
 @property (strong, nonatomic) WFAlert *unitAlert; // @synthesize unitAlert=_unitAlert;
 
-+ (BOOL)supportsLongPressGestureForSlotWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)stateForEnteredText:(id)arg1;
 - (id)stateForVariable:(id)arg1;
-- (id)variableStateForVariablePicker;
+- (id)variableMenuInitialStateForSlotWithIdentifier:(id)arg1;
+- (BOOL)variableMenuSupportsVariableSelectionForSlotWithIdentifier:(id)arg1;
 
 @end
 

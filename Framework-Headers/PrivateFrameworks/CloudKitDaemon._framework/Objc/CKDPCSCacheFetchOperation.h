@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _fetchOptions;
     CKDPCSData *_pcsData;
     NSError *_fetchError;
+    NSError *_dependentPCSFetchError;
     CKDRecordPCSData *_parentPCSData;
 }
 
 @property (strong, nonatomic) CKDPCSCache *cache; // @synthesize cache=_cache;
+@property (strong, nonatomic) NSError *dependentPCSFetchError; // @synthesize dependentPCSFetchError=_dependentPCSFetchError;
 @property (nonatomic) BOOL didFetchData; // @synthesize didFetchData=_didFetchData;
 @property (strong, nonatomic) NSError *fetchError; // @synthesize fetchError=_fetchError;
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *fetchGroup; // @synthesize fetchGroup=_fetchGroup;

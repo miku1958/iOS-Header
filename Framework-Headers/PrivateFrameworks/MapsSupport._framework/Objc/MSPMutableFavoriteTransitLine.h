@@ -28,6 +28,7 @@
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
 - (id)initWithBookmarkStorage:(id)arg1;
+- (BOOL)isUserVisibleDuplicateOfFavorite:(id)arg1;
 - (id)transferToImmutableIfValidWithError:(out id *)arg1;
 
 @end

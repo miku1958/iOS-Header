@@ -8,6 +8,7 @@
 
 @interface SBSApplicationShortcutItem (SBHAdditions)
 
+@property (readonly, nonatomic) BOOL sbh_isDestructive;
 @property (readonly, nonatomic) BOOL sbh_isShortcutSpringBoardOnly;
 @property (readonly, nonatomic) BOOL sbh_isSystemShortcut;
 

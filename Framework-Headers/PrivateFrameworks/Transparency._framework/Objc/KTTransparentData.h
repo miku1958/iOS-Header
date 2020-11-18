@@ -35,11 +35,13 @@
 - (id)initWithUriVRFOutput:(id)arg1;
 - (id)initWithUriVRFOutput:(id)arg1 mapLeaf:(id)arg2 pendingSMTs:(id)arg3 error:(id *)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)markAccountsWithMutationMs:(unsigned long long)arg1;
 - (id)mutationsFromSMTs:(id)arg1 error:(id *)arg2;
 - (void)removeAccountsObject:(id)arg1;
 - (id)serialize;
 - (id)sortMutationsByTimestamp:(id)arg1;
 - (BOOL)updateWithMapLeaf:(id)arg1 error:(id *)arg2;
+- (BOOL)updateWithMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)updateWithSMTs:(id)arg1 error:(id *)arg2;
 - (BOOL)validateActiveClientDatasForAccountId:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAndUpdateWithServerLoggableDatas:(id)arg1 accountId:(id)arg2 error:(id *)arg3;

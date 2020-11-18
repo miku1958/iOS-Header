@@ -11,7 +11,7 @@
 #import <WorkflowKit/WFUUIDProvider-Protocol.h>
 #import <WorkflowKit/WFVariableProvider-Protocol.h>
 
-@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, NSUnit, UIImage, WFActionParameterSummary, WFContentCollection, WFParameter, WFResourceManager, WFWorkflow;
+@class ICApp, NSArray, NSAttributedString, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSProgress, NSSet, NSString, WFActionParameterSummary, WFContentCollection, WFImage, WFParameter, WFResourceManager, WFWorkflow;
 @protocol WFActionParameterInputProvider, WFUserInterface, WFVariableDataSource;
 
 @interface WFAction : NSObject <WFUUIDProvider, WFParameterEventObserver, NSCopying, WFVariableProvider>
@@ -79,7 +79,7 @@
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (copy, nonatomic) NSString *groupingIdentifier;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) NSString *iconName;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSDictionary *initialSerializedParameters; // @synthesize initialSerializedParameters=_initialSerializedParameters;
@@ -97,7 +97,7 @@
 @property (readonly, nonatomic) BOOL isDeletable;
 @property (readonly, nonatomic) BOOL isRelevantToUser;
 @property (readonly, nonatomic) NSArray *keyCommands;
-@property (readonly, nonatomic) UIImage *keyImage;
+@property (readonly, nonatomic) WFImage *keyImage;
 @property (readonly, nonatomic) NSArray *keywords;
 @property (readonly, nonatomic, getter=isLastAction) BOOL lastAction;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
@@ -121,8 +121,8 @@
 @property (readonly, nonatomic) BOOL neverSuggested;
 @property (strong, nonatomic) WFContentCollection *output; // @synthesize output=_output;
 @property (readonly, nonatomic) NSArray *outputContentClasses; // @synthesize outputContentClasses=_outputContentClasses;
-@property (readonly, nonatomic) UIImage *outputIcon;
-@property (readonly, nonatomic) NSUnit *outputMeasurementUnit;
+@property (readonly, nonatomic) WFImage *outputIcon;
+@property (readonly, nonatomic) NSString *outputMeasurementUnitType;
 @property (copy, nonatomic) NSString *outputName;
 @property (readonly, nonatomic) NSArray *outputTypes;
 @property (readonly, nonatomic) BOOL outputsMultipleItems;

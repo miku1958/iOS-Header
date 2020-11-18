@@ -41,12 +41,12 @@
 - (void)_handleLocalHomeDataRemovedNotification:(id *)arg1;
 - (void)_handleRegisterRequest:(id)arg1;
 - (void)_handleUserSettingsUpdatedNotification:(id)arg1;
-- (void)_handleXPCConnectionInvalidated:(id)arg1;
 - (void)_postMultiUserStatusChangedNotification;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (id)currentDateForUserCloudShareController:(id)arg1;
 - (void)handleHomeChangedNotification:(id)arg1;
 - (void)handleRemoteUserClientCloudShareRequest:(id)arg1;
+- (void)handleXPCConnectionInvalidated:(id)arg1;
 - (id)initWithHomeManager:(id)arg1;
 - (id)initWithHomeManager:(id)arg1 dependency:(id)arg2;
 - (id)messageDestination;

@@ -8,6 +8,8 @@
 
 @interface NSValue (PXTileIdentifier)
 
+@property (readonly, nonatomic) CDStruct_aa0b146f PXDisplayAssetDetailedCountsValue;
+@property (readonly, nonatomic) CDStruct_15189878 PXDisplayAssetTypedCountValue;
 @property (readonly) struct UIEdgeInsets PXEdgeInsetsValue;
 @property (readonly, nonatomic) struct PXTileIdentifier PXTileIdentifierValue;
 @property (readonly, nonatomic) struct PXSimpleIndexPath px_simpleIndexPathValue;
@@ -16,6 +18,8 @@
 + (id)px_valueWithMemoryFontsSpecIdentifier:(struct PXMemoryFontsSpecIdentifier)arg1;
 + (id)px_valueWithSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 + (id)px_valueWithViewSpecDescriptor:(struct PXViewSpecDescriptor)arg1;
++ (id)valueWithPXDisplayAssetDetailedCounts:(CDStruct_aa0b146f)arg1;
++ (id)valueWithPXDisplayAssetTypedCount:(CDStruct_15189878)arg1;
 + (id)valueWithPXEdgeInsets:(struct UIEdgeInsets)arg1;
 + (id)valueWithPXTileGeometry:(struct PXTileGeometry)arg1;
 + (id)valueWithPXTileIdentifier:(struct PXTileIdentifier)arg1;

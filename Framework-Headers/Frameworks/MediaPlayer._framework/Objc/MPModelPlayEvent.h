@@ -24,6 +24,7 @@
 + (id)__playlist_KEY;
 + (id)__radioStation_KEY;
 - (id)contentItemCollectionInfo;
+- (id)genericObjectRepresentation;
 - (long long)itemType;
 
 @end

@@ -38,6 +38,10 @@
 - (BOOL)combineEarlierVisitMO:(id)arg1 withLaterVisitMO:(id)arg2 error:(id *)arg3;
 - (BOOL)combineOverlappingRevGeoLOIsStabilized:(BOOL *)arg1 error:(id *)arg2;
 - (BOOL)combineSequentialVisitsWithError:(id *)arg1;
+- (id)connectedComponentForLoiMO:(id)arg1 encounteredIdentifiers:(id)arg2 error:(id *)arg3;
+- (BOOL)consolidateVisitsToLoisWithKnownPlaceTypesWithError:(id *)arg1;
+- (id)dedupableLOIsNearLocation:(id)arg1 mapItem:(id)arg2 error:(id *)arg3;
+- (BOOL)dedupeLOIsWithError:(id *)arg1;
 - (id)fetchClosestUnconcreteLocationOfInterestMOToLocation:(id)arg1 withinDistance:(double)arg2 distanceCalculator:(id)arg3 error:(id *)arg4;
 - (id)fetchLearnedLocationOfInterestVisitMOForIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchLearnedPlaceMOforMapItemIdentifier:(id)arg1 error:(id *)arg2;
@@ -46,6 +50,7 @@
 - (id)fetchOverlappingUnconcreteLocationOfInterestMOsForLOIMO:(id)arg1 distanceCalculator:(id)arg2 unusableIdentifiers:(id)arg3 error:(id *)arg4;
 - (id)fetchTransitionMOsEndingAtVisitIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchTransitionMOsOriginatingFromVisitIdentifier:(id)arg1 error:(id *)arg2;
+- (id)filteredVisitMOs:(id)arg1 referenceLocation:(id)arg2 error:(id *)arg3;
 - (BOOL)fixUnconcreteLOIs:(id *)arg1;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 learnedPlaceParameters:(id)arg3 metrics:(id)arg4 persistenceManager:(id)arg5 relabelerParameters:(id)arg6 reverseGeocodeProvider:(id)arg7;
@@ -53,6 +58,8 @@
 - (BOOL)iterativelyCollapseOverlappingRevGeoLOIsWithError:(id *)arg1;
 - (id)learnedPlaceForVisit:(id)arg1 creationDate:(id)arg2 expirationDate:(id)arg3 error:(id *)arg4;
 - (void)logLocalStoreWithReason:(id)arg1;
+- (id)loiToMoveToFromConnectedComponent:(id)arg1;
+- (BOOL)moveVisitMOs:(id)arg1 toLOIMO:(id)arg2 error:(id *)arg3;
 - (BOOL)performBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)resnapVisitsWithError:(id *)arg1;
 - (BOOL)restoreToOldCandidate:(struct RTPair *)arg1 error:(id *)arg2;

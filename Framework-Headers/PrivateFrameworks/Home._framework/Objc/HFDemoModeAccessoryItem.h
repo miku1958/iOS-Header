@@ -11,7 +11,7 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, NSDictionary, NSSet, NSString;
+@class HMAccessory, HMHome, NSDictionary, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFDemoModeAccessoryItem : HFItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFGroupableItemProtocol>
@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;

@@ -7,10 +7,11 @@
 #import <UIKit/UIViewController.h>
 
 #import <HomeKit/HMSetupRemoteHost-Protocol.h>
+#import <HomeKit/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class HMHome, HMSetupAccessoryDescription, HMSetupRemoteViewController, _UIAsyncInvocation;
+@class HMHome, HMSetupAccessoryDescription, HMSetupRemoteViewController, NSString, _UIAsyncInvocation, _UIRemoteViewController;
 
-@interface HMSetupViewController : UIViewController <HMSetupRemoteHost>
+@interface HMSetupViewController : UIViewController <HMSetupRemoteHost, _UIRemoteViewControllerContaining>
 {
     BOOL _cancelling;
     BOOL _disconnected;
@@ -23,15 +24,20 @@
     HMSetupRemoteViewController *_remoteViewController;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (strong, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
 @property (strong, nonatomic) _UIAsyncInvocation *cancelServiceInvocation; // @synthesize cancelServiceInvocation=_cancelServiceInvocation;
 @property (nonatomic, getter=isCancelling) BOOL cancelling; // @synthesize cancelling=_cancelling;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisconnected) BOOL disconnected; // @synthesize disconnected=_disconnected;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) CDUnknownBlockType loadHandler; // @synthesize loadHandler=_loadHandler;
 @property (strong, nonatomic) HMSetupRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (nonatomic) BOOL shouldPresentWhenLoaded; // @synthesize shouldPresentWhenLoaded=_shouldPresentWhenLoaded;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_configureAndAddRemoteViewController;

@@ -40,6 +40,7 @@
 + (id)obfuscatedEmail:(id)arg1;
 - (void).cxx_destruct;
 - (id)_personNameComponents;
+- (id)_userSelection;
 - (id)description;
 - (id)emailAtIndex:(unsigned long long)arg1;
 - (id)initWithScopes:(id)arg1 userInformation:(id)arg2;

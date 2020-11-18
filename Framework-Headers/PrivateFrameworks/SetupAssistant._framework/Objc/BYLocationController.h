@@ -32,7 +32,9 @@
 - (void)_closeWifiConnection;
 - (id)_countriesFromDefaults;
 - (id)_countryFromTelephony;
+- (void)_getWifiDevice;
 - (void)_scanComplete:(id)arg1 error:(BOOL)arg2;
+- (void)_scanWifiList;
 - (void)_setGuessedCountryDefault:(id)arg1;
 - (void)_startWifiScan;
 - (id)aliasDict;

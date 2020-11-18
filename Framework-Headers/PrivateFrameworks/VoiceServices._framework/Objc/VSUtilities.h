@@ -11,8 +11,11 @@
 }
 
 + (id)hardwarePlatform;
++ (BOOL)hasAMX;
++ (BOOL)hasANE;
 + (BOOL)isAudioAccessory;
 + (BOOL)isInternalBuild;
++ (BOOL)isNeuralTTSPlatform;
 + (BOOL)isSeedBuild;
 + (BOOL)isWatch;
 + (id)legacyPlatforms;

@@ -446,6 +446,12 @@
 
  enum __C.ComparisonResult { }
 
+ struct __C.NSStringDrawingOptions {
+
+	// Properties
+	let rawValue : Int
+ }
+
  class __C.CGImage {
  enum __C.FCTagType { }
 
@@ -462,7 +468,7 @@
 	let json : String // +0x20 (0x10)
 
 	// Swift methods
-	0x2fa0  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
+	0x3000  class func LayeredMediaParser.__allocating_init(identifier:json:) // init 
  }
 
  enum NewsFeed.Errors {
@@ -477,12 +483,12 @@
 	let layerRenderer : LayeredMediaLayerRenderer // +0x10 (0x8)
 
 	// Swift methods
-	0x4f30  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
+	0x5260  class func LayeredMediaViewRenderer.__allocating_init(layerRenderer:) // init 
  }
 
  class NewsFeed.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xb1d0  @objc RendererAssembly.init <stripped>
+	0xb500  @objc RendererAssembly.init <stripped>
  }
 
  struct NewsFeed.IssueCoverViewStyle {
@@ -842,19 +848,19 @@
 	let nonAnimatingDelegate : NonAnimatingDelegate
 
 	// ObjC -> Swift bridged methods
-	0x3c230  @objc PlayerLayer.playerLayer <stripped>
-	0x3c380  @objc PlayerLayer.initWithCoder: <stripped>
-	0x3c7f0  @objc PlayerLayer.layoutSublayers <stripped>
-	0x3cc70  @objc PlayerLayer.dealloc <stripped>
-	0x3ccf0  @objc PlayerLayer.applicationDidEnterBackground <stripped>
-	0x3cd70  @objc PlayerLayer.applicationWillEnterForeground <stripped>
-	0x3ce70  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
-	0x3cef0  @objc PlayerLayer.init <stripped>
-	0x3cfc0  @objc PlayerLayer.initWithLayer: <stripped>
-	0x3cc90  @objc PlayerLayer..cxx_destruct <stripped>
+	0x3c560  @objc PlayerLayer.playerLayer <stripped>
+	0x3c6b0  @objc PlayerLayer.initWithCoder: <stripped>
+	0x3cb20  @objc PlayerLayer.layoutSublayers <stripped>
+	0x3cfa0  @objc PlayerLayer.dealloc <stripped>
+	0x3d020  @objc PlayerLayer.applicationDidEnterBackground <stripped>
+	0x3d0a0  @objc PlayerLayer.applicationWillEnterForeground <stripped>
+	0x3d1a0  @objc PlayerLayer.reduceMotionStatusDidChange <stripped>
+	0x3d220  @objc PlayerLayer.init <stripped>
+	0x3d2f0  @objc PlayerLayer.initWithLayer: <stripped>
+	0x3cfc0  @objc PlayerLayer..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3c3a0  class func PlayerLayer.__allocating_init(loopBehavior:) // init 
+	0x3c6d0  class func PlayerLayer.__allocating_init(loopBehavior:) // init 
  }
 
  enum NewsFeed.LoopBehavior {
@@ -873,8 +879,8 @@
 
  class NewsFeed.NonAnimatingDelegate : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c250  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
-	0x3c2e0  @objc NonAnimatingDelegate.init <stripped>
+	0x3c580  @objc NonAnimatingDelegate.actionForLayer:forKey: <stripped>
+	0x3c610  @objc NonAnimatingDelegate.init <stripped>
 
 	// Swift methods
  }
@@ -1339,9 +1345,9 @@
 	let cardView : CardView // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8a060  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
-	0x8a0e0  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
-	0x8a150  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
+	0x8a390  @objc FeaturedIssueHeadlineView.initWithFrame: <stripped>
+	0x8a410  @objc FeaturedIssueHeadlineView.initWithCoder: <stripped>
+	0x8a480  @objc FeaturedIssueHeadlineView..cxx_destruct <stripped>
  }
 
  class NewsFeed.ThumbnailProcessorRequest : NSObject /usr/lib/libobjc.A.dylib {
@@ -1355,14 +1361,14 @@
 	let cornerRadius : CGFloat // +0x60 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8a9f0  @objc ThumbnailProcessorRequest.assetHandles <stripped>
-	0x8acc0  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
-	0x8ada0  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
-	0x8b110  @objc ThumbnailProcessorRequest.init <stripped>
-	0x8b190  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
+	0x8ad20  @objc ThumbnailProcessorRequest.assetHandles <stripped>
+	0x8aff0  @objc ThumbnailProcessorRequest.initWithThumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius: <stripped>
+	0x8b0d0  @objc ThumbnailProcessorRequest.cacheIdentifier <stripped>
+	0x8b440  @objc ThumbnailProcessorRequest.init <stripped>
+	0x8b4c0  @objc ThumbnailProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8ab70  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
+	0x8aea0  class func ThumbnailProcessorRequest.__allocating_init(thumbnailAssetHandle:thumbnailFrame:focalFrame:scale:byRoundingCorners:cornerRadius:) // init 
  }
 
  class NewsFeed.ImageHeadlineView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1378,9 +1384,9 @@
 	let debugButton : DebugButton // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8baa0  @objc ImageHeadlineView.initWithFrame: <stripped>
-	0x8bb20  @objc ImageHeadlineView.initWithCoder: <stripped>
-	0x8bb90  @objc ImageHeadlineView..cxx_destruct <stripped>
+	0x8bdd0  @objc ImageHeadlineView.initWithFrame: <stripped>
+	0x8be50  @objc ImageHeadlineView.initWithCoder: <stripped>
+	0x8bec0  @objc ImageHeadlineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C12_V4 {
@@ -1556,9 +1562,9 @@
 	let offlineLabel : UILabel // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa1bf0  @objc GapOfflineView.initWithFrame: <stripped>
-	0xa1d00  @objc GapOfflineView.initWithCoder: <stripped>
-	0xa1e40  @objc GapOfflineView..cxx_destruct <stripped>
+	0xa1f20  @objc GapOfflineView.initWithFrame: <stripped>
+	0xa2030  @objc GapOfflineView.initWithCoder: <stripped>
+	0xa2170  @objc GapOfflineView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.A8_V9 {
@@ -1620,10 +1626,10 @@
 	let image : UIImage // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xad220  @objc PremiumBadgeMask.image <stripped>
-	0xad260  @objc PremiumBadgeMask.size <stripped>
-	0xad2d0  @objc PremiumBadgeMask.init <stripped>
-	0xad380  @objc PremiumBadgeMask..cxx_destruct <stripped>
+	0xad850  @objc PremiumBadgeMask.image <stripped>
+	0xad890  @objc PremiumBadgeMask.size <stripped>
+	0xad900  @objc PremiumBadgeMask.init <stripped>
+	0xad9b0  @objc PremiumBadgeMask..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1638,9 +1644,9 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x60 (0x8)
 
 	// Swift methods
-	0xad520  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
-	0xad5f0  func <stripped> // method 
-	0xad640  func <stripped> // method 
+	0xadb50  class func FeedLayoutContextFactory.__allocating_init(fontBookFactory:colorPaletteProvider:layoutAttributesFactoryProvider:) // init 
+	0xadc20  func <stripped> // method 
+	0xadc70  func <stripped> // method 
  }
 
  struct NewsFeed.A12_V17 {
@@ -1874,11 +1880,11 @@
 	var downloadProgressDisposable : Disposable? // +0x80 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0xccb50  @objc CoverIssueView.initWithFrame: <stripped>
-	0xccbd0  @objc CoverIssueView.initWithCoder: <stripped>
-	0xccbf0  @objc CoverIssueView.accessibilityValue <stripped>
-	0xcd240  @objc CoverIssueView.setAccessibilityValue: <stripped>
-	0xcd590  @objc CoverIssueView..cxx_destruct <stripped>
+	0xcd930  @objc CoverIssueView.initWithFrame: <stripped>
+	0xcd9b0  @objc CoverIssueView.initWithCoder: <stripped>
+	0xcd9d0  @objc CoverIssueView.accessibilityValue <stripped>
+	0xce020  @objc CoverIssueView.setAccessibilityValue: <stripped>
+	0xce370  @objc CoverIssueView..cxx_destruct <stripped>
  }
 
  class NewsFeed.FeedItemSorter {
@@ -2215,10 +2221,10 @@
 	let identifier : String
 
 	// ObjC -> Swift bridged methods
-	0xff3a0  @objc StubAssetHandle.dataProvider <stripped>
-	0xff4e0  @objc StubAssetHandle.uniqueKey <stripped>
-	0xff690  @objc StubAssetHandle.init <stripped>
-	0xff7a0  @objc StubAssetHandle..cxx_destruct <stripped>
+	0x100180  @objc StubAssetHandle.dataProvider <stripped>
+	0x1002c0  @objc StubAssetHandle.uniqueKey <stripped>
+	0x100470  @objc StubAssetHandle.init <stripped>
+	0x100580  @objc StubAssetHandle..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubAssetDataProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2229,9 +2235,9 @@
 	let isRawFileConsumable : Bool
 
 	// ObjC -> Swift bridged methods
-	0xff290  @objc StubAssetDataProvider.data <stripped>
-	0xff2f0  @objc StubAssetDataProvider.filePath <stripped>
-	0xff340  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
+	0x100070  @objc StubAssetDataProvider.data <stripped>
+	0x1000d0  @objc StubAssetDataProvider.filePath <stripped>
+	0x100120  @objc StubAssetDataProvider.isRawFileConsumable <stripped>
 
 	// Swift methods
  }
@@ -2485,8 +2491,8 @@
 
  class NewsFeed.ThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x12c160  @objc ThumbnailProcessor.process: <stripped>
-	0x12c200  @objc ThumbnailProcessor.init <stripped>
+	0x12cf40  @objc ThumbnailProcessor.process: <stripped>
+	0x12cfe0  @objc ThumbnailProcessor.init <stripped>
  }
 
  class NewsFeed.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2869,10 +2875,10 @@
 
  class NewsFeed.LayeredMediaLayerProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x15d1f0  @objc LayeredMediaLayerProcessor.process: <stripped>
+	0x15dfd0  @objc LayeredMediaLayerProcessor.process: <stripped>
 
 	// Swift methods
-	0x15d160  class func LayeredMediaLayerProcessor.__allocating_init() // init 
+	0x15df40  class func LayeredMediaLayerProcessor.__allocating_init() // init 
  }
 
  class NewsFeed.LayeredMediaLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaLoaderType {
@@ -3569,8 +3575,8 @@
 
  class NewsFeed.PremiumBadgeMaskGenerator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1b2930  @objc PremiumBadgeMaskGenerator.init <stripped>
-	0x1b29d0  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
+	0x1b3710  @objc PremiumBadgeMaskGenerator.init <stripped>
+	0x1b37b0  @objc PremiumBadgeMaskGenerator..cxx_destruct <stripped>
  }
 
  enum NewsFeed.FeedItem {
@@ -3731,8 +3737,8 @@
 
  class NewsFeed.StubImageDownloader : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x1c5040  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
-	0x1c50d0  @objc StubImageDownloader.init <stripped>
+	0x1c5e20  @objc StubImageDownloader.downloadImageAndStoreFilePathInAssetHandle:usingDispatchGroup: <stripped>
+	0x1c5eb0  @objc StubImageDownloader.init <stripped>
  }
 
  class NewsFeed.FeaturedIssueSupplementViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueSupplementViewStylerType {
@@ -3762,16 +3768,16 @@
 	let coverView : IssueCoverView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1cad20  @objc IssueCoverViewButton.isHighlighted <stripped>
-	0x1cae00  @objc IssueCoverViewButton.setHighlighted: <stripped>
-	0x1cb170  @objc IssueCoverViewButton.frame <stripped>
-	0x1cb240  @objc IssueCoverViewButton.setFrame: <stripped>
-	0x1cba40  @objc IssueCoverViewButton.initWithCoder: <stripped>
-	0x1cbb80  @objc IssueCoverViewButton.initWithFrame: <stripped>
-	0x1cbc00  @objc IssueCoverViewButton..cxx_destruct <stripped>
+	0x1cbb00  @objc IssueCoverViewButton.isHighlighted <stripped>
+	0x1cbbe0  @objc IssueCoverViewButton.setHighlighted: <stripped>
+	0x1cbf50  @objc IssueCoverViewButton.frame <stripped>
+	0x1cc020  @objc IssueCoverViewButton.setFrame: <stripped>
+	0x1cc820  @objc IssueCoverViewButton.initWithCoder: <stripped>
+	0x1cc960  @objc IssueCoverViewButton.initWithFrame: <stripped>
+	0x1cc9e0  @objc IssueCoverViewButton..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1cb830  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
+	0x1cc610  class func IssueCoverViewButton.__allocating_init(coverView:) // init 
  }
 
  struct NewsFeed.C12_V1 {
@@ -3924,10 +3930,10 @@
 	let columnDebugView : ColumnDebugView // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1dfa30  @objc DebugViewLayoutView.initWithCoder: <stripped>
-	0x1dfd30  @objc DebugViewLayoutView.layoutSubviews <stripped>
-	0x1dfd60  @objc DebugViewLayoutView.initWithFrame: <stripped>
-	0x1dfde0  @objc DebugViewLayoutView..cxx_destruct <stripped>
+	0x1e0810  @objc DebugViewLayoutView.initWithCoder: <stripped>
+	0x1e0b10  @objc DebugViewLayoutView.layoutSubviews <stripped>
+	0x1e0b40  @objc DebugViewLayoutView.initWithFrame: <stripped>
+	0x1e0bc0  @objc DebugViewLayoutView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -3939,7 +3945,7 @@
 	let layoutAttributesFactoryProvider : FeedLayoutAttributesFactoryProvider // +0x18 (0x8)
 
 	// Swift methods
-	0x1dfe50  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
+	0x1e0c30  class func FeedLayoutContext.__allocating_init(stylerFactory:layoutAttributesFactoryProvider:) // init 
  }
 
  struct NewsFeed.C12_V11 {
@@ -4167,7 +4173,7 @@
 	let layerRenderableProvider : LayeredMediaLayerRenderableProvider // +0x10 (0x8)
 
 	// Swift methods
-	0x1fc5b0  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
+	0x1fd390  class func LayeredMediaViewProvider.__allocating_init(layerRenderableProvider:) // init 
  }
 
  struct NewsFeed.B8_V6 {
@@ -4321,13 +4327,13 @@
 	var breakpoint : CGFloat? // +0x0 (0x9)
 
 	// Swift methods
-	0x210a50  func <stripped> // method 
-	0x211000  func <stripped> // method 
-	0x2117a0  func <stripped> // method 
-	0x2118e0  func <stripped> // method 
-	0x211a20  func <stripped> // method 
-	0x211aa0  func <stripped> // method 
-	0x212340  func <stripped> // method 
+	0x211830  func <stripped> // method 
+	0x211de0  func <stripped> // method 
+	0x212580  func <stripped> // method 
+	0x2126c0  func <stripped> // method 
+	0x212800  func <stripped> // method 
+	0x212880  func <stripped> // method 
+	0x213120  func <stripped> // method 
  }
 
  struct NewsFeed.GapOffline {
@@ -4574,10 +4580,10 @@
 	var toggleState : ToggleState // +0x6100085 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x234ed0  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
-	0x234f00  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
-	0x2352a0  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
-	0x235360  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
+	0x235cb0  @objc CoverViewFollowSwitch.initWithFrame: <stripped>
+	0x235ce0  @objc CoverViewFollowSwitch.initWithCoder: <stripped>
+	0x236080  @objc CoverViewFollowSwitch.traitCollectionDidChange: <stripped>
+	0x236140  @objc CoverViewFollowSwitch..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C12_V3 {
@@ -4991,9 +4997,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x26d570  @objc Assembly.assemblies <stripped>
-	0x26d790  @objc Assembly.init <stripped>
-	0x26d800  @objc Assembly..cxx_destruct <stripped>
+	0x26e350  @objc Assembly.assemblies <stripped>
+	0x26e570  @objc Assembly.init <stripped>
+	0x26e5e0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsFeed.ImageHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ImageHeadlineViewStylerType {
@@ -5652,10 +5658,10 @@
 
  class NewsFeed.DebugNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2c1ed0  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
-	0x2c1f70  @objc DebugNavigationController.initWithRootViewController: <stripped>
-	0x2c1fd0  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
-	0x2c20b0  @objc DebugNavigationController.initWithCoder: <stripped>
+	0x2c2b70  @objc DebugNavigationController.initWithNavigationBarClass:toolbarClass: <stripped>
+	0x2c2c10  @objc DebugNavigationController.initWithRootViewController: <stripped>
+	0x2c2c70  @objc DebugNavigationController.initWithNibName:bundle: <stripped>
+	0x2c2d50  @objc DebugNavigationController.initWithCoder: <stripped>
  }
 
  class NewsFeed.DebugViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -5668,35 +5674,35 @@
 	let tableView : UITableView // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2c2290  @objc DebugViewController.initWithCoder: <stripped>
-	0x2c2350  @objc DebugViewController.initWithNibName:bundle: <stripped>
-	0x2c23c0  @objc DebugViewController..cxx_destruct <stripped>
+	0x2c2f30  @objc DebugViewController.initWithCoder: <stripped>
+	0x2c2ff0  @objc DebugViewController.initWithNibName:bundle: <stripped>
+	0x2c3060  @objc DebugViewController..cxx_destruct <stripped>
 
 	// Swift methods
  }
 
  class NewsFeed.KeyValueTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2c7080  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2c70b0  @objc KeyValueTableViewCell.initWithCoder: <stripped>
+	0x2c7d20  @objc KeyValueTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c7d50  @objc KeyValueTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.RequirementTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2c7150  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2c7180  @objc RequirementTableViewCell.initWithCoder: <stripped>
+	0x2c7df0  @objc RequirementTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c7e20  @objc RequirementTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.FeedItemTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2c7220  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2c7250  @objc FeedItemTableViewCell.initWithCoder: <stripped>
+	0x2c7ec0  @objc FeedItemTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c7ef0  @objc FeedItemTableViewCell.initWithCoder: <stripped>
  }
 
  class NewsFeed.LayoutTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x2c72f0  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2c73d0  @objc LayoutTableViewCell.initWithCoder: <stripped>
+	0x2c7f90  @objc LayoutTableViewCell.initWithStyle:reuseIdentifier: <stripped>
+	0x2c8070  @objc LayoutTableViewCell.initWithCoder: <stripped>
  }
 
  struct NewsFeed.G_V1 {
@@ -6104,16 +6110,16 @@
 	let mask : PremiumBadgeMask // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2fafe0  @objc PremiumBadgeRequest.style <stripped>
-	0x2fb020  @objc PremiumBadgeRequest.shineImageRequest <stripped>
-	0x2fb060  @objc PremiumBadgeRequest.mask <stripped>
-	0x2fb890  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
-	0x2fbc10  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
-	0x2fbdb0  @objc PremiumBadgeRequest.init <stripped>
-	0x2fbe30  @objc PremiumBadgeRequest..cxx_destruct <stripped>
+	0x2fbc80  @objc PremiumBadgeRequest.style <stripped>
+	0x2fbcc0  @objc PremiumBadgeRequest.shineImageRequest <stripped>
+	0x2fbd00  @objc PremiumBadgeRequest.mask <stripped>
+	0x2fc530  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:traitCollection: <stripped>
+	0x2fc8b0  @objc PremiumBadgeRequest.initWithStyle:color:bounds:mask:offset:traitCollection: <stripped>
+	0x2fca50  @objc PremiumBadgeRequest.init <stripped>
+	0x2fcad0  @objc PremiumBadgeRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2faf10  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
+	0x2fbbb0  class func PremiumBadgeRequest.__allocating_init(style:bounds:mask:offset:traitCollection:) // init 
  }
 
  enum NewsFeed.Style {
@@ -6448,7 +6454,7 @@
 	let scaleFactor : CGFloat // +0x60 (0x8)
 
 	// Swift methods
-	0x31adc0  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
+	0x31ba60  class func FeedLayoutStylerFactory.__allocating_init(fontBookProvider:colorPaletteProvider:scaleFactor:) // init 
  }
 
  struct NewsFeed.Options {
@@ -6629,8 +6635,8 @@
 
  class NewsFeed.StubIssueCoverImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x332fd0  @objc StubIssueCoverImageProcessor.process: <stripped>
-	0x333070  @objc StubIssueCoverImageProcessor.init <stripped>
+	0x333c70  @objc StubIssueCoverImageProcessor.process: <stripped>
+	0x333d10  @objc StubIssueCoverImageProcessor.init <stripped>
  }
 
  struct NewsFeed.C12_V8 {
@@ -6907,9 +6913,9 @@
 	let debugButton : DebugButton // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3567c0  @objc IssueView.initWithFrame: <stripped>
-	0x356840  @objc IssueView.initWithCoder: <stripped>
-	0x3568b0  @objc IssueView..cxx_destruct <stripped>
+	0x357460  @objc IssueView.initWithFrame: <stripped>
+	0x3574e0  @objc IssueView.initWithCoder: <stripped>
+	0x357550  @objc IssueView..cxx_destruct <stripped>
  }
 
  class NewsFeed.FeaturedIssueHeadlineViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FeaturedIssueHeadlineViewStylerType {
@@ -6925,8 +6931,8 @@
 
  class NewsFeed.PublisherLogoProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x358e20  @objc PublisherLogoProcessor.process: <stripped>
-	0x358ec0  @objc PublisherLogoProcessor.init <stripped>
+	0x359ac0  @objc PublisherLogoProcessor.process: <stripped>
+	0x359b60  @objc PublisherLogoProcessor.init <stripped>
  }
 
  struct NewsFeed.E18_V2 {
@@ -7129,12 +7135,12 @@
 	let corners : Corners // +0x30 (0x11)
 
 	// ObjC -> Swift bridged methods
-	0x375d40  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
-	0x375e10  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
-	0x375f20  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
+	0x3769e0  @objc IssueCoverImageProcessorRequest.assetHandles <stripped>
+	0x376ab0  @objc IssueCoverImageProcessorRequest.setAssetHandles: <stripped>
+	0x376bc0  @objc IssueCoverImageProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x375b70  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
+	0x376810  class func IssueCoverImageProcessorRequest.__allocating_init(assetHandle:size:scale:corners:) // init 
  }
 
  enum NewsFeed.Corners {
@@ -7254,10 +7260,10 @@
 
  class NewsFeed.IssueCoverImageProcessor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x388710  @objc IssueCoverImageProcessor.process: <stripped>
+	0x3893b0  @objc IssueCoverImageProcessor.process: <stripped>
 
 	// Swift methods
-	0x388680  class func IssueCoverImageProcessor.__allocating_init() // init 
+	0x389320  class func IssueCoverImageProcessor.__allocating_init() // init 
  }
 
  struct NewsFeed.E6_V3 {
@@ -7383,7 +7389,7 @@
 	var cache : FeedLayoutCacheItem // +0x10 (0x8)
 
 	// Swift methods
-	0x396510  class func FeedLayoutCache.__allocating_init() // init 
+	0x3971b0  class func FeedLayoutCache.__allocating_init() // init 
  }
 
  class NewsFeed.IssueCoverView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7399,12 +7405,12 @@
 	var identifier : String? // +0x40 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x398580  @objc IssueCoverView.initWithFrame: <stripped>
-	0x398600  @objc IssueCoverView.initWithCoder: <stripped>
-	0x398870  @objc IssueCoverView.layoutSubviews <stripped>
-	0x398a50  @objc IssueCoverView.didMoveToSuperview <stripped>
-	0x398b50  @objc IssueCoverView.removeFromSuperview <stripped>
-	0x398bd0  @objc IssueCoverView..cxx_destruct <stripped>
+	0x399220  @objc IssueCoverView.initWithFrame: <stripped>
+	0x3992a0  @objc IssueCoverView.initWithCoder: <stripped>
+	0x399510  @objc IssueCoverView.layoutSubviews <stripped>
+	0x3996f0  @objc IssueCoverView.didMoveToSuperview <stripped>
+	0x3997f0  @objc IssueCoverView.removeFromSuperview <stripped>
+	0x399870  @objc IssueCoverView..cxx_destruct <stripped>
  }
 
  class NewsFeed.DebugButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7413,9 +7419,9 @@
 	let onTap : Action<()> // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x399e30  @objc DebugButton.initWithFrame: <stripped>
-	0x399f30  @objc DebugButton.initWithCoder: <stripped>
-	0x39a010  @objc DebugButton..cxx_destruct <stripped>
+	0x39aad0  @objc DebugButton.initWithFrame: <stripped>
+	0x39abd0  @objc DebugButton.initWithCoder: <stripped>
+	0x39acb0  @objc DebugButton..cxx_destruct <stripped>
  }
 
  class NewsFeed.AssetHandleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AssetHandleFactoryType {
@@ -7483,10 +7489,10 @@
 	var identifier : String? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x3a01a0  @objc ImageLayer.init <stripped>
-	0x3a0330  @objc ImageLayer.initWithLayer: <stripped>
-	0x3a04d0  @objc ImageLayer.initWithCoder: <stripped>
-	0x3a05b0  @objc ImageLayer..cxx_destruct <stripped>
+	0x3a0e40  @objc ImageLayer.init <stripped>
+	0x3a0fd0  @objc ImageLayer.initWithLayer: <stripped>
+	0x3a1170  @objc ImageLayer.initWithCoder: <stripped>
+	0x3a1250  @objc ImageLayer..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C8_V2 {
@@ -7641,9 +7647,9 @@
 	let debugButton : DebugButton // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3b3f70  @objc CoverChannelView.initWithFrame: <stripped>
-	0x3b3ff0  @objc CoverChannelView.initWithCoder: <stripped>
-	0x3b4060  @objc CoverChannelView..cxx_destruct <stripped>
+	0x3b4c10  @objc CoverChannelView.initWithFrame: <stripped>
+	0x3b4c90  @objc CoverChannelView.initWithCoder: <stripped>
+	0x3b4d00  @objc CoverChannelView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.C18_V5 {
@@ -7754,8 +7760,8 @@
 
  class NewsFeed.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x3c4880  @objc Images.init <stripped>
-	0x3c4920  @objc Images..cxx_destruct <stripped>
+	0x3c5520  @objc Images.init <stripped>
+	0x3c55c0  @objc Images..cxx_destruct <stripped>
  }
 
  struct NewsFeed.E12_V3 {
@@ -7830,12 +7836,12 @@
 	let shadowMotionLayer : MotionLayer<NonAnimatingLayer> // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3ce5b0  @objc CardView.initWithFrame: <stripped>
-	0x3ce5e0  @objc CardView.initWithCoder: <stripped>
-	0x3ce8c0  @objc CardView.layoutSubviews <stripped>
-	0x3ce8f0  @objc CardView.backgroundColor <stripped>
-	0x3ce9a0  @objc CardView.setBackgroundColor: <stripped>
-	0x3ced00  @objc CardView..cxx_destruct <stripped>
+	0x3cf250  @objc CardView.initWithFrame: <stripped>
+	0x3cf280  @objc CardView.initWithCoder: <stripped>
+	0x3cf560  @objc CardView.layoutSubviews <stripped>
+	0x3cf590  @objc CardView.backgroundColor <stripped>
+	0x3cf640  @objc CardView.setBackgroundColor: <stripped>
+	0x3cf9a0  @objc CardView..cxx_destruct <stripped>
  }
 
  class NewsFeed.CoverViewActionButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7846,12 +7852,12 @@
 	var tintColorForNormalState : UIColor // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3cf4f0  @objc CoverViewActionButton.isHighlighted <stripped>
-	0x3cf580  @objc CoverViewActionButton.setHighlighted: <stripped>
-	0x3cf790  @objc CoverViewActionButton.initWithFrame: <stripped>
-	0x3cf810  @objc CoverViewActionButton.initWithCoder: <stripped>
-	0x3cf830  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
-	0x3cf9a0  @objc CoverViewActionButton..cxx_destruct <stripped>
+	0x3d0190  @objc CoverViewActionButton.isHighlighted <stripped>
+	0x3d0220  @objc CoverViewActionButton.setHighlighted: <stripped>
+	0x3d0430  @objc CoverViewActionButton.initWithFrame: <stripped>
+	0x3d04b0  @objc CoverViewActionButton.initWithCoder: <stripped>
+	0x3d04d0  @objc CoverViewActionButton.pointInside:withEvent: <stripped>
+	0x3d0640  @objc CoverViewActionButton..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -7992,9 +7998,9 @@
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3e1f60  @objc OrderedHeadlineView.initWithFrame: <stripped>
-	0x3e1fe0  @objc OrderedHeadlineView.initWithCoder: <stripped>
-	0x3e2050  @objc OrderedHeadlineView..cxx_destruct <stripped>
+	0x3e2c00  @objc OrderedHeadlineView.initWithFrame: <stripped>
+	0x3e2c80  @objc OrderedHeadlineView.initWithCoder: <stripped>
+	0x3e2cf0  @objc OrderedHeadlineView..cxx_destruct <stripped>
  }
 
  class NewsFeed.IssueViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewRendererType {
@@ -8216,10 +8222,10 @@
 
 	// Properties
 	let frame : CGRect // +0x10 (0x20)
-	let kind : CollectionViewSupplementaryKind // +0x607000 (0x0)
+	let kind : CollectionViewSupplementaryKind // +0x600000 (0x0)
 
 	// Swift methods
-	0x4034d0  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
+	0x404170  class func EmptyViewSupplementaryLayoutAttributes.__allocating_init(kind:frame:) // init 
  }
 
  enum NewsFeed.FeedLayoutDirection {
@@ -8563,15 +8569,15 @@
 	let theme : PublisherLogoTheme // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x437320  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
-	0x437400  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
-	0x437780  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
-	0x4377e0  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
-	0x437af0  @objc PublisherLogoProcessorRequest.init <stripped>
-	0x437b70  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
+	0x437fc0  @objc PublisherLogoProcessorRequest.assetHandles <stripped>
+	0x4380a0  @objc PublisherLogoProcessorRequest.setAssetHandles: <stripped>
+	0x438420  @objc PublisherLogoProcessorRequest.initWithPublisherLogoAssetHandle:publisherLogoImageSize:scale:theme: <stripped>
+	0x438480  @objc PublisherLogoProcessorRequest.cacheIdentifier <stripped>
+	0x438790  @objc PublisherLogoProcessorRequest.init <stripped>
+	0x438810  @objc PublisherLogoProcessorRequest..cxx_destruct <stripped>
 
 	// Swift methods
-	0x437540  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
+	0x4381e0  class func PublisherLogoProcessorRequest.__allocating_init(publisherLogoAssetHandle:publisherLogoImageSize:scale:theme:) // init 
  }
 
  struct NewsFeed.CoverIssueViewLayout {
@@ -8671,26 +8677,26 @@
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x444b80  @objc RandomTag.currentIssueIDs <stripped>
-	0x444c60  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x444ca0  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x444cd0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x444d00  @objc RandomTag.initWithData:context: <stripped>
-	0x444d30  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x444e10  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x444e40  @objc RandomTag.init <stripped>
+	0x445820  @objc RandomTag.currentIssueIDs <stripped>
+	0x445900  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x445940  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x445970  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x4459a0  @objc RandomTag.initWithData:context: <stripped>
+	0x4459d0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x445ab0  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x445ae0  @objc RandomTag.init <stripped>
  }
 
  class NewsFeed.RandomTag : FCTag /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore {
 	// ObjC -> Swift bridged methods
-	0x444b80  @objc RandomTag.currentIssueIDs <stripped>
-	0x444e80  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
-	0x445120  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
-	0x445430  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
-	0x4455f0  @objc RandomTag.initWithData:context: <stripped>
-	0x4457f0  @objc RandomTag.initWithTagType:identifier:name: <stripped>
-	0x445980  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
-	0x445a60  @objc RandomTag.init <stripped>
+	0x445820  @objc RandomTag.currentIssueIDs <stripped>
+	0x445b20  @objc RandomTag.initForTestingWithTagType:identifier:name: <stripped>
+	0x445dc0  @objc RandomTag.initChannelForTestingWithIdentifier:name:defaultSection:publisherAuthorizationURL:publisherVerificationURL: <stripped>
+	0x4460d0  @objc RandomTag.initChannelForTestingWithIdentifier:name:publisherPaidBundlePurchaseIDs: <stripped>
+	0x446290  @objc RandomTag.initWithData:context: <stripped>
+	0x446490  @objc RandomTag.initWithTagType:identifier:name: <stripped>
+	0x446620  @objc RandomTag.initChannelFromNotificationWithIdentifier:name:nameImageAssetHandle:nameImageMaskAssetHandle: <stripped>
+	0x446700  @objc RandomTag.init <stripped>
  }
 
  class NewsFeed.LayeredMediaLayerProcessorRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -8701,12 +8707,12 @@
 	let scale : CGFloat // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4467a0  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
-	0x446870  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
-	0x446980  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
+	0x447440  @objc LayeredMediaLayerProcessorRequest.assetHandles <stripped>
+	0x447510  @objc LayeredMediaLayerProcessorRequest.setAssetHandles: <stripped>
+	0x447620  @objc LayeredMediaLayerProcessorRequest.cacheIdentifier <stripped>
 
 	// Swift methods
-	0x4465e0  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
+	0x447280  class func LayeredMediaLayerProcessorRequest.__allocating_init(assetHandle:size:scale:) // init 
  }
 
  class NewsFeed.LayeredMediaConditionValidator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LayeredMediaConditionValidatorType {
@@ -8932,7 +8938,7 @@
 
  class NewsFeed.FontBookFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FontBookFactoryType {
 	// Swift methods
-	0x461af0  class func FontBookFactory.__allocating_init() // init 
+	0x462790  class func FontBookFactory.__allocating_init() // init 
  }
 
  struct NewsFeed.LayeredMediaImageVariant {
@@ -9002,9 +9008,9 @@
 	let debugButton : DebugButton // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x468900  @objc FeaturedHeadlineView.initWithFrame: <stripped>
-	0x468980  @objc FeaturedHeadlineView.initWithCoder: <stripped>
-	0x4689f0  @objc FeaturedHeadlineView..cxx_destruct <stripped>
+	0x4695a0  @objc FeaturedHeadlineView.initWithFrame: <stripped>
+	0x469620  @objc FeaturedHeadlineView.initWithCoder: <stripped>
+	0x469690  @objc FeaturedHeadlineView..cxx_destruct <stripped>
  }
 
  enum NewsFeed.DebugViewResult {
@@ -9025,7 +9031,7 @@
  class NewsFeed.LayeredMediaView {
  class NewsFeed.LayoutAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x46c230  @objc LayoutAssembly.init <stripped>
+	0x46ced0  @objc LayoutAssembly.init <stripped>
  }
 
  struct NewsFeed.A18_V12 {
@@ -9132,8 +9138,8 @@
 
  class NewsFeed.EmptyView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x4798d0  @objc EmptyView.initWithFrame: <stripped>
-	0x4799f0  @objc EmptyView.initWithCoder: <stripped>
+	0x47a570  @objc EmptyView.initWithFrame: <stripped>
+	0x47a690  @objc EmptyView.initWithCoder: <stripped>
  }
 
  struct NewsFeed.E6_V1 {
@@ -9829,7 +9835,7 @@
 
  class NewsFeed.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x4d6ca0  @objc FactoryAssembly.init <stripped>
+	0x4d7a50  @objc FactoryAssembly.init <stripped>
  }
 
  struct NewsFeed.A12_V9 {
@@ -9900,15 +9906,15 @@
 	let context : Shine.Context // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x4dd5c0  @objc PremiumBadgeView.premiumBadgeMask <stripped>
-	0x4dd650  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
-	0x4dd8b0  @objc PremiumBadgeView.isMotionEnabled <stripped>
-	0x4dd920  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
-	0x4ddb90  @objc PremiumBadgeView.shineView <stripped>
-	0x4ddee0  @objc PremiumBadgeView.initWithFrame: <stripped>
-	0x4ddf10  @objc PremiumBadgeView.initWithCoder: <stripped>
-	0x4de200  @objc PremiumBadgeView.layoutSubviews <stripped>
-	0x4de270  @objc PremiumBadgeView..cxx_destruct <stripped>
+	0x4de370  @objc PremiumBadgeView.premiumBadgeMask <stripped>
+	0x4de400  @objc PremiumBadgeView.setPremiumBadgeMask: <stripped>
+	0x4de660  @objc PremiumBadgeView.isMotionEnabled <stripped>
+	0x4de6d0  @objc PremiumBadgeView.setIsMotionEnabled: <stripped>
+	0x4de940  @objc PremiumBadgeView.shineView <stripped>
+	0x4dec90  @objc PremiumBadgeView.initWithFrame: <stripped>
+	0x4decc0  @objc PremiumBadgeView.initWithCoder: <stripped>
+	0x4defb0  @objc PremiumBadgeView.layoutSubviews <stripped>
+	0x4df020  @objc PremiumBadgeView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.B18_V11 {
@@ -10551,9 +10557,9 @@
 	let debugButton : DebugButton // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x536c70  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
-	0x536cf0  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
-	0x536d60  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
+	0x537a80  @objc FeaturedIssueSupplementView.initWithFrame: <stripped>
+	0x537b00  @objc FeaturedIssueSupplementView.initWithCoder: <stripped>
+	0x537b70  @objc FeaturedIssueSupplementView..cxx_destruct <stripped>
  }
 
  struct NewsFeed.F12_V2 {
@@ -10729,15 +10735,15 @@
 	let activityIndicatorView : UIActivityIndicatorView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x54b380  @objc GapView.initWithFrame: <stripped>
-	0x54b510  @objc GapView.initWithCoder: <stripped>
-	0x54b600  @objc GapView..cxx_destruct <stripped>
+	0x54c190  @objc GapView.initWithFrame: <stripped>
+	0x54c320  @objc GapView.initWithCoder: <stripped>
+	0x54c410  @objc GapView..cxx_destruct <stripped>
  }
 
  class NewsFeed.StubThumbnailProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x54b960  @objc StubThumbnailProcessor.process: <stripped>
-	0x54ba00  @objc StubThumbnailProcessor.init <stripped>
+	0x54c770  @objc StubThumbnailProcessor.process: <stripped>
+	0x54c810  @objc StubThumbnailProcessor.init <stripped>
  }
 
  struct NewsFeed.A18_V6 {
@@ -10883,6 +10889,6 @@
 
  class NewsFeed.StubImageProcessor : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x560cd0  @objc StubImageProcessor.process: <stripped>
-	0x560d70  @objc StubImageProcessor.init <stripped>
+	0x561ae0  @objc StubImageProcessor.process: <stripped>
+	0x561b80  @objc StubImageProcessor.init <stripped>
  }

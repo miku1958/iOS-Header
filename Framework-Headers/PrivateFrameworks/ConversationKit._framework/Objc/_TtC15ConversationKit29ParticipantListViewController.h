@@ -14,7 +14,6 @@
     MISSING_TYPE *viewContent;
     MISSING_TYPE *lastLayedOutViewSize;
     MISSING_TYPE *participantsViewControllerDelegate;
-    MISSING_TYPE *recentlyVisibleParticipantIdentifiers;
 }
 
 - (void).cxx_destruct;

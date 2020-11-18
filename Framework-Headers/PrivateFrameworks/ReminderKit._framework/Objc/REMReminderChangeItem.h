@@ -54,6 +54,7 @@
 @property (copy, nonatomic) NSAttributedString *notes;
 @property (copy, nonatomic) NSString *notesAsString;
 @property (strong, nonatomic) REMCRMergeableStringDocument *notesDocument; // @dynamic notesDocument;
+@property (strong, nonatomic) NSData *notesDocumentData; // @dynamic notesDocumentData;
 @property (strong, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property (strong, nonatomic) REMObjectID *parentReminderID; // @dynamic parentReminderID;
 @property (nonatomic) unsigned long long priority; // @dynamic priority;
@@ -72,8 +73,10 @@
 @property (copy, nonatomic) NSAttributedString *title;
 @property (copy, nonatomic) NSString *titleAsString;
 @property (strong, nonatomic) REMCRMergeableStringDocument *titleDocument; // @dynamic titleDocument;
+@property (strong, nonatomic) NSData *titleDocumentData; // @dynamic titleDocumentData;
 @property (copy, nonatomic) REMUserActivity *userActivity; // @dynamic userActivity;
 
++ (id)_deduplicateAlarms:(id)arg1;
 + (long long)hourForNextThirdsFromHour:(long long)arg1;
 + (void)initialize;
 - (void).cxx_destruct;

@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)askVariableName;
 - (id)defaultStateForNewArrayElement;
 - (id)moduleSummarySlotForState:(id)arg1;
 @end

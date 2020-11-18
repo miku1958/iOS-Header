@@ -17,6 +17,7 @@
     long long _contactsFullPreflightStatus;
     long long _contactsLimitedPreflightStatus;
     struct NSNumber *_isClientLegacyImpl;
+    struct NSNumber *_isNotesAccessGrantedCachedValue;
 }
 
 @property (nonatomic) long long addressBookPreflightStatus; // @synthesize addressBookPreflightStatus=_addressBookPreflightStatus;
@@ -32,11 +33,13 @@
 @property (readonly, nonatomic) BOOL isFullAccessGranted;
 @property (readonly, nonatomic) BOOL isLimitedAccessGranted;
 @property (readonly, nonatomic) BOOL isNotesAccessGranted;
+@property (strong, nonatomic) NSNumber *isNotesAccessGrantedCachedValue; // @synthesize isNotesAccessGrantedCachedValue=_isNotesAccessGrantedCachedValue;
 @property (strong, nonatomic) id<CNTCC> tcc; // @synthesize tcc=_tcc;
 
 + (id)os_log;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (struct NSNumber *)_checkIfNotesAccessGranted;
 - (BOOL)_isPid:(int)arg1 linkedOnOrAfter:(CDStruct_c0454aff)arg2;
 - (id)_readFileData:(int)arg1 offset:(int)arg2 size:(unsigned long long)arg3;
 - (id)accessGrantedFutureForService:(long long)arg1;

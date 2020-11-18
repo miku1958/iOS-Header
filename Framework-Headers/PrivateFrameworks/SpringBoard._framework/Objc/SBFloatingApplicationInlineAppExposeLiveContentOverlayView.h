@@ -28,10 +28,10 @@
 - (void)disableAsynchronousRenderingForNextCommit;
 - (void)invalidate;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
-- (BOOL)rendersAsynchronously;
-- (void)setAsynchronousRenderingDisabled:(BOOL)arg1;
+- (long long)rasterizationStyle;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
+- (void)setLiveContentRasterizationDisabled:(BOOL)arg1;
+- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(CDUnknownBlockType)arg3;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(BOOL)arg1;
 

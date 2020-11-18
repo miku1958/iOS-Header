@@ -23,7 +23,6 @@
 - (id)_graphicRectangularTemplateWithTextProvider:(id)arg1 hourlyForecastedConditions:(id)arg2 timeZone:(id)arg3;
 - (id)_windDirectionAbbreviationFromConditions:(id)arg1;
 - (id)_windSpeedFromConditions:(id)arg1;
-- (id)_windSpeedWithUnitFromConditions:(id)arg1;
 - (id)_windUnit;
 - (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)circularMediumTemplateForConditions:(id)arg1;

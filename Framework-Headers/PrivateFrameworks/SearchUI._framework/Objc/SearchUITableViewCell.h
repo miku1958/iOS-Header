@@ -42,6 +42,7 @@
 + (id)reuseIdentifierForResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_setAnimating:(BOOL)arg1 clippingAdjacentCells:(BOOL)arg2;
 - (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (void)_setSeparatorDrawsInVibrantLightMode:(BOOL)arg1;
 - (void)_updateHighlightColorsForView:(id)arg1 highlighted:(BOOL)arg2;

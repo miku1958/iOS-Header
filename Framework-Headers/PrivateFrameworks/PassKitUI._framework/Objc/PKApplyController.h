@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, PKAccount, PKAssertion, PKFeatureApplication, PKPaymentInstallmentConfiguration, PKPaymentProvisioningController, PKPaymentService, PKPaymentWebService;
 @protocol OS_dispatch_queue, PKPaymentSetupViewControllerDelegate, PKSetupFlowControllerProtocol;
 
 @interface PKApplyController : NSObject <PKSetupFlowControllerProtocol, PKPaymentServiceDelegate>
@@ -34,6 +34,7 @@
     long long _context;
     PKPaymentProvisioningController *_provisioningController;
     id<PKSetupFlowControllerProtocol> _parentFlowController;
+    PKPaymentInstallmentConfiguration *_installmentConfiguration;
 }
 
 @property (readonly, nonatomic) long long context; // @synthesize context=_context;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) PKFeatureApplication *featureApplication; // @synthesize featureApplication=_featureApplication;
 @property (readonly, nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PKPaymentInstallmentConfiguration *installmentConfiguration; // @synthesize installmentConfiguration=_installmentConfiguration;
 @property (strong, nonatomic) id<PKSetupFlowControllerProtocol> parentFlowController; // @synthesize parentFlowController=_parentFlowController;
 @property (readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (readonly) Class superclass;

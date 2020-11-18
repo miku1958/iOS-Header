@@ -10,7 +10,7 @@
 #import <HomeAI/HMFTimerDelegate-Protocol.h>
 #import <HomeAI/HMISystemResourceUsageMonitorDelegate-Protocol.h>
 
-@class HMFMemoryMonitor, HMFTimer, HMFUnfairLock, HMIPIDController, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
+@class HMFTimer, HMFUnfairLock, HMIPIDController, HMISystemResourceUsageMonitor, MovingAverage, NSArray, NSObject, NSPointerArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMICameraVideoAnalyzerScheduler : HMFObject <HMFLogging, HMFTimerDelegate, HMISystemResourceUsageMonitorDelegate>
@@ -24,13 +24,13 @@
     NSPointerArray *_internalAnalyzers;
     HMISystemResourceUsageMonitor *_systemResourceUsageMonitor;
     long long _systemResourceUsageMonitorUsageLevel;
-    HMFMemoryMonitor *_memoryMonitor;
     HMIPIDController *_thermalPIDController;
     MovingAverage *_averageAnalysisTimeMovingAverage;
     MovingAverage *_averageTotalAnalysisTimeMovingAverage;
     double _analysisFPSPreference;
 }
 
+@property (readonly) long long activeAnalyzerCount;
 @property (readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;
 @property (readonly) double analysisFPSPreference; // @synthesize analysisFPSPreference=_analysisFPSPreference;
 @property (readonly) NSArray *analyzers;
@@ -44,7 +44,6 @@
 @property (readonly) NSPointerArray *internalAnalyzers; // @synthesize internalAnalyzers=_internalAnalyzers;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property (readonly) unsigned long long maxConcurrentAnalyzers; // @synthesize maxConcurrentAnalyzers=_maxConcurrentAnalyzers;
-@property (readonly) HMFMemoryMonitor *memoryMonitor; // @synthesize memoryMonitor=_memoryMonitor;
 @property (getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (readonly) Class superclass;
 @property (readonly) long long systemResourceUsageLevel;
@@ -64,6 +63,7 @@
 - (void)registerAnalyzer:(id)arg1;
 - (void)removeAllAnalyzers;
 - (void)requestDidEnd:(id)arg1 outcome:(long long)arg2;
+- (void)resumeThermalPIDController;
 - (void)systemResourceUsageDidChangeTo:(long long)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)updateAnalysisFPS:(id)arg1;

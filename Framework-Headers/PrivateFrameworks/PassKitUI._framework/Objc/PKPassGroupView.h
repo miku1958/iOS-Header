@@ -116,6 +116,7 @@
 - (void)dealloc;
 - (void)dismissBackOfPassIfNecessaryForUniqueID:(id)arg1;
 - (void)endPinningFrontFaceContentMode;
+- (void)faceFrameDidChangeForPassView:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

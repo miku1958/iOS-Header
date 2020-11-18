@@ -7,29 +7,31 @@
 #import <objc/NSObject.h>
 
 @class MTAlarm, NSMutableArray;
-@protocol NAScheduler;
 
 @interface MTAlarmCache : NSObject
 {
     BOOL _needsUpdate;
+    struct os_unfair_lock_s _cacheLock;
     CDUnknownBlockType _updateBlock;
     NSMutableArray *_orderedAlarms;
     MTAlarm *_sleepAlarm;
     MTAlarm *_nextAlarm;
-    id<NAScheduler> _serializer;
 }
 
+@property (nonatomic) struct os_unfair_lock_s cacheLock; // @synthesize cacheLock=_cacheLock;
 @property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (strong, nonatomic) MTAlarm *nextAlarm; // @synthesize nextAlarm=_nextAlarm;
 @property (strong, nonatomic) NSMutableArray *orderedAlarms; // @synthesize orderedAlarms=_orderedAlarms;
-@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (strong, nonatomic) MTAlarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
 @property (copy, nonatomic) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
 - (void).cxx_destruct;
+- (void)_getCachedAlarmsWithCompletion:(CDUnknownBlockType)arg1 doSynchronous:(BOOL)arg2;
+- (BOOL)_isUpdateNeeded;
+- (void)_withLock:(CDUnknownBlockType)arg1;
+- (void)getCachedAlarmsSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCachedAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithUpdateBlock:(CDUnknownBlockType)arg1;
-- (id)initWithUpdateBlock:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
 - (void)markNeedsUpdate;
 
 @end

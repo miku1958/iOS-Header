@@ -72,6 +72,8 @@
 - (void)_updateHandsColors;
 - (void)_updateTickLengths;
 - (double)_verticalPaddingForStatusBar;
+- (BOOL)_wantsConstantSpeedZoom;
+- (BOOL)_wantsStatusBarIconShadow;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;

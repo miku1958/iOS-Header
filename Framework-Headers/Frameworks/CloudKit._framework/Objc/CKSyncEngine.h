@@ -24,6 +24,7 @@
     CKNotificationListener *_notificationListener;
     NSOperationQueue *_operationQueue;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_batchCreationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     unsigned long long _maxRecordCountPerBatch;
     unsigned long long _maxRecordBytesPerBatch;
@@ -34,6 +35,7 @@
 }
 
 @property (nonatomic, getter=isAutomaticSyncingDisabled) BOOL automaticSyncingDisabled; // @synthesize automaticSyncingDisabled=_automaticSyncingDisabled;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *batchCreationQueue; // @synthesize batchCreationQueue=_batchCreationQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (readonly, weak, nonatomic) id<CKSyncEngineDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) CKDatabase *database; // @synthesize database=_database;
@@ -117,6 +119,7 @@
 - (id)newOperationToModifyZonesToSave:(id)arg1 zoneIDsToDelete:(id)arg2 inOperationGroup:(id)arg3;
 - (id)nextBatchOfRecordsToModify;
 - (id)nextBatchOfRecordsToModifyDefaultBehavior;
+- (id)nextBatchOfRecordsToModifyWithCustomBatching;
 - (void)notifyDataSourceForUnserializedMetadataIfNecessary;
 - (unsigned long long)numberOfModifyPendingRecordsOperations;
 - (void)performFetchChangesActivity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

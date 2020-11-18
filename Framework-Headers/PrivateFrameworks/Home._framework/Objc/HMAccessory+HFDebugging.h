@@ -70,6 +70,7 @@
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
 @property (readonly, nonatomic) BOOL hf_isRemoteControl;
 @property (readonly, nonatomic) BOOL hf_isSingleServiceAccessory;
+@property (readonly, nonatomic) BOOL hf_isSpeaker;
 @property (readonly, nonatomic) BOOL hf_isTelevision;
 @property (readonly, nonatomic) BOOL hf_isVisibleAccessory;
 @property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
@@ -89,6 +90,8 @@
 @property (readonly, nonatomic) NSSet *hf_servicesBehindBridge;
 @property (readonly, nonatomic) BOOL hf_shouldSeparateAccessoryName;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
+@property (readonly, nonatomic) BOOL hf_showAsAccessoryTile;
+@property (readonly, nonatomic) BOOL hf_showAsIndividualServices;
 @property (readonly, copy, nonatomic) NSSet *hf_standardServices;
 @property (readonly, copy, nonatomic) NSSet *hf_visibleServices;
 @property (readonly, weak, nonatomic) HMHome *home;
@@ -106,9 +109,11 @@
 - (BOOL)hf_isValidObject;
 - (id)hf_primaryService;
 - (id)hf_serviceOfType:(id)arg1;
+- (id)hf_setShowAsIndividualServices:(BOOL)arg1;
 - (BOOL)hf_shouldDisplayManualFixOptionForSymptom:(long long)arg1;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (BOOL)hf_supportsMultiUserLanguage:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

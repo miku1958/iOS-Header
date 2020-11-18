@@ -22,6 +22,7 @@
     SBFramewiseInteractiveTransitionAnimator *_currentTransitionAnimator;
     SBPercentPassthroughInteractiveTransition *_currentTransitionInteractor;
     NSHashTable *_pageStateObservers;
+    NSHashTable *_sidebarViewControllerAppearStateOverrideAssertions;
     BOOL _showsDoneButtonWhileEditing;
     BOOL _spotlightTransitioningFromBreadcrumb;
     BOOL _managesStatusBarWidth;
@@ -31,6 +32,7 @@
     UIViewController<SBHSidebarProvider> *_sidebarViewController;
     SBSearchGesture *_searchGesture;
     id<SBRootFolderControllerAccessoryViewControllerDelegate> _accessoryViewControllerDelegate;
+    double _effectiveSidebarVisibilityProgress;
     _SBRootFolderDockAnimationViewControllerWindow *_dockAnimationWindow;
     _SBRootFolderPageTransitionHandle *_currentTransitionHandle;
     id<SBRootFolderPageTransition> _searchGestureTransition;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) double dockHeight;
 @property (readonly, nonatomic, getter=isDockPinnedForRotation) BOOL dockPinnedForRotation;
 @property (nonatomic, getter=isEditing) BOOL editing;
+@property (nonatomic) double effectiveSidebarVisibilityProgress; // @synthesize effectiveSidebarVisibilityProgress=_effectiveSidebarVisibilityProgress;
 @property (strong, nonatomic) SBRootFolder *folder; // @dynamic folder;
 @property (readonly, copy, nonatomic) NSArray *folderControllers;
 @property (weak, nonatomic) id<SBRootFolderControllerDelegate> folderDelegate; // @dynamic folderDelegate;
@@ -85,6 +88,7 @@
 @property (readonly, nonatomic) long long sidebarPageIndex;
 @property (nonatomic, getter=isSidebarPinned) BOOL sidebarPinned;
 @property (readonly, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
+@property (readonly, nonatomic, getter=isSidebarVisibilityGestureActive) BOOL sidebarVisibilityGestureActive;
 @property (nonatomic) double sidebarVisibilityProgress;
 @property (readonly, nonatomic, getter=isSidebarVisible) BOOL sidebarVisible;
 @property (readonly, nonatomic) double spotlightFirstIconRowOffset;
@@ -124,6 +128,7 @@
 - (BOOL)_listIndexIsVisible:(unsigned long long)arg1;
 - (id)_makeContentViewWithConfiguration:(id)arg1;
 - (void)_reduceTransparencyChanged;
+- (void)_removeSidebarViewControllerAppearStateOverrideAssertion:(id)arg1;
 - (void)_setupDebugTapGestureRecognizerForDockIconListView:(id)arg1;
 - (BOOL)_shouldSlideDockOutDuringRotationFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (BOOL)_shouldUseDockAnimationWindowForRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
@@ -136,6 +141,7 @@
 - (id)backgroundViewForDockForRootFolderView:(id)arg1;
 - (id)backgroundViewForEditingDoneButtonForRootFolderView:(id)arg1;
 - (id)beginModifyingDockOffscreenFractionForReason:(id)arg1;
+- (id)beginOverridingSidebarViewControllerAppearanceStateToRemainDisappearedForReason:(id)arg1;
 - (id)beginPageStateTransitionToState:(long long)arg1 reason:(id)arg2 animated:(BOOL)arg3 interactive:(BOOL)arg4;
 - (BOOL)canAcceptFolderIconDrags;
 - (BOOL)canTransitionPageStateToState:(long long)arg1;
@@ -195,6 +201,7 @@
 - (void)prepareToTearDown;
 - (void)presentSpotlightAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removePageStateObserver:(id)arg1;
+- (void)rootFolderView:(id)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(id)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(id)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderView:(id)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
@@ -212,6 +219,7 @@
 - (void)setPullDownSearchViewController:(id)arg1;
 - (void)setSidebarViewController:(id)arg1;
 - (void)setTodayViewController:(id)arg1;
+- (BOOL)shouldAnimateFirstTwoViewsAsOne;
 - (BOOL)shouldAnimateLastTwoViewsAsOne;
 - (BOOL)shouldOpenFolderIcon:(id)arg1;
 - (struct UIEdgeInsets)statusBarInsetsForOrientation:(long long)arg1;

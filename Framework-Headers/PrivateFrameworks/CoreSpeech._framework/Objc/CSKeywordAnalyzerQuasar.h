@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (double)_getConfidence:(id)arg1;
 - (void)_recognizeWavData:(const short *)arg1 length:(int)arg2;
+- (void)dealloc;
 - (void)endAudio;
 - (id)initWithConfigPath:(id)arg1 triggerTokens:(id)arg2 useKeywordSpotting:(BOOL)arg3;
 - (void)processAudioChunk:(id)arg1;

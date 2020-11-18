@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL hasNamePrefix;
 @property (readonly, nonatomic) BOOL hasNameSuffix;
 @property (readonly, nonatomic) BOOL hasNickName;
+@property (readonly, nonatomic) BOOL hasPhonemeData;
 @property (readonly, nonatomic) BOOL hasPhoneticFirstName;
 @property (readonly, nonatomic) BOOL hasPhoneticLastName;
 @property (readonly, nonatomic) BOOL hasPhoneticMiddleName;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic) NSString *namePrefix;
 @property (copy, nonatomic) NSString *nameSuffix;
 @property (copy, nonatomic) NSString *nickName;
+@property (copy, nonatomic) NSString *phonemeData;
 @property (copy, nonatomic) NSString *phoneticFirstName;
 @property (copy, nonatomic) NSString *phoneticLastName;
 @property (copy, nonatomic) NSString *phoneticMiddleName;

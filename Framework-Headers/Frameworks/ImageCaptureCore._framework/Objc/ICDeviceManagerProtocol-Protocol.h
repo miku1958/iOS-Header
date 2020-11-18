@@ -6,7 +6,7 @@
 
 #import <ImageCaptureCore/NSObject-Protocol.h>
 
-@class ICCameraDevice, ICCameraFile, ICDevice, NSDictionary;
+@class ICCameraDevice, ICCameraFile, ICDevice, NSArray, NSData, NSDictionary;
 
 @protocol ICDeviceManagerProtocol <NSObject>
 - (long long)closeDevice:(ICDevice *)arg1 contextInfo:(void *)arg2;
@@ -15,10 +15,14 @@
 - (long long)downloadFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)eject:(ICCameraDevice *)arg1;
 - (void)enumerateContent;
-- (long long)getMetadataOfFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
-- (long long)getThumbnailOfFile:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
+- (long long)getFileData:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
+- (long long)getFileMetadata:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
+- (long long)getFileThumbnail:(ICCameraFile *)arg1 fromDevice:(ICCameraDevice *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)openDevice:(NSDictionary *)arg1 contextInfo:(void *)arg2;
 - (long long)openSession:(ICCameraDevice *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(id, NSMutableDictionary *))arg3;
+- (long long)registerDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
+- (long long)sendDevice:(ICCameraDevice *)arg1 ptpCommand:(NSData *)arg2 andPayload:(NSData *)arg3 completion:(void (^)(id, NSMutableDictionary *))arg4;
 - (long long)syncClock:(ICDevice *)arg1 completion:(void (^)(id, NSMutableDictionary *))arg2;
+- (long long)unregisterDevice:(ICCameraDevice *)arg1 forImageCaptureEventNotifications:(NSArray *)arg2;
 @end
 

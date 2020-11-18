@@ -34,6 +34,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)_untrustedInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
+- (void)clearParticipants;
 - (void)configure;
 - (id)fetchInvitationContextForUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;
 - (id)fetchInvitationToUser:(id)arg1 shouldGrantWriteAccess:(BOOL)arg2;

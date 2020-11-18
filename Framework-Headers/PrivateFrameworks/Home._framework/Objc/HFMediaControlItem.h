@@ -15,12 +15,14 @@
 {
     id<HFMediaValueSource> _mediaValueSource;
     id<HFMediaProfileContainer> _mediaProfileContainer;
+    long long _mediaAccessoryItemType;
     HFMediaActionSetting *_mediaActionSetting;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long mediaAccessoryItemType; // @synthesize mediaAccessoryItemType=_mediaAccessoryItemType;
 @property (strong, nonatomic) HFMediaActionSetting *mediaActionSetting; // @synthesize mediaActionSetting=_mediaActionSetting;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly, nonatomic) id<HFMediaValueSource> mediaValueSource; // @synthesize mediaValueSource=_mediaValueSource;
@@ -31,7 +33,7 @@
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
-- (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2 displayResults:(id)arg3;
+- (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2 mediaAccessoryItemType:(long long)arg3 displayResults:(id)arg4;
 - (long long)mapToHMMediaPlaybackState:(long long)arg1;
 - (id)normalizedValueForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;

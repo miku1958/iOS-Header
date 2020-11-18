@@ -20,12 +20,15 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (void)invalidatePlaceholderFont;
 - (void)layoutSubviews;
 - (void)setAttributedText:(id)arg1;
 - (void)setFont:(id)arg1;
 - (void)setText:(id)arg1;
 - (void)setTextAlignment:(long long)arg1;
 - (void)setTextContainerInset:(struct UIEdgeInsets)arg1;
+- (void)setTypingAttributes:(id)arg1;
 - (void)textDidChange;
 
 @end

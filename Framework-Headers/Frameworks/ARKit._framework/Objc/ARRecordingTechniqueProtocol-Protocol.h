@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL shouldSaveVideoInPhotosLibrary;
 
 + (NSString *)metadataIdentifierForARRecordableResultsClass:(Class)arg1;
+- (void)abortRecording;
 - (void)finishRecording;
 - (id)initWithFileURL:(NSURL *)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(NSSet *)arg3;
 - (id)initWithFileURL:(NSURL *)arg1 recordingSensorDataTypes:(unsigned long long)arg2 recordingResultDataClasses:(NSSet *)arg3 startImmediately:(BOOL)arg4;

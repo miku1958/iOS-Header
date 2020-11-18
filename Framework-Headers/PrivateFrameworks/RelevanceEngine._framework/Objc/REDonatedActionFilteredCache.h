@@ -34,12 +34,14 @@
 - (unsigned long long)_queue_performedTodayCountForBundleIdentifer:(id)arg1 actionIdentifier:(unsigned long long)arg2;
 - (void)_queue_removeAllData;
 - (void)_queue_removeDonation:(id)arg1;
+- (void)_queue_removeDonationsForBundleIdentifier:(id)arg1;
 - (void)_queue_storeDonation:(id)arg1;
 - (void)_refreshAllDonations:(id)arg1;
 - (void)dealloc;
 - (void)donationActionStoreReceivedDonation:(id)arg1 isNewDonation:(BOOL)arg2;
 - (void)donationActionStoreRemoveAllDonations;
 - (void)donationActionStoreRemovedDonation:(id)arg1;
+- (void)donationActionStoreRemovedDonationsFor:(id)arg1;
 - (void)fetchAllUniqueActions:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchCountForAction:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fetchDonationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -39,7 +39,6 @@
 - (id)customNavigatorPlatformForSetting:(long long)arg1;
 - (id)customUserAgentForSetting:(long long)arg1;
 - (void)customUserAgentSettingForMainFrameURL:(id)arg1 withTimeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (void)didMarkURLAsNeedingDesktopUserAgent:(id)arg1;
 - (void)didMarkURLAsNeedingStandardUserAgent:(id)arg1;
 - (void)didUpdateRequestDesktopSiteDefaultValue:(long long)arg1;

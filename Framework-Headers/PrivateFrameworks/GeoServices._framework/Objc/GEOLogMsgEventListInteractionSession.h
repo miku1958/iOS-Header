@@ -13,9 +13,11 @@
 @interface GEOLogMsgEventListInteractionSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_listResultItems;
     NSString *_searchString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _listType;
     struct {
         unsigned int has_listType:1;
@@ -47,6 +49,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)listResultItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)listResultItemsCount;

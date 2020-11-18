@@ -38,16 +38,16 @@
 @property (strong, nonatomic) UIButton *prevWeekButton; // @synthesize prevWeekButton=_prevWeekButton;
 @property (readonly) Class superclass;
 
-+ (id)datesFromPlaybackEngine:(id)arg1;
 - (void).cxx_destruct;
-- (void)_jumpToDate:(id)arg1;
+- (void)_jumpToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateNextPreviousButtonState;
 - (void)handleNextButton:(id)arg1;
 - (void)handlePreviousButton:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (void)playbackEngine:(id)arg1 didUpdateClipManager:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateClips:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
-- (void)playbackEngineDidUpdateClips:(id)arg1;
+- (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
 - (void)scrubberViewController:(id)arg1 didMoveToSection:(unsigned long long)arg2;
 - (void)scrubberViewController:(id)arg1 didSelectItemAtIndex:(id)arg2;
 - (void)updateViewConstraints;

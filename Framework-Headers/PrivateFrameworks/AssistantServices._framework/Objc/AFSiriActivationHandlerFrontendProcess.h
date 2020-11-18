@@ -26,7 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_waitUntilListeingForContext:(id)arg1 timeoutInterval:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_waitUntilListeningForContext:(id)arg1 timeoutInterval:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)handleContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithConnection:(id)arg1;

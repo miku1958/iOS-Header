@@ -28,6 +28,7 @@
 @property (readonly) _UIFontPickerFontInfo *familyInfo;
 @property (readonly) NSString *familyName; // @synthesize familyName=_familyName;
 @property (readonly) UIFontDescriptor *fontDescriptor;
+@property (readonly, getter=isFontFamilyAvailable) BOOL fontFamilyAvailable;
 @property (readonly) BOOL hasMultipleFaces;
 @property (readonly) double lineHeight;
 @property (readonly) NSString *localizedFamilyName;

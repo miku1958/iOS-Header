@@ -12,9 +12,11 @@
 {
     ICTrackedParagraph *_trackedParagraph;
     NSAttributedString *_attributedString;
+    struct _NSRange _characterRange;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+@property (nonatomic) struct _NSRange characterRange; // @synthesize characterRange=_characterRange;
 @property (strong, nonatomic) ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
 
 - (void).cxx_destruct;

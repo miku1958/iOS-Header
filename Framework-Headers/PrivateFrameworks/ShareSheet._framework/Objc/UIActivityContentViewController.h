@@ -103,6 +103,7 @@
 - (void)layoutContentCollectionView:(BOOL)arg1;
 - (id)nextBarButton;
 - (void)nextButtonTapped;
+- (void)overrideLayoutConfigurationWithSafeAreaInsets:(BOOL)arg1;
 - (void)refreshContent;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updateContentWithPeopleProxies:(id)arg1 shareProxies:(id)arg2 actionProxies:(id)arg3 activitiesByUUID:(id)arg4 nearbyCountSlotID:(id)arg5 animated:(BOOL)arg6;

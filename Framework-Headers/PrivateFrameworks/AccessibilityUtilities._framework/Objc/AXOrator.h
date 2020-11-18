@@ -19,12 +19,11 @@
     BOOL _spellOutContent;
     BOOL _shouldSpeakNextItemOnResume;
     BOOL _preferredLanguageWasSpecified;
-    BOOL _isAudioSessionActive;
-    BOOL _pendingAudioSessionActive;
     BOOL _isProcessingContentForSpeech;
     id<AXOratorDelegate> _delegate;
     long long _speakingContext;
     AXLanguageTaggedContent *_selectedContent;
+    double _audioSessionInactiveTimeout;
     NSString *_voiceIdentifier;
     AXLanguageTaggedContent *_speakingContent;
     NSArray *_speakingContentTokenRanges;
@@ -41,13 +40,13 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *additionalContentToProcess; // @synthesize additionalContentToProcess=_additionalContentToProcess;
+@property (nonatomic) double audioSessionInactiveTimeout; // @synthesize audioSessionInactiveTimeout=_audioSessionInactiveTimeout;
 @property (copy, nonatomic) NSString *content;
 @property (strong, nonatomic) NSString *currentLanguageCode; // @synthesize currentLanguageCode=_currentLanguageCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AXOratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isAudioSessionActive; // @synthesize isAudioSessionActive=_isAudioSessionActive;
 @property (nonatomic) BOOL isProcessingContentForSpeech; // @synthesize isProcessingContentForSpeech=_isProcessingContentForSpeech;
 @property (nonatomic) struct _NSRange lastSpokenSubstringRange; // @synthesize lastSpokenSubstringRange=_lastSpokenSubstringRange;
 @property (strong, nonatomic) AVSpeechUtterance *lastUtterance; // @synthesize lastUtterance=_lastUtterance;
@@ -55,7 +54,6 @@
 @property (strong, nonatomic) AXLanguageTag *lastUtteranceLanguageTag; // @synthesize lastUtteranceLanguageTag=_lastUtteranceLanguageTag;
 @property (nonatomic) struct _NSRange lastUtteranceSubstringRange; // @synthesize lastUtteranceSubstringRange=_lastUtteranceSubstringRange;
 @property (nonatomic) unsigned long long numberOfTokensToSkip; // @synthesize numberOfTokensToSkip=_numberOfTokensToSkip;
-@property (nonatomic) BOOL pendingAudioSessionActive; // @synthesize pendingAudioSessionActive=_pendingAudioSessionActive;
 @property (nonatomic) BOOL preferredLanguageWasSpecified; // @synthesize preferredLanguageWasSpecified=_preferredLanguageWasSpecified;
 @property (strong, nonatomic) AXLanguageTaggedContent *selectedContent; // @synthesize selectedContent=_selectedContent;
 @property (nonatomic) BOOL shouldSpeakNextItemOnResume; // @synthesize shouldSpeakNextItemOnResume=_shouldSpeakNextItemOnResume;

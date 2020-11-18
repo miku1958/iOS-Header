@@ -9,6 +9,7 @@
 @class NSArray, NSSet, NSString;
 
 @protocol EMFetchControllerInterface <NSObject>
+- (NSString *)diagnosticInformation;
 - (void)downloadMessageBodiesWithCompletion:(void (^)(NSError *))arg1;
 - (void)performFetchOfType:(int)arg1;
 - (void)performFetchOfType:(int)arg1 accountIds:(NSArray *)arg2;

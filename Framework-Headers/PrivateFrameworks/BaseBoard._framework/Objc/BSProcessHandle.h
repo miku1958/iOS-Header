@@ -42,6 +42,7 @@
 + (id)processHandleForPID:(int)arg1;
 + (id)processHandleForPID:(int)arg1 bundleID:(id)arg2;
 + (id)processHandleForTaskNameRight:(id)arg1;
++ (id)processHandleForTaskNameRight:(id)arg1 bundleID:(id)arg2;
 + (id)processHandleForXPCConnection:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -60,6 +61,7 @@
 - (id)initWithCurrentProcess;
 - (id)initWithPID:(int)arg1 bundleID:(id)arg2;
 - (id)initWithTaskNameRight:(id)arg1;
+- (id)initWithTaskNameRight:(id)arg1 bundleID:(id)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

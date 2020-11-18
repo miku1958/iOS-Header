@@ -147,11 +147,11 @@
 - (id)_axWebKitTrueLinkParent;
 - (BOOL)_isCheckBox;
 - (BOOL)_isIBooks;
+- (id)_misspelledWordRotor;
 - (void)_performLiveRegionUpdate;
 - (void)_performPostScrollStatus:(id)arg1;
 - (BOOL)_prepareAccessibilityCall;
 - (void)_repostFocusChangeNotification;
-- (void)_repostLoadCompleteNotification;
 - (void)_repostWebNotificaton:(id)arg1;
 - (void)_repostWebSelectionChange;
 - (BOOL)accessibilityActivate;

@@ -24,6 +24,7 @@
     BOOL _cachedSizeIsValid;
     UIColor *_textColor;
     NSAttributedString *_attributedStringWithoutColorModification;
+    NSAttributedString *_attributedStringUnmodified;
     double _viewAlpha;
     UIFont *_font;
     BOOL _hasMonospacedNumbers;

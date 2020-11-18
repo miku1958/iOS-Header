@@ -14,7 +14,6 @@
 @interface RCWaveformDataSource : NSObject <RCWaveformGeneratorSegmentOutputObserver>
 {
     RCMutableWaveform *_accumulatorWaveform;
-    RCMutableWaveform *_liveRecordingMergingWaveform;
     double _liveRecordingMergeTime;
     BOOL _hasSavedGeneratedWaveform;
     BOOL _hasStartedLoading;
@@ -37,7 +36,6 @@
 @property BOOL hasSavedGeneratedWaveform; // @synthesize hasSavedGeneratedWaveform=_hasSavedGeneratedWaveform;
 @property (readonly, nonatomic) BOOL hasStartedLoading; // @synthesize hasStartedLoading=_hasStartedLoading;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) RCWaveform *liveRecordingMergingWaveform; // @synthesize liveRecordingMergingWaveform=_liveRecordingMergingWaveform;
 @property (readonly, nonatomic) float loadingProgress;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setVideoVolume:(float)arg1;
 - (void)videoDidPlayToEnd;
 - (void)videoPlayerItemDidChange;
+- (void)videoReadyForDisplayDidChange;
 - (void)videoWillPlayToEnd;
 - (void)videoWillPlayToPhoto;
 

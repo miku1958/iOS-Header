@@ -16,12 +16,15 @@
 {
     BOOL _microphoneEnabled;
     BOOL _streamAudioEnabled;
+    BOOL _startStreamingAfterStop;
+    float _streamAudioVolume;
     id<HFCameraLiveStreamControllerDelegate> _delegate;
     HMCameraSource *_liveCameraSource;
     NSError *_streamError;
     HMHome *_home;
     HMCameraProfile *_cameraProfile;
     HFCameraAudioManager *_audioManager;
+    unsigned long long _inferredStreamState;
 }
 
 @property (strong, nonatomic) HFCameraAudioManager *audioManager; // @synthesize audioManager=_audioManager;
@@ -31,9 +34,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (nonatomic) unsigned long long inferredStreamState; // @synthesize inferredStreamState=_inferredStreamState;
 @property (readonly, nonatomic) HMCameraSource *liveCameraSource; // @synthesize liveCameraSource=_liveCameraSource;
 @property (nonatomic, getter=isMicrophoneEnabled) BOOL microphoneEnabled; // @synthesize microphoneEnabled=_microphoneEnabled;
+@property (nonatomic) BOOL startStreamingAfterStop; // @synthesize startStreamingAfterStop=_startStreamingAfterStop;
 @property (nonatomic, getter=isStreamAudioEnabled) BOOL streamAudioEnabled; // @synthesize streamAudioEnabled=_streamAudioEnabled;
+@property (nonatomic) float streamAudioVolume; // @synthesize streamAudioVolume=_streamAudioVolume;
 @property (readonly, nonatomic) NSError *streamError; // @synthesize streamError=_streamError;
 @property (readonly, nonatomic) unsigned long long streamState;
 @property (readonly, nonatomic, getter=isStreamingEnabled) BOOL streamingEnabled;
@@ -44,6 +50,8 @@
 - (void)_updateAudioManagerState;
 - (id)activeStream;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
+- (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;
+- (void)cameraStreamControlDidStartStream:(id)arg1;
 - (void)cameraStreamControlDidUpdateManagerState:(id)arg1;
 - (void)cameraStreamControlDidUpdateStreamState:(id)arg1;
 - (void)dealloc;

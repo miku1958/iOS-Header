@@ -11,10 +11,15 @@
 }
 
 + (unsigned long long)accountLevel:(id)arg1;
-+ (long long)accountLevelErrorCodeForLevel:(unsigned long long)arg1;
++ (long long)accountLevelErrorCodeForLevel:(id)arg1;
 + (id)authToken:(id *)arg1;
 + (id)createAuthToken:(id)arg1 authToken:(id)arg2;
 + (id)createAuthkitSession;
++ (BOOL)eligibleForEnrollmentVerify;
++ (BOOL)eligibleForPeerVerify;
++ (BOOL)eligibleForSelfVerify;
++ (BOOL)initiateCredentialRenewal:(id *)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)primaryAccount:(id *)arg1;
 + (id)sharedAccountStore;
 
 @end

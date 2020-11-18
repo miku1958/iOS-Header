@@ -9,6 +9,8 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
+@class NSDictionary;
+
 @interface BBSectionInfoSettings : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _showsOnExternalDevices;
@@ -41,6 +43,7 @@
 @property (nonatomic) BOOL showsMessagePreview;
 @property (nonatomic) BOOL showsOnExternalDevices; // @synthesize showsOnExternalDevices=_showsOnExternalDevices;
 @property (nonatomic) long long spokenNotificationSetting; // @synthesize spokenNotificationSetting=_spokenNotificationSetting;
+@property (readonly, copy, nonatomic) NSDictionary *stateCapture;
 
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
 + (BOOL)supportsSecureCoding;

@@ -23,6 +23,7 @@
 - (BOOL)_isIndexFullScreenAppLayout:(unsigned long long)arg1;
 - (double)_unselectedCardScale;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
+- (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (double)backdropBlurProgress;
 - (long long)backdropBlurType;
@@ -35,14 +36,16 @@
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (id)layoutSettings;
+- (long long)liveContentRasterizationStyle;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)plusButtonAlpha;
+- (long long)plusButtonStyle;
 - (double)reopenClosedWindowsButtonAlpha;
+- (double)reopenClosedWindowsButtonScale;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (double)titleOpacityForIndex:(unsigned long long)arg1;
 - (id)topMostAppLayouts;
 - (id)transitionWillBegin;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 
 @end
 

@@ -25,6 +25,7 @@
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
+- (id)initWithInjectedBundleURL:(id)arg1 andCustomClassesForParameterCoder:(id)arg2;
 
 @end
 

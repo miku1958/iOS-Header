@@ -24,6 +24,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToGeometryTransformOrientation:(id)arg1;
 - (void)nu_updateDigest:(id)arg1;
+- (CDStruct_14d5dc5e)transformMatrix:(CDStruct_14d5dc5e)arg1;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 
 @end

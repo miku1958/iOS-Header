@@ -6,12 +6,13 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 #import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKDisplayCategory, HKDisplayType, HKHealthStore, HKTitledIconHeaderView, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, WDProfile, WDSourceOrderController;
+@class HKDisplayCategory, HKDisplayType, HKHealthStore, HKSourceListDataSource, HKTitledIconHeaderView, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, WDProfile, WDSourceOrderController;
 
 __attribute__((visibility("hidden")))
-@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
+@interface WDDisplayTypeDataSourcesTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKSourceListDataSourceObserver>
 {
     BOOL _isLoaded;
     HKDisplayCategory *_displayCategory;
@@ -22,43 +23,51 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_dataSources;
     NSMutableArray *_orderedDataSources;
     NSArray *_preEditSourcesOrdered;
-    NSMutableArray *_readerAppSources;
+    NSArray *_readerAppSources;
+    NSArray *_readerResearchStudySources;
     NSMutableDictionary *_authorizationRecordsBySource;
     HKTitledIconHeaderView *_headerView;
     NSMutableSet *_sourcesPendingToggleOff;
     NSMutableSet *_sourcesPendingToggleOn;
     BOOL _shouldInsetSectionContentForDataSourceDataList;
+    HKSourceListDataSource *_sourceListDataSource;
+    NSArray *_loadedOrderedDataSources;
+    NSSet *_loadedAllDataSources;
+    NSDictionary *_loadedAuthorizationRecordsBySource;
 }
 
+@property (copy, nonatomic) NSSet *loadedAllDataSources; // @synthesize loadedAllDataSources=_loadedAllDataSources;
+@property (copy, nonatomic) NSDictionary *loadedAuthorizationRecordsBySource; // @synthesize loadedAuthorizationRecordsBySource=_loadedAuthorizationRecordsBySource;
+@property (copy, nonatomic) NSArray *loadedOrderedDataSources; // @synthesize loadedOrderedDataSources=_loadedOrderedDataSources;
 @property (nonatomic) BOOL shouldInsetSectionContentForDataSourceDataList; // @synthesize shouldInsetSectionContentForDataSourceDataList=_shouldInsetSectionContentForDataSourceDataList;
+@property (strong, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
 
 - (void).cxx_destruct;
 - (void)_addDataSources:(id)arg1;
-- (void)_addSources:(id)arg1 toSortedSources:(id)arg2;
 - (BOOL)_canEditDataSources;
 - (id)_createIndexPathsWithSection:(long long)arg1 startingRow:(long long)arg2 numIndices:(long long)arg3;
 - (id)_dataSourceCellForTableView:(id)arg1 row:(unsigned long long)arg2;
 - (void)_fetchAuthorizationRecordsBySourceForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchDataSourcesForSampleType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchOrderedSourcesForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_gatherDataAndRefreshUI;
-- (void)_loadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_gatherDataFromDataSource:(id)arg1;
+- (void)_loadDataSource;
 - (id)_noneTableViewCell;
 - (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3;
+- (void)_refreshUI;
 - (void)_sortDataSources;
 - (BOOL)_sourceIsEnabled:(id)arg1;
 - (void)_sourceIsEnabledDidChange:(id)arg1;
 - (void)_updateOrderedSources;
 - (void)_willDisableSource:(id)arg1;
 - (void)_willEnableSource:(id)arg1;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisplayType:(id)arg1 displayCategory:(id)arg2 sourceOrderController:(id)arg3 profile:(id)arg4;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(BOOL)arg2;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;

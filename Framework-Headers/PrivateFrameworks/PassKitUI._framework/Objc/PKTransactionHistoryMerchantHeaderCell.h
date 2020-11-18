@@ -6,39 +6,18 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class CAGradientLayer, NSString, UIColor, UIImage, UIImageView, UILabel, UIView;
+@class PKSplashImageHeaderView;
 
 @interface PKTransactionHistoryMerchantHeaderCell : PKDashboardCollectionViewCell
 {
-    UIView *_fallbackColorView;
-    UIImageView *_backgroundImageView;
-    CAGradientLayer *_gradientLayer;
-    UIImageView *_iconImageView;
-    UILabel *_primaryLabel;
-    UILabel *_secondaryLabel;
-    UILabel *_attributionLabel;
-    unsigned long long _screenType;
-    BOOL _showsGradientOverlay;
-    NSString *_primaryText;
-    NSString *_secondaryText;
-    UIImage *_iconImage;
-    UIImage *_backgroundImage;
-    UIColor *_fallbackColor;
-    NSString *_attributionProviderName;
+    PKSplashImageHeaderView *_headerView;
 }
 
-@property (copy, nonatomic) NSString *attributionProviderName; // @synthesize attributionProviderName=_attributionProviderName;
-@property (strong, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
-@property (strong, nonatomic) UIColor *fallbackColor; // @synthesize fallbackColor=_fallbackColor;
-@property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
-@property (copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
-@property (copy, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
-@property (nonatomic) BOOL showsGradientOverlay; // @synthesize showsGradientOverlay=_showsGradientOverlay;
+@property (readonly, nonatomic) PKSplashImageHeaderView *headerView; // @synthesize headerView=_headerView;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setBackgroundImage:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

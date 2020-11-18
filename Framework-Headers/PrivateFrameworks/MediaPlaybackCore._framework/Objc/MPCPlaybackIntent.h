@@ -12,6 +12,7 @@
 @interface MPCPlaybackIntent : NSObject
 {
     id<MPCPlaybackIntentDataSource> _resolvedTracklistDataSource;
+    BOOL _prefersEnqueuingUsingAirPlay;
     NSString *_localizedTitle;
     long long _tracklistSource;
     id<NSSecureCoding> _tracklistToken;
@@ -28,6 +29,7 @@
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
+@property (nonatomic) BOOL prefersEnqueuingUsingAirPlay; // @synthesize prefersEnqueuingUsingAirPlay=_prefersEnqueuingUsingAirPlay;
 @property (nonatomic) long long repeatMode; // @synthesize repeatMode=_repeatMode;
 @property (nonatomic) long long shuffleMode; // @synthesize shuffleMode=_shuffleMode;
 @property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
@@ -39,6 +41,7 @@
 + (id)intentFromQueueDescriptor:(id)arg1;
 + (id)radioPlaybackIntentFromAlbum:(id)arg1;
 + (id)radioPlaybackIntentFromArtist:(id)arg1;
++ (id)radioPlaybackIntentFromReference:(id)arg1;
 + (id)radioPlaybackIntentFromSong:(id)arg1;
 + (id)radioPlaybackIntentWithStation:(id)arg1;
 + (id)radioPlaybackIntentWithStationStringID:(id)arg1;
@@ -46,6 +49,7 @@
 + (id)tracklistDataSourceForSource:(long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
+- (void)getArchiveWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getRepresentativeMetadataWithCompletion:(CDUnknownBlockType)arg1;

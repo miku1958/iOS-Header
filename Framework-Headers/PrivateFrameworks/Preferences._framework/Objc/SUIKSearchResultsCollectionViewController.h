@@ -8,20 +8,18 @@
 
 #import <Preferences/PSKeyboardNavigationSearchResultsController-Protocol.h>
 
-@class NSArray, NSObject, UICollectionViewDiffableDataSource, _SUIKSearchResultsUpdateOperation;
+@class NSObject, UICollectionViewDiffableDataSource, _SUIKSearchResultsUpdateOperation;
 @protocol SUIKSearchResultsCollectionViewControllerDelegate;
 
 @interface SUIKSearchResultsCollectionViewController : UICollectionViewController <PSKeyboardNavigationSearchResultsController>
 {
     NSObject<SUIKSearchResultsCollectionViewControllerDelegate> *_delegate;
-    NSArray *_results;
     UICollectionViewDiffableDataSource *_diffableDataSource;
     _SUIKSearchResultsUpdateOperation *_updateOperation;
 }
 
 @property (weak, nonatomic) NSObject<SUIKSearchResultsCollectionViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UICollectionViewDiffableDataSource *diffableDataSource; // @synthesize diffableDataSource=_diffableDataSource;
-@property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (strong, nonatomic) _SUIKSearchResultsUpdateOperation *updateOperation; // @synthesize updateOperation=_updateOperation;
 
 - (void).cxx_destruct;
@@ -34,6 +32,7 @@
 - (void)searchQueryStarted;
 - (void)selectNextSearchResult;
 - (void)selectPreviousSearchResult;
+- (void)setResults:(id)arg1;
 - (void)showSelectedSearchResult;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

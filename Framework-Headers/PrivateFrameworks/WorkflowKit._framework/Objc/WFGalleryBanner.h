@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <WorkflowKit/NSMutableCopying-Protocol.h>
 #import <WorkflowKit/WFCloudKitItem-Protocol.h>
 
 @class CKRecordID, NSString, WFFileRepresentation;
 
-@interface WFGalleryBanner : NSObject <WFCloudKitItem>
+@interface WFGalleryBanner : NSObject <WFCloudKitItem, NSMutableCopying>
 {
     CKRecordID *_identifier;
     NSString *_name;
@@ -20,6 +21,7 @@
     WFFileRepresentation *_ipad2xImageFile;
     NSString *_language;
     CKRecordID *_base;
+    NSString *_persistentIdentifier;
 }
 
 @property (readonly, nonatomic) CKRecordID *base; // @synthesize base=_base;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) WFFileRepresentation *iphone3xImageFile; // @synthesize iphone3xImageFile=_iphone3xImageFile;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property (readonly) Class superclass;
 
 + (struct CGSize)pixelSizeForBannerSize:(long long)arg1;

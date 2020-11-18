@@ -24,7 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)notificationIconBundleIdentifier;
 - (id)notificationURL;
 - (void)performFromView:(id)arg1;
-- (BOOL)urlOverrideDisabled;
+- (BOOL)shouldOpenInApp;
+- (BOOL)shouldOpenInSafari;
 
 @end
 

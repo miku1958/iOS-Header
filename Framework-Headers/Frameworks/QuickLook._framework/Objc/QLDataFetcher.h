@@ -12,6 +12,7 @@
 {
     NSData *_data;
     NSString *_contentType;
+    NSString *_previewItemTitle;
     NSURL *_temporaryURL;
     QLItem *_item;
 }
@@ -20,16 +21,18 @@
 - (void).cxx_destruct;
 - (id)_createTemporaryFileIfNeeded;
 - (void)_deleteTempraryFileIfNeeded;
+- (id)_temporaryFilename;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchContentWithAllowedOutputClasses:(id)arg1 inQueue:(id)arg2 updateBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)fetchedContent;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithData:(id)arg1 contentType:(id)arg2;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 previewItemTitle:(id)arg3;
 - (id)initWithItem:(id)arg1 contentType:(id)arg2;
 - (id)itemSize;
 - (void)loadDataIfNeeded;
 - (id)newItemProvider;
+- (void)prepareShareableItem:(CDUnknownBlockType)arg1;
 - (id)shareableItem;
 
 @end

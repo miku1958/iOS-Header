@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)cacheKeysForRenderFlags:(id)arg1;
 - (void)changeBackgroundToActiveIfNecessary;
 - (void)changeBackgroundToEnabled;
+- (void)configureBackdropView:(id)arg1 forRenderConfig:(id)arg2;
 - (void)dealloc;
 - (long long)didInputSubTree:(id)arg1;
 - (void)dimKeys:(id)arg1;

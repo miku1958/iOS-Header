@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class TransparencyTrustedKeyStore;
 
 @interface TransparencyLogEntryVerifier : NSObject
 {
-    NSDictionary *_trustedKeys;
+    TransparencyTrustedKeyStore *_trustedKeyStore;
 }
 
-@property (strong) NSDictionary *trustedKeys; // @synthesize trustedKeys=_trustedKeys;
+@property (strong) TransparencyTrustedKeyStore *trustedKeyStore; // @synthesize trustedKeyStore=_trustedKeyStore;
 
 - (void).cxx_destruct;
-- (id)initWithTrustedKeys:(id)arg1;
+- (id)initWithTrustedKeyStore:(id)arg1;
 - (BOOL)verifyInclusionOfLogLeaf:(id)arg1 position:(unsigned long long)arg2 treeSize:(unsigned long long)arg3 treeHead:(id)arg4 hashPath:(id)arg5 error:(id *)arg6;
 - (BOOL)verifyLogEntryWithLogLeaf:(id)arg1 position:(unsigned long long)arg2 hashesToRoot:(id)arg3 signedLogHead:(id)arg4 error:(id *)arg5;
 

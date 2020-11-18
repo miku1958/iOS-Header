@@ -13,6 +13,7 @@
 
 @interface MPCModelPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
 {
+    BOOL _skipEncodingMediaLibraryUniqueID;
     ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPModelRequest *_request;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 @property (copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
+@property (nonatomic) BOOL skipEncodingMediaLibraryUniqueID; // @synthesize skipEncodingMediaLibraryUniqueID=_skipEncodingMediaLibraryUniqueID;
 @property (copy, nonatomic) MPIdentifierSet *startItemIdentifiers; // @synthesize startItemIdentifiers=_startItemIdentifiers;
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
 @property (readonly) Class superclass;
@@ -42,8 +44,9 @@
 + (id)requiredPropertiesForStaticMediaClips;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)clearStartItem;
 - (BOOL)containsRestorableContent;
-- (BOOL)containsTransportableContent;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;

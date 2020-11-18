@@ -51,6 +51,7 @@
 - (void)presentStudyAuthorizationPromptViewController:(id)arg1 bundlePath:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)presentationAnchor;
 - (id)presentingViewControllerFromRoot:(id)arg1;
+- (void)viewControllerCleanUp;
 
 @end
 

@@ -29,6 +29,8 @@
 - (void)initializeSecureElement:(void (^)(BOOL))arg1;
 - (void)initializeSecureElementIfNecessaryWithHandler:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)insertOrUpdatePaymentTransaction:(PKPaymentTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentApplication:(PKPaymentApplication *)arg3 handler:(void (^)(PKPaymentTransaction *))arg4;
+- (void)installmentPlansWithTransactionReferenceIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;
 - (void)noteAccountDeletedWithCompletion:(void (^)(void))arg1;
 - (void)passOwnershipTokenWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
@@ -68,5 +70,6 @@
 - (void)transactionsForPaymentPassWithuniqueIdentifier:(NSString *)arg1 withMerchantCategory:(long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 startDate:(NSDate *)arg5 endDate:(NSDate *)arg6 limit:(long long)arg7 completion:(void (^)(NSSet *))arg8;
 - (void)transactionsRequiringReviewForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)transactionsWithTransactionSource:(unsigned long long)arg1 withBackingData:(unsigned long long)arg2 limit:(long long)arg3 completion:(void (^)(NSSet *))arg4;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

@@ -8,24 +8,28 @@
 
 #import <DoNotDisturbServer/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface DNDSPairedDevice : NSObject <NSCopying>
 {
     NSString *_deviceIdentifier;
     unsigned long long _deviceClass;
     unsigned long long _syncProtocolVersion;
+    NSUUID *_pairingIdentifier;
+    NSString *_pairingDataStore;
 }
 
 @property (readonly, nonatomic) unsigned long long deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (readonly, copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (readonly, copy, nonatomic) NSString *pairingDataStore; // @synthesize pairingDataStore=_pairingDataStore;
+@property (readonly, copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property (readonly, nonatomic) unsigned long long syncProtocolVersion; // @synthesize syncProtocolVersion=_syncProtocolVersion;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3;
+- (id)initWithDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3 pairingIdentifier:(id)arg4 pairingDataStore:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

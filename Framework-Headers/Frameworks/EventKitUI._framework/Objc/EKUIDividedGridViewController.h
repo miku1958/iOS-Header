@@ -13,22 +13,23 @@
 {
     long long _type;
     UIColor *_cellBackgroundColor;
-    double _preferredWidth;
     NSArray *_buttonTitles;
     NSArray *_allCells;
     id<EKUIDividedGridViewControllerDelegate> _delegate;
     NSArray *_weekViews;
+    double _preferredWidth;
+    double _preferredInset;
 }
 
 @property (strong) NSArray *allCells; // @synthesize allCells=_allCells;
 @property (strong, nonatomic) NSArray *buttonTitles; // @synthesize buttonTitles=_buttonTitles;
 @property (weak) id<EKUIDividedGridViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) double preferredInset; // @synthesize preferredInset=_preferredInset;
 @property (nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
 @property (strong) NSArray *weekViews; // @synthesize weekViews=_weekViews;
 
 + (id)dividerColor;
 - (void).cxx_destruct;
-- (double)_defaultButtonWidthForButtonAtIndex:(long long)arg1;
 - (double)_neededHeight;
 - (id)_newDividerView;
 - (double)_rowHeightForWidth:(double)arg1;

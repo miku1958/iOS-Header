@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface BFFSetupAssistantDeviceToDeviceMigrationSuccess : PBCodable <NSCopying>
 {
+    unsigned long long _numberOfFilesTransferred;
     unsigned long long _restoreDuration;
     unsigned long long _size;
     unsigned long long _timestamp;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSString *_targetDeviceProductVersion;
     BOOL _inAppleStore;
     struct {
+        unsigned int numberOfFilesTransferred:1;
         unsigned int restoreDuration:1;
         unsigned int size:1;
         unsigned int timestamp:1;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int connectionType; // @synthesize connectionType=_connectionType;
 @property (nonatomic) BOOL hasConnectionType;
 @property (nonatomic) BOOL hasInAppleStore;
+@property (nonatomic) BOOL hasNumberOfFilesTransferred;
 @property (nonatomic) BOOL hasRestoreDuration;
 @property (nonatomic) BOOL hasSize;
 @property (readonly, nonatomic) BOOL hasSourceDeviceModel;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransferDuration;
 @property (nonatomic) BOOL inAppleStore; // @synthesize inAppleStore=_inAppleStore;
+@property (nonatomic) unsigned long long numberOfFilesTransferred; // @synthesize numberOfFilesTransferred=_numberOfFilesTransferred;
 @property (nonatomic) unsigned long long restoreDuration; // @synthesize restoreDuration=_restoreDuration;
 @property (nonatomic) unsigned long long size; // @synthesize size=_size;
 @property (strong, nonatomic) NSString *sourceDeviceModel; // @synthesize sourceDeviceModel=_sourceDeviceModel;

@@ -17,15 +17,14 @@
     BOOL _zoomEnabled;
     CDUnknownBlockType _backdropScaleAdjustment;
     CDUnknownBlockType _defaultBackdropScaleAdjustment;
-    BOOL _shouldCrossfadeIfNecessary;
-    BOOL _forceCrossfadeIfNecessary;
+    BOOL _shouldCrossfade;
     BOOL _contentReplacedWithSnapshot;
     NSMutableDictionary *_pendingChange;
     NSMutableDictionary *_visualStyleCategoriesToProviders;
     struct {
-        unsigned int delegateImplementsManagingOpacity:1;
-        unsigned int delegateImplementsManagingOpacityTransition:1;
         unsigned int delegateManagesWeighting:1;
+        unsigned int delegateImplementsManagingOpacity:1;
+        unsigned int delegateImplementsManagingInterpolation:1;
     } _materialLayerDelegateFlags;
     BOOL _reduceTransparencyEnabled;
     BOOL _reduceMotionEnabled;
@@ -38,14 +37,13 @@
 @property (copy, nonatomic) NSString *configuration; // @dynamic configuration;
 @property (nonatomic, getter=isContentReplacedWithSnapshot) BOOL contentReplacedWithSnapshot;
 @property (copy, nonatomic) CDUnknownBlockType defaultBackdropScaleAdjustment; // @synthesize defaultBackdropScaleAdjustment=_defaultBackdropScaleAdjustment;
-@property (nonatomic) BOOL forceCrossfadeIfNecessary;
 @property (readonly, nonatomic, getter=_privateOpacity) double privateOpacity;
 @property (copy, nonatomic) NSString *recipe; // @dynamic recipe;
 @property (copy, nonatomic) NSString *recipeName;
 @property (strong, nonatomic, getter=_recipeSettings, setter=_setRecipeSettings:) id<MTRecipeMaterialSettingsProviding> recipeSettings; // @dynamic recipeSettings;
 @property (nonatomic, getter=isReduceMotionEnabled) BOOL reduceMotionEnabled; // @synthesize reduceMotionEnabled=_reduceMotionEnabled;
 @property (nonatomic, getter=isReduceTransparencyEnabled) BOOL reduceTransparencyEnabled; // @synthesize reduceTransparencyEnabled=_reduceTransparencyEnabled;
-@property (nonatomic) BOOL shouldCrossfadeIfNecessary;
+@property (nonatomic) BOOL shouldCrossfade;
 @property (nonatomic) double weighting; // @dynamic weighting;
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 
@@ -63,10 +61,10 @@
 - (void)_configureIfNecessaryWithSettingsInterpolator:(id)arg1;
 - (BOOL)_delegateManagesWeighting;
 - (BOOL)_didValueChangeForKey:(id)arg1 withPendingChange:(id)arg2;
-- (BOOL)_isCrossfadeNecessary;
-- (BOOL)_isDelegateManagingCustomOpacityTransition;
+- (BOOL)_isDelegateManagingInterpolation;
 - (BOOL)_isDelegateManagingOpacity;
 - (BOOL)_needsPruning;
+- (void)_reevaluateDefaultShouldCrossfade;
 - (void)_setNeedsConfiguring;
 - (void)_setPrivateOpacity:(double)arg1 removingIfIdentity:(BOOL)arg2;
 - (void)_updateForChangeInRecipeAndConfiguration;
@@ -77,7 +75,6 @@
 - (id)init;
 - (void)layoutSublayers;
 - (void)prune;
-- (void)reevaluateShouldReduceCaptureBitDepth:(BOOL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setRecipeName:(id)arg1 fromBundle:(id)arg2;
 - (void)setUnsafeUnretainedDelegate:(id)arg1;

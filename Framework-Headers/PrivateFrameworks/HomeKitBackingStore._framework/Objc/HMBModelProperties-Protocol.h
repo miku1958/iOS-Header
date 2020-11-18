@@ -16,6 +16,6 @@
 - (id)hmbPropertyNamed:(NSString *)arg1 isSet:(BOOL *)arg2;
 - (BOOL)hmbPropertyWasSet:(NSString *)arg1;
 - (void)hmbSetProperty:(id)arg1 named:(NSString *)arg2;
-- (void)hmbSetPropertyIfNotNil:(id)arg1 named:(NSString *)arg2;
+- (void)hmbUnsetPropertyNamed:(NSString *)arg1;
 @end
 

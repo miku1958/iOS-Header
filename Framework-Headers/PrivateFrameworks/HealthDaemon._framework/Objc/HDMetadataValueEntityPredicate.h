@@ -22,6 +22,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
++ (id)_predicateWithMetadataKey:(id)arg1 exists:(BOOL)arg2;
++ (id)_predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
 + (id)predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 exists:(BOOL)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;

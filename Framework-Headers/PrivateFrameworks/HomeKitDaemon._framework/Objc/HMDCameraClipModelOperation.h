@@ -14,11 +14,11 @@
 
 @interface HMDCameraClipModelOperation : HMFOperation <HMFObject, HMFLogging>
 {
+    NSString *_logIdentifier;
     NSUUID *_clipModelID;
     HMBLocalZone *_localZone;
     HMCameraClipEncryptionManager *_encryptionManager;
     HMDCameraRecordingUploadOperationEvent *_uploadOperationEvent;
-    NSString *_logIdentifier;
     NSDate *_createDate;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -55,7 +55,7 @@
 - (id)initWithClipModelID:(id)arg1 localZone:(id)arg2 encryptionManager:(id)arg3 dataSource:(id)arg4;
 - (void)main;
 - (id)updateClipModel:(id)arg1;
-- (id)updateClipModel:(id)arg1 options:(id)arg2;
+- (id)updateClipModel:(id)arg1 shouldPerformDelegateCallbacks:(BOOL)arg2;
 
 @end
 

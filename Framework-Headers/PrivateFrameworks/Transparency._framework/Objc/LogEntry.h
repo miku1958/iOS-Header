@@ -25,6 +25,7 @@
 @property (strong) TransparencyLogEntryVerifier *verifier;
 
 + (id)descriptor;
+- (BOOL)verifyTLTEntryForPerApplicationLogHead:(id)arg1 error:(id *)arg2;
 - (BOOL)verifyWithError:(id *)arg1;
 
 @end

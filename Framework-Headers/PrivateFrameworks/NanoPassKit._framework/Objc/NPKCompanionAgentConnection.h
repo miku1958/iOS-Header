@@ -119,6 +119,7 @@
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(id)arg1 sessionData:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
 - (id)watchPaymentWebService;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

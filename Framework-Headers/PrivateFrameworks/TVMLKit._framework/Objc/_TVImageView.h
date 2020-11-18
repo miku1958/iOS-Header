@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class CAFilter, TVImageProxy, UIColor, UIImage, UIImageView;
+@class CAFilter, TVImageProxy, UIColor, UIImage, UIImageSymbolConfiguration, UIImageView;
 
 @interface _TVImageView : UIControl
 {
@@ -29,6 +29,7 @@
     CDUnknownBlockType _completion;
     UIColor *__tintColor;
     UIColor *__darkTintColor;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
 }
 
 @property (strong, nonatomic, setter=_setDarkTintColor:) UIColor *_darkTintColor; // @synthesize _darkTintColor=__darkTintColor;
@@ -42,6 +43,7 @@
 @property (nonatomic, getter=isImageLoaded) BOOL imageLoaded; // @synthesize imageLoaded=_imageLoaded;
 @property (strong, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property (strong, nonatomic, setter=_setPreferredSymbolConfiguration:) UIImageSymbolConfiguration *preferredSymbolConfiguration; // @synthesize preferredSymbolConfiguration=_preferredSymbolConfiguration;
 
 - (void).cxx_destruct;
 - (double)_continuousCornerRadius;

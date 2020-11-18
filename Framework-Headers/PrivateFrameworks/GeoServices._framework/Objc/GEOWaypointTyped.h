@@ -13,11 +13,13 @@
 @interface GEOWaypointTyped : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOWaypointID *_waypointId;
     GEOWaypointLocation *_waypointLocation;
     GEOWaypointPlace *_waypointPlace;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _waypointType;
     BOOL _isCurrentLocation;
     BOOL _isLocationOfInterest;
@@ -67,6 +69,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationForWaypoint;
 - (void)mergeFrom:(id)arg1;

@@ -84,7 +84,7 @@
 + (id)_departureLabelFont;
 + (void)_enumerateMinutesUntilDepartureDates:(id)arg1 withReferenceDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (double)_maxExpectedDepartureLabelWidth;
-+ (double)_minTextWidth:(BOOL)arg1;
++ (double)_minTextWidth;
 + (BOOL)_needsUpdateMaxLabelWidths;
 + (id)_nowString;
 + (id)_primaryFont;
@@ -92,9 +92,9 @@
 + (id)defaultSecondaryFont;
 + (id)displayableCountdowDepartureDatesFromDates:(id)arg1 withReferenceDate:(id)arg2;
 + (double)labelMarginWithLineImageViewWidth:(double)arg1;
-+ (double)maxLineImageWidthforWidth:(double)arg1 compressed:(BOOL)arg2;
++ (double)maxLineImageWidthforWidth:(double)arg1;
 + (id)strongSecondaryFont;
-+ (void)useCompressedGutter:(out BOOL *)arg1 compressedLeading:(out BOOL *)arg2 forImageWidth:(double)arg3 inWidth:(double)arg4 compressed:(BOOL)arg5;
++ (void)useCompressedGutter:(out BOOL *)arg1 compressedLeading:(out BOOL *)arg2 forImageWidth:(double)arg3 inWidth:(double)arg4;
 - (void).cxx_destruct;
 - (void)_addIncidentIcon;
 - (double)_baselineSpacingAboveView:(id)arg1;
@@ -122,7 +122,7 @@
 - (void)_updateLabelFonts;
 - (void)_updateLineImageViewConstraintConstants;
 - (void)configureCellForRowIndex:(long long)arg1 withMapItem:(id)arg2 sectionController:(id)arg3 outNextLineIsSame:(BOOL *)arg4;
-- (void)configureLeadingWithTableViewContentMargin:(double)arg1 width:(double)arg2 compressed:(BOOL)arg3;
+- (void)configureLeadingWithTableViewContentMargin:(double)arg1 width:(double)arg2;
 - (void)dealloc;
 - (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;

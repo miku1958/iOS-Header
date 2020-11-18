@@ -14,6 +14,7 @@
 
 @interface ICClientInfo : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
+    NSString *_bundleIdentifier;
     NSString *_processName;
     NSString *_clientIdentifier;
     NSString *_clientVersion;
@@ -25,6 +26,8 @@
 
 @property (readonly, copy, nonatomic) NSString *bagProfile;
 @property (readonly, copy, nonatomic) NSString *bagProfileVersion;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *clientBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (readonly, copy, nonatomic) NSString *processName; // @synthesize processName=_processName;

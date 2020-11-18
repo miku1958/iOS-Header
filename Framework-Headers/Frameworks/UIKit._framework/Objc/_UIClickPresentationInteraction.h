@@ -12,7 +12,7 @@
 #import <UIKitCore/_UIClickInteractionDelegateInternal-Protocol.h>
 #import <UIKitCore/_UIDragInteractionPresentationDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIDragInteraction, UIGestureRecognizer, UIView, _UIClickFeedbackGenerator, _UIClickInteraction, _UIClickPresentation, _UIRelationshipGestureRecognizer, _UIStateMachine;
+@class NSMutableArray, NSString, UIDragInteraction, UIGestureRecognizer, UIView, _UIClickInteraction, _UIClickPresentation, _UIClickPresentationFeedbackGenerator, _UIRelationshipGestureRecognizer, _UIStateMachine;
 @protocol UIInteractionEffect, _UIClickPresentationAssisting, _UIClickPresentationInteractionDelegate;
 
 @interface _UIClickPresentationInteraction : NSObject <_UIClickInteractionDelegateInternal, UIInteraction_Private, UIGestureRecognizerDelegate, _UIDragInteractionPresentationDelegate, UIInteraction>
@@ -45,14 +45,16 @@
     _UIRelationshipGestureRecognizer *_failureRelationshipGestureRecognizer;
     id<_UIClickPresentationAssisting> _presentationAssistant;
     _UIClickPresentation *_pendingPresentation;
-    _UIClickFeedbackGenerator *_feedbackGenerator;
+    _UIClickPresentationFeedbackGenerator *_feedbackGenerator;
     UIDragInteraction *_latentAssociatedDragInteraction;
+    NSMutableArray *_activeInteractionEffects;
     UIDragInteraction *_associatedDragInteraction;
     NSString *_debugIdentifier;
     NSString *_presentationTypeDebugString;
     struct CGPoint _initialLocation;
 }
 
+@property (strong, nonatomic) NSMutableArray *activeInteractionEffects; // @synthesize activeInteractionEffects=_activeInteractionEffects;
 @property (nonatomic) BOOL allowSimultaneousRecognition; // @synthesize allowSimultaneousRecognition=_allowSimultaneousRecognition;
 @property (weak, nonatomic) UIDragInteraction *associatedDragInteraction; // @synthesize associatedDragInteraction=_associatedDragInteraction;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,7 +63,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _UIRelationshipGestureRecognizer *exclusionRelationshipGestureRecognizer; // @synthesize exclusionRelationshipGestureRecognizer=_exclusionRelationshipGestureRecognizer;
 @property (strong, nonatomic) _UIRelationshipGestureRecognizer *failureRelationshipGestureRecognizer; // @synthesize failureRelationshipGestureRecognizer=_failureRelationshipGestureRecognizer;
-@property (strong, nonatomic) _UIClickFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
+@property (strong, nonatomic) _UIClickPresentationFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForExclusionRelationship;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint initialLocation; // @synthesize initialLocation=_initialLocation;
@@ -78,6 +80,7 @@
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (id)_activeEffectForPreview:(id)arg1;
 - (void)_associateWithActiveDragInteraction;
 - (void)_attemptDragLiftAtLocation:(struct CGPoint)arg1 useDefaultLiftAnimation:(BOOL)arg2;
 - (void)_beginDragIfPossibleWithTouch:(id)arg1 previewProvider:(CDUnknownBlockType)arg2 fenceHandler:(CDUnknownBlockType)arg3;

@@ -25,6 +25,7 @@
     UISearchBar *_searchBar;
     NSString *_title;
     UIView *_titleView;
+    UIView<WFDrawerPaneHeaderView> *_activeHeaderView;
     UIView *_contentView;
     NSString *_drawerGroup;
     UIView *_shadowView;
@@ -32,7 +33,6 @@
     UIVisualEffectView *_visualEffectView;
     UIView *_backgroundView;
     UIView *_backgroundContentView;
-    UIView<WFDrawerPaneHeaderView> *_activeHeaderView;
 }
 
 @property (weak, nonatomic) UIView<WFDrawerPaneHeaderView> *activeHeaderView; // @synthesize activeHeaderView=_activeHeaderView;
@@ -71,6 +71,7 @@
 - (void)updatePaneProperties;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (id)wf_drawerController;
 - (id)wf_drawerItem;
 - (void)wf_setDrawerController:(id)arg1;

@@ -20,7 +20,7 @@
 - (void)readerController:(_SFReaderController *)arg1 didCollectReaderContentForMail:(NSString *)arg2;
 - (void)readerController:(_SFReaderController *)arg1 didCollectReadingListItemInfo:(NSDictionary *)arg2 bookmarkID:(NSNumber *)arg3;
 - (void)readerController:(_SFReaderController *)arg1 didDeactivateReaderWithMode:(unsigned long long)arg2;
-- (void)readerController:(_SFReaderController *)arg1 didDetermineReaderAvailability:(BOOL)arg2 dueToSameDocumentNavigation:(BOOL)arg3;
+- (void)readerController:(_SFReaderController *)arg1 didDetermineReaderAvailability:(BOOL)arg2 dueTo:(long long)arg3;
 - (void)readerController:(_SFReaderController *)arg1 didExtractArticleText:(NSString *)arg2 withMetadata:(NSDictionary *)arg3;
 - (void)readerController:(_SFReaderController *)arg1 didPrepareReaderContentForPrinting:(_WKFrameHandle *)arg2;
 - (void)readerController:(_SFReaderController *)arg1 didSetReaderConfiguration:(NSDictionary *)arg2;

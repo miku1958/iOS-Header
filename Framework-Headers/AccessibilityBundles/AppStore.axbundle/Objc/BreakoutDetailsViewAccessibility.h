@@ -18,7 +18,6 @@
 - (id)_axCallToActionButton;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

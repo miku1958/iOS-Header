@@ -90,6 +90,8 @@
 - (void)initializeSecureElementIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)insertOrUpdatePaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)insertOrUpdateValueAddedServiceTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentTransaction:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)installmentPlansWithTransactionReferennceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mapsMerchantsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -167,6 +169,7 @@
 - (void)valueAddedServiceTransactionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)valueAddedServiceTransactionsForPassWithUniqueIdentifier:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)valueAddedServiceTransactionsForPaymentTransaction:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end
 

@@ -157,6 +157,7 @@
 - (void)didPresentSearchController:(id)arg1;
 - (void)didUpdateContentForAvatarViewController:(id)arg1;
 - (id)dragItemsForIndexPath:(id)arg1;
+- (id)getVisibleIndexPaths;
 - (BOOL)hasNoContacts;
 - (id)hostingViewControllerForController:(id)arg1;
 - (id)initWithDataSource:(id)arg1 environment:(id)arg2 shouldUseLargeTitle:(BOOL)arg3;

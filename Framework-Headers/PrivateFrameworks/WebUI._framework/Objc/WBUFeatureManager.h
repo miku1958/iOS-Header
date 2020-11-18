@@ -49,6 +49,7 @@
 - (void)_updateFeatureAvailabilityByAccessLevel;
 - (void)dealloc;
 - (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)determineIfUserIsRestrictedByScreenTimeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

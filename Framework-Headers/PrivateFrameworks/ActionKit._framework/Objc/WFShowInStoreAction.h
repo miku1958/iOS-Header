@@ -6,21 +6,9 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/SKStoreProductViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFShowInStoreAction : WFAction <SKStoreProductViewControllerDelegate>
+@interface WFShowInStoreAction : WFAction
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (void)productViewControllerDidFinish:(id)arg1;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

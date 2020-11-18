@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Preferences/PSSettingsLink-Protocol.h>
+#import <Preferences/PSSettingsBoolDetail-Protocol.h>
 
 @class NSString;
 
-@interface PSLocationServicesSettingsDetail : NSObject <PSSettingsLink>
+@interface PSLocationServicesSettingsDetail : NSObject <PSSettingsBoolDetail>
 {
 }
 
@@ -19,7 +19,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)iconImage;
++ (BOOL)isEnabled;
 + (id)preferencesURL;
++ (void)setEnabled:(BOOL)arg1;
 
 @end
 

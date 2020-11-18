@@ -14,7 +14,6 @@
 @interface GEOPlace : PBCodable <GEOURLSerializable, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     long long _uID;
     GEOAddress *_address;
@@ -34,6 +33,9 @@
     NSString *_spokenName;
     GEOStructuredAddress *_spokenStructuredAddress;
     GEOTimezone *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _addressGeocodeAccuracy;
     int _localSearchProviderID;
     int _referenceFrame;
@@ -206,6 +208,8 @@
 - (id)entryPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entryPointsCount;
 - (id)geoMapItem;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 addressDictionary:(id)arg3;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 placeType:(int)arg3;

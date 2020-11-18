@@ -40,6 +40,7 @@
 - (void)_updateTextViewTextAndInvalidateLayout:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;

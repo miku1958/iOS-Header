@@ -13,13 +13,14 @@
 #import <WorkflowUI/WFVariableUIDelegate-Protocol.h>
 
 @class NSArray, NSHashTable, NSLayoutConstraint, NSMutableArray, NSString, UINavigationController, UITraitCollection, UIView, WFActionDrawerCoordinator, WFActionDrawerViewController, WFComposeFlowController, WFComposeUserActivityManager, WFDrawerController, WFEditWorkflowViewController, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowSettingsLayoutMetrics;
-@protocol WFComposeViewControllerDelegate, WFModuleIndentationProvider;
+@protocol WFComposeViewControllerDelegate, WFModuleDelegate;
 
 @interface WFComposeViewController : UIViewController <WFDragCoordinator, WFVariableUIDelegate, WFDrawerControllerDelegate, WFComposeFlowControllerDelegate, WFEditWorkflowViewControllerDelegate>
 {
     BOOL _actionsHidden;
     BOOL _shouldProvideNavigationBar;
     BOOL _shouldShowShareButton;
+    BOOL _observingSharingEnabledUserDefault;
     WFEditWorkflowViewController *_workflowViewController;
     double _bottomContentInset;
     id<WFComposeViewControllerDelegate> _delegate;
@@ -55,9 +56,10 @@
 @property (readonly, nonatomic) NSMutableArray *editingStates; // @synthesize editingStates=_editingStates;
 @property (strong, nonatomic) WFComposeFlowController *flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<WFModuleIndentationProvider> indentationProvider;
 @property (strong, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
+@property (readonly, nonatomic) id<WFModuleDelegate> moduleDelegate;
 @property (readonly, nonatomic) NSHashTable *movedDragControllers; // @synthesize movedDragControllers=_movedDragControllers;
+@property (nonatomic) BOOL observingSharingEnabledUserDefault; // @synthesize observingSharingEnabledUserDefault=_observingSharingEnabledUserDefault;
 @property (readonly, nonatomic) NSArray *participatingViewControllers;
 @property (nonatomic) unsigned long long preHideVisibility; // @synthesize preHideVisibility=_preHideVisibility;
 @property (readonly, nonatomic) NSArray *scrollViewsAffectingDrag;
@@ -81,7 +83,6 @@
 - (BOOL)canBecomeFirstResponder;
 - (id)cancelBarButtonItem;
 - (void)composeFlowControllerDidFinishEditing:(id)arg1;
-- (void)dealloc;
 - (void)didTapCancel:(id)arg1;
 - (void)didTapDone;
 - (void)didTapNext;
@@ -100,7 +101,6 @@
 - (BOOL)isDrawerAvailableForWorkflowViewController:(id)arg1;
 - (id)keyCommands;
 - (void)loadView;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)popEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pushEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)redoLastWorkflowEdit;

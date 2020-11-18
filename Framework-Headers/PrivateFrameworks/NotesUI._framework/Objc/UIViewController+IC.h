@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-@class ICViewControllerManager, UINavigationController;
+@class ICViewControllerManager, UINavigationController, UIWindowScene;
 
 @interface UIViewController (IC)
 
 @property (readonly, nonatomic) BOOL ic_isRTL;
 @property (readonly, nonatomic) UINavigationController *ic_rootNavigationController;
 @property (readonly, nonatomic) ICViewControllerManager *ic_viewControllerManager;
+@property (readonly, nonatomic) UIWindowScene *ic_windowScene;
 
 + (void)ic_enableUIViewAnimations:(BOOL)arg1 forBlock:(CDUnknownBlockType)arg2;
 - (id)ic_embedInNavigationControllerForModalPresentation;

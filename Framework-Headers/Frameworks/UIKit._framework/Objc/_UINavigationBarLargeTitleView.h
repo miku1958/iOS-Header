@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)_titleForCurrentWidth;
 - (void)_updateContentAndInvalidate:(BOOL)arg1;
 - (void)adoptLayout:(id)arg1;
+- (void)adoptNewLayout;
 - (void)clearTransitionContext;
 - (void)ensureBackButtonTruncationOccursWithContext:(id)arg1;
 - (void)finalizeStateFromTransition:(id)arg1;

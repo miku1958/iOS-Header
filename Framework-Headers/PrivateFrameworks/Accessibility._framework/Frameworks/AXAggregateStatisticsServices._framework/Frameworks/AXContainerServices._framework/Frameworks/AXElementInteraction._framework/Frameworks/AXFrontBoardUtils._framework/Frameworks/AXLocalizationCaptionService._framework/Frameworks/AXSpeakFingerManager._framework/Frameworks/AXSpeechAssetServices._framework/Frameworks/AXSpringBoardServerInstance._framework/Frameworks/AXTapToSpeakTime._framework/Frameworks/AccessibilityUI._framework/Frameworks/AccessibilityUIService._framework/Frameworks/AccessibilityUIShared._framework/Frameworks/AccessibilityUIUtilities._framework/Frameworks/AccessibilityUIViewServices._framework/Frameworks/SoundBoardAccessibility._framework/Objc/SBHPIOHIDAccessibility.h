@@ -30,8 +30,10 @@
 - (void)_accessibilitySetHysteresisLongPressTimer:(id)arg1;
 - (void)_accessibilitySetHysteresisTimer:(id)arg1;
 - (void)_accessibilitySetSelectedButton:(unsigned long long)arg1;
+- (void)_accessibilitySetSynthesizedHoldButton:(unsigned long long)arg1;
 - (void)_accessibilitySetTapAssistanceButton:(unsigned long long)arg1;
 - (void)_accessibilitySetTapAssistanceTimer:(id)arg1;
+- (unsigned long long)_accessibilitySynthesizedHoldButton;
 - (unsigned long long)_accessibilityTapAssistanceButton;
 - (id)_accessibilityTapAssistanceTimer;
 - (void)_sendBeganHoldForButton:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;

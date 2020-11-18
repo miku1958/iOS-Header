@@ -21,10 +21,12 @@
 }
 
 @property (strong, nonatomic, setter=_setOriginalDictionary:) NSDictionary *_originalDictionary; // @synthesize _originalDictionary;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, weak, nonatomic) INCodableAttribute *codableAttribute; // @synthesize codableAttribute=_codableAttribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (weak, nonatomic) INCodableAttribute *parentCodableAttribute; // @synthesize parentCodableAttribute=_parentCodableAttribute;
 @property (nonatomic) unsigned long long relation; // @synthesize relation=_relation;
 @property (readonly) Class superclass;
@@ -42,7 +44,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCodableAttribute:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)keyPrefix;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

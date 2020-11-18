@@ -9,40 +9,49 @@
 #import <WorkflowUI/WFVariableTypingContext-Protocol.h>
 #import <WorkflowUI/WFVariableUIDelegate-Protocol.h>
 
-@class NSArray, NSString, WFVariableInputCoordinator, WFVariableStringParameterState;
+@class NSArray, NSString, NSTextAttachment, WFVariableInputCoordinator, WFVariableStringParameterState;
 
 @interface WFTextInputParameterSummaryEditor : WFModuleSummaryEditor <WFVariableTypingContext, WFVariableUIDelegate>
 {
     BOOL _hasChangedText;
     BOOL _isPickingMagicVariable;
-    WFVariableInputCoordinator *_variableCoordinator;
     WFVariableStringParameterState *_stagedState;
+    WFVariableInputCoordinator *_variableCoordinator;
+    NSTextAttachment *_textAttachmentToEdit;
 }
 
 @property (readonly, nonatomic) NSArray *currentVariables;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasChangedText; // @synthesize hasChangedText=_hasChangedText;
+@property (readonly, nonatomic) BOOL hasChangedText; // @synthesize hasChangedText=_hasChangedText;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPickingMagicVariable; // @synthesize isPickingMagicVariable=_isPickingMagicVariable;
-@property (strong, nonatomic) WFVariableStringParameterState *stagedState; // @synthesize stagedState=_stagedState;
+@property (readonly, nonatomic) WFVariableStringParameterState *stagedState; // @synthesize stagedState=_stagedState;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSTextAttachment *textAttachmentToEdit; // @synthesize textAttachmentToEdit=_textAttachmentToEdit;
 @property (strong, nonatomic) WFVariableInputCoordinator *variableCoordinator; // @synthesize variableCoordinator=_variableCoordinator;
 
 - (void).cxx_destruct;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)configureVariableAttachmentForInsertion:(id)arg1;
+- (void)copyVariableString;
 - (BOOL)doneButtonNeededForInputTraits:(id)arg1 allowMultipleLines:(BOOL)arg2;
 - (void)insertVariable:(id)arg1;
 - (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
+- (struct _NSRange)selectedRange;
 - (void)setVariableProvider:(id)arg1;
 - (void)setVariableUIDelegate:(id)arg1;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(BOOL)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)sourceViewTintColorDidChange;
 - (id)stateByReplacingVariableFromInitialState:(id)arg1 withVariable:(id)arg2;
+- (void)textEntryDidCopyWithOriginalBlock:(CDUnknownBlockType)arg1;
+- (void)textEntryDidCutWithOriginalBlock:(CDUnknownBlockType)arg1;
 - (void)textEntryDidFinish;
+- (void)textEntryDidPasteWithOriginalBlock:(CDUnknownBlockType)arg1;
 - (void)textEntryTextDidChange:(id)arg1;
 - (void)textEntryWillBegin:(id)arg1 allowMultipleLines:(BOOL *)arg2;
+- (BOOL)variableMenuSupportsVariableSelectionForSlotWithIdentifier:(id)arg1;
 
 @end
 

@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) HMAccessory *hf_linkedAccessory;
 @property (readonly) Class superclass;
 
+- (BOOL)hf_isReachable;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

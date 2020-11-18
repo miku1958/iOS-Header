@@ -13,6 +13,8 @@
 
 @interface EDSearchableIndexManager : NSObject <EFLoggable, EDMessageChangeHookResponder>
 {
+    BOOL _needsReindex;
+    BOOL _needsToScheduleRecurringActivity;
     EDPersistenceDatabase *_database;
 }
 
@@ -21,6 +23,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) EDSearchableIndex *index;
+@property (nonatomic) BOOL needsReindex; // @synthesize needsReindex=_needsReindex;
+@property (nonatomic) BOOL needsToScheduleRecurringActivity; // @synthesize needsToScheduleRecurringActivity=_needsToScheduleRecurringActivity;
 @property (readonly, nonatomic) EDSearchableIndexPersistence *persistence;
 @property (readonly, nonatomic) EDSearchableIndexScheduler *scheduler;
 @property (readonly) Class superclass;
@@ -28,6 +32,8 @@
 + (id)log;
 - (void).cxx_destruct;
 - (id)_filterInMessagesWithValidPersistentIDsFromMessages:(id)arg1;
+- (void)_removeAllItemsFromIndexAndWait:(BOOL)arg1 options:(unsigned long long)arg2;
+- (void)_removeItemsForIndexableMessages:(id)arg1;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 - (void)persistenceDidAddLabels:(id)arg1 removeLabels:(id)arg2 messages:(id)arg3 generationWindow:(id)arg4;
@@ -37,7 +43,9 @@
 - (void)persistenceDidFinishUpdates;
 - (void)persistenceDidUpdateData:(id)arg1 message:(id)arg2;
 - (void)persistenceWillBeginUpdates;
-- (void)removeAllItemsFromIndexAndWait:(BOOL)arg1;
+- (void)removeAllItemsFromIndexAndWait:(BOOL)arg1 skipInvalidation:(BOOL)arg2;
+- (void)scheduleRecurringActivity;
+- (void)setNeedsReindex;
 
 @end
 

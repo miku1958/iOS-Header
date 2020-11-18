@@ -9,12 +9,12 @@
 #import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFMediaAccessoryLikeItem-Protocol.h>
 
-@class NSSet, NSString;
+@class HMHome, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject, HFHomeKitSettingsVendor, HFMediaProfileContainer, HFMediaValueSource;
 
 @interface HFMediaAccessoryItem : HFItem <HFMediaAccessoryLikeItem, HFActionBuilderFactory>
 {
-    BOOL _inServiceAction;
+    BOOL _isItemInActionBuilder;
     id<HFHomeKitObject> _homeKitObject;
     id<HFHomeKitSettingsVendor> _homeKitSettingsVendor;
     id<HFCharacteristicValueSource> _valueSource;
@@ -28,11 +28,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
 @property (readonly, nonatomic) id<HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
-@property (nonatomic) BOOL inServiceAction; // @synthesize inServiceAction=_inServiceAction;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
+@property (nonatomic) BOOL isItemInActionBuilder; // @synthesize isItemInActionBuilder=_isItemInActionBuilder;
 @property (readonly, nonatomic) long long mediaAccessoryItemType; // @synthesize mediaAccessoryItemType=_mediaAccessoryItemType;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly, nonatomic) id<HFMediaValueSource> mediaValueSource;
@@ -58,7 +59,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createControlItems;
 - (id)currentStateActionBuildersForHome:(id)arg1;
-- (id)iconDescriptor;
+- (id)iconDescriptor:(id)arg1;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
 - (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
@@ -68,17 +69,19 @@
 - (BOOL)isHomePod;
 - (BOOL)isHomePodAndIsInMediaSystem;
 - (BOOL)isHomePodMediaSystem;
-- (BOOL)isSingleHomePod;
 - (BOOL)isSiriDisabled;
 - (BOOL)isSpeaker;
+- (BOOL)isStandaloneHomePod;
 - (id)namingComponentForHomeKitObject;
 - (id)performStandardUpdateWithOptions:(id)arg1;
+- (unsigned long long)preferredActionOnTap:(id)arg1;
 - (id)room;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)serviceNameComponents;
 - (id)settings;
 - (BOOL)supportsAlarmQuickControls;
 - (BOOL)supportsMediaQuickControls;
+- (BOOL)supportsMultiUser;
 
 @end
 

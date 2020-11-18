@@ -12,6 +12,7 @@
 
 + (id)_xpcConnection;
 + (void)activateRemotePINUI;
++ (BOOL)isRestrictionsPasscodeSet;
 - (id)stringsBundle;
 - (id)stringsTable;
 

@@ -14,6 +14,7 @@
 - (void)configurationWithCompletion:(void (^)(SOConfiguration *, NSError *))arg1;
 - (void)debugHintsWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getAuthorizationHintsWithURL:(NSURL *)arg1 responseCode:(long long)arg2 completion:(void (^)(SOAuthorizationHintsCore *, NSError *))arg3;
+- (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)performAuthorizationWithRequestParameters:(SOAuthorizationRequestParametersCore *)arg1 completion:(void (^)(SOAuthorizationCredentialCore *, NSError *))arg2;
 - (void)realmsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 @end

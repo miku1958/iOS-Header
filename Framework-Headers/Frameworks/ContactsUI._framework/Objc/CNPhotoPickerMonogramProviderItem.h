@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)generateThumbnailImageDataIfNeeded;
 - (unsigned long long)hash;
 - (id)imageData;
+- (unsigned long long)imageType;
 - (id)initWithImageData:(id)arg1 thumbnailImageData:(id)arg2 fullscreenImageData:(id)arg3 cropRect:(struct CGRect)arg4 renderingScope:(id)arg5 avatarRenderer:(id)arg6 isVariantOptionItem:(BOOL)arg7;
 - (BOOL)isDefaultMonogramItem;
 - (BOOL)isEqual:(id)arg1;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)thumbnailImageData;
 - (void)updateContact:(id)arg1;
 - (void)updateWithMonogramData:(id)arg1;
+- (id)variantIdentifier;
 
 @end
 

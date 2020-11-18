@@ -7,16 +7,17 @@
 #import <UIKit/UITableViewCell.h>
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFItem, NSArray, NSString, UILabel;
+@class HFItem, NSArray, NSString, UILabel, UITextView;
 @protocol HUResizableCellDelegate;
 
-@interface HUInstructionsCell : UITableViewCell <HUCellProtocol>
+@interface HUInstructionsCell : UITableViewCell <UITextViewDelegate, HUCellProtocol>
 {
     HFItem *_item;
     double _contentBottomMargin;
     UILabel *_titleLabel;
-    UILabel *_descriptionLabel;
+    UITextView *_descriptionView;
     NSArray *_constraints;
 }
 
@@ -24,7 +25,7 @@
 @property (nonatomic) double contentBottomMargin; // @synthesize contentBottomMargin=_contentBottomMargin;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+@property (strong, nonatomic) UITextView *descriptionView; // @synthesize descriptionView=_descriptionView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
@@ -35,6 +36,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 

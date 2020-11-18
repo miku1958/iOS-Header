@@ -25,12 +25,11 @@
 - (void)_setBestAppSuggestion:(id)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (id)bestAppSuggestion;
 - (id)handleGestureDidBegin:(id)arg1;
-- (BOOL)hasInteractiveContentAtBottomOfScreen;
 - (id)initWithRootModifier:(id)arg1 liveContentOverlayCoordinator:(id)arg2 debugName:(id)arg3;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (long long)orientationForSuggestionViewController:(id)arg1;
-- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setBestAppSuggestion:(id)arg1;
 - (void)suggestionViewController:(id)arg1 activatedSuggestion:(id)arg2;
 - (void)viewWillLayoutSubviews;

@@ -162,6 +162,7 @@
 - (void)initializeLocationSharingTextViewIfNecessary;
 - (id)inputAccessoryViewController;
 - (BOOL)isContactsSectionCollapsible;
+- (id)labelForChat;
 - (id)leaveCellForIndexPath:(id)arg1;
 - (void)loadView;
 - (id)locationFooterViewForSection:(long long)arg1;

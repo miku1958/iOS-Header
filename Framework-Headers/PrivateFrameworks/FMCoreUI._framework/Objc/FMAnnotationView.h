@@ -63,6 +63,7 @@
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2 delay:(double)arg3;
 - (void)setTintColor:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateStyleForAnnotation:(id)arg1;
 
 @end

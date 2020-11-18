@@ -18,7 +18,7 @@
 #import <CoreSpeech/CSXPCClientDelegate-Protocol.h>
 
 @class CSAudioConverter, CSAudioPowerMeter, CSAudioRecordContext, CSAudioSampleRateConverter, CSAudioStream, CSAudioZeroCounter, CSEndpointerProxy, CSLanguageDetector, CSPlainAudioFileWriter, CSSelectiveChannelAudioFileWriter, CSSmartSiriVolumeController, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechEndHostTimeEstimator, CSUserVoiceProfileStore, CSXPCClient, NSDictionary, NSString, NSUUID;
-@protocol CSAudioAlertProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioSessionProviding, CSAudioStreamProviding, CSEndpointAnalyzer, CSLanguageDetectorDelegate, CSSpIdSpeakerRecognizer, CSSpeakerIdentificationDelegate, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
+@protocol CSAudioAlertProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioSessionProviding, CSAudioStreamProviding, CSBargeInModeProviding, CSEndpointAnalyzer, CSLanguageDetectorDelegate, CSSpIdSpeakerRecognizer, CSSpeakerIdentificationDelegate, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSSmartSiriVolumeControllerDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSAudioAlertProvidingDelegate, CSAudioSessionControllerDelegate, CSXPCClientDelegate, CSSpeechManagerDelegate, CSContinuousVoiceTriggerDelegate>
 {
@@ -46,6 +46,7 @@
     BOOL _myriadPreventingTwoShotFeedback;
     BOOL _needsPostGain;
     BOOL _shouldUseLanguageDetectorForCurrentRequest;
+    BOOL _didDeliverLastBuffer;
     float _cachedAvgPower;
     float _cachedPeakPower;
     id<CSSpeechControllerDelegate> _delegate;
@@ -59,6 +60,7 @@
     id<CSAudioAlertProviding> _alertProvider;
     id<CSAudioMeterProviding> _audioMeterProvider;
     id<CSAudioMetricProviding> _audioMetricProvider;
+    id<CSBargeInModeProviding> _bargeInModeProvider;
     CSPlainAudioFileWriter *_audioFileWriter;
     CSSelectiveChannelAudioFileWriter *_serverLoggingWriter;
     CSSmartSiriVolumeController *_volumeController;
@@ -74,6 +76,7 @@
     CDUnknownBlockType _pendingAudioSessionActivationCompletion;
     double _audioSessionActivationDelay;
     CSXPCClient *_xpcClient;
+    CSXPCClient *_bargeInModeXPCClient;
     CSAudioPowerMeter *_powerMeter;
 }
 
@@ -85,11 +88,14 @@
 @property (strong, nonatomic) CSAudioRecordContext *audioRecordContext; // @synthesize audioRecordContext=_audioRecordContext;
 @property (nonatomic) double audioSessionActivationDelay; // @synthesize audioSessionActivationDelay=_audioSessionActivationDelay;
 @property (strong, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+@property (strong, nonatomic) id<CSBargeInModeProviding> bargeInModeProvider; // @synthesize bargeInModeProvider=_bargeInModeProvider;
+@property (strong, nonatomic) CSXPCClient *bargeInModeXPCClient; // @synthesize bargeInModeXPCClient=_bargeInModeXPCClient;
 @property (nonatomic) float cachedAvgPower; // @synthesize cachedAvgPower=_cachedAvgPower;
 @property (nonatomic) float cachedPeakPower; // @synthesize cachedPeakPower=_cachedPeakPower;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSSpeechControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didDeliverLastBuffer; // @synthesize didDeliverLastBuffer=_didDeliverLastBuffer;
 @property (nonatomic) BOOL duckOthersOption;
 @property (readonly, nonatomic) id<CSEndpointAnalyzer> endpointAnalyzer;
 @property (strong, nonatomic) CSEndpointerProxy *endpointerProxy; // @synthesize endpointerProxy=_endpointerProxy;
@@ -139,11 +145,14 @@
 - (id)_contextToString:(id)arg1;
 - (void)_createAudioPowerMeterIfNeeded;
 - (BOOL)_createAudioProviderFromXPCWithContext:(id)arg1;
+- (void)_createBargeInModeProviderFromXPCIfNeeded;
 - (void)_createLanguageDetectorIfNeeded;
 - (long long)_currentAudioRecorderSampleRate;
 - (void)_deviceAudioLoggingWithFileWriter:(id)arg1;
 - (void)_didStopForReason:(long long)arg1;
+- (void)_enableBargeInMode:(BOOL)arg1;
 - (BOOL)_fetchAudioProviderWithContext:(id)arg1;
+- (id)_fetchFallbackAudioSessionReleaseProviding;
 - (BOOL)_fetchLastTriggerInfo;
 - (id)_getSpeechIdentifier;
 - (void)_initializeAlarmState;
@@ -167,6 +176,7 @@
 - (BOOL)_shouldSetStartSampleCountForRTS;
 - (BOOL)_shouldUseLanguageDetector:(id)arg1;
 - (void)_startPhaticDecision;
+- (void)_tearDownBargeInModeProviderIfNeeded;
 - (void)_teardownAudioProviderIfNeeded;
 - (unsigned long long)alertStartTime;
 - (void)audioAlertProvidingDidFinishAlertPlayback:(id)arg1 ofType:(long long)arg2 error:(id)arg3;
@@ -238,6 +248,7 @@
 - (BOOL)startRecordingWithSettings:(id)arg1 error:(id *)arg2;
 - (void)stopEndpointer;
 - (void)stopRecording;
+- (void)stopRecordingWithOptions:(id)arg1;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 - (void)updateMeters;

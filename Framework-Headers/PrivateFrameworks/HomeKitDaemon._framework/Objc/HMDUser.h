@@ -136,10 +136,12 @@
 - (void)didFinishConfiguringForCloudShareTrustManager:(id)arg1;
 - (void)didRemoveTrustZoneInCloudShareTrustManager:(id)arg1;
 - (void)didStartBackingStoreController:(id)arg1;
+- (void)didStopBackingStoreController:(id)arg1;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleAssistantAccessControlUpdate:(id)arg1;
 - (void)handleMediaContentProfileAccessControlUpdate:(id)arg1;
+- (void)handleRemovedAccessory:(id)arg1;
 - (id)homeForCloudShareTrustManager:(id)arg1;
 - (id)initWithAccountHandle:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 privilege:(unsigned long long)arg4;
 - (id)initWithCoder:(id)arg1;
@@ -151,15 +153,18 @@
 - (id)logIdentifier;
 - (id)messageDestination;
 - (id)messageDispatcher;
-- (void)migrateAfterCloudMerge:(CDUnknownBlockType)arg1;
 - (void)migrateCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)ownerForCloudShareTrustManager:(id)arg1;
+- (id)ownerForUserSettingsBackingStoreController:(id)arg1;
 - (id)pairingUsername;
 - (id)privateSettingValuesByKeyPathForAWD;
 - (id)privateZoneControllerForUserDataController:(id)arg1;
 - (id)publicKey;
+- (void)recoverTrustManagerDueToUUIDChange;
+- (void)recoverUserCloudDataDueToUUIDChange;
+- (void)recoverUserSettingsDueToUUIDChange;
 - (BOOL)refreshDisplayName;
 - (void)registerForMessages;
 - (void)registerIdentity;
@@ -167,11 +172,13 @@
 - (id)relayAccessTokens;
 - (void)removeAccessoriesFromAssistantAccessControlList:(id)arg1;
 - (void)removeCloudData;
+- (void)removeCloudShareID;
 - (void)removeRelayAccessToken:(id)arg1;
 - (BOOL)requiresMakoSupport;
 - (void)setAccountHandle:(id)arg1;
 - (void)setDisplayName:(id)arg1;
 - (void)settingsController:(id)arg1 didUpdateWithCompletion:(CDUnknownBlockType)arg2;
+- (id)settingsController:(id)arg1 willUpdateSettingAtKeyPath:(id)arg2 withValue:(id)arg3;
 - (id)sharedSettingValuesByKeyPathForAWD;
 - (id)sharedZoneControllerForUserDataController:(id)arg1;
 - (id)shortDescription;
@@ -187,7 +194,6 @@
 - (id)userDataController:(id)arg1 participantManagerForCloudZone:(id)arg2;
 - (void)userDataControllerDidUpdateAssistantAccessControl:(id)arg1;
 - (void)userDataControllerDidUpdateMediaContentProfile:(id)arg1;
-- (id)zoneNameForBackingStoreController:(id)arg1;
 - (id)zoneNameForCloudShareTrustManager:(id)arg1;
 
 @end

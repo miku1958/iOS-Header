@@ -67,6 +67,7 @@
 - (void)_scrollToDestination:(id)arg1;
 - (BOOL)_shouldHideFooterForSection:(long long)arg1;
 - (BOOL)_shouldHideHeaderForSection:(long long)arg1;
+- (void)_transformViewControllerForRequest:(id)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateTableHeaderAndFooter;
@@ -113,13 +114,13 @@
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (id)presentingViewControllerForModuleController:(id)arg1;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
+- (void)reloadCellForItems:(id)arg1;
 - (void)scrollToItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideFooterBelowSection:(long long)arg1;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
-- (BOOL)shouldResizeHeaderWhenLayoutSubviews;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;

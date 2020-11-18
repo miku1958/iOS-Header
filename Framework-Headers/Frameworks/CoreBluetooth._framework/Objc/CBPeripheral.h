@@ -115,6 +115,7 @@
 - (void)setNotifyValue:(BOOL)arg1 forCharacteristic:(id)arg2;
 - (void)setOrphan;
 - (void)setPeripheralName:(id)arg1;
+- (void)setVisibleInSettings:(BOOL)arg1;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 type:(long long)arg3;
 - (void)writeValue:(id)arg1 forDescriptor:(id)arg2;
 

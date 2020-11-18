@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDAccessory, HMDAccessorySettingTarget, HMDHome, HMDMediaSystem, NSString, NSUUID;
+@class HMDAccessory, HMDAccessorySettingTarget, HMDHome, HMDMediaSystem, NSArray, NSString, NSUUID;
 
 @interface HMDAccessorySettingContainer : NSObject
 {
@@ -14,11 +14,13 @@
     HMDAccessory *_accessory;
 }
 
+@property (readonly) NSArray *accessories;
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, weak, nonatomic) HMDHome *home;
 @property (readonly, weak, nonatomic) HMDMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSUUID *parentUUID;
+@property (readonly) NSArray *supportedMultiUserLanguageCodes;
 @property (readonly, weak, nonatomic) HMDAccessorySettingTarget *target;
 
 - (void).cxx_destruct;

@@ -21,7 +21,9 @@
     id<EKEventDetailPredictedLocationCellDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) UIView *acceptView;
 @property (weak) id<EKEventDetailPredictedLocationCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) UIView *rejectView;
 @property (nonatomic) BOOL showsTopSeparator; // @synthesize showsTopSeparator=_showsTopSeparator;
 
 + (id)_separatorColor;

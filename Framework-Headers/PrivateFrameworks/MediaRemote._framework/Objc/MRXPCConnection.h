@@ -25,10 +25,13 @@
 
 - (void).cxx_destruct;
 - (void)_registerCallbacks;
-- (void)addCustomXPCHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (void)addCustomXPCHandler:(CDUnknownBlockType)arg1 forKey:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 queue:(id)arg2;
-- (void)removeCustomXPCHandler:(id)arg1;
+- (void)removeCustomXPCHandler:(unsigned long long)arg1;
+- (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)sendMessageWithType:(unsigned long long)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)sendSyncMessage:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @interface RTReachabilityManager : RTService
 {
+    BOOL _observingReachabilityChanges;
     NWPathEvaluator *_pathEvaluator;
     long long _currentReachability;
 }
@@ -24,7 +25,7 @@
 - (void)_processReachabilityChange:(id)arg1;
 - (void)_shutdown;
 - (id)currentReachabilityString;
-- (id)description;
+- (void)dealloc;
 - (void)fetchCurrentReachability:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithPathEvaluator:(id)arg1;

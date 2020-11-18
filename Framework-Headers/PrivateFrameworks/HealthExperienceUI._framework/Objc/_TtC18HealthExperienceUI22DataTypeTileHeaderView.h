@@ -18,6 +18,7 @@
     MISSING_TYPE *detailLabel;
     MISSING_TYPE *accessoryLabel;
     MISSING_TYPE *detailContainerView;
+    MISSING_TYPE *$__lazy_storage_$_accessoryImage;
     MISSING_TYPE *minimumViewHeight;
     MISSING_TYPE *titleToTop;
     MISSING_TYPE *titleToBottom;

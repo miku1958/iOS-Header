@@ -58,6 +58,7 @@
 - (id)initWithChangeSet:(id)arg1 changesToKeep:(id)arg2;
 - (id)initWithChangeSet:(id)arg1 changesToSkip:(id)arg2;
 - (id)initWithSingleValueChanges:(id)arg1 multiValueAdditions:(id)arg2 multiValueRemovals:(id)arg3;
+- (BOOL)isEffectivelyEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isUniqueAddedObject:(id)arg1 forKey:(id)arg2;
 - (void)markChangesAsSaved;

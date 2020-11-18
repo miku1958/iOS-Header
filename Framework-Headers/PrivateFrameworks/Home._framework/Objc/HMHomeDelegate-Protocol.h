@@ -42,5 +42,6 @@
 - (void)home:(HMHome *)arg1 didUpdateTrigger:(HMTrigger *)arg2;
 - (void)homeDidUpdateAccessControlForCurrentUser:(HMHome *)arg1;
 - (void)homeDidUpdateName:(HMHome *)arg1;
+- (void)homeDidUpdateSupportedFeatures:(HMHome *)arg1;
 @end
 

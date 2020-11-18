@@ -41,7 +41,6 @@
 + (id)sharedManager;
 + (id)sharedManagerWithURL:(id)arg1;
 - (void).cxx_destruct;
-- (id)_traceStringForType:(unsigned long long)arg1;
 - (id)cachedPersonLocalIdentifierMatchingContactPictureForContactIdentifier:(id)arg1;
 - (id)contactHistoryCollector;
 - (id)contactsForIdentifiers:(id)arg1;

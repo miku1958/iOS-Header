@@ -16,11 +16,12 @@
 @property (readonly, nonatomic) NSArray *uuids;
 
 - (void)handleAppsUninstalled:(NSArray *)arg1;
+- (void)handleAppsUpdateBegins:(NSArray *)arg1;
+- (void)handleAppsUpdateEnding:(NSArray *)arg1;
+- (void)handleAppsUpdateEnds:(NSArray *)arg1;
 - (void)handleCancel;
 - (void)handleDisposeWithCompletionHandler:(void (^)(void))arg1;
 - (void)handleInitWithCompletionHandler:(void (^)(BOOL))arg1;
-- (void)handlePluginUpdateBegins:(NSArray *)arg1;
-- (void)handlePluginUpdateEnds:(NSArray *)arg1;
 - (id)initWithPluginType:(NSString *)arg1 pluginClass:(long long)arg2 pluginInfo:(NSDictionary *)arg3 queue:(NSObject<OS_dispatch_queue> *)arg4 factory:(id<NEPluginManagerObjectFactory>)arg5;
 
 @optional

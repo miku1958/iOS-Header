@@ -32,6 +32,7 @@
     long long _contentMode;
     long long _numberOfColumns;
     double _interItemSpacing;
+    double _itemCaptionSpacing;
     double _itemAspectRatio;
     double _aspectRatioLimit;
     long long _visualItemShift;
@@ -69,6 +70,9 @@
 @property (nonatomic) double interItemSpacing;
 @property (nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property (nonatomic) double itemAspectRatio; // @synthesize itemAspectRatio=_itemAspectRatio;
+@property (nonatomic) double itemCaptionSpacing;
+@property (nonatomic) double itemCaptionSpacing; // @synthesize itemCaptionSpacing=_itemCaptionSpacing;
+@property (readonly, nonatomic) BOOL itemCaptionsVisible;
 @property (nonatomic) CDStruct_2bd92d94 itemCornerRadius; // @synthesize itemCornerRadius=_itemCornerRadius;
 @property (nonatomic, getter=isLazy) BOOL lazy; // @dynamic lazy;
 @property (nonatomic) BOOL loadItemsOutsideAnchorViewport;

@@ -8,16 +8,16 @@
 
 #import <CameraUI/CAMAccessibilityHUDImageProvider-Protocol.h>
 
-@class NSDictionary, NSString, UIImageView;
+@class CAMLivePhotoAnimationCache, NSString, UIImageView;
 
 @interface CAMLivePhotoButton : CAMExpandableMenuButton <CAMAccessibilityHUDImageProvider>
 {
     BOOL _allowsAutomaticMode;
     UIImageView *__imageView;
-    NSDictionary *__enablingAnimationImages;
+    CAMLivePhotoAnimationCache *__animationCache;
 }
 
-@property (copy, nonatomic, setter=_setEnablingAnimationImages:) NSDictionary *_enablingAnimationImages; // @synthesize _enablingAnimationImages=__enablingAnimationImages;
+@property (strong, nonatomic) CAMLivePhotoAnimationCache *_animationCache; // @synthesize _animationCache=__animationCache;
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property (nonatomic) BOOL allowsAutomaticMode; // @synthesize allowsAutomaticMode=_allowsAutomaticMode;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,12 +28,9 @@
 
 + (double)enablingAnimationDuration;
 - (void).cxx_destruct;
-- (id)_actuallyLoadEnablingAnimationImagesForScale:(double)arg1;
 - (id)_availableModes;
 - (id)_currentBaseImage;
-- (void)_ensureEnablingAnimationImages;
-- (BOOL)_shouldLoadEnablingAnimationImages;
-- (id)_tintColorForMode:(long long)arg1;
+- (void)_loadAnimationCacheIfNeeded;
 - (void)_updateAnimationImages;
 - (void)_updateBaseImage;
 - (void)finishExpansionAnimated:(BOOL)arg1;

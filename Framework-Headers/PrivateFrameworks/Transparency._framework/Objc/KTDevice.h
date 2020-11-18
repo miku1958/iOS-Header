@@ -32,7 +32,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMutation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)markClientDatasForAppVersion:(unsigned long long)arg1 mutationMs:(unsigned long long)arg2;
 - (void)removeClientDatasObject:(id)arg1;
+- (BOOL)updateWithMutation:(id)arg1 error:(id *)arg2;
 
 @end
 

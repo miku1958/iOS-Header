@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)_markupAnnotationsForExactIndexSet:(id)arg1;
 - (void)_propagateNotesForIndexSet:(id)arg1;
 - (void)_rotateActiveAnnotation;
-- (void)_setPageLayerEffectForID:(id)arg1 hidden:(BOOL)arg2;
 - (id)activeAnnotation;
 - (void)addControlForAnnotation:(id)arg1;
 - (void)addMarkupWithStyle:(unsigned long long)arg1 forIndexSet:(id)arg2;

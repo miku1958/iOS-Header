@@ -9,20 +9,21 @@
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class MPAVRoute, NSArray, NSString;
+@class MPAVRoute, NSString;
 
 @interface MPCPlayerPath : NSObject <NSCopying, NSSecureCoding>
 {
     int _pid;
-    NSArray *_routeUIDs;
     BOOL _resolved;
     NSString *_bundleID;
     NSString *_playerID;
     void *_mediaRemotePlayerPath;
+    NSString *_deviceUID;
     MPAVRoute *_route;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic) NSString *deviceUID; // @synthesize deviceUID=_deviceUID;
 @property (readonly, nonatomic, getter=isFullyResolved) BOOL fullyResolved;
 @property (readonly, nonatomic, getter=isInProcess) BOOL inProcess;
 @property (readonly, nonatomic) void *mediaRemotePlayerPath; // @synthesize mediaRemotePlayerPath=_mediaRemotePlayerPath;
@@ -36,6 +37,7 @@
 
 + (id)deviceActivePlayerPath;
 + (id)pathWithCustomOrigin:(void *)arg1 bundleID:(id)arg2 playerID:(id)arg3;
++ (id)pathWithDeviceUID:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 + (id)pathWithDeviceUIDs:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 + (id)pathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void *)arg2 isResolved:(BOOL)arg3;
@@ -48,7 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceUIDs:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
+- (id)initWithDeviceUID:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

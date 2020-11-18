@@ -36,7 +36,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)triggerTableViewController:(id)arg1 didSelectOptions:(id)arg2;
+- (void)triggerTableViewController:(id)arg1 didFinishWithAnySelected:(BOOL)arg2 orSelectedOptions:(id)arg3;
 - (void)triggerTableViewControllerDidCancel:(id)arg1;
 - (void)updateUI;
 - (void)viewWillAppear:(BOOL)arg1;

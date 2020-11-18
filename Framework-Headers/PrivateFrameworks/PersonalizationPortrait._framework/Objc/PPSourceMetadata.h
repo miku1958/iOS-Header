@@ -11,6 +11,7 @@
 
 @interface PPSourceMetadata : _PASZonedObject <NSCopying, NSSecureCoding>
 {
+    unsigned char _flags;
     unsigned short _donationCount;
     unsigned int _dwellTimeSeconds;
     unsigned int _lengthSeconds;
@@ -19,6 +20,7 @@
 
 @property (readonly, nonatomic) unsigned short donationCount; // @synthesize donationCount=_donationCount;
 @property (readonly, nonatomic) unsigned int dwellTimeSeconds; // @synthesize dwellTimeSeconds=_dwellTimeSeconds;
+@property (readonly, nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) unsigned int lengthCharacters; // @synthesize lengthCharacters=_lengthCharacters;
 @property (readonly, nonatomic) unsigned int lengthSeconds; // @synthesize lengthSeconds=_lengthSeconds;
 
@@ -28,7 +30,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDwellTimeSeconds:(unsigned int)arg1 lengthSeconds:(unsigned int)arg2 lengthCharacters:(unsigned int)arg3 donationCount:(unsigned short)arg4;
+- (id)initWithDwellTimeSeconds:(unsigned int)arg1 lengthSeconds:(unsigned int)arg2 lengthCharacters:(unsigned int)arg3 donationCount:(unsigned short)arg4 flags:(unsigned char)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSourceMetadata:(id)arg1;
 

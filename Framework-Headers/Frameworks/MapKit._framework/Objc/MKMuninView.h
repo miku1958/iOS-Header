@@ -137,6 +137,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setPresentationYaw:(double)arg1 animated:(BOOL)arg2;
 - (void)setPresentationYaw:(double)arg1 pitch:(double)arg2 animated:(BOOL)arg3;
+- (void)setUserInteractionEnabled:(BOOL)arg1;
 - (BOOL)tapAtPoint:(struct CGPoint)arg1;
 
 @end

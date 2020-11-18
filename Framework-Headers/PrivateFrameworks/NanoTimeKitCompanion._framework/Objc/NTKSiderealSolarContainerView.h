@@ -11,30 +11,38 @@
 @interface NTKSiderealSolarContainerView : UIView
 {
     CLKDevice *_device;
-    UIView *_dayContainerView;
     UIImageView *_dayPathGlow;
-    UIImageView *_dayDiskGlow;
+    UIImageView *_dayDiskBloom;
     CAGradientLayer *_dayDiskGnomon;
-    UIView *_nightContainerView;
     CAGradientLayer *_nightDiskGnomon;
     double _orbitDiameter;
     NTKSiderealColorManager *_colorManager;
+    UIView *_dayContainerView;
+    UIView *_nightContainerView;
     UIView *_dayDisk;
     UIView *_dayAccessoryContainerView;
     UIView *_nightDisk;
+    UIView *_nightRing;
     UIView *_nightAccessoryContainerView;
 }
 
 @property (strong, nonatomic) UIView *dayAccessoryContainerView; // @synthesize dayAccessoryContainerView=_dayAccessoryContainerView;
+@property (strong, nonatomic) UIView *dayContainerView; // @synthesize dayContainerView=_dayContainerView;
 @property (strong, nonatomic) UIView *dayDisk; // @synthesize dayDisk=_dayDisk;
 @property (strong, nonatomic) UIView *nightAccessoryContainerView; // @synthesize nightAccessoryContainerView=_nightAccessoryContainerView;
+@property (strong, nonatomic) UIView *nightContainerView; // @synthesize nightContainerView=_nightContainerView;
 @property (strong, nonatomic) UIView *nightDisk; // @synthesize nightDisk=_nightDisk;
+@property (strong, nonatomic) UIView *nightRing; // @synthesize nightRing=_nightRing;
 
 - (void).cxx_destruct;
 - (id)_newGnomonView;
 - (id)initWithFrame:(struct CGRect)arg1 orbitDiameter:(double)arg2 device:(id)arg3;
-- (void)setSolarDayAltitude:(CDStruct_869f9c67)arg1;
-- (void)setSolarDayMaskPath:(id)arg1;
+- (double)poseForDayDiskBloomImage;
+- (double)poseForDayDiskImage;
+- (double)poseForDayGnomonImage;
+- (double)poseForNightDiskImage;
+- (double)poseForNightGnomonImage;
+- (double)poseForNightRingImage;
 - (void)setSolarDayProgress:(double)arg1;
 
 @end

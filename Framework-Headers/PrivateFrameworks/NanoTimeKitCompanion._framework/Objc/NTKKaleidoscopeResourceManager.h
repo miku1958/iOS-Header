@@ -28,7 +28,7 @@
 - (void)_asyncDeallocInstance;
 - (void)_queue_loadMTLBufferData;
 - (void)_queue_loadPrograms;
-- (void)_queue_setupPipelineForType:(unsigned long long)arg1 vertexFunction:(id)arg2 fragmentName:(id)arg3 inLibrary:(id)arg4;
+- (void)_queue_setupPipelineForType:(unsigned long long)arg1 vertexFunction:(id)arg2 fragmentName:(id)arg3 inLibrary:(id)arg4 librarySPI:(id)arg5;
 - (void)addClient;
 - (void)dealloc;
 - (id)getGeometryBuffer;

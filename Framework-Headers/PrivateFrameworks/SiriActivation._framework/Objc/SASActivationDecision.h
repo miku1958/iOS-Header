@@ -10,10 +10,8 @@
 {
 }
 
-+ (BOOL)_shouldSiriActivateForRequest:(id)arg1 buttonTriggerStateActive:(BOOL)arg2 systemState:(id)arg3 pocketStateManager:(id)arg4 preferences:(id)arg5 analyticsContext:(id)arg6 currentRequestState:(long long)arg7;
 + (BOOL)_shouldSiriActivateForSiriSetupWithSystemState:(id)arg1;
-+ (BOOL)canDirectActionActivateSiriWithSystemState:(id)arg1 pocketStateManager:(id)arg2 preferences:(id)arg3 currentRequestState:(long long)arg4;
-+ (BOOL)shouldSiriActivateForRequest:(id)arg1 buttonTriggerStateActive:(BOOL)arg2 systemState:(id)arg3 pocketStateManager:(id)arg4 preferences:(id)arg5 analyticsContext:(id)arg6 currentRequestState:(long long)arg7;
++ (BOOL)canActivateForCondition:(id)arg1;
 
 @end
 

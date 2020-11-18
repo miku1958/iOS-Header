@@ -9,12 +9,13 @@
 #import <HomeUI/HUCameraRecordingSettingsModuleDelegate-Protocol.h>
 #import <HomeUI/HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate-Protocol.h>
 
-@class HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUCameraRecordingSettingsModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
+@class ACAccount, HFAccessoryInfoDetailsItemProvider, HFAssociatedServiceTypeOptionItemProvider, HFItem, HFItemBuilder, HFItemProvider, HFRemoteControlItemModule, HFSelectedRoomItemProvider, HFStaticItemProvider, HMAccessory, HMHome, HUAccessoryDebugModule, HUAccessoryServicesItemModule, HUAccessorySettingsItemModule, HUAssociatedSceneAndTriggerModule, HUCameraRecordingSettingsModule, HUFirmwareUpdateItemProvider, HUInputSourceItemModule, HULinkedApplicationItemProvider, HUNameItemModule, HUServiceDetailsControlAndCharacteristicStateItemModule, HUServiceDetailsProgrammableSwitchItemModule, HUSoftwareUpdateItemModule, HUTelevisionSettingsItemModule, HUValveItemModule, NSArray, NSString;
 @protocol HFHomeKitObject, HFItemBuilderItem, HFServiceLikeBuilder, HFServiceLikeItem, HUServiceDetailsItemManagerDelegate;
 
 @interface HUServiceDetailsItemManager : HFItemManager <HUServiceDetailsControlAndCharacteristicStateItemModuleDelegate, HUCameraRecordingSettingsModuleDelegate>
 {
     BOOL _shouldHideAccessoryItem;
+    BOOL _shouldHideSeparateTileItem;
     BOOL _showRoomsList;
     BOOL _showAssociatedServiceTypeList;
     BOOL _homePodsActiveInStereoSetUp;
@@ -37,6 +38,9 @@
     HUAccessoryDebugModule *_debugAccessoryItemModule;
     HFItem *_selectedRoomItem;
     HFItem<HFItemBuilderItem> *_headerItem;
+    HFItem *_splitMediaAccountTitleItem;
+    HFItem *_splitMediaAccountUseDefaultAccountItem;
+    HFItem *_splitMediaAccountSignoutAccountItem;
     HFItem *_createNewRoomItem;
     HFItem *_roomListItem;
     HFItem *_addGroupItem;
@@ -46,6 +50,9 @@
     HFItem *_favoriteItem;
     HFItem *_alarmItem;
     HFItem *_statusAndNotificationItem;
+    HFItem *_separateTileItem;
+    NSArray *_supportedMultiUserLanguageCodes;
+    ACAccount *_homeMediaAccount;
     HFItem *_removeItem;
     HFItem *_resetItem;
     HFItem *_accessoryItem;
@@ -54,8 +61,10 @@
     HFItem *_cameraNightModeItem;
     HFItem *_internalDebuggingItem;
     HFItem *_restartItem;
+    HMHome *_overrideHome;
     HUServiceDetailsProgrammableSwitchItemModule *_programmableSwitchItemModule;
     HUServiceDetailsControlAndCharacteristicStateItemModule *_serviceDetailsControlStateAndCharacteristicItemModule;
+    NSArray *_splitMediaAccountSections;
     NSArray *_nameAndIconSections;
     NSArray *_characteristicSections;
     NSArray *_programmableSwitchSections;
@@ -102,15 +111,18 @@
 @property (strong, nonatomic) HUFirmwareUpdateItemProvider *firmwareUpdateItemProvider; // @synthesize firmwareUpdateItemProvider=_firmwareUpdateItemProvider;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFItem<HFItemBuilderItem> *headerItem; // @synthesize headerItem=_headerItem;
+@property (strong, nonatomic) ACAccount *homeMediaAccount; // @synthesize homeMediaAccount=_homeMediaAccount;
 @property (nonatomic) BOOL homePodsActiveInStereoSetUp; // @synthesize homePodsActiveInStereoSetUp=_homePodsActiveInStereoSetUp;
 @property (strong, nonatomic) NSArray *inputSourceEditorSections; // @synthesize inputSourceEditorSections=_inputSourceEditorSections;
 @property (strong, nonatomic) HUInputSourceItemModule *inputSourceItemModule; // @synthesize inputSourceItemModule=_inputSourceItemModule;
 @property (strong, nonatomic) HFItem *internalDebuggingItem; // @synthesize internalDebuggingItem=_internalDebuggingItem;
 @property (readonly, nonatomic) BOOL isItemGroup;
 @property (strong, nonatomic) HULinkedApplicationItemProvider *linkedApplicationItemProvider; // @synthesize linkedApplicationItemProvider=_linkedApplicationItemProvider;
+@property (readonly, nonatomic) ACAccount *loggedInMediaAccountOnHomePod;
 @property (strong, nonatomic) NSArray *nameAndIconSections; // @synthesize nameAndIconSections=_nameAndIconSections;
 @property (strong, nonatomic) HUNameItemModule *nameModule; // @synthesize nameModule=_nameModule;
 @property (readonly, nonatomic) NSArray *orderedRoomSectionItems;
+@property (readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
 @property (strong, nonatomic) HUServiceDetailsProgrammableSwitchItemModule *programmableSwitchItemModule; // @synthesize programmableSwitchItemModule=_programmableSwitchItemModule;
 @property (strong, nonatomic) NSArray *programmableSwitchSections; // @synthesize programmableSwitchSections=_programmableSwitchSections;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
@@ -123,11 +135,13 @@
 @property (readonly, nonatomic) HFItem *selectedAssociatedServiceTypeItem;
 @property (readonly, nonatomic) HFItem *selectedRoomItem; // @synthesize selectedRoomItem=_selectedRoomItem;
 @property (strong, nonatomic) HFSelectedRoomItemProvider *selectedRoomItemProvider; // @synthesize selectedRoomItemProvider=_selectedRoomItemProvider;
+@property (strong, nonatomic) HFItem *separateTileItem; // @synthesize separateTileItem=_separateTileItem;
 @property (strong, nonatomic) HUServiceDetailsControlAndCharacteristicStateItemModule *serviceDetailsControlStateAndCharacteristicItemModule; // @synthesize serviceDetailsControlStateAndCharacteristicItemModule=_serviceDetailsControlStateAndCharacteristicItemModule;
 @property (weak, nonatomic) id<HUServiceDetailsItemManagerDelegate> serviceDetailsDelegate; // @synthesize serviceDetailsDelegate=_serviceDetailsDelegate;
 @property (readonly, nonatomic) HFRemoteControlItemModule *serviceDetailsRemoteControlItemModule; // @synthesize serviceDetailsRemoteControlItemModule=_serviceDetailsRemoteControlItemModule;
 @property (strong, nonatomic) HFItemBuilder<HFServiceLikeBuilder> *serviceLikeBuilder; // @synthesize serviceLikeBuilder=_serviceLikeBuilder;
 @property (nonatomic) BOOL shouldHideAccessoryItem; // @synthesize shouldHideAccessoryItem=_shouldHideAccessoryItem;
+@property (nonatomic) BOOL shouldHideSeparateTileItem; // @synthesize shouldHideSeparateTileItem=_shouldHideSeparateTileItem;
 @property (nonatomic) BOOL showAssociatedServiceTypeList; // @synthesize showAssociatedServiceTypeList=_showAssociatedServiceTypeList;
 @property (strong, nonatomic) HFItem *showContainedItems; // @synthesize showContainedItems=_showContainedItems;
 @property (nonatomic) BOOL showRoomsList; // @synthesize showRoomsList=_showRoomsList;
@@ -135,11 +149,17 @@
 @property (strong, nonatomic) NSArray *softwareUpdateSections; // @synthesize softwareUpdateSections=_softwareUpdateSections;
 @property (readonly, nonatomic) HMAccessory *sourceItemAccessory;
 @property (readonly, nonatomic) id<HFHomeKitObject> sourceItemHomeKitObject;
+@property (readonly, nonatomic) BOOL sourceItemIsHomePod;
 @property (readonly, nonatomic) HFItem<HFServiceLikeItem> *sourceServiceItem;
+@property (strong, nonatomic) NSArray *splitMediaAccountSections; // @synthesize splitMediaAccountSections=_splitMediaAccountSections;
+@property (strong, nonatomic) HFItem *splitMediaAccountSignoutAccountItem; // @synthesize splitMediaAccountSignoutAccountItem=_splitMediaAccountSignoutAccountItem;
+@property (strong, nonatomic) HFItem *splitMediaAccountTitleItem; // @synthesize splitMediaAccountTitleItem=_splitMediaAccountTitleItem;
+@property (strong, nonatomic) HFItem *splitMediaAccountUseDefaultAccountItem; // @synthesize splitMediaAccountUseDefaultAccountItem=_splitMediaAccountUseDefaultAccountItem;
 @property (strong, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property (strong, nonatomic) HFItem *statusAndNotificationItem; // @synthesize statusAndNotificationItem=_statusAndNotificationItem;
 @property (strong, nonatomic) HFItemProvider *suggestedRoomItemProvider; // @synthesize suggestedRoomItemProvider=_suggestedRoomItemProvider;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *supportedMultiUserLanguageCodes; // @synthesize supportedMultiUserLanguageCodes=_supportedMultiUserLanguageCodes;
 @property (strong, nonatomic) HUTelevisionSettingsItemModule *televisionSettingsItemModule; // @synthesize televisionSettingsItemModule=_televisionSettingsItemModule;
 @property (strong, nonatomic) NSArray *televisionSettingsSections; // @synthesize televisionSettingsSections=_televisionSettingsSections;
 @property (strong, nonatomic) HUValveItemModule *valveEditorItemModule; // @synthesize valveEditorItemModule=_valveEditorItemModule;
@@ -147,11 +167,14 @@
 
 - (void).cxx_destruct;
 - (id)_allItemsForSectionIdentifier:(id)arg1;
+- (BOOL)_areHomePodMediaAccountsMismatched;
 - (id)_buildItemModulesForHome:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_characteristicSectionForIdentifier:(id)arg1;
 - (void)_didFinishUpdateTransactionWithAffectedItems:(id)arg1;
+- (BOOL)_hasDismissedHomePodHasNonMemberMediaAccountWarning;
+- (id)_homeFuture;
 - (BOOL)_isGroupedHomePod:(id)arg1;
 - (BOOL)_isRestartSupportedForGroupedHomePod:(id)arg1;
 - (id)_itemsToHideInSet:(id)arg1;
@@ -159,8 +182,10 @@
 - (id)_restartAccessory;
 - (void)_setupDeviceOptionsAdapterForMediaAccessoryItem:(id)arg1;
 - (void)_setupDeviceOptionsAdapterUtilityForGroupedAccessories:(id)arg1;
+- (BOOL)_shouldShowAccessoryInfoItems;
 - (BOOL)_shouldShowFirmwareUpdateSection;
 - (BOOL)_shouldShowLinkedApplicationSection;
+- (BOOL)_shouldShowSplitAccountUI;
 - (void)_unregisterForExternalUpdates;
 - (void)cameraRecordingSettingsModule:(id)arg1 didUpdateItem:(id)arg2;
 - (BOOL)canToggleAccessoryInfoItem:(id)arg1;
@@ -183,7 +208,7 @@
 - (id)selectAssociatedServiceType:(id)arg1;
 - (id)selectRoom:(id)arg1;
 - (BOOL)shouldShowDeviceOptionsForAccessoryItem:(id)arg1;
-- (BOOL)sourceItemIsMultiServiceAccessory;
+- (BOOL)sourceItemIsHomePodConfiguredForMultiUser;
 - (BOOL)sourceItemIsService;
 - (BOOL)sourceItemIsSingleServiceAccessory;
 - (void)toggleAccessoryInfoItem:(id)arg1;

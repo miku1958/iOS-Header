@@ -33,7 +33,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_canOutputPremiumVoice;
-- (BOOL)_canSpeakTimeForPreferredVoice:(unsigned long long)arg1;
+- (BOOL)_canSpeakTimeForVoice:(unsigned long long)arg1 andGesture:(unsigned long long)arg2;
 - (BOOL)_canTapticTime;
 - (id)_currentLanguageCode;
 - (void)_denormalizeVolumeIfNecessary;
@@ -50,6 +50,7 @@
 - (void)dealloc;
 - (void)outputTime:(id)arg1;
 - (void)outputTime:(id)arg1 preferredVoice:(unsigned long long)arg2;
+- (void)outputTime:(id)arg1 preferredVoice:(unsigned long long)arg2 withGesture:(unsigned long long)arg3;
 - (void)speechOutputDidComplete;
 - (void)speechSynthesizer:(id)arg1 didContinueSpeakingRequest:(id)arg2;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(BOOL)arg3 phonemesSpoken:(id)arg4 withError:(id)arg5;

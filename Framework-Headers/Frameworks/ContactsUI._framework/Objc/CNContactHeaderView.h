@@ -16,6 +16,7 @@
 {
     BOOL _needsReload;
     BOOL _needsLabelSizeCalculation;
+    BOOL _shouldUseConstrainedMaxHeight;
     BOOL _alwaysShowsMonogram;
     BOOL _visibleToScrollViews;
     BOOL _shouldShowBelowNavigationTitle;
@@ -29,11 +30,13 @@
     NSLayoutConstraint *_photoHeightConstraint;
     CNContactHeaderViewSizeAttributes *_sizeAttributes;
     double _lastViewWidth;
+    double _constrainedMaxHeight;
     CNContactPhotoView *_photoView;
 }
 
 @property (strong, nonatomic) NSArray *activatedConstraints; // @synthesize activatedConstraints=_activatedConstraints;
 @property (nonatomic) BOOL alwaysShowsMonogram; // @synthesize alwaysShowsMonogram=_alwaysShowsMonogram;
+@property (nonatomic) double constrainedMaxHeight; // @synthesize constrainedMaxHeight=_constrainedMaxHeight;
 @property (strong, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNContactHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -50,6 +53,7 @@
 @property (readonly, nonatomic) CNContactPhotoView *photoView; // @synthesize photoView=_photoView;
 @property (weak, nonatomic) id<CNPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate=_presenterDelegate;
 @property (nonatomic) BOOL shouldShowBelowNavigationTitle; // @synthesize shouldShowBelowNavigationTitle=_shouldShowBelowNavigationTitle;
+@property (nonatomic) BOOL shouldUseConstrainedMaxHeight; // @synthesize shouldUseConstrainedMaxHeight=_shouldUseConstrainedMaxHeight;
 @property (strong, nonatomic) CNContactHeaderViewSizeAttributes *sizeAttributes; // @synthesize sizeAttributes=_sizeAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL visibleToScrollViews; // @synthesize visibleToScrollViews=_visibleToScrollViews;
@@ -65,7 +69,11 @@
 - (id)contactStyle;
 - (id)contactViewCache;
 - (double)currentHeightPercentMaximized;
+- (double)currentHeightPercentMaximizedForMaxHeight:(double)arg1;
+- (double)currentHeightPercentMaximizedForPhoto;
 - (void)dealloc;
+- (double)defaultMaxBaseHeight;
+- (double)defaultMaxHeight;
 - (id)descriptorForRequiredKeys;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(BOOL)arg4 shouldAllowImageDrops:(BOOL)arg5 monogramOnly:(BOOL)arg6 delegate:(id)arg7;
 - (void)layoutSubviews;
@@ -76,6 +84,7 @@
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
 - (double)safeAreaPhotoOffset;
 - (double)safeAreaTop;
+- (void)setConstrainedMaxHeight:(double)arg1 enabled:(BOOL)arg2;
 - (void)setNeedsReload;
 - (void)updateConstraints;
 - (void)updateFontSizes;

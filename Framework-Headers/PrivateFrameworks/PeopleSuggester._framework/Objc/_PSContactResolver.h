@@ -25,6 +25,7 @@
 - (id)resolveContactFromINPerson:(id)arg1;
 - (id)resolveContactIdentifier:(id)arg1;
 - (id)resolveContactIfPossibleFromContactIdentifierString:(id)arg1;
+- (id)resolveContactIfPossibleFromContactIdentifierString:(id)arg1 pickFirstOfMultiple:(BOOL)arg2;
 
 @end
 

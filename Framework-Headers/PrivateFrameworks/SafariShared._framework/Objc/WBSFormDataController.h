@@ -148,6 +148,7 @@
 - (id)recentlyUsedAutoFillSets;
 - (void)saveCompletionDBSoon;
 - (void)saveRecentlyUsedAutoFillSetWithMatchesToFill:(id)arg1 matchesForDoNotFill:(id)arg2;
+- (void)searchForCredentialUsingDomainsToConsiderIdentical:(id)arg1 URL:(id *)arg2 hostForCredentials:(id *)arg3 credential:(id *)arg4 protectionSpace:(id *)arg5;
 - (void)setInfo:(id)arg1 forDomain:(id)arg2;
 - (void)setPreferredIdentifier:(id)arg1 forProperty:(id)arg2 withContact:(id)arg3;
 - (BOOL)shouldAutoFillFromAddressBook;

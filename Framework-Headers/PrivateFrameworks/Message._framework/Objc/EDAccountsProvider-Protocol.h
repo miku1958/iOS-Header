@@ -7,6 +7,9 @@
 @class NSArray;
 
 @protocol EDAccountsProvider
+
+@property (readonly, copy, nonatomic) NSArray *receivingAddresses;
+
 - (NSArray *)mailAccounts;
 @end
 

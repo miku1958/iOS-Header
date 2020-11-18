@@ -58,6 +58,7 @@
 - (id)init;
 - (id)initPrivate;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isKindOfConfiguration:(Class)arg1;
 - (id)renderingTechnique;
 - (id)secondaryTechniques;
 - (id)techniques;

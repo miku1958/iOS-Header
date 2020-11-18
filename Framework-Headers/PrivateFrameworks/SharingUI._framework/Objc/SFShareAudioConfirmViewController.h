@@ -6,7 +6,7 @@
 
 #import <SharingUI/SFShareAudioBaseViewController.h>
 
-@class MTMaterialView, UIButton, UIImageView;
+@class MTMaterialView, SFMediaPlayerView, UIButton, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface SFShareAudioConfirmViewController : SFShareAudioBaseViewController
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned int _colorCode;
     unsigned int _productID;
     UIImageView *_productImageView;
+    SFMediaPlayerView *_productMovieView;
     UIButton *_confirmButton;
     UIButton *_cancelButton;
     UIImageView *_shareImageView;
@@ -25,9 +26,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIButton *confirmButton; // @synthesize confirmButton=_confirmButton;
 @property (nonatomic) unsigned int productID; // @synthesize productID=_productID;
 @property (strong, nonatomic) UIImageView *productImageView; // @synthesize productImageView=_productImageView;
+@property (strong, nonatomic) SFMediaPlayerView *productMovieView; // @synthesize productMovieView=_productMovieView;
 @property (strong, nonatomic) UIImageView *shareImageView; // @synthesize shareImageView=_shareImageView;
 
 - (void).cxx_destruct;
+- (void)_updateDeviceVisual:(id)arg1;
 - (void)eventCancel:(id)arg1;
 - (void)eventConfirm:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -17,6 +17,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double maximumAllowableTravelTime;
 @property (readonly, nonatomic) double minimumAllowableTravelTime;
 @property (readonly) Class superclass;
 

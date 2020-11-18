@@ -278,7 +278,6 @@
 - (struct _NSRange)_rangeToReplaceWhenInsertingText;
 - (id)_rectsForRange:(struct _NSRange)arg1;
 - (void)_registerUndoOperationForReplacementWithActionName:(id)arg1 replacementText:(id)arg2;
-- (void)_removeDefinitionController;
 - (void)_removeShareController;
 - (void)_removeShortcutController;
 - (void)_replaceCurrentWordWithText:(id)arg1;

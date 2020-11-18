@@ -34,6 +34,7 @@
 + (id)__sectionedItems_KEY;
 + (id)__subgroups_KEY;
 + (id)__title_KEY;
++ (id)classesForSecureCoding;
 - (void).cxx_destruct;
 - (id)itemAtIndex:(long long)arg1;
 - (long long)numberOfItems;

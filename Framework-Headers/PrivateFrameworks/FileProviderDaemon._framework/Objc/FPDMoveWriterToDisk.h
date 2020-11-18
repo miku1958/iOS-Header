@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_performCopyOfItem:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 bounceNumber:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_performMoveOfItem:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 bounceNumber:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_resolveLocator:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_respectLastUsageDatePolicyForDestinationURL:(id)arg1;
 - (void)dealloc;
 - (id)initWithWriter:(id)arg1;
 - (void)performCopyOfItem:(id)arg1 to:(id)arg2 as:(id)arg3 sourceMaterializeOption:(unsigned long long)arg4 targetMaterializeOption:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;

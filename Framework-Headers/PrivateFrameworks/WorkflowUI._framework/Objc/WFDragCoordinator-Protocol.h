@@ -7,12 +7,12 @@
 #import <WorkflowUI/NSObject-Protocol.h>
 
 @class NSArray, UIView;
-@protocol WFModuleIndentationProvider;
+@protocol WFModuleDelegate;
 
 @protocol WFDragCoordinator <NSObject>
 
 @property (readonly, nonatomic) UIView *containerView;
-@property (readonly, nonatomic) id<WFModuleIndentationProvider> indentationProvider;
+@property (readonly, nonatomic) id<WFModuleDelegate> moduleDelegate;
 @property (readonly, nonatomic) NSArray *participatingViewControllers;
 @property (readonly, nonatomic) NSArray *scrollViewsAffectingDrag;
 

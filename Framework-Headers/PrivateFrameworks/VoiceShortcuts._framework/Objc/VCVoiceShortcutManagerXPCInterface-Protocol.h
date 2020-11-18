@@ -26,7 +26,7 @@
 - (void)getVoiceShortcutWithPhrase:(NSString *)arg1 completion:(void (^)(VCVoiceShortcut *, NSError *))arg2;
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getVoiceShortcutsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
-- (void)hasRunEventsInTheLast30DaysWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)hasRunEventsInTheLast5DaysWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)obliterateShortcuts:(void (^)(NSError *))arg1;
 - (void)refreshTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)requestDataMigration:(void (^)(BOOL, NSError *))arg1;
@@ -35,6 +35,7 @@
 - (void)runShortcutWithName:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;
+- (void)unregisterTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateShortcutsVocabularyWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)updateVoiceShortcutWithIdentifier:(NSString *)arg1 phrase:(NSString *)arg2 shortcut:(INShortcut *)arg3 completion:(void (^)(VCVoiceShortcut *, NSError *))arg4;
 - (void)validateVoiceShortcutPhrases:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

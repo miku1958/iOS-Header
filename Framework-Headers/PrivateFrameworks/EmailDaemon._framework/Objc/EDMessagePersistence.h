@@ -7,37 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <EmailDaemon/EDMailboxPredictionQueryAdapter-Protocol.h>
+#import <EmailDaemon/EDMessageObjectIDToDatabaseIDConverter-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
-@class EDConversationPersistence, EDMailboxPersistence, EDPersistenceDatabase, EDVIPManager, EMBlockedSenderManager, NSNumber, NSString;
-@protocol EDRemoteSearchProvider, OS_dispatch_queue;
+@class EDMailboxPersistence, EDPersistenceDatabase, NSNumber, NSString;
+@protocol OS_dispatch_queue;
 
-@interface EDMessagePersistence : NSObject <EFLoggable, EDMailboxPredictionQueryAdapter>
+@interface EDMessagePersistence : NSObject <EFLoggable, EDMailboxPredictionQueryAdapter, EDMessageObjectIDToDatabaseIDConverter>
 {
     int _cachedMetadataUpdatesSinceLastCheck;
     EDMailboxPersistence *_mailboxPersistence;
-    EDVIPManager *_vipManager;
-    id<EDRemoteSearchProvider> _remoteSearchProvider;
-    EMBlockedSenderManager *_blockedSenderManager;
-    EDConversationPersistence *_conversationPersistence;
     NSObject<OS_dispatch_queue> *_cachedMetadataIsolation;
     NSNumber *_cachedMetadataEstimatedRowCount;
     EDPersistenceDatabase *_database;
 }
 
-@property (readonly, weak, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property (strong, nonatomic) NSNumber *cachedMetadataEstimatedRowCount; // @synthesize cachedMetadataEstimatedRowCount=_cachedMetadataEstimatedRowCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *cachedMetadataIsolation; // @synthesize cachedMetadataIsolation=_cachedMetadataIsolation;
 @property (nonatomic) int cachedMetadataUpdatesSinceLastCheck; // @synthesize cachedMetadataUpdatesSinceLastCheck=_cachedMetadataUpdatesSinceLastCheck;
-@property (readonly, nonatomic) EDConversationPersistence *conversationPersistence; // @synthesize conversationPersistence=_conversationPersistence;
 @property (readonly, nonatomic) EDPersistenceDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
-@property (readonly, weak, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
 
 + (id)_cachedMetadataTableSchema;
 + (id)_messageReferencesTableSchema;
@@ -70,7 +63,7 @@
 - (id)databaseIDsDictionaryForMessageObjectIDs:(id)arg1;
 - (id)enabledAccountMailboxesExpression;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
-- (id)initWithConversationPersistence:(id)arg1 mailboxPersistence:(id)arg2 database:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 blockedSenderManager:(id)arg6;
+- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)iteratePersistedMessagesMatchingQuery:(id)arg1 limit:(long long)arg2 cancelationToken:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)messageObjectIDCriterionExpressionForPredicateValue:(id)arg1;
@@ -91,7 +84,6 @@
 - (id)requestContentForMessageObjectID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)requestSummaryForMessageObjectID:(id)arg1;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;
-- (void)updateConversationNotificationLevel:(long long)arg1 forConversationWithID:(long long)arg2;
 - (id)validMailboxesForPrediction;
 
 @end

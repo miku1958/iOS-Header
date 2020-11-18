@@ -20,5 +20,6 @@
 - (id)ef_objectAfterObject:(id)arg1;
 - (id)ef_objectBeforeObject:(id)arg1;
 - (id)ef_partition:(CDUnknownBlockType)arg1;
+- (id)ef_subarrayWithRange:(struct _NSRange)arg1;
 @end
 

@@ -14,6 +14,7 @@
 @interface PXGTextureManager : NSObject <PXGTextureProviderDelegate>
 {
     NSObject<OS_dispatch_queue> *_requestQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_processQueue;
     NSObject<OS_dispatch_queue> *_deallocationsQueue;
     struct os_unfair_lock_s _lookupLock;
@@ -52,6 +53,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addTextureToTexturesInUse:(id)arg1;
 - (void)_blockOnThumbnailsIfNeededWithGeometries:(CDStruct_3ab912e1 *)arg1 visibleRect:(struct CGRect)arg2 interactionState:(CDStruct_93894d6c)arg3 fences:(id)arg4;
 - (void)_clearTexturesForPresentationType:(int)arg1;
 - (id)_createTextureForCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 fromTextureProvider:(id)arg3 withTextureConverter:(id)arg4;
@@ -66,6 +68,7 @@
 - (void)_processCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 fromTextureProvider:(id)arg3 withTextureConverter:(id)arg4 requestID:(int)arg5 deliveryOrder:(unsigned int)arg6;
 - (void)_processPixelBuffer:(struct __CVBuffer *)arg1 orientationTransform:(struct CGAffineTransform)arg2 fromTextureProvider:(id)arg3 withTextureConverter:(id)arg4 forRequestID:(int)arg5 deliveryOrder:(unsigned int)arg6;
 - (long long)_processTextureProviderResults;
+- (void)_pruneTextures:(id)arg1;
 - (void)_requestQueue_scheduleUpdateIfAllowed;
 - (void)_requestQueue_setNeedsUpdate;
 - (void)_resizeStorageIfNeededForSpriteCount:(long long)arg1;

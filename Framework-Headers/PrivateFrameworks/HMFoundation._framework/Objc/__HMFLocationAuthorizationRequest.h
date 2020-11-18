@@ -4,31 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HMFoundation/HMFOperation.h>
+#import <HMFoundation/__HMFLocationManagerOperation.h>
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 
-@class HMFLocationAuthorization, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface __HMFLocationAuthorizationRequest : HMFOperation <HMFLogging>
+@interface __HMFLocationAuthorizationRequest : __HMFLocationManagerOperation <HMFLogging>
 {
     BOOL _requested;
     long long _type;
-    HMFLocationAuthorization *_authorization;
 }
 
-@property (readonly) HMFLocationAuthorization *authorization; // @synthesize authorization=_authorization;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly) long long type; // @synthesize type=_type;
 
-+ (void)initialize;
 + (id)logCategory;
-- (void).cxx_destruct;
 - (void)dealloc;
+- (id)initWithAuthorization:(id)arg1;
 - (id)initWithTimeout:(double)arg1;
 - (id)initWithType:(long long)arg1;
 - (id)initWithType:(long long)arg1 authorization:(id)arg2;

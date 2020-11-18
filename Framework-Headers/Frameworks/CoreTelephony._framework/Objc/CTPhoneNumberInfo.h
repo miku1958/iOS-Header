@@ -18,8 +18,10 @@
     BOOL _isRead;
     NSString *_label;
     NSString *_number;
+    NSString *_displayPhoneNumber;
 }
 
+@property (strong, nonatomic) NSString *displayPhoneNumber; // @synthesize displayPhoneNumber=_displayPhoneNumber;
 @property (nonatomic) BOOL isEditable; // @synthesize isEditable=_isEditable;
 @property (nonatomic) BOOL isPresent; // @synthesize isPresent=_isPresent;
 @property (nonatomic) BOOL isRead; // @synthesize isRead=_isRead;

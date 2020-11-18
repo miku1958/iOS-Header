@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (void)_prepareShareSheet:(id *)arg1 applicationActivities:(id *)arg2 inViewElement:(id)arg3;
 + (id)configureViewWithElement:(id)arg1;
 + (void)shareMediaItem:(id)arg1 title:(id)arg2 subtitle:(id)arg3 imageURLStr:(id)arg4 sourceView:(id)arg5;
++ (void)shareMediaWithShareSheet:(id)arg1;
 - (void).cxx_destruct;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;

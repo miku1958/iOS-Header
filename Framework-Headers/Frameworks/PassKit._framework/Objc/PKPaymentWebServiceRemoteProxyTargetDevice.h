@@ -81,6 +81,7 @@
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)validateTransferPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

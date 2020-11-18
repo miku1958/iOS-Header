@@ -24,6 +24,7 @@
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (void)dismissTextViewController;
 - (void)displayPrivacyInformationWithIdentifier:(id)arg1;
 - (void)displayUnifiedPrivacyInformationWithIdentifiers:(id)arg1;
 - (id)privacyIdentifierForSectionIdentifier:(id)arg1;

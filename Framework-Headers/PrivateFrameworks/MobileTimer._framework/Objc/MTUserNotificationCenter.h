@@ -69,7 +69,7 @@
 - (void)postNotificationForScheduledTimer:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)registerActionHandler:(id)arg1;
 - (void)removeAllDeliveredNotifications;
-- (void)setupNotificationCenters;
+- (void)setupNotificationCenter;
 - (id)timerCategories;
 
 @end

@@ -18,9 +18,9 @@
 @property (copy, nonatomic) NSString *memberEmail; // @synthesize memberEmail=_memberEmail;
 
 - (void).cxx_destruct;
+- (id)_endpoint;
+- (id)_queryString;
 - (BOOL)isUserInitiated;
-- (id)urlRequest;
-- (id)urlString;
 
 @end
 

@@ -62,6 +62,7 @@
 @property (readonly, copy, nonatomic) NSAttributedString *notes;
 @property (readonly, nonatomic) NSString *notesAsString;
 @property (readonly, nonatomic) REMCRMergeableStringDocument *notesDocument; // @dynamic notesDocument;
+@property (readonly, nonatomic) NSData *notesDocumentData; // @dynamic notesDocumentData;
 @property (readonly, nonatomic) REMObjectID *objectID;
 @property (readonly, nonatomic) REMObjectID *objectID; // @dynamic objectID;
 @property (strong, nonatomic) REMReminder *parentReminder; // @synthesize parentReminder=_parentReminder;
@@ -83,6 +84,7 @@
 @property (readonly, copy, nonatomic) NSAttributedString *title;
 @property (readonly, nonatomic) NSString *titleAsString;
 @property (readonly, nonatomic) REMCRMergeableStringDocument *titleDocument; // @dynamic titleDocument;
+@property (readonly, nonatomic) NSData *titleDocumentData; // @dynamic titleDocumentData;
 @property (readonly, nonatomic) REMUserActivity *userActivity; // @dynamic userActivity;
 
 + (id)cdEntityName;

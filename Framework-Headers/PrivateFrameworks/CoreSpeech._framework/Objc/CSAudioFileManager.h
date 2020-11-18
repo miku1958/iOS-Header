@@ -10,11 +10,13 @@
 {
 }
 
++ (id)_createAudioFileWriterForOpportuneSpeakListenerWithLoggingDir:(id)arg1 inputFormat:(struct AudioStreamBasicDescription)arg2 outputFormat:(struct AudioStreamBasicDescription)arg3;
 + (id)_createAudioFileWriterWithLoggingDir:(id)arg1 inputFormat:(struct AudioStreamBasicDescription)arg2 outputFormat:(struct AudioStreamBasicDescription)arg3;
 + (id)_getDateLabel;
 + (void)_readDataFromFileHandle:(id)arg1 toFileHandle:(id)arg2;
 + (id)_sharedAudioLoggingQueue;
 + (id)audioFileWriterForAttentiveSiri;
++ (id)createAudioFileWriterForOpportuneSpeakListenerWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (id)createAudioFileWriterForRemoteVADWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (id)createAudioFileWriterFromWithInputFormat:(struct AudioStreamBasicDescription)arg1 outputFormat:(struct AudioStreamBasicDescription)arg2;
 + (id)createSelectiveChannelAudioFileWriterWithChannelBitset:(unsigned long long)arg1;

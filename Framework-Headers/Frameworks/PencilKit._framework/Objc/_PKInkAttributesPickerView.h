@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKit/UIView.h>
 
 #import <PencilKit/_PKColorAlphaSliderDelegate-Protocol.h>
 
-@class NSString, PKInk, UIView, _PKColorAlphaSlider, _PKInkThicknessPicker;
+@class NSString, PKInk, _PKColorAlphaSlider, _PKInkThicknessPicker;
 @protocol _PKInkAttributesPickerViewDelegate;
 
-@interface _PKInkAttributesPickerView : UIControl <_PKColorAlphaSliderDelegate>
+@interface _PKInkAttributesPickerView : UIView <_PKColorAlphaSliderDelegate>
 {
     id<_PKInkAttributesPickerViewDelegate> _delegate;
     PKInk *_ink;
@@ -22,6 +22,7 @@
 }
 
 @property (strong, nonatomic) _PKColorAlphaSlider *colorAlphaSlider; // @synthesize colorAlphaSlider=_colorAlphaSlider;
+@property (nonatomic) long long colorUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_PKInkAttributesPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -35,12 +36,12 @@
 - (void).cxx_destruct;
 - (void)_colorAlphaSliderUserDidEndDraggingSlider:(id)arg1;
 - (void)_colorAlphaSliderUserDidStartDraggingSlider:(id)arg1;
+- (void)_opacityValueChanged:(id)arg1;
+- (void)_thicknessValueChanged:(id)arg1;
 - (id)initWithInk:(id)arg1;
 - (void)layoutSubviews;
-- (void)opacityValueChanged:(id)arg1;
 - (void)setInk:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)thicknessValueChanged:(id)arg1;
 
 @end
 

@@ -33,6 +33,7 @@
 @property (strong, nonatomic) DADREMLocalDBWatcher *rem_localDBWatcher;
 @property (strong, nonatomic) id<DADREMStoreProvider> rem_storeProvider;
 @property (strong, nonatomic) id<DADREMUserNotificationPresentingProvider> rem_userNotificationPresentingProvider;
+@property (copy, nonatomic) CDUnknownBlockType rem_xpcEventHandler;
 @property (strong, nonatomic) NSMutableArray *subCalHandlers; // @synthesize subCalHandlers=_subCalHandlers;
 
 + (id)sharedManager;
@@ -45,7 +46,7 @@
 - (void)_deviceWillSleep;
 - (void)_handleCellularDataUsageChangedNotification;
 - (BOOL)_hasDataclassWeCareAbout:(id)arg1;
-- (void)_loadAndStartMonitoringAgents;
+- (void)_loadAndStartMonitoringAgents:(BOOL)arg1;
 - (void)_registerForCTDataUsageNotificaiton;
 - (void)_resetMonitoringRequestsAndLoadAgents;
 - (void)_stopMonitoringAndSaveAgents;
@@ -66,7 +67,7 @@
 - (BOOL)hasEASAccountConfigured;
 - (BOOL)hasPendingAccountSetup;
 - (id)init;
-- (void)loadAgents;
+- (void)loadAgents:(BOOL)arg1;
 - (void)processMeetingRequestDatas:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)registerForBuddy;
 - (void)removePendingAccountSetup;

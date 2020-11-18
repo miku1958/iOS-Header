@@ -32,12 +32,9 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) PXCuratedLibraryInlineHeaderViewConfiguration *userData; // @synthesize userData=_userData;
 
-+ (double)_cornerRadiusForStyle:(unsigned long long)arg1;
-+ (double)_edgePaddingForStyle:(unsigned long long)arg1;
-+ (double)_heightForStyle:(unsigned long long)arg1 optionalFont:(id)arg2;
-+ (double)_subtitleBaselineDistanceForStyle:(unsigned long long)arg1 font:(id)arg2;
++ (double)_heightForStyle:(unsigned long long)arg1;
 + (id)_subtitleFontForStyle:(unsigned long long)arg1;
-+ (double)_titleBaselineDistanceForStyle:(unsigned long long)arg1 font:(id)arg2;
++ (double)_titleBaselineDistanceForFont:(id)arg1;
 + (id)_titleFontForStyle:(unsigned long long)arg1;
 + (struct CGSize)sizeWithConfiguration:(id)arg1;
 - (void).cxx_destruct;

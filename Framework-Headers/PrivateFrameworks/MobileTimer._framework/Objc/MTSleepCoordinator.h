@@ -11,11 +11,12 @@
 #import <MobileTimer/MTSleepCoordinatorStateMachineDelegate-Protocol.h>
 #import <MobileTimer/MTSleepCoordinatorStateMachineInfoProvider-Protocol.h>
 #import <MobileTimer/MTSource-Protocol.h>
+#import <MobileTimer/MTTimeObserver-Protocol.h>
 
 @class MTAlarm, MTBedtimeDNDMonitor, MTObserverStore, MTSleepCoordinatorStateMachine, MTXPCScheduler, NAFuture, NSDate, NSString;
 @protocol MTAlarmStorage, NAScheduler;
 
-@interface MTSleepCoordinator : NSObject <MTSource, MTSleepCoordinatorStateMachineDelegate, MTSleepCoordinatorStateMachineInfoProvider, MTAlarmObserver, MTAgentDiagnosticDelegate>
+@interface MTSleepCoordinator : NSObject <MTSource, MTSleepCoordinatorStateMachineDelegate, MTSleepCoordinatorStateMachineInfoProvider, MTAlarmObserver, MTTimeObserver, MTAgentDiagnosticDelegate>
 {
     MTSleepCoordinatorStateMachine *_stateMachine;
     MTAlarm *_cachedSleepAlarm;
@@ -81,6 +82,7 @@
 - (void)stateMachine:(id)arg1 shouldScheduleAlarmTimeoutForSecondsFromNow:(double)arg2;
 - (void)stateMachineUserWentToBed:(id)arg1;
 - (void)stateMachineUserWokeUp:(id)arg1;
+- (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)updateSleepState;
 - (void)updateSleepStateWithSleepAlarm:(id)arg1;
 

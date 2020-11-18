@@ -51,7 +51,6 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)__notifyDelegateUpdatedDevice:(id)arg1;
 - (id)accountHandleWithModelIdentifier:(id)arg1;
 - (void)addDevice:(id)arg1;
 - (void)addHandle:(id)arg1;

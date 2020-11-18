@@ -37,12 +37,14 @@
     NSMutableArray *_recipientsBeingRemoved;
     NSUndoManager *_undoManager;
     struct CGRect _addButtonFrame;
-    BOOL _editable;
+    BOOL _usingActiveAppearance;
     BOOL _separatorHidden;
     BOOL _expanded;
     BOOL _didIgnoreFirstResponderResign;
     BOOL _showsAddButtonWhenExpanded;
     BOOL _expandRecipientsInNamedGroups;
+    BOOL _editable;
+    BOOL _enabled;
     int _hideLastAtomComma;
     UIFont *_baseFont;
     long long _maxRecipients;
@@ -62,6 +64,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didIgnoreFirstResponderResign; // @synthesize didIgnoreFirstResponderResign=_didIgnoreFirstResponderResign;
 @property (nonatomic) BOOL editable; // @synthesize editable=_editable;
+@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL expandRecipientsInNamedGroups; // @synthesize expandRecipientsInNamedGroups=_expandRecipientsInNamedGroups;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (readonly) unsigned long long hash;
@@ -81,6 +84,7 @@
 @property (nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
 @property (strong, nonatomic) UIColor *typingTextColor; // @synthesize typingTextColor=_typingTextColor;
 @property (readonly, copy, nonatomic) NSArray *uncommentedAddresses;
+@property (nonatomic) BOOL usingActiveAppearance; // @synthesize usingActiveAppearance=_usingActiveAppearance;
 
 + (id)defaultFont;
 - (void).cxx_destruct;
@@ -171,6 +175,7 @@
 - (void)setEditable:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setLabel:(id)arg1;
+- (void)setUsingActiveAppearance:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)settrailingButtonMidlineInsetFromLayoutMargin:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)textFieldOffsetForNumberOfRowsToScroll:(unsigned long long)arg1 numberOfRowsAboveField:(long long)arg2;

@@ -34,6 +34,9 @@
 - (id)preferredDisplayLayoutElementIdentifier;
 - (long long)preferredLockedGestureDismissalStyle;
 - (long long)preferredUnlockedGestureDismissalStyle;
+- (CDUnknownBlockType)sceneDeactivationPredicate;
+- (BOOL)shouldAutorotate;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

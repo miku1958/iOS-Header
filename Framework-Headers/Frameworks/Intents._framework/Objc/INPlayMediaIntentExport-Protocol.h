@@ -11,6 +11,8 @@
 
 @protocol INPlayMediaIntentExport <NSObject, JSExport>
 
+@property (copy, nonatomic) NSArray *alternativeResults;
+@property (copy, nonatomic) NSArray *audioSearchResults;
 @property (copy, nonatomic) NSArray *buckets;
 @property (copy, nonatomic) NSDate *expirationDate;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;

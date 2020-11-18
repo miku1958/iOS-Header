@@ -27,14 +27,17 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
-- (id)_performValidation;
+- (void)_ensureConsistency;
 - (id)commitItem;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
+- (void)defaultActionIfMediaActionInvalid;
 - (BOOL)hasSameTargetAsAction:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (BOOL)isAffectedByEndEvents;
 - (BOOL)isMediaActionValid:(id *)arg1;
 - (id)mediaProfileContainersForAccessories:(id)arg1 home:(id)arg2;
+- (id)performValidation;
 - (BOOL)requiresDeviceUnlock;
 - (BOOL)updateWithActionBuilder:(id)arg1;
 

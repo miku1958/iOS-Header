@@ -9,33 +9,43 @@
 #import <AuthKit/NSCopying-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSLocale, NSLock, NSNumber, NSString;
+@class NSData, NSLocale, NSNumber, NSString;
 
 @interface AKDevice : NSObject <NSSecureCoding, NSCopying>
 {
-    BOOL _isMonitoringUnlockEvents;
-    NSLock *_monitoringLock;
-    NSString *_serverFriendlyDescription;
+    struct os_unfair_lock_s _unfairLock;
+    BOOL _shouldUpdateUniqueDeviceIdentifier;
+    BOOL _shouldUpdateServerFriendlyDescription;
+    BOOL _shouldUpdateColor;
+    BOOL _shouldUpdateEnclosureColor;
+    BOOL _shouldUpdateCoverGlassColor;
+    BOOL _shouldUpdateHousingColor;
+    BOOL _shouldUpdateBackingColor;
+    BOOL _shouldUpdateLocale;
+    BOOL _shouldUpdateROMAddress;
+    BOOL _shouldUpdateMLBSerialNumber;
+    BOOL _shouldUpdateModelNumber;
     NSString *_uniqueDeviceIdentifier;
+    NSString *_serverFriendlyDescription;
     NSString *_color;
     NSString *_enclosureColor;
     NSNumber *_coverGlassColor;
     NSNumber *_housingColor;
     NSNumber *_backingColor;
     NSLocale *_locale;
-    NSString *_MLBSerialNumber;
     NSString *_ROMAddress;
+    NSString *_MLBSerialNumber;
     NSString *_modelNumber;
     unsigned long long _linkType;
 }
 
-@property (copy) NSString *MLBSerialNumber; // @synthesize MLBSerialNumber=_MLBSerialNumber;
-@property (copy) NSString *ROMAddress; // @synthesize ROMAddress=_ROMAddress;
-@property (copy) NSNumber *backingColor; // @synthesize backingColor=_backingColor;
-@property (copy) NSString *color; // @synthesize color=_color;
-@property (copy) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
-@property (copy) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
-@property (copy) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
+@property (copy, nonatomic) NSString *MLBSerialNumber; // @synthesize MLBSerialNumber=_MLBSerialNumber;
+@property (copy, nonatomic) NSString *ROMAddress; // @synthesize ROMAddress=_ROMAddress;
+@property (copy, nonatomic) NSNumber *backingColor; // @synthesize backingColor=_backingColor;
+@property (copy, nonatomic) NSString *color; // @synthesize color=_color;
+@property (copy, nonatomic) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;
+@property (copy, nonatomic) NSString *enclosureColor; // @synthesize enclosureColor=_enclosureColor;
+@property (copy, nonatomic) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
 @property (readonly) NSString *integratedCircuitCardIdentifier;
 @property (readonly) NSString *internationalMobileEquipmentIdentity;
 @property (readonly) BOOL isBiometricAuthCapable;
@@ -47,29 +57,19 @@
 @property (readonly) BOOL isUnlocked;
 @property (setter=setLinkType:) unsigned long long linkType; // @synthesize linkType=_linkType;
 @property (readonly) NSString *localUserUUID;
-@property (copy) NSLocale *locale; // @synthesize locale=_locale;
+@property (copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly) NSString *mobileEquipmentIdentifier;
-@property (copy) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
+@property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property (readonly) NSString *phoneNumber;
 @property (readonly) NSString *serialNumber;
 @property (readonly) NSData *serializedData;
-@property (copy) NSString *serverFriendlyDescription; // @synthesize serverFriendlyDescription=_serverFriendlyDescription;
-@property (copy) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
+@property (copy, nonatomic) NSString *serverFriendlyDescription; // @synthesize serverFriendlyDescription=_serverFriendlyDescription;
+@property (copy, nonatomic) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
 @property (readonly) NSString *userChosenName;
 @property (readonly) NSString *userFullName;
 
 + (id)_buildNumber;
-+ (id)_generateServerFriendlyDescription;
 + (id)_hardwareModel;
-+ (id)_lookUpCurrentBackingColor;
-+ (id)_lookUpCurrentColor;
-+ (id)_lookUpCurrentCoverGlassColor;
-+ (id)_lookUpCurrentEnclosureColor;
-+ (id)_lookUpCurrentHousingColor;
-+ (id)_lookUpCurrentUniqueDeviceID;
-+ (id)_lookupMLBSerialNumber;
-+ (id)_lookupModelNumber;
-+ (id)_lookupROMAddress;
 + (id)_osName;
 + (id)_osVersion;
 + (id)activeIDSPeerDevice;
@@ -81,6 +81,7 @@
 + (id)systemContainerCacheURL;
 + (id)systemContainerURL;
 - (void).cxx_destruct;
+- (void)_setShouldUpdateToValue:(BOOL)arg1;
 - (id)_volumeGroupUUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

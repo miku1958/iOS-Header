@@ -22,5 +22,6 @@
 - (void)moveItemToTail:(NSString *)arg1;
 - (void)removeItem:(NSString *)arg1;
 - (void)updateItem:(NSString *)arg1;
+- (void)updateSection;
 @end
 

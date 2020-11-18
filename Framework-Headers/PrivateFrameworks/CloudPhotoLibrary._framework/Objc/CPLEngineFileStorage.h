@@ -62,7 +62,7 @@
 - (BOOL)resetWithError:(id *)arg1;
 - (id)retainFileURLForIdentity:(id)arg1 resourceType:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)storeData:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 needsCommit:(BOOL *)arg4 error:(id *)arg5;
-- (BOOL)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 needsCommit:(BOOL *)arg4 error:(id *)arg5;
+- (BOOL)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 moveIfPossible:(BOOL)arg4 needsCommit:(BOOL *)arg5 error:(id *)arg6;
 - (BOOL)storeUnretainedData:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)storeUnretainedFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)tryToFreeDiskSpace:(unsigned long long)arg1 actuallyFreedSpace:(unsigned long long *)arg2 error:(id *)arg3;

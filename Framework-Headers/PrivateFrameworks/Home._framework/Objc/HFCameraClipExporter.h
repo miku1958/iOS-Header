@@ -12,6 +12,9 @@
 
 + (id)destinationURLForMovieFileFromCameraClipUUIDString:(id)arg1;
 + (id)destinationURLForStrippedAudioFileFromCameraClipUUIDString:(id)arg1;
++ (id)destinationURLForUploadPayloadFromCameraClipUUIDString:(id)arg1;
++ (double)durationOfCachedRecordingForCameraClip:(id)arg1;
++ (BOOL)hasCachedRecordingForCameraClip:(id)arg1;
 + (id)userFriendlyExportNameForClip:(id)arg1 fromCameraProfile:(id)arg2;
 
 @end

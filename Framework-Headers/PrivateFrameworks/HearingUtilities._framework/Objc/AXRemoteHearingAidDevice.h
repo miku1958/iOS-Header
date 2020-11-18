@@ -144,6 +144,7 @@
 - (void)_updateSelectedProgramsProperties;
 - (id)_valueForProperty:(unsigned long long)arg1;
 - (void)_writeAllProgramSelectionsToPeripheral;
+- (BOOL)checkDidLoadProperties:(unsigned long long)arg1;
 - (id)combinedPrograms;
 - (double)combinedVolumeForProperty:(unsigned long long)arg1;
 - (void)connect;
@@ -151,6 +152,7 @@
 - (void)dealloc;
 - (BOOL)didLoadBasicProperties;
 - (BOOL)didLoadProperty:(unsigned long long)arg1;
+- (BOOL)didLoadRequiredPeerProperties;
 - (BOOL)didLoadRequiredProperties;
 - (void)disconnectAndUnpair:(BOOL)arg1;
 - (BOOL)hasConnection;

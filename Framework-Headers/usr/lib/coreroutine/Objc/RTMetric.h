@@ -12,6 +12,7 @@
 
 @interface RTMetric : NSObject <RTMetricProtocol>
 {
+    BOOL _loggingEnabled;
     BOOL _submitted;
     NSMutableDictionary *_metrics;
 }
@@ -19,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL loggingEnabled; // @synthesize loggingEnabled=_loggingEnabled;
 @property (readonly, nonatomic) NSMutableDictionary *metrics; // @synthesize metrics=_metrics;
 @property (nonatomic) BOOL submitted; // @synthesize submitted=_submitted;
 @property (readonly) Class superclass;
@@ -30,6 +32,7 @@
 + (id)supportedMetricKeys;
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithLoggingEnabled:(BOOL)arg1;
 - (BOOL)setAllMetrics:(id)arg1 error:(id *)arg2;
 - (BOOL)submitMetricsWithError:(id *)arg1;
 

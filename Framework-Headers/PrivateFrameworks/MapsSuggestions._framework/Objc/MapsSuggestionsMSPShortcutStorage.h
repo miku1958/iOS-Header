@@ -6,22 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <MapsSuggestions/MSPContainerObserver-Protocol.h>
 #import <MapsSuggestions/MSPQueryDelegate-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsShortcutStorage-Protocol.h>
 
-@class MSPPinnedPlacesQuery, NSString;
-@protocol OS_dispatch_queue;
+@class MSPPinnedPlacesQuery, NSArray, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface MapsSuggestionsMSPShortcutStorage : NSObject <MSPQueryDelegate, MapsSuggestionsShortcutStorage>
+@interface MapsSuggestionsMSPShortcutStorage : NSObject <MSPQueryDelegate, MSPContainerObserver, MapsSuggestionsShortcutStorage>
 {
     CDUnknownBlockType _changeHandler;
+    BOOL _hasAttemptedLoadingContents;
     MSPPinnedPlacesQuery *_query;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    NSObject<OS_dispatch_semaphore> *_containerLoadWait;
+    NSArray *_cachedPlaces;
 }
 
+@property (strong, nonatomic) NSArray *cachedPlaces; // @synthesize cachedPlaces=_cachedPlaces;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *containerLoadWait; // @synthesize containerLoadWait=_containerLoadWait;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasAttemptedLoadingContents; // @synthesize hasAttemptedLoadingContents=_hasAttemptedLoadingContents;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MSPPinnedPlacesQuery *query; // @synthesize query=_query;
 @property (readonly) Class superclass;
@@ -29,9 +36,15 @@
 
 - (void).cxx_destruct;
 - (BOOL)addOrUpdateShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)container:(id)arg1 didEditWithNewContents:(id)arg2 orderedEdits:(id)arg3 cause:(long long)arg4 context:(id)arg5;
+- (void)containerDidLoadFromPersister:(id)arg1;
 - (id)init;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)moveShortcut:(id)arg1 afterShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)moveShortcut:(id)arg1 beforeShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)moveShortcutToBack:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)queryContentsDidChange:(id)arg1 contentsVersion:(unsigned long long)arg2;
 - (void)queryContentsDidLoad:(id)arg1 contentsVersion:(unsigned long long)arg2;
 - (BOOL)removeShortcuts:(struct NSArray *)arg1 handler:(CDUnknownBlockType)arg2;

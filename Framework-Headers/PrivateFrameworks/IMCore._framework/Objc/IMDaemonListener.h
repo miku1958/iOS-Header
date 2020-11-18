@@ -103,6 +103,7 @@
 - (void)holdChatMessages;
 - (id)init;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (void)networkDataAvailabilityChanged:(BOOL)arg1;
 - (void)nicknameRequestResponse:(id)arg1 encodedNicknameData:(id)arg2;
 - (void)oneTimeCodesDidChange:(id)arg1;
 - (void)pendingNicknamesOrHandledNicknamesDidChange;

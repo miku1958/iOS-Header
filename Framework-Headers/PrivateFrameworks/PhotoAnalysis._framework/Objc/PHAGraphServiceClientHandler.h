@@ -25,7 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_beginGraphOperation;
+- (void)_beginGraphOperation:(id)arg1;
 - (void)_endGraphOperation;
 - (id)currentlyUnavailableError;
 - (void)generateQuestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;

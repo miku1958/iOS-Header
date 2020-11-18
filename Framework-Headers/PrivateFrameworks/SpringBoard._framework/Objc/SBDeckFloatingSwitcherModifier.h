@@ -38,11 +38,11 @@
 - (struct CGPoint)adjustedOffsetForOffset:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 startPoint:(struct CGPoint)arg3 locationInView:(struct CGPoint)arg4 horizontalVelocity:(inout double *)arg5 verticalVelocity:(inout double *)arg6;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
 - (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
+- (id)appLayoutToScrollToBeforeReopeningClosedWindows;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsForInsertionOrRemoval;
 - (double)backdropBlurProgress;
 - (long long)backdropBlurType;
-- (double)baseHysteresisForStartingKillGesture;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (double)cardCornerRadiusInSwitcher;
 - (BOOL)cardsNeedBackgroundWallpaperTreatment;
@@ -76,6 +76,7 @@
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
 - (unsigned long long)insertionStyleForInsertingAppLayout:(id)arg1;
 - (struct CGSize)interpageSpacingForPaging;
+- (BOOL)interpolatesDuringSwipeToKill;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeGrabberVisible;
@@ -94,6 +95,8 @@
 - (id)layoutSettingsForIndex:(unsigned long long)arg1;
 - (long long)layoutUpdateMode;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
+- (long long)liveContentRasterizationStyle;
+- (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (unsigned long long)numberOfDefaultAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
@@ -104,6 +107,7 @@
 - (id)positionSettingsForIndex:(unsigned long long)arg1;
 - (long long)preferredSnapshotOrientation;
 - (double)reopenClosedWindowsButtonAlpha;
+- (double)reopenClosedWindowsButtonScale;
 - (void)resetAdjustedScrollingState;
 - (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (double)scaleForIndex:(unsigned long long)arg1;
@@ -121,6 +125,7 @@
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
 - (BOOL)shouldRubberbandHomeGrabberView;
+- (BOOL)shouldTetherTransitionCompletion;
 - (BOOL)shouldTruncateAnimationsUponTransitionCompletion;
 - (BOOL)shouldWaitForLayoutAndStyleUpdatesForTransactionCompletion;
 - (double)snapshotScale;
@@ -132,7 +137,6 @@
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperScale;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
 - (BOOL)wantsDockBehaviorAssertion;
 - (BOOL)wantsDockWindowLevelAssertion;

@@ -21,9 +21,11 @@
 - (BOOL)areUsersAtHome:(id)arg1;
 - (BOOL)areUsersNotAtHome:(id)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (id)initWithPresenceByPairingIdentity:(id)arg1;
 - (id)initWithPresenceByUserId:(id)arg1;
 - (BOOL)isAnyUserAtHome;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isNoUserAtHome;
 - (BOOL)isUserAtHome:(id)arg1;
 - (BOOL)isUserNotAtHome:(id)arg1;

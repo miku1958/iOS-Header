@@ -15,6 +15,8 @@
 - (NSArray *)impressionsMatching:(NSString *)arg1 reset:(BOOL)arg2;
 - (NSArray *)recordedImpressions;
 - (NSArray *)recordedImpressions:(BOOL)arg1;
+- (void)recordedImpressions:(BOOL)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)recordedImpressionsMatching:(NSString *)arg1 reset:(BOOL)arg2 completion:(void (^)(NSArray *))arg3;
 - (void)runTestWithName:(NSString *)arg1 options:(NSDictionary *)arg2;
 - (void)scrollToTop;
 - (void)setNeedsUpdateForDocument:(IKDOMDocument *)arg1;

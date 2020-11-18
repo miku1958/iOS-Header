@@ -32,9 +32,6 @@
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)captureController:(id)arg1 didChangeStateTo:(long long)arg2;
-- (void)captureController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
-- (void)captureController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
-- (void)captureController:(id)arg1 requestsPushViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)captureController:(id)arg1 showLoading:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithController:(id)arg1 context:(long long)arg2 featureIdentifier:(unsigned long long)arg3;

@@ -9,20 +9,20 @@
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
 #import <ActionKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, UIColor;
+@class NSDictionary, NSString, WFColor;
 
 @interface WFTodoistProject : MTLModel <NSSecureCoding, MTLJSONSerializing>
 {
     BOOL _collapsed;
     long long _projectId;
     NSString *_name;
-    UIColor *_color;
+    WFColor *_color;
     long long _indent;
     long long _order;
 }
 
 @property (readonly, nonatomic) BOOL collapsed; // @synthesize collapsed=_collapsed;
-@property (readonly, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (readonly, nonatomic) WFColor *color; // @synthesize color=_color;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryValue;

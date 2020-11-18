@@ -9,12 +9,12 @@
 #import <WorkflowUI/UICollectionViewDataSource-Protocol.h>
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UIColor;
+@class NSArray, NSString, UICollectionView, WFColor;
 @protocol WFColorPickerDelegate;
 
 @interface WFColorPicker : UIView <UICollectionViewDelegate, UICollectionViewDataSource>
 {
-    UIColor *_selectedColor;
+    WFColor *_selectedColor;
     id<WFColorPickerDelegate> _delegate;
     NSArray *_colors;
     NSArray *_colorNames;
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) id<WFColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIColor *selectedColor; // @synthesize selectedColor=_selectedColor;
+@property (strong, nonatomic) WFColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

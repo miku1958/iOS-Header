@@ -12,10 +12,10 @@
 
 @interface SBSceneLayoutLiveContentOverlay : NSObject <SBSwitcherLiveContentOverlay>
 {
-    BOOL _rendersAsynchronously;
     BOOL _wantsMinificationFilter;
     BOOL _asynchronousRenderingTemporarilyDisabled;
     long long _containerOrientation;
+    long long _rasterizationStyle;
     SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
     SBWindowSelfHostWrapper *_sceneLayoutWindowHostWrapper;
     SBOrientationTransformWrapperView *_sceneLayoutOrientationWrapperView;
@@ -30,7 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SBFHomeGrabberSettings *grabberSettings; // @synthesize grabberSettings=_grabberSettings;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+@property (readonly, nonatomic) long long rasterizationStyle; // @synthesize rasterizationStyle=_rasterizationStyle;
 @property (readonly, nonatomic) SBOrientationTransformWrapperView *sceneLayoutOrientationWrapperView; // @synthesize sceneLayoutOrientationWrapperView=_sceneLayoutOrientationWrapperView;
 @property (readonly, weak, nonatomic) SBMainDisplaySceneLayoutViewController *sceneLayoutViewController; // @synthesize sceneLayoutViewController=_sceneLayoutViewController;
 @property (readonly, nonatomic) SBWindowSelfHostWrapper *sceneLayoutWindowHostWrapper; // @synthesize sceneLayoutWindowHostWrapper=_sceneLayoutWindowHostWrapper;
@@ -45,8 +45,7 @@
 - (id)initWithSceneLayoutViewController:(id)arg1;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setRendersAsynchronously:(BOOL)arg1;
-- (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
+- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(CDUnknownBlockType)arg3;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(BOOL)arg1;
 

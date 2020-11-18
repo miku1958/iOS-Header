@@ -68,6 +68,7 @@
 @property (readonly, nonatomic) BOOL diversifyOptionalTopStories;
 @property (readonly, nonatomic) NSString *editorialChannelID;
 @property (readonly, nonatomic) NSString *editorialGemsSectionID;
+@property (readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property (readonly, nonatomic) NSString *embedConfigurationAssetID;
 @property (readonly, nonatomic) BOOL enableBadgeInSpotlightTabBar;
 @property (readonly, nonatomic) long long endOfArticleMaxInaccessiblePaidArticleCount;

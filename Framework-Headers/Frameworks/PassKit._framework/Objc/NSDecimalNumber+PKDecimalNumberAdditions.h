@@ -9,6 +9,11 @@
 @interface NSDecimalNumber (PKDecimalNumberAdditions)
 + (id)pk_negativeOne;
 - (id)pk_absoluteValue;
+- (BOOL)pk_isEqualToDecimalNumber:(id)arg1;
+- (BOOL)pk_isGreaterThan:(id)arg1;
+- (BOOL)pk_isGreaterThanOrEqualTo:(id)arg1;
+- (BOOL)pk_isLessThan:(id)arg1;
+- (BOOL)pk_isLessThanOrEqualTo:(id)arg1;
 - (id)pk_negativeValue;
 @end
 

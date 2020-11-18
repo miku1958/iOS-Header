@@ -13,11 +13,13 @@
 @interface GEOWaypoint : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_entryPoints;
     GEOLocation *_location;
     GEOPlaceSearchRequest *_placeSearchRequest;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_entryPoints:1;
@@ -55,6 +57,8 @@
 - (id)entryPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entryPointsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

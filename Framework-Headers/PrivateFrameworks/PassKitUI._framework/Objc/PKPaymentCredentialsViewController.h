@@ -33,28 +33,36 @@
     PKPaymentSetupFlowController *_flowController;
     BOOL _hideSetupLaterButton;
     PKPaymentSetupProduct *_product;
+    NSString *_lastBackedUpDefaultPaymentPassSerialNumber;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
+@property (copy, nonatomic) NSString *lastBackedUpDefaultPaymentPassSerialNumber; // @synthesize lastBackedUpDefaultPaymentPassSerialNumber=_lastBackedUpDefaultPaymentPassSerialNumber;
 @property (strong, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canSelectCredential:(id)arg1;
+- (void)_configureCell:(id)arg1 inTableView:(id)arg2 atIndexPath:(id)arg3 sizing:(BOOL)arg4;
+- (void)_continue;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_credentialCacheRequiringAlert;
 - (unsigned long long)_credentialSectionForPaymentCredential:(id)arg1;
 - (unsigned long long)_credentialSectionForSection:(long long)arg1;
 - (unsigned long long)_numberOfSelectedCredentials;
 - (void)_populateOrderCredentialCaches;
+- (void)_presentAccountAlertIfNotSelectedWithContinueHandler:(CDUnknownBlockType)arg1 setupLaterHandler:(CDUnknownBlockType)arg2;
+- (void)_presentAlertForCredentialCache:(id)arg1 continueHandler:(CDUnknownBlockType)arg2 setupLaterHandler:(CDUnknownBlockType)arg3;
 - (void)_presentManualAddController;
 - (void)_presentSecurityCapabilitiesFlowWithFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_updatePassSnapshot:(id)arg1 paymentCredential:(id)arg2 credentialSection:(unsigned long long)arg3 credentialsInCache:(id)arg4;
 - (long long)_sectionForCredentialSection:(unsigned long long)arg1;
 - (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
 - (void)_setUserInteractionEnabled:(BOOL)arg1;
+- (void)_setupLaterTapped;
 - (void)_showRefund:(id)arg1;
 - (void)_showUnavailableDetail:(id)arg1;
 - (void)_sortCredentialCaches:(id)arg1;

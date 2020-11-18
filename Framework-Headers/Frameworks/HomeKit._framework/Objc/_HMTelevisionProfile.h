@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_handleSourceDisplayOrderUpdated:(id)arg1;
-- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyDelegateOfUpdatedSourceDisplayOrder:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (id)initWithTelevisionService:(id)arg1 linkedServices:(id)arg2;

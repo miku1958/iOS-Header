@@ -12,8 +12,8 @@
 
 - (long long)keyboardSuppressionMode;
 - (long long)layoutUpdateMode;
+- (long long)liveContentRasterizationStyle;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;
 
 @end

@@ -21,6 +21,7 @@
     BOOL _shrinkUnitsInCJK;
     BOOL _disableOffsetPrefix;
     BOOL _twoDigitMinuteZeroPadding;
+    BOOL _showLeadingMinutes;
     BOOL _wantsSubseconds;
     BOOL _pauseTimerAtZero;
     NSDate *_date;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
 @property (nonatomic) BOOL pauseTimerAtZero; // @synthesize pauseTimerAtZero=_pauseTimerAtZero;
 @property (nonatomic) long long relativeDateStyle; // @synthesize relativeDateStyle=_relativeDateStyle;
+@property (nonatomic) BOOL showLeadingMinutes; // @synthesize showLeadingMinutes=_showLeadingMinutes;
 @property (nonatomic) BOOL shrinkUnitsInCJK; // @synthesize shrinkUnitsInCJK=_shrinkUnitsInCJK;
 @property (nonatomic) BOOL twoDigitMinuteZeroPadding; // @synthesize twoDigitMinuteZeroPadding=_twoDigitMinuteZeroPadding;
 @property (nonatomic) BOOL wantsSubseconds; // @synthesize wantsSubseconds=_wantsSubseconds;

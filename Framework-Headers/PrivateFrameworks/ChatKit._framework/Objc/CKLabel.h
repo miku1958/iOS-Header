@@ -21,6 +21,7 @@
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (BOOL)isLTR;
 - (void)layoutSubviews;
+- (struct CGRect)rectToDrawTextInForRect:(struct CGRect)arg1;
 - (struct CGSize)sizeOfAccessoryImageView;
 - (struct CGSize)sizeOfTitleLabel;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

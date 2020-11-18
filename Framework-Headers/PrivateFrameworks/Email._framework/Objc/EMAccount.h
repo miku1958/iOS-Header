@@ -10,6 +10,7 @@
 
 @interface EMAccount : EMObject
 {
+    BOOL _primaryiCloudAccount;
     NSString *_name;
     NSString *_username;
     NSString *_hostname;
@@ -17,6 +18,7 @@
 
 @property (readonly, copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic, getter=isPrimaryiCloudAccount) BOOL primaryiCloudAccount; // @synthesize primaryiCloudAccount=_primaryiCloudAccount;
 @property (readonly, copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (id)predicateForDeliveryAccounts;

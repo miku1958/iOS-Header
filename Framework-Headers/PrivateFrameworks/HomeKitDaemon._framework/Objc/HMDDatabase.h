@@ -17,15 +17,14 @@
 @interface HMDDatabase : HMFObject <HMBLocalDatabaseDelegate, HMBCloudDatabaseDelegate, HMDDatabaseZoneDelegate, HMFLogging, HMDDatabase>
 {
     BOOL _hasStarted;
+    HMBLocalDatabase *_localDatabase;
+    HMBCloudDatabase *_cloudDatabase;
     NSHashTable *_delegates;
     NSMapTable *_zoneDelegatesByLocalZone;
-    HMBCloudDatabase *_cloudDatabase;
-    HMBLocalDatabase *_localDatabase;
     HMFUnfairLock *_lock;
     HMDLogEventDispatcher *_logEventDispatcher;
 }
 
-@property (readonly, copy) NSString *cloudContainerIdentifier;
 @property (readonly) HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) NSHashTable *delegates; // @synthesize delegates=_delegates;
@@ -48,6 +47,7 @@
 - (void)cloudDatabase:(id)arg1 didCreateZoneWithID:(id)arg2;
 - (void)cloudDatabase:(id)arg1 didReceiveMessageWithUserInfo:(id)arg2;
 - (void)cloudDatabase:(id)arg1 didRemoveZoneWithID:(id)arg2;
+- (id)cloudDatabase:(id)arg1 willRemoveZoneWithID:(id)arg2;
 - (id)declineInvitation:(id)arg1;
 - (id)existingSharedZoneIDWithName:(id)arg1;
 - (id)initWithCloudContainerIdentifier:(id)arg1 cloudContainerSourceApplicationBundleIdentifier:(id)arg2;
@@ -58,7 +58,7 @@
 - (void)localZone:(id)arg1 didCompleteProcessingWithResult:(id)arg2;
 - (id)logIdentifier;
 - (id)mergedActionFutureForActionFutures:(id)arg1;
-- (id)ownedZonesWithName:(id)arg1 shouldRebuildOnManateeKeyLoss:(BOOL)arg2 delegate:(id)arg3 error:(id *)arg4;
+- (id)ownedZonesWithName:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (void)performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)performZoneDelegateCallback:(CDUnknownBlockType)arg1 forLocalZone:(id)arg2;
 - (id)registerSharedSubscriptionForExternalRecordType:(id)arg1;
@@ -68,10 +68,10 @@
 - (id)removeSharedZonesWithName:(id)arg1;
 - (void)removeZoneDelegate:(id)arg1 forLocalZone:(id)arg2;
 - (id)removeZonesWithID:(id)arg1 isOwned:(BOOL)arg2;
-- (id)sharedZonesWithID:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
+- (id)sharedZonesWithID:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (void)start;
 - (id)unregisterSharedSubscriptionForExternalRecordType:(id)arg1;
-- (id)zonesWithID:(id)arg1 isOwned:(BOOL)arg2 shouldRebuildOnManateeKeyLoss:(BOOL)arg3 delegate:(id)arg4 error:(id *)arg5;
+- (id)zonesWithID:(id)arg1 isOwned:(BOOL)arg2 configuration:(id)arg3 delegate:(id)arg4 error:(id *)arg5;
 
 @end
 

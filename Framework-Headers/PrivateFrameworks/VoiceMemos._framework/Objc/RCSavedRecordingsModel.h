@@ -118,6 +118,7 @@
 - (id)recordingAtIndex:(unsigned long long)arg1;
 - (id)recordingWithID:(id)arg1;
 - (id)recordingWithITunesPersistentID:(long long)arg1;
+- (id)recordingWithPath:(id)arg1;
 - (id)recordingWithURIRepresentation:(id)arg1;
 - (id)recordingWithUniqueID:(id)arg1;
 - (id)recordingsForSpotlightSearch:(id)arg1;

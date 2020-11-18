@@ -29,6 +29,7 @@
 - (NSString *)homeScreenIconLocationForAppLayout:(SBAppLayout *)arg1;
 - (double)homeScreenIconScaleForAppLayout:(SBAppLayout *)arg1;
 - (BOOL)isAppLayoutHigherPriorityInTetheredSwitcher:(SBAppLayout *)arg1;
+- (BOOL)isAppLayoutVisibleInSwitcherBounds:(SBAppLayout *)arg1;
 - (BOOL)isDevicePad;
 - (BOOL)isFloatingDockFullyPresented;
 - (BOOL)isFloatingDockGesturePossible;

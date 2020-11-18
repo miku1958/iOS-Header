@@ -53,6 +53,7 @@
 - (void).cxx_destruct;
 - (id)_indexPathsForClip:(id)arg1;
 - (BOOL)_isZoomingIn:(double)arg1;
+- (void)_updateClipCollectionView;
 - (void)beginTimeScaleTrackingForPinchGesture:(id)arg1;
 - (void)changeTimeScaleForPinchGesture:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
@@ -62,7 +63,8 @@
 - (BOOL)isClipLocatedAtIndexPath:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (double)offsetForClip:(id)arg1;
-- (void)playbackEngineDidUpdateClips:(id)arg1;
+- (void)playbackEngine:(id)arg1 didRemoveClips:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateClips:(id)arg2;
 - (void)reloadClips:(id)arg1;
 - (double)scrubbingResolutionForClip:(id)arg1;
 - (id)selectedDateFromCell:(id)arg1 atCurrentOffset:(double)arg2;

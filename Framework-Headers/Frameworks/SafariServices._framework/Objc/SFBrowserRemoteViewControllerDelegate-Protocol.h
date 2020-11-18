@@ -21,6 +21,7 @@
 
 @optional
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didDecideCookieSharingForURL:(NSURL *)arg2 shouldCancel:(BOOL)arg3;
+- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didDecideShouldShowLinkPreviews:(BOOL)arg2;
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didResolveRedirectionWithURL:(NSURL *)arg2 appLink:(LSAppLink *)arg3;
 @end
 

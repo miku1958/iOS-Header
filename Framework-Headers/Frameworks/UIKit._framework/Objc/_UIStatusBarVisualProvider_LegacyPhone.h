@@ -6,35 +6,47 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider_Phone.h>
 
-@class NSDictionary;
+#import <UIKitCore/_UIStatusBarCellularItemTypeStringProvider-Protocol.h>
+
+@class NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_LegacyPhone : _UIStatusBarVisualProvider_Phone
+@interface _UIStatusBarVisualProvider_LegacyPhone : _UIStatusBarVisualProvider_Phone <_UIStatusBarCellularItemTypeStringProvider>
 {
     NSDictionary *_orderedDisplayItemPlacements;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
+@property (readonly) Class superclass;
 
 + (double)baselineOffset;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
++ (double)expandedBaselineOffset;
++ (id)expandedFont;
 + (double)height;
++ (struct CGSize)intrinsicLockScreenContentSizeForOrientation:(long long)arg1;
 + (id)normalFont;
 + (id)pillFont;
 + (struct CGSize)pillSize;
 + (double)regionSpacing;
 + (struct CGSize)smallPillSize;
++ (id)timeFont;
 + (BOOL)wantsExpandedLeadingPlacements;
 - (void).cxx_destruct;
 - (id)_backgroundActivityDetailRemovalAnimation;
 - (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (id)condensedFontForCellularType:(long long)arg1 defaultFont:(id)arg2 baselineOffset:(double *)arg3;
 - (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)setupInContainerView:(id)arg1;
+- (id)stringForCellularType:(long long)arg1 condensed:(BOOL)arg2;
 - (id)styleAttributesForStyle:(long long)arg1;
 - (void)updateDataForBackgroundActivity:(id)arg1;
 

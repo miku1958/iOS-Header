@@ -49,6 +49,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_faceTapped:(id)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (BOOL)_isAnalog;
@@ -58,6 +59,7 @@
 - (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (void)_legacyOutputTime:(id)arg1;
 - (void)_loadContentViews;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;

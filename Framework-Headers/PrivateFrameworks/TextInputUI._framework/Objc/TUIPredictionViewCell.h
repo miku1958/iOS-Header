@@ -60,6 +60,7 @@
 - (void).cxx_destruct;
 - (long long)_currentInterfaceOrientation;
 - (id)_displayLabelForCandidate:(id)arg1;
+- (BOOL)_isPad;
 - (BOOL)_isSecureCandidate:(id)arg1;
 - (BOOL)_renderConfigUsesDarkStyle:(id)arg1;
 - (void)_updateColorsForRenderConfig:(id)arg1 highlighted:(BOOL)arg2;

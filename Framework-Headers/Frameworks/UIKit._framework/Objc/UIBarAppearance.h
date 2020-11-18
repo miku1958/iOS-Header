@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, UIBlurEffect, UIColor, UIImage, _UIBarBackgroundAppearanceData;
+@class NSArray, UIBlurEffect, UIColor, UIImage, UIVibrancyEffect, _UIBarBackgroundAppearanceData;
 @protocol _UIBarAppearanceChangeObserver;
 
 @interface UIBarAppearance : NSObject <NSCopying, NSSecureCoding>
@@ -27,6 +27,7 @@
 @property (nonatomic) long long backgroundImageContentMode;
 @property (readonly, nonatomic) long long idiom; // @synthesize idiom=_idiom;
 @property (copy, nonatomic) UIColor *shadowColor;
+@property (copy, nonatomic) UIVibrancyEffect *shadowEffect;
 @property (strong, nonatomic) UIImage *shadowImage;
 
 + (BOOL)supportsSecureCoding;
@@ -51,8 +52,10 @@
 - (id)_stackedTabButtonAppearanceData;
 - (id)_tabLayoutAppearanceData;
 - (void)configureWithDefaultBackground;
+- (void)configureWithDefaultShadow;
 - (void)configureWithOpaqueBackground;
 - (void)configureWithTransparentBackground;
+- (void)configureWithoutShadow;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

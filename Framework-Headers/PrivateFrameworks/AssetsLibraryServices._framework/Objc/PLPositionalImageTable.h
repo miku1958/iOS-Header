@@ -15,6 +15,7 @@
     struct tagPLImageTableMemoryPool *_pool;
     struct os_unfair_lock_s _expansionLock;
     BOOL _isReadOnly;
+    BOOL _flushAfterWrite;
     BOOL _formatIsCropped;
     BOOL _readOnly;
     int _formatSideLen;
@@ -30,6 +31,7 @@
 @property (nonatomic) int descriptor; // @synthesize descriptor=_descriptor;
 @property (nonatomic) long long entryCapacity; // @synthesize entryCapacity=_entryCapacity;
 @property (nonatomic) unsigned long long entryLength; // @synthesize entryLength=_entryLength;
+@property (nonatomic) BOOL flushAfterWrite; // @synthesize flushAfterWrite=_flushAfterWrite;
 @property (readonly, nonatomic) PLImageFormat *format; // @synthesize format=_format;
 @property (nonatomic) BOOL formatIsCropped; // @synthesize formatIsCropped=_formatIsCropped;
 @property (nonatomic) int formatSideLen; // @synthesize formatSideLen=_formatSideLen;
@@ -49,6 +51,7 @@
 - (void)deleteEntryWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 uuid:(id)arg3;
 - (void)endThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(id)arg1 withToken:(id)arg2;
 - (long long)fileLength;
+- (void)flush;
 - (id)imageDataWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 dataOffset:(int *)arg8;
 - (id)initWithPath:(id)arg1 readOnly:(BOOL)arg2 format:(id)arg3;
 - (void)preheatDataForThumbnailIndexes:(id)arg1;

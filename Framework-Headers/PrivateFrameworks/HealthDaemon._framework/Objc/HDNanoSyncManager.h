@@ -102,7 +102,7 @@
 - (void)_queue_receiveAuthorizationCompleteRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveAuthorizationRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveAuthorizationResponse:(id)arg1 syncStore:(id)arg2;
-- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2;
+- (void)_queue_receiveChangeRequest:(id)arg1 syncStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_receiveChangeResponse:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_receiveRoutineRequest:(id)arg1 syncStore:(id)arg2;
 - (void)_queue_recieveCompanionUserNotificationRequest:(id)arg1 syncStore:(id)arg2;
@@ -145,6 +145,7 @@
 - (void)_syncQueue_forwardSpeculativeChangeSetIfNecessaryForChanges:(id)arg1 destinationSyncStores:(id)arg2 originSyncStore:(id)arg3;
 - (BOOL)_syncQueue_prepareForCompanionChangeWithStore:(id)arg1 error:(id *)arg2;
 - (id)_syncQueue_responseForChangesRequest:(id)arg1 syncStore:(id)arg2 statusCode:(int)arg3;
+- (void)_syncronouslyHandleIncomingRequest:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_unregisterForSyncTriggers;
 - (void)_userCharacteristicsDidChange:(id)arg1;
 - (void)_userPreferencesDidChange:(id)arg1;

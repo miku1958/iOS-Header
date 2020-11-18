@@ -14,11 +14,12 @@
 @interface WFSlotTemplateSlot : NSObject <WFSlotTemplateContent, NSCopying>
 {
     BOOL _enabled;
+    BOOL _invalid;
     BOOL _prefersNoWrapping;
     BOOL _standaloneTextAttachment;
-    BOOL _usesErrorAppearance;
     WFSlotIdentifier *_identifier;
-    NSString *_placeholder;
+    NSString *_localizedName;
+    NSString *_localizedPlaceholder;
     NSAttributedString *_contentAttributedString;
     long long _userInputInsertionIndex;
 }
@@ -29,26 +30,25 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) WFSlotIdentifier *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
+@property (nonatomic, getter=isInvalid) BOOL invalid; // @synthesize invalid=_invalid;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (copy, nonatomic) NSString *localizedPlaceholder; // @synthesize localizedPlaceholder=_localizedPlaceholder;
 @property (readonly, nonatomic, getter=isPopulated) BOOL populated;
 @property (nonatomic) BOOL prefersNoWrapping; // @synthesize prefersNoWrapping=_prefersNoWrapping;
 @property (nonatomic) BOOL standaloneTextAttachment; // @synthesize standaloneTextAttachment=_standaloneTextAttachment;
 @property (readonly) Class superclass;
 @property (nonatomic) long long userInputInsertionIndex; // @synthesize userInputInsertionIndex=_userInputInsertionIndex;
-@property (nonatomic) BOOL usesErrorAppearance; // @synthesize usesErrorAppearance=_usesErrorAppearance;
 
 + (id)addingSlotWithKey:(id)arg1;
-+ (id)slotWithPlaceholder:(id)arg1 key:(id)arg2;
++ (id)slotWithLocalizedName:(id)arg1 localizedPlaceholder:(id)arg2 key:(id)arg3;
 - (void).cxx_destruct;
-- (id)backgroundColorForControlState:(unsigned long long)arg1 withTintColor:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithPlaceholder:(id)arg1 identifier:(id)arg2;
+- (id)initWithLocalizedName:(id)arg1 localizedPlaceholder:(id)arg2 identifier:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)populateWithIcon:(id)arg1 string:(id)arg2;
 - (void)populateWithString:(id)arg1;
 - (void)populateWithVariable:(id)arg1;
-- (void)populateWithVariableString:(id)arg1;
-- (id)titleColorForControlState:(unsigned long long)arg1 withTintColor:(id)arg2;
+- (void)populateWithVariableString:(id)arg1 askVariableName:(id)arg2;
 
 @end
 

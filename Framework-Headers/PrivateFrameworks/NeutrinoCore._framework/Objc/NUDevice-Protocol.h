@@ -15,11 +15,11 @@
 @property (readonly, nonatomic) unsigned long long family;
 @property (readonly, nonatomic) BOOL hasMetalSupport;
 @property (readonly, nonatomic) BOOL hasOpenGLSupport;
-@property (readonly, nonatomic) id<NURenderer> lowPriorityRenderer;
 @property (readonly, nonatomic) NSString *model;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long openGLVirtualScreen;
-@property (readonly, nonatomic) id<NURenderer> renderer;
 
+- (id<NURenderer>)lowPriorityRenderer:(out id *)arg1;
+- (id<NURenderer>)renderer:(out id *)arg1;
 @end
 

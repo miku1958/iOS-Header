@@ -15,6 +15,7 @@
 @property (readonly, copy, nonatomic) NSString *avalancheUUID;
 @property (readonly, nonatomic) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, copy, nonatomic) NSDate *dateCreated;
+@property (readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) int embeddedThumbnailOffset;
 @property (readonly, copy, nonatomic) NSString *filename;

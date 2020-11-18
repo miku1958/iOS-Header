@@ -13,7 +13,6 @@
 
 @interface HMDCameraRecordingUploader : HMFObject <HMFLogging>
 {
-    double _maximumClipDuration;
     unsigned long long _activeUploadOperationCount;
     NSData *_videoInitData;
     double _targetFragmentDuration;
@@ -38,7 +37,6 @@
 @property double frameTimeOffset; // @synthesize frameTimeOffset=_frameTimeOffset;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
-@property (readonly) double maximumClipDuration; // @synthesize maximumClipDuration=_maximumClipDuration;
 @property (readonly) NSMutableArray *operations; // @synthesize operations=_operations;
 @property (readonly) Class superclass;
 @property double targetFragmentDuration; // @synthesize targetFragmentDuration=_targetFragmentDuration;

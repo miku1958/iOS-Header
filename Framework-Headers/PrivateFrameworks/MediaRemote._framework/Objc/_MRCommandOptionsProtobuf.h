@@ -41,6 +41,7 @@
     NSString *_sourceID;
     NSString *_stationURL;
     NSData *_systemAppPlaybackQueueData;
+    NSData *_userIdentityData;
     BOOL _beginSeek;
     BOOL _endSeek;
     BOOL _externalPlayerCommand;
@@ -115,6 +116,7 @@
 @property (readonly, nonatomic) BOOL hasStationURL;
 @property (readonly, nonatomic) BOOL hasSystemAppPlaybackQueueData;
 @property (nonatomic) BOOL hasTrackID;
+@property (readonly, nonatomic) BOOL hasUserIdentityData;
 @property (strong, nonatomic) NSString *insertAfterContentItemID; // @synthesize insertAfterContentItemID=_insertAfterContentItemID;
 @property (strong, nonatomic) NSData *languageOption; // @synthesize languageOption=_languageOption;
 @property (strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
@@ -144,6 +146,7 @@
 @property (strong, nonatomic) NSString *stationURL; // @synthesize stationURL=_stationURL;
 @property (strong, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
+@property (strong, nonatomic) NSData *userIdentityData; // @synthesize userIdentityData=_userIdentityData;
 
 - (void).cxx_destruct;
 - (int)StringAsRepeatMode:(id)arg1;

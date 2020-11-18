@@ -31,6 +31,8 @@
     CDUnknownBlockType _beginLyricsEventCallback;
     CDUnknownBlockType _endLyricsEventCallback;
     CDUnknownBlockType _playbackSessionCallback;
+    CDUnknownBlockType _playbackSessionMigrateBeginCallback;
+    CDUnknownBlockType _playbackSessionMigrateEndCallback;
     CDUnknownBlockType _playbackSessionMigrateRequestCallback;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
@@ -54,6 +56,8 @@
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueTransactionCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionCallback;
+@property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateBeginCallback;
+@property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateEndCallback;
 @property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
 @property (nonatomic) unsigned int routeDiscoveryMode;
 @property (nonatomic) float volume;

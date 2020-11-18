@@ -17,12 +17,11 @@
     SBApplicationSceneView *_temporaryAppView;
     SBApplicationSceneView *_temporarySideAppView;
     SBBestAppSuggestion *_bestAppSuggestion;
-    BOOL _asynchronousRenderingDisabled;
+    BOOL _liveContentRasterizationDisabled;
     id<SBSwitcherContentViewControllerDataSource> _dataSource;
     long long _contentOrientation;
 }
 
-@property (nonatomic, getter=isAsynchronousRenderingDisabled) BOOL asynchronousRenderingDisabled; // @synthesize asynchronousRenderingDisabled=_asynchronousRenderingDisabled;
 @property (strong, nonatomic) SBBestAppSuggestion *bestAppSuggestion; // @synthesize bestAppSuggestion=_bestAppSuggestion;
 @property (readonly, nonatomic) BOOL canInterruptActiveTransition;
 @property (nonatomic) long long contentOrientation; // @synthesize contentOrientation=_contentOrientation;
@@ -32,6 +31,7 @@
 @property (weak, nonatomic) id<SBSwitcherContentViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isLiveContentRasterizationDisabled) BOOL liveContentRasterizationDisabled; // @synthesize liveContentRasterizationDisabled=_liveContentRasterizationDisabled;
 @property (nonatomic, getter=isShowingModifierTimeline) BOOL showModifierTimeline;
 @property (readonly) Class superclass;
 
@@ -39,31 +39,30 @@
 - (id)_appLayouts;
 - (void)acquiredViewController:(id)arg1 forTransientOverlayAppLayout:(id)arg2;
 - (id)animationControllerForTransitionRequest:(id)arg1;
-- (id)dispatchAndReturnTetheredInsertionEventIfNeededWithID:(id)arg1 phase:(unsigned long long)arg2;
-- (id)dispatchAndReturnTetheredRemovalEventIfNeededWithID:(id)arg1 phase:(unsigned long long)arg2;
+- (id)dispatchAndReturnTetheredInsertionEventWithID:(id)arg1 phase:(unsigned long long)arg2;
+- (id)dispatchAndReturnTetheredRemovalEventWithID:(id)arg1 phase:(unsigned long long)arg2;
 - (id)enterAppExposeForBundleID:(id)arg1;
 - (void)failMultitaskingGesturesForReason:(id)arg1;
 - (id)handleGestureDidBegin:(id)arg1;
 - (id)handleGestureDidEnd:(id)arg1;
 - (id)handleGestureDidUpdate:(id)arg1;
 - (void)handleModifierAction:(id)arg1;
-- (BOOL)hasInteractiveContentAtBottomOfScreen;
 - (BOOL)isStatusBarHiddenForAppLayout:(id)arg1;
 - (BOOL)isUserInteractionEnabled;
 - (BOOL)isWindowVisible;
 - (double)minimumHomeScreenScale;
 - (void)noteAppLayoutsDidChange;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
-- (id)noteModelDidMutateForInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
+- (id)noteModelDidMutateForInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2 willAnimate:(BOOL)arg3;
 - (id)noteModelDidMutateForRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 animated:(BOOL)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)performAnimatedInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)prepareAnimatedInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;
 - (id)prepareAnimatedRemovalOfAppLayout:(id)arg1 forReason:(long long)arg2;
 - (void)relinquishTransientOverlayViewController:(id)arg1;
-- (void)respondToInAppStatusBarRequestedHiddenUpdate;
+- (void)respondToInAppStatusBarRequestedHiddenUpdateAnimated:(BOOL)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAddAppLayoutToFront:(id)arg1 forTransitionWithContext:(id)arg2 transitionCompleted:(BOOL)arg3;
 - (BOOL)shouldAnimateInsertionOfAppLayouts:(id)arg1 atIndexes:(id)arg2;

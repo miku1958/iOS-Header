@@ -24,6 +24,7 @@
 - (id)init;
 - (id)initWithSourceServiceItem:(id)arg1 home:(id)arg2;
 - (BOOL)isAccessory;
+- (BOOL)isAccessoryDisplayedAsIndividualTiles;
 - (BOOL)isBridge;
 - (BOOL)isCamera;
 - (BOOL)isContainedInAParent;

@@ -10,7 +10,7 @@
 
 @interface TSShareButtonWindowToolbarItemHandler : NSObject
 {
-    MISSING_TYPE *shareAction;
+    MISSING_TYPE *activityProviderAccessor;
     MISSING_TYPE *isEnabled;
 }
 
@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithShareAction:(CDUnknownBlockType)arg1;
+- (id)initWithActivityProviderAccessor:(CDUnknownBlockType)arg1;
 - (void)installHandler;
 - (void)uninstallHandler;
 

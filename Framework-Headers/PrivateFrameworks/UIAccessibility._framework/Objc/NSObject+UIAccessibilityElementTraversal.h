@@ -140,7 +140,6 @@
 - (id)_accessibilityContextDescriptors;
 - (id)_accessibilityContextDrawingAnnotations;
 - (unsigned int)_accessibilityContextId;
-- (id)_accessibilityContextMenuActionForElement:(id)arg1;
 - (id)_accessibilityControlDescendantWithAction:(SEL)arg1;
 - (id)_accessibilityControlDescendantWithTarget:(id)arg1;
 - (void)_accessibilityConvertStyleAttributesToAccessibility:(id)arg1;
@@ -206,6 +205,7 @@
 - (id)_accessibilityElementHelp;
 - (BOOL)_accessibilityElementShouldBeInvalid;
 - (id)_accessibilityElementStoredUserLabel;
+- (id)_accessibilityElementToFocusForAppearanceScreenChange;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (id)_accessibilityElements;
 - (void)_accessibilityElementsDescriptionProcess:(id)arg1 tabCount:(long long)arg2;
@@ -711,7 +711,8 @@
 - (BOOL)_accessibilityShouldUseFallbackForVisibleContentInset;
 - (BOOL)_accessibilityShouldUseSupplementaryViews;
 - (BOOL)_accessibilityShouldUseViewHierarchyForFindingScrollParent;
-- (BOOL)_accessibilityShowContextMenu;
+- (BOOL)_accessibilityShowContextMenuForElement:(id)arg1 targetPointValue:(id)arg2;
+- (BOOL)_accessibilityShowContextMenuWithTargetPointValue:(id)arg1;
 - (void)_accessibilityShowEditingHUD;
 - (id)_accessibilitySiblingViewsForViews:(id)arg1;
 - (BOOL)_accessibilitySiblingWithAncestor:(id)arg1 isFirst:(BOOL)arg2 isLast:(BOOL)arg3;

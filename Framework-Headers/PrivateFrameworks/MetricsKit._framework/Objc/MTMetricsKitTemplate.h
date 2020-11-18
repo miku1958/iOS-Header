@@ -26,8 +26,10 @@
 @property (strong, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property (strong, nonatomic) MTUtils *utils; // @synthesize utils=_utils;
 
++ (id)kitWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
 - (void).cxx_destruct;
 - (id)initWithTopic:(id)arg1;
+- (id)initWithTopic:(id)arg1 bagProfile:(id)arg2 profileVersion:(id)arg3;
 - (id)initWithTopic:(id)arg1 delegatePackage:(id)arg2;
 
 @end

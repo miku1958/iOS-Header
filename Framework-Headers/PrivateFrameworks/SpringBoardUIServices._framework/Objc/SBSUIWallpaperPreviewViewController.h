@@ -31,7 +31,6 @@
     double _stillTimeInVideo;
     SBFWallpaperOptions *_options;
     NSDictionary *_optionsDict;
-    BOOL _disableSegmentedControl;
     BOOL _enableButtons;
     BOOL _disableContents;
     SBSUIProgressHUD *_hud;

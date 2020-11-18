@@ -8,6 +8,7 @@
 
 @interface HKPointLabelEngine : NSObject
 {
+    BOOL _isLabelShiftingEnabled;
     BOOL _lastRenderOverlapped;
     CDUnknownBlockType _sizeForValue;
     long long _state;
@@ -24,6 +25,7 @@
 @property (nonatomic) CDStruct_d6e4b0bd currentRenderingData; // @synthesize currentRenderingData=_currentRenderingData;
 @property (nonatomic) struct CGPoint currentTransformedPoint; // @synthesize currentTransformedPoint=_currentTransformedPoint;
 @property (nonatomic) struct CGPoint currentUntransformedPoint; // @synthesize currentUntransformedPoint=_currentUntransformedPoint;
+@property (nonatomic) BOOL isLabelShiftingEnabled; // @synthesize isLabelShiftingEnabled=_isLabelShiftingEnabled;
 @property (nonatomic) BOOL lastRenderOverlapped; // @synthesize lastRenderOverlapped=_lastRenderOverlapped;
 @property (nonatomic) CDStruct_d6e4b0bd previousRenderingData; // @synthesize previousRenderingData=_previousRenderingData;
 @property (nonatomic) struct CGPoint previousTransformedPoint; // @synthesize previousTransformedPoint=_previousTransformedPoint;
@@ -34,7 +36,7 @@
 - (void).cxx_destruct;
 - (CDStruct_d6e4b0bd)_computeRenderingDataForValue:(double)arg1 transformedPoint:(struct CGPoint)arg2 previousSlope:(long long)arg3 nextSlope:(long long)arg4 previousOptions:(long long)arg5;
 - (long long)_slopeForPoint:(struct CGPoint)arg1 otherPoint:(struct CGPoint)arg2;
-- (id)initWithBoundingRegion:(struct CGRect)arg1 labelSizeBlock:(CDUnknownBlockType)arg2;
+- (id)initWithBoundingRegion:(struct CGRect)arg1 isLabelShiftingEnabled:(BOOL)arg2 labelSizeBlock:(CDUnknownBlockType)arg3;
 - (BOOL)processLastPoint;
 - (BOOL)processTransformedPoint:(struct CGPoint)arg1 untransformedPoint:(struct CGPoint)arg2;
 - (CDStruct_d6e4b0bd)renderingData;

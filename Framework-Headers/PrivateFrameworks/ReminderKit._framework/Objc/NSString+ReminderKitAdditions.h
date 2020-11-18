@@ -28,6 +28,8 @@
 - (id)initWithCRCoder:(id)arg1;
 - (void)mergeWith:(id)arg1;
 - (void)realizeLocalChangesIn:(id)arg1;
+- (id)rem_addingMailto;
+- (id)rem_addingTel;
 - (BOOL)rem_hasMailto;
 - (BOOL)rem_hasPrefixCaseInsensitive:(id)arg1;
 - (BOOL)rem_hasTel;

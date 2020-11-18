@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HMHome, WFActionRegistry;
+@class HMHome, WFActionDrawerResults, WFActionRegistry;
 
 @interface WFActionDrawerResultsController : NSObject
 {
     HMHome *_home;
     WFActionRegistry *_actionRegistry;
+    WFActionDrawerResults *_cachedSiriSuggestionsResults;
 }
 
 @property (readonly, nonatomic) WFActionRegistry *actionRegistry; // @synthesize actionRegistry=_actionRegistry;
+@property (readonly, nonatomic) WFActionDrawerResults *cachedSiriSuggestionsResults; // @synthesize cachedSiriSuggestionsResults=_cachedSiriSuggestionsResults;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 
 + (id)localizedAppNames;
@@ -24,7 +26,7 @@
 - (BOOL)filteringForResidentCompatibleActions;
 - (void)getDeveloperSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getResultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)getSiriSuggestedGroupedResultsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getSiriSuggestedGroupedResultsRefreshingCache:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSiriSuggestedResultsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)homeSectionsIncludingRelatedActions:(BOOL)arg1;
 - (id)initWithActionRegistry:(id)arg1;

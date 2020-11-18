@@ -34,6 +34,7 @@
 @property (readonly, getter=isMigrating) BOOL migrating;
 @property (readonly, nonatomic) id<HMFSystemInfoMigrationDataSource> migrationDataSource; // @synthesize migrationDataSource=_migrationDataSource;
 @property (readonly, copy) NSString *model;
+@property (readonly, copy) NSString *modelIdentifier;
 @property (readonly, copy) NSString *name;
 @property (readonly, nonatomic) id<HMFSystemInfoNameDataSource> nameDataSource; // @synthesize nameDataSource=_nameDataSource;
 @property (readonly) long long productClass;

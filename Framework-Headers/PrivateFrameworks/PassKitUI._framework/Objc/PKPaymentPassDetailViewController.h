@@ -30,7 +30,7 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
 
-@class CLInUseAssertion, CNContact, NSArray, NSDateFormatter, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSNumberFormatter, NSObject, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKAnimatedNavigationBarTitleView, PKBusinessChatController, PKDashboardTransactionFetcher, PKExpressPassController, PKLinkedApplication, PKPassFaceViewRendererState, PKPassHeaderView, PKPassPresentationContext, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentPass, PKPaymentPassDetailActivationFooterView, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentActionViewController, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentPreferences, PKPeerPaymentWebService, PKPhysicalCardActionController, PKPhysicalCardController, PKSettingTableCell, PKSpinnerHeaderView, PKTransitBalanceModel, PKTransitPassProperties, UIColor, UIImageView, UIRefreshControl, UISegmentedControl, UITableViewHeaderFooterView, UIView;
+@class CLInUseAssertion, CNContact, NSArray, NSDateFormatter, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSNumberFormatter, NSObject, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKAnimatedNavigationBarTitleView, PKDashboardTransactionFetcher, PKExpressPassController, PKLinkedApplication, PKPassFaceViewRendererState, PKPassHeaderView, PKPassPresentationContext, PKPaymentApplication, PKPaymentBalanceReminder, PKPaymentPass, PKPaymentPassDetailActivationFooterView, PKPaymentTransactionCellController, PKPaymentTransactionDetailsFactory, PKPaymentVerificationController, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentAccountResolutionController, PKPeerPaymentActionViewController, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentPreferences, PKPeerPaymentWebService, PKPhysicalCardActionController, PKPhysicalCardController, PKSettingTableCell, PKSpinnerHeaderView, PKTransitBalanceModel, PKTransitPassProperties, UIColor, UIImageView, UIRefreshControl, UISegmentedControl, UITableViewHeaderFooterView, UIView;
 @protocol OS_dispatch_group, OS_dispatch_source, PKPassDeleteHandler, PKPassLibraryDataProvider, PKPaymentDataProvider;
 
 @interface PKPaymentPassDetailViewController : PKSectionTableViewController <MFMailComposeViewControllerDelegate, PKPeerPaymentContactResolverDelegate, PKPeerPaymentActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPhysicalCardActionControllerDelegate, PKCreditAccountPaymentDetailsViewControllerDelegate, PKAccountAutomaticPaymentsControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKAccountBillPaymentObserver, PKAccountServiceObserver, CNAvatarViewDelegate, PKPaymentDataProviderDelegate, PKPaymentVerificationControllerDelegate, PKPassHeaderViewDelegate, PKBalanceDetailsViewControllerDelegate, _UIContextMenuInteractionDelegate, PKPaymentPassActionWidgetViewDelegate, PKPerformActionViewControllerDelegate, PKAMPEnrollmentManagerObserver, UITableViewDataSource, UITableViewDelegate, PSStateRestoration, PKPaymentSetupDelegate>
@@ -125,7 +125,6 @@
     NSArray *_recurringPayments;
     NSArray *_scheduledPayments;
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionControllerForAccountService;
-    PKBusinessChatController *_businessChatController;
     NSIndexPath *_loadingPeerPaymentAccountActionIndexPath;
     PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     unsigned long long _peerPaymentAccountResolution;
@@ -166,6 +165,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_accountInGoodStateForAMPEligbilityCheck;
+- (id)_accountResolutionController;
 - (id)_accountServiceBankAccountsCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_accountServiceCardNumbersCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_accountServiceCreditDetailsCellForRowIndex:(long long)arg1 tableView:(id)arg2;
@@ -226,6 +226,7 @@
 - (void)_didSelectCreditDetailsCell:(id)arg1;
 - (void)_didSelectDeleteCard;
 - (void)_didSelectFixPeerPaymentAtIndexPath:(id)arg1;
+- (void)_didSelectInstallmentPlansAtIndexPath:(id)arg1;
 - (void)_didSelectMakePayment;
 - (void)_didSelectNetworkBenefitsCell;
 - (void)_didSelectPassOperationsSectionAtIndexPath:(id)arg1;
@@ -271,6 +272,7 @@
 - (id)_infoCellWithDescription:(id)arg1 forTableView:(id)arg2;
 - (id)_infoCellWithPrimaryText:(id)arg1 detailText:(id)arg2 cellStyle:(long long)arg3 forTableView:(id)arg4;
 - (id)_infoCellWithPrimaryText:(id)arg1 detailText:(id)arg2 cellStyle:(long long)arg3 reuseIdentifier:(id)arg4 forTableView:(id)arg5;
+- (id)_installmentsPlanCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)_isDeletingPass;
 - (BOOL)_isJapaneseRegion;
 - (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;

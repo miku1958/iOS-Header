@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)init:(double)arg1 layout:(id)arg2 order:(long long)arg3;
+- (double)touchDownTimestamp;
+- (double)touchUpTimestamp;
 
 @end
 

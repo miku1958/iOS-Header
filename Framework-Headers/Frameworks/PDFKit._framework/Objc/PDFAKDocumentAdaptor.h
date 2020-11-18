@@ -65,7 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)pdfDocument:(id)arg1 didInsertPage:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didRemovePage:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)pdfDocument:(id)arg1 didReplacePagePlaceholder:(id)arg2 atIndex:(unsigned long long)arg3 withPage:(id)arg4;
-- (void)pdfDocumentDidRemoveAllPagesOrPlaceholders;
+- (void)pdfDocumentDidRemoveAllPagesOrPlaceholders:(id)arg1;
 - (void)penStrokeCompletedForAnnotationController:(id)arg1;
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;

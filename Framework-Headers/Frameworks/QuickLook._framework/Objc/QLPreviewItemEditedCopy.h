@@ -15,6 +15,7 @@
     FPSandboxingURLWrapper *_urlWrapper;
     FPSandboxingURLWrapper *_directoryURLWrapper;
     NSUUID *_uuid;
+    unsigned long long _version;
 }
 
 @property (readonly, nonatomic) NSURL *createdContainerTemporaryURL;
@@ -23,9 +24,11 @@
 @property (readonly, nonatomic) NSURL *url;
 @property (strong, nonatomic) FPSandboxingURLWrapper *urlWrapper; // @synthesize urlWrapper=_urlWrapper;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)bumpVersion;
 - (BOOL)containerStillExists;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

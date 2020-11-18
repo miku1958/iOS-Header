@@ -60,10 +60,12 @@
 - (void)onqueue_updateMetaDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onqueue_updateSharingManagementAssetIfNecessary;
 - (void)onqueue_validateProductTypeInQuery:(id)arg1;
+- (void)onqueue_variantsMatchingQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)pathInLocalCache:(id)arg1;
 - (void)purgeAssetsMatchingQuery:(id)arg1;
 - (void)storeEntries:(id)arg1 inLocalCacheWithFileName:(id)arg2;
 - (void)storeProductMappingsInLocalCache:(id)arg1;
+- (void)variantsMatchingQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

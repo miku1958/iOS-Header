@@ -7,18 +7,20 @@
 #import <PhotosUICore/PXGLayout.h>
 
 @class NSMutableIndexSet;
-@protocol PXGAssetBadgeDecorationSource, PXGDebugDecorationSource, PXGDragDecorationSource, PXGHighlightDecorationSource, PXGLayoutContentSource, PXGSelectionDecorationSource;
+@protocol PXGAssetBadgeDecorationSource, PXGCaptionDecorationSource, PXGDebugDecorationSource, PXGDragDecorationSource, PXGHighlightDecorationSource, PXGLayoutContentSource, PXGSelectionDecorationSource;
 
 @interface PXGDecoratingLayout : PXGLayout
 {
     CDStruct_d97c9657 _updateFlags;
     BOOL _isUpdatingDecoratedLayout;
     NSMutableIndexSet *_invalidatedDecoratedSpriteIndexes;
+    BOOL _wantsCaptionDecorations;
     long long _selectionDecorationStyle;
     unsigned int _numberOfDecoratingSpritesPerDecoratedSprite;
     PXGLayout *_decoratedLayout;
     id<PXGLayoutContentSource> _decorationSource;
     id<PXGAssetBadgeDecorationSource> _assetBadgeDecorationSource;
+    id<PXGCaptionDecorationSource> _captionDecorationSource;
     id<PXGSelectionDecorationSource> _selectionDecorationSource;
     id<PXGHighlightDecorationSource> _highlightDecorationSource;
     id<PXGDragDecorationSource> _dragDecorationSource;
@@ -26,6 +28,7 @@
 }
 
 @property (readonly, weak, nonatomic) id<PXGAssetBadgeDecorationSource> assetBadgeDecorationSource; // @synthesize assetBadgeDecorationSource=_assetBadgeDecorationSource;
+@property (readonly, weak, nonatomic) id<PXGCaptionDecorationSource> captionDecorationSource; // @synthesize captionDecorationSource=_captionDecorationSource;
 @property (readonly, nonatomic) unsigned int debugDecorationIndex;
 @property (readonly, weak, nonatomic) id<PXGDebugDecorationSource> debugDecorationSource; // @synthesize debugDecorationSource=_debugDecorationSource;
 @property (strong, nonatomic) PXGLayout *decoratedLayout; // @synthesize decoratedLayout=_decoratedLayout;

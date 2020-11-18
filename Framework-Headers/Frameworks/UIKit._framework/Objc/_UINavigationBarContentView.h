@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_currentCompletions;
     BOOL _backButtonHidden;
     BOOL _leadingItemsSupplementBackItem;
+    NSDictionary *_effectiveTitleAttributes;
     id<_UINavigationBarContentViewDelegate> _delegate;
     UIBarButtonItem *_backButtonItem;
     NSArray *_leadingBarButtonItems;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UINavigationBarContentViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) _UIBarButtonItemData *doneItemAppearance;
+@property (readonly, nonatomic) NSDictionary *effectiveTitleAttributes; // @synthesize effectiveTitleAttributes=_effectiveTitleAttributes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double inlineTitleViewAlpha; // @synthesize inlineTitleViewAlpha=_inlineTitleViewAlpha;
 @property (readonly, nonatomic) _UINavigationBarContentViewLayout *layout; // @synthesize layout=_layout;
@@ -109,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (void)_setupTrailingButtonBarAnimated:(BOOL)arg1;
 - (void)_updateLayoutMarginsForLayout:(id)arg1;
 - (void)adoptLayout:(id)arg1;
+- (void)adoptNewLayout;
 - (void)backButtonTitleDidChange;
 - (id)backIndicatorImage;
 - (long long)barType;

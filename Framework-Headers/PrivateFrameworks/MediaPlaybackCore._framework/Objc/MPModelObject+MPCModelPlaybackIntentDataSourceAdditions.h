@@ -8,7 +8,8 @@
 
 @interface MPModelObject (MPCModelPlaybackIntentDataSourceAdditions)
 + (id)mpc_remotePlaybackQueueRequiredProperties;
-+ (id)mqf_requiredPlaybackProperties;
++ (id)mqf_requiredItemPlaybackProperties;
++ (id)mqf_requiredSectionPlaybackProperties;
 - (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
 - (id)mpc_protoContainerRepresentation;
 - (id)mpc_protoItemRepresentation;

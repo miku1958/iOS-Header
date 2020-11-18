@@ -93,6 +93,7 @@
 - (id)_electrocardiogramFirstOnboardingCompletedDate;
 - (void)_featureAvailabilityConditionsDidUpdate;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2;
+- (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2 useCache:(BOOL)arg3;
 - (void)_localeDidChange;
 - (BOOL)_meetsMinimumAgeRequirementForAtrialFibrillationDetectionWithCurrentDate:(id)arg1;
 - (BOOL)_meetsMinimumAgeRequirementForElectrocardiogramWithCurrentDate:(id)arg1;
@@ -119,6 +120,7 @@
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)isElectrocardiogramOnboardingCompletedNoCache;
 - (BOOL)isHeartAgeGatingEnabledOnActiveWatchWithCurrentDate:(id)arg1;
 - (BOOL)isHeartAgeGatingEnabledOnWatch:(id)arg1 currentDate:(id)arg2;
 - (void)notifyHeartRhythmAvailabilityDidUpdate;

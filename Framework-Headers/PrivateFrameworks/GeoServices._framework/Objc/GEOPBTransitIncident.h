@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPBTransitIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_affectedEntitys;
     unsigned long long _incidentMuid;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     NSString *_messageString;
     NSString *_shortDescriptionString;
     NSString *_titleString;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _creationDatetime;
     unsigned int _endDatetime;
     int _iconEnum;
@@ -127,6 +129,8 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)iconEnumAsString:(int)arg1;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

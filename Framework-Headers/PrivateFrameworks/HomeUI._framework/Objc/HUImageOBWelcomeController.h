@@ -22,6 +22,7 @@
 - (void)_viewDidUpdateContent;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentImage:(id)arg4;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentView:(id)arg4;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

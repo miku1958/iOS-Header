@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <C2/NSCopying-Protocol.h>
+#import <C2/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSString, NSURL;
 
-@interface C2MetricOptions : NSObject
+@interface C2MetricOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _anonymous;
     BOOL _pushTrigger;
-    unsigned int _randomValue;
+    unsigned int _reportFrequencyRandomValue;
     NSURL *_c2MetricsEndpoint;
     unsigned long long _reportFrequency;
     unsigned long long _reportFrequencyBase;
@@ -31,31 +34,38 @@
 }
 
 @property (nonatomic) BOOL anonymous; // @synthesize anonymous=_anonymous;
-@property (strong, nonatomic) NSURL *c2MetricsEndpoint; // @synthesize c2MetricsEndpoint=_c2MetricsEndpoint;
-@property (strong, nonatomic) NSArray *clientOperations; // @synthesize clientOperations=_clientOperations;
-@property (strong, nonatomic) NSString *clientProcessBundleId; // @synthesize clientProcessBundleId=_clientProcessBundleId;
-@property (strong, nonatomic) NSString *clientProcessVersion; // @synthesize clientProcessVersion=_clientProcessVersion;
-@property (strong, nonatomic) NSString *container; // @synthesize container=_container;
+@property (copy, nonatomic) NSURL *c2MetricsEndpoint; // @synthesize c2MetricsEndpoint=_c2MetricsEndpoint;
+@property (copy, nonatomic) NSArray *clientOperations; // @synthesize clientOperations=_clientOperations;
+@property (copy, nonatomic) NSString *clientProcessBundleId; // @synthesize clientProcessBundleId=_clientProcessBundleId;
+@property (copy, nonatomic) NSString *clientProcessVersion; // @synthesize clientProcessVersion=_clientProcessVersion;
+@property (copy, nonatomic) NSString *container; // @synthesize container=_container;
 @property (copy, nonatomic) CDUnknownBlockType didCompleteWithError; // @synthesize didCompleteWithError=_didCompleteWithError;
-@property (strong, nonatomic) NSString *environment; // @synthesize environment=_environment;
+@property (copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) NSString *headerValueForTriggers;
-@property (strong, nonatomic) NSArray *operationGroups; // @synthesize operationGroups=_operationGroups;
+@property (copy, nonatomic) NSArray *operationGroups; // @synthesize operationGroups=_operationGroups;
 @property (nonatomic) BOOL pushTrigger; // @synthesize pushTrigger=_pushTrigger;
-@property (nonatomic) unsigned int randomValue; // @synthesize randomValue=_randomValue;
 @property (nonatomic) unsigned long long reportClientOperationFrequency; // @synthesize reportClientOperationFrequency=_reportClientOperationFrequency;
 @property (nonatomic) unsigned long long reportClientOperationFrequencyBase; // @synthesize reportClientOperationFrequencyBase=_reportClientOperationFrequencyBase;
 @property (nonatomic) unsigned long long reportFrequency; // @synthesize reportFrequency=_reportFrequency;
 @property (nonatomic) unsigned long long reportFrequencyBase; // @synthesize reportFrequencyBase=_reportFrequencyBase;
+@property (nonatomic) unsigned int reportFrequencyRandomValue; // @synthesize reportFrequencyRandomValue=_reportFrequencyRandomValue;
 @property (nonatomic) unsigned long long reportOperationGroupFrequency; // @synthesize reportOperationGroupFrequency=_reportOperationGroupFrequency;
 @property (nonatomic) unsigned long long reportOperationGroupFrequencyBase; // @synthesize reportOperationGroupFrequencyBase=_reportOperationGroupFrequencyBase;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_reportMetric; // @synthesize testBehavior_reportMetric=_testBehavior_reportMetric;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)clientOperationTriggered:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)generateCloudKitInfo;
 - (int)generateTriggerWithResponseHeader:(unsigned char)arg1;
+- (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)operationGroupTriggered:(id)arg1;
+- (void)rollReportFrequencyRandomValue;
 
 @end
 

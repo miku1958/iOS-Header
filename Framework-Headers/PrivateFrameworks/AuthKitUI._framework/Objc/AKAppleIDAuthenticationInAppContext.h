@@ -49,7 +49,6 @@
 
 - (void).cxx_destruct;
 - (void)_assertValidPresentingViewController;
-- (void)_cleanUpBasicLogin;
 - (void)_cleanUpBasicLoginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_contextDidDismissLoginAlertController;
 - (void)_contextDidEndPresentingSecondaryUI;

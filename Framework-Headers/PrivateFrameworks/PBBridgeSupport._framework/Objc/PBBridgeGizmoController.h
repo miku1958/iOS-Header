@@ -49,7 +49,6 @@
 @property (copy, nonatomic) CDUnknownBlockType updateLanguageCompletion; // @synthesize updateLanguageCompletion=_updateLanguageCompletion;
 @property (copy, nonatomic) CDUnknownBlockType updateRegionCompletion; // @synthesize updateRegionCompletion=_updateRegionCompletion;
 
-+ (id)licensePathForAppleLanguages:(id)arg1;
 + (id)prepareOfflineTermsResponse:(id)arg1;
 + (id)warrantyFilePathForLanguageCode:(id)arg1 countryCode:(id)arg2;
 - (void).cxx_destruct;

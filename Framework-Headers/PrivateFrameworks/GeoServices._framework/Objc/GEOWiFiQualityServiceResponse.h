@@ -13,9 +13,11 @@
 @interface GEOWiFiQualityServiceResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_locationResults;
     NSMutableArray *_networkResults;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _statusCode;
     struct {
         unsigned int has_statusCode:1;
@@ -50,6 +52,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationResultsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationResultsCount;

@@ -6,33 +6,39 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 #import <HealthToolbox/HKSwitchTableViewCellDelegate-Protocol.h>
 
-@class HKCharacteristicType, HKDisplayType, HKHealthStore, HKSourceListDataSource, NSArray, NSDictionary, WDDisplayTypeDescriptionTableFooterView, WDProfile;
+@class HKCharacteristicType, HKDisplayType, HKHealthStore, HKSourceListDataSource, NSDictionary, WDDisplayTypeDescriptionTableFooterView, WDProfile;
 
 __attribute__((visibility("hidden")))
-@interface WDProfileSharingTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate>
+@interface WDProfileSharingTableViewController : HKTableViewController <HKSwitchTableViewCellDelegate, HKSourceListDataSourceObserver>
 {
     WDProfile *_profile;
     HKHealthStore *_healthStore;
-    HKSourceListDataSource *_sourceDataSource;
     HKCharacteristicType *_characteristicType;
-    NSArray *_characteristicSharingSources;
     NSDictionary *_characteristicAuthorizationRecordsBySource;
     WDDisplayTypeDescriptionTableFooterView *_footerView;
     HKDisplayType *_displayType;
     BOOL _isLoaded;
+    HKSourceListDataSource *_sourceListDataSource;
+    NSDictionary *_sourceToAuthRecord;
 }
+
+@property (strong, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
+@property (copy, nonatomic) NSDictionary *sourceToAuthRecord; // @synthesize sourceToAuthRecord=_sourceToAuthRecord;
 
 - (void).cxx_destruct;
 - (void)_adjustFooterHeight;
-- (void)_fetchAuthorizationRecordsBySourceForCharacteristic:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_fetchAuthorizationRecordsBySourceForCharacteristic:(id)arg1;
 - (void)_gatherDataAndRefreshUI;
-- (id)_sortedSourcesFromAuthorizationRecords:(id)arg1;
+- (id)_sourceForIndexPath:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithProfile:(id)arg1 characteristicType:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)sourceListDataSourceDidUpdate:(id)arg1;
 - (void)switchCellValueChanged:(id)arg1 value:(BOOL)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

@@ -10,9 +10,12 @@
 {
 }
 
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)allowsHeaderViewsToFloat;
+- (void)didMoveToWindow;
 - (id)init;
 - (void)safeAreaInsetsDidChange;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end
 

@@ -9,12 +9,17 @@
 @interface HMIDenseOpticalFlowMotionDetection : HMIMotionDetection
 {
     struct __CVBuffer *_pixelBufferUV;
+    struct CGSize _size;
 }
 
 @property struct __CVBuffer *pixelBufferUV; // @synthesize pixelBufferUV=_pixelBufferUV;
+@property (readonly) struct CGSize size; // @synthesize size=_size;
 
-- (id)initWithBoundingBox:(struct CGRect)arg1 pixelBufferUV:(struct __CVBuffer *)arg2;
-- (BOOL)isSubBoundingBoxStatic:(struct CGRect)arg1 forMetric:(long long)arg2;
+- (BOOL)applyEventTypeAndCheckIfSubBoundingIsStatic:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
+- (id)classMotionScoreMap;
+- (id)classPaddingMap;
+- (id)initWithBoundingBox:(struct CGRect)arg1 size:(struct CGSize)arg2 pixelBufferUV:(struct __CVBuffer *)arg3;
+- (float)scoreForSubBoundingBox:(struct CGRect)arg1 forMetric:(long long)arg2;
 
 @end
 

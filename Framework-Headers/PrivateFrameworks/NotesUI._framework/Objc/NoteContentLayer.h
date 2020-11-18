@@ -58,8 +58,8 @@
 - (BOOL)canInsertImagesInNoteHTMLEditorView:(id)arg1;
 - (BOOL)canResignFirstResponder;
 - (void)chosenUTI:(id *)arg1 andChosenMIMEType:(id *)arg2 forItemProvider:(id)arg3;
-- (id)contentAsPasteboardItems;
 - (id)contentAsPlainText:(BOOL)arg1;
+- (void)copyNoteHTMLToPasteboard;
 - (void)dealloc;
 - (void)didChangeFullSizeClass;
 - (void)flashScrollIndicators;
@@ -78,6 +78,7 @@
 - (void)noteHTMLEditorView:(id)arg1 addAttachmentItemProviders:(id)arg2;
 - (id)noteHTMLEditorView:(id)arg1 attachmentPresentationForContentID:(id)arg2;
 - (BOOL)noteHTMLEditorView:(id)arg1 canAddAttachmentItemProviders:(id)arg2;
+- (id)noteHTMLEditorView:(id)arg1 createAttachmentPresentationWithFileWrapper:(id)arg2 mimeType:(id)arg3;
 - (void)noteHTMLEditorView:(id)arg1 didAddAttachmentForMimeType:(id)arg2 filename:(id)arg3 data:(id)arg4;
 - (void)noteHTMLEditorView:(id)arg1 didInvokeFormattingCalloutOption:(long long)arg2;
 - (void)noteHTMLEditorView:(id)arg1 didInvokeStyleFormattingOption:(long long)arg2;

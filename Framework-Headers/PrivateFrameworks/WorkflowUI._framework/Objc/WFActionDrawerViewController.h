@@ -76,8 +76,8 @@
 - (void)searchBarTextDidBeginEditing:(id)arg1;
 - (id)searchField;
 - (void)searchResultsViewController:(id)arg1 didSelectAction:(id)arg2;
+- (void)searchResultsViewController:(id)arg1 didSelectAppWithBundleIdentifier:(id)arg2;
 - (void)searchResultsViewController:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)searchResultsViewController:(id)arg1 didSelectSection:(id)arg2;
 - (id)searchText;
 - (void)startSearching;
 - (void)subscribeForActionRegistryFilledNotifications;

@@ -15,6 +15,7 @@
 {
     unsigned short _type;
     unsigned short _visibilityState;
+    unsigned short _enrichmentState;
     unsigned short _kind;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) unsigned short enrichmentState; // @synthesize enrichmentState=_enrichmentState;
 @property (strong, nonatomic) NSArray *extendedCuratedAssets; // @synthesize extendedCuratedAssets=_extendedCuratedAssets;
 @property (readonly, nonatomic) BOOL hasChanges;
 @property (readonly) unsigned long long hash;

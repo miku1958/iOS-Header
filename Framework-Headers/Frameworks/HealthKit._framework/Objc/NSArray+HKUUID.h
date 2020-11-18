@@ -48,6 +48,6 @@
 - (id)hk_orPredicateWithPredicateBlock:(CDUnknownBlockType)arg1;
 - (void)hk_partitionArrayWithPartitionSetupBlock:(CDUnknownBlockType)arg1 partitionMembershipCheckBlock:(CDUnknownBlockType)arg2 partitionExtendBlock:(CDUnknownBlockType)arg3 partitionFinalizeBlock:(CDUnknownBlockType)arg4;
 - (id)hk_reversed;
-- (double)hk_sumUsingEvaulationBlock:(CDUnknownBlockType)arg1;
+- (double)hk_sumUsingEvaluationBlock:(CDUnknownBlockType)arg1;
 @end
 

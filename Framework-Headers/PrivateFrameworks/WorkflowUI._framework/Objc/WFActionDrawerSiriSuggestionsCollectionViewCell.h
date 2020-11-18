@@ -8,30 +8,26 @@
 
 #import <WorkflowUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIImage, UIImageView, UILabel, UIView, UIViewController, WFActionDrawerImageView, WFDragController, WFDragGestureRecognizer;
+@class NSArray, NSString, UILabel, UIViewController, WFActionDrawerImage, WFActionDrawerImageLoadTask, WFCircularImageView, WFDragController, WFDragGestureRecognizer;
 @protocol VCActionDonation;
 
 @interface WFActionDrawerSiriSuggestionsCollectionViewCell : UICollectionViewCell <UIGestureRecognizerDelegate>
 {
     NSString *_title;
-    UIImage *_keyImage;
     long long _cellType;
     id<VCActionDonation> _donation;
     WFDragGestureRecognizer *_dragRecognizer;
     WFDragController *_dragController;
     UIViewController *_containingViewController;
-    WFActionDrawerImageView *_imageView;
+    WFCircularImageView *_imageView;
+    WFActionDrawerImage *_image;
+    WFActionDrawerImageLoadTask *_imageLoadTask;
     UILabel *_titleLabel;
-    UIView *_addView;
-    UIImageView *_addImageView;
-    NSLayoutConstraint *_imageViewWidthConstraint;
     NSArray *_verticalStackConstraints;
     NSArray *_horizontalStackConstraints;
 }
 
-@property (weak, nonatomic) UIImageView *addImageView; // @synthesize addImageView=_addImageView;
-@property (weak, nonatomic) UIView *addView; // @synthesize addView=_addView;
-@property (nonatomic, setter=_setCellType:) long long cellType; // @synthesize cellType=_cellType;
+@property (readonly, nonatomic) long long cellType; // @synthesize cellType=_cellType;
 @property (weak, nonatomic) UIViewController *containingViewController; // @synthesize containingViewController=_containingViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,9 +36,9 @@
 @property (weak, nonatomic) WFDragGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *horizontalStackConstraints; // @synthesize horizontalStackConstraints=_horizontalStackConstraints;
-@property (weak, nonatomic) WFActionDrawerImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) NSLayoutConstraint *imageViewWidthConstraint; // @synthesize imageViewWidthConstraint=_imageViewWidthConstraint;
-@property (readonly, nonatomic) UIImage *keyImage; // @synthesize keyImage=_keyImage;
+@property (strong, nonatomic) WFActionDrawerImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) WFActionDrawerImageLoadTask *imageLoadTask; // @synthesize imageLoadTask=_imageLoadTask;
+@property (weak, nonatomic) WFCircularImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -54,11 +50,13 @@
 + (double)spacingForType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)adjustStackingStyle;
-- (void)configureWithCellType:(long long)arg1 title:(id)arg2 keyImage:(id)arg3 appIconImage:(id)arg4 donation:(id)arg5 genericAction:(id)arg6 forDailyRoutines:(BOOL)arg7;
+- (void)configureWithCellType:(long long)arg1 title:(id)arg2 donation:(id)arg3 genericAction:(id)arg4 forDailyRoutines:(BOOL)arg5;
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)loadImageForInteractionDonation:(id)arg1;
 - (void)prepareForReuse;
+- (void)setImage:(id)arg1 animated:(BOOL)arg2;
 - (void)setUpLayoutConstraints;
 - (BOOL)shouldStackVerticallyForTraitCollection:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -21,6 +21,7 @@
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 - (void)layoutSubviews;
+- (id)outerLabel;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 

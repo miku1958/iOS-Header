@@ -42,6 +42,7 @@
 @property long long direction; // @synthesize direction=_direction;
 @property int epid; // @synthesize epid=_epid;
 @property (copy) NSUUID *flowUUID; // @synthesize flowUUID=_flowUUID;
+@property (readonly) NSUUID *identifier;
 @property unsigned long long inBytes; // @synthesize inBytes=_inBytes;
 @property BOOL isOpen;
 @property BOOL isPaused; // @synthesize isPaused=_isPaused;

@@ -51,7 +51,7 @@
 - (void)_cancel:(id)arg1;
 - (void)_cancelShortcutEditor:(id)arg1;
 - (void)_commitTriggerBuilder;
-- (void)_deleteTrigger:(id)arg1;
+- (void)_deleteTrigger:(id)arg1 indexPath:(id)arg2;
 - (void)_done:(id)arg1;
 - (id)_durationEventBuilder;
 - (void)_preloadShortcutHomeManager;
@@ -87,7 +87,6 @@
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (void)triggerSummaryActionGridViewController:(id)arg1 didUpdateTriggerBuilder:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
-- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

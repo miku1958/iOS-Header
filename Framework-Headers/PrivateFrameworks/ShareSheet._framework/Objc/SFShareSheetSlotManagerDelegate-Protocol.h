@@ -12,7 +12,7 @@
 - (void)connectionInterrupted;
 - (void)dataSourceUpdatedWithSessionConfiguration:(UISDShareSheetSessionConfiguration *)arg1;
 - (void)performActivityInHostWithUUID:(NSUUID *)arg1;
-- (void)performAirDropActivityInHostWithUUID:(NSUUID *)arg1 noContentView:(BOOL)arg2;
+- (void)performAirDropActivityInHostWithNoContentView:(BOOL)arg1;
 - (void)performExtensionActivityInHostWithBundleID:(NSString *)arg1 request:(UISUIActivityExtensionItemDataRequest *)arg2;
 - (void)performShortcutActivityInHostWithBundleID:(NSString *)arg1 singleUseToken:(NSString *)arg2;
 - (void)performUserDefaultsWithFavoritesProxies:(NSArray *)arg1 suggestionProxies:(NSArray *)arg2 orderedUUIDs:(NSArray *)arg3 activityCategory:(long long)arg4;

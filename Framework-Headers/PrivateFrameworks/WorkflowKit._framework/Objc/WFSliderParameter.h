@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/WFParameter.h>
 
-@class NSNumber, UIImage;
+@class NSNumber, WFImage;
 
 @interface WFSliderParameter : WFParameter
 {
@@ -14,9 +14,9 @@
     NSNumber *_maximumValue;
 }
 
-@property (readonly, nonatomic) UIImage *maximumIcon;
+@property (readonly, nonatomic) WFImage *maximumIcon;
 @property (strong, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
-@property (readonly, nonatomic) UIImage *minimumIcon;
+@property (readonly, nonatomic) WFImage *minimumIcon;
 @property (strong, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
 
 - (void).cxx_destruct;

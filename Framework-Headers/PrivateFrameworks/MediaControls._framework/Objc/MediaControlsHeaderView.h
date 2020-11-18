@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface MediaControlsHeaderView : UIView
 {
     BOOL _transitioning;
+    BOOL _showPlaceholderString;
     BOOL _marqueeEnabled;
     BOOL _routing;
     BOOL _shouldUseOverrideSize;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     MPRouteLabel *_routeLabel;
     NSString *_primaryString;
     NSString *_secondaryString;
+    NSString *_placeholderString;
     MediaControlsRoutingButtonView *_routingButton;
     MPButton *_doneButton;
     UIButton *_launchNowPlayingAppButton;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
     UILabel *_primaryLabel;
     MPUMarqueeView *_secondaryMarqueeView;
     UILabel *_secondaryLabel;
+    UILabel *_placeholderLabel;
     struct CGSize _overrideSize;
 }
 
@@ -44,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL marqueeEnabled; // @synthesize marqueeEnabled=_marqueeEnabled;
 @property (nonatomic) struct CGSize overrideSize; // @synthesize overrideSize=_overrideSize;
 @property (strong, nonatomic) UIImageView *placeholderArtworkView; // @synthesize placeholderArtworkView=_placeholderArtworkView;
+@property (strong, nonatomic) UILabel *placeholderLabel; // @synthesize placeholderLabel=_placeholderLabel;
+@property (copy, nonatomic) NSString *placeholderString; // @synthesize placeholderString=_placeholderString;
 @property (copy, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic) MPUMarqueeView *primaryMarqueeView; // @synthesize primaryMarqueeView=_primaryMarqueeView;
@@ -56,6 +61,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *secondaryString; // @synthesize secondaryString=_secondaryString;
 @property (strong, nonatomic) UIView *shadow; // @synthesize shadow=_shadow;
 @property (nonatomic) BOOL shouldUseOverrideSize; // @synthesize shouldUseOverrideSize=_shouldUseOverrideSize;
+@property (nonatomic) BOOL showPlaceholderString; // @synthesize showPlaceholderString=_showPlaceholderString;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
 @property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;

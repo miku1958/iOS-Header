@@ -67,7 +67,7 @@
 - (void)didReceiveMemoryWarning;
 - (void)didStartLoadingData;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4 auditToken:(id)arg5;
 - (void)labelManagerDidLayout;
 - (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)lookAtX:(unsigned long long)arg1 y:(unsigned long long)arg2 z:(unsigned long long)arg3;

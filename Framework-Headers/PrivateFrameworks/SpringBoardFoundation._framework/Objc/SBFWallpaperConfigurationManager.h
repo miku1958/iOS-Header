@@ -51,10 +51,10 @@
 @property (readonly, nonatomic) struct CGSize wallpaperSizeIncludingParallaxOverhang;
 @property (readonly, nonatomic) long long wallpaperSizeType; // @synthesize wallpaperSizeType=_wallpaperSizeType;
 
-+ (long long)currentDeviceWallpaperSizeType;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)beginChangeBatch;
+- (id)cleanedProceduralWallpaperInfo:(id)arg1;
 - (void)clearCacheForVariants:(long long)arg1;
 - (void)clearDelayedChangeNotifications;
 - (struct CGRect)cropRectForOldCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 zoomScale:(double)arg3 oldParallaxFactor:(double)arg4 forImageSize:(struct CGSize)arg5 newZoomScale:(double *)arg6;
@@ -113,10 +113,10 @@
 - (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfiguration:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3 name:(id)arg4;
 - (BOOL)setWallpaperConfigurationFromDefaultWallpaperConfigurationSet:(id)arg1;
 - (BOOL)setWallpaperGradient:(id)arg1 forVariants:(long long)arg2;
+- (BOOL)setWallpaperImage:(id)arg1 adjustedImage:(id)arg2 thumbnailData:(id)arg3 wallpaperOptions:(id)arg4 forVariants:(long long)arg5 wallpaperMode:(long long)arg6;
 - (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 forVariants:(long long)arg3 options:(unsigned long long)arg4;
-- (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 wallpaperOptions:(id)arg3 forVariants:(long long)arg4 options:(unsigned long long)arg5 wallpaperMode:(long long)arg6 isMigrating:(BOOL)arg7;
+- (BOOL)setWallpaperImage:(id)arg1 originalImage:(id)arg2 thumbnailData:(id)arg3 wallpaperOptions:(id)arg4 forVariants:(long long)arg5 options:(unsigned long long)arg6 wallpaperMode:(long long)arg7 isMigrating:(BOOL)arg8;
 - (BOOL)setWallpaperImage:(id)arg1 wallpaperOptions:(id)arg2 forVariants:(long long)arg3;
-- (BOOL)setWallpaperImage:(id)arg1 wallpaperOptions:(id)arg2 forVariants:(long long)arg3 wallpaperMode:(long long)arg4;
 - (BOOL)setWallpaperImageHashData:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2;
 - (BOOL)setWallpaperOptions:(id)arg1 forVariants:(long long)arg2 wallpaperMode:(long long)arg3;
@@ -126,7 +126,6 @@
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)thumbnailDataForImage:(id)arg1;
-- (id)thumbnailImageForImage:(id)arg1;
 - (double)thumbnailWidth;
 - (BOOL)variantsShareWallpaperConfigurationForTypes:(unsigned long long)arg1;
 - (id)videoURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;

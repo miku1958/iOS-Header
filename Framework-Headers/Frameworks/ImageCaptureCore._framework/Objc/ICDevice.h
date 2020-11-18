@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DeviceManager, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@class ICDeviceManager, NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSString;
 @protocol ICDeviceDelegate;
 
 @interface ICDevice : NSObject
@@ -25,7 +25,6 @@
     int _ipPort;
     id<ICDeviceDelegate> _delegate;
     unsigned long long _type;
-    NSArray *_capabilities;
     NSString *_name;
     NSString *_productKind;
     struct CGImage *_icon;
@@ -38,7 +37,10 @@
     NSString *_serialNumberString;
     NSString *_autolaunchApplicationPath;
     NSString *_persistentIDString;
-    DeviceManager *_deviceManager;
+    NSMutableSet *_deviceCapabilities;
+    ICDeviceManager *_deviceManager;
+    NSString *_internalUUID;
+    NSNumber *_deviceHandle;
     NSString *_volumePath;
     CDUnknownBlockType _completionBlock;
     NSNumber *_connectionID;
@@ -60,17 +62,20 @@
 @property (readonly, nonatomic) NSString *bonjourServiceType; // @synthesize bonjourServiceType=_bonjourServiceType;
 @property (readonly, nonatomic) NSDictionary *bonjourTXTRecord; // @synthesize bonjourTXTRecord=_bonjourTXTRecord;
 @property (readonly) BOOL canCancelSoftwareInstallation; // @synthesize canCancelSoftwareInstallation=_canCancelSoftwareInstallation;
-@property (readonly, nonatomic) NSArray *capabilities; // @synthesize capabilities=_capabilities;
+@property (readonly, nonatomic) NSArray *capabilities;
 @property BOOL closeSessionPending; // @synthesize closeSessionPending=_closeSessionPending;
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly, nonatomic) NSNumber *connectionID; // @synthesize connectionID=_connectionID;
 @property (nonatomic) id<ICDeviceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSMutableSet *deviceCapabilities; // @synthesize deviceCapabilities=_deviceCapabilities;
+@property (copy, nonatomic) NSNumber *deviceHandle; // @synthesize deviceHandle=_deviceHandle;
 @property (readonly, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
-@property (strong, nonatomic) DeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
+@property (strong, nonatomic) ICDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property (readonly, nonatomic) NSNumber *deviceRef; // @synthesize deviceRef=_deviceRef;
 @property (nonatomic) BOOL hasOpenSession; // @synthesize hasOpenSession=_hasOpenSession;
 @property (nonatomic) struct CGImage *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) NSString *iconPath; // @synthesize iconPath=_iconPath;
+@property (copy, nonatomic) NSString *internalUUID; // @synthesize internalUUID=_internalUUID;
 @property (readonly, nonatomic) NSString *ipAddress; // @synthesize ipAddress=_ipAddress;
 @property (readonly, nonatomic) int ipPort; // @synthesize ipPort=_ipPort;
 @property (readonly, nonatomic) BOOL isAppleDevice; // @dynamic isAppleDevice;
@@ -95,12 +100,14 @@
 @property (strong) id userObject; // @synthesize userObject=_userObject;
 @property (copy, nonatomic) NSString *volumePath; // @synthesize volumePath=_volumePath;
 
+- (void)addCapability:(id)arg1;
 - (BOOL)canEject;
 - (void)dealloc;
 - (id)description;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
 - (id)init;
+- (void)removeCapability:(id)arg1;
 - (void)requestCloseSession;
 - (void)requestCloseSessionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestEject;

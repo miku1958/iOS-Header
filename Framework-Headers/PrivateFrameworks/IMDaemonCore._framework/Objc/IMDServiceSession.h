@@ -213,7 +213,7 @@
 - (void)didChangeMemberStatus:(int)arg1 forHandle:(id)arg2 unformattedNumber:(id)arg3 countryCode:(id)arg4 forChat:(id)arg5 style:(unsigned char)arg6;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5;
-- (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 account:(id)arg6;
+- (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 account:(id)arg6 isBlackholed:(BOOL)arg7;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 isSpam:(BOOL)arg6 spamExtensionName:(id)arg7;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 handleInfo:(id)arg6;
 - (void)didJoinChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 lastAddressedSIMID:(id)arg6 handleInfo:(id)arg7;
@@ -255,12 +255,12 @@
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6;
-- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6 account:(id)arg7;
+- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6 account:(id)arg7 isBlackholed:(BOOL)arg8;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 handleInfo:(id)arg6 account:(id)arg7 isSpam:(BOOL)arg8 spamExtensionName:(id)arg9;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 handleInfo:(id)arg7;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 handleInfo:(id)arg8;
-- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 handleInfo:(id)arg8 account:(id)arg9;
-- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 handleInfo:(id)arg8 account:(id)arg9 isSpam:(BOOL)arg10 spamExtensionName:(id)arg11;
+- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 handleInfo:(id)arg8 account:(id)arg9 isBlackholed:(BOOL)arg10;
+- (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 displayName:(id)arg4 groupID:(id)arg5 lastAddressedHandle:(id)arg6 lastAddressedSIMID:(id)arg7 handleInfo:(id)arg8 account:(id)arg9 isSpam:(BOOL)arg10 spamExtensionName:(id)arg11 isBlackholed:(BOOL)arg12;
 - (void)didUpdateChatStatus:(int)arg1 chat:(id)arg2 style:(unsigned char)arg3 handleInfo:(id)arg4;
 - (void)disallowReconnection;
 - (void)eagerUploadCancel:(id)arg1;
@@ -319,6 +319,7 @@
 - (id)pictureOfBuddy:(id)arg1;
 - (void)processMessageForSending:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3 allowWatchdog:(BOOL)arg4 account:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)processMessageForSending:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3 allowWatchdog:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)processNetworkDataAvailabilityChange:(BOOL)arg1;
 - (id)property:(id)arg1 ofBuddy:(id)arg2;
 - (void)refreshServiceCapabilities;
 - (void)registerAccount:(id)arg1;
@@ -326,8 +327,8 @@
 - (void)registerChat:(id)arg1 style:(unsigned char)arg2;
 - (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5;
 - (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 handleInfo:(id)arg5 account:(id)arg6;
-- (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 handleInfo:(id)arg6 account:(id)arg7;
-- (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 lastAddressedSIMID:(id)arg6 handleInfo:(id)arg7 account:(id)arg8;
+- (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 handleInfo:(id)arg6 account:(id)arg7 isBlackholed:(BOOL)arg8;
+- (void)registerChat:(id)arg1 style:(unsigned char)arg2 displayName:(id)arg3 groupID:(id)arg4 lastAddressedHandle:(id)arg5 lastAddressedSIMID:(id)arg6 handleInfo:(id)arg7 account:(id)arg8 isBlackholed:(BOOL)arg9;
 - (void)registerChat:(id)arg1 style:(unsigned char)arg2 handleInfo:(id)arg3;
 - (void)relay:(id)arg1 sendCancel:(id)arg2 toPerson:(id)arg3;
 - (void)relay:(id)arg1 sendInitateRequest:(id)arg2 toPerson:(id)arg3;

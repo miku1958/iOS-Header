@@ -32,9 +32,9 @@
 - (void)activate;
 - (void)activityViewControllerDidEnterBackgroundWithSessionID:(id)arg1;
 - (void)activityViewControllerPerformEditActionsWithSessionID:(id)arg1;
+- (void)activityViewControllerPerformedActivityWithInfoDictionary:(id)arg1;
 - (void)activityViewControllerWillEnterForegroundWithSessionID:(id)arg1;
 - (void)activityViewControllerWithSessionID:(id)arg1 favoritedActivity:(BOOL)arg2 withIdentifier:(id)arg3 activityCategory:(long long)arg4;
-- (void)activityViewControllerWithSessionID:(id)arg1 performedActivityWithSuccess:(BOOL)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedActionWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedActivityWithIdentifier:(id)arg2;
 - (void)activityViewControllerWithSessionID:(id)arg1 selectedDefaultActivityWithIdentifier:(id)arg2 activityCategory:(long long)arg3;
@@ -55,7 +55,7 @@
 - (void)invalidated;
 - (id)machServiceName;
 - (void)performActivityInHostWithUUID:(id)arg1;
-- (void)performAirDropActivityInHostWithUUID:(id)arg1 noContentView:(BOOL)arg2;
+- (void)performAirDropActivityInHostWithNoContentView:(BOOL)arg1;
 - (void)performExtensionActivityInHostWithBundleID:(id)arg1 request:(id)arg2;
 - (void)performShortcutActivityInHostWithBundleID:(id)arg1 singleUseToken:(id)arg2;
 - (void)performUserDefaultsWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 orderedUUIDs:(id)arg3 activityCategory:(long long)arg4;

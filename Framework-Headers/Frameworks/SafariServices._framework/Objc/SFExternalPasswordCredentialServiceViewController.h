@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 {
     _SFAuthenticationContext *_authenticationContext;
     _ASPasswordCredentialAuthenticationViewController *_extensionController;
+    long long _completionAction;
+    CDUnknownBlockType _getCredentialCompletion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_authenticationContext;
 - (void)_dismiss;
+- (void)_finishRequestToAutoFillCredential:(id)arg1 extensionShowedUI:(BOOL)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_finishRequestToReturnCredential:(id)arg1 extensionShowedUI:(BOOL)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)authenticationCustomUIProgressObserverForContext:(id)arg1;
 - (id)authenticationMessageForContext:(id)arg1;
 - (void)autoFillWithCredentialIdentity:(id)arg1;
@@ -39,9 +43,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)contextShouldAllowPasscodeFallback:(id)arg1;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
 - (BOOL)displayMessageAsTitleForContext:(id)arg1;
+- (void)getCredentialForCredentialIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)passcodePromptForContext:(id)arg1;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 
 @end

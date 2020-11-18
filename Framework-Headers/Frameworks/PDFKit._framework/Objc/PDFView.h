@@ -101,6 +101,7 @@
 - (void)_updatePasswordView;
 - (id)activeAnnotation;
 - (unsigned long long)activeMarkupStyle;
+- (void)addGestureRecognizer:(id)arg1;
 - (void)addMarkupWithStyle:(unsigned long long)arg1 fromSelection:(id)arg2;
 - (BOOL)akAnnotationEditingEnabled;
 - (id)akOverlayAdaptor;

@@ -11,7 +11,6 @@
 }
 
 + (id)entityName;
-+ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 
 @end
 

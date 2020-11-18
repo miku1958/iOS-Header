@@ -38,6 +38,7 @@
 + (id)defaultImageCreationOptions;
 + (void)disableANEForRequest:(id)arg1;
 + (void)initialize;
++ (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_checkForDarkWakeStateTransition;
 - (struct CGImage *)_createCGImageFromImageSource:(struct CGImageSource *)arg1 imageOptions:(id)arg2 orientation:(unsigned long long *)arg3 error:(id *)arg4;
@@ -64,7 +65,6 @@
 - (id)localFileURLForAssetResource:(id)arg1 error:(id *)arg2;
 - (void)performVisionForcedCleanup;
 - (void)performVisionForcedCleanupWithOptions:(id)arg1;
-- (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
 - (void)shutdown;
 - (BOOL)startAnalysisJob:(id)arg1 error:(id *)arg2;

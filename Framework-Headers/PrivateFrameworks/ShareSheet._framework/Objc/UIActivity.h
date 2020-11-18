@@ -9,7 +9,7 @@
 #import <ShareSheet/UIActivityExtensionItemDataProviding-Protocol.h>
 #import <ShareSheet/UIActivityExtensionItemDataReceiving-Protocol.h>
 
-@class NSExtension, NSLocale, NSString, NSUUID, UIImage, UIViewController, _UIActivityResourceLoader;
+@class NSArray, NSExtension, NSString, NSUUID, UIImage, UIViewController, _UIActivityResourceLoader;
 
 @interface UIActivity : NSObject <UIActivityExtensionItemDataProviding, UIActivityExtensionItemDataReceiving>
 {
@@ -20,7 +20,7 @@
     CDUnknownBlockType _didFinishPerformingActivityHandler;
     long long _maxPreviews;
     NSString *_contentSizeCategory;
-    NSLocale *_preferredLocale;
+    NSArray *_preferredLocalizations;
     unsigned long long _indexInApplicationDefinedActivities;
     NSUUID *_activityUUID;
 }
@@ -42,7 +42,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indexInApplicationDefinedActivities; // @synthesize indexInApplicationDefinedActivities=_indexInApplicationDefinedActivities;
 @property (nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
-@property (strong, nonatomic) NSLocale *preferredLocale; // @synthesize preferredLocale=_preferredLocale;
+@property (strong, nonatomic) NSArray *preferredLocalizations; // @synthesize preferredLocalizations=_preferredLocalizations;
 @property (readonly) Class superclass;
 
 + (id)_actionImageForActionRepresentationImage:(id)arg1 contentSizeCategory:(id)arg2;
@@ -59,6 +59,7 @@
 + (BOOL)_isCapabilityBasedActivity;
 + (void)_loadItemProvidersFromActivityItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_performAfterActivityImageLoadingCompletes:(CDUnknownBlockType)arg1;
++ (id)_stringFromActivityCategory:(long long)arg1;
 + (unsigned long long)_xpcAttributes;
 + (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;

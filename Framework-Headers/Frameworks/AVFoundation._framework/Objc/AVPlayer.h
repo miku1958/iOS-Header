@@ -64,6 +64,7 @@
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
 + (void)registerForScreenConnectionChanges;
++ (BOOL)worksAroundConcurrentKVOCrash;
 - (BOOL)_CALayerDestinationIsTVOut;
 - (void)_addFPListeners;
 - (void)_addItemToLinkedList_invokeOnIvarAccessQueue:(id)arg1 afterItem:(id)arg2;
@@ -153,7 +154,7 @@
 - (void)_removeLayer:(id)arg1 videoLayer:(id)arg2 closedCaptionLayer:(id)arg3 subtitleLayer:(id)arg4;
 - (void)_restoreVideoLayersForForeground;
 - (BOOL)_resumePlayback:(double)arg1 error:(id *)arg2;
-- (void)_runOnIvarAccessQueueOperationThatMayChangeCurrentItemWithPreflightBlock:(CDUnknownBlockType)arg1 modificationBlock:(CDUnknownBlockType)arg2;
+- (BOOL)_runOnIvarAccessQueueOperationThatMayChangeCurrentItemWithPreflightBlock:(CDUnknownBlockType)arg1 modificationBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (void)_setActionAtItemEnd:(long long)arg1 allowingAdvance:(BOOL)arg2;
 - (void)_setAncillaryPerformanceInformationForDisplay:(id)arg1;
 - (void)_setCALayerDestinationIsTVOut:(BOOL)arg1;

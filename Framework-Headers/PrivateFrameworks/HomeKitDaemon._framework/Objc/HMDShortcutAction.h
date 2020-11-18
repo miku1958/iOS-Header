@@ -20,7 +20,6 @@
 
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2;
 + (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2 actionSet:(id)arg3;
-+ (void)initialize;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

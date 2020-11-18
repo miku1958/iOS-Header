@@ -8,10 +8,7 @@
 
 @interface PKPaymentTransactionDetailAmountLineItemGenerator : NSObject
 {
-    BOOL _hasTrailingLineSeperator;
 }
-
-@property (nonatomic) BOOL hasTrailingLineSeperator; // @synthesize hasTrailingLineSeperator=_hasTrailingLineSeperator;
 
 - (id)_feeLineItemsForFees:(id)arg1;
 - (id)_foreignExchangeLineItemsForExchangeInfo:(id)arg1;
@@ -26,6 +23,7 @@
 - (id)_totalReceivedLineItemForTransaction:(id)arg1;
 - (id)_totalSentLineItemForTransaction:(id)arg1;
 - (id)_totalTransferredItemForTransaction:(id)arg1;
+- (id)lineItemsForInstallmentPlan:(id)arg1 paymentPass:(id)arg2;
 - (id)lineItemsForTransaction:(id)arg1 pass:(id)arg2 associatedTransaction:(id)arg3;
 
 @end

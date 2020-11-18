@@ -9,7 +9,7 @@
 #import <HomeUI/UICollectionViewDelegate-Protocol.h>
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class HFCameraPlaybackEngine, HUClipScrubberDataSource, NSString, UICollectionView;
+@class HFCameraPlaybackEngine, HMCameraClip, HUClipScrubberDataSource, NSString, UICollectionView;
 
 @interface HUClipScrubberScrollDelegate : NSObject <UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
@@ -20,9 +20,12 @@
     UICollectionView *_clipCollectionView;
     HFCameraPlaybackEngine *_playbackEngine;
     double _lastContentWidth;
+    HMCameraClip *_currentClip;
+    double _targetScrollOffset;
 }
 
 @property (weak, nonatomic) UICollectionView *clipCollectionView; // @synthesize clipCollectionView=_clipCollectionView;
+@property (strong, nonatomic) HMCameraClip *currentClip; // @synthesize currentClip=_currentClip;
 @property (weak, nonatomic) HUClipScrubberDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,11 +36,13 @@
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (nonatomic) BOOL shouldIgnoreScrolling; // @synthesize shouldIgnoreScrolling=_shouldIgnoreScrolling;
 @property (readonly) Class superclass;
+@property (nonatomic) double targetScrollOffset; // @synthesize targetScrollOffset=_targetScrollOffset;
 
 - (void).cxx_destruct;
 - (void)_handleOutOfBoundsTimelinePosition:(float)arg1;
 - (BOOL)_indexPathContainsClip:(id)arg1;
 - (id)_interpolatedDateFromClip:(id)arg1 toClip:(id)arg2 insideRect:(struct CGRect)arg3 atTimelinePosition:(float)arg4;
+- (id)_selectedDateForAreaOfNoActivityAtPoint:(struct CGPoint)arg1 inScrollView:(id)arg2;
 - (id)_selectedDateForClipInRect:(struct CGRect)arg1;
 - (id)_selectedDateForTodayFromClip:(id)arg1 percentDuration:(float)arg2;
 - (id)_selectedDateForYesterdayFromPreviousClip:(id)arg1 percentDuration:(float)arg2;
@@ -59,6 +64,7 @@
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)updateCollectionView:(id)arg1;
 - (void)updatePlaybackEngineDate:(id)arg1;
 

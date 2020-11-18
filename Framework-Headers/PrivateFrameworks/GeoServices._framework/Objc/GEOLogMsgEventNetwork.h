@@ -13,7 +13,6 @@
 @interface GEOLogMsgEventNetwork : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_manifestEnv;
     NSString *_requestAppIdentifier;
     double _requestEnd;
@@ -23,6 +22,9 @@
     double _requestStart;
     NSString *_serviceIpAddress;
     GEONetworkSessionTaskTransactionMetrics *_taskMetrics;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _decodeTime;
     int _httpResponseCode;
     int _mptcpServiceType;
@@ -139,6 +141,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)mptcpServiceTypeAsString:(int)arg1;

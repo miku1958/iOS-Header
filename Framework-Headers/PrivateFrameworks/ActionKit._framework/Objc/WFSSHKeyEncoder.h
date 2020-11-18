@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSMutableData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) NSData *encodedData;
+@property (readonly, nonatomic) unsigned long long encodedLength;
 
 - (void).cxx_destruct;
 - (void)encodeChar:(BOOL)arg1;

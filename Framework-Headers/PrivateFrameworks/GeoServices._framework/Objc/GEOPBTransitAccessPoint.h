@@ -13,7 +13,6 @@
 @interface GEOPBTransitAccessPoint : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_entranceNameDisplayString;
     NSMutableArray *_entranceZoomNames;
@@ -21,6 +20,9 @@
     NSMutableArray *_exitZoomNames;
     GEOLatLng *_location;
     unsigned long long _muid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _accessPointIndex;
     unsigned int _stationIndex;
     struct {
@@ -91,6 +93,8 @@
 - (unsigned long long)exitZoomNamesCount;
 - (unsigned long long)hash;
 - (id)identifier;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

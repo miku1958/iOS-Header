@@ -112,7 +112,6 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(id)arg2;
 - (void)reEvaluate;
-- (void)registerWithResidentDeviceManager;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionSet:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)removeCharacteristic:(id)arg1;

@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
 @interface SKUIStorePageCollectionViewLayoutInvalidationContext : UICollectionViewFlowLayoutInvalidationContext
 {
     BOOL _invalidateItemPinningLayoutInformation;
+    BOOL _invalidatePinnedBackdropViewStyle;
 }
 
 @property (nonatomic) BOOL invalidateItemPinningLayoutInformation; // @synthesize invalidateItemPinningLayoutInformation=_invalidateItemPinningLayoutInformation;
+@property (nonatomic) BOOL invalidatePinnedBackdropViewStyle; // @synthesize invalidatePinnedBackdropViewStyle=_invalidatePinnedBackdropViewStyle;
 
 
 @end

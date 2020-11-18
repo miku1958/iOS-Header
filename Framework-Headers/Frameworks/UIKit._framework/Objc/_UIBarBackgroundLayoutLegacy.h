@@ -6,7 +6,7 @@
 
 #import <UIKitCore/_UIBarBackgroundLayout.h>
 
-@class NSArray, UIColor, UIImage;
+@class NSArray, UIColor, UIImage, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackgroundLayoutLegacy : _UIBarBackgroundLayout
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_backgroundEffects;
     UIImage *_shadowImage;
     UIColor *_shadowColor;
+    UIVibrancyEffect *_shadowEffect;
     BOOL _hasShadow;
     double _topInset;
 }
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_blurWithStyle:(long long)arg1 tint:(id)arg2;
 - (id)_colorForStyle:(long long)arg1;
-- (id)_shadowColorForStyle:(long long)arg1;
 - (double)bg1Alpha;
 - (id)bg1Color;
 - (id)bg1Effects;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (double)bg1ImageAlpha;
 - (double)bg1ShadowAlpha;
 - (id)bg1ShadowColor;
+- (id)bg1ShadowEffect;
 - (id)bg1ShadowImage;
 - (double)bgInset;
 - (void)configureAsTransparent;

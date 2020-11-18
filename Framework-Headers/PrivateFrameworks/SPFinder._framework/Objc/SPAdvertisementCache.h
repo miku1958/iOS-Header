@@ -40,7 +40,6 @@
 - (void)markBeaconPayloadsProcessed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)markRecordsProcessed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mockingEnabled:(BOOL)arg1;
-- (void)postNewBeaconsDarwinNotification;
 - (id)remoteInterface;
 - (void)saveAdvertisements:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveBeaconPayloads:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -16,6 +16,7 @@
 - (BOOL)_checkFirstUnlocked;
 - (void)_didReceiveFirstUnlock:(BOOL)arg1;
 - (void)_didReceiveFirstUnlockInQueue:(BOOL)arg1;
+- (void)_firstUnlockNotified;
 - (void)_notifyObserver:(id)arg1 withUnlocked:(BOOL)arg2;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;

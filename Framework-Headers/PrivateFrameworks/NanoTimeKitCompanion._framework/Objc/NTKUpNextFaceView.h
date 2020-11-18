@@ -94,11 +94,11 @@
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterSettingViewMode:(long long)arg1 scroll:(BOOL)arg2 targetOffset:(struct CGPoint)arg3 needsLayout:(BOOL)arg4;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
-- (id)_configureCellForItemWithIdentifier:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureCellForItemWithIdentifier:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureCollectionViewDataSource;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureVisibleCell:(id)arg1;
 - (id)_contentAtIndexPath:(id)arg1;
 - (struct CGPoint)_defaultPointForDefaultMode;

@@ -19,6 +19,7 @@
     BKSProcessAssertion *_backgroundRunningAssertion;
     AFUISceneConfiguration *_pendingConfigurationToApply;
     BOOL _sceneForeground;
+    unsigned long long _deactivationReason;
     id<AFUISceneControllerDelegate> _delegate;
 }
 
@@ -33,7 +34,7 @@
 - (void)_recordSceneCreateBegin;
 - (void)_recordSceneCreateEnd;
 - (void)cancelSceneLoadingTimeOut;
-- (void)deactiveSceneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deactivateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (void)dealloc;
 - (void)requestSceneViewWithConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;

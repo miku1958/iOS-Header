@@ -14,7 +14,6 @@
 {
     BOOL _inferLinkDestination;
     BOOL _shouldRetry;
-    BOOL _createAskPermissionRequest;
     NSURL *_deepLink;
     NSString *_identifier;
     AMSMetricsEvent *_metricsEvent;
@@ -27,7 +26,6 @@
 @property (nonatomic, setter=ams_setURLType:) long long ams_URLType;
 @property (nonatomic, setter=ams_setActionType:) long long ams_actionType;
 @property (strong, nonatomic, setter=ams_setSubtarget:) NSString *ams_subtarget;
-@property (nonatomic) BOOL createAskPermissionRequest; // @synthesize createAskPermissionRequest=_createAskPermissionRequest;
 @property (copy, nonatomic) NSURL *deepLink; // @synthesize deepLink=_deepLink;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL inferLinkDestination; // @synthesize inferLinkDestination=_inferLinkDestination;

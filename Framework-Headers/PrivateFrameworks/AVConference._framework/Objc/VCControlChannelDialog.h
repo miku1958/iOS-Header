@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSessionID:(unsigned int)arg1 participantID:(id)arg2 transactionDelegate:(id)arg3;
 - (BOOL)processMessageFromParticipant:(id)arg1 transactionID:(id)arg2 status:(unsigned int)arg3;
 - (void)removeTransactionForTransactionID:(int)arg1;
-- (BOOL)sendReliableMessage:(id)arg1 transactionDelegate:(id)arg2;
+- (BOOL)sendReliableMessage:(id)arg1 transactionDelegate:(id)arg2 timeout:(id)arg3;
 
 @end
 

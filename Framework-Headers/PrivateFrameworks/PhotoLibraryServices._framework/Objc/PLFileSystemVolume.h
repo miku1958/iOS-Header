@@ -22,6 +22,7 @@
 
 + (id)entityName;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
++ (id)predictedURLForVolumeName:(id)arg1;
 + (id)volumeForObjectUUID:(id)arg1 context:(id)arg2;
 + (id)volumeForURL:(id)arg1 context:(id)arg2;
 + (id)volumeForVolumeUUID:(id)arg1 context:(id)arg2;

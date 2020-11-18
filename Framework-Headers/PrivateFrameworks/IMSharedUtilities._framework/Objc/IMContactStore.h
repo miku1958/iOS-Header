@@ -14,7 +14,7 @@
     CNContactStore *_contactStore;
     NSData *_changeHistoryToken;
     NSDictionary *_handleIDToCNIDMap;
-    NSDictionary *_CNIDToHandleIDMap;
+    NSMutableDictionary *_CNIDToHandleIDsMap;
     NSMutableDictionary *_IDToCNContactMap;
     double _lastContactStoreSync;
     double _lastMeContactStoreSync;
@@ -22,7 +22,7 @@
     NSArray *_CNIDsForBatchFetch;
 }
 
-@property (strong, nonatomic) NSDictionary *CNIDToHandleIDMap; // @synthesize CNIDToHandleIDMap=_CNIDToHandleIDMap;
+@property (strong, nonatomic) NSMutableDictionary *CNIDToHandleIDsMap; // @synthesize CNIDToHandleIDsMap=_CNIDToHandleIDsMap;
 @property (strong, nonatomic) NSArray *CNIDsForBatchFetch; // @synthesize CNIDsForBatchFetch=_CNIDsForBatchFetch;
 @property (strong, nonatomic) NSMutableDictionary *IDToCNContactMap; // @synthesize IDToCNContactMap=_IDToCNContactMap;
 @property (nonatomic) BOOL batchFetchingForLaunchCompleted; // @synthesize batchFetchingForLaunchCompleted=_batchFetchingForLaunchCompleted;
@@ -86,6 +86,7 @@
 - (id)completedContact:(id)arg1 withKeys:(id)arg2;
 - (void)contactStoreChanged:(id)arg1;
 - (void)dealloc;
+- (id)fetchCNContactForHandleID:(id)arg1 withKeys:(id)arg2;
 - (id)fetchCNContactForHandleWithID:(id)arg1;
 - (void)fetchCNContactsForHandlesWithIDs:(id)arg1 isFinalBatch:(BOOL)arg2;
 - (id)fetchMeContactWithKeys:(id)arg1;
@@ -94,7 +95,7 @@
 - (id)getContactForID:(id)arg1;
 - (id)getContactStore;
 - (void)handleDropEverythingEvent;
-- (id)handleIDForCNID:(id)arg1;
+- (id)handleIDsForCNID:(id)arg1;
 - (id)init;
 - (id)initWithContactStore:(id)arg1;
 - (BOOL)isBatchFetchingForLaunchCompleted;
@@ -102,6 +103,7 @@
 - (void)meCardChanged:(id)arg1;
 - (void)removeContactWithID:(id)arg1;
 - (void)replaceContact:(id)arg1 withID:(id)arg2;
+- (void)replaceWithMutableContactForID:(id)arg1;
 - (void)resetMeCard;
 - (void)setBatchFetchingCompleted;
 

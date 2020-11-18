@@ -13,11 +13,13 @@
 @interface GEOWiFiQualityLocationSearchResult : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_ess;
     GEOLocation *_location;
     unsigned long long _tileKey;
     NSMutableArray *_tiles;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_tileKey:1;
@@ -63,6 +65,8 @@
 - (id)essAtIndex:(unsigned long long)arg1;
 - (unsigned long long)essCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

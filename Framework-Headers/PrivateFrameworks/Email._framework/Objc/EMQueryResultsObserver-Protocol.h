@@ -15,7 +15,7 @@
 - (void)queryDidStartRecovery;
 - (void)queryMatchedAddedObjectIDs:(NSArray *)arg1 after:(EMObjectID *)arg2 extraInfo:(NSDictionary *)arg3;
 - (void)queryMatchedAddedObjectIDs:(NSArray *)arg1 before:(EMObjectID *)arg2 extraInfo:(NSDictionary *)arg3;
-- (void)queryMatchedChangedObjectIDs:(NSArray *)arg1;
+- (void)queryMatchedChangesByObjectIDs:(NSDictionary *)arg1;
 - (void)queryMatchedDeletedObjectIDs:(NSArray *)arg1;
 - (void)queryMatchedMovedObjectIDs:(NSArray *)arg1 after:(EMObjectID *)arg2;
 - (void)queryMatchedMovedObjectIDs:(NSArray *)arg1 before:(EMObjectID *)arg2;

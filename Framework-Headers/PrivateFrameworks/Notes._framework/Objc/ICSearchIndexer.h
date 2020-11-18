@@ -58,6 +58,7 @@
 - (id)objectsDictionaryForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)objectsForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)pendingReindexingOperation;
+- (void)performBlockOnIndexingQueue:(CDUnknownBlockType)arg1;
 - (void)processChanges;
 - (void)reindexAllSearchableItemsInIndex;
 - (void)reindexAllSearchableItemsInIndex:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

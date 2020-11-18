@@ -40,6 +40,7 @@
 - (void)_updateSpriteUniformsForRingGroupController:(id)arg1 andRingIndex:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithMaximumRingCount:(unsigned long long)arg1;
+- (id)initWithMaximumRingCount:(unsigned long long)arg1 commandQueue:(id)arg2;
 - (void)prewarmRendererForCelebrationOfType:(unsigned long long)arg1;
 - (id)renderPipelineFactoryWithDevice:(id)arg1 library:(id)arg2;
 - (id)renderPipelineFactoryWithDeviceSPI:(id)arg1 librarySPI:(id)arg2;

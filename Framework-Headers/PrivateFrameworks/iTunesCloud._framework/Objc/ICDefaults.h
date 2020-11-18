@@ -22,7 +22,7 @@
 @property (copy, nonatomic) NSDictionary *cachedMusicUserTokens;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
 @property (copy, nonatomic) NSString *cloudMediaLibraryUID;
-@property (copy, nonatomic) NSString *defaultStoreFront;
+@property (readonly, nonatomic) NSString *defaultStoreFront;
 @property (readonly, copy, nonatomic) NSNumber *deviceClassOverride;
 @property (readonly, copy, nonatomic) NSString *deviceModelOverride;
 @property (nonatomic, getter=isExplicitContentAllowedForCurrentYear) BOOL explicitContentAllowedForCurrentYear;
@@ -36,6 +36,8 @@
 @property (copy, nonatomic) NSDate *lastAllowedInteractiveAuthenticationTime;
 @property (nonatomic) double lastAuthenticationDialogResponseTime;
 @property (copy, nonatomic) NSDictionary *lastCookieHeadersForRevokingMusicUserTokens;
+@property (copy, nonatomic) NSDictionary *lastKnownLocalStoreAccountProperties;
+@property (copy, nonatomic) NSDictionary *lastKnownSubscriptionStatusBaseCacheKey;
 @property (copy, nonatomic) NSDictionary *lastKnownUserAgeVerificationState;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
 @property (readonly, copy, nonatomic) NSNumber *networkTypeOverride;

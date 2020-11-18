@@ -14,6 +14,7 @@
     MISSING_TYPE *savedStateProvider;
     MISSING_TYPE *offensiveStateProvider;
     MISSING_TYPE *draggableStateProvider;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

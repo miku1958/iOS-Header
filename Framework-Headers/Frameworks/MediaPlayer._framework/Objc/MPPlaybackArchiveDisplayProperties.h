@@ -8,21 +8,21 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableDictionary, NSString;
 
 @interface MPPlaybackArchiveDisplayProperties : NSObject <NSSecureCoding>
 {
     NSString *_title;
     NSString *_subtitle;
     NSData *_artworkImageData;
+    NSMutableDictionary *_storage;
 }
 
 @property (readonly, copy, nonatomic) NSData *artworkImageData; // @synthesize artworkImageData=_artworkImageData;
+@property (strong, nonatomic) NSMutableDictionary *storage; // @synthesize storage=_storage;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (void)_createNowPlayingItemDisplayPropertiesForMetadataObject:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)createPlaybackArchiveDisplayPropertiesForPlayerID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithOptions:(unsigned long long)arg1;
@@ -30,6 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 artworkImageData:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

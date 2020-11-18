@@ -67,6 +67,7 @@
     unsigned long long _beginPerformingActivityTimestamp;
     unsigned long long _viewWillAppearTimestamp;
     unsigned long long _readyToInteractTimestamp;
+    unsigned long long _creationTimestamp;
     NSArray *_activityTypesToCreateInShareService;
     NSArray *_resolvedActivityItemsForCurrentActivity;
     UIViewController *_linkViewController;
@@ -138,6 +139,7 @@
 @property (nonatomic) BOOL connectedToDaemon; // @synthesize connectedToDaemon=_connectedToDaemon;
 @property (strong, nonatomic) UINavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property (strong, nonatomic) UIActivityContentViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (nonatomic, getter=_creationTimestamp, setter=_setCreationTimestamp:) unsigned long long creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (strong, nonatomic) ObjectManipulationViewController *customizationViewController; // @synthesize customizationViewController=_customizationViewController;
 @property (strong, nonatomic) _UICollectionViewDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -205,7 +207,7 @@
 - (BOOL)_allowsStylingSheetsAsCards;
 - (id)_availableActivities;
 - (void)_beginDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
-- (void)_beginInProgressActivityExecutionForcedStrongReference;
+- (void)_beginInProgressActivityExecutionForcedStrongReferenceForActivity:(id)arg1;
 - (void)_cancel;
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1;
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
@@ -217,7 +219,7 @@
 - (void)_editActionsTapped;
 - (void)_emitInteractionTelemetry:(BOOL)arg1 error:(id)arg2;
 - (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
-- (void)_endInProgressActivityExecutionForcedStrongReference;
+- (void)_endInProgressActivityExecutionForcedStrongReferenceForActivity:(id)arg1;
 - (void)_executeActivity;
 - (void)_insertIntoActivitiesByUUID:(id)arg1;
 - (void)_installViewController:(id)arg1 belowView:(id)arg2;
@@ -282,7 +284,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)optionsButtonTapped;
 - (void)performActivityInHostWithUUID:(id)arg1;
-- (void)performAirDropActivityInHostWithUUID:(id)arg1 noContentView:(BOOL)arg2;
+- (void)performAirDropActivityInHostWithNoContentView:(BOOL)arg1;
 - (void)performExtensionActivityInHostWithBundleID:(id)arg1 request:(id)arg2;
 - (void)performShortcutActivityInHostWithBundleID:(id)arg1 singleUseToken:(id)arg2;
 - (void)performUserDefaultsWithFavoritesProxies:(id)arg1 suggestionProxies:(id)arg2 orderedUUIDs:(id)arg3 activityCategory:(long long)arg4;

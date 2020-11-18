@@ -7,11 +7,10 @@
 #import <SafariServices/SFBrowserServiceViewController.h>
 
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/WBSDigitalHealthManagerDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, NSURL, UIView, UIWebClip, WBSDigitalHealthManager, WKProcessPool, WKWebsiteDataStore;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore;
 
-@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <WBSDigitalHealthManagerDelegate, SFWebAppServiceViewControllerProtocol>
+@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol>
 {
     UIWebClip *_webClip;
     UIView *_statusBarBackgroundView;
@@ -20,8 +19,6 @@
     NSMutableArray *_fallbackURLs;
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
-    NSURL *_currentUsageTrackingURL;
-    WBSDigitalHealthManager *_digitalHealthManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,9 +30,7 @@
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
 - (BOOL)_clientIsWebApp;
-- (id)_digitalHealthManager;
 - (void)_handleHostStateUpdate:(id)arg1;
-- (void)_hideDigitalHealthOverlay;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (BOOL)_isURLOutOfLegacyScope:(id)arg1 withLoginURLExempted:(BOOL)arg2;
@@ -44,8 +39,6 @@
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
 - (unsigned long long)_persona;
-- (void)_showDigitalHealthOverlay;
-- (void)_updateDigitalHealthTracking;
 - (void)_updateDisplayMode;
 - (BOOL)_usesScrollToTopView;
 - (BOOL)canPrint;
@@ -53,7 +46,6 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
-- (void)policyDidChangeForDigitalHealthManager:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (id)processPool;
 - (void)setNeedsStatusBarAppearanceUpdate;

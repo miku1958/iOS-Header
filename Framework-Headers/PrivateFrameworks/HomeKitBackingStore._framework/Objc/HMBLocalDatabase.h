@@ -36,8 +36,10 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)detectedLocalCorruptionWithInfo:(id)arg1;
 - (id)fetchZonesWithError:(id *)arg1;
+- (void)handleLocalZoneShutdown:(id)arg1;
 - (id)initWithDatastorePath:(id)arg1 readOnly:(BOOL)arg2 modelContainer:(id)arg3;
 - (id)initWithLocalSQLContext:(id)arg1 modelContainer:(id)arg2;
 - (id)logIdentifier;
@@ -49,7 +51,6 @@
 - (id)openedZoneWithZoneID:(id)arg1;
 - (BOOL)removeLocalDataForZone:(id)arg1 error:(id *)arg2;
 - (id)removeZone:(id)arg1;
-- (id)schemaHashForModel:(id)arg1;
 - (BOOL)shouldLogPrivateInformation;
 
 @end

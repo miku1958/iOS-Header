@@ -24,8 +24,10 @@
 @property (readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 
 - (void).cxx_destruct;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint:(id)arg1;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint;

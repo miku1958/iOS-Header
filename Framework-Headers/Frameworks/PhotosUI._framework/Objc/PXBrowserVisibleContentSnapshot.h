@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedPlaceholderText;
 @property (readonly, nonatomic) NSArray *locationNames; // @synthesize locationNames=_locationNames;
 @property (readonly) Class superclass;
 

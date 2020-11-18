@@ -9,7 +9,7 @@
 #import <SplashBoard/BSXPCCoding-Protocol.h>
 #import <SplashBoard/NSCopying-Protocol.h>
 
-@class FBSDisplayConfiguration, NSString;
+@class FBSDisplayConfiguration, NSString, XBDisplayEdgeInsetsWrapper;
 
 @interface XBLaunchStateRequest : NSObject <BSXPCCoding, NSCopying>
 {
@@ -17,6 +17,7 @@
     NSString *_groupID;
     long long _interfaceOrientation;
     long long _userInterfaceStyle;
+    XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     unsigned long long _statusBarState;
     NSString *_urlSchemeName;
     NSString *_launchInterfaceIdentifier;
@@ -24,6 +25,7 @@
     struct CGSize _naturalSize;
 }
 
+@property (strong, nonatomic) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;

@@ -13,7 +13,6 @@
 @interface GEOAnalyticsPipelineStateData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _placeCardPossibleactions;
     CDStruct_95bda58d _placeCardUnactionableuielements;
     GEOCarInfo *_carPlayInfo;
@@ -48,6 +47,9 @@
     GEORouteDetails *_routeRouteDetails;
     NSMutableArray *_suggestionsDisplayedresults;
     NSString *_suggestionsSearchstring;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _lookaroundHeading;
     unsigned int _lookaroundNumberPoisInView;
     int _mapSettingsNavVolume;
@@ -61,6 +63,9 @@
     int _placeCardPlaceactiondetailsResultindex;
     int _placeCardPlaceactiondetailsTransitplacecardTransitcategory;
     int _placeCardPlacecardtype;
+    int _restoreLayoutinfo;
+    int _restoreLayoutstyle;
+    int _restoreUitarget;
     int _suggestionsAcsequencenumber;
     int _suggestionsSearchfieldtype;
     int _suggestionsSelectedindex;
@@ -116,6 +121,9 @@
         unsigned int has_placeCardPlaceactiondetailsResultindex:1;
         unsigned int has_placeCardPlaceactiondetailsTransitplacecardTransitcategory:1;
         unsigned int has_placeCardPlacecardtype:1;
+        unsigned int has_restoreLayoutinfo:1;
+        unsigned int has_restoreLayoutstyle:1;
+        unsigned int has_restoreUitarget:1;
         unsigned int has_suggestionsAcsequencenumber:1;
         unsigned int has_suggestionsSearchfieldtype:1;
         unsigned int has_suggestionsSelectedindex:1;
@@ -216,6 +224,9 @@
         unsigned int wrote_placeCardPlaceactiondetailsResultindex:1;
         unsigned int wrote_placeCardPlaceactiondetailsTransitplacecardTransitcategory:1;
         unsigned int wrote_placeCardPlacecardtype:1;
+        unsigned int wrote_restoreLayoutinfo:1;
+        unsigned int wrote_restoreLayoutstyle:1;
+        unsigned int wrote_restoreUitarget:1;
         unsigned int wrote_suggestionsAcsequencenumber:1;
         unsigned int wrote_suggestionsSearchfieldtype:1;
         unsigned int wrote_suggestionsSelectedindex:1;
@@ -316,6 +327,9 @@
 @property (nonatomic) BOOL hasPlaceCardPlacecardtype;
 @property (nonatomic) BOOL hasPlaceCardTransitadvisorybanner;
 @property (readonly, nonatomic) BOOL hasPredExTrainingData;
+@property (nonatomic) BOOL hasRestoreLayoutinfo;
+@property (nonatomic) BOOL hasRestoreLayoutstyle;
+@property (nonatomic) BOOL hasRestoreUitarget;
 @property (nonatomic) BOOL hasRideBookingAppEnabled;
 @property (nonatomic) BOOL hasRideBookingAppInstalled;
 @property (readonly, nonatomic) BOOL hasRouteRouteDetails;
@@ -390,6 +404,9 @@
 @property (readonly, nonatomic) int *placeCardUnactionableuielements;
 @property (readonly, nonatomic) unsigned long long placeCardUnactionableuielementsCount;
 @property (strong, nonatomic) GEOLogMsgEventPredExTrainingData *predExTrainingData;
+@property (nonatomic) int restoreLayoutinfo;
+@property (nonatomic) int restoreLayoutstyle;
+@property (nonatomic) int restoreUitarget;
 @property (nonatomic) BOOL rideBookingAppEnabled;
 @property (nonatomic) BOOL rideBookingAppInstalled;
 @property (strong, nonatomic) GEORouteDetails *routeRouteDetails;
@@ -413,6 +430,9 @@
 - (int)StringAsMapViewMapType:(id)arg1;
 - (int)StringAsPlaceCardPlaceactiondetailsTransitplacecardTransitcategory:(id)arg1;
 - (int)StringAsPlaceCardPlacecardtype:(id)arg1;
+- (int)StringAsRestoreLayoutinfo:(id)arg1;
+- (int)StringAsRestoreLayoutstyle:(id)arg1;
+- (int)StringAsRestoreUitarget:(id)arg1;
 - (int)StringAsSuggestionsSearchfieldtype:(id)arg1;
 - (void)_addNoFlagsMapsServerMetadataSuggestionEntryDisplayed:(id)arg1;
 - (void)_addNoFlagsPlaceCardPossibleactions:(int)arg1;
@@ -455,6 +475,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mapSettingsNavVolumeAsString:(int)arg1;
 - (id)mapSettingsTransportModeAsString:(int)arg1;
@@ -470,6 +492,9 @@
 - (int)placeCardUnactionableuielementsAtIndex:(unsigned long long)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)restoreLayoutinfoAsString:(int)arg1;
+- (id)restoreLayoutstyleAsString:(int)arg1;
+- (id)restoreUitargetAsString:(int)arg1;
 - (void)setPlaceCardPossibleactions:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPlaceCardUnactionableuielements:(int *)arg1 count:(unsigned long long)arg2;
 - (id)suggestionsDisplayedresultsAtIndex:(unsigned long long)arg1;

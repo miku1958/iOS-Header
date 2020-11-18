@@ -7,18 +7,15 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString;
-@protocol MROutputContextDataSourceDelegate;
 
 @interface MROutputContextDataSource : NSObject
 {
     float _volume;
     unsigned int _volumeControlCapabilities;
-    id<MROutputContextDataSourceDelegate> _delegate;
     NSArray *_outputDevices;
     NSString *_uniqueIdentifier;
 }
 
-@property (weak, nonatomic) id<MROutputContextDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isAirPlaying;
 @property (readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;

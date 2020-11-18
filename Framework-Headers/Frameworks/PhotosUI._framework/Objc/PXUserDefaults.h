@@ -18,12 +18,14 @@
     NSNumber *_daysMarginScale;
     NSNumber *_allPhotosPreferredIndividualItemsColumns;
     NSNumber *_allPhotosAspectFit;
+    NSNumber *_allPhotosCaptionsVisible;
     NSNumber *_didShowCurationFooter;
     NSNumber *_didShowCompletedCurationFooterAnimation;
     id<PXUserDefaultsDataSource> _dataSource;
 }
 
 @property (copy, nonatomic) NSNumber *allPhotosAspectFit; // @synthesize allPhotosAspectFit=_allPhotosAspectFit;
+@property (copy, nonatomic) NSNumber *allPhotosCaptionsVisible; // @synthesize allPhotosCaptionsVisible=_allPhotosCaptionsVisible;
 @property (copy, nonatomic) NSNumber *allPhotosColumns; // @synthesize allPhotosColumns=_allPhotosColumns;
 @property (copy, nonatomic) NSNumber *allPhotosPreferredIndividualItemsColumns; // @synthesize allPhotosPreferredIndividualItemsColumns=_allPhotosPreferredIndividualItemsColumns;
 @property (copy, nonatomic) NSNumber *curatedLibraryZoomLevel; // @synthesize curatedLibraryZoomLevel=_curatedLibraryZoomLevel;

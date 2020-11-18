@@ -7,16 +7,17 @@
 #import <WorkflowKit/WFAction.h>
 
 #import <WorkflowKit/WFIntentExecutorDelegate-Protocol.h>
-#import <WorkflowKit/WFIntentPlatterViewControllerDelegate-Protocol.h>
+#import <WorkflowKit/WFIntentViewControllerDelegate-Protocol.h>
 #import <WorkflowKit/WFStandaloneShortcutAction-Protocol.h>
 
-@class INCExtensionConnection, INIntentDescription, NSArray, NSString, WFIntentExecutor, WFIntentPlatterViewController;
+@class INCExtensionConnection, INIntentDescription, NSArray, NSString, UIViewController, WFIntentExecutor;
+@protocol WFIntentViewController;
 
-@interface WFHandleIntentAction : WFAction <WFIntentExecutorDelegate, WFIntentPlatterViewControllerDelegate, WFStandaloneShortcutAction>
+@interface WFHandleIntentAction : WFAction <WFIntentExecutorDelegate, WFIntentViewControllerDelegate, WFStandaloneShortcutAction>
 {
     NSString *_inputParameterName;
     WFIntentExecutor *_executor;
-    WFIntentPlatterViewController *_intentViewController;
+    UIViewController<WFIntentViewController> *_intentViewController;
     CDUnknownBlockType _viewControllerCompletionHandler;
     INCExtensionConnection *_connection;
 }
@@ -29,7 +30,7 @@
 @property (readonly, nonatomic) NSString *inputParameterName; // @synthesize inputParameterName=_inputParameterName;
 @property (readonly, nonatomic) long long intentCategory;
 @property (readonly, nonatomic) INIntentDescription *intentDescription;
-@property (strong, nonatomic) WFIntentPlatterViewController *intentViewController; // @synthesize intentViewController=_intentViewController;
+@property (strong, nonatomic) UIViewController<WFIntentViewController> *intentViewController; // @synthesize intentViewController=_intentViewController;
 @property (readonly, nonatomic) NSArray *slots;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType viewControllerCompletionHandler; // @synthesize viewControllerCompletionHandler=_viewControllerCompletionHandler;
@@ -41,10 +42,11 @@
 - (unsigned long long)allowsInteractiveSlotResolution;
 - (BOOL)attemptRecoveryFromError:(id)arg1 optionIndex:(unsigned long long)arg2;
 - (void)cancel;
+- (id)createIntentViewControllerWithInteraction:(id)arg1 requiresConfirmation:(BOOL)arg2;
 - (id)createResourceManager;
 - (void)dismissViewControllerIfNecessary:(CDUnknownBlockType)arg1;
+- (id)errorAttributedToApp:(id)arg1;
 - (id)errorFromConfirmResponse:(id)arg1 intent:(id)arg2;
-- (id)errorFromExtensionError:(id)arg1;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (id)errorThatLaunchesApp:(id)arg1;
@@ -55,6 +57,7 @@
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (id)generatedAccessResource;
 - (id)generatedIntentWithInput:(id)arg1 error:(id *)arg2;
+- (void)getErrorFromExtensionError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleExecutorError:(id)arg1;
 - (void)handleResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;

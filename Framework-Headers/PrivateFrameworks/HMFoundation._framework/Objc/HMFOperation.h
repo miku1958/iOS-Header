@@ -48,6 +48,7 @@
 - (BOOL)isExecuting;
 - (BOOL)isFinished;
 - (id)logIdentifier;
+- (void)main;
 - (void)setQualityOfService:(long long)arg1;
 - (void)start;
 - (void)timerDidFire:(id)arg1;

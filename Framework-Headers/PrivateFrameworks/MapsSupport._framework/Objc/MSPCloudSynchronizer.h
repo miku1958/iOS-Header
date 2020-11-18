@@ -25,6 +25,7 @@
     MSPJournal *_journal;
     NSObject<OS_dispatch_queue> *_mergeQueue;
     MSPCloudMigrator *_migrator;
+    unsigned long long _lastRetryInterval;
     NSArray *_containers;
     id<MSPCloudSynchronizerDelegate> _delegate;
     MSPCloudKitAccountAccess *_cloudAccess;
@@ -43,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property (strong, nonatomic) MSPJournal *journal; // @synthesize journal=_journal;
+@property (nonatomic) unsigned long long lastRetryInterval; // @synthesize lastRetryInterval=_lastRetryInterval;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *mergeQueue; // @synthesize mergeQueue=_mergeQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *mergeTimer; // @synthesize mergeTimer=_mergeTimer;
 @property (strong, nonatomic) MSPCloudMigrator *migrator; // @synthesize migrator=_migrator;
@@ -65,6 +67,8 @@
 - (void)prepareForMergeWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestMerge;
 - (void)requestMergeWithReason:(unsigned long long)arg1;
+- (void)requestMergeWithReason:(unsigned long long)arg1 afterDelay:(unsigned long long)arg2;
+- (unsigned long long)retryIntervalForError:(id)arg1;
 - (void)runConditionsChanged:(id)arg1;
 - (void)start;
 - (void)stop;

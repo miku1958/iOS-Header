@@ -19,6 +19,7 @@
 
 + (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (id)_applicationNameForCompanionBundleIdentifier:(id)arg1;
++ (id)_studyNameForResearchStudySource:(id)arg1;
 + (id)createWithCodable:(id)arg1;
 + (id)hd_currentDeviceSourceName;
 + (id)hd_getNameForSource:(id)arg1;

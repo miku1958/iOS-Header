@@ -63,6 +63,7 @@
 - (struct OpaqueFigPlaybackItem *)_playbackItem;
 - (void)_removeFigAssetNotifications;
 - (void)_removeUserInfoObject;
+- (id)_resourceLoaderWithRemoteHandlerContext:(id)arg1;
 - (void)_setAssetInspectorLoader:(id)arg1;
 - (void)_setUserInfoObject:(id)arg1;
 - (BOOL)_shouldOptimizeAccessForLinearMoviePlayback;

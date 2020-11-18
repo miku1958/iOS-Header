@@ -39,6 +39,8 @@
 + (id)payloadClassID;
 + (unsigned int)payloadVersion;
 + (id)payloadWithData:(id)arg1 forPayloadID:(id)arg2 version:(unsigned int)arg3 andNilProperties:(id)arg4 error:(id *)arg5;
++ (BOOL)shouldPersistForChangedKeys:(id)arg1 entityName:(id)arg2;
++ (id)snapshotSortDescriptors;
 + (id)sortedObjectsToAddWithUUIDs:(id)arg1 uuidKey:(id)arg2 andExistingObjects:(id)arg3 fetchBlock:(CDUnknownBlockType)arg4;
 + (void)validatePayloadPropertiesForManagedObjectModel:(id)arg1;
 - (void).cxx_destruct;

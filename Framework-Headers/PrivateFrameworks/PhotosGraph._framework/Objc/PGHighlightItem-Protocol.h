@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSString *dateDescription;
 @property (readonly, nonatomic) NSDate *endDate;
+@property (readonly, nonatomic) unsigned short enrichmentState;
 @property (readonly, nonatomic) NSArray *extendedCuratedAssets;
 @property (readonly, nonatomic) PHAsset *keyAsset;
 @property (readonly, nonatomic) unsigned short kind;

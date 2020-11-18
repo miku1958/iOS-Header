@@ -72,6 +72,8 @@
     double _iconFlyInTension;
     double _iconFlyInFriction;
     SBHomeGestureParticipant *_homeGestureParticipant;
+    id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
+    id<BSInvalidatable> _requireWallpaperAssertion;
     CDUnknownBlockType _ppt_transitionBeginsCallback;
     CDUnknownBlockType _ppt_transitionEndsCallback;
     SBCoverSheetSlidingViewController *_coverSheetSlidingViewController;
@@ -130,6 +132,7 @@
 @property (copy, nonatomic) CDUnknownBlockType ppt_transitionBeginsCallback; // @synthesize ppt_transitionBeginsCallback=_ppt_transitionBeginsCallback;
 @property (copy, nonatomic) CDUnknownBlockType ppt_transitionEndsCallback; // @synthesize ppt_transitionEndsCallback=_ppt_transitionEndsCallback;
 @property (readonly, nonatomic) long long proximityDetectionMode;
+@property (strong, nonatomic) id<BSInvalidatable> requireWallpaperAssertion; // @synthesize requireWallpaperAssertion=_requireWallpaperAssertion;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (strong, nonatomic) UIImpactFeedbackGenerator *rubberBandFeedbackGenerator; // @synthesize rubberBandFeedbackGenerator=_rubberBandFeedbackGenerator;
 @property (strong, nonatomic) SBCoverSheetSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
@@ -142,6 +145,7 @@
 @property (strong, nonatomic) NSMutableSet *secureAppWindowVisibleReasons; // @synthesize secureAppWindowVisibleReasons=_secureAppWindowVisibleReasons;
 @property (nonatomic) BOOL shouldDisplayFakeStatusBar; // @synthesize shouldDisplayFakeStatusBar=_shouldDisplayFakeStatusBar;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 @property (nonatomic) unsigned long long transitionOverrideOptions; // @synthesize transitionOverrideOptions=_transitionOverrideOptions;
 @property (weak, nonatomic) CSCoverSheetTransitionSettings *transitionSettings; // @synthesize transitionSettings=_transitionSettings;
 @property (nonatomic) unsigned long long transitionType; // @synthesize transitionType=_transitionType;

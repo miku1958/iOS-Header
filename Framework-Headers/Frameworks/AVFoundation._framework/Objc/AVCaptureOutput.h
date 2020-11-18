@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSArray *connections;
 
++ (id)allOutputSubclasses;
 + (id)availableVideoCodecTypesForSourceDevice:(id)arg1 sourceFormat:(id)arg2 outputDimensions:(CDStruct_79c71658)arg3 fileType:(id)arg4 videoCodecTypesWhiteList:(id)arg5;
 + (long long)dataDroppedReasonFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (void)initialize;

@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) long long layoutEnvironment; // @dynamic layoutEnvironment;
 @property (nonatomic) unsigned long long preferredContentType; // @dynamic preferredContentType;
 @property (nonatomic) BOOL prefersLiveXIB; // @dynamic prefersLiveXIB;
 @property (copy, nonatomic) NSString *requestedLaunchIdentifier; // @dynamic requestedLaunchIdentifier;

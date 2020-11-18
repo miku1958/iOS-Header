@@ -9,7 +9,7 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMFUnfairLock, NSString, NSUUID, _HMContext;
+@class HMAudioControl, HMFUnfairLock, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMMediaSessionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,21 +19,29 @@ __attribute__((visibility("hidden")))
     NSUUID *_uuid;
     NSString *_routeUID;
     long long _playbackState;
+    long long _shuffleState;
+    long long _repeatState;
+    NSString *_mediaUniqueIdentifier;
     _HMContext *_context;
     NSUUID *_uniqueIdentifier;
     NSUUID *_messageTargetUUID;
+    HMAudioControl *_audioControl;
     id<_HMMediaSessionDelegate> _delegate;
 }
 
+@property (readonly) HMAudioControl *audioControl; // @synthesize audioControl=_audioControl;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_HMMediaSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *mediaUniqueIdentifier; // @synthesize mediaUniqueIdentifier=_mediaUniqueIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (strong, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 @property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
+@property (readonly) long long repeatState; // @synthesize repeatState=_repeatState;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
+@property (readonly) long long shuffleState; // @synthesize shuffleState=_shuffleState;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -42,17 +50,21 @@ __attribute__((visibility("hidden")))
 - (void)_handleSessionPlaybackUpdated:(id)arg1;
 - (void)_handleSessionRouteUIDUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_notifyDelegateOfUpdatedMediaState:(id)arg1;
 - (void)_notifyDelegateOfUpdatedPlaybackState:(long long)arg1;
 - (void)_notifyDelegateOfUpdatedRouteUID:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (void)_updatePlaybackState:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
+- (void)_updateMediaState:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3 audioControl:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageDestination;
 - (void)refreshPlaybackStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setMediaUniqueIdentifier:(id)arg1;
 - (void)setPlaybackState:(long long)arg1;
 - (void)setPlaybackState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setRepeatState:(long long)arg1;
 - (void)setRouteUID:(id)arg1;
+- (void)setShuffleState:(long long)arg1;
 - (void)setUuid:(id)arg1;
 - (void)updatePlaybackState:(id)arg1;
 

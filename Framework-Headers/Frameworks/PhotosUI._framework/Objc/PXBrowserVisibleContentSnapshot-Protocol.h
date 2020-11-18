@@ -6,13 +6,16 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSArray, NSDateInterval;
+@class NSArray, NSDateInterval, NSString;
 
 @protocol PXBrowserVisibleContentSnapshot <NSObject>
 
 @property (readonly, nonatomic) NSDateInterval *dateInterval;
 @property (readonly, nonatomic) unsigned long long dateIntervalGranularity;
+@property (readonly, nonatomic) NSString *localizedPlaceholderText;
 @property (readonly, nonatomic) NSArray *locationNames;
 
+
+@optional
 @end
 

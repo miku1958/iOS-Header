@@ -20,11 +20,11 @@
     UITableView *_tableView;
     NSMapTable *_cachedSectionHeaders;
     NSMapTable *_cachedSectionFooters;
+    NSMutableDictionary *_cachedImageOptions;
     NSMutableDictionary *_cachedMaxImageWidths;
     NSMutableDictionary *_cachedColumnCenteringWidths;
-    BOOL _isTransitioningSize;
-    struct CGSize _newSize;
     BOOL _animatingRowInsertion;
+    struct CGSize _transitioningSize;
     struct CGRect _lastMaxWidthBounds;
     BOOL _showingIncidents;
     BOOL _limitInteraction;
@@ -52,6 +52,7 @@
 @property (nonatomic, getter=supportsSystemSectionCollapsing) BOOL supportSystemSectionCollapsing; // @synthesize supportSystemSectionCollapsing=_supportSystemSectionCollapsing;
 
 - (void).cxx_destruct;
+- (double)_availableWidth;
 - (id)_cellForRowAtIndexPath:(id)arg1;
 - (void)_configureDeparturesCell:(id)arg1 forIndexPath:(id)arg2;
 - (id)_connectionCellForRow:(long long)arg1;
@@ -63,18 +64,16 @@
 - (id)_headerTextForSection:(long long)arg1;
 - (double)_heightForFooterInSection:(long long)arg1;
 - (id)_imageForLine:(id)arg1;
-- (id)_imageForLine:(id)arg1 inSection:(long long)arg2;
 - (id)_imageForLine:(id)arg1 size:(long long)arg2;
+- (id)_imageOptionSizeArraysForEnumeration;
 - (id)_imageWithArtworkDataSource:(id)arg1;
+- (id)_imageWithArtworkDataSource:(id)arg1 size:(long long)arg2;
 - (id)_incidentCellForRow:(long long)arg1 inSection:(long long)arg2;
 - (void)_incrementPageControlValueForSection:(long long)arg1 identifier:(id)arg2;
 - (id)_indexPathWithHeader:(id)arg1;
 - (id)_indexPathWithoutHeader:(id)arg1;
-- (BOOL)_isCompressed;
-- (BOOL)_isCompressedWidthTraits:(id)arg1;
-- (long long)_lineImageSizeForSection:(long long)arg1;
 - (long long)_lineImageSizeForSystem:(id)arg1;
-- (double)_maxImageWidthForSection:(long long)arg1;
+- (double)_maxImageWidthForSystem:(id)arg1;
 - (id)_messageCellForSection:(long long)arg1;
 - (long long)_numberOfRowsInSection:(long long)arg1;
 - (id)_pagingPromptForSection:(long long)arg1;
@@ -83,6 +82,7 @@
 - (BOOL)_shouldPageSection:(long long)arg1;
 - (void)_showIncidentDetails;
 - (id)_smallerImageWithArtworkDataSource:(id)arg1;
+- (id)_smallestImageWithArtworkDataSource:(id)arg1;
 - (id)_systemCellForSection:(long long)arg1;
 - (void)_toggleHiddenSystemInSection:(long long)arg1 animated:(BOOL)arg2;
 - (int)_transitCategoryForSection:(long long)arg1;

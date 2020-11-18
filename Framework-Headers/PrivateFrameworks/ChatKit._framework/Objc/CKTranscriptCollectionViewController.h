@@ -127,9 +127,11 @@
 - (BOOL)_allowsEffectAutoPlayback;
 - (double)_balloonHorizontalOffsetForParentChatItem:(id)arg1 contentAlignmentRect:(struct CGRect)arg2 responsibleChatItems:(id *)arg3 individualOffsets:(id *)arg4;
 - (BOOL)_canShowWhileLocked;
+- (BOOL)_canUseOpaqueMask;
 - (void)_collectionViewDidRestAsync:(BOOL)arg1;
 - (void)_deferredStartPlayback;
 - (void)_diffAssociatedItemsWithOldAssociatedItems:(id)arg1 removedAssociatedIndexes:(id *)arg2 insertedAssociatedIndexes:(id *)arg3;
+- (void)_downgradeMessage:(id)arg1;
 - (void)_downgradeMessageAtIndexPath:(id)arg1;
 - (void)_handleAssociatedMessageCellTapEvent:(id)arg1 isDoubleTap:(BOOL)arg2;
 - (void)_hideBalloonViewIfNecessaryForCell:(id)arg1 indexPath:(id)arg2;
@@ -190,7 +192,6 @@
 - (void)chatItemsDidChange:(id)arg1;
 - (id)chatItemsWithIMChatItems:(id)arg1;
 - (id)chatItemsWithNotifications:(id)arg1;
-- (void)chatRegistryDidLoad:(id)arg1;
 - (void)clearRecentPluginTouch;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
@@ -217,6 +218,7 @@
 - (void)configureAssociatedCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)configureCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)configureSpeakerButtonCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (void)connectivityChanged:(id)arg1;
 - (struct CGRect)convertedBoundsToCullFromView:(id)arg1;
 - (void)cullCellSubviews;
 - (id)currentEffectForCollectionView:(id)arg1 layout:(id)arg2;
@@ -227,6 +229,7 @@
 - (void)effectManager:(id)arg1 didStopEffect:(id)arg2;
 - (void)endHoldingUpdatesAfterQuicklookCancelsDismiss;
 - (BOOL)hasRecentTouchForSendingPlugin:(id)arg1;
+- (id)hawkingFailurePromptMessageForHandle:(id)arg1;
 - (void)highlightItemAtIndexPathWhenDisplayed:(id)arg1;
 - (id)indexPathForBalloonView:(id)arg1;
 - (id)initWithConversation:(id)arg1 delegate:(id)arg2 balloonMaxWidth:(double)arg3 marginInsets:(struct UIEdgeInsets)arg4;
@@ -249,6 +252,7 @@
 - (void)locationShareBalloonViewShareButtonTapped:(id)arg1;
 - (void)locationSharingClient:(id)arg1 showShareLocationMenuWithBalloonPluginView:(id)arg2;
 - (void)locationStringDidChange:(id)arg1;
+- (id)makeHawkingPromptForMessage:(id)arg1 toRecipient:(id)arg2 fromSender:(id)arg3 withSMSOption:(BOOL)arg4;
 - (id)messagePartForBalloonView:(id)arg1;
 - (void)multiwayCallStateChanged:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -256,12 +260,14 @@
 - (void)performResumeDeferredSetup;
 - (void)pluginPlaybackManagerDidStopPlayback:(id)arg1;
 - (void)prepareForSuspend;
+- (void)presentHawkingPromptForMessage:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)previewDidChange:(id)arg1;
 - (void)raiseGestureRecognized:(id)arg1;
 - (void)reconfigureVisibleSpeakerButtonCells;
 - (void)reloadData;
 - (void)removeContentAnimationPauseReasons:(long long)arg1;
+- (void)repromptLastBlackholeFailureIfNotPrompted;
 - (void)scrollToTopOfLastBubbleCellAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
@@ -279,6 +285,7 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setScrollAnchor:(double)arg1;
 - (void)setSelectedItems:(id)arg1;
+- (BOOL)shouldPresentHawkingPromptForMessage:(id)arg1;
 - (void)sizeFullTranscriptIfNecessary;
 - (void)snapshotDidChange:(id)arg1;
 - (void)snapshotTaken:(id)arg1;

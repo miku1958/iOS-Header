@@ -17,6 +17,7 @@
     BOOL _forceUpsell;
     int _fairplayStatus;
     NSString *_bundleID;
+    NSString *_bundlePath;
     NSNumber *_accountDSID;
     long long _claimStyle;
     unsigned long long _exitReason;
@@ -25,6 +26,7 @@
 
 @property (readonly, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (readonly, nonatomic) long long claimStyle; // @synthesize claimStyle=_claimStyle;
 @property (nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 @property (nonatomic) int fairplayStatus; // @synthesize fairplayStatus=_fairplayStatus;
@@ -38,6 +40,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBundleID:(id)arg1;
 - (id)initWithBundleID:(id)arg1 accountIdentifier:(id)arg2 claimStyle:(long long)arg3;
+- (id)initWithBundlePath:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

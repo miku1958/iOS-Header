@@ -6,19 +6,26 @@
 
 #import <FileProvider/FPActionOperation.h>
 
-@class FPItem, FPItemID, NSArray;
+@class FPItem, FPItemID, NSArray, NSObject, NSOperationQueue;
+@protocol OS_dispatch_queue;
 
 @interface FPArchiveOperation : FPActionOperation
 {
     NSArray *_items;
     FPItemID *_placeholderID;
     FPItem *_destinationFolder;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_operationQueue;
     CDUnknownBlockType _archiveCompletionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType archiveCompletionBlock; // @synthesize archiveCompletionBlock=_archiveCompletionBlock;
 
 - (void).cxx_destruct;
+- (void)_archiveURLs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_coordinateArchivedItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_copyArchivedItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_prepareItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_zipPathExtension;
 - (void)actionMain;
 - (void)didUnarchiveItemAtURL:(id)arg1;

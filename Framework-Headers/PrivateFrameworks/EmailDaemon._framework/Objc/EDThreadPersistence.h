@@ -63,6 +63,7 @@
 - (void)_addPersistedMessages:(id)arg1 journaled:(BOOL)arg2 generationWindow:(id)arg3;
 - (BOOL)_addThreadScopeToDatabase:(id)arg1 withMailboxDatabaseID:(long long)arg2 needsUpdate:(BOOL)arg3 connection:(id)arg4;
 - (BOOL)_addThreadScopeToDatabaseWithMailboxType:(id)arg1 needsUpdate:(BOOL)arg2 lastViewedDate:(id)arg3 connection:(id)arg4;
+- (id)_addedMailboxObjectIDsForActivatedAccount:(id)arg1;
 - (id)_addressesFromMessageAddressesStatement:(id)arg1;
 - (id)_addressesFromSelectStatement:(id)arg1;
 - (id)_comparisonExpressionForSortDescriptors:(id)arg1 conversationID:(long long)arg2 threadExpression:(id)arg3 threadScopeDatabaseID:(long long)arg4 connection:(id)arg5;
@@ -74,9 +75,11 @@
 - (BOOL)_deleteSendersFromThreadWithDatabaseID:(id)arg1 messageThreadExpression:(id)arg2;
 - (id)_deleteWrappedMessages:(id)arg1 fromThreadWithObjectID:(id)arg2 threadScopeDatabaseID:(long long)arg3 generationWindow:(id)arg4;
 - (BOOL)_enumerateThreadObjectIDsForThreadScope:(id)arg1 filterClause:(id)arg2 sortDescriptors:(id)arg3 batchBlock:(CDUnknownBlockType)arg4;
+- (void)_enumerateThreadScopesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)_expressionForThreadScope:(id)arg1;
 - (id)_filteredPersistedMessagesForPersistedMessages:(id)arg1;
 - (id)_flagColorsFromRow:(id)arg1;
+- (void)_getIndividualMailboxScopes:(id *)arg1 unifiedMailboxThreadScopes:(id *)arg2 forAccount:(id)arg3;
 - (id)_inactiveMailboxDatabaseIDsForMailboxScope:(id)arg1 forThreadScopeDatabaseID:(id)arg2;
 - (BOOL)_isThreadScopePrecomputed:(id)arg1 shouldMigrate:(BOOL *)arg2;
 - (void)_iterateWrappedMessagesByConversationForPersistedMessages:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -118,6 +121,7 @@
 - (id)_threadExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_threadForWrappedMessages:(id)arg1 objectID:(id)arg2;
 - (id)_threadQueryForThreadScope:(id)arg1;
+- (id)_threadScopedToResetForActivatedAccount:(id)arg1;
 - (void)_updateAllThreadsAfterDeleteInThreadScope:(id)arg1 withDatabaseID:(id)arg2 generationWindow:(id)arg3;
 - (id)_updateBasicPropertiesAfterDeleteForThreadObjectID:(id)arg1 threadScopeDatabaseID:(long long)arg2;
 - (BOOL)_updateDisplayMessageWithUnreadWrappedMessages:(id)arg1 threadExpression:(id)arg2;
@@ -126,8 +130,6 @@
 - (id)_upsertForThreadsWithThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_wrappedMessageForPersistedMessages:(id)arg1 threadScope:(id)arg2;
 - (id)_wrappedMessagesByThreadScopeForPersistedMessages:(id)arg1;
-- (void)accountBecameActive:(id)arg1;
-- (void)accountBecameInactive:(id)arg1;
 - (BOOL)addThreads:(id)arg1;
 - (BOOL)beginMigratingThreadScope:(id)arg1;
 - (id)changeForThreadWithObjectID:(id)arg1 changedKeyPaths:(id)arg2;
@@ -151,7 +153,10 @@
 - (void)persistenceIsInitializingDatabaseWithConnection:(id)arg1;
 - (unsigned long long)persistenceStateForThreadScope:(id)arg1;
 - (void)persistenceWillReplaceDatabaseID:(long long)arg1 with:(long long)arg2 forTable:(id)arg3 column:(id)arg4;
+- (void)resetThreadScopedForActivatedAccount:(id)arg1;
+- (id)resetThreadScopesForDeactivatedAccount:(id)arg1;
 - (void)resetThreadScopesForMailboxScope:(id)arg1;
+- (void)setNeedsUpdateForThreadScope:(id)arg1;
 - (id)threadForObjectID:(id)arg1 originatingQuery:(id)arg2 error:(id *)arg3;
 - (id)threadObjectIDBeforeThreadObjectID:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
 - (id)threadObjectIDsByNextExistingForThreadObjectIDs:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
@@ -161,6 +166,7 @@
 - (BOOL)threadScopeManager:(id)arg1 isValidMailboxObjectID:(id)arg2;
 - (BOOL)threadScopeManager:(id)arg1 mailboxScopeExists:(id)arg2;
 - (void)threadScopeManager:(id)arg1 populateThreadScopesWithBlock:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)threadScopeMatcherForActivatedAccount:(id)arg1;
 - (void)updateLastViewedDateForThreadScope:(id)arg1;
 
 @end

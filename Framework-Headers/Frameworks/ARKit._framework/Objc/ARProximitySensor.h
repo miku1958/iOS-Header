@@ -17,6 +17,8 @@
     PRRangingSession *_rangingSession;
     NSMutableSet *_peers;
     NSMutableDictionary *_vioSessionID;
+    NSMutableSet *_vioSessions;
+    struct os_unfair_lock_s _lockState;
     BOOL _running;
     id<ARSensorDelegate> _delegate;
 }
@@ -30,7 +32,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)attachInitialPRCollaborationDataToCollaborationData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_requestInitialCollaborationData;
+- (void)dealloc;
 - (id)init;
 - (unsigned long long)providedDataTypes;
 - (void)pushCollaborationData:(id)arg1;

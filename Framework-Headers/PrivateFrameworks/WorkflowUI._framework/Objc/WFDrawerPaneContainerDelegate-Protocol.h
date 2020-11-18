@@ -9,6 +9,7 @@
 @class UIScrollView, WFDrawerPaneContainer;
 
 @protocol WFDrawerPaneContainerDelegate <NSObject>
+- (double)bottomInsetForPaneContainer:(WFDrawerPaneContainer *)arg1;
 - (void)drawerPaneContainer:(WFDrawerPaneContainer *)arg1 didTransitionToVisibility:(unsigned long long)arg2;
 - (void)drawerPaneContainer:(WFDrawerPaneContainer *)arg1 willTransitionToVisibility:(unsigned long long)arg2;
 - (UIScrollView *)scrollViewOccludingDrawerPaneInsideContainer:(WFDrawerPaneContainer *)arg1;

@@ -37,6 +37,7 @@
     NSString *_sessionID;
     UITraitCollection *_hostTraitCollection;
     NSLocale *_hostLocale;
+    NSArray *_preferredLocalizations;
     NSArray *_includedActivityTypes;
     NSArray *_excludedActivityTypes;
     NSArray *_activityTypeOrder;
@@ -65,6 +66,7 @@
 @property (nonatomic) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (strong, nonatomic) NSArray *linkPresentationDataForActivityItems; // @synthesize linkPresentationDataForActivityItems=_linkPresentationDataForActivityItems;
 @property (nonatomic) BOOL linkedBeforeYukon; // @synthesize linkedBeforeYukon=_linkedBeforeYukon;
+@property (strong, nonatomic) NSArray *preferredLocalizations; // @synthesize preferredLocalizations=_preferredLocalizations;
 @property (nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
 @property (strong, nonatomic) UISUISecurityContext *securityScopedURLsForMatching; // @synthesize securityScopedURLsForMatching=_securityScopedURLsForMatching;
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
@@ -84,6 +86,7 @@
 - (id)availableActivityItemValueClasses;
 - (id)contextForMatchingByActivityItemValueClasses;
 - (id)contextForMatchingByActivityItems:(id)arg1 itemValues:(id)arg2;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

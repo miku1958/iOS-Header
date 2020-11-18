@@ -19,6 +19,7 @@
 
 @property (readonly, nonatomic) HUGridActionSetItemManager *actionSetItemManager;
 @property (strong, nonatomic) HFWallpaperSlice *blurredWallpaperSlice;
+@property (strong, nonatomic) HFWallpaperSlice *darkModeBlurredWallpaperSlice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,7 +29,7 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) HUWallpaperView *wallpaperView;
 
-+ (double)requiredHeightWithLayoutOptions:(id)arg1;
++ (double)requiredHeightWithLayoutOptions:(id)arg1 numberOfItems:(unsigned long long)arg2;
 + (unsigned long long)updateMode;
 - (void).cxx_destruct;
 - (id)_detailsViewControllerForActionSetItem:(id)arg1;

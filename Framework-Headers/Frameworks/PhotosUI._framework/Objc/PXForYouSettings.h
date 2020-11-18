@@ -29,6 +29,7 @@
     BOOL _forcePortraitBias;
     BOOL _useSquareSharedAlbumActivity;
     BOOL _disableSharedAlbumTopMargin;
+    BOOL _alwaysShowSuggestionRenderingOverlay;
     BOOL _showFeaturedPhotosBadges;
     BOOL _delayEditRenders;
     BOOL _useCachedEditRenders;
@@ -41,6 +42,7 @@
 @property (nonatomic) BOOL allowGIFPlayback; // @synthesize allowGIFPlayback=_allowGIFPlayback;
 @property (nonatomic) BOOL allowLoopPlayback; // @synthesize allowLoopPlayback=_allowLoopPlayback;
 @property (nonatomic) BOOL allowVideoPlayback; // @synthesize allowVideoPlayback=_allowVideoPlayback;
+@property (nonatomic) BOOL alwaysShowSuggestionRenderingOverlay; // @synthesize alwaysShowSuggestionRenderingOverlay=_alwaysShowSuggestionRenderingOverlay;
 @property (nonatomic) BOOL delayEditRenders; // @synthesize delayEditRenders=_delayEditRenders;
 @property (nonatomic) BOOL disableSharedAlbumTopMargin; // @synthesize disableSharedAlbumTopMargin=_disableSharedAlbumTopMargin;
 @property (nonatomic) BOOL forceDisplayReportJunk; // @synthesize forceDisplayReportJunk=_forceDisplayReportJunk;

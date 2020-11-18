@@ -10,7 +10,7 @@
 #import <VideosUI/VUINowPlayingFeatureMonitorDelegate-Protocol.h>
 #import <VideosUI/VideosExtrasContextDelegate-Protocol.h>
 
-@class AVPlayerViewController, MPAVRoutingController, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
+@class AVExternalPlaybackController, AVPlayerViewController, MPAVRoutingController, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
 @protocol TVPMediaItem;
 
 @interface VUIPlaybackManager : NSObject <AVPlayerViewControllerDelegatePrivate, VideosExtrasContextDelegate, VUINowPlayingFeatureMonitorDelegate>
@@ -30,6 +30,7 @@
     UIViewController *_presentingViewController;
     long long _dismissalOperation;
     MPAVRoutingController *_routingController;
+    AVExternalPlaybackController *_avExternalPlaybackController;
     VideosExtrasPresenter *_extrasPresenter;
     VUINowPlayingFeatureMonitor *_featureMonitor;
     UIButton *_skipButton;
@@ -39,6 +40,7 @@
 }
 
 @property (weak, nonatomic) VUIPlayer *activePlayer; // @synthesize activePlayer=_activePlayer;
+@property (strong, nonatomic) AVExternalPlaybackController *avExternalPlaybackController; // @synthesize avExternalPlaybackController=_avExternalPlaybackController;
 @property (strong, nonatomic) AVPlayerViewController *avPlayerViewController; // @synthesize avPlayerViewController=_avPlayerViewController;
 @property (strong, nonatomic) VUIPlayer *backgroundAudioPlayer; // @synthesize backgroundAudioPlayer=_backgroundAudioPlayer;
 @property (readonly, nonatomic) NSObject<TVPMediaItem> *currentMediaItem;
@@ -88,6 +90,7 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationWillResignActive:(id)arg1;
+- (void)_avPlayerViewControllerPresentationDidTimeout;
 - (void)_configureStillWatchingFeatureMonitoringIfLivePlayback;
 - (void)_currentMediaItemDidChange:(id)arg1;
 - (void)_downloadRatingImageIfAvailable:(id)arg1;
@@ -107,7 +110,6 @@
 - (void)_showTVRating:(BOOL)arg1 withImage:(id)arg2 animated:(BOOL)arg3;
 - (void)_skipButtonTapped:(id)arg1;
 - (id)_stillWatchingAlertDurationOverride;
-- (void)_updateAVPlayerViewControllerWithActiveAVPlayer;
 - (void)_updateRequiresLinearPlayback;
 - (void)_updateRollsInfoFromMainPlayersCurrentMediaItem;
 - (void)_updateStopWhenBackgroundedFeatureForApplicationState:(long long)arg1 isFullScreen:(BOOL)arg2;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSIndexSet;
+@class NSIndexSet, NSPredicate;
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
 @protocol PXCuratedLibraryMutableAssetsDataSourceManager
 
+@property (copy, nonatomic) NSPredicate *allPhotosFilterPredicate;
 @property (nonatomic) long long zoomLevel;
 
 - (BOOL)forceAccurateAllSectionsIfNeeded;

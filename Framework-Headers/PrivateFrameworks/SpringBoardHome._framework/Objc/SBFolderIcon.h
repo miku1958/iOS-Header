@@ -34,10 +34,12 @@
 - (void)_containedIconAccessoriesDidUpdate:(id)arg1;
 - (void)_containedIconImageChanged:(id)arg1;
 - (void)_containedIconLaunchEnabledDidUpdate:(id)arg1;
+- (void)_performDelayedIconUpdates;
 - (void)_updateBadgeValue;
 - (void)_updateProgress;
 - (void)addNodeObserver:(id)arg1;
 - (void)ancestryDidChange;
+- (id)badgeNumberOrString;
 - (BOOL)canBeAddedToMultiItemDrag;
 - (id)children;
 - (id)containedNodeIdentifiers;

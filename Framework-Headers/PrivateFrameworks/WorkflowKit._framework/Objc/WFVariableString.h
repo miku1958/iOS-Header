@@ -9,14 +9,13 @@
 #import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString;
+@class NSArray, NSString;
 
 @interface WFVariableString : NSObject <WFVariableSerialization, NSCopying>
 {
     NSArray *_stringsAndVariables;
 }
 
-@property (readonly, nonatomic) NSAttributedString *attributedString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,14 +25,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *variables;
 
-+ (id)attributedStringWithVariable:(id)arg1;
 + (BOOL)dictionaryIsSerializedVariableString:(id)arg1;
 - (void).cxx_destruct;
 - (void)addVariableDelegate:(id)arg1;
-- (id)attributedStringByAddingTypingAttributes:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithAttachmentCharacterString:(id)arg1 variableGetter:(CDUnknownBlockType)arg2;
-- (id)initWithAttributedString:(id)arg1;
 - (id)initWithSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (id)initWithString:(id)arg1;
 - (id)initWithStringsAndVariables:(id)arg1;
@@ -45,9 +41,6 @@
 - (void)removeVariableDelegate:(id)arg1;
 - (BOOL)representsSingleContentVariable;
 - (id)serializedRepresentation;
-- (id)stringByReplacingCharactersInRange:(struct _NSRange)arg1 withVariable:(id)arg2;
-- (id)stringByReplacingCharactersInRange:(struct _NSRange)arg1 withVariableString:(id)arg2;
-- (id)substringWithRange:(struct _NSRange)arg1;
 - (id)variablesOfType:(id)arg1;
 
 @end

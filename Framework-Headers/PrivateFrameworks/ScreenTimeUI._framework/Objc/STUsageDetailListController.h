@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong) STAllowanceProgressGroupSpecifierProvider *allowancesProvider; // @synthesize allowancesProvider=_allowancesProvider;
 @property (strong) STDatePickerBar *datePickerBar; // @synthesize datePickerBar=_datePickerBar;
 @property (strong) NSLayoutConstraint *datePickerBottomConstraint; // @synthesize datePickerBottomConstraint=_datePickerBottomConstraint;
+@property (getter=isDatePickerHidden) BOOL datePickerHidden;
 @property (strong) NSLayoutConstraint *datePickerTopConstraint; // @synthesize datePickerTopConstraint=_datePickerTopConstraint;
 @property (strong) STMostUsedGroupSpecifierProvider *mostUsedProvider; // @synthesize mostUsedProvider=_mostUsedProvider;
 @property (strong) STNoUsageDataView *noUsageDataView; // @synthesize noUsageDataView=_noUsageDataView;

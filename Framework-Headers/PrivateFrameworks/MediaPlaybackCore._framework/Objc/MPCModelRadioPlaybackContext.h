@@ -35,7 +35,7 @@
 + (Class)queueFeederClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)containsTransportableContent;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;

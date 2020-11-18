@@ -6,7 +6,7 @@
 
 #import <ContentKit/WFType.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, UIImage;
+@class NSArray, NSDictionary, NSString, NSURL, WFImage;
 
 @interface WFFileType : WFType
 {
@@ -20,12 +20,12 @@
 @property (readonly, nonatomic) NSString *OSType; // @synthesize OSType=_OSType;
 @property (readonly, nonatomic, getter=isDeclared) BOOL declared;
 @property (readonly, nonatomic) NSURL *declaringBundleURL;
-@property (readonly, nonatomic) UIImage *documentIcon;
+@property (readonly, nonatomic) WFImage *documentIcon;
 @property (readonly, nonatomic, getter=isDynamic) BOOL dynamic;
 @property (readonly, nonatomic) NSString *fileExtension;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) NSString *pboardType; // @synthesize pboardType=_pboardType;
-@property (readonly, nonatomic) NSString *string; // @synthesize string=_string;
+@property (readonly, copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property (readonly, nonatomic) NSDictionary *typeDeclaration;
 @property (readonly, nonatomic) NSString *typeDescription;
 @property (readonly, nonatomic) NSArray *typesConformedTo;

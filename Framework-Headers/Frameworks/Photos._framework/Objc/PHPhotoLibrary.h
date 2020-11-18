@@ -131,6 +131,7 @@
 + (id)sharedPhotoLibrary;
 + (BOOL)shouldDisplayMergeCandidates:(id)arg1 forPerson:(id)arg2;
 + (id)stringFromPHPhotoLibraryType:(unsigned short)arg1;
++ (const char *)systemPhotoLibraryAvailableNotificationName;
 + (id)systemPhotoLibraryURL;
 + (const char *)systemPhotoLibraryURLChangeNotificationName;
 + (id)uniquedOID:(id)arg1;

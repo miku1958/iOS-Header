@@ -54,7 +54,7 @@
 - (void)_loadMTLBufferData;
 - (void)_loadPrograms;
 - (void)_loadTextures;
-- (void)_setupPipelineForType:(unsigned long long)arg1 vertex:(id)arg2 fragment:(id)arg3 blending:(BOOL)arg4 inLibrary:(id)arg5;
+- (void)_setupPipelineForType:(unsigned long long)arg1 vertex:(id)arg2 fragment:(id)arg3 blending:(BOOL)arg4 inLibrary:(id)arg5 librarySPI:(id)arg6;
 - (void)addClient;
 - (void)dealloc;
 - (id)getMTLTexture:(id)arg1;

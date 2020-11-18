@@ -9,8 +9,9 @@
 @protocol ASDIAPHistoryServiceProtocol
 - (void)getAllIAPsForActiveAccountWithReplyHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getAppStoreConsumedIntroOfferFamilyIdsWithResultHandler:(void (^)(NSArray *, BOOL, NSError *))arg1;
+- (void)getCachedSubscriptionEntitlementsForSegment:(unsigned long long)arg1 withReplyHandler:(void (^)(NSArray *, BOOL, NSError *))arg2;
 - (void)getIAPsForActiveAccountWithAdamIDs:(NSArray *)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
-- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withReplyHandler:(void (^)(NSArray *, BOOL, NSError *))arg3;
+- (void)getSubscriptionEntitlementsForSegment:(unsigned long long)arg1 ignoreCaches:(BOOL)arg2 withReplyHandler:(void (^)(NSArray *, BOOL, BOOL, NSError *))arg3;
 - (void)refreshIAPsForActiveAccountWithReplyHandler:(void (^)(NSError *))arg1;
 - (void)setSubscriptionEntitlementsWithDictionary:(NSDictionary *)arg1 forAccountID:(NSNumber *)arg2 segment:(unsigned long long)arg3;
 @end

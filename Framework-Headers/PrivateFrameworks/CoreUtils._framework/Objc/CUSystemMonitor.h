@@ -24,6 +24,7 @@
     CDUnknownBlockType _manateeChangedHandler;
     CDUnknownBlockType _meDeviceChangedHandler;
     CDUnknownBlockType _netFlagsChangedHandler;
+    CDUnknownBlockType _netInterfacesChangedHandler;
     CDUnknownBlockType _primaryIPChangedHandler;
     CDUnknownBlockType _primaryNetworkChangedHandler;
     CDUnknownBlockType _powerUnlimitedChangedHandler;
@@ -63,6 +64,7 @@
 @property (readonly) BOOL meDeviceValid;
 @property (readonly) unsigned int netFlags;
 @property (copy) CDUnknownBlockType netFlagsChangedHandler; // @synthesize netFlagsChangedHandler=_netFlagsChangedHandler;
+@property (copy) CDUnknownBlockType netInterfacesChangedHandler; // @synthesize netInterfacesChangedHandler=_netInterfacesChangedHandler;
 @property (readonly) BOOL powerUnlimited;
 @property (copy) CDUnknownBlockType powerUnlimitedChangedHandler; // @synthesize powerUnlimitedChangedHandler=_powerUnlimitedChangedHandler;
 @property (readonly, copy) NSString *primaryAppleID;

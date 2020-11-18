@@ -118,6 +118,7 @@
 + (id)restrictedClassicModeDisplayConfigurationForDisplayConfiguration:(id)arg1 classicMode:(long long)arg2;
 + (id)snapshotSortDescriptorForContentTypeMask;
 + (id)snapshotSortDescriptorForCreationDate;
++ (id)snapshotSortDescriptorForCustomSafeAreaInsets:(id)arg1;
 + (id)snapshotSortDescriptorForImageScale:(double)arg1;
 + (id)snapshotSortDescriptorForInterfaceOrientationMask:(unsigned long long)arg1;
 + (id)snapshotSortDescriptorForLaunchInterfaceIdentifier:(id)arg1;
@@ -187,7 +188,7 @@
 - (void)_setNewlyInstalled:(BOOL)arg1;
 - (void)_setRecentlyUpdated:(BOOL)arg1;
 - (id)_snapshotManifest;
-- (id)_snapshotsWithImageName:(id)arg1 sceneHandle:(id)arg2 launchingSize:(struct CGSize)arg3 launchingScale:(double)arg4 contentTypeMask:(unsigned long long)arg5 statusBarStateMask:(unsigned long long)arg6 launchingOrientation:(long long)arg7 contentOverridesContext:(id)arg8 userInterfaceStyle:(long long)arg9;
+- (id)_snapshotsWithImageName:(id)arg1 sceneHandle:(id)arg2 launchingSize:(struct CGSize)arg3 launchingScale:(double)arg4 contentTypeMask:(unsigned long long)arg5 statusBarStateMask:(unsigned long long)arg6 launchingOrientation:(long long)arg7 contentOverridesContext:(id)arg8 userInterfaceStyle:(long long)arg9 displayEdgeInfo:(id)arg10;
 - (int)_supportedTypeForClassicModeNone;
 - (BOOL)_supportsApplicationType:(int)arg1;
 - (void)_terminationAssertionEfficacyChangedTo:(unsigned long long)arg1;
@@ -196,7 +197,7 @@
 - (BOOL)_useSupportedTypesForSplashBoard;
 - (long long)accessoryTypeForIcon:(id)arg1;
 - (id)badgeNumberOrStringForIcon:(id)arg1;
-- (id)bestSnapshotWithImageName:(id)arg1 sceneHandle:(id)arg2 variantID:(id)arg3 scale:(double)arg4 size:(struct CGSize)arg5 contentTypeMask:(unsigned long long)arg6 statusBarStateMask:(unsigned long long)arg7 launchingOrientation:(long long)arg8 contentOverridesContext:(id)arg9 userInterfaceStyle:(long long)arg10;
+- (id)bestSnapshotWithImageName:(id)arg1 sceneHandle:(id)arg2 variantID:(id)arg3 scale:(double)arg4 size:(struct CGSize)arg5 contentTypeMask:(unsigned long long)arg6 statusBarStateMask:(unsigned long long)arg7 launchingOrientation:(long long)arg8 contentOverridesContext:(id)arg9 userInterfaceStyle:(long long)arg10 displayEdgeInfo:(id)arg11;
 - (id)cachedImageForSnapshot:(id)arg1 interfaceOrientation:(long long)arg2;
 - (BOOL)canShowSystemVolumeHUDForCategory:(id)arg1 forSceneIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

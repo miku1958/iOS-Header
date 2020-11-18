@@ -90,6 +90,7 @@
 - (void)_startDigitalTicksTimer;
 - (void)_tearDownAnalogContainerView;
 - (void)_tearDownDigitalContainerView;
+- (void)_updateDigitalLabelFont;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3 ignoreTimeView:(BOOL)arg4;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;

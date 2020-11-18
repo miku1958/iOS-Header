@@ -18,6 +18,7 @@
 - (id)_axResultsInSection:(id)arg1;
 - (id)_axSectionsInModel:(id)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @interface HUCameraUsageOptionItem : HFItem
 {
+    BOOL _updateInProgress;
     unsigned long long _presence;
     unsigned long long _usage;
     unsigned long long _sortOrder;
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) unsigned long long presence; // @synthesize presence=_presence;
 @property (readonly, nonatomic) NSString *privacyDescription;
 @property (readonly, nonatomic) unsigned long long sortOrder; // @synthesize sortOrder=_sortOrder;
+@property (nonatomic) BOOL updateInProgress; // @synthesize updateInProgress=_updateInProgress;
 @property (readonly, nonatomic) unsigned long long usage; // @synthesize usage=_usage;
 
 + (unsigned long long)sortOrderForUsage:(unsigned long long)arg1;

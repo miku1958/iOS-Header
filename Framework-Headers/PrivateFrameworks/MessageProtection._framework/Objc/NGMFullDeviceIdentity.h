@@ -17,19 +17,20 @@
 @property (strong, nonatomic) NSMutableArray *devicePrekeys; // @synthesize devicePrekeys=_devicePrekeys;
 @property (strong, nonatomic) SigningKey *deviceSigningKey; // @synthesize deviceSigningKey=_deviceSigningKey;
 
++ (id)identityWithAccess:(id)arg1 error:(id *)arg2;
 + (id)identityWithAccess:(id)arg1 usageIdentifier:(id)arg2 error:(id *)arg3;
 + (id)identityWithDataRepresentation:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)appendPrekey:(id)arg1;
 - (id)dataRepresentationWithError:(id *)arg1;
-- (id)debugDescription;
+- (BOOL)deleteKeyWithTag:(id)arg1;
 - (id)description;
 - (BOOL)eraseFromKeyChain:(id *)arg1;
 - (id)initWithSigningKey:(id)arg1 devicePrekeys:(id)arg2;
 - (id)keyRollingTicketWithError:(id *)arg1;
+- (void)postMigrationKeychainCleanup;
 - (id)publicDeviceIdentityWithError:(id *)arg1;
+- (BOOL)requiresMigration;
 - (BOOL)shouldRollEncryptionIdentity;
-- (id)signData:(id)arg1 error:(id *)arg2;
 - (id)signDataWithFormatter:(id)arg1 error:(id *)arg2;
 - (void)unsealMessage:(id)arg1 signedByPublicIdentity:(id)arg2 decryptionBlock:(CDUnknownBlockType)arg3;
 - (id)unsealMessage:(id)arg1 signedByPublicIdentity:(id)arg2 error:(id *)arg3;

@@ -653,29 +653,30 @@ struct GlobeView {
     struct Viewport _field62;
     BOOL _field63;
     struct set<altitude::ManifestListener *, std::__1::less<altitude::ManifestListener *>, std::__1::allocator<altitude::ManifestListener *>> _field64;
-    struct TileManager *_field65;
-    struct ObjectTreeLoader *_field66;
-    struct QuickSurfaceManager *_field67;
-    struct IntersectorHeight *_field68;
-    struct shared_ptr<karo::SharedItemManager<altitude::Map, altitude::MapRequestId>> _field69;
-    struct BundleLoader *_field70;
-    struct ProtocolLoader *_field71;
-    struct GeoResourceManager *_field72;
-    struct GeoResourceLoader *_field73;
-    struct ViewNode *_field74;
-    struct ViewportNode *_field75;
-    struct View *_field76;
-    struct Viewport *_field77;
-    struct shared_ptr<ggl::RenderState> _field78;
-    unsigned int _field79;
-    struct Statistics *_field80;
-    struct atomic<bool> _field81;
-    struct TexturePager *_field82;
-    struct IOSurfacePool *_field83;
-    struct RealisticRenderer *_field84;
-    struct DclpUnique<ggl::Texture2D, altitude::util::DclpDefaultDelete<ggl::Texture2D>> _field85;
-    struct DclpUnique<altitude::TextureMap, altitude::util::DclpDefaultDelete<altitude::TextureMap>> _field86;
+    struct unique_ptr<ReachabilityChangedObserver, std::__1::default_delete<ReachabilityChangedObserver>> _field65;
+    struct TileManager *_field66;
+    struct ObjectTreeLoader *_field67;
+    struct QuickSurfaceManager *_field68;
+    struct IntersectorHeight *_field69;
+    struct shared_ptr<karo::SharedItemManager<altitude::Map, altitude::MapRequestId>> _field70;
+    struct BundleLoader *_field71;
+    struct ProtocolLoader *_field72;
+    struct GeoResourceManager *_field73;
+    struct GeoResourceLoader *_field74;
+    struct ViewNode *_field75;
+    struct ViewportNode *_field76;
+    struct View *_field77;
+    struct Viewport *_field78;
+    struct shared_ptr<ggl::RenderState> _field79;
+    unsigned int _field80;
+    struct Statistics *_field81;
+    struct atomic<bool> _field82;
+    struct TexturePager *_field83;
+    struct IOSurfacePool *_field84;
+    struct RealisticRenderer *_field85;
+    struct DclpUnique<ggl::Texture2D, altitude::util::DclpDefaultDelete<ggl::Texture2D>> _field86;
     struct DclpUnique<altitude::TextureMap, altitude::util::DclpDefaultDelete<altitude::TextureMap>> _field87;
+    struct DclpUnique<altitude::TextureMap, altitude::util::DclpDefaultDelete<altitude::TextureMap>> _field88;
 };
 
 struct HeightRequestManager;
@@ -913,7 +914,7 @@ struct LayoutContext {
     struct View *_field26;
     struct Viewport *_field27;
     struct ARContext *_field28;
-    struct array<std::__1::unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>>, 16> _field29;
+    struct array<std::__1::unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>>, 17> _field29;
     unsigned long long _field30;
 };
 
@@ -942,8 +943,8 @@ struct LogicContext;
 
 struct LogicManager {
     CDUnknownFunctionPointerType *_field1;
-    struct unique_ptr<md::Logic, std::__1::default_delete<md::Logic>> _field2[16];
-    struct LogicTypePass _field3[16];
+    struct unique_ptr<md::Logic, std::__1::default_delete<md::Logic>> _field2[17];
+    struct LogicTypePass _field3[17];
 };
 
 struct LogicTypePass {
@@ -1516,6 +1517,8 @@ struct Range<unsigned long> {
     unsigned long long _min;
     unsigned long long _max;
 };
+
+struct ReachabilityChangedObserver;
 
 struct RealisticRenderer {
     CDUnknownFunctionPointerType *_field1;
@@ -2571,8 +2574,8 @@ struct array<gm::Plane3<double>, 6> {
     struct Plane3<double> _field1[6];
 };
 
-struct array<std::__1::unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>>, 16> {
-    struct unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>> _field1[16];
+struct array<std::__1::unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>>, 17> {
+    struct unique_ptr<md::LogicContext, std::__1::default_delete<md::LogicContext>> _field1[17];
 };
 
 struct array<std::__1::unordered_set<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::hash<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::equal_to<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<geo::_retain_ptr<VKAnimation *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>>, 2> {
@@ -3562,6 +3565,12 @@ struct unique_ptr<(anonymous namespace)::YFlipPass, std::__1::default_delete<(an
     struct __compressed_pair<(anonymous namespace)::YFlipPass *, std::__1::default_delete<(anonymous namespace)::YFlipPass>> {
         struct YFlipPass *__value_;
     } __ptr_;
+};
+
+struct unique_ptr<ReachabilityChangedObserver, std::__1::default_delete<ReachabilityChangedObserver>> {
+    struct __compressed_pair<ReachabilityChangedObserver *, std::__1::default_delete<ReachabilityChangedObserver>> {
+        struct ReachabilityChangedObserver *_field1;
+    } _field1;
 };
 
 struct unique_ptr<altitude::AnimationTimer, std::__1::default_delete<altitude::AnimationTimer>> {

@@ -19,6 +19,7 @@
 - (void)addEvent:(id)arg1;
 - (id)allEvents;
 - (id)initWithQueue:(id)arg1;
+- (BOOL)isSequenceTerminated;
 
 @end
 

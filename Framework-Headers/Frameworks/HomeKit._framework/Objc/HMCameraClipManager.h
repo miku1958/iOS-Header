@@ -51,9 +51,12 @@
 - (void)fetchClipForSignificantEventWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchClipWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchClipsAfterDate:(id)arg1 withLimit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchClipsAroundDate:(id)arg1 withLimit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchClipsBeforeDate:(id)arg1 withLimit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchClipsWithDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchClipsWithDateInterval:(id)arg1 limit:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchCountOfAllClipsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchCountOfClipsAfterDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCountOfClipsBeforeDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchCountOfClipsWithDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPosterFramesAssetContextForClip:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchVideoSegmentsAssetContextForClip:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)finishFetchingClipsForFetchUUID:(id)arg1;
@@ -65,6 +68,7 @@
 - (id)initWithContext:(id)arg1 profileUniqueIdentifier:(id)arg2;
 - (id)initWithContext:(id)arg1 profileUniqueIdentifier:(id)arg2 notificationCenter:(id)arg3;
 - (id)logIdentifier;
+- (id)orderedClipsForMessage:(id)arg1 withKey:(id)arg2;
 - (void)prepareToFetchClipsForFetchUUID:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)subscribe;

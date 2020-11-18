@@ -12,14 +12,14 @@
 #import <MediaControls/MediaControlsVolumeControllerObserver-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, MediaControlsVolumeController, MediaControlsVolumeSliderView, NSArray, NSString, UIImageView, UIViewPropertyAnimator, UIWindowScene;
+@class CALayer, MediaControlsVolumeController, MediaControlsVolumeSliderView, NSArray, NSString, UIViewPropertyAnimator, UIWindowScene;
 @protocol MediaControlsVolumeViewControllerDelegate;
 
 @interface MediaControlsVolumeViewController : UIViewController <MediaControlsVolumeControllerObserver, MPVolumeDisplaying, CCUIGroupRendering, UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     MediaControlsVolumeSliderView *_primarySlider;
     MediaControlsVolumeSliderView *_secondarySlider;
-    UIImageView *_affordanceImageView;
+    NSString *_packageName;
     BOOL _isExpanded;
     id<MediaControlsVolumeViewControllerDelegate> _delegate;
     MediaControlsVolumeController *_volumeController;
@@ -46,12 +46,13 @@
 
 - (void).cxx_destruct;
 - (void)_dismissMediaControlsVolumeViewController;
-- (id)_glyphStateForVolumeLevel:(double)arg1;
 - (void)_performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
 - (void)_primarySliderValueDidChange:(id)arg1;
 - (void)_secondarySliderValueDidChange:(id)arg1;
+- (void)_updateVisibility;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeUserInteractionEnabled:(BOOL)arg2 forRoute:(unsigned long long)arg3;
 - (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(BOOL)arg2;
 - (struct CGRect)primaryFrame;

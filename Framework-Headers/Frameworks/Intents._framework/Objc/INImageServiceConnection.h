@@ -26,6 +26,7 @@
 
 + (id)sharedConnection;
 - (void).cxx_destruct;
+- (id)_availableBundleIdentifiers;
 - (id)_localStorageCache;
 - (BOOL)accessBundleContentForBundleIdentifiers:(id)arg1 withBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)availableSchemasWithError:(id *)arg1;
@@ -33,6 +34,7 @@
 - (BOOL)canStoreImage:(id)arg1;
 - (void)dealloc;
 - (id)fetchShareExtensionIntentForExtensionContextUUID:(id)arg1;
+- (id)imageServiceSchemaURLsForBundleIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)loadDataImageFromImage:(id)arg1 scaledSize:(CDStruct_8caa76fc)arg2 error:(id *)arg3;
 - (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_8caa76fc)arg3 completion:(CDUnknownBlockType)arg4;
@@ -40,6 +42,7 @@
 - (id)loadSchemasForBundleIdentifiers:(id)arg1 error:(id *)arg2;
 - (void)purgeImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)schemaURLsForBundleIdentifiers:(id)arg1;
 - (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)storeImage:(id)arg1 scaled:(BOOL)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (oneway void)storeUserContext:(id)arg1 forBundleIdentifier:(id)arg2;

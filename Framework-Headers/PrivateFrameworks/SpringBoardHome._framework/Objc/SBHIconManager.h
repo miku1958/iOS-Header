@@ -146,6 +146,7 @@
 @property (nonatomic) BOOL showsDoneButtonWhileEditing; // @synthesize showsDoneButtonWhileEditing=_showsDoneButtonWhileEditing;
 @property (readonly, nonatomic, getter=isSidebarEffectivelyVisible) BOOL sidebarEffectivelyVisible;
 @property (strong, nonatomic) UIViewController<SBHSidebarProvider> *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
+@property (readonly, nonatomic, getter=isSidebarVisibilityGestureActive) BOOL sidebarVisibilityGestureActive;
 @property (readonly, nonatomic, getter=isSidebarVisible) BOOL sidebarVisible;
 @property (readonly, copy, nonatomic) NSString *statisticsSummary;
 @property (readonly) Class superclass;
@@ -218,6 +219,7 @@
 - (void)cancelAllDrags;
 - (void)cancelAllFolderScrolling;
 - (void)clearHighlightedIcon;
+- (void)clearHighlightedIcon:(id)arg1;
 - (long long)closeBoxTypeForIconView:(id)arg1;
 - (void)closeFolderAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
@@ -383,7 +385,7 @@
 - (void)noteIconStateChangedExternally;
 - (void)noteInterfaceOrientationChanged;
 - (void)openFolderIcon:(id)arg1 location:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (id)parallaxSettingsForShortcutsPresentationWithIconView:(id)arg1;
+- (void)organizeAllIconsIntoFolders;
 - (void)performAfterAllIconTouchesFinishedUsingBlock:(CDUnknownBlockType)arg1;
 - (void)popExpandedIconAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)popExpandedIconFromLocation:(id)arg1 interactionContext:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -409,6 +411,7 @@
 - (void)resetRootIconLists;
 - (BOOL)rootFolder:(id)arg1 canBounceIcon:(id)arg2;
 - (BOOL)rootFolder:(id)arg1 shouldAllowBadgingForIcon:(id)arg2;
+- (void)rootFolderController:(id)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(id)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderController:(id)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderController:(id)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;
@@ -429,6 +432,7 @@
 - (void)setIdleModeText:(id)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (BOOL)shouldHighlightTouchedIconView:(id)arg1;
+- (BOOL)shouldRecycleIconView:(id)arg1;
 - (struct UIEdgeInsets)statusBarEdgeInsetsForFolderController:(id)arg1;
 - (id)statusBarStyleRequestForFolderController:(id)arg1;
 - (id)succinctDescription;
@@ -442,6 +446,7 @@
 - (void)unscatterAnimated:(BOOL)arg1 afterDelay:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)updateVisibleIconsToShowLeafIcons:(id)arg1 hideLeafIcons:(id)arg2 forceRelayout:(BOOL)arg3;
 - (id)viewControllerForPresentingViewControllers;
+- (id)viewMap:(id)arg1 makeNewViewOfClass:(Class)arg2;
 - (unsigned long long)viewMap:(id)arg1 maxRecycledViewsOfClass:(Class)arg2;
 - (BOOL)viewMap:(id)arg1 shouldRecycleView:(id)arg2;
 

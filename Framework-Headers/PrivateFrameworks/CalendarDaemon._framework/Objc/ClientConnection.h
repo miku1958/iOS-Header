@@ -27,7 +27,6 @@
     BOOL _initializationOptionsSet;
     CADOperationProxy *_cadOperationProxy;
     id<ClientConnectionDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_workQueue;
     ClientIdentity *_identity;
     NSXPCConnection *_xpcConnection;
     CADDatabaseInitializationOptions *_databaseInitializationOptions;
@@ -41,7 +40,6 @@
 @property (weak, nonatomic) id<ClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) ClientIdentity *identity; // @synthesize identity=_identity;
 @property (readonly) BOOL initializationOptionsSet; // @synthesize initializationOptionsSet=_initializationOptionsSet;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;

@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)composedShortcutsForApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 staticItems:(id)arg3 dynamicItems:(id)arg4 applicationItemID:(unsigned long long)arg5 numberOfDisplayItemsInSwitcher:(long long)arg6 supportsMultipleWindows:(BOOL)arg7 isSystemApplication:(BOOL)arg8 isInternalApplication:(BOOL)arg9 isApplicationInBeta:(BOOL)arg10;
-+ (id)composedShortcutsForBookmark;
++ (id)composedShortcutsForApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 staticItems:(id)arg3 dynamicItems:(id)arg4 applicationItemID:(unsigned long long)arg5 numberOfDisplayItemsInSwitcher:(long long)arg6 supportsMultipleWindows:(BOOL)arg7 isSystemApplication:(BOOL)arg8 isInternalApplication:(BOOL)arg9 isApplicationInBeta:(BOOL)arg10 removeStyle:(long long)arg11;
++ (id)composedShortcutsForBookmarkWithDisplayName:(id)arg1 removeStyle:(long long)arg2;
 + (id)composedShortcutsForDownloadingApplicationWithBundleIdentifier:(id)arg1 iconDisplayName:(id)arg2 prioritizationIsAvailable:(BOOL)arg3 downloadingInformationAgent:(id)arg4 canShare:(BOOL)arg5;
 + (id)composedShortcutsForFolderIcon:(id)arg1 iconImageCache:(id)arg2 iconManagerAllowsEditing:(BOOL)arg3 badgeViewGenerator:(CDUnknownBlockType)arg4;
 + (id)filteredApplicationShortcutItemsWithStaticApplicationShortcutItems:(id)arg1 dynamicApplicationShortcutItems:(id)arg2;

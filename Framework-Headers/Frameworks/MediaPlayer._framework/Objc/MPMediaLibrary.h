@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+#import <MediaPlayer/_MPActiveUserChangeMonitorDelegate-Protocol.h>
 
-@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
+@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache, _MPActiveUserChangeMonitor;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
-@interface MPMediaLibrary : NSObject <NSSecureCoding>
+@interface MPMediaLibrary : NSObject <_MPActiveUserChangeMonitorDelegate, NSSecureCoding>
 {
     id<MPMediaLibraryDataProviderPrivate> _libraryDataProvider;
     NSObject<OS_dispatch_queue> *_entityCacheQueue;
@@ -82,12 +83,17 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     ICUserIdentity *_userIdentity;
     long long _libraryChangeObservers;
+    _MPActiveUserChangeMonitor *_activeUserChangeMonitor;
 }
 
 @property (strong, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
 @property (readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property (readonly, nonatomic) NSString *_syncValidity;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (strong, nonatomic) _MPActiveUserChangeMonitor *activeUserChangeMonitor; // @synthesize activeUserChangeMonitor=_activeUserChangeMonitor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, nonatomic) long long libraryChangeObservers; // @synthesize libraryChangeObservers=_libraryChangeObservers;
 @property (readonly, nonatomic) ML3MusicLibrary *ml3Library;
@@ -101,6 +107,7 @@
 @property (copy, nonatomic) NSDate *sagaLastSubscribedContainersUpdateTime;
 @property (nonatomic) long long sagaOnDiskDatabaseRevision;
 @property (copy, nonatomic) NSString *storefrontIdentifier;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
 + (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 createIfRequired:(BOOL)arg2;
@@ -113,7 +120,6 @@
 + (void)addLibraryDataProvider:(id)arg1;
 + (long long)authorizationStatus;
 + (void)beginDiscoveringMediaLibraries;
-+ (BOOL)companionDeviceActiveStoreAccountIsSubscriber;
 + (id)defaultMediaLibrary;
 + (id)deviceMediaLibrary;
 + (id)deviceMediaLibraryWithUserIdentity:(id)arg1;
@@ -141,6 +147,7 @@
 + (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)URLForHomeSharingRequest:(id)arg1;
+- (void)_activeUserDidChangeNotification:(id)arg1;
 - (void)_canShowCloudTracksDidChangeNotification:(id)arg1;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 mediaType:(unsigned long long)arg3 queryHasEntitiesBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 queryHasEntitiesBlock:(CDUnknownBlockType)arg3;
@@ -174,6 +181,7 @@
 - (void)_setLibraryFilterPredicates;
 - (void)_setupNotifications;
 - (void)_tearDownNotifications;
+- (void)activeUserChangeDidFinish;
 - (void)addAdvertisementItemWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addGlobalPlaylistWithID:(id)arg1 andAddToCloudLibrary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addItemWithProductID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -215,7 +223,6 @@
 - (id)decodeItemWithCoder:(id)arg1;
 - (BOOL)deleteDatabaseProperty:(id)arg1;
 - (BOOL)deleteItems:(id)arg1;
-- (id)description;
 - (void)disconnect;
 - (void)downloadAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -259,7 +266,6 @@
 - (BOOL)hasVideoITunesUContent;
 - (BOOL)hasVideoPodcasts;
 - (BOOL)hasVideos;
-- (unsigned long long)hash;
 - (unsigned int)homeSharingDatabaseID;
 - (void)importArtworkTokenForEntityPersistentID:(unsigned long long)arg1 entityType:(long long)arg2 artworkToken:(id)arg3 artworkType:(long long)arg4 sourceType:(long long)arg5;
 - (BOOL)importOriginalArtworkFromImageData:(id)arg1 withArtworkToken:(id)arg2 artworkType:(long long)arg3 sourceType:(long long)arg4 mediaType:(unsigned long long)arg5;

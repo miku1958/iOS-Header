@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)_domainsIneligibleForPasswordAuditingFromCurrentSnapshot;
+- (id)_domainsToConsiderIdenticalFromCurrentSnapshot;
 - (id)_domainsWithAssociatedCredentialsFromCurrentSnapshot;
 - (id)_passwordRequirementsByDomainFromCurrentSnapshot;
 - (void)beginLoadingQuirksFromDisk;

@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/FAPickInviteeDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AAGrandSlamSigner, AAUIRemoteUIController, ACAccount, ACAccountStore, FAFamilyPickInviteeViewController, NSData, NSMutableURLRequest, NSOperationQueue, NSString, RUIObjectModel, SSAccount, UIActivityIndicatorView, UIBarButtonItem, UINavigationItem;
+@class AAGrandSlamSigner, AAUIRemoteUIController, ACAccount, ACAccountStore, FAFamilyPickInviteeViewController, FARequestConfigurator, NSData, NSMutableURLRequest, NSOperationQueue, NSString, RUIObjectModel, SSAccount, UIActivityIndicatorView, UIBarButtonItem, UINavigationItem;
 @protocol FAAddFamilyMemberDelegate><UINavigationControllerDelegate;
 
 @interface FAAddFamilyMemberViewController : UINavigationController <RemoteUIControllerDelegate, FAPickInviteeDelegate>
@@ -28,6 +28,7 @@
     UINavigationItem *_navigationItemShowingSpinner;
     NSData *_pushToken;
     FAFamilyPickInviteeViewController *_pickInviteeVC;
+    FARequestConfigurator *_requestConfigurator;
     NSString *_continuationData;
 }
 
@@ -43,7 +44,8 @@
 
 - (void).cxx_destruct;
 - (id)_itunesAccount;
-- (id)_pushToken;
+- (id)_requestConfigurator;
+- (void)_startRemoteUIRequest:(id)arg1;
 - (void)dealloc;
 - (void)harvestDataFromServerHTTPResponse:(id)arg1;
 - (void)hideActivitySpinnerInNavigationBar;
@@ -52,7 +54,7 @@
 - (void)pickInviteeViewControllerWantsChildAccountFlow:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
-- (void)remoteUIController:(id)arg1 willLoadRequest:(id)arg2;
+- (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (void)showActivitySpinnerInNavigationBar;

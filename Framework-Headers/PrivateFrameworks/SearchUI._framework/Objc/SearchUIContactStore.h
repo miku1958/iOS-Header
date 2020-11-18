@@ -20,14 +20,16 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *contactFetchingQueue; // @synthesize contactFetchingQueue=_contactFetchingQueue;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 
-+ (id)contactDescriptorKeys;
 + (id)contactForPhoneNumber:(id)arg1 email:(id)arg2;
 + (id)placeholderContact;
++ (id)resultTableContactDescriptorKeys;
 + (id)sharedStore;
++ (id)viewControllerDescriptorKeys;
 - (void).cxx_destruct;
 - (id)cachedContactForIdentifier:(id)arg1;
 - (id)cachedContactsForIdentifiers:(id)arg1;
 - (id)contactForIdentifier:(id)arg1;
+- (id)contactsForIdentifiers:(id)arg1 withKeys:(id)arg2;
 - (void)fetchContactForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchContactsForIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

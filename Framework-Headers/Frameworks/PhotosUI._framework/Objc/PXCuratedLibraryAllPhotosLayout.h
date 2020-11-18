@@ -44,7 +44,9 @@
     struct PXGItemsLayout *_decadesItemLayout;
     NSMutableSet *_itemLayoutsAllowedToLoad;
     NSDateInterval *_lastReturnedDateInterval;
+    unsigned long long _lastReturnedDateIntervalDataSourceIdentifier;
     NSArray *_lastReturnedLocationNames;
+    unsigned long long _lastReturnedLocationNamesDataSourceIdentifier;
     BOOL _scrolledWhileAnimatingZoom;
     BOOL _performedInitialVisualShift;
     long long _visuallyStableAnchorItem;
@@ -52,6 +54,7 @@
     BOOL _visuallyStableAnchorAllowedCloseToTop;
     unsigned long long _dataSourceIdentifierOfCachedRangeForSelectedItems;
     struct _NSRange _cachedRangeForSelectedItems;
+    BOOL _didChangeFiltering;
     BOOL _shouldAnimateTowardsAnchor;
     BOOL _wasTracking;
     PXCuratedLibraryLayoutSpec *_spec;
@@ -65,6 +68,8 @@
     PXGOneColumnLayout *_oneColLayout;
     struct CGPoint _anchorTargetViewportCenter;
     struct CGPoint _normalizedScaleCenterInAnchorSprite;
+    struct UIEdgeInsets _overlayInsets;
+    struct UIEdgeInsets _effectiveOverlayInsets;
 }
 
 @property (readonly, nonatomic) PXGAnchor *anchor; // @synthesize anchor=_anchor;
@@ -75,9 +80,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PXGItemsLayout<PXCuratedLibraryAllPhotosBodyLayout> *didAnimateTowardsAnchorInItemsLayout; // @synthesize didAnimateTowardsAnchorInItemsLayout=_didAnimateTowardsAnchorInItemsLayout;
+@property (nonatomic) struct UIEdgeInsets effectiveOverlayInsets; // @synthesize effectiveOverlayInsets=_effectiveOverlayInsets;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGPoint normalizedScaleCenterInAnchorSprite; // @synthesize normalizedScaleCenterInAnchorSprite=_normalizedScaleCenterInAnchorSprite;
 @property (readonly, nonatomic) PXGOneColumnLayout *oneColLayout; // @synthesize oneColLayout=_oneColLayout;
+@property (nonatomic) struct UIEdgeInsets overlayInsets; // @synthesize overlayInsets=_overlayInsets;
 @property (readonly, nonatomic) PXAssetsDataSource *presentedDataSource; // @synthesize presentedDataSource=_presentedDataSource;
 @property (readonly, nonatomic) PXGItemsLayout<PXCuratedLibraryAllPhotosBodyLayout> *primaryItemsLayout;
 @property (readonly, nonatomic) BOOL shouldAnimateTowardsAnchor; // @synthesize shouldAnimateTowardsAnchor=_shouldAnimateTowardsAnchor;
@@ -92,6 +99,7 @@
 - (id)_displayAssetForItem:(long long)arg1;
 - (long long)_estimatedItemsPerScreenForLayout:(struct PXGItemsLayout *)arg1;
 - (double)_interItemSpacingForLayout:(struct PXGItemsLayout *)arg1;
+- (double)_itemCaptionSpacingForLayout:(struct PXGItemsLayout *)arg1;
 - (BOOL)_layoutHasIndividualItems:(struct PXGItemsLayout *)arg1;
 - (BOOL)_layoutIsAspectFit:(struct PXGItemsLayout *)arg1;
 - (BOOL)_layoutWantsSingleDateTitle;
@@ -103,6 +111,7 @@
 - (void)_updateBackgroundSprites;
 - (void)_updateDataSource;
 - (void)_updateDecorationSource;
+- (void)_updateEffectiveOverlayInsets;
 - (void)_updateLayers;
 - (void)_updatePinchEffect;
 - (void)_updatePrefetching;

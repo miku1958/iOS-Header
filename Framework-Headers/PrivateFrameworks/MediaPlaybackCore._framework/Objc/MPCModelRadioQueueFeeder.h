@@ -37,6 +37,7 @@
 }
 
 @property (readonly, nonatomic) BOOL containsLiveStream;
+@property (readonly, nonatomic) BOOL containsTransportableContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -80,8 +81,8 @@
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)section:(id)arg1 supportsShuffleType:(long long)arg2;
 - (BOOL)shouldRequestAdditionalItemsWhenReachingTailOfSection:(id)arg1;
-- (id)supplementalPlaybackContext;
 - (long long)supplementalPlaybackContextBehavior;
+- (id)supplementalPlaybackContextWithReason:(long long)arg1;
 
 @end
 

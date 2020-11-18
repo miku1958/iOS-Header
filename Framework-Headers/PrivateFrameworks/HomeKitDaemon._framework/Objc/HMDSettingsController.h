@@ -65,6 +65,7 @@
 - (id)modelsToMigrateSettings;
 - (void)resetupMessageHandlersWithAddedGroups:(id)arg1 removedGroups:(id)arg2 addedSettings:(id)arg3 removedSettings:(id)arg4;
 - (id)settingForIdentifier:(id)arg1;
+- (id)settingForKeyPath:(id)arg1;
 - (id)settingGroupForIdentifier:(id)arg1;
 - (id)settingValuesByKeyPathWithPrefix:(id)arg1;
 - (void)settingsHierarchyDidChange;

@@ -97,6 +97,8 @@
 - (void)layoutSublayersOfLayer:(id)arg1;
 - (void)layoutSubviews;
 - (void)longPressGestureRecognized:(id)arg1;
+- (void)prepareForAcknowledgementDismissal;
+- (void)prepareForAcknowledgementDisplay;
 - (void)prepareForDisplay;
 - (void)prepareForDisplayIfNeeded;
 - (void)prepareForReuse;

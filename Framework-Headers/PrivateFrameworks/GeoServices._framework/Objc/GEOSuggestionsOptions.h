@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
 @interface GEOSuggestionsOptions : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_suggestionEntryMetadata;
     NSData *_suggestionMetadata;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _entriesType;
     int _listType;
     BOOL _includeRankingFeatures;
@@ -67,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (id)entriesTypeAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)listTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

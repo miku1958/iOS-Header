@@ -16,5 +16,6 @@
 @property (readonly, copy, nonatomic) NSString *cx_developerTeamIdentifier;
 @property (readonly, copy, nonatomic) NSString *cx_processName;
 
+- (BOOL)cx_clientSandboxCanAccessFileURL:(id)arg1;
 @end
 

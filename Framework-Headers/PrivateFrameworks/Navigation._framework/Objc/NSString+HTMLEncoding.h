@@ -43,7 +43,9 @@
 + (id)_navigation_stringForExpectedTravelTime:(double)arg1 dateUnitStyle:(long long)arg2;
 + (id)_navigation_stringForServerFormattedString:(id)arg1;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5;
++ (id)_navigation_stringForServerFormattedString:(id)arg1 abbreviatedUnits:(BOOL)arg2 detail:(long long)arg3 spoken:(BOOL)arg4 overrideVariables:(id)arg5 allTokensExpanded:(BOOL *)arg6;
 + (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3;
++ (id)_navigation_stringForServerFormattedString:(id)arg1 options:(CDStruct_ef0b40be)arg2 overrideVariables:(id)arg3 allTokensExpanded:(BOOL *)arg4;
 + (id)_navigation_stringWithAltitude:(double)arg1 accuracy:(double)arg2;
 + (id)_navigation_stringWithAltitudeUnits;
 + (id)_navigation_stringWithCountdownValue:(id)arg1 inToken:(id)arg2 options:(CDStruct_ef0b40be)arg3;

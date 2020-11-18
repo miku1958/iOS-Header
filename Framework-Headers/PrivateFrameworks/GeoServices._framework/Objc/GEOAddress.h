@@ -14,10 +14,12 @@
 @interface GEOAddress : PBCodable <GEOURLSerializable, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_formattedAddressLines;
     GEOStructuredAddress *_structuredAddress;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _formattedAddressType;
     struct {
         unsigned int has_formattedAddressType:1;
@@ -62,7 +64,9 @@
 - (id)formattedAddressLineAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLinesCount;
 - (id)formattedAddressTypeAsString:(int)arg1;
+- (id)init;
 - (id)initWithAddressDictionary:(id)arg1;
+- (id)initWithData:(id)arg1;
 - (id)initWithPostalAddress:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

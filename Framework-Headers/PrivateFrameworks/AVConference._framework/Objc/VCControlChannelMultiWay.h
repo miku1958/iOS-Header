@@ -69,7 +69,9 @@ __attribute__((visibility("hidden")))
 - (void)removeAllActiveParticipants;
 - (void)scheduleAfter:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
+- (BOOL)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2 timeout:(unsigned int)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
+- (BOOL)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2 timeout:(id)arg3;
 - (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)setCurrentSendMKIWithKeyMaterial:(id)arg1;
 - (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;

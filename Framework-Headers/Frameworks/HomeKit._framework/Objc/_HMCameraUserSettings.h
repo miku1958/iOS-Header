@@ -15,10 +15,10 @@
 {
     BOOL _snapshotsAllowed;
     BOOL _accessModeIndicatorEnabled;
-    BOOL _cameraDisabledByThirdParty;
     BOOL _nightVisionModeEnabled;
     BOOL _recordingAudioEnabled;
     BOOL _accessModeChangeNotificationEnabled;
+    BOOL _cameraManuallyDisabled;
     NSUUID *_uniqueIdentifier;
     unsigned long long _supportedFeatures;
     unsigned long long _accessModeAtHome;
@@ -32,7 +32,7 @@
 @property (readonly, getter=isAccessModeChangeNotificationEnabled) BOOL accessModeChangeNotificationEnabled; // @synthesize accessModeChangeNotificationEnabled=_accessModeChangeNotificationEnabled;
 @property (readonly, getter=isAccessModeIndicatorEnabled) BOOL accessModeIndicatorEnabled; // @synthesize accessModeIndicatorEnabled=_accessModeIndicatorEnabled;
 @property (readonly) unsigned long long accessModeNotAtHome; // @synthesize accessModeNotAtHome=_accessModeNotAtHome;
-@property (readonly, getter=isCameraDisabledByThirdParty) BOOL cameraDisabledByThirdParty; // @synthesize cameraDisabledByThirdParty=_cameraDisabledByThirdParty;
+@property (readonly, getter=isCameraManuallyDisabled) BOOL cameraManuallyDisabled; // @synthesize cameraManuallyDisabled=_cameraManuallyDisabled;
 @property (readonly) unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,7 +51,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithUUID:(id)arg1 supportedFeatures:(unsigned long long)arg2 accessModeAtHome:(unsigned long long)arg3 accessModeNotAtHome:(unsigned long long)arg4 currentAccessMode:(unsigned long long)arg5 recordingEventTriggers:(unsigned long long)arg6 snapshotsAllowed:(BOOL)arg7 accessModeIndicatorEnabled:(BOOL)arg8 nightVisionModeEnabled:(BOOL)arg9 cameraDisabledByThirdParty:(BOOL)arg10 recordingAudioEnabled:(BOOL)arg11 accessModeChangeNotificationEnabled:(BOOL)arg12 smartNotification:(id)arg13;
+- (id)initWithUUID:(id)arg1 supportedFeatures:(unsigned long long)arg2 accessModeAtHome:(unsigned long long)arg3 accessModeNotAtHome:(unsigned long long)arg4 currentAccessMode:(unsigned long long)arg5 recordingEventTriggers:(unsigned long long)arg6 snapshotsAllowed:(BOOL)arg7 accessModeIndicatorEnabled:(BOOL)arg8 nightVisionModeEnabled:(BOOL)arg9 recordingAudioEnabled:(BOOL)arg10 accessModeChangeNotificationEnabled:(BOOL)arg11 cameraManuallyDisabled:(BOOL)arg12 smartNotification:(id)arg13;
 - (id)logIdentifier;
 
 @end

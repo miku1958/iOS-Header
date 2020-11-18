@@ -10,7 +10,7 @@
 #import <NanoTimeKitCompanion/NTKSiderealDataSourceDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealSolarContainerView, NTKSiderealSolarOrbitView, NTKSiderealTimeView, NTKSiderealWaypointsView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
+@class CALayer, CAShapeLayer, NSCalendar, NSDateFormatter, NSString, NSTimer, NTKFaceViewTapControl, NTKSiderealAuxiliaryDialLabels, NTKSiderealDataSource, NTKSiderealDialBackgroundView, NTKSiderealTimeView, NTKWhistlerAnalogFaceViewComplicationFactory, UILabel, UIView;
 
 @interface NTKSiderealFaceView : NTKFaceView <NTKTimeView, NTKSiderealDataSourceDelegate, CLKMonochromeFilterProvider>
 {
@@ -26,9 +26,6 @@
     double _interactionProgress;
     double _lastTestedWaypointProgress;
     NTKSiderealDialBackgroundView *_dialBackgroundView;
-    NTKSiderealSolarContainerView *_solarContainerView;
-    NTKSiderealSolarOrbitView *_solarOrbitView;
-    NTKSiderealWaypointsView *_waypointsView;
     NTKSiderealAuxiliaryDialLabels *_auxiliaryDialLabels;
     NTKSiderealTimeView *_siderealTimeView;
     UILabel *_offsetLabel;
@@ -42,6 +39,7 @@
     unsigned long long _transitionState;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
+    BOOL _disableRendering;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -73,12 +71,18 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (id)_customEditOptionContainerViewForSlot:(id)arg1;
 - (double)_darkeningViewAlphaForEditMode:(long long)arg1;
+- (id)_dayDiscImageFromSolarContainerView:(id)arg1;
+- (id)_dayDiskBloomImageFromSolarContainerView:(id)arg1;
+- (id)_dayGnomonImageFromSolarContainerView:(id)arg1;
 - (double)_dialAlphaForEditMode:(long long)arg1;
-- (struct CGImage *)_dialViewImageRef;
+- (id)_dialViewImageRef;
 - (void)_disableCrown;
+- (double)_distanceBetweenAngleA:(double)arg1 angleB:(double)arg2;
 - (void)_enableCrown;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)_faceDisplayTime;
 - (void)_forceSolarDayUpdate;
+- (id)_gnomonImage;
 - (BOOL)_handlePhysicalButton:(unsigned long long)arg1 event:(unsigned long long)arg2;
 - (void)_handleViewModeTapGesture:(id)arg1;
 - (double)_idealizedSolarDayProgress;
@@ -98,15 +102,18 @@
 - (void)_loadLayoutRules;
 - (void)_loadOffsetLabelIfNeeded;
 - (void)_loadSnapshotContentViews;
-- (void)_loadSolarOrbit;
-- (void)_loadSolarViews;
 - (void)_loadTimeView;
 - (void)_loadUI;
+- (id)_newGnomonLayer;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_nightDiscImageFromSolarContainerView:(id)arg1;
+- (id)_nightGnomonImageFromSolarContainerView:(id)arg1;
+- (id)_nightRingImageFromSolarContainerView:(id)arg1;
 - (id)_outerComplicationColors;
 - (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareForSettingViewMode:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)_refreshGlowPathState;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (void)_resetInteractionProgress;
 - (void)_setSolarDayProgress:(double)arg1;
@@ -128,13 +135,10 @@
 - (void)_timeZoneChanged:(id)arg1;
 - (void)_unloadDial;
 - (void)_unloadSnapshotContentViews;
-- (void)_unloadSolarOrbit;
-- (void)_unloadSolarViews;
 - (void)_unloadTimeView;
 - (void)_unloadUI;
 - (void)_updateFramerate;
 - (void)_updateLocale;
-- (void)_updateSolarDayMask;
 - (void)_updateSolarOrbitGlowPath:(double)arg1;
 - (void)_updateStatusBarVisibility;
 - (void)_updateTimeLabelsWithReferenceDate:(id)arg1 overrideDate:(id)arg2;
@@ -142,9 +146,10 @@
 - (void)_updateTimeViewOrbitWithSolarDayProgress:(double)arg1;
 - (void)_updateWaypointLabel;
 - (BOOL)_wantsMinorDetents;
-- (struct CGImage *)_waypointViewImageRef;
+- (id)_waypointViewImageRef;
 - (BOOL)_wheelChangedWithEvent:(id)arg1;
 - (void)_wheelDelayTimerFired;
+- (id)closestWaypointForSolarDayProgress:(double)arg1 range:(double)arg2;
 - (id)colorForView:(id)arg1 accented:(BOOL)arg2;
 - (void)dataSourceDidUpdateSolarData;
 - (void)dealloc;
@@ -153,8 +158,10 @@
 - (void)handleScreenBlanked;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (struct CGImage *)newImageRefFromSolarContainerView:(id)arg1 withHeight:(double)arg2;
 - (struct CGImage *)newImageRefFromView:(id)arg1;
 - (struct CGPath *)newTimeViewPathForDarkeningView;
+- (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)screenDidTurnOff;
 - (void)screenWillTurnOn;
 - (void)setDataMode:(long long)arg1;
@@ -162,6 +169,7 @@
 - (void)setTimeOffset:(double)arg1;
 - (void)setupDarkeningViewIfNeeded;
 - (void)tearDownDarkeningView;
+- (id)waypointBetweenPreviousOffset:(double)arg1 currentOffset:(double)arg2;
 
 @end
 

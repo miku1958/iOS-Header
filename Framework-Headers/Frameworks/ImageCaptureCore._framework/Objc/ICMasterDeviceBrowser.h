@@ -6,42 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class MSCameraDeviceManager, NSMutableArray;
+@class NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface ICMasterDeviceBrowser : NSObject
 {
     NSMutableArray *_devices;
     NSMutableArray *_browsers;
+    NSMutableArray *_suspendedBrowsers;
     long long _numberOfBrowsingBrowsers;
     id _ptpDevManager;
-    MSCameraDeviceManager *_msDevManager;
-    BOOL _icpref_hwEnablePTPCamera;
-    BOOL _icpref_hwEnableLiveFiles;
-    BOOL _icpref_hwEnableMagicDisk;
-    id _monitoringContext;
+    id _msDevManager;
 }
 
 @property (readonly) NSMutableArray *browsers; // @synthesize browsers=_browsers;
 @property (readonly) NSMutableArray *devices; // @synthesize devices=_devices;
-@property (strong, nonatomic) id monitoringContext; // @synthesize monitoringContext=_monitoringContext;
 
 + (id)defaultBrowser;
 + (BOOL)exists;
 - (void)addBrowser:(id)arg1;
-- (int)addLiveFilesMount;
-- (int)addPTPCamera:(id)arg1;
-- (void)beginMonitoring;
 - (void)dealloc;
 - (id)deviceWithDelegate:(id)arg1;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
-- (BOOL)handleMount:(id)arg1 force:(BOOL)arg2;
-- (void)handleUnmount:(id)arg1 force:(BOOL)arg2;
 - (id)init;
 - (void)removeBrowser:(id)arg1;
-- (void)removePTPCamera:(id)arg1;
 - (int)start:(id)arg1;
+- (BOOL)startMSCameraBrowser;
+- (BOOL)startPTPCameraBrowser;
 - (void)stop:(id)arg1;
 
 @end

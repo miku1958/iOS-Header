@@ -41,7 +41,7 @@
 - (void)dealloc;
 - (id)initWithMessagePersistence:(id)arg1 mailboxPersistence:(id)arg2 hookRegistry:(id)arg3 userProfileProvider:(id)arg4;
 - (void)persistenceWillAddMessage:(id)arg1 fromExistingMessage:(BOOL)arg2;
-- (void)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

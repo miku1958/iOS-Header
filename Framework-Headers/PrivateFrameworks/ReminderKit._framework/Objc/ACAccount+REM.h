@@ -7,6 +7,8 @@
 #import <Accounts/ACAccount.h>
 
 @interface ACAccount (REM)
+- (BOOL)rem_didChooseToMigrate;
+- (BOOL)rem_didFinishMigration;
 - (BOOL)rem_isManagedAppleID;
 - (BOOL)rem_isPrimaryAppleAccount;
 - (BOOL)rem_isRemindersMigrated;

@@ -9,12 +9,10 @@
 #import <AccessibilityUIService/AXUIMessageSenderDelegate-Protocol.h>
 
 @class AXAccessQueue, AXUIDisplayManager, AXUIMessageSender, BSProcessDeathWatcher, NSMutableArray, NSMutableDictionary, NSString;
-@protocol OS_os_transaction;
 
 @interface AXUIServiceManager : NSObject <AXUIMessageSenderDelegate>
 {
     BSProcessDeathWatcher *_springBoardReaper;
-    BOOL _didEncounterError;
     BOOL _shouldAllowServicesToProcessMessages;
     AXUIDisplayManager *_displayManager;
     AXAccessQueue *_resumingConnectionsQueue;
@@ -25,12 +23,11 @@
     NSMutableArray *_serviceContexts;
     AXAccessQueue *_servicesAccessQueue;
     unsigned long long _lastUsedServiceIdentifier;
-    NSObject<OS_os_transaction> *_transaction;
+    NSMutableDictionary *_transactions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didEncounterError; // @synthesize didEncounterError=_didEncounterError;
 @property (strong, nonatomic) AXUIDisplayManager *displayManager; // @synthesize displayManager=_displayManager;
 @property (strong, nonatomic) NSMutableDictionary *entitlementsCheckers; // @synthesize entitlementsCheckers=_entitlementsCheckers;
 @property (strong, nonatomic) AXAccessQueue *entitlementsCheckersAccessQueue; // @synthesize entitlementsCheckersAccessQueue=_entitlementsCheckersAccessQueue;
@@ -43,7 +40,7 @@
 @property (strong, nonatomic) AXAccessQueue *servicesAccessQueue; // @synthesize servicesAccessQueue=_servicesAccessQueue;
 @property (nonatomic) BOOL shouldAllowServicesToProcessMessages; // @synthesize shouldAllowServicesToProcessMessages=_shouldAllowServicesToProcessMessages;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
+@property (strong, nonatomic) NSMutableDictionary *transactions; // @synthesize transactions=_transactions;
 
 + (void)_releaseSharedServiceManager;
 + (id)sharedServiceManager;

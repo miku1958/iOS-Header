@@ -57,6 +57,7 @@
 - (void)_startOrClearDomain:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_supportsFPFS;
 - (void)_writeDomainProperties;
+- (void)_writeDomainPropertiesIfChangedFrom:(id)arg1;
 - (void)addDomain:(id)arg1 byImportingDirectoryAtURL:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addDomain:(id)arg1 byImportingDirectoryAtURL:(id)arg2 unableToStartup:(BOOL)arg3 reloadDomain:(BOOL)arg4 request:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)defaultNSDomain;

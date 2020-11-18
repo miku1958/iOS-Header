@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber, NSString, NSUnit;
+@class NSArray, NSNumber, NSString;
 @protocol WFPropertyListObject;
 
 @interface WFContentPropertyBuilder : NSObject
@@ -31,7 +31,7 @@
     NSNumber *_tense;
     NSNumber *_timeUnits;
     NSNumber *_comparableUnits;
-    NSUnit *_measurementUnit;
+    NSString *_measurementUnitType;
     NSString *_displayName;
 }
 
@@ -44,7 +44,7 @@
 @property (copy, nonatomic) NSNumber *gettable; // @synthesize gettable=_gettable;
 @property (nonatomic, getter=isIrrational) BOOL irrational; // @synthesize irrational=_irrational;
 @property (copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
-@property (copy, nonatomic) NSUnit *measurementUnit; // @synthesize measurementUnit=_measurementUnit;
+@property (copy, nonatomic) NSString *measurementUnitType; // @synthesize measurementUnitType=_measurementUnitType;
 @property (copy, nonatomic) NSNumber *multipleValues; // @synthesize multipleValues=_multipleValues;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSString *negativeName; // @synthesize negativeName=_negativeName;
@@ -69,7 +69,7 @@
 - (id)filterable:(BOOL)arg1;
 - (id)gettable:(BOOL)arg1;
 - (id)irrational:(BOOL)arg1;
-- (id)measurementUnit:(id)arg1;
+- (id)measurementUnitType:(id)arg1;
 - (id)multipleValues:(BOOL)arg1;
 - (id)negativeName:(id)arg1;
 - (id)possibleValues:(id)arg1;

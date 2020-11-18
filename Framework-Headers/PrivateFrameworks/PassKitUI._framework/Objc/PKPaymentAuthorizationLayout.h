@@ -16,6 +16,7 @@
     double _contentHorizontalMargin;
     double _valueLeftMargin;
     double _glyphDimension;
+    unsigned long long _requestType;
     unsigned long long _requestor;
     NSString *_localizedNavigationTitle;
 }
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) double glyphDimension; // @synthesize glyphDimension=_glyphDimension;
 @property (readonly, nonatomic) BOOL isAMPPayment; // @synthesize isAMPPayment=_isAMPPayment;
 @property (readonly, nonatomic) NSString *localizedNavigationTitle; // @synthesize localizedNavigationTitle=_localizedNavigationTitle;
+@property (readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
 @property (readonly, nonatomic) BOOL shouldSuppressTotal; // @synthesize shouldSuppressTotal=_shouldSuppressTotal;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;

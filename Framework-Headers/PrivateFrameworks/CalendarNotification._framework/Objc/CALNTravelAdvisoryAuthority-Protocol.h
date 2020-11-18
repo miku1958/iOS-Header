@@ -10,6 +10,7 @@
 
 @protocol CALNTravelAdvisoryAuthority <NSObject>
 
+@property (readonly, nonatomic) double maximumAllowableTravelTime;
 @property (readonly, nonatomic) double minimumAllowableTravelTime;
 
 - (BOOL)doesHypothesisSatisfyMinimumAllowableTravelTime:(EKTravelEngineHypothesis *)arg1;

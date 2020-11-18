@@ -29,7 +29,7 @@
 - (void)_queue_queuePending;
 - (void)_queue_sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 isTrafficRestricted:(BOOL)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
 - (void)_queue_startTimerWithFireDate:(id)arg1;
-- (void)handleFileURL:(id)arg1;
+- (BOOL)handleFileURL:(id)arg1;
 - (id)init;
 - (void)queuePending;
 - (void)sendNow;

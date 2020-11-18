@@ -34,6 +34,8 @@
 - (oneway void)getSystemBroadcastExtensionInfo:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)issueSandboxExtension;
+- (oneway void)macApplicationDidBecomeActiveWithContextID:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)macApplicationDidResignActive;
 - (oneway void)pauseRecording;
 - (oneway void)recordingDidPause;
 - (oneway void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;

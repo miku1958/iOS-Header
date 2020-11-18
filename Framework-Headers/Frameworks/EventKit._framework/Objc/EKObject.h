@@ -65,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)_cachedMeltedChildIdentifierToParentMap:(id)arg1;
 - (unsigned long long)_cachedMeltedObjectsCount;
 - (id)_convertBackingObjectsWithPath:(id)arg1 updateBackingObjects:(BOOL)arg2 allChangedBackingObjects:(id)arg3 eventStore:(id)arg4 updatedBackingObjectProvider:(id)arg5;
-- (void)_emptyMeltedCacheForKey:(id)arg1;
 - (BOOL)_hasChangeHelperInKeys:(id)arg1 ignoreKeys:(id)arg2 checkUnsaved:(BOOL)arg3;
 - (BOOL)_hasChanges;
 - (BOOL)_hasChangesForKey:(id)arg1;
@@ -124,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)deletePersistentObject;
 - (void)didCommit;
 - (void)emptyMeltedCache;
+- (void)emptyMeltedCacheForKey:(id)arg1;
 - (void)emptyMeltedCacheForKeys:(id)arg1;
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;

@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
+@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttachmentsEditItem, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
 @protocol EKUIAutocompletePendingSearchProtocol;
 
 @interface EKEventEditor : EKCalendarItemEditor <EKEventAutocompleteResultsEditItemDelegate>
@@ -21,6 +21,7 @@
     EKCalendarItemCalendarEditItem *_calendarEditItem;
     EKCalendarItemAlarmEditItem *_alarmEditItem;
     EKEventURLAndNotesInlineEditItem *_notesEditItem;
+    EKEventAttachmentsEditItem *_attachmentsEditItem;
     BOOL _shouldAutocomplete;
     id<EKUIAutocompletePendingSearchProtocol> _pendingSearch;
     NSTimer *_autocompleteTimer;
@@ -75,6 +76,8 @@
 - (void)_showAutocompleteResults;
 - (void)_updateTitleEditItemSeparatorVisibility;
 - (id)_viewForSheet;
+- (id)attachmentsModifiedEvent;
+- (BOOL)attachmentsModifiedOnRecurrence;
 - (void)autocompleteResultsEditItem:(id)arg1 resultSelected:(id)arg2;
 - (void)autocompleteResultsEditItemDidHideResults:(id)arg1;
 - (void)autocompleteResultsEditItemDidShowResults:(id)arg1;
@@ -83,6 +86,8 @@
 - (void)editItemTextChanged:(id)arg1;
 - (unsigned long long)entityType;
 - (void)focus:(unsigned long long)arg1 select:(BOOL)arg2;
+- (BOOL)hasAttachmentChanges;
+- (BOOL)hasUnsavedChanges;
 - (void)loadView;
 - (id)notificationNamesForLocaleChange;
 - (struct CGSize)preferredContentSize;

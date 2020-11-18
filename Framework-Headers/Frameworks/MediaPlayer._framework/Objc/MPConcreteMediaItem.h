@@ -47,7 +47,6 @@
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (id)initWithPersistentID:(unsigned long long)arg1 library:(id)arg2;
 - (void)invalidateCachedProperties;
-- (Class)itemArrayCoderPIDDataCodingClass;
 - (void)markNominalAmountHasBeenPlayed;
 - (id)mediaLibrary;
 - (double)nominalHasBeenPlayedThreshold;

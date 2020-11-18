@@ -25,6 +25,7 @@
     unsigned int _firstDrawDone:1;
     unsigned int _drawOnMainThreadPending:1;
     unsigned int _viewIsOffscreen:1;
+    unsigned int _appChangedColorAppearance:1;
     unsigned int _appIsDeactivated:1;
     unsigned int _autoPausedScene:1;
     unsigned int _inRenderQueueForLayerBackedGLRendering:1;
@@ -233,6 +234,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)unlock;
 - (struct SCNVector3)unprojectPoint:(struct SCNVector3)arg1;
 - (void)updateAtTime:(double)arg1;

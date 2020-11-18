@@ -53,7 +53,7 @@
     long long __touchSequencePhase;
     CAMDynamicShutterGestureRecognizer *__gestureRecognizer;
     CAMFeedbackController *__feedbackController;
-    long long __state;
+    long long __shutterState;
     long long __dragHandleState;
     long long __innerShapeState;
     long long __counterValue;
@@ -118,9 +118,9 @@
 @property (nonatomic) BOOL _shouldCheckTouchUpEvents; // @synthesize _shouldCheckTouchUpEvents=__shouldCheckTouchUpEvents;
 @property (readonly, nonatomic) struct CGPoint _shutterButtonCenter;
 @property (readonly, nonatomic) struct CAMShutterButtonSpec _shutterButtonSpec; // @synthesize _shutterButtonSpec=__shutterButtonSpec;
+@property (nonatomic, setter=_setShutterState:) long long _shutterState; // @synthesize _shutterState=__shutterState;
 @property (strong, nonatomic) UIView *_spinnerView; // @synthesize _spinnerView=__spinnerView;
 @property (readonly, nonatomic) NSArray *_springs; // @synthesize _springs=__springs;
-@property (nonatomic, setter=_setState:) long long _state; // @synthesize _state=__state;
 @property (nonatomic, setter=_setTouchBeganTime:) double _touchBeganTime; // @synthesize _touchBeganTime=__touchBeganTime;
 @property (nonatomic, setter=_setTouchSequencePhase:) long long _touchSequencePhase; // @synthesize _touchSequencePhase=__touchSequencePhase;
 @property (readonly, nonatomic) UIImageView *_videoLockImageView; // @synthesize _videoLockImageView=__videoLockImageView;

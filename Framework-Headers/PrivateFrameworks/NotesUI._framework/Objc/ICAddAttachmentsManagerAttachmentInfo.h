@@ -10,6 +10,7 @@
 
 @interface ICAddAttachmentsManagerAttachmentInfo : NSObject
 {
+    BOOL _usesTemporaryFile;
     ICAttachment *_attachment;
     NSString *_title;
     NSURL *_mediaURL;
@@ -32,9 +33,11 @@
 @property (strong, nonatomic) NSString *mediaUTI; // @synthesize mediaUTI=_mediaUTI;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic) BOOL usesTemporaryFile; // @synthesize usesTemporaryFile=_usesTemporaryFile;
 
 - (void).cxx_destruct;
 - (id)attachmentIfExistsForAccount:(id)arg1;
+- (void)deleteTemporaryImageFileIfNecessary;
 - (id)description;
 - (id)initWithFileURL:(id)arg1;
 - (unsigned long long)mediaSize;

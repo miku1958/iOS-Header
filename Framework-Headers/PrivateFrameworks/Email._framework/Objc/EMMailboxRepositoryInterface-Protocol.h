@@ -12,6 +12,8 @@
 @protocol EMMailboxRepositoryInterface <NSObject>
 - (void)cancelObservation:(EMObjectID *)arg1;
 - (void)getMailboxesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)mailboxObjectIDsForMailboxType:(long long)arg1 completionHandler:(void (^)(NSSet *))arg2;
+- (void)mailboxTypeForMailboxObjectID:(EMObjectID *)arg1 completionHandler:(void (^)(long long))arg2;
 - (void)performMailboxChangeAction:(EMMailboxChangeAction *)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)refreshMailboxList;
 - (void)startObservingMailboxChangesWithChangeObserver:(id<EMMailboxChangeObserver>)arg1 observationIdentifier:(EMObjectID *)arg2;

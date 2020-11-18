@@ -43,6 +43,10 @@
 	// method
 	// method
  }
+ protocol FMIPCore.FMIPLocationControllerDelegate // 1 requirements
+ {
+	// method
+ }
  protocol FMIPCore.FMIPRefreshingControllerDelegate // 6 requirements
  {
 	// method
@@ -72,9 +76,9 @@
 	let authenticationContext : AKAppleIDAuthenticationContext? // +0x58 (0x8)
 
 	// Swift methods
-	0x2910  func <stripped> // getter 
-	0x2aa0  func <stripped> // getter 
-	0x2cc0  func <stripped> // method 
+	0x31c0  func <stripped> // getter 
+	0x3350  func <stripped> // getter 
+	0x3570  func <stripped> // method 
  }
 
  enum FMIPCore.FMIPEphemeralAuthenticationError {
@@ -159,7 +163,7 @@
 	var pendingCommandFutures : [FMFuture<SPBeacon>] // +0x58 (0x8)
 
 	// Swift methods
-	0x91f0  func <stripped> // method 
+	0x9aa0  func <stripped> // method 
  }
 
  enum FMIPCore.FMIPDeviceActionsControllerError {
@@ -233,7 +237,7 @@
 	let whenLocationFound : Bool // +0x36 (0x1)
 
 	// Swift methods
-	0x13d10  class func FMIPNotifyAction.__allocating_init(device:whenLocationFound:) // init 
+	0x145c0  class func FMIPNotifyAction.__allocating_init(device:whenLocationFound:) // init 
  }
 
  class FMIPCore.FMIPDeviceContainingResponse : FMIPBaseResponse {
@@ -252,49 +256,49 @@
 	var headerDictionary : [String : String] // +0x45545f5f (0x8)
 	var oneTimeToken : String? // +0x0 (0x10)
 	var clientContext : [String : Any] // +0x0 (0x8)
-	var serverContext : [String : Any] // +0x96000 (0x8)
+	var serverContext : [String : Any] // +0x99000 (0x8)
 	var lastActiveTimestamp : Date // +0x0 (0x0)
 
 	// Swift methods
-	0x14d10  func <stripped> // getter 
-	0x14e90  func <stripped> // getter 
-	0x14ea0  func <stripped> // method 
-	0x15190  func <stripped> // method 
-	0x16590  func <stripped> // method 
+	0x155c0  func <stripped> // getter 
+	0x15740  func <stripped> // getter 
+	0x15750  func <stripped> // method 
+	0x15a40  func <stripped> // method 
+	0x16e40  func <stripped> // method 
  }
 
  class FMIPCore.FMIPPlaySoundDeviceAction : FMIPDeviceAction {
 
 	// Properties
-	let channels : [FMIPPlaySoundChannels] // +0x96000 (0x8)
+	let channels : [FMIPPlaySoundChannels] // +0x99000 (0x8)
 	let safetyWarningConfirmed : Bool // +0x5 (0x1)
 
 	// Swift methods
-	0x17740  class func FMIPPlaySoundDeviceAction.__allocating_init(device:channels:safetyWarningConfirmed:) // init 
+	0x17ff0  class func FMIPPlaySoundDeviceAction.__allocating_init(device:channels:safetyWarningConfirmed:) // init 
  }
 
  class FMIPCore.FMIPDeviceAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let device : FMIPDevice // +0x18b0 (0x0)
+	let device : FMIPDevice // +0x2140 (0x0)
 	var authenticationContext : AKAppleIDAuthenticationContext? // +0x11 (0x8)
 	var trustedDeviceConfirmation : (_:_:_:)? // +0x65745f5f (0x10)
 	var dsid : String? // +0x0 (0x10)
 	var username : String? // +0x45545f5f (0x10)
 	var oneTimeToken : String? // +0x0 (0x10)
-	var escrowUUID : String? // +0x18b0 (0x10)
-	var recoverySession : Data? // +0x7bbda (0x10)
+	var escrowUUID : String? // +0x2140 (0x10)
+	var recoverySession : Data? // +0x7d5ba (0x10)
 
 	// Swift methods
-	0x17b60  func FMIPDeviceAction.isPasswordRequired.getter // getter 
-	0x17b70  func FMIPDeviceAction.authenticationContext.getter // getter 
-	0x17bb0  func FMIPDeviceAction.authenticationContext.setter // setter 
-	0x17c00  func FMIPDeviceAction.authenticationContext.modify // modifyCoroutine 
-	0x17c50  func FMIPDeviceAction.trustedDeviceConfirmation.getter // getter 
-	0x17ca0  func FMIPDeviceAction.trustedDeviceConfirmation.setter // setter 
-	0x17d00  func FMIPDeviceAction.trustedDeviceConfirmation.modify // modifyCoroutine 
-	0x17d40  func FMIPDeviceAction.isTrustedDeviceVerificationRequired.getter // getter 
-	0x17d70  class func FMIPDeviceAction.__allocating_init(device:) // init 
+	0x18410  func FMIPDeviceAction.isPasswordRequired.getter // getter 
+	0x18420  func FMIPDeviceAction.authenticationContext.getter // getter 
+	0x18460  func FMIPDeviceAction.authenticationContext.setter // setter 
+	0x184b0  func FMIPDeviceAction.authenticationContext.modify // modifyCoroutine 
+	0x18500  func FMIPDeviceAction.trustedDeviceConfirmation.getter // getter 
+	0x18550  func FMIPDeviceAction.trustedDeviceConfirmation.setter // setter 
+	0x185b0  func FMIPDeviceAction.trustedDeviceConfirmation.modify // modifyCoroutine 
+	0x185f0  func FMIPDeviceAction.isTrustedDeviceVerificationRequired.getter // getter 
+	0x18620  class func FMIPDeviceAction.__allocating_init(device:) // init 
  }
 
  class FMIPCore.FMIPCancelEraseAction : FMIPDeviceAction { }
@@ -392,7 +396,7 @@
 	let processingQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x20c90  func <stripped> // method 
+	0x215b0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPEraseAction : FMIPDeviceAction {
@@ -404,7 +408,7 @@
 	let phoneNumber : String? // +0x45545f5f (0x10)
 
 	// Swift methods
-	0x23930  class func FMIPEraseAction.__allocating_init(device:message:phoneNumber:passcode:) // init 
+	0x24250  class func FMIPEraseAction.__allocating_init(device:message:phoneNumber:passcode:) // init 
  }
 
  enum FMIPCore.FMIPURLAction {
@@ -443,42 +447,46 @@
 	var beaconRefreshingController : FMIPBeaconRefreshingController // +0x28 (0x8)
 	var dataManager : FMIPDataManager // +0x30 (0x8)
 	let garbageCollector : FMIPGarbageCollector // +0x38 (0x8)
-	var serverInteractionController : FMIPServerInteractionController // +0x40 (0x8)
-	var actionsController : FMIPDeviceActionsController // +0x48 (0x8)
-	var trackingAvoidance : SPTrackingAvoidanceServiceProtocol // +0x50 (0x8)
-	var ownerSession : SPOwnerSession // +0x58 (0x8)
-	var ownerInterface : SPOwnerInterface // +0x60 (0x8)
-	var beaconManager : SPBeaconManager // +0x68 (0x8)
-	let urlHandler : FMIPURLHandler // +0x70 (0x8)
-	var isUpdatingSingleDevices : Bool // +0x78 (0x1)
-	let locationShifter : FMLocationShifter // +0x80 (0x8)
-	var selectedDevice : FMIPDevice? // +0x7d48a (0x0)
-	var isInitialized : Bool // +0x0 (0x1)
+	let locationController : FMIPLocationController // +0x40 (0x8)
+	var serverInteractionController : FMIPServerInteractionController // +0x48 (0x8)
+	var actionsController : FMIPDeviceActionsController // +0x50 (0x8)
+	var trackingAvoidance : SPTrackingAvoidanceServiceProtocol // +0x58 (0x8)
+	var ownerSession : SPOwnerSession // +0x60 (0x8)
+	var ownerInterface : SPOwnerInterface // +0x68 (0x8)
+	var beaconManager : SPBeaconManager // +0x70 (0x8)
+	let urlHandler : FMIPURLHandler // +0x78 (0x8)
+	var isUpdatingSingleDevices : Bool // +0x80 (0x1)
+	let locationShifter : FMLocationShifter // +0x88 (0x8)
+	var selectedDevice : FMIPDevice? // +0x80000408 (0x0)
+	var isInitialized : Bool // +0x6 (0x1)
 
 	// Swift methods
-	0x27550  func FMIPManager.delegate.getter // getter 
-	0x27580  func FMIPManager.delegate.setter // setter 
-	0x27600  func FMIPManager.delegate.modify // modifyCoroutine 
-	0x276f0  func FMIPManager.devices.getter // getter 
-	0x27730  func FMIPManager.owner.getter // getter 
-	0x277f0  func FMIPManager.familyMembers.getter // getter 
-	0x27810  func FMIPManager.selectedDevice.getter // getter 
-	0x27850  func FMIPManager.selectedDevice.setter // setter 
-	0x27930  func FMIPManager.selectedDevice.modify // modifyCoroutine 
-	0x27c20  func FMIPManager.isInitialized.getter // getter 
-	0x27c50  func <stripped> // setter 
-	0x27cf0  class func FMIPManager.__allocating_init() // init 
-	0x282b0  func FMIPManager.initialize() // method 
-	0x2b400  func FMIPManager.startRefreshing() // method 
-	0x2b6a0  func FMIPManager.stopRefreshing() // method 
-	0x2b770  func FMIPManager.refresh() // method 
-	0x2b880  func FMIPManager.perform(action:completion:) // method 
-	0x2c0d0  func FMIPManager.updateLastLocationStatus(enabled:) // method 
-	0x2c720  func <stripped> // method 
-	0x2c8f0  func FMIPManager.handle(url:completion:) // method 
-	0x2ca50  func <stripped> // method 
-	0x2d540  func <stripped> // method 
-	0x2e090  func FMIPManager.debugDescription.getter // getter 
+	0x27900  func FMIPManager.delegate.getter // getter 
+	0x27930  func FMIPManager.delegate.setter // setter 
+	0x279b0  func FMIPManager.delegate.modify // modifyCoroutine 
+	0x27aa0  func FMIPManager.devices.getter // getter 
+	0x27ae0  func FMIPManager.owner.getter // getter 
+	0x27ba0  func FMIPManager.familyMembers.getter // getter 
+	0x27bc0  func FMIPManager.selectedDevice.getter // getter 
+	0x27c00  func FMIPManager.selectedDevice.setter // setter 
+	0x27ce0  func FMIPManager.selectedDevice.modify // modifyCoroutine 
+	0x27fd0  func FMIPManager.isInitialized.getter // getter 
+	0x28000  func <stripped> // setter 
+	0x280a0  class func FMIPManager.__allocating_init() // init 
+	0x28690  func FMIPManager.initialize() // method 
+	0x2b7e0  func FMIPManager.startRefreshing() // method 
+	0x2bab0  func FMIPManager.forceStartRefreshing() // method 
+	0x2bc50  func FMIPManager.stopRefreshing() // method 
+	0x2bd40  func FMIPManager.updateLastActiveTimestamp() // method 
+	0x2bde0  func FMIPManager.refresh() // method 
+	0x2bef0  func FMIPManager.refreshBeacons(completion:) // method 
+	0x2bf30  func FMIPManager.perform(action:completion:) // method 
+	0x2c780  func FMIPManager.updateLastLocationStatus(enabled:) // method 
+	0x2cdd0  func <stripped> // method 
+	0x2cfa0  func FMIPManager.handle(url:completion:) // method 
+	0x2d100  func <stripped> // method 
+	0x2dbf0  func <stripped> // method 
+	0x2e730  func FMIPManager.debugDescription.getter // getter 
  }
 
  class FMIPCore.FMIPDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -498,15 +506,15 @@
 	let updateQueue : OS_dispatch_queue // +0xb0 (0x8)
 
 	// Swift methods
-	0x33610  func <stripped> // method 
-	0x337a0  func <stripped> // method 
-	0x33900  func <stripped> // method 
+	0x33100  func <stripped> // method 
+	0x33290  func <stripped> // method 
+	0x333f0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPVerifyTrustedStateRequest : FMIPBaseRequest {
 
 	// Properties
-	let device : FMIPDevice // +0x65706c65 (0x0)
+	let device : FMIPDevice // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -514,13 +522,13 @@
  class FMIPCore.FMIPLockAction : FMIPDeviceAction {
 
 	// Properties
-	let isSoundEnabled : Bool // +0xb1e (0x1)
-	let isUserTextEnabled : Bool // +0x45545f5f (0x1)
-	let message : String? // +0x0 (0x10)
-	let passcode : String? // +0x7db2c (0x10)
+	let isSoundEnabled : Bool // +0x0 (0x1)
+	let isUserTextEnabled : Bool // +0x7fda8 (0x1)
+	let message : String? // +0xb32 (0x10)
+	let passcode : String? // +0x7fda8 (0x10)
 
 	// Swift methods
-	0x37d10  class func FMIPLockAction.__allocating_init(device:message:passcode:) // init 
+	0x37850  class func FMIPLockAction.__allocating_init(device:message:passcode:) // init 
  }
 
  class FMIPCore.FMIPEraseResponse : FMIPDeviceContainingResponse { }
@@ -537,6 +545,7 @@
 	case gps  
 	case wifi  
 	case safeLocation  
+	case realtime  
  }
 
  struct FMIPCore.FMIPLocation {
@@ -577,12 +586,12 @@
 	let paths : [String] // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3c5f0  @objc FMIPGarbageCollector.scheduleAccountVerification <stripped>
+	0x3c2a0  @objc FMIPGarbageCollector.scheduleAccountVerification <stripped>
 
 	// Swift methods
-	0x3b8c0  func <stripped> // method 
-	0x3c070  func <stripped> // method 
-	0x3c620  func <stripped> // method 
+	0x3b570  func <stripped> // method 
+	0x3bd20  func <stripped> // method 
+	0x3c2d0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPPlaySoundResponse : FMIPDeviceContainingResponse { }
@@ -599,29 +608,29 @@
 	var publicAPSToken : String? // +0x60 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x3dd20  @objc FMAPSConnectionHandler.dealloc <stripped>
-	0x3e170  @objc FMAPSConnectionHandler.init <stripped>
-	0x3dd40  @objc FMAPSConnectionHandler..cxx_destruct <stripped>
+	0x3d9d0  @objc FMAPSConnectionHandler.dealloc <stripped>
+	0x3de20  @objc FMAPSConnectionHandler.init <stripped>
+	0x3d9f0  @objc FMAPSConnectionHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3ddd0  func <stripped> // method 
-	0x3df00  func <stripped> // method 
+	0x3da80  func <stripped> // method 
+	0x3dbb0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPLostModeAction : FMIPDeviceAction {
 
 	// Properties
-	let isLostModeEnabled : Bool // +0x45545f5f (0x1)
-	let isSoundEnabled : Bool // +0x0 (0x1)
-	let isTrackingEnabled : Bool // +0x7db2c (0x1)
+	let isLostModeEnabled : Bool // +0x808e0 (0x1)
+	let isSoundEnabled : Bool // +0x70c0 (0x1)
+	let isTrackingEnabled : Bool // +0x80000400 (0x1)
 	let isUserTextEnabled : Bool // +0x0 (0x1)
-	let isEmailUpdatesEnabled : Bool // +0x80000400 (0x1)
+	let isEmailUpdatesEnabled : Bool // +0x6f635f5f (0x1)
 	let message : String? // +0x0 (0x10)
-	let phoneNumber : String? // +0x6f635f5f (0x10)
+	let phoneNumber : String? // +0x45545f5f (0x10)
 	let passcode : String? // +0x0 (0x10)
 
 	// Swift methods
-	0x3f950  class func FMIPLostModeAction.__allocating_init(device:message:phoneNumber:passcode:trackingEnabled:emailUpdatesEnabled:) // init 
+	0x3f600  class func FMIPLostModeAction.__allocating_init(device:message:phoneNumber:passcode:trackingEnabled:emailUpdatesEnabled:) // init 
  }
 
  class FMIPCore.FMIPReverseGeocodingOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -632,13 +641,13 @@
 	var _isFinished : Bool // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x3fec0  @objc FMIPReverseGeocodingOperation.isFinished <stripped>
-	0x3fee0  @objc FMIPReverseGeocodingOperation.setFinished: <stripped>
-	0x3ffa0  @objc FMIPReverseGeocodingOperation.isAsynchronous <stripped>
-	0x3ffc0  @objc FMIPReverseGeocodingOperation.main <stripped>
-	0x40a60  @objc FMIPReverseGeocodingOperation.start <stripped>
-	0x40a90  @objc FMIPReverseGeocodingOperation.init <stripped>
-	0x40b10  @objc FMIPReverseGeocodingOperation..cxx_destruct <stripped>
+	0x3fb70  @objc FMIPReverseGeocodingOperation.isFinished <stripped>
+	0x3fb90  @objc FMIPReverseGeocodingOperation.setFinished: <stripped>
+	0x3fc50  @objc FMIPReverseGeocodingOperation.isAsynchronous <stripped>
+	0x3fc70  @objc FMIPReverseGeocodingOperation.main <stripped>
+	0x40710  @objc FMIPReverseGeocodingOperation.start <stripped>
+	0x40740  @objc FMIPReverseGeocodingOperation.init <stripped>
+	0x407c0  @objc FMIPReverseGeocodingOperation..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -646,7 +655,7 @@
  class FMIPCore.FMIPLockRequest : FMIPBaseRequest {
 
 	// Properties
-	let action : FMIPLockAction // +0x7e650 (0x8)
+	let action : FMIPLockAction // +0x808e0 (0x8)
 
 	// Swift methods
  }
@@ -704,8 +713,8 @@
  class FMIPCore.FMIPValidatePasswordRequest : FMIPBaseRequest {
 
 	// Properties
-	let authToken : String // +0x6fb0 (0x10)
-	let context : FMIPValidatePasswordContext // +0x7e650 (0x1)
+	let authToken : String // +0x0 (0x10)
+	let context : FMIPValidatePasswordContext // +0x0 (0x1)
 	let device : FMIPDevice // +0x0 (0x0)
 
 	// Swift methods
@@ -729,7 +738,7 @@
  class FMIPCore.FMIPLostModeRequest : FMIPBaseRequest {
 
 	// Properties
-	let action : FMIPLostModeAction // +0x0 (0x8)
+	let action : FMIPLostModeAction // +0x73635f5f (0x8)
 
 	// Swift methods
  }
@@ -741,14 +750,14 @@
 	let serverInteractionQueue : OS_dispatch_queue // +0x50 (0x8)
 	var delegate : FMIPServerInteractionControllerDelegate // +0x58 (0x10)
 	var serverContext : [String : Any]? // +0x68 (0x8)
-	var lastActiveTimestamp : Date // +0x0 (0x0)
-	var networkInitializationCompleted : Bool // +0x73635f5f (0x1)
+	var lastActiveTimestamp : Date // +0x67 (0x0)
+	var networkInitializationCompleted : Bool // +0x45545f5f (0x1)
 
 	// Swift methods
-	0x48440  func <stripped> // method 
-	0x48880  func <stripped> // method 
-	0x489e0  func <stripped> // method 
-	0x48b20  func <stripped> // method 
+	0x48150  func <stripped> // method 
+	0x48590  func <stripped> // method 
+	0x486f0  func <stripped> // method 
+	0x48830  func <stripped> // method 
  }
 
  struct FMIPCore.FMIPDeviceLostModeMetadata {
@@ -777,6 +786,23 @@
 	case timestamp  
  }
 
+ class FMIPCore.FMIPLocationController : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let locationManager : CLLocationManager // +0x8 (0x8)
+	var delegate : FMIPLocationControllerDelegate // +0x10 (0x10)
+	let locationUpdatingQueue : OS_dispatch_queue // +0x20 (0x8)
+
+	// ObjC -> Swift bridged methods
+	0x4c540  @objc FMIPLocationController.init <stripped>
+	0x4c560  @objc FMIPLocationController.locationManager:didFailWithError: <stripped>
+	0x4c710  @objc FMIPLocationController.locationManager:didChangeAuthorizationStatus: <stripped>
+	0x4c950  @objc FMIPLocationController.locationManager:didUpdateLocations: <stripped>
+	0x4ca50  @objc FMIPLocationController..cxx_destruct <stripped>
+
+	// Swift methods
+ }
+
  enum FMIPCore.FMIPPlaySoundChannels {
 
 	// Properties
@@ -796,38 +822,38 @@
  class FMIPCore.FMIPPlaySoundRequest : FMIPBaseRequest {
 
 	// Properties
-	let device : FMIPDevice // +0x67 (0x0)
-	let channels : FMIPPlaySoundChannels // +0x45545f5f (0x8)
-	let safetyWarningConfirmed : Bool // +0x0 (0x1)
+	let device : FMIPDevice // +0x0 (0x0)
+	let channels : FMIPPlaySoundChannels // +0x879a0 (0x8)
+	let safetyWarningConfirmed : Bool // +0x7467 (0x1)
 
 	// Swift methods
-	0x4cff0  func <stripped> // getter 
+	0x4dfc0  func <stripped> // getter 
  }
 
  class FMIPCore.FMIPRefreshingController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	var delegate : FMIPRefreshingControllerDelegate // +0x10 (0x10)
-	var selectedDevice : FMIPDevice? // +0x85600 (0x0)
-	let serverInteractionController : FMIPServerInteractionController // +0x6db7 (0x8)
-	let apsConnectionHandler : FMAPSConnectionHandler // +0x85600 (0x8)
+	var selectedDevice : FMIPDevice? // +0x879a0 (0x0)
+	let serverInteractionController : FMIPServerInteractionController // +0x0 (0x8)
+	let apsConnectionHandler : FMAPSConnectionHandler // +0x2 (0x8)
 	let refreshQueue : OS_dispatch_queue // +0x0 (0x8)
-	var tapContexts : [[AnyHashable : Any]] // +0x2 (0x8)
-	var callbackInterval : Double // +0x0 (0x8)
-	var minCallbackInterval : Double // +0x77735f5f (0x8)
-	var maxCallbackInterval : Double // +0x7079745f (0x8)
-	var lastRefreshTime : Date? // +0x45545f5f (0x0)
-	var refreshTimer : NSTimer? // +0x0 (0x8)
-	var isRefreshing : Bool // +0x8c3b8 (0x1)
+	var tapContexts : [[AnyHashable : Any]] // +0x77735f5f (0x8)
+	var callbackInterval : Double // +0x7079745f (0x8)
+	var minCallbackInterval : Double // +0x45545f5f (0x8)
+	var maxCallbackInterval : Double // +0x0 (0x8)
+	var lastRefreshTime : Date? // +0x8ee08 (0x0)
+	var refreshTimer : NSTimer? // +0x1e66 (0x8)
+	var isRefreshing : Bool // +0x8ee08 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x4f620  @objc FMIPRefreshingController.refreshTimerFired <stripped>
+	0x50660  @objc FMIPRefreshingController.refreshTimerFired <stripped>
 
 	// Swift methods
-	0x4e640  func <stripped> // method 
-	0x4ea20  func <stripped> // method 
-	0x4f2a0  func <stripped> // method 
-	0x4fe30  func <stripped> // method 
+	0x4f680  func <stripped> // method 
+	0x4fa60  func <stripped> // method 
+	0x502e0  func <stripped> // method 
+	0x50e70  func <stripped> // method 
  }
 
  class FMIPCore.FMIPLostModeResponse : FMIPDeviceContainingResponse { }
@@ -961,7 +987,7 @@
  class FMIPCore.FMIPRemoveRequest : FMIPBaseRequest {
 
 	// Properties
-	let action : FMIPRemoveDeviceAction // +0x1dac (0x8)
+	let action : FMIPRemoveDeviceAction // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -971,9 +997,9 @@
  class FMIPCore.FMIPRefreshClientRequest : FMIPBaseRequest {
 
 	// Properties
-	let selectedDevice : FMIPDevice? // +0x8c3b8 (0x0)
+	let selectedDevice : FMIPDevice? // +0x0 (0x0)
 	let tapContext : [[AnyHashable : Any]]? // +0x0 (0x8)
-	let notificationAuthStatus : UNAuthorizationStatus // +0x0 (0x8)
+	let notificationAuthStatus : UNAuthorizationStatus // +0x77735f5f (0x8)
 
 	// Swift methods
  }
@@ -982,9 +1008,9 @@
 
  class FMIPCore.IconTextAttachment : NSTextAttachment /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-	0x64ab0  @objc IconTextAttachment.attachmentBoundsForTextContainer:proposedLineFragment:glyphPosition:characterIndex: <stripped>
-	0x64cb0  @objc IconTextAttachment.initWithData:ofType: <stripped>
-	0x64d60  @objc IconTextAttachment.initWithCoder: <stripped>
+	0x659d0  @objc IconTextAttachment.attachmentBoundsForTextContainer:proposedLineFragment:glyphPosition:characterIndex: <stripped>
+	0x65bd0  @objc IconTextAttachment.initWithData:ofType: <stripped>
+	0x65c80  @objc IconTextAttachment.initWithCoder: <stripped>
  }
 
  enum FMIPCore.FMIPPersonDeviceFetchStatus {
@@ -1057,19 +1083,19 @@
 	var callbackInterval : Double // +0x40 (0x8)
 	var defaultCallbackInterval : Double // +0x48 (0x8)
 	var initialCallbackInterval : Double // +0x50 (0x8)
-	var lastRefreshTime : Date? // +0x45545f5f (0x0)
-	var refreshTimer : NSTimer? // +0x0 (0x8)
-	var isRefreshing : Bool // +0x8e164 (0x1)
+	var lastRefreshTime : Date? // +0x90c70 (0x0)
+	var refreshTimer : NSTimer? // +0x64 (0x8)
+	var isRefreshing : Bool // +0x90c70 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x6e380  @objc FMIPBeaconRefreshingController.handleBeaconsChanged <stripped>
+	0x6fb10  @objc FMIPBeaconRefreshingController.handleBeaconsChanged <stripped>
 
 	// Swift methods
-	0x6c1d0  func <stripped> // method 
-	0x6c400  func <stripped> // method 
-	0x6c890  func <stripped> // method 
-	0x6d590  func <stripped> // method 
-	0x6e1a0  func <stripped> // method 
+	0x6d640  func <stripped> // method 
+	0x6d870  func <stripped> // method 
+	0x6dd00  func <stripped> // method 
+	0x6ea80  func <stripped> // method 
+	0x6f930  func <stripped> // method 
  }
 
  class FMIPCore.FMIPBaseResponse : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1082,7 +1108,7 @@
 	let statusCode : Int // +0x30 (0x8)
 
 	// Swift methods
-	0x71d60  class func <stripped> // init 
+	0x73fd0  class func <stripped> // init 
  }
 
  enum FMIPCore.FMIPBaseResponseError {
@@ -1112,7 +1138,7 @@
  class FMIPCore.FMIPNotifyRequest : FMIPBaseRequest {
 
 	// Properties
-	let action : FMIPNotifyAction // +0x50 (0x8)
+	let action : FMIPNotifyAction // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -1147,14 +1173,14 @@
 	let message : String? // +0x20 (0x10)
 	let okButtonLabel : String? // +0x30 (0x10)
 	let okButtonURL : URL? // +0x0 (0x0)
-	let cancelButtonLabel : String? // +0x8e164 (0x10)
-	let cancelButtonURL : URL? // +0x0 (0x0)
-	let type : FMIPAlertType // +0x0 (0x1)
+	let cancelButtonLabel : String? // +0x0 (0x10)
+	let cancelButtonURL : URL? // +0x77735f5f (0x0)
+	let type : FMIPAlertType // +0x6665725f (0x1)
 
 	// Swift methods
-	0x7c170  class func FMIPAlert.__allocating_init(from:) // init 
-	0x7b5c0  class func FMIPAlert.__allocating_init(title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:type:) // init 
-	0x7c830  func FMIPAlert.debugDescription.getter // getter 
+	0x7e3e0  class func FMIPAlert.__allocating_init(from:) // init 
+	0x7d830  class func FMIPAlert.__allocating_init(title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:type:) // init 
+	0x7eaa0  func FMIPAlert.debugDescription.getter // getter 
  }
 
  enum FMIPCore.CodingKeys {
@@ -1175,6 +1201,8 @@
 	// Properties
 	var _rawValue : NSString
  }
+
+ enum __C.CLAuthorizationStatus { }
 
  struct __C.FileProtectionType {
 

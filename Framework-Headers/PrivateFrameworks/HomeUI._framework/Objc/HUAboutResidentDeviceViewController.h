@@ -53,7 +53,9 @@
 - (void)_setNavigationBarVisibility;
 - (id)init;
 - (id)initWithStyle:(unsigned long long)arg1;
+- (void)updateViews;
 - (void)updateViewsAndConstraints;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

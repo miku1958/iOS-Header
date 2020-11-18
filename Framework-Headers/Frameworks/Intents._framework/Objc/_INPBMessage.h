@@ -36,6 +36,7 @@
     NSArray *_recipients;
     _INPBMessage *_referencedMessage;
     _INPBContact *_sender;
+    NSString *_serviceName;
     _INPBDataString *_speakableGroupName;
 }
 
@@ -65,6 +66,7 @@
 @property (readonly, nonatomic) BOOL hasPaymentAmount;
 @property (readonly, nonatomic) BOOL hasReferencedMessage;
 @property (readonly, nonatomic) BOOL hasSender;
+@property (readonly, nonatomic) BOOL hasServiceName;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
@@ -77,6 +79,7 @@
 @property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (strong, nonatomic) _INPBMessage *referencedMessage; // @synthesize referencedMessage=_referencedMessage;
 @property (strong, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
+@property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (strong, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;

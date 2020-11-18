@@ -85,7 +85,9 @@
 
 - (void).cxx_destruct;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
+- (void)_createProvidedItemsDirectoryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_fileReactorID;
+- (void)_performForAllCoordinationProviders:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_physicalURLForURL:(id)arg1;
 - (void)_provideItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -93,7 +95,6 @@
 - (void)_providedItemAtURL:(id)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(id)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(id)arg3;
 - (id)_providedItemsOperationQueue;
-- (void)_registerFileCoordinatorWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_removeProgressForProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (void)_setupRecoveryTimer;
 - (BOOL)_shouldDisconnect;
@@ -132,6 +133,7 @@
 - (BOOL)isUsingFPFS;
 - (id)materializedURLForItemID:(id)arg1;
 - (long long)nonEvictableSpace;
+- (void)reconnectToFileCoordinatorForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startInOrderToDropIndex;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)supportsFPFS;

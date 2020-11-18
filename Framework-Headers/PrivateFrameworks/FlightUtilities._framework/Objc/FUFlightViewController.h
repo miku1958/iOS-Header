@@ -45,6 +45,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)addFittingView:(id)arg1;
 - (void)awakeFromNib;
 - (void)commonInit;

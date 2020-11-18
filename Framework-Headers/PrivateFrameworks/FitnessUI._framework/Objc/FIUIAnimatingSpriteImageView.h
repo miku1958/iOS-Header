@@ -22,6 +22,8 @@
 @property (nonatomic) long long spriteFrameCount; // @synthesize spriteFrameCount=_spriteFrameCount;
 @property (strong, nonatomic) UIImage *spriteImage; // @synthesize spriteImage=_spriteImage;
 
++ (id)_createNewSpriteArray:(id)arg1 currentFrame:(unsigned long long)arg2 arraySize:(unsigned long long)arg3 interrupted:(BOOL)arg4;
++ (unsigned long long)_findSpriteIndex:(struct CGPoint)arg1 centerPoints:(id)arg2;
 - (void).cxx_destruct;
 - (id)_centerPointValues;
 - (struct CGSize)_spriteFrameSize;
@@ -32,7 +34,7 @@
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startAnimating;
-- (void)stopAnimating;
+- (void)stopAnimatingFinishingCycle:(BOOL)arg1;
 
 @end
 

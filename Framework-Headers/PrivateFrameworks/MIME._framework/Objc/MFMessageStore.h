@@ -35,8 +35,6 @@
 - (void)_flushAllCaches;
 - (void)_flushAllMessageData;
 - (id)_setOrGetBody:(id)arg1 forMessage:(id)arg2 updateFlags:(BOOL)arg3;
-- (id)additionalHeadersForForwardOfMessage:(id)arg1;
-- (id)additionalHeadersForReplyOfMessage:(id)arg1;
 - (id)bestAlternativeForPart:(id)arg1;
 - (id)bodyDataForMessage:(id)arg1 isComplete:(BOOL *)arg2 isPartial:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4;
 - (BOOL)bodyFetchRequiresNetworkActivity;

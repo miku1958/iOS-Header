@@ -36,9 +36,6 @@
 - (void)_notifyDelegate;
 - (id)_recordingTriggerCharacteristicTypeForServiceType:(id)arg1;
 - (void)_registerForNotifications;
-- (id)_sameRoomAccessoriesCharacteristicsToObserve;
-- (void)handleAccessoryAdded:(id)arg1;
-- (void)handleAccessoryRoomChange:(id)arg1;
 - (void)handleCharacteristicsUpdated:(id)arg1;
 - (void)handleServicesUpdated:(id)arg1;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2;

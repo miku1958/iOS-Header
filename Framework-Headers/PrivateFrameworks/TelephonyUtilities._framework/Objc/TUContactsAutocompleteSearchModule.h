@@ -44,6 +44,7 @@
 - (void)autocompleteFetch:(id)arg1 didReceiveResults:(id)arg2;
 - (void)autocompleteFetchDidFinish:(id)arg1;
 - (void)cancelSearch;
+- (void)dealloc;
 - (id)init;
 - (void)searchForString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

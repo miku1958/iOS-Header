@@ -19,12 +19,14 @@
     struct PairingSessionPrivate *_pairingSession;
     unsigned long long _featureFlags;
     HMFUnfairLock *_lock;
+    BOOL _shouldReestablishSession;
     BOOL _establishingSecureConnection;
     BOOL _wacAccessory;
     BOOL _wacComplete;
     BOOL _wacLegacy;
     BOOL _preSoftAuthWacStarted;
     BOOL _postSoftAuthWacStarted;
+    BOOL _hasUpdatedBonjour;
     BOOL _authenticated;
     BOOL _hasAttributeDatabase;
     BOOL _hasTunnelService;
@@ -79,6 +81,7 @@
 @property (nonatomic) BOOL hasAttributeDatabase; // @synthesize hasAttributeDatabase=_hasAttributeDatabase;
 @property (nonatomic) BOOL hasStartedPairing; // @synthesize hasStartedPairing=_hasStartedPairing;
 @property (nonatomic) BOOL hasTunnelService; // @synthesize hasTunnelService=_hasTunnelService;
+@property (nonatomic) BOOL hasUpdatedBonjour; // @synthesize hasUpdatedBonjour=_hasUpdatedBonjour;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HAPHTTPClient *httpClient; // @synthesize httpClient=_httpClient;
 @property (strong, nonatomic) NSArray *ipServices; // @synthesize ipServices=_ipServices;
@@ -130,7 +133,6 @@
 - (void)_getAttributeDatabase;
 - (int)_getBonjourDeviceDNSName:(id *)arg1;
 - (void)_handleEventResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 characteristics:(id)arg5 requestedEventState:(BOOL)arg6 completion:(CDUnknownBlockType)arg7 queue:(id)arg8;
-- (void)_handleHTTPClientErrors;
 - (void)_handleListPairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_handleMFiCertValidation;
 - (void)_handlePairSetupAfterM4Callback;
@@ -184,6 +186,7 @@
 - (void)_sendRemovePairingWithData:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startAddPairingWithIdentifier:(id)arg1 publicKey:(id)arg2 admin:(BOOL)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_tearDownSession;
+- (void)_tearDownSessionAndReconfirm;
 - (void)_tearDownWAC;
 - (BOOL)_updateAccessories:(id)arg1;
 - (void)_updateProtocolVersionFromPrimaryAccessory:(id)arg1;
@@ -236,8 +239,8 @@
 - (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (void)startReprovisioningWiFiConfig:(id)arg1;
 - (BOOL)stopPairingWithError:(id *)arg1;
+- (void)tearDownAndRestablishSession;
 - (void)tearDownSessionOnAuthCompletion;
-- (void)tearDownSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)timerDidFire:(id)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateWithBonjourDeviceInfo:(id)arg1;

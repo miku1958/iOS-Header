@@ -26,6 +26,7 @@
     NSIndexSet *_requestIDsInTargetRect;
     id<PXGTextureProviderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_requestQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
     CDStruct_93894d6c _interactionState;
 }
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PXGViewEnvironment *viewEnvironment; // @synthesize viewEnvironment=_viewEnvironment;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
 - (void)cancelTextureRequestDeferred:(int)arg1;

@@ -34,7 +34,7 @@
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
-@property (copy, nonatomic) NSString *currentBluetoothListeningMode;
+@property (readonly, nonatomic) NSString *currentBluetoothListeningMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long deviceFeatures;
@@ -77,6 +77,8 @@
 - (id)init;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (BOOL)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 

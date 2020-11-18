@@ -31,6 +31,7 @@
     BOOL _performedInitialLoad;
     PXCuratedLibraryLayoutSpec *_spec;
     PXCuratedLibraryViewModel *_viewModel;
+    double _lateralMargin;
     id _lastVisibleDominantObjectReference;
     PXGSpriteReference *_lastHitSpriteReference;
     double _defaultInterlayoutSpacing;
@@ -48,6 +49,7 @@
 @property (nonatomic) BOOL isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property (strong, nonatomic) PXGSpriteReference *lastHitSpriteReference; // @synthesize lastHitSpriteReference=_lastHitSpriteReference;
 @property (strong, nonatomic) id lastVisibleDominantObjectReference; // @synthesize lastVisibleDominantObjectReference=_lastVisibleDominantObjectReference;
+@property (nonatomic) double lateralMargin; // @synthesize lateralMargin=_lateralMargin;
 @property (readonly, nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) BOOL performedInitialLoad; // @synthesize performedInitialLoad=_performedInitialLoad;
 @property (readonly, nonatomic) PXAssetsDataSource *presentedDataSource; // @synthesize presentedDataSource=_presentedDataSource;
@@ -65,6 +67,7 @@
 - (id)_targetAssetCollectionReferenceInZoomLevel:(long long)arg1 forTransitionFromAssetCollectionReference:(id)arg2;
 - (void)_updateFaultOutsets;
 - (void)_updatePrefetchedSectionsForFaultedInSublayout:(id)arg1;
+- (void)_updatePreheating;
 - (void)_updateSublayoutsDataSource;
 - (void)_updateSublayoutsForSkimming;
 - (void)clearLastVisibleAreaAnchoringInformation;

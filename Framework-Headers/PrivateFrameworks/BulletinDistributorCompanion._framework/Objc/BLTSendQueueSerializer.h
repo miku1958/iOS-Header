@@ -21,7 +21,7 @@
 - (void)add:(id)arg1 type:(unsigned short)arg2;
 - (void)add:(id)arg1 type:(unsigned short)arg2 messageIdentifier:(id *)arg3;
 - (void)cleanup;
-- (void)handleFileURL:(id)arg1 protobufHandler:(id)arg2;
+- (BOOL)handleFileURL:(id)arg1 protobufHandler:(id)arg2;
 - (id)initWithUsesMessageIdentifiers:(BOOL)arg1;
 - (void)sendWithSender:(id)arg1 timeout:(id)arg2 responseHandlers:(id)arg3 didSend:(CDUnknownBlockType)arg4 didQueue:(CDUnknownBlockType)arg5;
 

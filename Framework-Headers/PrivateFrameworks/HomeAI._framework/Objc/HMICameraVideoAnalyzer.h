@@ -8,12 +8,12 @@
 
 #import <HomeAI/HMFLogging-Protocol.h>
 
-@class HMFUnfairLock, HMIAnalysisService, HMICameraVideoAnalyzerConfiguration, HMICameraVideoAnalyzerScheduler, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMFUnfairLock, HMIAnalysisService, HMICameraVideoAnalyzerConfiguration, HMICameraVideoAnalyzerHistory, HMICameraVideoAnalyzerScheduler, NSArray, NSDate, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol HMICameraVideoAnalyzerDelegate, OS_dispatch_queue;
 
 @interface HMICameraVideoAnalyzer : HMFObject <HMFLogging>
 {
-    int _flagCounts[6];
+    int _flagCounts[7];
     int _outcomeCounts[3];
     BOOL _skipSequentialMediaIntegrityCheck;
     BOOL _analysisInProgress;
@@ -26,6 +26,8 @@
     NSUUID *_identifier;
     HMFUnfairLock *_lock;
     NSMutableArray *_internalPendingRequests;
+    NSDate *_lastRequestSubmissionTime;
+    HMICameraVideoAnalyzerHistory *_history;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMICameraVideoAnalyzerScheduler *_scheduler;
     unsigned long long _mediaIntegritySequenceNumber;
@@ -39,10 +41,13 @@
 @property (weak) id<HMICameraVideoAnalyzerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) HMICameraVideoAnalyzerHistory *history; // @synthesize history=_history;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property BOOL inBypassMode; // @synthesize inBypassMode=_inBypassMode;
 @property BOOL inErrorState; // @synthesize inErrorState=_inErrorState;
 @property (readonly) NSMutableArray *internalPendingRequests; // @synthesize internalPendingRequests=_internalPendingRequests;
+@property (readonly) BOOL isActive;
+@property (strong) NSDate *lastRequestSubmissionTime; // @synthesize lastRequestSubmissionTime=_lastRequestSubmissionTime;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
 @property unsigned long long mediaIntegritySequenceNumber; // @synthesize mediaIntegritySequenceNumber=_mediaIntegritySequenceNumber;
 @property (readonly) NSArray *pendingRequests;
@@ -83,6 +88,7 @@
 - (void)_notifyDidFailAnalysisForRequest:(id)arg1 withError:(id)arg2;
 - (void)_notifyDidNotAnalyzeRequest:(id)arg1 withResult:(id)arg2;
 - (id)_outcomeCountsAsString;
+- (void)_predictRequest:(id)arg1;
 - (void)_requestDidEnd:(id)arg1 outcome:(long long)arg2;
 - (BOOL)_saveVideoFrame:(id)arg1 videoFragment:(id)arg2 error:(id *)arg3;
 - (void)_scheduleRequest:(id)arg1;

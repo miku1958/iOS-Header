@@ -50,6 +50,7 @@
 + (id)_newLabel;
 - (void).cxx_destruct;
 - (id)_errorStringDetailsForError:(id)arg1;
+- (BOOL)_shouldShortCircuitBlurEffect;
 - (BOOL)_shouldShortCircuitLoadingIndicator;
 - (void)_updateAllOverlayStateAnimated:(BOOL)arg1;
 - (void)_updateBlurVisibilityAnimated:(BOOL)arg1;

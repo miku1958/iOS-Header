@@ -64,10 +64,13 @@
     BOOL _hasEarlierMessagesToLoad;
     BOOL _hasMoreRecentMessagesToLoad;
     BOOL _isCurrentlyDownloadingPurgedAssets;
+    BOOL _allowedByScreenTime;
     BOOL _hasSurfRequest;
+    NSString *_participantIDsHash;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
     NSString *_groupChatIdentifierUppercase;
+    NSString *_hashOfParticipantIDs;
     double _latestTypingIndicatorTimeInterval;
     IMOrderingTools *_orderingTools;
     NSString *_currentLocationGUID;
@@ -80,6 +83,7 @@
 @property (readonly, nonatomic) BOOL allRecipientsFollowingLocation;
 @property (readonly, nonatomic) BOOL allRecipientsSharingLocation;
 @property (readonly, nonatomic) NSSet *allSiblingFMFHandles;
+@property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property (readonly, nonatomic) NSArray *alternativeSpeakableMatches;
 @property (readonly, copy, nonatomic) NSArray *attachments;
 @property (copy, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
@@ -119,6 +123,7 @@
 @property (readonly, nonatomic) BOOL hasVerifiedBusiness;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hashOfParticipantIDs; // @synthesize hashOfParticipantIDs=_hashOfParticipantIDs;
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) IMMessage *invitationForPendingParticipants; // @synthesize invitationForPendingParticipants=_invitationForPendingParticipants;
 @property (readonly, nonatomic) BOOL isAppleChat;
@@ -155,6 +160,7 @@
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
 @property (strong, nonatomic) IMOrderingTools *orderingTools; // @synthesize orderingTools=_orderingTools;
 @property (readonly, nonatomic) unsigned long long overallChatStatus;
+@property (readonly, copy, nonatomic) NSString *participantIDsHash; // @synthesize participantIDsHash=_participantIDsHash;
 @property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (readonly, nonatomic) NSString *persistentID;
 @property (strong, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
@@ -304,7 +310,7 @@
 - (BOOL)allParticipantsAreContacts;
 - (id)allPropertiesOfParticipant:(id)arg1;
 - (BOOL)allowedToShowConversation;
-- (void)allowedToShowConversation:(CDUnknownBlockType)arg1;
+- (BOOL)allowedToShowConversationSync;
 - (BOOL)authorizationToSendCurrentLocationMessageDetermined;
 - (BOOL)authorizedToSendCurrentLocationMessage;
 - (void)autoReportSpam;
@@ -325,6 +331,7 @@
 - (long long)compareChatByTUDateAndLastFinishedMessageDate:(id)arg1;
 - (BOOL)containsMessageFromContactOrMe;
 - (id)conversation;
+- (id)conversationContext;
 - (void)dealloc;
 - (void)declineInvitation;
 - (BOOL)deleteAllHistory;
@@ -410,6 +417,7 @@
 - (void)stopTrackingParticipantLocations;
 - (id)testChatItems;
 - (void)updateChatItemsIfNeeded;
+- (void)updateIsBlackholed:(BOOL)arg1;
 - (void)updateIsFiltered:(BOOL)arg1;
 - (void)updateMessage:(id)arg1;
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;

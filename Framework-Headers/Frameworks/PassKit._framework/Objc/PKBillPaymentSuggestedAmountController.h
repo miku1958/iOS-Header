@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDateFormatter, NSDecimalNumber, NSMutableDictionary, PKAccount;
+@class NSArray, NSDateFormatter, NSDecimalNumber, NSMutableArray, NSMutableDictionary, PKAccount, PKAccountServiceAccountResolutionCofiguration;
 
 @interface PKBillPaymentSuggestedAmountController : NSObject
 {
@@ -21,6 +21,10 @@
     BOOL _currentStatementIsLastMonthsStatement;
     BOOL _isMonthZero;
     BOOL _isMonthOne;
+    PKAccountServiceAccountResolutionCofiguration *_configuration;
+    long long _numberOfActiveInstallments;
+    long long _numberOfActiveStatementedInstallments;
+    NSMutableArray *_differentialPrivacyFeatures;
     PKAccount *_account;
     NSArray *_currentStatementSelectedSuggestedAmountEvents;
     NSArray *_previousStatementSelectedSuggestedAmountEvents;
@@ -45,7 +49,7 @@
 + (void)approvedTransactionsPurchasesForPreviousStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)approvedTransactionsPurchasesSinceStatementForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)currentStatementSelectedSuggestedAmountEventsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)defaultControllerForAccount:(id)arg1 paymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)defaultControllerForAccount:(id)arg1 paymentPass:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)previousStatementSelectedSuggestedAmountEventsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (BOOL)_allMandatoryValuesAreSameAmount;
@@ -56,6 +60,7 @@
 - (id)_createDefaultAmountSuggestionListFromAccount;
 - (id)_filterSuggestions:(id)arg1 belowThreshold:(id)arg2;
 - (void)_generateAmountSuggestionListUsingTransactionHistoryForList:(id)arg1;
+- (void)_initializeDifferentialPrivacy:(id)arg1 accountSummary:(id)arg2;
 - (id)_messageForSuggestion:(id)arg1;
 - (void)_minimumMerchcantCategoriesAboveMinimumAmount:(id)arg1 minMerchantCategory1:(long long *)arg2 minMerchantCategory2:(long long *)arg3 minMerchantCategorySum1:(id *)arg4 minMerchantCategorySum2:(id *)arg5;
 - (id)_planCompletionTitleString;
@@ -65,12 +70,15 @@
 - (id)_remainingStatementBalanceGapTitleText;
 - (id)_remainingStatementBalanceMessageString;
 - (id)_remainingStatementBalanceTitleString;
+- (void)_setDifferentialPrivacyFeature:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)_suggestedAmountListIsValidAfterPurgeIfNecessary:(id)arg1;
 - (id)_suggestedAmountsForPayOffDateForStatementBalance:(id)arg1 creditUtilization:(id)arg2 lastPaymentCategory:(unsigned long long)arg3;
 - (id)_titleForSuggestion:(id)arg1;
 - (void)_zerothOrFirstMonthBillPaymentSuggestionsForList:(id)arg1;
+- (id)differentialPrivacyFeaturesAsString;
 - (id)generateAmountSuggestionList;
-- (id)initWithAccount:(id)arg1 currentStatementSelectedSuggestedAmountEvents:(id)arg2 previousStatementSelectedSuggestedAmountEvents:(id)arg3 approvedTransactionsPurchasesSinceStatement:(id)arg4 approvedTransactionsPurchasesForPreviousStatement:(id)arg5 approvedTransactionsBillPaymentSinceStatement:(id)arg6 approvedTransactionsBillPaymentForPreviousStatement:(id)arg7;
+- (id)initWithAccount:(id)arg1 currentStatementSelectedSuggestedAmountEvents:(id)arg2 previousStatementSelectedSuggestedAmountEvents:(id)arg3 approvedTransactionsPurchasesSinceStatement:(id)arg4 approvedTransactionsPurchasesForPreviousStatement:(id)arg5 approvedTransactionsBillPaymentSinceStatement:(id)arg6 approvedTransactionsBillPaymentForPreviousStatement:(id)arg7 configuration:(id)arg8;
+- (void)recordPaymentActionWithDifferentialPrivacy:(unsigned long long)arg1;
 
 @end
 

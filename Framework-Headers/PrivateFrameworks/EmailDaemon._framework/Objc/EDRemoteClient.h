@@ -62,6 +62,7 @@
 - (void)getVIPManagerInterface:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 daemonInterfaceFactory:(id)arg2;
 - (void)launchForEarlyRecovery:(CDUnknownBlockType)arg1;
+- (void)tearDown;
 
 @end
 

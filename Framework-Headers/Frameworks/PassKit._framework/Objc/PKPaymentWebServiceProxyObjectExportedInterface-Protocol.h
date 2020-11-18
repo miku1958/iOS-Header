@@ -61,5 +61,6 @@
 - (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
 - (void)validateAddPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)validateTransferPreconditionsWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 @end
 

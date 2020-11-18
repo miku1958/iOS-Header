@@ -30,8 +30,8 @@
 - (void)_resourceURLReceivedNotification:(id)arg1;
 - (void)abortClientSide;
 - (void)cancel;
-- (id)initWithAssetObjectID:(id)arg1 size:(struct CGSize)arg2 behaviorSpec:(id)arg3;
 - (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithTaskIdentifier:(id)arg1 assetObjectID:(id)arg2 size:(struct CGSize)arg3 behaviorSpec:(id)arg4;
 - (id)plistDictionary;
 - (void)runDaemonSide;
 

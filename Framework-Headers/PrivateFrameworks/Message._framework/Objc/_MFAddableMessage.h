@@ -33,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<ECMessageHeaders> headers; // @dynamic headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary; // @dynamic headersDictionary;
+@property (readonly, nonatomic) BOOL isServerSearchResult;
 @property (readonly) NSSet *labels; // @dynamic labels;
 @property (readonly, nonatomic) MFLibraryMessage *libraryMessage; // @synthesize libraryMessage=_libraryMessage;
 @property (readonly, nonatomic) ECAngleBracketIDHash *listIDHash; // @dynamic listIDHash;

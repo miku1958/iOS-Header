@@ -26,6 +26,7 @@
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)calculateLabelSizesIfNeeded;
+- (double)defaultMaxHeight;
 - (void)editButtonPressed;
 - (BOOL)hasPhoto;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 delegate:(id)arg4 showingNavBar:(BOOL)arg5 monogramOnly:(BOOL)arg6;

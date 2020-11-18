@@ -39,6 +39,7 @@
     NSString *_writeAuthorizationUsageDescriptionOverride;
     NSString *_readAuthorizationUsageDescriptionOverride;
     NSString *_clinicalReadAuthorizationUsageDescriptionOverride;
+    NSString *_researchStudyUsageDescriptionOverride;
     NSObject<OS_dispatch_queue> *_clientQueue;
 }
 
@@ -54,6 +55,7 @@
 @property (copy) HKProfileIdentifier *profileIdentifier;
 @property (readonly, copy, getter=_queries) NSSet *queries;
 @property (copy, nonatomic) NSString *readAuthorizationUsageDescriptionOverride; // @synthesize readAuthorizationUsageDescriptionOverride=_readAuthorizationUsageDescriptionOverride;
+@property (copy, nonatomic) NSString *researchStudyUsageDescriptionOverride; // @synthesize researchStudyUsageDescriptionOverride=_researchStudyUsageDescriptionOverride;
 @property (strong) NSBundle *sourceBundle;
 @property (copy) NSString *sourceBundleIdentifier;
 @property (readonly) Class superclass;
@@ -106,6 +108,7 @@
 - (void)_queryControlServerProxyWithCompletion:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_removeQuery:(id)arg1;
 - (void)_replaceWorkout:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_researchStudyUsageDescription;
 - (void)_safeFetchDaemonPreferenceForKey:(id)arg1 expectedReturnClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveObjects:(id)arg1 atomically:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)_selectCompletionOnClientQueue:(CDUnknownBlockType)arg1;

@@ -78,13 +78,14 @@
 + (id)audioFileSettingsForVoice:(id)arg1;
 + (id)availableLanguageCodes;
 + (id)availableVoices;
-+ (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(BOOL)arg2;
 + (BOOL)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (void)initialize;
-+ (void)refreshAllAvailableVoices;
-+ (void)refreshAllAvailableVoices:(BOOL)arg1;
++ (id)refreshAllAvailableVoices;
++ (id)refreshAllAvailableVoices:(BOOL)arg1;
 + (void)setSpeechJobFinishedUnitTestBlock:(CDUnknownBlockType)arg1;
 + (void)setSpeechJobStartedUnitTestBlock:(CDUnknownBlockType)arg1;
++ (void)setTestingAvailableVoicesForLanguageCode:(id)arg1;
 + (void)setVoiceAssetsForTesting:(id)arg1;
 + (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2 string:(id)arg3;
 + (id)supportedIPAPhonemeLanguages;

@@ -36,6 +36,7 @@
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setSelectedResponder:(id)arg1;
+- (void)tableViewDidScroll;
 
 @end
 

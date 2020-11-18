@@ -12,7 +12,7 @@
 #import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, PKCompactNavigationContainedNavigationController, UITapGestureRecognizer, UIView;
+@class NSString, PKCompactNavigationContainedNavigationController, PKWrapperViewController, UITapGestureRecognizer, UIView;
 @protocol PKCompactNavigationContainerControllerDelegate, UICoordinateSpace;
 
 @interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver, PKViewWindowObserver>
@@ -23,10 +23,17 @@
     BOOL _requiresMasking;
     UIView *_maskingContainerView;
     struct CGRect _maximumModalPresentationFrame;
-    UIViewController *_presentationContextVC;
+    PKWrapperViewController *_presentationContextVC;
     CDStruct_47050b7f _topVCInfo;
     struct CGRect _statusBarFrame;
+    unsigned short _layoutGroupCounter;
+    unsigned short _contentSizeUpdateDeferralCounter;
+    BOOL _deferredContentSizeUpdate;
+    BOOL _deferredContentSizeUpdateIsAnimated;
+    BOOL _deferredContentSizeUpdateIsForced;
     UIViewController *_topVC;
+    BOOL _topVCIsExpectedClass;
+    BOOL _topVCIsInInitialLayout;
     UIViewController *_pendingTopVC;
     unsigned long long _pendingTopVCIdentifier;
     unsigned long long _updateChildViewControllerSizeCounter;
@@ -59,7 +66,9 @@
 + (id)dimmingColor;
 - (void).cxx_destruct;
 - (id)_backgroundColor;
+- (void)_beginLayoutGroup;
 - (BOOL)_canShowWhileLocked;
+- (void)_endLayoutGroup;
 - (CDStruct_47050b7f)_infoForViewController:(id)arg1;
 - (struct CGSize)_navigationControllerSizeForChildViewControllerInfo:(CDStruct_47050b7f)arg1 withCurrentInfo:(CDStruct_47050b7f)arg2;
 - (struct CGRect)_targetNavigationControllerFrameForInfo:(CDStruct_47050b7f)arg1;
@@ -101,9 +110,11 @@
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)tapGestureRecognized:(id)arg1;
-- (BOOL)updateChildViewControllerSizeAnimated:(BOOL)arg1;
+- (void)updateChildViewControllerSizeAnimated:(BOOL)arg1;
+- (void)updateChildViewControllerSizeAnimated:(BOOL)arg1 forceUpdate:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

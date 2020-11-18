@@ -74,6 +74,7 @@
 - (id)_attributedStringForTitle:(id)arg1;
 - (void)_configureDateLabel;
 - (void)_configureDateLabelIfNecessary;
+- (void)_configureIconButton:(id)arg1 withIcon:(id)arg2;
 - (void)_configureIconButtonsForIcons:(id)arg1;
 - (void)_configureTitleLabel:(id)arg1;
 - (void)_configureUtilityButton;

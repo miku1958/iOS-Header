@@ -15,11 +15,21 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityChartElements;
 - (void)_accessibilityClearElements;
+- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesName;
+- (BOOL)_accessibilityDataSeriesSupportsSonification;
+- (BOOL)_accessibilityDataSeriesSupportsSummarization;
+- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
+- (long long)_accessibilityDataSeriesType;
+- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
 - (unsigned long long)_accessibilityNumberOfSegmentsFrom:(id)arg1 toDate:(id)arg2;
 - (void)_accessibilitySetChartElements:(id)arg1;
 - (id)_accessibilityStringForCurrentZoomAndDate:(id)arg1;
 - (void)_renderSeriesWithContext:(struct CGContext *)arg1 secondaryRenderContext:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)_updateGraphViewConfigurationIfNecessary;
+- (long long)accessibilityContainerType;
 
 @end
 

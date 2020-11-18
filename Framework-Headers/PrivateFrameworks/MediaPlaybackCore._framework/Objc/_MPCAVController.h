@@ -33,7 +33,10 @@
 - (void)_itemWillChange:(id)arg1;
 - (void)_networkPolicyItemCellularRestrictedNotification:(id)arg1;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
+- (void)_queueDidEndWithReason:(id)arg1 lastItem:(id)arg2;
+- (void)_queueDidEndWithReason:(id)arg1 skipCL:(BOOL)arg2 lastItem:(id)arg3;
 - (void)_setState:(long long)arg1;
+- (void)_updateStateForPlaybackPrevention;
 - (void)endPlayback;
 - (void)handlePlaybackErrorWithUserInfo:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
@@ -41,6 +44,7 @@
 - (void)playbackHasStartedForItem:(id)arg1;
 - (void)queueController:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)queueController:(id)arg1 didChangeShuffleType:(long long)arg2;
+- (void)queueController:(id)arg1 didIncrementVersionForSegment:(id)arg2;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAudioSession;
 

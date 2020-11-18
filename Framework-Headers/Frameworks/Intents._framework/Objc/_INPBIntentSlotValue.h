@@ -114,6 +114,7 @@
     NSArray *_payloadLongValues;
     NSArray *_payloadMassValues;
     NSArray *_payloadMediaDestinations;
+    NSArray *_payloadMediaItemGroups;
     NSArray *_payloadMediaItemValues;
     NSArray *_payloadMediaSearchs;
     NSArray *_payloadNotes;
@@ -298,6 +299,8 @@
 @property (readonly, nonatomic) unsigned long long payloadMediaAffinityTypesCount;
 @property (copy, nonatomic) NSArray *payloadMediaDestinations; // @synthesize payloadMediaDestinations=_payloadMediaDestinations;
 @property (readonly, nonatomic) unsigned long long payloadMediaDestinationsCount;
+@property (copy, nonatomic) NSArray *payloadMediaItemGroups; // @synthesize payloadMediaItemGroups=_payloadMediaItemGroups;
+@property (readonly, nonatomic) unsigned long long payloadMediaItemGroupsCount;
 @property (copy, nonatomic) NSArray *payloadMediaItemValues; // @synthesize payloadMediaItemValues=_payloadMediaItemValues;
 @property (readonly, nonatomic) unsigned long long payloadMediaItemValuesCount;
 @property (copy, nonatomic) NSArray *payloadMediaSearchs; // @synthesize payloadMediaSearchs=_payloadMediaSearchs;
@@ -462,6 +465,7 @@
 + (Class)payloadLongValueType;
 + (Class)payloadMassValueType;
 + (Class)payloadMediaDestinationType;
++ (Class)payloadMediaItemGroupType;
 + (Class)payloadMediaItemValueType;
 + (Class)payloadMediaSearchType;
 + (Class)payloadNoteContentType;
@@ -616,6 +620,7 @@
 - (void)addPayloadMassValue:(id)arg1;
 - (void)addPayloadMediaAffinityType:(int)arg1;
 - (void)addPayloadMediaDestination:(id)arg1;
+- (void)addPayloadMediaItemGroup:(id)arg1;
 - (void)addPayloadMediaItemValue:(id)arg1;
 - (void)addPayloadMediaSearch:(id)arg1;
 - (void)addPayloadMessageAttribute:(int)arg1;
@@ -746,6 +751,7 @@
 - (void)clearPayloadMassValues;
 - (void)clearPayloadMediaAffinityTypes;
 - (void)clearPayloadMediaDestinations;
+- (void)clearPayloadMediaItemGroups;
 - (void)clearPayloadMediaItemValues;
 - (void)clearPayloadMediaSearchs;
 - (void)clearPayloadMessageAttributes;
@@ -908,6 +914,7 @@
 - (int)payloadMediaAffinityTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadMediaAffinityTypesAsString:(int)arg1;
 - (id)payloadMediaDestinationAtIndex:(unsigned long long)arg1;
+- (id)payloadMediaItemGroupAtIndex:(unsigned long long)arg1;
 - (id)payloadMediaItemValueAtIndex:(unsigned long long)arg1;
 - (id)payloadMediaSearchAtIndex:(unsigned long long)arg1;
 - (int)payloadMessageAttributeAtIndex:(unsigned long long)arg1;

@@ -12,6 +12,7 @@
 
 @interface _HKGraphViewAxisAnnotationHandler : NSObject <HKGraphSeriesAxisAnnotation>
 {
+    BOOL _disableDuringTiling;
     BOOL _clearedPreviousAnnotations;
     NSMapTable *_seriesToAnnotations;
 }
@@ -19,6 +20,7 @@
 @property (nonatomic) BOOL clearedPreviousAnnotations; // @synthesize clearedPreviousAnnotations=_clearedPreviousAnnotations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableDuringTiling; // @synthesize disableDuringTiling=_disableDuringTiling;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *seriesToAnnotations; // @synthesize seriesToAnnotations=_seriesToAnnotations;
 @property (readonly) Class superclass;

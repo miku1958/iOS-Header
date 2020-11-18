@@ -49,8 +49,11 @@
 - (void)_getCachedTimersWithFuture:(id)arg1 finishBlock:(CDUnknownBlockType)arg2;
 - (id)_initWithConnectionProvidingBlock:(CDUnknownBlockType)arg1 metrics:(id)arg2;
 - (id)_initWithConnectionProvidingBlock:(CDUnknownBlockType)arg1 metrics:(id)arg2 notificationCenter:(id)arg3;
+- (id)_runningTimerFromCurrentTimer:(id)arg1 withDuration:(double)arg2;
 - (id)_updateCurrentTimerWithState:(unsigned long long)arg1;
 - (BOOL)_updateCurrentTimerWithStateSync:(unsigned long long)arg1;
+- (id)_updateTimer:(id)arg1 doSynchronous:(BOOL)arg2;
+- (id)_validateCanStartTimer:(id)arg1;
 - (id)addTimer:(id)arg1;
 - (void)checkIn;
 - (id)currentTimer;

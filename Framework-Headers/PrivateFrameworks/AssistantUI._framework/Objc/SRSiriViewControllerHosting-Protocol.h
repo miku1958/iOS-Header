@@ -49,7 +49,6 @@
 - (void)serviceWillStartTest:(NSString *)arg1;
 - (void)setBugReportingAvailable:(BOOL)arg1;
 - (void)setCarDisplaySnippetMode:(long long)arg1;
-- (void)setCarDisplaySnippetVisible:(BOOL)arg1;
 - (void)setHelpButtonEmphasized:(BOOL)arg1;
 - (void)setStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 animated:(BOOL)arg2 completion:(void (^)(BOOL))arg3;

@@ -10,16 +10,16 @@
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
 #import <WorkflowUI/WFTriggerTableViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSString, UITableView;
+@class NSArray, NSString, UITableView;
 
 @interface WFBluetoothTriggerConfigurationViewController : WFTriggerConfigurationViewController <WFTriggerTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
-    NSOrderedSet *_allDevices;
+    NSArray *_allDevices;
     UITableView *_tableView;
     NSArray *_sections;
 }
 
-@property (copy, nonatomic) NSOrderedSet *allDevices; // @synthesize allDevices=_allDevices;
+@property (copy, nonatomic) NSArray *allDevices; // @synthesize allDevices=_allDevices;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -39,7 +39,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)triggerTableViewController:(id)arg1 didSelectOptions:(id)arg2;
+- (void)triggerTableViewController:(id)arg1 didFinishWithAnySelected:(BOOL)arg2 orSelectedOptions:(id)arg3;
 - (void)triggerTableViewControllerDidCancel:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

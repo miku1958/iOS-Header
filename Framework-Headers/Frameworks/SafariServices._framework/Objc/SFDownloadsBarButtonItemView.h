@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_4e0a34f2 *)deferrableUpdateViewState;
 - (void)didMoveToWindow;
 - (id)initWithBarButtonItem:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)pulse;
 - (void)setEnabled:(BOOL)arg1;

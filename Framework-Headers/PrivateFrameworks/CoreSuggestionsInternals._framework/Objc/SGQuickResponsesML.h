@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary, NSMutableDictionary;
 @protocol PMLTrainingProtocol;
 
 @interface SGQuickResponsesML : NSObject
 {
     id<PMLTrainingProtocol> _localTraining;
+    NSDictionary *_languagesToRecord;
+    NSMutableDictionary *_perLanguageRecorders;
 }
 
++ (BOOL)_isImageAttachment:(id)arg1;
++ (BOOL)_isSharingSenderLocation:(id)arg1 senderName:(id)arg2;
 - (void).cxx_destruct;
 - (id)_dynamicLabelContentForReply:(id)arg1;
+- (void)dpRecordMessageText:(id)arg1 inLanguage:(id)arg2;
 - (id)init;
-- (id)initWithTraining:(id)arg1;
+- (id)initWithTraining:(id)arg1 andRecorders:(id)arg2;
 - (void)trainQuickResponsesForMessageEntity:(id)arg1 withConversationHistory:(id)arg2;
 
 @end

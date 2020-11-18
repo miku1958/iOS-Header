@@ -29,12 +29,12 @@
 @property (readonly, nonatomic) BOOL hasMetalSupport;
 @property (readonly, nonatomic) BOOL hasOpenGLSupport;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<NURenderer> lowPriorityRenderer;
+@property (readonly, nonatomic) id<NURenderer> lowPriorityRenderer; // @synthesize lowPriorityRenderer=_lowPriorityRenderer;
 @property (readonly, nonatomic) id<MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
 @property (readonly, nonatomic) NSString *model; // @synthesize model=_model;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) long long openGLVirtualScreen;
-@property (readonly, nonatomic) id<NURenderer> renderer;
+@property (readonly, nonatomic) id<NURenderer> renderer; // @synthesize renderer=_renderer;
 @property (readonly, nonatomic) BOOL shouldRenderUsingMetal;
 @property (readonly, nonatomic) BOOL shouldRenderUsingOpenGL;
 @property (readonly) Class superclass;
@@ -42,15 +42,17 @@
 - (void).cxx_destruct;
 - (long long)_computeDefaultSampleMode;
 - (long long)_defaultSampleMode;
-- (id)_lowPriorityRenderer;
-- (id)_newLowPriorityRenderer;
-- (id)_newRenderer;
+- (id)_lowPriorityRenderer:(out id *)arg1;
+- (id)_newLowPriorityRenderer:(out id *)arg1;
+- (id)_newRenderer:(out id *)arg1;
 - (long long)_openGLVirtualScreen;
 - (long long)_preferredSampleMode;
-- (id)_renderer;
+- (id)_renderer:(out id *)arg1;
 - (void)clearCaches;
 - (id)init;
 - (id)initWithName:(id)arg1 model:(id)arg2 metalDevice:(id)arg3;
+- (id)lowPriorityRenderer:(out id *)arg1;
+- (id)renderer:(out id *)arg1;
 - (BOOL)shouldLogRendererUsed;
 
 @end

@@ -11,12 +11,14 @@
 #import <NetworkExtension/NEFilterPluginDriver-Protocol.h>
 
 @class NEFilterControlExtensionProviderHostContext, NEFilterExtensionProviderHostContext, NEFilterProviderConfiguration, NSArray, NSExtension, NSString, NSUUID, NSXPCInterface, NSXPCListenerEndpoint;
-@protocol NEPluginManagerObjectFactory, OS_dispatch_queue;
+@protocol NEPluginManagerObjectFactory, OS_dispatch_queue, OS_dispatch_source;
 
 @interface NEAgentFilterExtension : NSObject <NEFilterExtensionProviderHostDelegate, NEAgentSessionDelegate, NEFilterPluginDriver>
 {
     BOOL _dataExtensionInitialized;
     BOOL _controlExtensionInitialized;
+    BOOL _appsUpdateStarted;
+    BOOL _appsUpdateEnding;
     int _crypto_kernel_salt;
     id<NEPluginManagerObjectFactory> _managerObjectFactory;
     NSString *_pluginType;
@@ -32,9 +34,12 @@
     NSXPCListenerEndpoint *_clientListenerEndpoint;
     NEFilterProviderConfiguration *_configuration;
     NSArray *_extensionUUIDs;
+    NSObject<OS_dispatch_source> *_sendFailedTimer;
     struct cfil_crypto_state *_crypto_state;
 }
 
+@property BOOL appsUpdateEnding; // @synthesize appsUpdateEnding=_appsUpdateEnding;
+@property BOOL appsUpdateStarted; // @synthesize appsUpdateStarted=_appsUpdateStarted;
 @property (strong) NSXPCListenerEndpoint *clientListenerEndpoint; // @synthesize clientListenerEndpoint=_clientListenerEndpoint;
 @property (strong) NEFilterProviderConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong) NSExtension *controlExtension; // @synthesize controlExtension=_controlExtension;
@@ -58,6 +63,7 @@
 @property (readonly, weak) id<NEPluginManagerObjectFactory> managerObjectFactory; // @synthesize managerObjectFactory=_managerObjectFactory;
 @property (readonly, nonatomic) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong) NSObject<OS_dispatch_source> *sendFailedTimer; // @synthesize sendFailedTimer=_sendFailedTimer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *uuids;
 
@@ -77,13 +83,15 @@
 - (id)generateClientKey:(int)arg1 salt:(unsigned int)arg2;
 - (void)getFilterClientConnectionWithCompletionHandler:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleAppsUninstalled:(id)arg1;
+- (void)handleAppsUpdateBegins:(id)arg1;
+- (void)handleAppsUpdateEnding:(id)arg1;
+- (void)handleAppsUpdateEnds:(id)arg1;
 - (void)handleCancel;
 - (void)handleControlExtensionInitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleDataExtensionInitWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleDisposeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)handleExtensionExit:(id)arg1;
 - (void)handleInitWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handlePluginUpdateBegins:(id)arg1;
-- (void)handlePluginUpdateEnds:(id)arg1;
 - (void)handleStopCompleteWithError:(id)arg1;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginUUID:(id)arg4 queue:(id)arg5 factory:(id)arg6;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginInfo:(id)arg3 queue:(id)arg4 factory:(id)arg5;

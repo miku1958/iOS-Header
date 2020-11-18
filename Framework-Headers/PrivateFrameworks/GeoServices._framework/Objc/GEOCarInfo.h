@@ -13,7 +13,6 @@
 @interface GEOCarInfo : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     CDStruct_95bda58d _inputMethods;
@@ -22,6 +21,9 @@
     NSString *_manufacturer;
     NSString *_model;
     GEOScreenDimension *_screenDimension;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _brightness;
     int _colorRange;
     int _deviceConnection;
@@ -112,6 +114,8 @@
 - (int)engineTypeAtIndex:(unsigned long long)arg1;
 - (id)engineTypesAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (int)inputMethodAtIndex:(unsigned long long)arg1;
 - (id)inputMethodsAsString:(int)arg1;

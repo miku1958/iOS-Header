@@ -29,6 +29,7 @@
 + (BOOL)mailItemIsValid:(id)arg1 emailHeaders:(id)arg2 mailboxIdentifiers:(id)arg3;
 + (id)mailItemMessageIdHeaderValues:(id)arg1;
 + (BOOL)searchableItemIsEmpty:(id)arg1;
++ (BOOL)searchableItemIsOutgoing:(id)arg1;
 + (id)serializeAttributes:(id)arg1;
 + (id)serializeAttributesAndBody:(id)arg1;
 

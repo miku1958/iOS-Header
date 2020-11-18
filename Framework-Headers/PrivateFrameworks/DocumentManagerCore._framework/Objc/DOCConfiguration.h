@@ -18,6 +18,7 @@
     BOOL _forPickingDocuments;
     BOOL _forPickingFolders;
     BOOL _supportsRemovableFileProviders;
+    BOOL _forPickingDownloadsFolder;
     BOOL _isContentManaged;
     BOOL _neverCreateBookmarkForOpenInPlace;
     BOOL _pickingItemsShouldBumpLastOpenDate;
@@ -59,6 +60,7 @@
 @property (copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
 @property (copy, nonatomic) NSArray *excludedDocumentTypes; // @synthesize excludedDocumentTypes=_excludedDocumentTypes;
 @property BOOL forPickingDocuments; // @synthesize forPickingDocuments=_forPickingDocuments;
+@property BOOL forPickingDownloadsFolder; // @synthesize forPickingDownloadsFolder=_forPickingDownloadsFolder;
 @property BOOL forPickingFolders; // @synthesize forPickingFolders=_forPickingFolders;
 @property (copy) NSArray *forbiddenActionIdentifiers; // @synthesize forbiddenActionIdentifiers=_forbiddenActionIdentifiers;
 @property (copy, nonatomic) NSArray *hiddenSourcesIdentifiers; // @synthesize hiddenSourcesIdentifiers=_hiddenSourcesIdentifiers;

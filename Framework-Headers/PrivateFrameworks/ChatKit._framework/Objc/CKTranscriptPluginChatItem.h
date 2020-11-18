@@ -6,34 +6,42 @@
 
 #import <ChatKit/CKMessagePartChatItem.h>
 
-@class IMTranscriptPluginChatItem, NSString, UIView, UIViewController;
+@class IMTranscriptPluginChatItem, NSArray, NSString, UIView, UIViewController;
 @protocol CKTranscriptBalloonPluginController, CKTranscriptPluginView;
 
 @interface CKTranscriptPluginChatItem : CKMessagePartChatItem
 {
     BOOL _isAppearing;
     BOOL _isHandwriting;
+    BOOL _isBusiness;
     id<CKTranscriptBalloonPluginController> _balloonController;
     IMTranscriptPluginChatItem *_imTranscriptPluginChatItem;
+    NSString *_conversationID;
+    NSArray *_recipients;
 }
 
 @property (readonly, nonatomic) IMTranscriptPluginChatItem *IMChatItem; // @dynamic IMChatItem;
 @property (weak, nonatomic) id<CKTranscriptBalloonPluginController> balloonController; // @synthesize balloonController=_balloonController;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) UIViewController *contentViewController;
+@property (strong, nonatomic) NSString *conversationID; // @synthesize conversationID=_conversationID;
 @property (readonly, nonatomic) UIView<CKTranscriptPluginView> *extensableView;
 @property (readonly, nonatomic) UIViewController *extensibleViewController;
 @property (strong, nonatomic) IMTranscriptPluginChatItem *imTranscriptPluginChatItem; // @synthesize imTranscriptPluginChatItem=_imTranscriptPluginChatItem;
 @property (nonatomic) BOOL isAppearing; // @synthesize isAppearing=_isAppearing;
+@property (nonatomic) BOOL isBusiness; // @synthesize isBusiness=_isBusiness;
 @property (readonly, nonatomic) BOOL isHandwriting; // @synthesize isHandwriting=_isHandwriting;
 @property (readonly, nonatomic) BOOL isInteractive;
 @property (readonly, nonatomic) BOOL isPlayed;
 @property (readonly, nonatomic) BOOL isSaved;
+@property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly, nonatomic) BOOL wantsBalloonGradient;
 @property (readonly, nonatomic) BOOL wantsOutline;
 @property (readonly, nonatomic) BOOL wantsTranscriptGroupMonograms;
 
 - (void).cxx_destruct;
+- (void)_cacheConversationID:(id)arg1 recipients:(id)arg2 isBusiness:(BOOL)arg3;
+- (void)_configureBalloonController:(id)arg1 conversationID:(id)arg2 recipients:(id)arg3 isBusiness:(BOOL)arg4;
 - (Class)balloonViewClass;
 - (BOOL)canCopy;
 - (BOOL)canForward;

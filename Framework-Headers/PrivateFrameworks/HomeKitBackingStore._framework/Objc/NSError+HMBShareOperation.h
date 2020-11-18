@@ -6,8 +6,6 @@
 
 #import <Foundation/NSError.h>
 
-@class CKRecord, CKShare;
-
 @interface NSError (HMBShareOperation)
 
 @property (readonly) double hmbCloudKitRetryDelay;
@@ -21,8 +19,6 @@
 @property (readonly) BOOL hmbIsCloudKitError;
 @property (readonly) BOOL hmbIsSQLiteConstraintError;
 @property (readonly, getter=hmbIsRetryShareOperationError) BOOL hmbRetryShareOperationError;
-@property (readonly) CKShare *hmbRetryShareOperationUpdatedShare;
-@property (readonly, copy) CKRecord *hmbRetryShareOperationUpdatedShareParticipantRecord;
 
 + (id)hmbErrorWithSQLContext:(id)arg1;
 + (id)hmbErrorWithSQLContext:(id)arg1 statement:(const char *)arg2;
@@ -30,7 +26,7 @@
 + (id)hmbErrorWithSQLite3Context:(struct sqlite3 *)arg1 statement:(const char *)arg2;
 + (id)hmbErrorWithSQLite3Statement:(struct sqlite3_stmt *)arg1;
 + (id)hmbErrorWithSQLite3Status:(int)arg1;
-+ (id)hmbRetryShareOperationErrorWithUpdatedShare:(id)arg1 updatedShareParticipantRecord:(id)arg2;
++ (id)hmbRetryShareOperationError;
 - (id)hmbConciseCKError;
 @end
 

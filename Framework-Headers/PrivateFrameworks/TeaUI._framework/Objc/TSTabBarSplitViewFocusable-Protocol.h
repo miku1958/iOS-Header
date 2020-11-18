@@ -5,6 +5,9 @@
 //
 
 @protocol TSTabBarSplitViewFocusable
+
+@property (nonatomic, readonly) long long currentSplitViewFocus;
+
 - (void)toggleSplitViewFocusTo:(long long)arg1;
 @end
 

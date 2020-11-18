@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     GEOPDRetainedSearchMetadata *_retainedSearch;
@@ -26,6 +25,9 @@ __attribute__((visibility("hidden")))
     GEOPDAutocompleteEntry *_suggestionEntry;
     NSData *_suggestionMetadata;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _maxResults;
     int _searchType;
     int _sortOrder;
@@ -130,6 +132,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 traits:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

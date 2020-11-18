@@ -10,6 +10,7 @@
 - (void)proximityClientActivate:(SFProximityClient *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)proximityClientDismissContentForDevice:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)proximityClientProvideContent:(SFNotificationInfo *)arg1 forDevice:(NSString *)arg2 force:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
+- (void)proximityClientRequestScannerTimerReset;
 - (void)proximityClientUpdate:(SFProximityClient *)arg1;
 - (void)proximityClientUpdateContent:(SFNotificationInfo *)arg1 forDevice:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 @end

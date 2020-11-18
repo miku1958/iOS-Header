@@ -25,6 +25,7 @@
 + (id)unarchivedObjectFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)archivedDataWithError:(id *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

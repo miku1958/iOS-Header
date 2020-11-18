@@ -15,6 +15,7 @@
     double _backgroundWeighting;
     double _contentWeighting;
     long long _dismissalType;
+    long long _transitionPhase;
     struct CGRect _contentRect;
 }
 
@@ -29,6 +30,7 @@
 @property (nonatomic) long long dismissalType; // @synthesize dismissalType=_dismissalType;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) long long transitionPhase; // @synthesize transitionPhase=_transitionPhase;
 
 
 @end

@@ -19,6 +19,8 @@
 
 - (void).cxx_destruct;
 - (long long)_fetchResourcesForPruningWithBudget:(long long)arg1 urgency:(long long)arg2 batchHandler:(CDUnknownBlockType)arg3;
+- (struct __CFDictionary *)_handleCacheDeletePurge:(int)arg1 info:(struct __CFDictionary *)arg2;
+- (struct __CFDictionary *)_handleCacheDeletePurgeable:(int)arg1 info:(struct __CFDictionary *)arg2;
 - (void)_handleCacheDeleteRegistration;
 - (id)_identifierForResource:(id)arg1;
 - (long long)_localResourcesSize;

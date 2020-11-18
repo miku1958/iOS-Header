@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     CalendarNotesCell *_cell;
     NSString *_lastTextChange;
+    struct CGRect _keyboardRect;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +25,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_keyboardWillHide:(id)arg1;
+- (void)_keyboardWillShow:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (BOOL)isInline;
@@ -31,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 - (id)searchStringForEventAutocomplete;
+- (void)tableViewDidScroll;
 - (void)textViewDidBeginEditing:(id)arg1;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;

@@ -20,6 +20,7 @@
     BOOL __didTearOff;
     BOOL __remoteDismissing;
     BOOL __dimmingViewTapDismissing;
+    BOOL __keyboardShown;
     BOOL __isRemote;
     BOOL __presentsAtStandardHalfHeight;
     BOOL __allowsTearOff;
@@ -48,7 +49,7 @@
 @property (copy, nonatomic, setter=_setDetents:) NSArray *_detents;
 @property (nonatomic, setter=_setDidAttemptToStartDismiss:) BOOL _didAttemptToStartDismiss; // @synthesize _didAttemptToStartDismiss=__didAttemptToStartDismiss;
 @property (nonatomic, setter=_setDidTearOff:) BOOL _didTearOff; // @synthesize _didTearOff=__didTearOff;
-@property (nonatomic) BOOL _dimmingViewTapDismissing; // @synthesize _dimmingViewTapDismissing=__dimmingViewTapDismissing;
+@property (nonatomic, getter=_isDimmingViewTapDismissing, setter=_setDimmingViewTapDismissing:) BOOL _dimmingViewTapDismissing; // @synthesize _dimmingViewTapDismissing=__dimmingViewTapDismissing;
 @property (readonly, nonatomic) _UIRemoteViewController *_expectedRemoteViewController;
 @property (readonly, nonatomic, getter=_isHosting) BOOL _hosting;
 @property (nonatomic, setter=_setIndexOfCurrentDetent:) long long _indexOfCurrentDetent;
@@ -57,6 +58,7 @@
 @property (strong, nonatomic, setter=_setInteractiveTransition:) UIPercentDrivenInteractiveTransition *_interactionController; // @synthesize _interactionController=__interactionController;
 @property (nonatomic, setter=_setIsRemote:) BOOL _isRemote; // @synthesize _isRemote=__isRemote;
 @property (readonly, nonatomic) BOOL _isRootPresentation;
+@property (nonatomic, getter=_isKeyboardShown, setter=_setKeyboardShown:) BOOL _keyboardShown; // @synthesize _keyboardShown=__keyboardShown;
 @property (readonly, nonatomic) _UISheetLayoutInfo *_layoutInfo; // @synthesize _layoutInfo=__layoutInfo;
 @property (nonatomic, setter=_setMode:) long long _mode;
 @property (readonly, nonatomic) _UISheetPresentationController *_parentSheetPresentationController;
@@ -88,18 +90,18 @@
 + (long long)_initialMode;
 - (void).cxx_destruct;
 - (void)_accessibilityReduceMotionStatusDidChange;
-- (void)_avoidKeyboardAndAnimateSheetForNotification:(id)arg1;
-- (void)_completeInteractiveTransition:(BOOL)arg1 immediately:(BOOL)arg2 duration:(double)arg3 timingCurve:(id)arg4;
-- (void)_completeInteractiveTransitionFromRemote:(BOOL)arg1 immediately:(BOOL)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
+- (void)_completeInteractiveTransition:(BOOL)arg1 duration:(double)arg2 timingCurve:(id)arg3;
+- (void)_completeInteractiveTransitionFromRemote:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
 - (void)_containerViewBoundsDidChange;
 - (void)_containerViewLayoutSubviews;
 - (void)_containerViewSafeAreaInsetsDidChange;
 - (void)_containerViewTraitCollectionDidChange;
 - (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
+- (void)_handleKeyboardNotification:(id)arg1 aboutToHide:(BOOL)arg2;
+- (BOOL)_inheritsPresentingViewControllerThemeLevel;
 - (void)_keyboardAboutToChangeFrame:(id)arg1;
 - (void)_keyboardAboutToHide:(id)arg1;
 - (void)_keyboardAboutToShow:(id)arg1;
-- (void)_layoutPresentedViewAndContainerViewIfNeeded;
 - (id)_preferredAnimationControllerForDismissal;
 - (id)_preferredInteractionControllerForDismissal:(id)arg1;
 - (void)_realSourceViewGeometryDidChange;

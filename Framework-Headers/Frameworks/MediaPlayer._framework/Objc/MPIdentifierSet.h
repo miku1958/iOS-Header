@@ -21,6 +21,7 @@
 @interface MPIdentifierSet : NSObject <MPMutableLocalLibraryIdentifiers, MPMutablePersonalStoreIdentifiers, MPMutableUniversalStoreIdentifiers, MPMutableRadioIdentifiers, MPMutableIdentifierSet, _MPStateDumpPropertyListTransformable, NSCopying, NSSecureCoding>
 {
     BOOL _shouldExcludeFromShuffle;
+    BOOL _placeholder;
     NSString *_databaseID;
     long long _persistentID;
     long long _containedPersistentID;
@@ -74,6 +75,7 @@
 @property (readonly, nonatomic) long long persistentID;
 @property (readonly, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property (readonly, nonatomic) id<MPPersonalStoreIdentifiers> personalizedStore;
+@property (nonatomic, getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (readonly, nonatomic) long long purchasedAdamID;
 @property (readonly, nonatomic) id<MPRadioIdentifiers> radio;
 @property (copy, nonatomic) NSString *radioStationHash;

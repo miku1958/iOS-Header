@@ -89,6 +89,7 @@
     PUReviewScreenBarsModel *__reviewScreenBarsModel;
     long long __windowInterfaceOrientation;
     PUOneUpViewController *__secondScreenBrowser;
+    PUOneUpViewController *__mainOneUpForSecondScreenBrowser;
     NSTimer *__chromeAutoHideTimer;
     NSArray *__hiddenTilesController;
     NSArray *__tileKindsToHide;
@@ -128,6 +129,7 @@
 @property (readonly, nonatomic) BOOL _isPresentedForSecondScreen; // @synthesize _isPresentedForSecondScreen=__isPresentedForSecondScreen;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
 @property (nonatomic, setter=_setLayoutSafeAreaInsets:) struct UIEdgeInsets _layoutSafeAreaInsets; // @synthesize _layoutSafeAreaInsets=__layoutSafeAreaInsets;
+@property (weak, nonatomic, setter=_setMainOneUpForSecondScreenBrowser:) PUOneUpViewController *_mainOneUpForSecondScreenBrowser; // @synthesize _mainOneUpForSecondScreenBrowser=__mainOneUpForSecondScreenBrowser;
 @property (nonatomic, setter=_setNeedsUpdateAudioState:) BOOL _needsUpdateAudioState; // @synthesize _needsUpdateAudioState=__needsUpdateAudioState;
 @property (nonatomic, setter=_setNeedsUpdateBarsController:) BOOL _needsUpdateBarsController; // @synthesize _needsUpdateBarsController=__needsUpdateBarsController;
 @property (nonatomic, setter=_setNeedsUpdateEditMode:) BOOL _needsUpdateEditMode; // @synthesize _needsUpdateEditMode=__needsUpdateEditMode;
@@ -187,6 +189,7 @@
 - (id)_assetViewModelAtIndexPath:(id)arg1 layout:(id)arg2;
 - (void)_beginShowingOriginal;
 - (void)_browsingVideoPlayerDidPlayToEndTime:(id)arg1;
+- (BOOL)_canAdvertiseKeyCommands;
 - (BOOL)_canAttemptNavigationToAssetDisplayDescriptor:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (void)_cancelTimedChromeAutoHide;

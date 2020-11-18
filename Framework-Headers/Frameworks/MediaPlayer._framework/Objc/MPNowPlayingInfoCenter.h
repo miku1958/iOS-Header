@@ -35,6 +35,7 @@
     id<MPNowPlayingInfoLyricsDelegate> _lyricsDelegate;
     struct {
         void *createPlaybackQueue;
+        void *createContentItem;
         void *createChildItem;
         void *metadata;
         void *artwork;
@@ -43,6 +44,7 @@
         void *lyrics;
     } _callbacks;
     void *_fallbackActivity;
+    unsigned long long _stateHandle;
     MPMRNowPlayingPlayerPathWrapper *_playerPath;
     id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
     NSString *_playerID;
@@ -81,7 +83,7 @@
 - (void)_getMetadataForContentItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getTransportablePlaybackSessionRepresentationWithIdentifier:(id)arg1 preferredSessionType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_initializeNowPlayingInfo;
-- (void)_invalidatePlaybackQueueImmediately;
+- (void)_invalidatePlaybackQueueImmediatelyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_onDataSourceQueue_artworkCatalogForContentItem:(id)arg1;
 - (void)_onDataSourceQueue_getContentItemIDsInRange:(struct _MSVSignedRange)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onQueue_clearPlaybackQueueDataSourceCallbacks;
@@ -96,6 +98,7 @@
 - (id)init;
 - (id)initWithPlayerID:(id)arg1;
 - (void)invalidatePlaybackQueue;
+- (void)invalidatePlaybackQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resignActiveSystemFallback;
 
 @end

@@ -8,11 +8,10 @@
 
 #import <ContentKit/NSCopying-Protocol.h>
 #import <ContentKit/NSSecureCoding-Protocol.h>
-#import <ContentKit/QLPreviewControllerDataSource-Protocol.h>
 
 @class NSArray, NSLock, NSMutableArray, WFCoercionOptions;
 
-@interface WFContentCollection : NSObject <QLPreviewControllerDataSource, NSCopying, NSSecureCoding>
+@interface WFContentCollection : NSObject <NSCopying, NSSecureCoding>
 {
     WFCoercionOptions *_defaultCoercionOptions;
     NSMutableArray *_mutableItems;
@@ -50,7 +49,6 @@
 - (void)generateCollectionByCoercingToItemClasses:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateCollectionByCoercingToItemClasses:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateCollectionByEvaluatingQuery:(id)arg1 forContentItemClass:(Class)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)generatePreviewControllerDataSource:(CDUnknownBlockType)arg1;
 - (void)getFileRepresentation:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getFileRepresentations:(CDUnknownBlockType)arg1 forType:(id)arg2;
 - (void)getFileRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forType:(id)arg3;
@@ -68,9 +66,7 @@
 - (BOOL)isCoercibleToItemClasses:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)minimalExtensionItems;
-- (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (void)performCoercion:(id)arg1;
-- (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
 - (void)removeItem:(id)arg1;
 
 @end

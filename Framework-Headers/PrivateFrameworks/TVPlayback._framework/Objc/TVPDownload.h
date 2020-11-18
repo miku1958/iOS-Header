@@ -8,7 +8,7 @@
 
 #import <TVPlayback/AVAssetDownloadDelegate-Protocol.h>
 
-@class AVAggregateAssetDownloadTask, AVMediaSelection, NSError, NSMapTable, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
+@class AVAggregateAssetDownloadTask, NSError, NSMapTable, NSPointerArray, NSProgress, NSString, TVPDownloadSession, TVPMediaItemLoader, TVPReportingSession, TVPStateMachine;
 @protocol TVPMediaItem;
 
 @interface TVPDownload : NSObject <AVAssetDownloadDelegate>
@@ -23,11 +23,12 @@
     AVAggregateAssetDownloadTask *_downloadTask;
     NSPointerArray *_delegates;
     NSProgress *_downloadProgress;
-    AVMediaSelection *_videoMediaSelection;
     NSMapTable *_mediaSelectionToProgressMap;
     unsigned long long _downloadInitiationBackgroundTask;
     unsigned long long _downloadTerminationBackgroundTask;
     TVPReportingSession *_reportingSession;
+    unsigned long long _numMediaSelectionsThatWillReceiveDownloadProgress;
+    unsigned long long _numMediaSelectionsCompleted;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,12 +45,13 @@
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (strong, nonatomic) TVPMediaItemLoader *mediaItemLoader; // @synthesize mediaItemLoader=_mediaItemLoader;
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
+@property (nonatomic) unsigned long long numMediaSelectionsCompleted; // @synthesize numMediaSelectionsCompleted=_numMediaSelectionsCompleted;
+@property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress; // @synthesize numMediaSelectionsThatWillReceiveDownloadProgress=_numMediaSelectionsThatWillReceiveDownloadProgress;
 @property (readonly, nonatomic) double progress;
 @property (strong, nonatomic) TVPReportingSession *reportingSession; // @synthesize reportingSession=_reportingSession;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) AVMediaSelection *videoMediaSelection; // @synthesize videoMediaSelection=_videoMediaSelection;
 
 + (void)initialize;
 - (void).cxx_destruct;

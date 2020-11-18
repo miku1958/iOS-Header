@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) struct CGRect screenshotContentFrame;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (int)_preferredStatusBarVisibility;
 - (long long)preferredStatusBarStyle;
 - (void)viewDidLayoutSubviews;

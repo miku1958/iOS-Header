@@ -10,16 +10,16 @@
 #import <WorkflowUI/WFContentClassesToolbarDelegate-Protocol.h>
 #import <WorkflowUI/WFContentClassesViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFDragControllerDelegate-Protocol.h>
-#import <WorkflowUI/WFModuleIndentationProvider-Protocol.h>
+#import <WorkflowUI/WFModuleDelegate-Protocol.h>
 #import <WorkflowUI/WFModulesCollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowEditingDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowEmptyStateViewDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowSettingsViewControllerDelegate-Protocol.h>
 
-@class NSAttributedString, NSHashTable, NSIndexPath, NSString, NSUndoManager, UIButton, UIResponder, UIView, WFActionDragFeedbackGenerator, WFEditShortcutEvent, WFWorkflowEmptyStateView;
+@class NSAttributedString, NSHashTable, NSIndexPath, NSLayoutConstraint, NSString, NSUndoManager, UIButton, UIResponder, UIView, WFActionDragFeedbackGenerator, WFEditShortcutEvent, WFWorkflowEmptyStateView;
 @protocol WFEditWorkflowViewControllerDelegate, WFVariableUIDelegate;
 
-@interface WFEditWorkflowViewController : WFRunWorkflowViewController <WFDragControllerDelegate, WFModulesCollectionViewDelegate, WFWorkflowSettingsViewControllerDelegate, WFWorkflowEmptyStateViewDelegate, WFContentClassesToolbarDelegate, WFContentClassesViewControllerDelegate, WFModuleIndentationProvider, UIGestureRecognizerDelegate, WFWorkflowEditingDelegate>
+@interface WFEditWorkflowViewController : WFRunWorkflowViewController <WFDragControllerDelegate, WFModulesCollectionViewDelegate, WFWorkflowSettingsViewControllerDelegate, WFWorkflowEmptyStateViewDelegate, WFContentClassesToolbarDelegate, WFContentClassesViewControllerDelegate, WFModuleDelegate, UIGestureRecognizerDelegate, WFWorkflowEditingDelegate>
 {
     NSUndoManager *_undoManager;
     id<WFVariableUIDelegate> _variableUIDelegate;
@@ -29,8 +29,11 @@
     NSHashTable *_moduleDragControllers;
     WFWorkflowEmptyStateView *_emptyStateView;
     UIView *_borderView;
-    UIResponder *_wf_firstResponder;
+    UIButton *_settingsButton;
     WFActionDragFeedbackGenerator *_dragFeedbackGenerator;
+    UIResponder *_wf_firstResponder;
+    UIView *_firstResponderHintView;
+    NSLayoutConstraint *_hintBottomConstraint;
     long long _revealState;
     CDUnknownBlockType _endRevealGoBackHandler;
     CDUnknownBlockType _endRevealScrolledAwayHandler;
@@ -57,10 +60,13 @@
 @property (strong, nonatomic) UIButton *endRevealButton; // @synthesize endRevealButton=_endRevealButton;
 @property (copy, nonatomic) CDUnknownBlockType endRevealGoBackHandler; // @synthesize endRevealGoBackHandler=_endRevealGoBackHandler;
 @property (copy, nonatomic) CDUnknownBlockType endRevealScrolledAwayHandler; // @synthesize endRevealScrolledAwayHandler=_endRevealScrolledAwayHandler;
+@property (weak, nonatomic) UIView *firstResponderHintView; // @synthesize firstResponderHintView=_firstResponderHintView;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *hintBottomConstraint; // @synthesize hintBottomConstraint=_hintBottomConstraint;
 @property (readonly, nonatomic) NSHashTable *moduleDragControllers; // @synthesize moduleDragControllers=_moduleDragControllers;
 @property (nonatomic) long long revealState; // @synthesize revealState=_revealState;
 @property (nonatomic) BOOL scrollsToTop;
+@property (readonly, weak, nonatomic) UIButton *settingsButton; // @synthesize settingsButton=_settingsButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property (weak, nonatomic) id<WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
@@ -99,15 +105,18 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (unsigned long long)indentationLevelForModule:(id)arg1 withAction:(id)arg2;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 context:(id)arg3;
+- (id)initWithWorkflow:(id)arg1 database:(id)arg2 context:(id)arg3 allowsActionDragAndDrop:(BOOL)arg4;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 context:(id)arg3 cellConfigurationFunction:(CDUnknownFunctionPointerType)arg4;
 - (id)initialIndexPathForDragController:(id)arg1;
 - (id)keyCommands;
 - (void)keyboardWillChangeFrame:(id)arg1;
 - (void)loadView;
 - (void)logEditEventIfNeccesary;
+- (BOOL)module:(id)arg1 setParameterState:(id)arg2 forParameter:(id)arg3 action:(id)arg4;
+- (BOOL)module:(id)arg1 shouldAllowRemovingAction:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentSettingsViewController;
-- (void)removeActionPressed:(id)arg1 forAction:(id)arg2;
+- (void)removeActionPressedForModule:(id)arg1 withAction:(id)arg2;
 - (void)resetUIForRevealActionEnd;
 - (void)resetVisibleCellStylesForEndReveal;
 - (void)responderDidBeginEditing:(id)arg1;
@@ -128,7 +137,7 @@
 - (void)shareWorkflow:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBorderWidth;
-- (void)updateContentInset;
+- (void)updateContentInsetAnimated:(BOOL)arg1;
 - (void)updateEditEvent;
 - (void)updateEditingStateAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateEmptyStateViewVisibilityAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

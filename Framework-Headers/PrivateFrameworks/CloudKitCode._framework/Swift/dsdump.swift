@@ -47,7 +47,7 @@
 	let local : Bool // +0x30 (0x1)
 
 	// Swift methods
-	0x99c0  func <stripped> // method 
+	0x9a20  func <stripped> // method 
  }
 
  struct CloudKitCode.Ckcode_RecordTransport {

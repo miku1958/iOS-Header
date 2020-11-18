@@ -78,7 +78,7 @@
 - (id)copyWithMasterImageSize:(struct CGSize)arg1 fovRadians:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (struct CGRect)getCropRect:(struct CGRect)arg1 newCropRect:(struct CGRect)arg2 pitch:(double)arg3 yaw:(double)arg4 roll:(double)arg5 constrainWithAnchorPoint:(struct CGPoint)arg6 strict:(BOOL)arg7 hitVertexId:(unsigned long long *)arg8;
+- (struct CGRect)getCropRect:(struct CGRect)arg1 newCropRect:(struct CGRect)arg2 pitch:(double)arg3 yaw:(double)arg4 roll:(double)arg5 constrainWithAnchorPoint:(struct CGPoint)arg6 strict:(BOOL)arg7 aspectRatioIsFreeForm:(BOOL)arg8 hitVertexId:(unsigned long long *)arg9;
 - (struct CGRect)getCropRectThatCompletelyContainsMasterImageForPitch:(double)arg1 yaw:(double)arg2 roll:(double)arg3;
 - (BOOL)imageContainsRect:(struct CGRect)arg1 withTol:(double)arg2;
 - (id)init;

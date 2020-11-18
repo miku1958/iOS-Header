@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) NSString *color; // @synthesize color=_color;
 @property (readonly, nonatomic) NSString *effectiveProductType;
-@property (readonly, nonatomic) BOOL h264; // @synthesize h264=_h264;
+@property (nonatomic) BOOL h264; // @synthesize h264=_h264;
 @property (nonatomic) BOOL legacyAsset; // @synthesize legacyAsset=_legacyAsset;
 @property (strong, nonatomic) NSString *mappedProductType; // @synthesize mappedProductType=_mappedProductType;
 @property (readonly, nonatomic) NSString *productType; // @synthesize productType=_productType;

@@ -8,7 +8,7 @@
 
 @protocol PXMutableCuratedLibraryItemCountsController <NSObject>
 
-@property (nonatomic) CDStruct_9bad6f47 counts;
+@property (nonatomic) CDStruct_aa0b146f counts;
 
 @end
 

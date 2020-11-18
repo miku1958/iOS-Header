@@ -29,6 +29,7 @@
 @property (readonly, getter=isBinned) BOOL binned;
 @property (readonly) BOOL configureForSpatialOverCaptureSupport;
 @property (readonly) BOOL configureForStillImageStabilizationSupport;
+@property (readonly, getter=isDeepFusionSupported) BOOL deepFusionSupported;
 @property (readonly) float defaultMaxFrameRate;
 @property (readonly) float defaultMinFrameRate;
 @property (readonly) float defaultPortraitLightingEffectStrength;
@@ -39,6 +40,7 @@
 @property (readonly) float fieldOfView;
 @property (readonly) int formatIndex;
 @property (readonly) float geometricDistortionCorrectedFieldOfView;
+@property (readonly, getter=isGlobalToneMappingSupported) BOOL globalToneMappingSupported;
 @property (readonly) float hardwareCost;
 @property (readonly) BOOL hasSensorHDRCompanionIndex;
 @property (readonly, getter=isHDRSupported) BOOL hdrSupported;

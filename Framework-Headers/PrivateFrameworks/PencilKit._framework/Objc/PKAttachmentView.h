@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (BOOL)disableTileAnimations;
 - (void)drawingDidChange;
+- (void)drawingDidEraseStrokes;
 - (void)drawingWillBegin;
 - (void)fingerDrawingEnabledDidChange;
 - (void)fullyRendered;

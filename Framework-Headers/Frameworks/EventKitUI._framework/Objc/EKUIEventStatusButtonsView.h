@@ -43,7 +43,6 @@
 + (BOOL)isActionDestructive:(long long)arg1;
 - (void).cxx_destruct;
 - (long long)_actionForButton:(id)arg1;
-- (id)_buttonForAction:(long long)arg1;
 - (long long)_buttonIndexForAction:(long long)arg1;
 - (double)_defaultFontSizeForButtons;
 - (id)_fontWithSize:(double)arg1 selected:(BOOL)arg2;
@@ -57,6 +56,7 @@
 - (double)_updateFontSizesFromDelegate;
 - (void)_updateSelectionToButton:(id)arg1;
 - (double)baselineFromBoundsTop;
+- (id)buttonForAction:(long long)arg1;
 - (void)buttonTapped:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 centerSingleButton:(BOOL)arg4;

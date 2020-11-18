@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class HMDSettingOnChangeAttachedUpdatesResult, HMSettingValue, NSString;
 @protocol HMDSettingsControllerProtocol;
 
 @protocol HMDSettingsControllerDelegate
 - (void)settingsController:(id<HMDSettingsControllerProtocol>)arg1 didUpdateWithCompletion:(void (^)(NSError *))arg2;
+- (HMDSettingOnChangeAttachedUpdatesResult *)settingsController:(id<HMDSettingsControllerProtocol>)arg1 willUpdateSettingAtKeyPath:(NSString *)arg2 withValue:(HMSettingValue *)arg3;
 @end
 

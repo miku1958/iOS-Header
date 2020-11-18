@@ -16,6 +16,7 @@
 + (id)_prefixColorForSelectedRangeData:(id)arg1 defaultColor:(id)arg2;
 + (id)_stringForSelectedRangeData:(id)arg1;
 + (id)attributedStringForSelectedRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3 prefersImageAffixes:(BOOL)arg4;
++ (void)clearCaches;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;

@@ -11,10 +11,11 @@
 }
 
 + (BOOL)isSystemResource;
-- (id)errorReasonForGlobalLevelStatus:(unsigned long long)arg1;
+- (void)attemptRecoveryFromGlobalLevelErrorWithOptionIndex:(unsigned long long)arg1 userInterface:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)errorRecoveryOptionsForGlobalLevelStatus:(unsigned long long)arg1;
 - (unsigned long long)globalLevelStatus;
 - (id)icon;
-- (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)localizedErrorReasonForGlobalLevelStatus:(unsigned long long)arg1;
 - (id)name;
 - (id)protectedResourceDescription;
 

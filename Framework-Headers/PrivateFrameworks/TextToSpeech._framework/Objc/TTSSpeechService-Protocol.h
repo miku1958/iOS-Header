@@ -32,10 +32,14 @@
 - (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (BOOL)employSpeechMarkupForType:(long long)arg1 language:(NSString *)arg2;
 - (NSString *)enclosedStringWithPhonemes:(NSString *)arg1;
+- (oneway void)getVoicesForLanguage:(NSString *)arg1 queryingMobileAssets:(BOOL)arg2 reply:(void (^)(NSArray *))arg3;
+- (BOOL)isNashvilleService;
+- (BOOL)isSiriService;
 - (NSString *)lhPhonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)nashvilleVoiceIdentifier:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
 - (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;
 - (NSString *)phonemesFromIPA:(NSString *)arg1 language:(NSString *)arg2;
 - (NSString *)phonemesFromLHPhonemes:(NSString *)arg1 language:(NSString *)arg2;
+- (NSString *)serviceIdentifier;
 @end
 

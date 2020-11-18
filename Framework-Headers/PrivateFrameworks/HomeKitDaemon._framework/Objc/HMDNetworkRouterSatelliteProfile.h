@@ -17,7 +17,7 @@
 
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
-- (void)__handleAccessoryIsReachable;
+- (void)__handleAccessoryConfigured;
 - (void)__notifyClientsOfNetworkStatusUpdate:(unsigned long long)arg1;
 - (void)__updateSatelliteStatus:(id)arg1;
 - (void)_handleCharacteristicChanges:(id)arg1;
@@ -26,7 +26,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
+- (void)handleAccessoryConfigured:(id)arg1;
 - (void)handleCharacteristicValuesChanged:(id)arg1;
 - (void)handleInitialState;
 - (id)initWithRouterSatelliteService:(id)arg1 msgDispatcher:(id)arg2;

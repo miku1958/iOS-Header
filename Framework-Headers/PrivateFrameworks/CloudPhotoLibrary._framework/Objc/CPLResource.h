@@ -60,6 +60,7 @@
 - (id)initWithResourceIdentity:(id)arg1 itemScopedIdentifier:(id)arg2 resourceType:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTrackedForUpload;
+- (id)redactedDescription;
 
 @end
 

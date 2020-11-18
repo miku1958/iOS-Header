@@ -8,7 +8,7 @@
 
 #import <Home/HFActionSetBuilderProtocol-Protocol.h>
 
-@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMTrigger, NSArray, NSString;
+@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMActionSet, HMTrigger, NSArray, NSString;
 
 @interface HFTriggerAnonymousActionSetBuilder : HFItemBuilder <HFActionSetBuilderProtocol>
 {
@@ -19,6 +19,7 @@
 }
 
 @property (strong, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
+@property (strong, nonatomic) HMActionSet *actionSet; // @dynamic actionSet;
 @property (nonatomic) unsigned long long actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
@@ -34,7 +35,6 @@
 - (void).cxx_destruct;
 - (id)_existingActionBuilder:(id)arg1 inSet:(id)arg2;
 - (id)_lazilyUpdateActions;
-- (id)actionSet;
 - (void)addAction:(id)arg1;
 - (void)addAction:(id)arg1 actionSetType:(unsigned long long)arg2;
 - (id)commitItem;
@@ -43,7 +43,6 @@
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (void)removeAction:(id)arg1;
 - (void)removeAllActions;
-- (void)setActionSet:(id)arg1;
 - (void)updateAction:(id)arg1;
 - (void)updateActionBuildersDiff:(id)arg1;
 

@@ -101,6 +101,7 @@
 - (BOOL)defaultStatusBarHiddenForOrientation:(long long)arg1;
 - (long long)defaultStatusBarStyle;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)displayEdgeInfoForForLayoutEnvironment:(long long)arg1 classicMode:(long long)arg2 isInsetForHomeAffordance:(BOOL)arg3;
 - (int)effectiveStatusBarStyleOverrides;
 - (id)effectiveStatusBarStyleRequestForActivation:(id)arg1;
 - (BOOL)isAutoHideEnabledForHomeAffordance;

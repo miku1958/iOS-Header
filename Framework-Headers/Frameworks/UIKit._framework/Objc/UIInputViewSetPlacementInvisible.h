@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)inputViewWillAppear;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isInteractive;
+- (BOOL)isInvisible;
 - (BOOL)isUndocked;
-- (unsigned long long)notificationsForTransitionToPlacement:(id)arg1;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (void)setDirty;
 - (BOOL)showsInputViews;

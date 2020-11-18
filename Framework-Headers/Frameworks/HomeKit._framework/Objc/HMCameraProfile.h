@@ -6,10 +6,12 @@
 
 #import <HomeKit/HMAccessoryProfile.h>
 
-@class HMCameraAudioControl, HMCameraClipManager, HMCameraSettingsControl, HMCameraSnapshotControl, HMCameraStreamControl, HMCameraUserSettings, _HMCameraProfile;
+#import <HomeKit/HMFLogging-Protocol.h>
+
+@class HMCameraAudioControl, HMCameraClipManager, HMCameraSettingsControl, HMCameraSnapshotControl, HMCameraStreamControl, HMCameraUserSettings, NSString, _HMCameraProfile;
 @protocol HMCameraProfileUserSettingsDelegate;
 
-@interface HMCameraProfile : HMAccessoryProfile
+@interface HMCameraProfile : HMAccessoryProfile <HMFLogging>
 {
     HMCameraStreamControl *_streamControl;
     HMCameraSnapshotControl *_snapshotControl;
@@ -21,18 +23,24 @@
 
 @property (readonly, nonatomic) _HMCameraProfile *cameraProfile;
 @property (readonly) HMCameraClipManager *clipManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMCameraAudioControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
 @property (strong, nonatomic) HMCameraSettingsControl *settingsControl; // @synthesize settingsControl=_settingsControl;
 @property (strong, nonatomic) HMCameraSnapshotControl *snapshotControl; // @synthesize snapshotControl=_snapshotControl;
 @property (strong, nonatomic) HMCameraAudioControl *speakerControl; // @synthesize speakerControl=_speakerControl;
 @property (strong, nonatomic) HMCameraStreamControl *streamControl; // @synthesize streamControl=_streamControl;
+@property (readonly) Class superclass;
 @property (readonly) HMCameraUserSettings *userSettings;
 @property (weak) id<HMCameraProfileUserSettingsDelegate> userSettingsDelegate; // @synthesize userSettingsDelegate=_userSettingsDelegate;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)deleteAllClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithCameraProfile:(id)arg1;
+- (id)logIdentifier;
 - (id)services;
 
 @end

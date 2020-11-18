@@ -15,7 +15,6 @@
 
 @interface PKPaletteViewInteraction : NSObject <UIEditingOverlayInteractionWithView, PKPaletteHostingWindowScene, UIInteraction>
 {
-    BOOL _paletteDidHideForCanvasState;
     PKPaletteHostView *_paletteHostView;
     UIWindowScene *_windowScene;
     UIView *_view;
@@ -31,7 +30,6 @@
 @property (weak, nonatomic) id<PKPaletteViewDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL paletteDidHideForCanvasState; // @synthesize paletteDidHideForCanvasState=_paletteDidHideForCanvasState;
 @property (strong, nonatomic) PKPaletteHostView *paletteHostView; // @synthesize paletteHostView=_paletteHostView;
 @property (strong, nonatomic) NSLayoutConstraint *paletteHostViewHeightConstraint; // @synthesize paletteHostViewHeightConstraint=_paletteHostViewHeightConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *paletteHostViewLeftConstraint; // @synthesize paletteHostViewLeftConstraint=_paletteHostViewLeftConstraint;
@@ -48,8 +46,7 @@
 + (id)paletteViewInteractionForCanvas:(id)arg1;
 + (id)paletteViewInteractionForWindow:(id)arg1 windowScene:(id)arg2;
 - (void).cxx_destruct;
-- (void)_hidePaletteForInactiveWindowScene:(id)arg1;
-- (void)_showPaletteForActiveWindowScene:(id)arg1;
+- (void)_sceneDidActivateNotification:(id)arg1;
 - (id)_traitCollectionForHostingWindow;
 - (void)_updateForRotation:(id)arg1;
 - (void)_updateForWillRotate:(id)arg1;
@@ -59,11 +56,11 @@
 - (id)_viewControllerForPalette;
 - (void)didMoveToView:(id)arg1;
 - (void)editingOverlayContainerDidChangeToSceneBounds:(struct CGRect)arg1;
-- (void)hidePaletteViewWithCompletion:(CDUnknownBlockType)arg1;
+- (void)hidePaletteViewAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)hostingWindow;
 - (id)initWithWindowSize:(struct CGSize)arg1;
 - (struct CGRect)paletteHostingWindowSceneBounds;
-- (void)showPaletteViewWithCompletion:(CDUnknownBlockType)arg1;
+- (void)showPaletteViewAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)willMoveToView:(id)arg1;
 
 @end

@@ -11,6 +11,7 @@
 @interface MCUserNotificationQueueEntry : NSObject
 {
     BOOL _displayOnLockScreen;
+    BOOL _dismissOnLock;
     BOOL _displayInAppWhitelistModes;
     NSString *_title;
     NSString *_message;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) NSString *defaultButtonText; // @synthesize defaultButtonText=_defaultButtonText;
 @property (nonatomic) double dismissAfterTimeInterval; // @synthesize dismissAfterTimeInterval=_dismissAfterTimeInterval;
+@property (nonatomic) BOOL dismissOnLock; // @synthesize dismissOnLock=_dismissOnLock;
 @property (nonatomic) BOOL displayInAppWhitelistModes; // @synthesize displayInAppWhitelistModes=_displayInAppWhitelistModes;
 @property (nonatomic) BOOL displayOnLockScreen; // @synthesize displayOnLockScreen=_displayOnLockScreen;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

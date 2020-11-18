@@ -23,12 +23,13 @@
 - (id)_endCurrentThumbnailsBatch;
 - (id)_thumbnailFallbackForItem:(id)arg1 descriptor:(id)arg2 currentThumbnail:(id)arg3;
 - (id)_thumbnailForItem:(id)arg1 descriptor:(id)arg2 forceFetch:(BOOL)arg3;
-- (void)endBatch;
+- (void)endBatching:(id)arg1;
 - (id)iconForItem:(id)arg1 descriptor:(id)arg2;
 - (id)iconForURL:(id)arg1 descriptor:(id)arg2;
 - (id)init;
 - (void)markThumbnailAsRecentlyUsed:(id)arg1;
-- (void)startBatch;
+- (void)performInBatch:(CDUnknownBlockType)arg1;
+- (id)startBatching;
 - (id)thumbnailForItem:(id)arg1 descriptor:(id)arg2;
 - (id)thumbnailForItem:(id)arg1 descriptor:(id)arg2 forceFetch:(BOOL)arg3;
 

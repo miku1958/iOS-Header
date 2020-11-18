@@ -25,11 +25,8 @@
 @property (strong, nonatomic) NSMutableDictionary *shadowModels; // @synthesize shadowModels=_shadowModels;
 @property (strong, nonatomic) NSNumber *shadowVersion; // @synthesize shadowVersion=_shadowVersion;
 
-+ (const void *)associatedObjectKeyForType:(long long)arg1;
 + (void)cannedInfoForType:(unsigned long long)arg1 directivesPath:(id *)arg2 modelName:(id *)arg3;
 + (id)directivesFromFilePath:(id)arg1;
-+ (id)errorDomain;
-+ (void)initialize;
 + (void)loadModelWithURL:(id)arg1 type:(unsigned long long)arg2 directivesPath:(id)arg3 intoModelDict:(id)arg4 error:(id *)arg5;
 + (BOOL)loadModelsWithDirectory:(id)arg1 intoModelDict:(id)arg2;
 + (void)pathsFor:(unsigned long long)arg1 withParentPath:(id)arg2 modelPath:(id *)arg3 directivesPath:(id *)arg4;

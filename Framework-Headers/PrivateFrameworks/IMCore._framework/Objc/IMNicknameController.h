@@ -63,7 +63,9 @@
 - (void)nicknameStoreDidChange;
 - (unsigned long long)nicknameUpdateForHandle:(id)arg1 nicknameIfAvailable:(id *)arg2;
 - (void)setNicknameHandlesUnderScrutiny;
+- (void)setPersonalNicknameFromOnboardingResult:(id)arg1;
 - (BOOL)shouldOfferNicknameSharingForChat:(id)arg1;
+- (id)truncateNameIfNeeded:(id)arg1;
 - (void)updatePendingNicknames:(id)arg1 handledNicknames:(id)arg2;
 - (void)updatePersonalNickname:(id)arg1;
 - (void)updatePersonalNicknameIfNecessaryWithMeCardSharingResult:(id)arg1;

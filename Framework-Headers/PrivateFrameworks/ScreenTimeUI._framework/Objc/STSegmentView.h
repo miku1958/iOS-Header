@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithItem:(id)arg1 useVibrancy:(BOOL)arg2 truncateLabels:(BOOL)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -10,13 +10,14 @@
 #import <ActionKit/NSSecureCoding-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString, NSURL;
 
 @interface WFPodcastShowObject : MTLModel <MTLJSONSerializing, NSSecureCoding, WFNaming>
 {
     NSString *_title;
     NSString *_uuid;
     NSString *_storeId;
+    NSURL *_feedURL;
     NSArray *_children;
 }
 
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryValue;
+@property (readonly, nonatomic) NSURL *feedURL; // @synthesize feedURL=_feedURL;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *storeId; // @synthesize storeId=_storeId;
 @property (readonly) Class superclass;

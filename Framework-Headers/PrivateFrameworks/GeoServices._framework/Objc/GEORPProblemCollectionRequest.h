@@ -13,7 +13,6 @@
 @interface GEORPProblemCollectionRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_countryCode;
     NSData *_devicePushToken;
     NSString *_hwMachine;
@@ -23,6 +22,9 @@
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
     GEOLocation *_userLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_countryCode:1;
         unsigned int read_devicePushToken:1;
@@ -83,6 +85,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

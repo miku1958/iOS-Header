@@ -51,7 +51,7 @@
 - (id)_existingObservedItemForObjectID:(id)arg1;
 - (id)_init;
 - (void)_notifyRecoverableObservers;
-- (void)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_undoActionForConversationAction:(id)arg1;
 - (void)_updateObserversForChangeAction:(id)arg1;
 - (void)_vipsDidChange:(id)arg1;
@@ -68,7 +68,7 @@
 - (id)performMessageChangeActionReturningUndoAction:(id)arg1;
 - (void)performQuery:(id)arg1 limit:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
-- (void)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestRepresentationForMessageWithID:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)requestRepresentationForMessageWithID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)resetAllPrecomputedThreadScopes;

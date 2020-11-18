@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 + (id)unarchivingObjectsSet;
 - (void).cxx_destruct;
+- (id)description;
 - (void)didPostNotification;
 - (void)didReceiveUpdateWithETA:(double)arg1 lastUpdated:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;

@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
 
 + (id)callForwardingDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 typeClass:(Class)arg3;
 + (id)nameDisplayIdentifier;
 + (id)rawDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;

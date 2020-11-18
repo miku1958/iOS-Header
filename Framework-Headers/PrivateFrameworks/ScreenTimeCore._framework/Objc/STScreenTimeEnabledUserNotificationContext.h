@@ -14,6 +14,7 @@
 - (void)customizeNotificationContent:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)notificationBundleIdentifier;
 
 @end
 

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDTransitInfoSnippet : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_artworks;
     NSMutableArray *_labels;
@@ -25,6 +24,9 @@ __attribute__((visibility("hidden")))
     GEOTimezone *_timezone;
     unsigned long long _transitId;
     NSString *_transitName;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_transitId:1;
         unsigned int read_unknownFields:1;
@@ -97,6 +99,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)labelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)labelsCount;

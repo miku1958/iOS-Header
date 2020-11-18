@@ -37,8 +37,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowHighlight;
 - (BOOL)_allowInteraction:(long long)arg1;
 - (void)_warnForInvalidAction;
-- (id)actionSheetActionsForAlertController:(id)arg1;
-- (id)actionSheetTitle;
 - (BOOL)canInvokeDefaultAction;
 - (id)contextMenuConfiguration;
 - (void)dealloc;
@@ -47,7 +45,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAttachment;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLink;
-- (BOOL)shouldShowActionSheet;
 - (void)unhighlight;
 
 @end

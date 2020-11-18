@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSObject, SBAppSwitcherPageView, SBBestAppSuggestion, SBSwitcherAppSuggestionBannerView, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class NSMutableSet, NSObject, SBBestAppSuggestion, SBSwitcherAppSuggestionBannerView, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol OS_dispatch_queue, SBSwitcherAppSuggestionViewControllerDelegate;
 
 @interface SBSwitcherAppSuggestionViewController : UIViewController
@@ -14,12 +14,11 @@
     SBBestAppSuggestion *_bestAppSuggestion;
     BOOL _showSuggestions;
     SBSwitcherAppSuggestionBannerView *_bannerView;
-    SBAppSwitcherPageView *_slideUpPageView;
     UITapGestureRecognizer *_tapGestureRecognizer;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     BOOL _presentingOrDismissingBanner;
-    BOOL _isPresentingApp;
     NSObject<OS_dispatch_queue> *_setSuggestionQueue;
+    NSMutableSet *_pauseSuggestionUpdateReasons;
     BOOL _suggestionQueueSuspended;
     id<SBSwitcherAppSuggestionViewControllerDelegate> _delegate;
 }
@@ -30,26 +29,22 @@
 @property (nonatomic, getter=_isSuggestionQueueSuspended, setter=_setSuggestionQueueSuspended:) BOOL suggestionQueueSuspended; // @synthesize suggestionQueueSuspended=_suggestionQueueSuspended;
 
 - (void).cxx_destruct;
-- (void)_activateCurrentSuggestionWithAnimationCompletion:(CDUnknownBlockType)arg1;
+- (void)_activateBestAppSuggestion;
+- (void)_activateCurrentSuggestion;
 - (void)_animateOutAndRemoveCurrentBottomBannerWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)_bannerStyle;
-- (void)_beginInteractivePresentationOrAnimation;
-- (void)_endInteractivePresentationOrAnimation;
+- (void)_evaluateSuggestionQueueSuspension;
 - (void)_handleBannerTap:(id)arg1;
-- (void)_handleBannerTap:(id)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleLongPress:(id)arg1;
 - (BOOL)_hasSuggestionBannerView;
 - (struct CGRect)_idleOnscreenRectForBottomBanner;
 - (void)_insertAndAnimateInBottomBannerForSuggestion:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_insertContainerForSlideUp;
-- (id)_newDynamicAnimationForTargetValue:(double)arg1 withStartValue:(double)arg2 withInitialVelocity:(double)arg3;
 - (struct CGRect)_offscreenRectForBottomBanner;
-- (struct CGRect)_offscreenRectForContentView;
-- (struct CGRect)_presentedRectForContentView;
-- (void)_removeContainerForSlideUp;
 - (void)_setBestAppSuggestion:(id)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)_updateBottomBannerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)beginPausingSuggestionUpdatesForReason:(id)arg1;
 - (void)dealloc;
+- (void)endPausingSuggestionUpdatesForReason:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)viewDidLoad;

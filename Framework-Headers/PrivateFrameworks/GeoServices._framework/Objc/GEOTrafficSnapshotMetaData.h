@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficSnapshotMetaData : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_basemapId;
     NSString *_branchId;
     NSString *_environment;
@@ -23,6 +22,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _publishTime;
     NSMutableArray *_regions;
     NSString *_snapshotId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _vendor;
     struct {
         unsigned int has_publishTime:1;
@@ -83,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

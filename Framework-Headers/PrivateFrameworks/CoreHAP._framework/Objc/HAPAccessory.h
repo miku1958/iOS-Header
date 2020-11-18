@@ -30,6 +30,7 @@
     NSString *_manufacturer;
     NSString *_serialNumber;
     NSString *_firmwareVersion;
+    NSString *_productData;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
@@ -48,6 +49,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
+@property (copy, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (weak, nonatomic) HAPAccessoryServer *server; // @synthesize server=_server;
@@ -61,6 +63,7 @@
 + (id)instanceIDForUniqueIdentifier:(id)arg1;
 + (BOOL)isAccessoryPairedWithIdentifier:(id)arg1;
 + (BOOL)isAccessoryPrimaryWithUniqueIdentifier:(id)arg1;
++ (id)productDataStringFromData:(id)arg1;
 + (id)serverIdentifierWithUniqueIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_isReachable;
@@ -68,6 +71,7 @@
 - (BOOL)_updateAndValidateServices;
 - (BOOL)_updateForAccessoryInformationService;
 - (BOOL)_updateService:(id)arg1;
+- (BOOL)_validateCharacteristicValues;
 - (id)characteristicOfType:(id)arg1 serviceType:(id)arg2;
 - (id)characteristicsOfType:(id)arg1;
 - (id)init;
@@ -80,7 +84,6 @@
 - (void)readValueForCharacteristic:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)servicesOfType:(id)arg1;
 - (BOOL)shouldMergeObject:(id)arg1;
-- (BOOL)validateCharacteristicValues:(id *)arg1;
 - (void)writeCharacteristicValue:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

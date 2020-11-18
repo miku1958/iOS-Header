@@ -76,7 +76,7 @@
 - (void)handleFaceDefaultsChanged;
 - (BOOL)hasTapAction;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
-- (void)notifyDelegateOnTimelineChange;
+- (void)notifyDelegateOnTimelineChangeWithTritiumUpdatePriority:(long long)arg1;
 - (void)performBackgroundDataRefresh;
 - (void)performTapAction;
 - (void)removeDisplayWrapper:(id)arg1;

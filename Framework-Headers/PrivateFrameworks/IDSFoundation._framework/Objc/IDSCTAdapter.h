@@ -56,6 +56,7 @@
 - (id)carrierBundleValueFromAllSIMsForKey:(id)arg1 ofType:(Class)arg2 withFallback:(id)arg3;
 - (id)carrierBundleValueFromSIM:(id)arg1 forKey:(id)arg2 ofType:(Class)arg3 withFallback:(id)arg4;
 - (void)context:(id)arg1 pnrSupportChanged:(BOOL)arg2;
+- (id)contextForSim:(id)arg1;
 - (id)currentSIMsWithError:(id *)arg1;
 - (void)dealloc;
 - (void)dualSimCapabilityDidChange;

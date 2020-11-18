@@ -15,7 +15,6 @@
 @interface GEOInstructionSet : PBCodable <GEOComposedRouteStepTransitInstructionMerging, NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOFormattedString *_countStopsText;
     GEOFormattedString *_departureBar;
@@ -25,6 +24,9 @@
     GEOGenericInstruction *_genericInstruction;
     GEOTransitListInstruction *_transitListInstruction;
     GEOTransitSignInstruction *_transitSignInstruction;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _departureBarStyle;
     struct {
         unsigned int has_departureBarStyle:1;
@@ -98,6 +100,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)departureBarStyleAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

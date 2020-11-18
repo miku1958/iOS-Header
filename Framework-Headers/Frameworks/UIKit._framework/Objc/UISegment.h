@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(BOOL)arg2;
 - (double)_barHeight;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_commonSegmentInit;
 - (struct CGRect)_contentRectForBounds:(struct CGRect)arg1;
 - (id)_dividerImage;
@@ -73,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)_floatingContentView;
 - (void)_forceInfoDisplay;
 - (BOOL)_hasSelectedColor;
+- (struct CATransform3D)_highlightSelectionInfoTransform;
 - (double)_idealWidth;
 - (void)_insertSelectionView;
 - (void)_invalidateInfoConstraints;
@@ -96,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateFloatingContentControlState:(unsigned long long)arg1 context:(id)arg2 withAnimationCoordinator:(id)arg3 animated:(BOOL)arg4;
 - (void)_updateHighlight;
 - (void)_updateSelectionIndicator;
-- (void)_updateSelectionToTransform:(struct CATransform3D)arg1 hideSelection:(BOOL)arg2 shouldAnimate:(BOOL)arg3;
+- (void)_updateSelectionToTransform:(struct CATransform3D)arg1 infoTransform:(struct CATransform3D)arg2 hideSelection:(BOOL)arg3 shouldAnimate:(BOOL)arg4;
 - (void)_updateTextColors;
 - (void)animateAdd:(BOOL)arg1;
 - (void)animateRemoveForWidth:(double)arg1;

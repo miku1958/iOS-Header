@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_checkNowPlayingMediaState:(CDUnknownBlockType)arg1;
 - (void)_createTimerWithIntent:(id)arg1 dryRun:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_isPlayingMediaFromMRPlaybackState:(unsigned int)arg1;
 - (id)_responseToCreateTimerIntent:(id)arg1 withCreatedTimer:(id)arg2 error:(id)arg3 dryRun:(BOOL)arg4;

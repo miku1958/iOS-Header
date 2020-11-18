@@ -24,8 +24,8 @@
     UIImage *_sharedBadge;
     UIImage *_downloadsBadge;
     UIImage *_genericSharepointBadge;
-    UIImage *_plainFolderImage;
     NSString *_imageName;
+    UIImage *_plainFolderImage;
     double _imageDimension;
 }
 
@@ -54,6 +54,7 @@
 - (double)bottomInsetForFolderType:(unsigned long long)arg1;
 - (id)image;
 - (id)initWithImageName:(id)arg1 documentsBadgeName:(id)arg2 dekstopBadgeName:(id)arg3 sharedBadgeName:(id)arg4 downloadsBadgeName:(id)arg5 genericSharepointBadgeName:(id)arg6 imageDimension:(double)arg7 badgeDimension:(double)arg8 badgeBottomInset:(double)arg9 sharedBadgeDimension:(double)arg10 sharedBadgeBottomInset:(double)arg11;
+- (id)plainFolderImageWithStyle:(unsigned long long)arg1;
 - (void)resolveImage;
 
 @end

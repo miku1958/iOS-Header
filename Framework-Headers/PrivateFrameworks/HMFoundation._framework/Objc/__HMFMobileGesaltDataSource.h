@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL _supportsBLE;
     id<HMFSystemInfoNameDataSourceDelegate> _delegate;
     NSString *_name;
+    NSString *_modelIdentifier;
     NSString *_model;
     NSString *_regionInfo;
     NSString *_serialNumber;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property (readonly, copy, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) struct MGNotificationTokenStruct *notificationToken; // @synthesize notificationToken=_notificationToken;
 @property (readonly, nonatomic) long long productClass; // @synthesize productClass=_productClass;

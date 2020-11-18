@@ -22,6 +22,9 @@
 - (BOOL)slotTemplateView:(WFSlotTemplateView *)arg1 shouldChangeText:(NSAttributedString *)arg2 forSlotWithIdentifier:(WFSlotIdentifier *)arg3;
 - (BOOL)slotTemplateView:(WFSlotTemplateView *)arg1 shouldLongPressSlotWithIdentifier:(WFSlotIdentifier *)arg2;
 - (BOOL)slotTemplateView:(WFSlotTemplateView *)arg1 shouldTapTextAttachment:(NSTextAttachment *)arg2 inSlotWithIdentifier:(WFSlotIdentifier *)arg3;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidCopyWithOriginalBlock:(void (^)(void))arg2;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidCutWithOriginalBlock:(void (^)(void))arg2;
+- (void)slotTemplateView:(WFSlotTemplateView *)arg1 typingDidPasteWithOriginalBlock:(void (^)(void))arg2;
 - (void)slotTemplateView:(WFSlotTemplateView *)arg1 willBeginTypingInSlotWithIdentifier:(WFSlotIdentifier *)arg2 usingTextEntry:(UIView<WFSlotTemplateTextEntry> *)arg3 allowMultipleLines:(BOOL *)arg4;
 - (void)slotTemplateViewDidInvalidateSize:(WFSlotTemplateView *)arg1;
 @end

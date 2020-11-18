@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficRegion : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_area;
     NSMutableArray *_boundingBoxs;
     NSMutableArray *_geohashes;
     NSString *_name;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_area:1;
         unsigned int read_boundingBoxs:1;
@@ -61,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (id)geohashesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)geohashesCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

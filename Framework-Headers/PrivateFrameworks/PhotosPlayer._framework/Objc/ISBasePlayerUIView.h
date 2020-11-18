@@ -22,6 +22,7 @@
     ISBasePlayer *_player;
     UIView *_customPhotoView;
     UIImage *_overrideImage;
+    CDUnknownBlockType _videoLayerReadyForDisplayChangeHandler;
     UIImageView *__photoView;
     ISVideoPlayerUIView *__videoView;
     UIView *__containerView;
@@ -41,10 +42,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDisplayingPhoto) BOOL displayingPhoto;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isVideoReadyForDisplay;
 @property (strong, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
 @property (strong, nonatomic) ISBasePlayer *player; // @synthesize player=_player;
 @property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) CDUnknownBlockType videoLayerReadyForDisplayChangeHandler; // @synthesize videoLayerReadyForDisplayChangeHandler=_videoLayerReadyForDisplayChangeHandler;
 @property (strong, nonatomic, setter=_setWrappedAudioSession:) ISWrappedAVAudioSession *wrappedAudioSession; // @synthesize wrappedAudioSession=_wrappedAudioSession;
 
 + (Class)playerClass;
@@ -53,6 +56,7 @@
 - (void)_signalChange:(unsigned long long)arg1 withAnimationDuration:(double)arg2;
 - (void)_updatePhotoView;
 - (void)_updatePlayerAudioSession;
+- (void)_videoViewReadyForDisplayDidChange;
 - (void)applyOutputInfo:(id)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyScale:(double)arg1 withTransitionOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)audioSessionDidChange;

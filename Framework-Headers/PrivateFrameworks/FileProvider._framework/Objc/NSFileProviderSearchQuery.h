@@ -16,6 +16,7 @@
     BOOL _shouldPerformServerSearch;
     NSString *_scopeFragment;
     NSString *_scopedToItemIdentifierBundleId;
+    NSString *_keyboardLanguage;
     NSString *_providerDomainID;
     NSSet *_cachedExtensions;
     unsigned long long _trashedItemsMembership;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *filename;
 @property (readonly, copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic) BOOL includesTrashedItems;
+@property (copy, nonatomic) NSString *keyboardLanguage;
 @property (copy, nonatomic) NSString *providerDomainID;
 @property (copy, nonatomic) NSString *scopeFragment;
 @property (readonly, copy, nonatomic) NSString *scopedToItemIdentifier; // @synthesize scopedToItemIdentifier=_scopedToItemIdentifier;

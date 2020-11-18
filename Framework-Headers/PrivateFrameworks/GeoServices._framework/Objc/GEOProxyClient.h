@@ -27,6 +27,7 @@
 - (id)URLConnectionProperties;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithAuditToken:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

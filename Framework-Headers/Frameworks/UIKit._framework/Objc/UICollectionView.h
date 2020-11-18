@@ -128,8 +128,12 @@
         unsigned int delegateContextMenuConfigurationForItemAtIndexPath:1;
         unsigned int delegateContextMenuPreviewForHighlighting:1;
         unsigned int delegateContextMenuPreviewForDismissing:1;
-        unsigned int delegateContextMenuwillPerformPreviewActionForMenuWithConfiguration:1;
+        unsigned int delegateContextMenuwillPerformPreviewAction:1;
         unsigned int delegateContextMenuWillCommitMenuWithAnimator:1;
+        unsigned int delegateWillDisplayContextMenu:1;
+        unsigned int delegateWillEndContextMenuInteraction:1;
+        unsigned int delegateStyleForContextMenu:1;
+        unsigned int delegateAccessoriesForContextMenu:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
         unsigned int dataSourceCanMoveItemAtIndexPathSPI:1;
@@ -241,6 +245,7 @@
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic, getter=_collectionViewData) UICollectionViewData *collectionViewData;
 @property (strong, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
+@property (readonly, nonatomic) UIContextMenuInteraction *contextMenuInteraction;
 @property (strong, nonatomic, getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:) UICollectionViewCell *currentPromiseFulfillmentCell; // @synthesize currentPromiseFulfillmentCell=_currentPromiseFulfillmentCell;
 @property (strong, nonatomic, getter=_currentTouch, setter=_setCurrentTouch:) UITouch *currentTouch; // @synthesize currentTouch=_currentTouch;
 @property (readonly, nonatomic, getter=_currentUpdate) UICollectionViewUpdate *currentUpdate;
@@ -333,6 +338,8 @@
 - (struct CGPoint)_contentOffsetForNewFrame:(struct CGRect)arg1 oldFrame:(struct CGRect)arg2 newContentSize:(struct CGSize)arg3 andOldContentSize:(struct CGSize)arg4;
 - (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2;
 - (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 itemFrame:(struct CGRect)arg3 containingScrollView:(id)arg4;
+- (id)_contextMenuInteraction:(id)arg1 accessoriesForMenuWithConfiguration:(id)arg2 layoutAnchor:(CDStruct_6f807b77)arg3;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(BOOL)arg3 isFocused:(BOOL)arg4 notify:(BOOL)arg5;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(BOOL)arg4;
@@ -350,6 +357,7 @@
 - (void)_decrementSuspendLayoutCount;
 - (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
 - (id)_delegateActual;
+- (BOOL)_delegateAllowsSelectingItemAtIndexPath:(id)arg1;
 - (id)_delegatePreferredIndexPath;
 - (id)_delegateProxy;
 - (struct CGPoint)_delegateTargetOffsetForProposedContentOffset:(struct CGPoint)arg1;
@@ -519,6 +527,7 @@
 - (id)_sectionIndexesAfterShadowUpdatesForSectionIndexes:(id)arg1 allowingAppendingInserts:(BOOL)arg2;
 - (void)_selectAllSelectedItems;
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(BOOL)arg4;
+- (void)_selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(BOOL)arg4 deselectPrevious:(BOOL)arg5;
 - (id)_selectableIndexPathForItemContainingHitView:(id)arg1;
 - (void)_setAllowsMultipleSelectionDuringEditing:(BOOL)arg1;
 - (void)_setAllowsSelectionDuringEditing:(BOOL)arg1;
@@ -626,6 +635,8 @@
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
+- (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)dataSourceIndexPathForPresentationIndexPath:(id)arg1;
 - (long long)dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;

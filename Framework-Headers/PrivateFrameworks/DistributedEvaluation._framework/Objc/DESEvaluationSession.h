@@ -64,6 +64,7 @@
 - (void)postRecipeResponse:(id)arg1 recipeId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)runWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendRecipeResponseWithJSONResult:(id)arg1 binaryResult:(id)arg2 recipe:(id)arg3 duration:(double)arg4 error:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)taskIsDeferred;
 - (id)telemetryResponse;
 
 @end

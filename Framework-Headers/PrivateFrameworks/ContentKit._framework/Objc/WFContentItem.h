@@ -7,24 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <ContentKit/NSSecureCoding-Protocol.h>
-#import <ContentKit/UIActivityItemSource-Protocol.h>
 #import <ContentKit/WFContentItemClass-Protocol.h>
 #import <ContentKit/WFCopying-Protocol.h>
 
-@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, UIImage, WFRepresentation, WFType;
+@class NSExtensionItem, NSItemProvider, NSMutableDictionary, NSString, WFImage, WFRepresentation, WFType;
 
-@interface WFContentItem : NSObject <UIActivityItemSource, WFContentItemClass, WFCopying, NSSecureCoding>
+@interface WFContentItem : NSObject <WFContentItemClass, WFCopying, NSSecureCoding>
 {
     NSMutableDictionary *_representationsByType;
     NSMutableDictionary *_subItemsByClass;
     WFType *_internalRepresentationType;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSExtensionItem *extensionItem;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) WFImage *icon;
 @property (readonly, nonatomic) WFRepresentation *internalRepresentation;
 @property (readonly, nonatomic) WFType *internalRepresentationType; // @synthesize internalRepresentationType=_internalRepresentationType;
 @property (readonly, nonatomic) NSItemProvider *itemProvider;
@@ -34,9 +30,7 @@
 @property (strong, nonatomic) NSMutableDictionary *representationsByType; // @synthesize representationsByType=_representationsByType;
 @property (readonly, nonatomic) NSString *richListTitle;
 @property (strong, nonatomic) NSMutableDictionary *subItemsByClass; // @synthesize subItemsByClass=_subItemsByClass;
-@property (readonly) Class superclass;
 
-+ (id)activityItemClasses;
 + (id)allProperties;
 + (id)allSupportedItemClasses;
 + (id)allSupportedTypes;
@@ -95,10 +89,6 @@
 + (id)typeDescription;
 - (void).cxx_destruct;
 - (id)_getRepresentationsForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
-- (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)additionalRepresentationsForSerialization;
 - (id)allSupportedItemClasses;
 - (id)allSupportedTypes;
@@ -116,6 +106,7 @@
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)extensionItemWithItemProvider:(id)arg1;
 - (id)fileRepresentationForType:(id)arg1;
@@ -173,14 +164,12 @@
 - (id)preferredFileType;
 - (id)preferredObjectType;
 - (id)preferredTypeOfClass:(Class)arg1;
-- (void)prepareForActivityItemPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)representationForType:(id)arg1;
 - (id)representationsForType:(id)arg1;
 - (void)setFileRepresentations:(id)arg1 forType:(id)arg2;
 - (void)setObjectRepresentations:(id)arg1 forClass:(Class)arg2;
 - (void)setRepresentations:(id)arg1 forType:(id)arg2;
 - (void)setSubItems:(id)arg1 forClass:(Class)arg2;
-- (BOOL)shouldUseObjectRepresentation;
 - (id)subItemForClass:(Class)arg1;
 - (id)subItemsForClass:(Class)arg1;
 - (id)supportedItemClasses;

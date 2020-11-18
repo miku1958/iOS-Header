@@ -28,6 +28,8 @@
     NSDictionary *_clientAchievementsBySection;
     NSArray *_clientRecentAchievements;
     NSArray *_clientRelevantAchievements;
+    NSDictionary *_clientAchievementsByEarnedDateComponents;
+    NSMutableDictionary *_filteredAchievementsByTemplateUniqueName;
     NSMutableDictionary *_achievementsByTemplateUniqueName;
     NSMutableDictionary *_achievementsByEarnedDateComponents;
     NSObject<OS_dispatch_queue> *_queue;
@@ -39,10 +41,12 @@
 @property (strong, nonatomic) NSMutableDictionary *achievementsByEarnedDateComponents; // @synthesize achievementsByEarnedDateComponents=_achievementsByEarnedDateComponents;
 @property (strong, nonatomic) NSMutableDictionary *achievementsBySection; // @synthesize achievementsBySection=_achievementsBySection;
 @property (strong, nonatomic) NSMutableDictionary *achievementsByTemplateUniqueName; // @synthesize achievementsByTemplateUniqueName=_achievementsByTemplateUniqueName;
+@property (strong, nonatomic) NSDictionary *clientAchievementsByEarnedDateComponents; // @synthesize clientAchievementsByEarnedDateComponents=_clientAchievementsByEarnedDateComponents;
 @property (strong, nonatomic) NSDictionary *clientAchievementsBySection; // @synthesize clientAchievementsBySection=_clientAchievementsBySection;
 @property (strong, nonatomic) NSArray *clientRecentAchievements; // @synthesize clientRecentAchievements=_clientRecentAchievements;
 @property (strong, nonatomic) NSArray *clientRelevantAchievements; // @synthesize clientRelevantAchievements=_clientRelevantAchievements;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
+@property (strong, nonatomic) NSMutableDictionary *filteredAchievementsByTemplateUniqueName; // @synthesize filteredAchievementsByTemplateUniqueName=_filteredAchievementsByTemplateUniqueName;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (weak, nonatomic) id<AAUIAchievementsDataProviderInitialLoadListener> initialLoadListener; // @synthesize initialLoadListener=_initialLoadListener;
 @property (weak, nonatomic) id<AAUIAchievementsDataProviderDelegate> mainSectionDelegate; // @synthesize mainSectionDelegate=_mainSectionDelegate;
@@ -68,7 +72,7 @@
 - (id)_achievementsRespectingOverrideDisplayState:(id)arg1;
 - (BOOL)_builtInBelongsInRelevants:(id)arg1;
 - (void)_deepCopyClientFacingModel;
-- (long long)_deleteAchievement:(id)arg1;
+- (long long)_deleteAchievement:(id)arg1 fromUnfiltered:(BOOL)arg2;
 - (void)_handleDeletedAchievements:(id)arg1;
 - (void)_handleUpdatedAchievements:(id)arg1;
 - (id)_mainSectionIndexPathForAchievement:(id)arg1;
@@ -90,6 +94,8 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (id)recentAndRelevantAchievementAtIndexPath:(id)arg1;
 - (void)startFetching;
+- (void)stopFetching;
+- (id)trophyCaseAchievementForTemplateUniqueName:(id)arg1;
 
 @end
 

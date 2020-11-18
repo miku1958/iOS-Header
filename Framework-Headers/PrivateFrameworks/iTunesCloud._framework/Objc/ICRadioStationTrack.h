@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) ICStoreHLSAssetInfo *hlsAsset;
 @property (readonly, nonatomic) long long likeState;
 @property (readonly, nonatomic) ICRadioStationTrack *parentTrack; // @synthesize parentTrack=_parentTrack;
+@property (readonly, copy, nonatomic) NSArray *radioStreamAssets;
 @property (readonly, copy, nonatomic) NSDictionary *serverTrackInfo;
 @property (readonly, nonatomic, getter=isSkippable) BOOL skippable;
 @property (readonly, nonatomic) double startTime;

@@ -11,6 +11,7 @@
 
 @interface CARSessionStatus : NSObject
 {
+    BOOL _requiresCarCapabilitiesValues;
     id<CARSessionObserving> _sessionObserver;
     CARSession *_session;
     CARSessionChangedNotificationConverter *_notificationConverter;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *connectingTimer; // @synthesize connectingTimer=_connectingTimer;
 @property (readonly, nonatomic) CARSession *currentSession;
 @property (strong, nonatomic) CARSessionChangedNotificationConverter *notificationConverter; // @synthesize notificationConverter=_notificationConverter;
+@property (nonatomic) BOOL requiresCarCapabilitiesValues; // @synthesize requiresCarCapabilitiesValues=_requiresCarCapabilitiesValues;
 @property (strong, nonatomic) CARSession *session; // @synthesize session=_session;
 @property (weak, nonatomic) id<CARSessionObserving> sessionObserver; // @synthesize sessionObserver=_sessionObserver;
 @property (nonatomic) unsigned long long timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
@@ -43,6 +45,7 @@
 - (void)_updateSession;
 - (void)dealloc;
 - (id)init;
+- (id)initAndWaitUntilCarCapabilitiesUpdate;
 - (id)initAndWaitUntilSessionUpdated;
 - (void)waitForSessionInitialization;
 

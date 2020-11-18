@@ -36,6 +36,7 @@
     PKPaymentProvisioningController *_paymentProvisioningController;
     PKPaymentSetupNavigationController *_paymentSetupNavigationController;
     BOOL _paymentSetupWasRequired;
+    NSString *_applicationBindToken;
     PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _shouldAcquireLockButtonObserver;
     id<BSInvalidatable> _lockButtonObserver;
@@ -60,6 +61,7 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
+- (void)_bindFeatureApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_canPresentPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_configuredPaymentSetupNavigationController;
 - (void)_dismiss;
@@ -72,10 +74,12 @@
 - (void)_presentAddCardAlert;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 actionTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
+- (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5 finalError:(id)arg6;
+- (void)_presentApplyForFeature:(unsigned long long)arg1;
 - (void)_presentInvalidAlert;
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
-- (void)_presentPaymentAuthorization;
+- (void)_presentPaymentAuthorizationWithRelevantUniqueID:(id)arg1;
 - (void)_presentPaymentSetup;
 - (void)_presentPeerPaymentIdentityVerification;
 - (void)_presentPeerPaymentIdentityVerificationAlert;
@@ -115,6 +119,7 @@
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)viewController:(id)arg1 canProceedWithInstallment:(BOOL)arg2 featureApplication:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

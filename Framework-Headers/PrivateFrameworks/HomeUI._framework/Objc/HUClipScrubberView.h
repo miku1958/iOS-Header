@@ -36,7 +36,6 @@
 - (id)_deleteImage;
 - (id)_pauseImage;
 - (id)_playImage;
-- (id)_selectionImage;
 - (void)displayEditInterface;
 - (void)hideEditInterface;
 - (id)initWithFrame:(struct CGRect)arg1;

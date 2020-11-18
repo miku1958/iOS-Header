@@ -21,7 +21,6 @@
 
 + (id)MLBSerialNumber;
 + (id)ROMAddress;
-+ (id)_appleLanguagesObservable;
 + (id)_dataForNVRAMKey:(id)arg1;
 + (id)_followUpItemWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bag:(id)arg4;
 + (id)_notificationIdFromFollowUpId:(id)arg1 account:(id)arg2;

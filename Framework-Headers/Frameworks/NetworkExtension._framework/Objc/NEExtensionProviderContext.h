@@ -46,6 +46,7 @@
 - (void)dealloc;
 - (void)displayMessage:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dispose;
+- (void)dropProvider;
 - (id)hostContext;
 - (id)initWithConnection:(id)arg1;
 - (id)initWithProvider:(id)arg1;

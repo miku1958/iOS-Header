@@ -12,30 +12,30 @@
 
 @interface HMBProcessingOptions : HMFObject <NSSecureCoding>
 {
-    BOOL _enqueueExternalOutput;
-    BOOL _performDelegateCallbacks;
-    BOOL _rollbackIfUnpushedForMirror;
+    BOOL _shouldPerformDelegateCallbacks;
+    BOOL _shouldEnqueueMirrorOutput;
+    BOOL _shouldRollBackIfMirrorOutputFails;
+    BOOL _disallowsCellularAccessForMirrorOutput;
     NSString *_label;
     NSDictionary *_messagePayload;
     NSString *_messageName;
     CDUnknownBlockType _messageResponseHandler;
     NSUUID *_messageTransactionIdentifier;
-    unsigned long long _changeSource;
     long long _qualityOfService;
     HMFActivity *_activity;
 }
 
 @property (strong, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
-@property (readonly, nonatomic) unsigned long long changeSource; // @synthesize changeSource=_changeSource;
-@property (nonatomic) BOOL enqueueExternalOutput; // @synthesize enqueueExternalOutput=_enqueueExternalOutput;
-@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) BOOL disallowsCellularAccessForMirrorOutput; // @synthesize disallowsCellularAccessForMirrorOutput=_disallowsCellularAccessForMirrorOutput;
+@property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) NSString *messageName; // @synthesize messageName=_messageName;
 @property (strong, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
 @property (copy, nonatomic) CDUnknownBlockType messageResponseHandler; // @synthesize messageResponseHandler=_messageResponseHandler;
 @property (strong, nonatomic) NSUUID *messageTransactionIdentifier; // @synthesize messageTransactionIdentifier=_messageTransactionIdentifier;
-@property (nonatomic) BOOL performDelegateCallbacks; // @synthesize performDelegateCallbacks=_performDelegateCallbacks;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property (nonatomic) BOOL rollbackIfUnpushedForMirror; // @synthesize rollbackIfUnpushedForMirror=_rollbackIfUnpushedForMirror;
+@property (nonatomic) BOOL shouldEnqueueMirrorOutput; // @synthesize shouldEnqueueMirrorOutput=_shouldEnqueueMirrorOutput;
+@property (nonatomic) BOOL shouldPerformDelegateCallbacks; // @synthesize shouldPerformDelegateCallbacks=_shouldPerformDelegateCallbacks;
+@property (nonatomic) BOOL shouldRollBackIfMirrorOutputFails; // @synthesize shouldRollBackIfMirrorOutputFails=_shouldRollBackIfMirrorOutputFails;
 
 + (id)optionsWithLabel:(id)arg1;
 + (id)optionsWithMessage:(id)arg1;

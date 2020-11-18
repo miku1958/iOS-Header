@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDMessageLink : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_hoursOfOperations;
     NSString *_messageId;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     NSString *_navBackgroundColor;
     NSString *_navTintColor;
     GEOTimezone *_timezone;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _responseTime;
     BOOL _isVerified;
     struct {
@@ -85,6 +87,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)hoursOfOperationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hoursOfOperationsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

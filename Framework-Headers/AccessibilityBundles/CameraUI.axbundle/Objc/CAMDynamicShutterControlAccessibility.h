@@ -17,10 +17,12 @@
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_axVC;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityCustomActions;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
+- (long long)incrementCounter;
 - (BOOL)isAccessibilityElement;
 
 @end

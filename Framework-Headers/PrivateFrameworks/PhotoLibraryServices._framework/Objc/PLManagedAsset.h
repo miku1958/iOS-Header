@@ -122,6 +122,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) unsigned short deferredProcessingNeeded;
 @property (nonatomic) unsigned short deferredProcessingNeeded; // @dynamic deferredProcessingNeeded;
 @property (nonatomic) unsigned short depthStates; // @dynamic depthStates;
 @property (readonly, copy) NSString *description;
@@ -438,7 +439,8 @@
 + (id)extensionForMediumThumbnailFile;
 + (id)failedToPushAssetInLibrary:(id)arg1;
 + (id)fetchPredicateForLegacyRequiredResourcesLocallyAvailable:(BOOL)arg1 photoLibrary:(id)arg2;
-+ (id)fetchRequestForSortedCloudSharedAssetsWithPlaceholderKinds:(id)arg1 ascending:(BOOL)arg2;
++ (id)fetchRequestForSortedCloudSharedAssetsWithPlaceholderKinds:(id)arg1 additionalPredicate:(id)arg2 ascending:(BOOL)arg3;
++ (id)fetchResourcesForAssetWithObjectID:(id)arg1 inContext:(id)arg2 versions:(id)arg3 includeVirtualResources:(BOOL)arg4 allowDerivatives:(BOOL)arg5 additionalPredicate:(id)arg6 error:(id *)arg7;
 + (id)fileURLFromAssetURL:(id)arg1 photoLibrary:(id)arg2;
 + (void)fixupCloudPhotoLibraryAsset:(id)arg1 withCloudMaster:(id)arg2 inLibrary:(id)arg3;
 + (unsigned short)fullSizeImageFormat;
@@ -509,7 +511,6 @@
 + (void)resetAssetsCloudStateInLibrary:(id)arg1 hardReset:(BOOL)arg2;
 + (void)rm_cplResourceWasUploaded:(id)arg1 photoLibrary:(id)arg2;
 + (struct CGSize)sizeOfImageAtURL:(id)arg1 outOrientation:(short *)arg2;
-+ (id)sortedCloudSharedAssetsWithPlaceholderKinds:(id)arg1 ascending:(BOOL)arg2 inLibrary:(id)arg3;
 + (id)supportedAssetTypesForUpload;
 + (id)toUploadAssetsInLibrary:(id)arg1;
 + (long long)totalPurgeableSizeOnDiskInLibrary:(id)arg1 urgency:(long long)arg2;
@@ -551,7 +552,6 @@
 - (int)_avalancheTypeFromCplBurstFlags:(unsigned long long)arg1;
 - (id)_calculateCloudAdjustmentFingerprintFromAdjustmentPListAndCPLResources;
 - (int)_calculateStateForWorkerType:(short)arg1 flags:(int *)arg2;
-- (BOOL)_checkResource:(unsigned long long)arg1 onPath:(id)arg2 onMaster:(BOOL)arg3;
 - (void)_cleanupPenultimateResources;
 - (void)_clearAcceptableCropRect;
 - (void)_clearOverallAestheticScore;
@@ -580,8 +580,6 @@
 - (id)_generatePosterFrameResourcesFromVideoURL:(id)arg1 withScopedIdentifier:(id)arg2 forMaster:(BOOL)arg3;
 - (id)_generateVideoResourcesFromURL:(id)arg1 withScopedIdentifier:(id)arg2 forMaster:(BOOL)arg3;
 - (void)_getLargestAvailableDataRepresentation:(id *)arg1 type:(id *)arg2;
-- (BOOL)_hasAllAdjustedResourcesLocallyAvailable;
-- (BOOL)_hasAllOriginalResourcesLocallyAvailable;
 - (BOOL)_hasBecomeNonVisibleToMemoriesAndPersonsAndSuggestions:(id)arg1;
 - (BOOL)_hasFFCDimensions;
 - (BOOL)_hasPanoramaDimensions;
@@ -631,10 +629,9 @@
 - (void)_setVideoComplementData:(id)arg1;
 - (id)_settingsDictionaryFromFilter:(id)arg1;
 - (id)_settingsDictionaryFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
-- (void)_setupMediaConversionSourceURLCollection:(id)arg1 destinationURLCollection:(id)arg2 conversionOptions:(id)arg3;
-- (void)_setupMediaConversionSourceURLCollection:(id)arg1 destinationURLCollection:(id)arg2 forDeferredAdjustmentOnAsset:(id)arg3 baseVersion:(long long)arg4;
+- (void)_setupMediaConversionSourceURLCollection:(id)arg1 destinationURLCollection:(id)arg2 baseVersion:(long long)arg3;
 - (BOOL)_shouldSetupVideoComplementForAsyncEditWithBaseVersion:(long long)arg1;
-- (id)_sourcePathForAsyncEditWithBaseVersion:(long long)arg1;
+- (id)_sourceURLForAsyncEditWithBaseVersion:(long long)arg1;
 - (struct CGSize)_targetSizeForInputSize:(struct CGSize)arg1 maxPixelSize:(unsigned long long)arg2;
 - (void)_tryAddDelayedAnalysisJobToManagedObjectContext:(id)arg1 workerFlags:(int)arg2 forWorkerType:(short)arg3;
 - (void)_updateAssetSubtypeForCPLAssetChange:(id)arg1;
@@ -696,6 +693,7 @@
 - (BOOL)canMoveToTrash;
 - (BOOL)canPerformDeleteOperation;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
+- (BOOL)checkAllResourcesRequiredForCPLDisableWithReachableBlock:(CDUnknownBlockType)arg1;
 - (int)cloudCommentsStatusForOwnedAsset:(BOOL)arg1;
 - (BOOL)cloudHasSameOwnerAsAsset:(id)arg1;
 - (id)cloudSharedAssetPathForPlaceholderKind:(short)arg1;
@@ -770,7 +768,6 @@
 - (void)handleDelayedAnalysisStateUpdateForDetectedFace:(id)arg1 withChangedValues:(id)arg2 managedObjectContext:(id)arg3;
 - (void)handleDelayedAnalysisStateUpdateWithChangedValues:(id)arg1 managedObjectContext:(id)arg2;
 - (BOOL)hasAdjustedCPLThumbResource;
-- (BOOL)hasAllRequiredResourcesLocallyAvailable;
 - (BOOL)hasGPS;
 - (BOOL)hasJustBeenHidden;
 - (BOOL)hasJustBeenShown;
@@ -884,7 +881,6 @@
 - (id)pathForNonAdjustedSmallVideoFile;
 - (id)pathForReframeDiagnosticDirectory;
 - (id)pathForReframeDiagnosticFile;
-- (id)pathForSideCarImageFile;
 - (id)pathForSpatialOverCaptureDiagnosticFile;
 - (id)pathForSubstandardFullsizeRenderImageFile;
 - (id)pathForTransientVideoPosterFramePreview;
@@ -894,6 +890,7 @@
 - (id)payloadForChangedKeys:(id)arg1;
 - (id)payloadID;
 - (id)payloadIDForTombstone:(id)arg1;
+- (void)persistMetadataToFileURL:(id)arg1;
 - (void)persistMetadataToFilesystem;
 - (id)persistedAdjustedResources;
 - (id)persistedResourcesMatching:(CDUnknownBlockType)arg1;
@@ -946,7 +943,7 @@
 - (void)setAdjustments:(id)arg1 renderedContentURL:(id)arg2 penultimateRenderedJPEGData:(id)arg3 penultimateRenderedVideoContentURL:(id)arg4 isSubstandardRender:(BOOL)arg5 deferredProcessingNeeded:(BOOL)arg6 fullSizeRenderSize:(struct CGSize)arg7 renderedVideoComplementContentURL:(id)arg8 penultimateRenderedVideoComplementContentURL:(id)arg9 renderedVideoPosterContentURL:(id)arg10 shouldUpdateAttributes:(BOOL)arg11 fileIngestionType:(long long)arg12 shouldGenerateThumbnails:(BOOL)arg13;
 - (void)setAdjustments:(id)arg1 renderedContentURL:(id)arg2 penultimateRenderedJPEGData:(id)arg3 penultimateRenderedVideoContentURL:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementContentURL:(id)arg7 penultimateRenderedVideoComplementContentURL:(id)arg8 renderedVideoPosterContentURL:(id)arg9 shouldUpdateAttributes:(BOOL)arg10 fileIngestionType:(long long)arg11;
 - (void)setAdjustments:(id)arg1 shouldUpdateAttributes:(BOOL)arg2;
-- (BOOL)setAttributesFromMainFileURL:(id)arg1 savedAssetType:(short)arg2 isPlaceholder:(BOOL)arg3 imageSource:(struct CGImageSource **)arg4 imageData:(id *)arg5;
+- (BOOL)setAttributesFromMainFileURL:(id)arg1 savedAssetType:(short)arg2 isPlaceholder:(BOOL)arg3 placeholderFileURL:(id)arg4 imageSource:(struct CGImageSource **)arg5 imageData:(id *)arg6;
 - (void)setBurstUuidFromImageProperties:(id)arg1;
 - (BOOL)setCameraCaptureDeviceFromImageProperties:(id)arg1;
 - (void)setColorSpaceNameFromProperties:(id)arg1;
@@ -1024,6 +1021,7 @@
 - (void)updateVideoAttributesFromAVAsset:(id)arg1;
 - (void)updateVideoExtendedAttributesFromAVAsset:(id)arg1;
 - (short)uploadAttempts;
+- (id)urlForSideCarImageFile;
 - (id)userAddCloudSharedCommentWithText:(id)arg1;
 - (void)userDeleteCloudSharedComment:(id)arg1;
 - (void)userReadAllCloudSharedComments;

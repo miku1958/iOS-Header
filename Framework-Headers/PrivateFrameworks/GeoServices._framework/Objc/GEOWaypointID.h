@@ -13,7 +13,6 @@
 @interface GEOWaypointID : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOStructuredAddress *_addressHint;
     NSMutableArray *_formattedAddressLineHints;
@@ -21,6 +20,9 @@
     unsigned long long _muid;
     NSString *_placeNameHint;
     unsigned long long _resultProviderId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _addressGeocodeAccuracyHint;
     int _placeTypeHint;
     struct {
@@ -83,6 +85,8 @@
 - (id)formattedAddressLineHintAtIndex:(unsigned long long)arg1;
 - (unsigned long long)formattedAddressLineHintsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeTypeHintAsString:(int)arg1;

@@ -5,9 +5,11 @@
 //
 
 @class NSObject, NSString, _DKKnowledgeStorage;
+@protocol OS_xpc_object;
 
 @protocol _DKStandingQuery
 
+@property (strong, nonatomic) NSObject<OS_xpc_object> *activity;
 @property (strong, nonatomic) NSString *queryIdentifier;
 
 - (void)executeWithStorage:(_DKKnowledgeStorage *)arg1;

@@ -19,10 +19,12 @@
 
 + (id)ActivityEmoji;
 + (id)CelebrationEmoji;
++ (id)CoupleMultiSkinToneEmoji;
 + (id)DingbatsVariantEmoji;
 + (id)FlagsEmoji;
 + (id)FoodAndDrinkEmoji;
 + (id)GenderEmoji;
++ (id)MultiPersonFamilySkinToneEmoji;
 + (id)NatureEmoji;
 + (id)NewlyAddedEmoji;
 + (id)NoneVariantEmoji;
@@ -30,14 +32,18 @@
 + (id)PeopleEmoji;
 + (id)PrepopulatedEmoji;
 + (id)ProfessionEmoji;
++ (id)ProfessionWithoutSkinToneEmoji;
 + (id)SkinToneEmoji;
 + (id)SymbolsEmoji;
 + (id)TravelAndPlacesEmoji;
 + (id)_baseLocalizationKeyForIdentifier:(id)arg1;
 + (id)_emojiSetForIdentifier:(id)arg1;
++ (BOOL)_isComposedCoupleMultiSkinToneEmoji:(id)arg1;
++ (BOOL)_isCoupleMultiSkinToneEmoji:(id)arg1;
 + (BOOL)_isDingbatsVariantEmoji:(id)arg1;
 + (BOOL)_isFlagEmoji:(id)arg1;
 + (BOOL)_isGenderEmoji:(id)arg1;
++ (BOOL)_isMultiPersonFamilySkinToneEmoji:(id)arg1;
 + (BOOL)_isNewlyAddedEmoji:(id)arg1;
 + (BOOL)_isNoneVariantEmoji:(id)arg1;
 + (BOOL)_isProfessionEmoji:(id)arg1;

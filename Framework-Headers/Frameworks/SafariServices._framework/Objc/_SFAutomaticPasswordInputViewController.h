@@ -31,6 +31,7 @@
 + (void)inputViewControllerWithAutoFillContext:(id)arg1 passwordRules:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (struct CGSize)_currentKeyboardSize;
+- (void)_dismissKeyboard:(id)arg1;
 - (BOOL)_inputViewControllerShouldDirectlyInsertPassword;
 - (void)_postButtonPressedNotificationForButton:(long long)arg1;
 - (void)_updateKeyboardHeight;

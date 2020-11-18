@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1 (swiftlang-1100.2.259.70 clang-1100.2.32.1)
-// swift-module-flags: -target arm64-apple-ios13.1 -enable-objc-interop -swift-version 5 -enforce-exclusivity=checked -O -enable-library-evolution -module-name RealityKit
+// swift-compiler-version: Apple Swift version 5.1.1 (swiftlang-1100.2.274.2 clang-1100.2.32.1)
+// swift-module-flags: -target arm64-apple-ios13.2 -enable-objc-interop -swift-version 5 -enforce-exclusivity=checked -O -enable-library-evolution -module-name RealityKit
 import ARKit
 import Combine
 import CoreGraphics
@@ -2889,6 +2889,7 @@ extension ARView : ARKit.ARSessionProviding {
   }
   public func __enableRayTracedGroundingShadow()
   public func __disableRayTracedGroundingShadow()
+  public static func __clusterSceneBoxes(sceneAABBs: inout [RealityKit.BoundingBox])
 }
 extension ARView {
   @discardableResult
@@ -3259,6 +3260,7 @@ extension HasPointLight {
 extension __REAssetBundle {
   public static func __init(element: RealityKit.Entity, assetService: RealityKit.__REAssetService) -> RealityKit.__REAssetBundle
   public static func __init(realityScenes: [RealityKit.Scene], assetService: RealityKit.__REAssetService) -> RealityKit.__REAssetBundle
+  public static func loadSceneDescriptors(url: Foundation.URL) throws -> [RealityKit.__REAssetBundle.AssetMap.SceneDescriptor]
 }
 @available(OSX 10.15, iOS 13.0, *)
 public class LoadRequest<Output> : Combine.Publisher {

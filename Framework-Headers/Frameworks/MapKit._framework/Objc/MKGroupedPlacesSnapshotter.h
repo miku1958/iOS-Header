@@ -19,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) MKMapCamera *camera;
+@property (readonly, nonatomic, getter=isLoading) BOOL loading;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;

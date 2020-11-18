@@ -20,7 +20,7 @@
 - (id)localizedDefaultOutputName;
 - (id)name;
 - (id)outputContentClasses;
-- (id)outputMeasurementUnit;
+- (id)outputMeasurementUnitType;
 - (id)parameterDefinitions;
 - (id)parameterSummary;
 - (id)properties;

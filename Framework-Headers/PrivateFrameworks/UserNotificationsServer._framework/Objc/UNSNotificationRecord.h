@@ -72,6 +72,7 @@
     NSString *_title;
     NSArray *_titleLocalizationArguments;
     NSString *_titleLocalizationKey;
+    unsigned long long _realertCount;
     NSString *_summaryArgument;
     unsigned long long _summaryArgumentCount;
     NSString *_targetContentIdentifier;
@@ -135,6 +136,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property (copy, nonatomic) NSNumber *mutableContent; // @synthesize mutableContent=_mutableContent;
+@property (nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (copy, nonatomic) NSDate *requestDate; // @synthesize requestDate=_requestDate;
 @property (nonatomic) BOOL shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
 @property (nonatomic) BOOL shouldBackgroundDefaultAction; // @synthesize shouldBackgroundDefaultAction=_shouldBackgroundDefaultAction;

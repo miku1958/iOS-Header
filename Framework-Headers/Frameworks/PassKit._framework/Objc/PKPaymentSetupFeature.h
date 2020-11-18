@@ -13,9 +13,11 @@
 {
     long long _type;
     long long _state;
+    long long _supportedOptions;
 }
 
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (nonatomic) long long supportedOptions; // @synthesize supportedOptions=_supportedOptions;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)paymentSetupFeatureWithProtobuf:(id)arg1;

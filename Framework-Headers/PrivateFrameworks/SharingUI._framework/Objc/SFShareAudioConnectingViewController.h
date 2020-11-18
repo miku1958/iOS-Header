@@ -6,14 +6,16 @@
 
 #import <SharingUI/SFShareAudioBaseViewController.h>
 
-@class UIActivityIndicatorView, UIButton, UIImageView, UILabel, UIView;
+@class SFMediaPlayerView, UIActivityIndicatorView, UIButton, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface SFShareAudioConnectingViewController : SFShareAudioBaseViewController
 {
+    unsigned int _productIDActive;
     unsigned int _colorCode;
     unsigned int _productID;
     UIImageView *_productImageView;
+    SFMediaPlayerView *_productMovieView;
     UIImageView *_shareImageView;
     UIView *_progressView;
     UIActivityIndicatorView *_progressActivity;
@@ -25,12 +27,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int colorCode; // @synthesize colorCode=_colorCode;
 @property (nonatomic) unsigned int productID; // @synthesize productID=_productID;
 @property (strong, nonatomic) UIImageView *productImageView; // @synthesize productImageView=_productImageView;
+@property (strong, nonatomic) SFMediaPlayerView *productMovieView; // @synthesize productMovieView=_productMovieView;
 @property (strong, nonatomic) UIActivityIndicatorView *progressActivity; // @synthesize progressActivity=_progressActivity;
 @property (strong, nonatomic) UILabel *progressLabel; // @synthesize progressLabel=_progressLabel;
 @property (strong, nonatomic) UIView *progressView; // @synthesize progressView=_progressView;
 @property (strong, nonatomic) UIImageView *shareImageView; // @synthesize shareImageView=_shareImageView;
 
 - (void).cxx_destruct;
+- (void)_updateDeviceVisual:(id)arg1;
 - (void)_updateForDeviceInfo;
 - (void)eventCancel:(id)arg1;
 - (void)sessionProgressEvent:(int)arg1 info:(id)arg2;

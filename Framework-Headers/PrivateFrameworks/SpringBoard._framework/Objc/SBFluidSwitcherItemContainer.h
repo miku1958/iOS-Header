@@ -18,7 +18,7 @@
 {
     SBAppSwitcherPageView *_pageView;
     id<SBFluidSwitcherItemContainerDelegate> _delegate;
-    SBFluidSwitcherTouchPassThroughScrollView *_verticalScrollView;
+    SBFluidSwitcherTouchPassThroughScrollView *_killScrollView;
     SBFluidSwitcherItemContainerHeaderView *_iconAndLabelHeader;
     SBFluidSwitcherIconOverlayView *_iconOverlayView;
     struct UIRectCornerRadii _contentCornerRadii;
@@ -43,7 +43,8 @@
     BOOL _active;
     BOOL _visible;
     double _unobscuredMargin;
-    double _minimumVerticalTranslationForKillingContainer;
+    unsigned long long _killAxis;
+    double _minimumTranslationForKillingContainer;
     double _contentAlpha;
     NSString *_additionalDescriptionDebugText;
     NSArray *_headerItems;
@@ -67,11 +68,11 @@
 @property (copy, nonatomic) NSArray *headerItems; // @synthesize headerItems=_headerItems;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (readonly, nonatomic) BOOL isDeceleratingTowardsKillZone;
-@property (nonatomic) double killGestureHysteresis;
+@property (nonatomic) unsigned long long killAxis; // @synthesize killAxis=_killAxis;
 @property (nonatomic, getter=isKillable) BOOL killable; // @synthesize killable=_killable;
 @property (readonly, nonatomic) double killingProgress;
 @property (nonatomic) double lighteningAlpha;
-@property (nonatomic) double minimumVerticalTranslationForKillingContainer; // @synthesize minimumVerticalTranslationForKillingContainer=_minimumVerticalTranslationForKillingContainer;
+@property (nonatomic) double minimumTranslationForKillingContainer; // @synthesize minimumTranslationForKillingContainer=_minimumTranslationForKillingContainer;
 @property (nonatomic) double shadowAlpha;
 @property (nonatomic) double shadowOffset;
 @property (nonatomic) long long shadowStyle;
@@ -85,7 +86,12 @@
 
 + (double)preferredRestingVisibleMarginForBounds:(struct CGRect)arg1;
 - (void).cxx_destruct;
+- (struct CGPoint)_CGPointFromScalarBasedOnKillAxis:(double)arg1;
+- (double)_CGPointXOrYBasedOnKillAxis:(struct CGPoint)arg1;
+- (struct CGSize)_CGSizeFromLengthBasedOnKillAxis:(double)arg1;
+- (double)_CGSizeWidthOrHeightBasedOnKillAxis:(struct CGSize)arg1;
 - (void)_addPageView;
+- (struct CGPoint)_contentOffsetAtRest;
 - (struct CGPoint)_contentOffsetForKillingProgress:(double)arg1;
 - (struct CGSize)_contentSizeForScrollView;
 - (id)_createScrollView;

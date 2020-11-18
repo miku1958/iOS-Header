@@ -31,6 +31,7 @@
 - (id)_fetchHomeAndWorkLocationsOfInterestWithRoutineManager:(id)arg1;
 - (id)_fetchLocationsOfInterestWithinDateInterval:(id)arg1 routineManager:(id)arg2;
 - (void)_pinPendingVisits;
+- (void)fetchLocationsOfInterestIfNeeded;
 - (BOOL)hasLocationsOfInterestInformation;
 - (id)initWithFetchDateInterval:(id)arg1;
 - (void)invalidateLocationsOfInterest;

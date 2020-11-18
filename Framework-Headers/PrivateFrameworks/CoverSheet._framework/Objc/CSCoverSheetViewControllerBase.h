@@ -99,6 +99,7 @@
 - (void)registerView:(id)arg1 forRole:(long long)arg2 options:(unsigned long long)arg3;
 - (void)sendAction:(id)arg1;
 - (void)setDisplayLayoutElementActive:(BOOL)arg1;
+- (void)setDisplayLayoutElementActive:(BOOL)arg1 immediately:(BOOL)arg2;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)unregisterAllViews;

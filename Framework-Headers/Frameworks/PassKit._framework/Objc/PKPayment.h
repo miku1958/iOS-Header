@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSMutableDictionary, PKContact, PKPaymentToken, PKShippingMethod;
+@class NSData, NSMutableDictionary, NSString, PKContact, PKPaymentToken, PKShippingMethod;
 
 @interface PKPayment : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     NSData *_credential;
     NSMutableDictionary *_authKitAuthenticationResults;
     long long _biometricAuthorizationAttempts;
+    NSString *_installmentAuthorizationToken;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *authKitAuthenticationResults; // @synthesize authKitAuthenticationResults=_authKitAuthenticationResults;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
 @property (nonatomic) long long biometricAuthorizationAttempts; // @synthesize biometricAuthorizationAttempts=_biometricAuthorizationAttempts;
 @property (strong, nonatomic) NSData *credential; // @synthesize credential=_credential;
+@property (copy, nonatomic) NSString *installmentAuthorizationToken; // @synthesize installmentAuthorizationToken=_installmentAuthorizationToken;
 @property (readonly, nonatomic) const void *shippingAddress;
 @property (strong, nonatomic) PKContact *shippingContact; // @synthesize shippingContact=_shippingContact;
 @property (strong, nonatomic) PKShippingMethod *shippingMethod; // @synthesize shippingMethod=_shippingMethod;

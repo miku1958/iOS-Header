@@ -27,6 +27,7 @@
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2;
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2 deferSpotlightIndexing:(BOOL)arg3;
 - (void)archiveChat:(id)arg1;
+- (void)blackholeChat:(id)arg1;
 - (id)chatsGUIDsForMessageWithGUID:(id)arg1;
 - (id)chatsGUIDsForMessageWithIdentifier:(long long)arg1;
 - (id)chatsWithHandle:(id)arg1 onService:(id)arg2;
@@ -40,6 +41,7 @@
 - (void)setChatIsFiltered:(BOOL)arg1 withChatGuid:(id)arg2;
 - (id)storeChat:(id)arg1;
 - (void)unarchiveChat:(id)arg1;
+- (void)unblackholeChat:(id)arg1;
 - (unsigned long long)unreadCountForChat:(id)arg1;
 - (BOOL)updateHandle:(id)arg1 forMessage:(id)arg2 WithPC:(id)arg3 onService:(id)arg4;
 - (BOOL)updatePersonCentricIDForHandlesInChatWithMessage:(id)arg1 fromIdentifier:(id)arg2 personCentricID:(id)arg3 chat:(id)arg4;

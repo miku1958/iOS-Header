@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 + (id)_darkStyleGlyphColor;
 + (id)_standardGlyphColor;
 - (void).cxx_destruct;
-- (id)imageSymbolConfigurationForDock;
 - (id)imageWithRenderConfig:(id)arg1;
 - (id)initWithImageName:(id)arg1 identifier:(id)arg2;
 

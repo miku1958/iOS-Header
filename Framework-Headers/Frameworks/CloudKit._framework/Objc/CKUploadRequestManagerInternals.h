@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)checkNetworkReachability;
 - (void)closeSyncEngine;
 - (void)commonInitWithContainer:(id)arg1 repairContainerOverrides:(id)arg2;
+- (id)createDatabase;
 - (id)createStateMachine;
 - (void)dispatchEvent:(long long)arg1;
 - (void)dispatchEvent:(long long)arg1 synchronously:(BOOL)arg2;

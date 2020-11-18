@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <FileProvider/NSCopying-Protocol.h>
-#import <FileProvider/NSProgressReporting-Protocol.h>
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
 @class FPItemCollection, NSArray, NSError, NSFileProviderDomain, NSFileProviderManager, NSProgress, NSString, NSURL;
 
-@interface FPProviderDomain : NSObject <NSSecureCoding, NSCopying, NSProgressReporting>
+@interface FPProviderDomain : NSObject <NSSecureCoding, NSCopying>
 {
     FPItemCollection *_itemCollection;
     BOOL _keepLocalStorageUpToDate;
@@ -28,7 +27,7 @@
     BOOL _needsAuthentication;
     BOOL _ejectable;
     BOOL _shouldHideExtensionName;
-    NSProgress *_progress;
+    BOOL _shouldHideDomainDisplayName;
     NSString *_identifier;
     NSString *_providerID;
     NSArray *_supportedFileTypes;
@@ -36,6 +35,7 @@
     NSURL *_extensionBundleURL;
     NSArray *_storageURLs;
     NSArray *_supportedSearchFilters;
+    NSProgress *_progress;
     NSFileProviderManager *_manager;
     NSString *_providerDisplayName;
     NSFileProviderDomain *_domain;
@@ -47,8 +47,6 @@
 @property (readonly, nonatomic) BOOL canDisconnect;
 @property (readonly, nonatomic) NSString *containingBundleIdentifier;
 @property (readonly, nonatomic) BOOL containsPhotos;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSFileProviderDomain *domain; // @synthesize domain=_domain;
 @property (readonly, nonatomic) NSString *domainDisplayName;
 @property (readonly, nonatomic) NSString *domainFullDisplayName;
@@ -58,7 +56,6 @@
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSString *extensionBundleIdentifier;
 @property (strong, nonatomic) NSURL *extensionBundleURL; // @synthesize extensionBundleURL=_extensionBundleURL;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic) NSString *iCloudAccountIdentifier;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -73,10 +70,10 @@
 @property (readonly, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
 @property (strong, nonatomic) NSString *purposeIdentifier; // @synthesize purposeIdentifier=_purposeIdentifier;
 @property (nonatomic, getter=isReadOnly) BOOL readOnly; // @synthesize readOnly=_readOnly;
+@property (nonatomic) BOOL shouldHideDomainDisplayName; // @synthesize shouldHideDomainDisplayName=_shouldHideDomainDisplayName;
 @property (nonatomic) BOOL shouldHideExtensionName; // @synthesize shouldHideExtensionName=_shouldHideExtensionName;
 @property (readonly) NSString *spotlightMountPoint;
 @property (strong, nonatomic) NSArray *storageURLs; // @synthesize storageURLs=_storageURLs;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *supportedFileTypes; // @synthesize supportedFileTypes=_supportedFileTypes;
 @property (strong, nonatomic) NSArray *supportedSearchFilters; // @synthesize supportedSearchFilters=_supportedSearchFilters;
 @property (nonatomic) BOOL supportsEnumeration; // @synthesize supportsEnumeration=_supportsEnumeration;
@@ -95,10 +92,12 @@
 + (id)providerDomainsWithError:(id *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_setupProgressReporting;
 - (id)bundleURL;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProviderID:(id)arg1 domain:(id)arg2;

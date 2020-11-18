@@ -21,6 +21,7 @@
 @property (strong, nonatomic) SearchUIContactsThumbnailView *view; // @dynamic view;
 
 + (BOOL)supportsRowModel:(id)arg1;
+- (id)contactsForPreviewInteractionForAvatarView:(id)arg1 suggestedKeysToFetch:(id)arg2;
 - (void)hide;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (id)setupView;

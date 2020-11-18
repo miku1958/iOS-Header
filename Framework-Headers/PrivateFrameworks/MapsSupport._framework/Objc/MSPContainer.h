@@ -26,12 +26,14 @@
     NSMutableArray *_enqueuedCoalescingEditBarrierBlocks;
     NSMutableArray *_enqueuedCoalescingCompletionBlocks;
     BOOL _hasScheduledDelayedCommitForCoalescedEdits;
+    BOOL _hasLoadedContents;
     BOOL _preventsAssertionsForDuplicateStorageIdentifiers;
     BOOL _simulatesClearingDiscardableDataAfterOperations;
 }
 
 @property (readonly, nonatomic) BOOL _preventsAssertionsForDuplicateStorageIdentifiers; // @synthesize _preventsAssertionsForDuplicateStorageIdentifiers;
 @property (readonly, nonatomic, getter=_accessQueue) NSObject<OS_dispatch_queue> *accessQueue;
+@property (readonly, nonatomic) BOOL containerHasLoadedContents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) MSPQuerySource *entireContentsQuerySource;

@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDMPCSessionDataMediaProfileSource-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDMPCSessionController, NSObject, NSString, NSUUID;
+@class HMDHome, HMDMPCSessionController, NSObject, NSString, NSUUID;
 @protocol HMDMediaActionRouterDataSource, OS_dispatch_queue;
 
 @interface HMDMediaActionRouter : HMFObject <HMDMPCSessionDataMediaProfileSource, HMFMessageReceiver>
@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak) HMDHome *home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) HMDMPCSessionController *mpcSessionController; // @synthesize mpcSessionController=_mpcSessionController;
@@ -38,7 +39,8 @@
 - (id)mediaProfileWithUUID:(id)arg1;
 - (void)routeMediaActionForExecution:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)routeMessage:(id)arg1;
-- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)routeSessionDataForExecution:(id)arg1 encodePlaybackArchive:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)sendMediaActionMessageToDevice:(id)arg1 sessionData:(id)arg2 encodePlaybackArchive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)targetResidentDeviceForExecutingMediaActionWithProfiles:(id)arg1;
 
 @end

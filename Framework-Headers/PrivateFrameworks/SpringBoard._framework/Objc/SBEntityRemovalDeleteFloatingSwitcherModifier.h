@@ -13,7 +13,10 @@
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
     long long _floatingConfiguration;
+    BOOL _blursFromAppLayout;
 }
+
+@property (nonatomic) BOOL blursFromAppLayout; // @synthesize blursFromAppLayout=_blursFromAppLayout;
 
 - (void).cxx_destruct;
 - (BOOL)_isIndexFromAppLayout:(unsigned long long)arg1;

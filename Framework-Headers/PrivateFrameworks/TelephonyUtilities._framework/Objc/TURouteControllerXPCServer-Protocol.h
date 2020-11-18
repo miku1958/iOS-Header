@@ -11,7 +11,7 @@
 @protocol TURouteControllerXPCServer <NSObject>
 - (oneway void)localRoutesByUniqueIdentifier:(void (^)(NSDictionary *))arg1;
 - (oneway void)pairedHostDeviceRoutesByUniqueIdentifier:(void (^)(NSDictionary *))arg1;
-- (oneway void)pickLocalRouteWithUniqueIdentifier:(NSString *)arg1;
-- (oneway void)pickPairedHostDeviceRouteWithUniqueIdentifier:(NSString *)arg1;
+- (oneway void)pickLocalRouteWithUniqueIdentifier:(NSString *)arg1 shouldWaitUntilAvailable:(BOOL)arg2;
+- (oneway void)pickPairedHostDeviceRouteWithUniqueIdentifier:(NSString *)arg1 shouldWaitUntilAvailable:(BOOL)arg2;
 @end
 

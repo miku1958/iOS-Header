@@ -15,12 +15,12 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
+- (long long)liveContentRasterizationStyle;
 - (double)opacityForIndex:(unsigned long long)arg1;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 
 @end

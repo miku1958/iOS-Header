@@ -6,14 +6,9 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSSet;
-
 @interface _TtC16HealthExperience8DataType : NSManagedObject
 {
 }
-
-@property (nonatomic) long long codeRaw; // @dynamic codeRaw;
-@property (nonatomic, copy) NSSet *feedItems; // @dynamic feedItems;
 
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 

@@ -11,10 +11,13 @@
 #import <NetworkExtension/NEPluginDriver-Protocol.h>
 
 @class NEExtensionProviderHostContext, NSArray, NSExtension, NSString, NSUUID, NSXPCInterface;
-@protocol NEPluginManagerObjectFactory, OS_dispatch_queue;
+@protocol NEPluginManagerObjectFactory, OS_dispatch_queue, OS_dispatch_source;
 
 @interface NEAgentExtension : NSObject <NEAgentSessionDelegate, NEExtensionProviderHostDelegate, NEPluginDriver>
 {
+    BOOL _appsUpdateStarted;
+    BOOL _appsUpdateEnding;
+    BOOL _isAppExtensionHost;
     id<NEPluginManagerObjectFactory> _managerObjectFactory;
     NEExtensionProviderHostContext *_sessionContext;
     NSObject<OS_dispatch_queue> *_queue;
@@ -22,12 +25,15 @@
     NSString *_extensionIdentifier;
     NSXPCInterface *_managerProtocol;
     NSXPCInterface *_driverProtocol;
+    NSObject<OS_dispatch_source> *_sendFailedTimer;
     NSUUID *_sessionRequestIdentifier;
     NSExtension *_extension;
     NSArray *_extensionUUIDs;
     CDUnknownBlockType _pendingDisposeCompletion;
 }
 
+@property BOOL appsUpdateEnding; // @synthesize appsUpdateEnding=_appsUpdateEnding;
+@property BOOL appsUpdateStarted; // @synthesize appsUpdateStarted=_appsUpdateStarted;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSXPCInterface *driverInterface;
@@ -36,6 +42,7 @@
 @property (readonly, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (readonly, nonatomic) NSArray *extensionUUIDs; // @synthesize extensionUUIDs=_extensionUUIDs;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAppExtensionHost; // @synthesize isAppExtensionHost=_isAppExtensionHost;
 @property (readonly, nonatomic) NSXPCInterface *managerInterface;
 @property (readonly, weak) id<NEPluginManagerObjectFactory> managerObjectFactory; // @synthesize managerObjectFactory=_managerObjectFactory;
 @property (readonly) NSXPCInterface *managerProtocol; // @synthesize managerProtocol=_managerProtocol;
@@ -43,6 +50,7 @@
 @property (readonly, nonatomic) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) int requiredEntitlement;
+@property (strong) NSObject<OS_dispatch_source> *sendFailedTimer; // @synthesize sendFailedTimer=_sendFailedTimer;
 @property (strong, nonatomic) NEExtensionProviderHostContext *sessionContext; // @synthesize sessionContext=_sessionContext;
 @property (strong, nonatomic) NSUUID *sessionRequestIdentifier; // @synthesize sessionRequestIdentifier=_sessionRequestIdentifier;
 @property (readonly) Class superclass;
@@ -50,18 +58,22 @@
 
 - (void).cxx_destruct;
 - (void)cleanupExtensionWithRequestIdentifier:(id)arg1;
+- (void)dealloc;
 - (void)extension:(id)arg1 didFailWithError:(id)arg2;
 - (void)extension:(id)arg1 didStartWithError:(id)arg2;
 - (void)extensionDidStop:(id)arg1;
 - (void)handleAppsUninstalled:(id)arg1;
+- (void)handleAppsUpdateBegins:(id)arg1;
+- (void)handleAppsUpdateEnding:(id)arg1;
+- (void)handleAppsUpdateEnds:(id)arg1;
 - (void)handleCancel;
 - (void)handleDisposeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)handleExtensionExit:(id)arg1;
 - (void)handleExtensionStartedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleInitWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handlePluginUpdateBegins:(id)arg1;
-- (void)handlePluginUpdateEnds:(id)arg1;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginEndpoint:(id)arg3 pluginUUID:(id)arg4 queue:(id)arg5 factory:(id)arg6;
 - (id)initWithPluginType:(id)arg1 pluginClass:(long long)arg2 pluginInfo:(id)arg3 queue:(id)arg4 factory:(id)arg5;
+- (BOOL)isSignedWithDeveloperID:(id)arg1;
 - (void)sendExtensionFailed;
 - (BOOL)shouldAllowUnentitledExtension:(id)arg1;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -21,7 +21,6 @@
 - (void).cxx_destruct;
 - (id)_handleTransitionEvent:(id)arg1;
 - (void)_setTransitionPhase:(unsigned long long)arg1;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)handleGestureEvent:(id)arg1;
@@ -33,13 +32,15 @@
 - (BOOL)isUpdatingLayout;
 - (long long)keyboardSuppressionMode;
 - (long long)layoutUpdateMode;
+- (long long)liveContentRasterizationStyle;
 - (long long)sceneDeactivationReason;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionDidEnd;
+- (long long)transitionLiveContentRasterizationStyle;
 - (id)transitionWillBegin;
 - (id)transitionWillUpdate;
 - (double)visibleMarginForItemContainerAtIndex:(unsigned long long)arg1;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
 - (BOOL)wantsResignActiveAssertion;
 

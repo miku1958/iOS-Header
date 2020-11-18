@@ -11,6 +11,7 @@
 @interface _TtC5TeaUI11ContextMenu : _TtCs12_SwiftObject
 {
     MISSING_TYPE *groups;
+    MISSING_TYPE *activityItemConfiguration;
 }
 
 @end

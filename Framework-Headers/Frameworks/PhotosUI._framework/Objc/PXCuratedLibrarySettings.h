@@ -14,6 +14,7 @@
     BOOL _enablePlayMovieInYears;
     BOOL _enableSlideshowInYears;
     BOOL _launchToSavedAllPhotosScrollPosition;
+    BOOL _emulateEmptyLibrary;
     BOOL _showStatusBar;
     BOOL _alwaysShowSecondaryToolbarAtBottom;
     BOOL _enableTapOnTitleToScroll;
@@ -35,6 +36,7 @@
     BOOL _allPhotosTapsZoomsToLastIndividualDensity;
     BOOL _allPhotosDebugLayers;
     BOOL _enableAllPhotosHeaderBlur;
+    BOOL _preheatThumbnailsWhenIdle;
     BOOL _forceFloatingHeaderVisible;
     BOOL _showDebugInformationInFloatingHeader;
     BOOL _enableShowAllButtons;
@@ -97,6 +99,7 @@
     double _allPhotosDecadesDensityScale;
     double _allPhotosDenseLevelMinimumScreensOfContent;
     double _allPhotosIndividualLevelMinimumScreensOfContent;
+    double _allPhotosHeaderSpaceMinimumScreensOfContent;
     double _allPhotosShiftingRequiredScreensTopDistance;
     double _allPhotosZoomingHeaderTintOpacity;
     long long _allPhotosColumnsChoiceIndex;
@@ -118,6 +121,7 @@
     long long _maxColumnsForIndividualItems;
     long long _maxColumnsForSaliency;
     long long _maxColumnsForSingleDate;
+    long long _allPhotosPreheatDenserZoomLevels;
     double _allPhotosAlphaMaxAcceptableScale;
     double _allPhotosAlphaMinAcceptableCoverage;
     double _allPhotosAlphaMinTransitionDistance;
@@ -179,11 +183,13 @@
 @property (nonatomic) BOOL allPhotosDisableSystemSelectGesture; // @synthesize allPhotosDisableSystemSelectGesture=_allPhotosDisableSystemSelectGesture;
 @property (nonatomic) double allPhotosHeaderGradientAlpha; // @synthesize allPhotosHeaderGradientAlpha=_allPhotosHeaderGradientAlpha;
 @property (nonatomic) double allPhotosHeaderGradientHeight; // @synthesize allPhotosHeaderGradientHeight=_allPhotosHeaderGradientHeight;
+@property (nonatomic) double allPhotosHeaderSpaceMinimumScreensOfContent; // @synthesize allPhotosHeaderSpaceMinimumScreensOfContent=_allPhotosHeaderSpaceMinimumScreensOfContent;
 @property (nonatomic) double allPhotosIndividualLevelMinimumScreensOfContent; // @synthesize allPhotosIndividualLevelMinimumScreensOfContent=_allPhotosIndividualLevelMinimumScreensOfContent;
 @property (nonatomic) double allPhotosInteritemSpacing; // @synthesize allPhotosInteritemSpacing=_allPhotosInteritemSpacing;
 @property (nonatomic) long long allPhotosMaxPhotoCount; // @synthesize allPhotosMaxPhotoCount=_allPhotosMaxPhotoCount;
 @property (nonatomic) long long allPhotosOnlyPhotosFromToday; // @synthesize allPhotosOnlyPhotosFromToday=_allPhotosOnlyPhotosFromToday;
 @property (nonatomic) double allPhotosPinchSmoothingDuration; // @synthesize allPhotosPinchSmoothingDuration=_allPhotosPinchSmoothingDuration;
+@property (nonatomic) long long allPhotosPreheatDenserZoomLevels; // @synthesize allPhotosPreheatDenserZoomLevels=_allPhotosPreheatDenserZoomLevels;
 @property (nonatomic) double allPhotosRecenterSpringDamping; // @synthesize allPhotosRecenterSpringDamping=_allPhotosRecenterSpringDamping;
 @property (nonatomic) double allPhotosRecenterSpringStiffness; // @synthesize allPhotosRecenterSpringStiffness=_allPhotosRecenterSpringStiffness;
 @property (nonatomic) long long allPhotosRubberBandEffect; // @synthesize allPhotosRubberBandEffect=_allPhotosRubberBandEffect;
@@ -214,6 +220,7 @@
 @property (nonatomic) double defaultAnimationDuration; // @synthesize defaultAnimationDuration=_defaultAnimationDuration;
 @property (nonatomic) double defaultZoomLevelTransitionAnimationDuration; // @synthesize defaultZoomLevelTransitionAnimationDuration=_defaultZoomLevelTransitionAnimationDuration;
 @property (nonatomic) double defaultZoomLevelTransitionMaximumScaleAroundAnchor; // @synthesize defaultZoomLevelTransitionMaximumScaleAroundAnchor=_defaultZoomLevelTransitionMaximumScaleAroundAnchor;
+@property (nonatomic) BOOL emulateEmptyLibrary; // @synthesize emulateEmptyLibrary=_emulateEmptyLibrary;
 @property (nonatomic) BOOL enableAllPhotosBadges; // @synthesize enableAllPhotosBadges=_enableAllPhotosBadges;
 @property (nonatomic) BOOL enableAllPhotosDecadesDensity; // @synthesize enableAllPhotosDecadesDensity=_enableAllPhotosDecadesDensity;
 @property (nonatomic) BOOL enableAllPhotosHeaderBlur; // @synthesize enableAllPhotosHeaderBlur=_enableAllPhotosHeaderBlur;
@@ -280,6 +287,7 @@
 @property (nonatomic) double nonInterestingPromotionScore; // @synthesize nonInterestingPromotionScore=_nonInterestingPromotionScore;
 @property (nonatomic) BOOL playBestTimeRange; // @synthesize playBestTimeRange=_playBestTimeRange;
 @property (nonatomic) double playbackVisibleRectEdgeInset; // @synthesize playbackVisibleRectEdgeInset=_playbackVisibleRectEdgeInset;
+@property (nonatomic) BOOL preheatThumbnailsWhenIdle; // @synthesize preheatThumbnailsWhenIdle=_preheatThumbnailsWhenIdle;
 @property (nonatomic) double recentHighlightsTimeInterval; // @synthesize recentHighlightsTimeInterval=_recentHighlightsTimeInterval;
 @property (copy, nonatomic) NSString *savedAllPhotosScrollPositionAnchorAssetIdentifier; // @synthesize savedAllPhotosScrollPositionAnchorAssetIdentifier=_savedAllPhotosScrollPositionAnchorAssetIdentifier;
 @property (nonatomic) double scrollSnapMaximumAccelerationFactor; // @synthesize scrollSnapMaximumAccelerationFactor=_scrollSnapMaximumAccelerationFactor;

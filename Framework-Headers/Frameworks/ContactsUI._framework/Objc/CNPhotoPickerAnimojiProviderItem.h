@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)generateThumbnailImageDataIfNeeded;
 - (unsigned long long)hash;
 - (id)imageData;
+- (unsigned long long)imageType;
 - (id)initWithAvatarRecord:(id)arg1 imageProvider:(id)arg2 renderingScope:(id)arg3 renderingQueue:(id)arg4 callbackQueue:(id)arg5;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2;
 - (id)initWithOriginalImageData:(id)arg1 cropRect:(struct CGRect)arg2 backgroundColorVariant:(id)arg3;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)renderDefaultAvatarImage;
 - (BOOL)shouldShowCaption;
 - (void)updateContact:(id)arg1;
+- (id)variantIdentifier;
 
 @end
 

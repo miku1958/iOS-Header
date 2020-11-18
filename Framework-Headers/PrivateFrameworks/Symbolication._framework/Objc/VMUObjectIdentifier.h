@@ -15,6 +15,7 @@
     BOOL _needToValidateAddressRange;
     CDUnknownBlockType _memoryReader;
     VMUTaskMemoryScanner *_scanner;
+    unsigned int _objcABI;
     struct libSwiftRemoteMirrorWrapper *_swiftMirror;
     NSMutableDictionary *_libSwiftRemoteMirrors;
     VMUSwiftRuntimeInfo *_swiftRuntimeInfoStableABI;
@@ -54,10 +55,12 @@
 @property (readonly) BOOL hasSwiftReflection;
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
 @property (readonly) BOOL needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
+@property (readonly) unsigned int objcABI; // @synthesize objcABI=_objcABI;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses; // @synthesize realizedClasses=_realizedIsaToClassInfo;
 @property (readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
 @property (readonly, nonatomic) VMUSwiftRuntimeInfo *swiftRuntimeInfoPreABI; // @synthesize swiftRuntimeInfoPreABI=_swiftRuntimeInfoPreABI;
 @property (readonly, nonatomic) VMUSwiftRuntimeInfo *swiftRuntimeInfoStableABI; // @synthesize swiftRuntimeInfoStableABI=_swiftRuntimeInfoStableABI;
+@property (readonly, nonatomic) struct _CSTypeRef symbolicator; // @synthesize symbolicator=_symbolicator;
 @property (readonly, nonatomic) unsigned long long taggedPointerMask; // @synthesize taggedPointerMask=_taggedPointerMask;
 
 - (void).cxx_destruct;
@@ -97,6 +100,7 @@
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
 - (id)labelForCFBundle:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForClassDataExtRW:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForClassDataRO:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForClassDataRW:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForClassStructure:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;

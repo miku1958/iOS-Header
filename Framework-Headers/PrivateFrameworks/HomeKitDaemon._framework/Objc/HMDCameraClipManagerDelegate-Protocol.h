@@ -6,13 +6,15 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMCameraClip, HMDCameraClipManager, HMDCameraClipSignificantEventNotification;
+@class HMCameraClip, HMCameraClipSignificantEvent, HMDCameraClipManager, HMDCameraClipSignificantEventNotification;
+@protocol HMDHomePresenceCheck;
 
 @protocol HMDCameraClipManagerDelegate <NSObject>
 
 @optional
 - (void)clipManager:(HMDCameraClipManager *)arg1 didAddSignificantEventNotification:(HMDCameraClipSignificantEventNotification *)arg2;
 - (void)clipManager:(HMDCameraClipManager *)arg1 didDeleteClip:(HMCameraClip *)arg2;
+- (BOOL)clipManager:(HMDCameraClipManager *)arg1 shouldAddNotificationForSignificantEvent:(HMCameraClipSignificantEvent *)arg2 withHomePresence:(id<HMDHomePresenceCheck>)arg3;
 - (void)clipManagerDidBecomeAvailable:(HMDCameraClipManager *)arg1;
 - (void)clipManagerDidBecomeUnavailable:(HMDCameraClipManager *)arg1;
 - (void)clipManagerDidDisableCloudStorage:(HMDCameraClipManager *)arg1;

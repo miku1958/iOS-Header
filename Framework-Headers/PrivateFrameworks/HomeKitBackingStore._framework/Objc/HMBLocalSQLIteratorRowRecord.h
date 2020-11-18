@@ -9,16 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface HMBLocalSQLIteratorRowRecord : HMBSQLQueryIterator
 {
-    unsigned long long _zoneRow;
+    int _zoneRowBindOffset;
     unsigned long long _returning;
+    unsigned long long _zoneRow;
 }
 
 @property (readonly, nonatomic) unsigned long long returning; // @synthesize returning=_returning;
 @property (readonly, nonatomic) unsigned long long zoneRow; // @synthesize zoneRow=_zoneRow;
+@property (readonly, nonatomic) int zoneRowBindOffset; // @synthesize zoneRowBindOffset=_zoneRowBindOffset;
 
 - (BOOL)bindPropertiesToStatement:(struct sqlite3_stmt *)arg1 error:(id *)arg2;
-- (id)fetchRowFromStatement:(struct sqlite3_stmt *)arg1 error:(id *)arg2;
-- (id)initWithSQLContext:(id)arg1 statement:(struct sqlite3_stmt *)arg2 zoneRow:(unsigned long long)arg3 returning:(unsigned long long)arg4;
+- (id)fetchRowFromStatement:(struct sqlite3_stmt *)arg1 skip:(BOOL *)arg2 updatedSequence:(unsigned long long *)arg3 error:(id *)arg4;
+- (id)initWithSQLContext:(id)arg1 zoneRow:(unsigned long long)arg2 returning:(unsigned long long)arg3;
 
 @end
 

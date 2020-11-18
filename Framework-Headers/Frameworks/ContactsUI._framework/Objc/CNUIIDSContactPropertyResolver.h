@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) CNUIIDSAvailabilityProvider *idsAvailabilityProvider; // @synthesize idsAvailabilityProvider=_idsAvailabilityProvider;
 
 + (id)IDSRelevantPropertiesForContact:(id)arg1;
++ (id)descriptorForCopyingStrippedContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (id)initWithIDSAvailabilityProvider:(id)arg1;

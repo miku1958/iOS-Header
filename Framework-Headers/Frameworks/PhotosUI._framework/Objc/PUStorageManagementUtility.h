@@ -14,7 +14,6 @@
 + (id)_assetsWithSpatialOvercaptureResources;
 + (id)_defaultVideoAssetFetchOptionsWithSortOrder:(BOOL)arg1 fetchLimit:(unsigned long long)arg2 minimumFileSize:(unsigned long long)arg3;
 + (id)_deleteableVideoAssets;
-+ (id)_sizeForLibraryKind:(unsigned long long)arg1;
 + (void)enableCPLWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)enableOptimizedMode:(BOOL)arg1;
 + (void)expungeRecentlyDeletedItemsWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -24,8 +23,7 @@
 + (BOOL)isCPLInInitialUploadingState;
 + (BOOL)isDeletableItemsInTrash;
 + (BOOL)isOptimizedModeOn;
-+ (id)originalSizeInLibrary;
-+ (id)purgeableSizeInLibrary;
++ (void)purgeableSizeAndOriginalsInLibrary:(CDUnknownBlockType)arg1;
 + (BOOL)shouldHideCPL;
 + (id)significantItems;
 + (id)sizeForRecentlyDeletedItems;

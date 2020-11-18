@@ -45,6 +45,8 @@
 - (void)_incrementNumberOfDisplayForMessageEntry:(id)arg1;
 - (void)_reevaluateMessages:(id)arg1;
 - (void)_reportDisplayToITunesCloudManagerWithEventIdentifier:(id)arg1;
+- (void)_reportMetricsEvent:(id)arg1;
+- (void)_updateLastDisplayTime;
 - (void)_updateMessagesByMonitoredKeys;
 - (void)addVisibleViewController:(id)arg1;
 - (id)allMessageEntriesWithoutDuplicates:(id)arg1;

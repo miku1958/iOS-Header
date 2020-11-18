@@ -6,21 +6,12 @@
 
 #import <ComponentKit/CKComponentController.h>
 
-#import <WorkflowUI/WFActionEventObserver-Protocol.h>
-#import <WorkflowUI/WFParameterEventObserver-Protocol.h>
-
-@class NSString;
 @protocol NSObject;
 
-@interface WFModuleComponentController : CKComponentController <WFActionEventObserver, WFParameterEventObserver>
+@interface WFModuleComponentController : CKComponentController
 {
     id<NSObject> _inputVariableState;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)didMount;

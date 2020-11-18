@@ -6,6 +6,7 @@
 
 #import <PhotosUICore/PXGSplitLayout.h>
 
+#import <PhotosUICore/PXAssetsDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXCuratedLibraryViewModelPresenter-Protocol.h>
 #import <PhotosUICore/PXGAnchorDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class NSMutableDictionary, NSString, PXAssetCollectionReference, PXCuratedLibraryAllPhotosLayout, PXCuratedLibraryLayoutSpec, PXCuratedLibrarySectionHeaderLayout, PXCuratedLibrarySectionedLayout, PXCuratedLibrarySummaryHelper, PXCuratedLibraryViewModel, PXGDiagnosticsSpriteProbe, PXGSpriteReference, PXNumberAnimator;
 @protocol PXBrowserVisibleContentSnapshot, PXDisplayAssetCollection;
 
-@interface PXCuratedLibraryLayout : PXGSplitLayout <PXLibrarySummaryDataSource, PXChangeObserver, PXCuratedLibraryViewModelPresenter, PXGNamedImageSource, PXGAnchorDelegate>
+@interface PXCuratedLibraryLayout : PXGSplitLayout <PXLibrarySummaryDataSource, PXChangeObserver, PXAssetsDataSourceManagerObserver, PXCuratedLibraryViewModelPresenter, PXGNamedImageSource, PXGAnchorDelegate>
 {
     PXCuratedLibrarySectionHeaderLayout *_floatingHeaderLayout;
     PXCuratedLibrarySummaryHelper *_summaryHelper;
@@ -37,10 +38,11 @@
     long long _presentedZoomLevel;
     PXCuratedLibraryViewModel *_viewModel;
     PXGSpriteReference *_lastHitSpriteReference;
-    PXCuratedLibraryLayoutSpec *_spec;
+    double _lateralMargin;
     id _lastVisibleDominantObjectReference;
     PXAssetCollectionReference *_lastPresentedDayAssetCollectionReference;
     id _dominantHeroPreferencesBeforeTransition;
+    PXCuratedLibraryLayoutSpec *_spec;
     struct CGRect _presentedVisibleRect;
 }
 
@@ -55,10 +57,11 @@
 @property (strong, nonatomic) PXGSpriteReference *lastHitSpriteReference; // @synthesize lastHitSpriteReference=_lastHitSpriteReference;
 @property (strong, nonatomic) PXAssetCollectionReference *lastPresentedDayAssetCollectionReference; // @synthesize lastPresentedDayAssetCollectionReference=_lastPresentedDayAssetCollectionReference;
 @property (strong, nonatomic) id lastVisibleDominantObjectReference; // @synthesize lastVisibleDominantObjectReference=_lastVisibleDominantObjectReference;
+@property (nonatomic) double lateralMargin; // @synthesize lateralMargin=_lateralMargin;
 @property (readonly, nonatomic) PXCuratedLibrarySectionedLayout *libraryBodyLayout; // @synthesize libraryBodyLayout=_libraryBodyLayout;
 @property (readonly, nonatomic) struct CGRect presentedVisibleRect; // @synthesize presentedVisibleRect=_presentedVisibleRect;
 @property (readonly, nonatomic) long long presentedZoomLevel; // @synthesize presentedZoomLevel=_presentedZoomLevel;
-@property (strong, nonatomic) PXCuratedLibraryLayoutSpec *spec; // @synthesize spec=_spec;
+@property (readonly, nonatomic) PXCuratedLibraryLayoutSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<PXDisplayAssetCollection> topmostAssetCollection;
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
@@ -77,10 +80,14 @@
 - (long long)_statusBarVisibility;
 - (void)_updateFloatingHeaderButtons;
 - (void)_updateFloatingHeaderLayoutSpec;
+- (void)_updateFloatingHeaderSelectionTitle;
 - (void)_updateFloatingHeaderTitleOpacity;
 - (void)_updateFloatingHeaderVisibility;
+- (void)_updateLateralMargin;
 - (void)_updateLibraryBodyLayoutLastVisibleDominantObjectReference;
+- (void)_updateLibraryBodyLayoutLateralMargin;
 - (void)_updateLocalSprites;
+- (void)_updateOverlayInsets;
 - (void)_updateStatusBarGradientAlphaValue;
 - (void)_updateStatusBarGradientVisibility;
 - (void)_updateStatusBarStyle;
@@ -114,6 +121,8 @@
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;
 - (struct CGRect)sectionBoundariesForAssetCollectionReference:(id)arg1;
+- (void)setSpec:(id)arg1;
+- (void)sublayoutDidChangeLastBaseline:(id)arg1;
 - (long long)sublayoutIndexForObjectReference:(id)arg1 options:(unsigned long long)arg2 updatedObjectReference:(out id *)arg3;
 - (id)topMostAssetCollectionInRect:(struct CGRect)arg1;
 - (void)update;

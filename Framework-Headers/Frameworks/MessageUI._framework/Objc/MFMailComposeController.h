@@ -475,9 +475,8 @@
 - (BOOL)presentSearchResultsForComposeRecipientView:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (id)presentationViewController;
-- (BOOL)previewController:(id)arg1 canEditItem:(id)arg2;
-- (BOOL)previewController:(id)arg1 shouldSaveEditedItem:(id)arg2;
-- (void)previewController:(id)arg1 updatedContentsURL:(id)arg2 forEditedItem:(id)arg3;
+- (void)previewController:(id)arg1 didSaveEditedCopyOfPreviewItem:(id)arg2 atURL:(id)arg3;
+- (long long)previewController:(id)arg1 editingModeForPreviewItem:(id)arg2;
 - (void)previewControllerDidDismiss:(id)arg1;
 - (void)recipientViewDidBecomeFirstResponder:(id)arg1;
 - (void)recipientViewDidResignFirstResponder:(id)arg1;

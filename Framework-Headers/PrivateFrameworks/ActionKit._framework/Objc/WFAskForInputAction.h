@@ -21,6 +21,7 @@
 - (void)finishRunningWithDate:(id)arg1;
 - (void)finishRunningWithResultText:(id)arg1;
 - (void)getOutputFromIntentResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)outputContentClasses;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;
 

@@ -7,6 +7,8 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (HFDebugging)
+- (id)hf_appleTVMediaProfiles;
+- (id)hf_homePodMediaProfiles;
 - (id)hf_prettyDescription;
 @end
 

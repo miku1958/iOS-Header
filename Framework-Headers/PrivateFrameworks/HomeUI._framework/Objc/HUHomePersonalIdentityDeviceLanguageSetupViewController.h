@@ -9,12 +9,15 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, NSArray, NSDictionary, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUHomePersonalIdentityDeviceLanguageSetupViewController : OBWelcomeController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
+    NSString *_overrideTargetLanguage;
+    HMHome *_home;
+    NSString *_targetLanguage;
     OBTrayButton *_continueButton;
     OBLinkTrayButton *_customizeButton;
     NSArray *_supportedMultiUserLanguages;
@@ -27,17 +30,20 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (strong, nonatomic) NSDictionary *languageToHomePodsMapping; // @synthesize languageToHomePodsMapping=_languageToHomePodsMapping;
+@property (strong, nonatomic) NSString *overrideTargetLanguage; // @synthesize overrideTargetLanguage=_overrideTargetLanguage;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property (strong, nonatomic) NSString *targetLanguage; // @synthesize targetLanguage=_targetLanguage;
 
 - (void).cxx_destruct;
 - (void)_cancelLanguageSetup;
 - (void)_changeSiriLanguage;
 - (void)_completeLanguageSetup;
 - (id)hu_preloadContent;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

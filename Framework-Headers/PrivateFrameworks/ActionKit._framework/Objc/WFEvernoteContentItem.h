@@ -19,7 +19,6 @@
 + (id)contentCategories;
 + (id)countDescription;
 + (void)createNoteWithContent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (BOOL)isAvailableOnPlatform:(long long)arg1;
 + (id)itemWithNoteRef:(id)arg1 note:(id)arg2;
 + (id)outputTypes;
 + (id)ownedTypes;

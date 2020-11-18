@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSString, NSURL;
+@class EMMailDropMetadata, MFAttachmentManager, MFAttachmentPlaceholder, MFMimePart, NSString, NSURL;
 @protocol MFDataConsumer;
 
 @interface MFAttachment : NSObject
@@ -45,7 +45,7 @@
 @property BOOL isPlaceholder; // @dynamic isPlaceholder;
 @property (readonly, nonatomic) BOOL isRFC822;
 @property (readonly, nonatomic) BOOL isVideoFile;
-@property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
+@property (strong, nonatomic) EMMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
 @property (strong, nonatomic) NSString *meetingStorePersistentID;
 @property (copy, nonatomic) NSString *mimeType; // @dynamic mimeType;
 @property (strong, nonatomic) MFMimePart *part; // @synthesize part=_part;

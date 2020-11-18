@@ -45,7 +45,6 @@
 + (id)_hf_standaloneTopicNameForPrimaryServiceType:(id)arg1;
 + (BOOL)hf_prefersAutoSynthesizedDescription;
 - (id)_hf_accessoryTopics;
-- (BOOL)_seedGated_hasSecureRecordingCameras;
 - (id)accessoriesSupportingSoftwareUpdate;
 - (id)availableSoftwareUpdates;
 - (id)hf_accessControlDescriptor;
@@ -60,14 +59,17 @@
 - (id)hf_allAccessoryProfiles;
 - (id)hf_allBridgeAccessories;
 - (id)hf_allCameraProfiles;
+- (id)hf_allCameraProfilesSupportingRecording;
 - (id)hf_allHomePodProfiles;
 - (id)hf_allMediaProfiles;
 - (id)hf_allNetworkConfigurationProfiles;
 - (id)hf_allNetworkRouterProfiles;
 - (id)hf_allNonAdminUsers;
 - (id)hf_allNonEmptyActionSets;
+- (id)hf_allNonOwnerUsers;
 - (id)hf_allObjectsAffectedByServiceTopic:(id)arg1;
 - (id)hf_allProgrammableSwitchAccessories;
+- (id)hf_allResidentAccessories;
 - (id)hf_allRooms;
 - (id)hf_allServices;
 - (id)hf_allTargetControlAccessories;
@@ -82,6 +84,8 @@
 - (id)hf_colorPaletteOfType:(unsigned long long)arg1;
 - (BOOL)hf_currentUserIsAdministrator;
 - (BOOL)hf_currentUserIsOwner;
+- (id)hf_enabledResidentDevices;
+- (BOOL)hf_enabledResidentsSupportsMediaActions;
 - (unsigned long long)hf_favoriteCameraCountExcludingHomeKitObjects:(id)arg1;
 - (unsigned long long)hf_favoriteServiceLikeObjectCountExcludingHomeKitObjects:(id)arg1;
 - (id)hf_handleForUser:(id)arg1;
@@ -136,7 +140,6 @@
 - (BOOL)hf_shouldDefaultFavoriteForHomeKitObject:(id)arg1 excludingHomeKitObjects:(id)arg2;
 - (void)hf_startReprovisioningAccessory:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
-- (BOOL)hf_supportsMediaActions;
 - (BOOL)hf_supportsPerUserRemoteAccess;
 - (BOOL)hf_supportsRemoteAccessRestrictions;
 - (BOOL)hf_supportsSharedEventAutomation;

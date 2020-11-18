@@ -204,6 +204,7 @@
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_enableCrown;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_finalizeForSnapshotting:(CDUnknownBlockType)arg1;
 - (struct CGRect)_frameForComplicationDisplayWrapper:(id)arg1 inSlot:(id)arg2;

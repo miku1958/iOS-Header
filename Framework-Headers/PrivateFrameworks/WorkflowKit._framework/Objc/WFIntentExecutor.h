@@ -36,6 +36,7 @@
 - (id)errorFromExtensionError:(id)arg1;
 - (id)errorFromHandleResponse:(id)arg1 intent:(id)arg2;
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
+- (id)extensionInputItemsWithIntent:(id)arg1;
 - (void)failWithError:(id)arg1;
 - (void)finish;
 - (void)finishWithInteraction:(id)arg1;

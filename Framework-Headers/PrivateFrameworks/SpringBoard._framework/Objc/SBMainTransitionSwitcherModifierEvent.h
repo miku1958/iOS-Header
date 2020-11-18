@@ -19,6 +19,7 @@
     BOOL _breadcrumbTransition;
     BOOL _inlineAppExposeTransition;
     BOOL _morphToPiPTransition;
+    BOOL _continuityTransition;
     SBAppLayout *_fromFloatingAppLayout;
     long long _fromFloatingConfiguration;
     SBAppLayout *_toFloatingAppLayout;
@@ -31,6 +32,7 @@
 }
 
 @property (nonatomic, getter=isBreadcrumbTransition) BOOL breadcrumbTransition; // @synthesize breadcrumbTransition=_breadcrumbTransition;
+@property (nonatomic, getter=isContinuityTransition) BOOL continuityTransition; // @synthesize continuityTransition=_continuityTransition;
 @property (nonatomic, getter=isDragAndDropTransition) BOOL dragAndDropTransition; // @synthesize dragAndDropTransition=_dragAndDropTransition;
 @property (copy, nonatomic) NSString *fromAppExposeBundleID; // @synthesize fromAppExposeBundleID=_fromAppExposeBundleID;
 @property (nonatomic) BOOL fromAppLayoutWantsExclusiveForeground; // @synthesize fromAppLayoutWantsExclusiveForeground=_fromAppLayoutWantsExclusiveForeground;

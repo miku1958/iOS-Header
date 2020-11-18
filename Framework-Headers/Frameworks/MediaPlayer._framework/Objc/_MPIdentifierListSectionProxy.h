@@ -37,6 +37,7 @@
 - (void)moveItemToTail:(id)arg1;
 - (void)removeItem:(id)arg1;
 - (void)updateItem:(id)arg1;
+- (void)updateSection;
 
 @end
 

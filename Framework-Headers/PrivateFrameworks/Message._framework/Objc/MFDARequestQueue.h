@@ -17,7 +17,7 @@
 - (void).cxx_destruct;
 - (id)filterRequests:(id)arg1;
 - (id)initWithAccount:(id)arg1 folderID:(id)arg2;
-- (void)processRequests:(id)arg1;
+- (BOOL)processRequests:(id)arg1;
 
 @end
 

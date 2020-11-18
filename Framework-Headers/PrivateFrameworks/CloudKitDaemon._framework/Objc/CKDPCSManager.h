@@ -95,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (id)copyAllPublicKeysForService:(unsigned long long)arg1 withError:(id *)arg2;
 - (struct _PCSPublicIdentityData *)copyDiversifiedIdentityForService:(unsigned long long)arg1 withError:(id *)arg2;
 - (id)copyDiversifiedPublicKeyForService:(unsigned long long)arg1 withError:(id *)arg2;
+- (struct _PCSPublicIdentityData *)copyPublicAuthorshipIdentityFromPCS:(struct _OpaquePCSShareProtection *)arg1;
 - (id)copyPublicKeyForService:(unsigned long long)arg1 withError:(id *)arg2;
 - (struct _OpaquePCSShareProtection *)createChainPCSWithError:(id *)arg1;
 - (struct _PCSIdentityData *)createCombinedIdentityWithOutOfNetworkPrivateKey:(id)arg1 publicSharingIdentity:(id)arg2;
@@ -171,6 +172,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAccount:(id)arg1 clearPCSCacheHandler:(CDUnknownBlockType)arg2;
 - (id)updateIdentityAndRollKeyForZonePCS:(struct _OpaquePCSShareProtection *)arg1 usingServiceIdentityWithType:(unsigned long long)arg2;
 - (id)updateServiceIdentityOnZonePCS:(struct _OpaquePCSShareProtection *)arg1;
+- (BOOL)updateSigningIdentityOnPCS:(struct _OpaquePCSShareProtection *)arg1 usingSignedPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)updateZoneIdentityForPCS:(struct _OpaquePCSShareProtection *)arg1 usingZonePCS:(struct _OpaquePCSShareProtection *)arg2 bypassWhitelistedContainers:(BOOL)arg3;
 - (id)wrapAssetKey:(id)arg1 withRecordPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3 withError:(id *)arg4;
 - (id)wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 inContext:(id)arg3;

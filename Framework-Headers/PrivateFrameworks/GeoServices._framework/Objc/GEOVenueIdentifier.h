@@ -14,6 +14,8 @@
 {
     BOOL _hasVenueID;
     unsigned long long _venueID;
+    BOOL _hasFeatureID;
+    unsigned long long _featureID;
     BOOL _hasBusinessID;
     unsigned long long _businessID;
     NSArray *_componentIdentifiers;
@@ -24,21 +26,21 @@
 @property (readonly, nonatomic) NSArray *componentIdentifiers; // @synthesize componentIdentifiers=_componentIdentifiers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long featureID; // @synthesize featureID=_featureID;
 @property (readonly, nonatomic, getter=_hasBusinessID) BOOL hasBusinessID; // @synthesize hasBusinessID=_hasBusinessID;
+@property (readonly, nonatomic, getter=_hasFeatureID) BOOL hasFeatureID; // @synthesize hasFeatureID=_hasFeatureID;
 @property (readonly, nonatomic, getter=_hasVenueID) BOOL hasVenueID; // @synthesize hasVenueID=_hasVenueID;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long venueID; // @synthesize venueID=_venueID;
 
-+ (unsigned long long)businessIDFromVenueIdentifiers:(id)arg1;
 + (id)componentIdentifiersFromVenueIdentifiers:(id)arg1;
-+ (unsigned long long)venueIdFromVenueIdentifiers:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithVenueID:(unsigned long long)arg1;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2 componentIdentifiers:(id)arg3;
 - (id)initWithVenueID:(unsigned long long)arg1 componentIdentifiers:(id)arg2;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3 componentIdentifiers:(id)arg4;
 - (id)initWithVenueIdentifiers:(id)arg1;
 - (id)placeDataVenueIdentifier;
 - (id)placeDataVenueIdentifierForVenue;

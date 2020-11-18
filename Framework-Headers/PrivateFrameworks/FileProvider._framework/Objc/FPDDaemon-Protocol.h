@@ -45,6 +45,7 @@
 - (void)materializeURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)noteURLBecameFrontmost:(NSURL *)arg1 inWindow:(NSNumber *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)pinItemWithID:(FPItemID *)arg1 completionHandler:(void (^)(FPItem *, NSError *))arg2;
+- (void)providerDomainForIdentifier:(NSString *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)providerDomainForURL:(NSURL *)arg1 completionHandler:(void (^)(FPProviderDomain *, NSError *))arg2;
 - (void)providerDomainsCompletionHandler:(void (^)(NSError *, NSDictionary *))arg1;
 - (void)reimportItemsBelowItemWithID:(FPItemID *)arg1 removeCachedItems:(BOOL)arg2 markItemDataless:(BOOL)arg3 completionHandler:(void (^)(NSError *))arg4;

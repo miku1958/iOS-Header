@@ -13,13 +13,15 @@
 @interface GEOWiFiBSS : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _attributes;
     NSString *_identifier;
     GEOLatLngE7 *_latLngE7;
     GEOLatLng *_location;
     NSMutableArray *_qualities;
     long long _uniqueIdentifier;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int has_uniqueIdentifier:1;
         unsigned int read_attributes:1;
@@ -71,6 +73,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)qualitiesAtIndex:(unsigned long long)arg1;

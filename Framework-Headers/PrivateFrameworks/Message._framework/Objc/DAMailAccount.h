@@ -100,8 +100,8 @@
 - (id)accountForRenewingCredentials;
 - (void)accountHierarchyChanged:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
-- (void)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
-- (void)addRequests:(id)arg1 mailbox:(id)arg2;
+- (BOOL)addRequest:(id)arg1 consumer:(id)arg2 mailbox:(id)arg3;
+- (BOOL)addRequests:(id)arg1 mailbox:(id)arg2;
 - (void)addUserFocusMailbox:(id)arg1;
 - (id)allMailMailboxUid;
 - (id)allMailboxUids;
@@ -147,7 +147,7 @@
 - (BOOL)performRequests:(id)arg1 mailbox:(id)arg2;
 - (void)performSearchQuery:(id)arg1;
 - (id)primaryMailboxUid;
-- (void)processRequests:(id)arg1 mailbox:(id)arg2;
+- (BOOL)processRequests:(id)arg1 mailbox:(id)arg2;
 - (void)pushedFoldersPrefsChanged:(id)arg1;
 - (id)pushedMailboxUids;
 - (BOOL)reconstituteOrphanedMeetingInMessage:(id)arg1;

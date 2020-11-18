@@ -13,6 +13,7 @@
     struct os_unfair_lock_s _primaryCaptureRectLock;
     struct CGPoint _primaryCaptureRectCenterPoint;
     double _primaryCaptureRectAspectRatio;
+    long long _primaryCaptureRectUniqueID;
     BOOL _havePendingPrimaryCaptureRectChange;
     struct CGRect _primaryCaptureRect;
     struct CGRect _overCaptureRect;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) double primaryCaptureRectAspectRatio;
 @property (readonly, nonatomic) struct CGPoint primaryCaptureRectCenterPoint;
 
++ (long long)uniqueID;
 - (void)_handleSpatialNotification:(id)arg1 payload:(id)arg2;
 - (id)_initWithSession:(id)arg1 makeConnection:(BOOL)arg2;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
@@ -42,9 +44,11 @@
 - (struct CGAffineTransform)captureDeviceTransformForSensorSize:(struct CGSize)arg1 previewSize:(struct CGSize)arg2 sensorToPreviewVTScalingMode:(id)arg3;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)didUpdatePreviewImageQueueSlot:(unsigned int)arg1 imageQueue:(id)arg2 rotationDegrees:(double)arg3 size:(struct CGSize)arg4;
+- (void)getPrimaryCaptureRectCenter:(struct CGPoint *)arg1 aspectRatio:(double *)arg2 uniqueID:(long long *)arg3;
 - (id)initWithLayer:(id)arg1;
 - (void)layoutSublayers;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (long long)primaryCaptureRectUniqueID;
 - (void)removeConnection:(id)arg1;
 - (void)setPrimaryCaptureRectAspectRatio:(double)arg1 centerPoint:(struct CGPoint)arg2;
 

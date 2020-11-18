@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface CKStarkConversationListCell : UITableViewCell
 {
     UIImage *_monogramImage;
+    UIImageView *_chevronImageView;
     UIImageView *_unreadImageView;
     UILabel *_recipientsLabel;
     UIDateLabel *_dateLabel;
-    UIImageView *_chevronImageView;
 }
 
 @property (strong, nonatomic) UIImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;

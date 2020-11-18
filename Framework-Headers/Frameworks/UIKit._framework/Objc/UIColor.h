@@ -106,6 +106,7 @@
 + (id)_systemBackgroundSectionCellColor;
 + (id)_systemBackgroundSectionColor;
 + (id)_systemBlueColor2;
++ (id)_systemChromeShadowColor;
 + (id)_systemColorForColor:(id)arg1 withName:(id)arg2;
 + (id)_systemColorWithName:(id)arg1;
 + (id)_systemColorWithUnvalidatedName:(id)arg1;

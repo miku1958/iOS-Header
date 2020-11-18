@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (BOOL)_isFromAppLayoutAtIndex:(unsigned long long)arg1;
 - (BOOL)_isToAppLayoutAtIndex:(unsigned long long)arg1;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (long long)backdropBlurType;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
@@ -33,6 +32,7 @@
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (id)opacitySettings;
 - (double)scaleForIndex:(unsigned long long)arg1;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)topMostAppLayouts;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;

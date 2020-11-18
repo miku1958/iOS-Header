@@ -41,7 +41,7 @@
 - (void)_updateForReason:(unsigned long long)arg1;
 - (void)_updateGizmoAssertionSync;
 - (void)dealloc;
-- (id)initWithClientDetailsProvider:(id)arg1;
+- (id)initWithClientDetailsProvider:(id)arg1 pairedDevice:(id)arg2;
 - (void)resume;
 - (void)updateForStateUpdate:(id)arg1;
 

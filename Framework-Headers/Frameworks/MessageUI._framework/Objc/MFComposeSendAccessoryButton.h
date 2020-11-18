@@ -6,12 +6,20 @@
 
 #import <UIKit/UIButton.h>
 
+@class UIImage;
+
 @interface MFComposeSendAccessoryButton : UIButton
 {
+    UIImage *_sendImage;
 }
 
+@property (strong, nonatomic) UIImage *sendImage; // @synthesize sendImage=_sendImage;
+
 + (id)buttonWithType:(long long)arg1;
+- (void).cxx_destruct;
+- (void)_setupSendImage:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

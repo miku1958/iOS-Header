@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)_crashDaemonWithMessage:(id)arg1;
-- (id)_debugPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_debugPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_getBoolForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
 - (long long)_getIntegerForKey:(id)arg1 withDefaultValue:(long long)arg2;
 - (void)_setBoolValue:(BOOL)arg1 forBehaviorKey:(id)arg2;

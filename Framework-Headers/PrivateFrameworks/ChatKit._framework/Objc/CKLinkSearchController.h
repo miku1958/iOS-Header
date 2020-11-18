@@ -17,11 +17,11 @@
 + (id)sectionTitle;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_additionalMenuActionsForResult:(id)arg1;
-- (void)_deleteResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (Class)_richLinkDatasourceClass;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
+- (void)deleteAttachmentForResult:(id)arg1;
 - (id)detailsFilterQueriesForChatGUIDs:(id)arg1;
 - (id)fetchAttributes;
 - (id)filterQueries;

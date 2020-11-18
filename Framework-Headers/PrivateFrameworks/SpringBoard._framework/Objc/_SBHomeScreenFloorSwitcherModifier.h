@@ -13,11 +13,11 @@
 - (id)adjustedAppLayoutsForAppLayouts:(id)arg1;
 - (id)appExposeAccessoryButtonsBundleIdentifier;
 - (long long)appExposeAccessoryButtonsOverrideUserInterfaceStyle;
+- (id)appLayoutToScrollToBeforeReopeningClosedWindows;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutsForInsertionOrRemoval;
 - (double)backdropBlurProgress;
 - (long long)backdropBlurType;
-- (double)baseHysteresisForStartingKillGesture;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (BOOL)clipsToUnobscuredMarginAtIndex:(unsigned long long)arg1;
 - (double)containerStatusBarAnimationDuration;
@@ -55,6 +55,7 @@
 - (id)layoutSettingsForIndex:(unsigned long long)arg1;
 - (long long)layoutUpdateMode;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (unsigned long long)numberOfDefaultAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
@@ -64,6 +65,7 @@
 - (id)positionSettingsForIndex:(unsigned long long)arg1;
 - (long long)preferredSnapshotOrientation;
 - (double)reopenClosedWindowsButtonAlpha;
+- (double)reopenClosedWindowsButtonScale;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (id)scaleSettingsForIndex:(unsigned long long)arg1;
 - (long long)sceneDeactivationReason;
@@ -77,6 +79,7 @@
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (BOOL)shouldPerformRotationAnimationForOrientationChange;
 - (BOOL)shouldRubberbandHomeGrabberView;
+- (BOOL)shouldTetherTransitionCompletion;
 - (BOOL)shouldTruncateAnimationsUponTransitionCompletion;
 - (BOOL)shouldWaitForLayoutAndStyleUpdatesForTransactionCompletion;
 - (double)titleAndIconOpacityForIndex:(unsigned long long)arg1;
@@ -86,7 +89,6 @@
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperScale;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
 - (BOOL)wantsDockBehaviorAssertion;
 - (BOOL)wantsDockWindowLevelAssertion;

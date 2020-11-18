@@ -30,7 +30,8 @@
 + (id)unretainedInstance;
 - (void).cxx_destruct;
 - (void)_cancelSnapshots;
-- (void)_saveLightGrid:(id)arg1 darkGrid:(id)arg2;
+- (void)_saveDarkGrid:(id)arg1;
+- (void)_saveLightGrid:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)loadPlaceholderGridImages;

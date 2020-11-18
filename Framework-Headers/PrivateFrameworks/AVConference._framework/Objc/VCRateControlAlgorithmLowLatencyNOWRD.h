@@ -75,12 +75,14 @@ __attribute__((visibility("hidden")))
     unsigned int _actualBitrate;
     void *_logDump;
     BOOL _isPeriodicLoggingEnabled;
+    BOOL _didMBLRampDown;
     double _packetLossRateVideo;
 }
 
 @property (readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didMBLRampDown; // @synthesize didMBLRampDown=_didMBLRampDown;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCongested; // @synthesize isCongested=_isCongested;
 @property (readonly, nonatomic) BOOL isNewRateSentOut; // @synthesize isNewRateSentOut=_isNewRateSentOut;

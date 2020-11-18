@@ -14,13 +14,16 @@
 
 @property (strong, nonatomic) NSString *acAccountIdentifierToMergeLocalDataIntoSyncData;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationDelayAfterError;
+@property (nonatomic) BOOL cloudKitMigrationDisableCleanUp;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationMaxNumFailures;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationMaxNumInvocations;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationObserverPollingInterval;
 @property (strong, nonatomic) NSNumber *cloudKitMigrationSimulatedError;
+@property (strong, nonatomic) NSNumber *cloudKitResultsLimitPerSyncOperation;
 @property (readonly, nonatomic) BOOL dataaccessDaemonStopSyncingReminders;
 @property (nonatomic) BOOL databaseMigrationTestModeEnabled;
 @property (nonatomic) BOOL databaseMigrationTimedOut;
+@property (nonatomic) BOOL disableAlarmEngineDataSourcePrefetching;
 @property (nonatomic) BOOL enableWelcomeScreen;
 @property (nonatomic) BOOL forceShowWelcomeScreen;
 @property (nonatomic) BOOL isDatabaseMigrated;
@@ -39,6 +42,7 @@
 
 + (id)storageNumberForTodayNotificationTime:(id)arg1;
 + (id)todayNotificationFireTimeFromStorageNumber:(id)arg1;
+- (id)observePreferredDefaultListIDWithBlock:(CDUnknownBlockType)arg1;
 - (id)observeShowRemindersAsOverdueWithBlock:(CDUnknownBlockType)arg1;
 - (id)streamTodayNotificationFireTime:(CDUnknownBlockType)arg1;
 

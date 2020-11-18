@@ -24,6 +24,7 @@
 }
 
 @property (weak, nonatomic, setter=_setCodableEnum:) INCodableEnum *_codableEnum; // @synthesize _codableEnum;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long index; // @synthesize index=_index;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedDisplayName;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
@@ -49,7 +51,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedDisplayNameForLanguage:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;
 

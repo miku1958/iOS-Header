@@ -21,14 +21,11 @@
 }
 
 - (void).cxx_destruct;
-- (double)_distanceBetweenAngleA:(double)arg1 angleB:(double)arg2;
 - (id)_newSeparatorLineForWaypoint:(id)arg1;
 - (id)_newWaypointView;
 - (void)_updateSeparatorLines;
-- (id)closestWaypointForSolarDayProgress:(double)arg1 range:(double)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 orbitDiameter:(double)arg2 dialDiameter:(double)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 orbitDiameter:(double)arg2 dialDiameter:(double)arg3 waypoints:(id)arg4;
 - (void)setWaypoints:(id)arg1;
-- (id)waypointBetweenPreviousOffset:(double)arg1 currentOffset:(double)arg2;
 
 @end
 

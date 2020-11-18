@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (BOOL)_enumerateOneTransactionWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_hasMoreTransactions;
+- (id)_safeTransactionAtIndex:(unsigned long long)arg1;
 - (void)enumerateRemainingTransactionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithInitialToken:(id)arg1 transactions:(id)arg2 managedObjectObjectContext:(id)arg3;
 

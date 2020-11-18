@@ -29,7 +29,6 @@
 - (void)_performBlock:(CDUnknownBlockType)arg1 contextType:(unsigned long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_purgePredating:(id)arg1 predicateMappings:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_removeAll:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_setup;
 - (void)_setupContextsHandler:(CDUnknownBlockType)arg1;
 - (void)_shutdown;
 - (void)_storeWritableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;

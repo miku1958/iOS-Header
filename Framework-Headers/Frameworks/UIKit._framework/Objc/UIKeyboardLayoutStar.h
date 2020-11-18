@@ -185,6 +185,7 @@ __attribute__((visibility("hidden")))
 - (id)_currentKeyplaneTransformationContext;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didTapBiasEscapeButton:(id)arg1;
+- (void)_gestureRecognizerFailed:(id)arg1;
 - (BOOL)_handRestRecognizerCancelShouldBeEnd;
 - (BOOL)_handleTouchForEmojiInputView;
 - (id)_keyboardLongPressInteractionRegions;
@@ -203,6 +204,7 @@ __attribute__((visibility("hidden")))
 - (void)_transitionToContinuousPathState:(long long)arg1 forTouchInfo:(id)arg2;
 - (void)_updateSupplementaryKeys;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
+- (id)_variantsOfCurrencyKey:(id)arg1 language:(id)arg2;
 - (void)accessibilitySensitivityChanged;
 - (id)activationIndicatorView;
 - (id)activeMultitapCompleteKey;

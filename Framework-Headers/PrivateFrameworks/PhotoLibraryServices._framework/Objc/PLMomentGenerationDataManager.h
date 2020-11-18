@@ -85,6 +85,7 @@
 - (id)deletedObjects;
 - (void)enumerateAssetsWithIDs:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)fetchChildHighlightItemsForHighlightItem:(id)arg1;
+- (void)fetchLocationsOfInterestIfNeeded;
 - (id)fetchNeighborHighlightItemsForHighlightItems:(id)arg1;
 - (id)fetchParentHighlightItemsForHighlightItems:(id)arg1;
 - (id)generator;

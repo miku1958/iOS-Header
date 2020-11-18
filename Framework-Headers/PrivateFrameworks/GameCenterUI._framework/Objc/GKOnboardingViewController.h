@@ -58,6 +58,7 @@
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)animationEnded:(BOOL)arg1;
 - (id)basicAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
+- (void)constrainTextInView:(id)arg1 toFontSize:(double)arg2;
 - (BOOL)didDisplayPrivacyNotice;
 - (void)nextPressed:(id)arg1;
 - (void)presentPersonalizationScreen;
@@ -68,6 +69,7 @@
 - (double)transitionDuration:(id)arg1;
 - (void)updateBubbleRectsWithScale:(double)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;

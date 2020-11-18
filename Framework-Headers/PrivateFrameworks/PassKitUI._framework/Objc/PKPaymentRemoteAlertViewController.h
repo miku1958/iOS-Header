@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
+@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
 @protocol BSInvalidatable, OS_dispatch_group;
 
 @interface PKPaymentRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKPaymentServiceDelegate, SBSHardwareButtonEventConsuming>
@@ -31,7 +31,6 @@
     BOOL _deviceUILocked;
     BOOL _processHomeButtonEvents;
     BOOL _brightnessRampingAllowed;
-    PKEducationViewController *_educationVC;
     BOOL _appearedOnce;
     BOOL _insertedGroupsVC;
     BOOL _shouldInsertGroupsVC;
@@ -69,8 +68,8 @@
 - (void)didInvalidateForRemoteAlert;
 - (void)handleButtonActions:(id)arg1;
 - (id)init;
-- (void)linkedApplicationOpen:(id)arg1;
 - (void)loadView;
+- (void)openApplication:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;

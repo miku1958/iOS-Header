@@ -35,6 +35,7 @@
 - (BOOL)_hasInteraction;
 - (id)_initWithIntent:(id)arg1;
 - (id)_intentsIdentifier;
+- (id)_intents_copy;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (BOOL)_isEligibleForPrediction;
 - (void)_setAccessedInteraction:(BOOL)arg1;

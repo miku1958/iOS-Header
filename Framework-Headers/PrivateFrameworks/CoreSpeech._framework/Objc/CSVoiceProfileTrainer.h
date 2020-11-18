@@ -8,6 +8,7 @@
 
 @interface CSVoiceProfileTrainer : NSObject
 {
+    float _satVTImplicitThreshold;
     unsigned long long _baseProfileConfidenceScoreThreshold;
     unsigned long long _implicitConfidenceScoreThreshold;
     unsigned long long _implicitDeltaConfidenceScoreThreshold;
@@ -18,15 +19,16 @@
 @property (readonly, nonatomic) unsigned long long implicitConfidenceScoreThreshold; // @synthesize implicitConfidenceScoreThreshold=_implicitConfidenceScoreThreshold;
 @property (readonly, nonatomic) unsigned long long implicitDeltaConfidenceScoreThreshold; // @synthesize implicitDeltaConfidenceScoreThreshold=_implicitDeltaConfidenceScoreThreshold;
 @property (readonly, nonatomic) unsigned long long maxNumberOfBaseProfileUtterances; // @synthesize maxNumberOfBaseProfileUtterances=_maxNumberOfBaseProfileUtterances;
+@property (readonly, nonatomic) float satVTImplicitThreshold; // @synthesize satVTImplicitThreshold=_satVTImplicitThreshold;
 
-- (void)addUtterances:(id)arg1 toProfile:(id)arg2 toModel:(unsigned long long)arg3 withScoreThreshold:(float)arg4 withCompletionBlock:(CDUnknownBlockType)arg5;
-- (void)addUtterances:(id)arg1 withScoreThreshold:(float)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)addUtterances:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)checkIfImplicitSATPossibleWithBaseProfileVectorCount:(unsigned long long)arg1;
+- (BOOL)checkIfImplicitTrainingRequired;
+- (BOOL)checkIfProfileNeedsUploadForBaseProfileVectorCount:(unsigned long long)arg1;
 - (BOOL)checkIfRetrainingIsRequired;
 - (BOOL)checkIfUpdateNecessaryForAudioFileCount:(unsigned long long)arg1;
-- (unsigned long long)maxAllowedImplicitTrainingUtterances;
-- (unsigned long long)maxAllowedSatVectorCount;
+- (id)initWithVoiceProfile:(id)arg1 spIdType:(unsigned long long)arg2 satRunMode:(unsigned long long)arg3 languageCode:(id)arg4 asset:(id)arg5;
 - (void)processUtterance:(id)arg1 ofSpIdType:(unsigned long long)arg2 withUpdatePolicyBlock:(CDUnknownBlockType)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
-- (unsigned long long)satVectorCount;
 
 @end
 

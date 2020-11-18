@@ -17,12 +17,14 @@
 - (struct __CFString *)failedAttemptsKey;
 - (id)init;
 - (BOOL)isNumericPIN;
+- (id)pinInstructionsPrompt;
 - (id)pinInstructionsPromptFont;
 - (BOOL)pinIsAcceptable:(id)arg1 outError:(id *)arg2;
 - (int)pinLength;
 - (void)setPIN:(id)arg1;
 - (BOOL)simplePIN;
 - (id)stringsBundle;
+- (id)title;
 - (BOOL)validatePIN:(id)arg1;
 
 @end

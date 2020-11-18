@@ -33,7 +33,7 @@
 - (BOOL)isReferenceResource;
 - (short)trashedState;
 - (void)updateStoredResource:(id)arg1;
-- (id)validatedExternalResourceWithAsset:(id)arg1;
+- (id)validatedExternalResourceWithAsset:(id)arg1 isCPLEnabled:(BOOL)arg2;
 
 @end
 

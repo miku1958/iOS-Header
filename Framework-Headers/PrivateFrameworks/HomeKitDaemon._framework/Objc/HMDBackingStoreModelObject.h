@@ -7,11 +7,12 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class CKRecord, HMFVersion, NSMutableDictionary, NSSet, NSString, NSUUID;
 @protocol HMDBackingStoreObjectProtocol;
 
-@interface HMDBackingStoreModelObject : HMFObject <HMFLogging>
+@interface HMDBackingStoreModelObject : HMFObject <HMFLogging, NSCopying>
 {
     NSMutableDictionary *_reserved;
     BOOL _bsoDataVersionOverride;
@@ -64,6 +65,7 @@
 - (BOOL)_validateType:(id)arg1 error:(id *)arg2;
 - (id)backedObjectWithParent:(id)arg1 error:(id *)arg2;
 - (void)clearVersionOverride;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugString:(BOOL)arg1;
 - (id)defaultValueForPropertyNamed:(id)arg1 isSet:(BOOL *)arg2;
 - (BOOL)diff:(id)arg1 differingFields:(id *)arg2;
@@ -82,6 +84,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (id)merge:(id)arg1;
+- (BOOL)merge:(id)arg1 error:(id *)arg2;
 - (id)merge:(id)arg1 from:(unsigned long long)arg2;
 - (id)prepareFor:(unsigned long long)arg1;
 - (BOOL)propertyIsAvailable:(id)arg1;

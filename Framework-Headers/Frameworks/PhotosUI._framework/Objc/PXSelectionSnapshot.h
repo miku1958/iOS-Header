@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) struct PXSimpleIndexPath firstSelectedIndexPath;
 @property (readonly, nonatomic) struct PXSimpleIndexPath lastSelectedIndexPath;
+@property (readonly, nonatomic) PXIndexPathSet *sectionIndexPathsContainingSelection;
 @property (readonly, nonatomic) PXIndexPathSet *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
 
 - (void).cxx_destruct;

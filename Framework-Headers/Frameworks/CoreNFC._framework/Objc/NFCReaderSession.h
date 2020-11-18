@@ -60,6 +60,7 @@
 - (void)_startPollingWithMethod:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)beginSession;
+- (void)beginSessionWithConfig:(id)arg1;
 - (BOOL)checkPresenceWithError:(id *)arg1;
 - (void)connectTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)connectTag:(id)arg1 error:(id *)arg2;

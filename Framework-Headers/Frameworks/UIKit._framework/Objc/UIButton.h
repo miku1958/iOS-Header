@@ -134,6 +134,7 @@
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(id)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (id)_backgroundForState:(unsigned long long)arg1 usesBackgroundForNormalState:(BOOL *)arg2;
 - (id)_backgroundView;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_beginTitleAnimation;
 - (BOOL)_blurEnabled;
 - (id)_borderColorForState:(unsigned long long)arg1;
@@ -152,6 +153,7 @@
 - (id)_defaultFontForIdiom:(long long)arg1;
 - (void)_deriveTitleRect:(struct CGRect *)arg1 imageRect:(struct CGRect *)arg2 fromContentRect:(struct CGRect)arg3 calculatePositionForEmptyTitle:(BOOL)arg4;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (double)_drawingStrokeForState:(unsigned long long)arg1;
 - (double)_drawingStrokeForStyle:(long long)arg1;

@@ -9,21 +9,25 @@
 #import <CoverSheet/CSCombinedListViewControllerDelegate-Protocol.h>
 #import <CoverSheet/CSNotificationDestination-Protocol.h>
 #import <CoverSheet/CSPageViewControllerProtocol-Protocol.h>
+#import <CoverSheet/CSUserPresenceMonitorObserver-Protocol.h>
 #import <CoverSheet/PTSettingsKeyObserver-Protocol.h>
 
-@class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
+@class CSAppearance, CSBehavior, CSCombinedListViewController, CSLayoutStrategy, CSLockScreenSettings, CSLogoutButtonViewController, CSPresentation, CSUserPictureViewController, CSUserPresenceMonitor, NSArray, NSSet, NSString, UIColor, _UILegibilitySettings;
 @protocol CSCoverSheetViewControllerProtocol, CSCoverSheetViewPresenting, CSNotificationDispatcher, CSTouchEnvironmentStatusProviding, CSUserSessionControlling, CSWallpaperColorProvider, CSWallpaperViewProviding, SBFAuthenticationStatusProvider, UICoordinateSpace;
 
-@interface CSMainPageContentViewController : CSPageViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSNotificationDestination, CSPageViewControllerProtocol>
+@interface CSMainPageContentViewController : CSPageViewController <PTSettingsKeyObserver, CSCombinedListViewControllerDelegate, CSUserPresenceMonitorObserver, CSNotificationDestination, CSPageViewControllerProtocol>
 {
     CSUserPictureViewController *_userPictureViewController;
     CSCombinedListViewController *_combinedListViewController;
+    CSUserPresenceMonitor *_userPresenceMontior;
     CSLogoutButtonViewController *_logoutButtonViewController;
     id<SBFAuthenticationStatusProvider> _authenticationProvider;
     CSLockScreenSettings *_testSettings;
+    long long _smoothestPermittedStrategy;
     BOOL _useFakeBlur;
     CSLayoutStrategy *_layoutStrategy;
     id<CSWallpaperColorProvider> _wallpaperColorProvider;
+    CSUserPresenceMonitor *_userPresenceMonitor;
     id<CSTouchEnvironmentStatusProviding> _touchEnvironmentStatusProvider;
     id<CSUserSessionControlling> _userSessionController;
     id<CSWallpaperViewProviding> _wallpaperViewProvider;
@@ -70,6 +74,7 @@
 @property (weak, nonatomic) id<CSTouchEnvironmentStatusProviding> touchEnvironmentStatusProvider; // @synthesize touchEnvironmentStatusProvider=_touchEnvironmentStatusProvider;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning;
 @property (nonatomic) BOOL useFakeBlur; // @synthesize useFakeBlur=_useFakeBlur;
+@property (strong, nonatomic) CSUserPresenceMonitor *userPresenceMonitor; // @synthesize userPresenceMonitor=_userPresenceMonitor;
 @property (weak, nonatomic) id<CSUserSessionControlling> userSessionController; // @synthesize userSessionController=_userSessionController;
 @property (weak, nonatomic) id<CSWallpaperColorProvider> wallpaperColorProvider; // @synthesize wallpaperColorProvider=_wallpaperColorProvider;
 @property (weak, nonatomic) id<CSWallpaperViewProviding> wallpaperViewProvider; // @synthesize wallpaperViewProvider=_wallpaperViewProvider;
@@ -86,6 +91,8 @@
 - (BOOL)_isPortrait;
 - (BOOL)_listBelowDateTime;
 - (id)_mainPageView;
+- (BOOL)_pagingStyleRequiresUserPresenceDetection;
+- (void)_updateSmoothestPermittedPagingStrategy;
 - (void)aggregateAppearance:(id)arg1;
 - (void)aggregateBehavior:(id)arg1;
 - (void)combinedListViewController:(id)arg1 hasContent:(BOOL)arg2;
@@ -109,6 +116,7 @@
 - (void)updateForPresentation:(id)arg1;
 - (void)updateNotificationRequest:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
+- (void)userPresenceDetectedSinceWakeDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

@@ -21,6 +21,8 @@
         BOOL hasSetNeedsUpdate;
         BOOL hasSnapshotImpressions;
         BOOL hasRecordedImpressions;
+        BOOL hasRecordedImpressionsCallback;
+        BOOL hasRecordedImpressionsMatchingCallback;
         BOOL hasImpressionsMatchingTag;
         BOOL hasScrollToTop;
         BOOL hasRunTest;
@@ -78,6 +80,8 @@
 - (long long)nodeType;
 - (void)prepareForPresentationWithExtraInfo:(id)arg1;
 - (id)recordedImpressions:(id)arg1;
+- (void)recordedImpressions:(id)arg1:(id)arg2;
+- (void)recordedImpressionsMatching:(id)arg1:(id)arg2:(id)arg3;
 - (void)replace:(id)arg1;
 - (void)runTest:(id)arg1:(id)arg2;
 - (void)scrollToTop;

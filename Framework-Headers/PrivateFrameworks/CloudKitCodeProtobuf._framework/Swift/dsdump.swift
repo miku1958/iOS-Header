@@ -288,10 +288,10 @@
 	var state : InternalState // +0x20 (0x29)
 
 	// Swift methods
-	0x1a7e0  func <stripped> // getter 
-	0x1acb0  func <stripped> // method 
-	0x1ad90  func <stripped> // method 
-	0x1b260  func <stripped> // method 
+	0x1aa90  func <stripped> // getter 
+	0x1af60  func <stripped> // method 
+	0x1b040  func <stripped> // method 
+	0x1b510  func <stripped> // method 
  }
 
  enum CloudKitCodeProtobuf.InternalState {
@@ -329,7 +329,7 @@
 	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
 
 	// Swift methods
-	0x22960  func <stripped> // method 
+	0x22c10  func <stripped> // method 
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_SourceContext {

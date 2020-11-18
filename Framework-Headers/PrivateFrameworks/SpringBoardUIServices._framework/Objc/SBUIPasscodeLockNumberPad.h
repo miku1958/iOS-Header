@@ -18,6 +18,7 @@
     UIColor *_customBackgroundColor;
     BOOL _useLightStyle;
     BOOL _visible;
+    BOOL _snapshotsDisabled;
     BOOL _showsBackspaceButton;
     BOOL _showsEmergencyCallButton;
     BOOL _showsCancelButton;
@@ -60,6 +61,7 @@
 - (void)_numberPadTouchDown:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchDrag:(id)arg1 forEvent:(id)arg2;
 - (void)_numberPadTouchUp:(id)arg1 forEvent:(id)arg2;
+- (void)_setSnapshotsDisabled:(BOOL)arg1;
 - (id)initWithDefaultSizeAndLightStyle:(BOOL)arg1;
 - (void)setVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

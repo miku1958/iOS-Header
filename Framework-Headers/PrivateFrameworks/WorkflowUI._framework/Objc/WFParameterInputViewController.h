@@ -11,7 +11,7 @@
 #import <WorkflowUI/UIViewControllerAnimatedTransitioning-Protocol.h>
 #import <WorkflowUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class CKComponentHostingView, NSArray, NSString, UIScrollView, WFAction, WFComponentNavigationContextImpl, WFModuleModel;
+@class CKComponentHostingView, NSArray, NSLayoutConstraint, NSString, UIResponder, UIScrollView, UIView, WFAction, WFComponentNavigationContextImpl, WFModuleModel;
 @protocol WFParameterInputViewControllerDelegate;
 
 @interface WFParameterInputViewController : UIViewController <CKComponentProvider, CKComponentHostingViewDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
@@ -23,19 +23,25 @@
     UIScrollView *_scrollView;
     CKComponentHostingView *_moduleView;
     WFComponentNavigationContextImpl *_navigationContext;
+    UIResponder *_wf_firstResponder;
+    UIView *_firstResponderHintView;
+    NSLayoutConstraint *_hintBottomConstraint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFParameterInputViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) WFAction *fakeAction; // @synthesize fakeAction=_fakeAction;
+@property (weak, nonatomic) UIView *firstResponderHintView; // @synthesize firstResponderHintView=_firstResponderHintView;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *hintBottomConstraint; // @synthesize hintBottomConstraint=_hintBottomConstraint;
 @property (readonly, nonatomic) WFModuleModel *moduleModel; // @synthesize moduleModel=_moduleModel;
 @property (weak, nonatomic) CKComponentHostingView *moduleView; // @synthesize moduleView=_moduleView;
 @property (strong, nonatomic) WFComponentNavigationContextImpl *navigationContext; // @synthesize navigationContext=_navigationContext;
 @property (readonly, nonatomic) NSArray *processingParameters; // @synthesize processingParameters=_processingParameters;
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) UIResponder *wf_firstResponder; // @synthesize wf_firstResponder=_wf_firstResponder;
 
 + (id)componentForModel:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
@@ -46,13 +52,16 @@
 - (void)dealloc;
 - (id)initWithAction:(id)arg1 parameters:(id)arg2 initialStates:(id)arg3 forRunning:(BOOL)arg4;
 - (id)keyCommands;
-- (void)keyboardFrameChanged;
+- (void)keyboardWillChangeFrame:(id)arg1;
 - (void)layoutHostingViewAnimated:(BOOL)arg1;
 - (void)loadView;
 - (void)moduleComponentDidCancel;
 - (void)moduleComponentDidFinish;
 - (double)moduleWidthForViewSize:(struct CGSize)arg1;
+- (void)positionFirstResponderHintViewAnimated:(BOOL)arg1;
 - (long long)preferredStatusBarStyle;
+- (void)responderDidBeginEditing:(id)arg1;
+- (void)responderDidEndEditing:(id)arg1;
 - (double)transitionDuration:(id)arg1;
 - (void)updateScrollViewWithModuleSize:(struct CGSize)arg1;
 - (void)viewWillLayoutSubviews;

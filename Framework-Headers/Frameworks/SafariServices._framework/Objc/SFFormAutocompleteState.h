@@ -137,7 +137,7 @@ __attribute__((visibility("hidden")))
 - (void)getTextSuggestionForStreamlinedAutoFillWithCredentialIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(id)arg1 form:(id)arg2 textField:(id)arg3 inputSession:(id)arg4 autoFillController:(id)arg5;
 - (void)invalidate;
-- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)performAutoFillWithMatchSelections:(id)arg1 doNotFill:(id)arg2 contact:(id)arg3;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)showAllPasswordsButtonTapped;

@@ -8,13 +8,14 @@
 
 #import <ChatKit/CKConversationListCell-Protocol.h>
 
-@class CKAvatarView, CKConversation, CKLabel, NSDate, NSObject, NSString, STConversationContext, UIDateLabel, UIImageView, UILabel;
+@class CKAvatarView, CKConversation, CKLabel, NSDate, NSObject, NSString, UIDateLabel, UIImageView, UILabel;
 @protocol CKConversationListCellDelegate;
 
 @interface CKConversationListCell : UITableViewCell <CKConversationListCell>
 {
     UIDateLabel *_dateLabel;
     UILabel *_summaryLabel;
+    UILabel *_summaryBlockedLabel;
     UIImageView *_chevronImageView;
     CKLabel *_fromLabel;
     BOOL _isPlaceholder;
@@ -22,13 +23,11 @@
     NSString *_searchMessageGUID;
     NSDate *_searchMessageDate;
     BOOL _verified;
-    BOOL _allowedByScreenTime;
+    BOOL _shouldHidePreviewSummary;
     NSObject<CKConversationListCellDelegate> *_delegate;
-    STConversationContext *_screentimeConversationContext;
     CKConversation *_conversation;
 }
 
-@property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property (readonly, nonatomic) CKAvatarView *avatarView;
 @property (strong, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,10 +35,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CKLabel *fromLabel;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) STConversationContext *screentimeConversationContext; // @synthesize screentimeConversationContext=_screentimeConversationContext;
 @property (strong, nonatomic) NSDate *searchMessageDate; // @synthesize searchMessageDate=_searchMessageDate;
 @property (copy, nonatomic) NSString *searchMessageGUID; // @synthesize searchMessageGUID=_searchMessageGUID;
 @property (copy, nonatomic) NSString *searchSummaryText; // @synthesize searchSummaryText=_searchSummaryText;
+@property (nonatomic) BOOL shouldHidePreviewSummary; // @synthesize shouldHidePreviewSummary=_shouldHidePreviewSummary;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL verified; // @synthesize verified=_verified;
 
@@ -53,17 +52,17 @@
 - (void)dealloc;
 - (void)increaseContrastDidChange;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareForReuse;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)showingEditControl;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)summaryAttributedTextForBlockedConversationWithIcon:(BOOL)arg1;
+- (void)updateBlockedSummaryLabelIfNeeded;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;
 - (void)updateForEditing:(BOOL)arg1;
 - (void)updateFromLabelWithText:(id)arg1;
 - (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(BOOL)arg2;
-- (void)updateSummaryTextForConversation:(id)arg1 fastPreview:(BOOL)arg2 blockedForDowntime:(BOOL)arg3;
 - (void)updateUnreadIndicatorWithImage:(id)arg1 tintColor:(id)arg2;
 - (void)updateWithSearchResult:(id)arg1;
 

@@ -21,9 +21,11 @@
     PKRemotePaymentInstrument *_remoteInstrument;
     NSString *_peerPaymentQuoteIdentifier;
     PKDisbursementVoucher *_disbursementVoucher;
+    NSString *_bindToken;
 }
 
 @property (copy, nonatomic) CNContact *billingAddress; // @synthesize billingAddress=_billingAddress;
+@property (copy, nonatomic) NSString *bindToken; // @synthesize bindToken=_bindToken;
 @property (strong, nonatomic) PKDisbursementVoucher *disbursementVoucher; // @synthesize disbursementVoucher=_disbursementVoucher;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *network; // @synthesize network=_network;
@@ -39,6 +41,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBindToken:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDisbursementVoucher:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 obfuscateNetworks:(BOOL)arg2;

@@ -21,6 +21,7 @@
     BOOL _isAutoDownload;
     BOOL _sideLoadedDeviceBasedVPP;
     BOOL _deviceBasedVPP;
+    BOOL _factoryInstall;
     NSString *_iAdAttribution;
     NSString *_iAdConversionDate;
     NSString *_iAdImpressionDate;
@@ -57,6 +58,7 @@
     NSString *_enterpriseInstallURL;
     NSString *_redownloadParams;
     NSDictionary *_nameTranscriptions;
+    NSString *_md5;
 }
 
 @property (strong, nonatomic) NSNumber *DSPersonID; // @synthesize DSPersonID=_DSPersonID;
@@ -69,6 +71,7 @@
 @property (nonatomic) BOOL deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property (strong, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property (copy, nonatomic) NSString *enterpriseInstallURL; // @synthesize enterpriseInstallURL=_enterpriseInstallURL;
+@property (nonatomic, getter=isFactoryInstall) BOOL factoryInstall; // @synthesize factoryInstall=_factoryInstall;
 @property (strong, nonatomic) NSNumber *familyID; // @synthesize familyID=_familyID;
 @property (nonatomic, getter=isGameCenterEnabled) BOOL gameCenterEnabled; // @synthesize gameCenterEnabled=_gameCenterEnabled;
 @property (nonatomic) BOOL gameCenterEverEnabled; // @synthesize gameCenterEverEnabled=_gameCenterEverEnabled;
@@ -85,6 +88,7 @@
 @property (copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic, getter=isLaunchProhibited) BOOL launchProhibited; // @synthesize launchProhibited=_launchProhibited;
+@property (copy, nonatomic) NSString *md5; // @synthesize md5=_md5;
 @property (copy, nonatomic) NSDictionary *nameTranscriptions; // @synthesize nameTranscriptions=_nameTranscriptions;
 @property (copy, nonatomic) NSString *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (nonatomic, getter=isPurchasedRedownload) BOOL purchasedRedownload; // @synthesize purchasedRedownload=_purchasedRedownload;

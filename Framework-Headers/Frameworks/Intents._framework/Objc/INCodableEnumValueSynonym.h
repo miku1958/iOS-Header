@@ -22,9 +22,11 @@
 }
 
 @property (weak, nonatomic, setter=_setCodableEnumValue:) INCodableEnumValue *_codableEnumValue; // @synthesize _codableEnumValue;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedPronunciationHint;
 @property (readonly, copy, nonatomic) NSString *localizedSynonym;
 @property (copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
@@ -42,7 +44,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedPronunciationHintForLanguage:(id)arg1;
 - (id)localizedSynonymForLanguage:(id)arg1;
 - (void)updateWithDictionary:(id)arg1;

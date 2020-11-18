@@ -11,6 +11,7 @@
 @protocol EDAccount <ECMailAccount>
 
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL primaryiCloudAccount;
 @property (readonly, copy, nonatomic) NSString *statisticsKind;
 @property (readonly, copy, nonatomic) ACAccount *systemAccount;
 

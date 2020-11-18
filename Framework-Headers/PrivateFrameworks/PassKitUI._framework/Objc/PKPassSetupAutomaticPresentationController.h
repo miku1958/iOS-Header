@@ -37,8 +37,10 @@
 - (id)_contextSpecificStringForAggDKey:(id)arg1;
 - (void)_dismissView;
 - (long long)_paymentPassState;
+- (void)_presentMakeDefaultViewControllerForPass:(id)arg1;
 - (void)_presentNextCredentialWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_saveSettings;
+- (BOOL)_shouldShowMakeDefaultViewControllerForPass:(id)arg1;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
 - (void)_showVerificationForPass:(id)arg1;
 - (void)_terminateSetupFlow;

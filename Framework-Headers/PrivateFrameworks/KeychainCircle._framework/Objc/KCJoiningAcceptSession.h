@@ -14,8 +14,8 @@
     int _state;
     int _piggy_version;
     unsigned long long _dsid;
-    NSObject<KCJoiningAcceptSecretDelegate> *_secretDelegate;
-    NSObject<KCJoiningAcceptCircleDelegate> *_circleDelegate;
+    id<KCJoiningAcceptSecretDelegate> _secretDelegate;
+    id<KCJoiningAcceptCircleDelegate> _circleDelegate;
     KCSRPServerContext *_context;
     KCAESGCMDuplexSession *_session;
     NSData *_startMessage;
@@ -26,7 +26,7 @@
     NSMutableDictionary *_defaults;
 }
 
-@property (readonly) NSObject<KCJoiningAcceptCircleDelegate> *circleDelegate; // @synthesize circleDelegate=_circleDelegate;
+@property (weak) id<KCJoiningAcceptCircleDelegate> circleDelegate; // @synthesize circleDelegate=_circleDelegate;
 @property (readonly) KCSRPServerContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
 @property (readonly) unsigned long long dsid; // @synthesize dsid=_dsid;
@@ -35,7 +35,7 @@
 @property (strong, nonatomic) OTControl *otControl; // @synthesize otControl=_otControl;
 @property (strong) NSString *piggy_uuid; // @synthesize piggy_uuid=_piggy_uuid;
 @property int piggy_version; // @synthesize piggy_version=_piggy_version;
-@property (readonly) NSObject<KCJoiningAcceptSecretDelegate> *secretDelegate; // @synthesize secretDelegate=_secretDelegate;
+@property (weak) id<KCJoiningAcceptSecretDelegate> secretDelegate; // @synthesize secretDelegate=_secretDelegate;
 @property (readonly) KCAESGCMDuplexSession *session; // @synthesize session=_session;
 @property (strong) NSData *startMessage; // @synthesize startMessage=_startMessage;
 @property (readonly) int state; // @synthesize state=_state;

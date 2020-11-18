@@ -12,11 +12,13 @@
 {
     MISSING_TYPE *colorStyle;
     MISSING_TYPE *contactView;
+    MISSING_TYPE *glowClippingView;
     MISSING_TYPE *glowView;
     MISSING_TYPE *audioVisualizationView;
     MISSING_TYPE *titleLabelContainer;
     MISSING_TYPE *subtitleLabelContainer;
     MISSING_TYPE *isInRoster;
+    MISSING_TYPE *customCornerRadius;
 }
 
 @property (nonatomic, readonly) _TtC15ConversationKit33ParticipantViewLabelContainerView *subtitleLabelContainer; // @synthesize subtitleLabelContainer;

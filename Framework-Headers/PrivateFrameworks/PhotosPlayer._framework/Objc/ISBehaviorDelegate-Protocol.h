@@ -20,6 +20,7 @@
 - (void)behavior:(ISBehavior *)arg1 setVideoForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg2;
 - (void)behavior:(ISBehavior *)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(ISBehavior *)arg1 setVideoVolume:(float)arg2;
+- (BOOL)behaviorIsVideoReadyForDisplay:(ISBehavior *)arg1;
 - (float)videoPlayRate;
 @end
 

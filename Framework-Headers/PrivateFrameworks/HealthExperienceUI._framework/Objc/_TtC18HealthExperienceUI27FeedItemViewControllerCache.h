@@ -15,6 +15,7 @@
     MISSING_TYPE *originalEventHandler;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *cache;
+    MISSING_TYPE *viewController;
 }
 
 - (void).cxx_destruct;

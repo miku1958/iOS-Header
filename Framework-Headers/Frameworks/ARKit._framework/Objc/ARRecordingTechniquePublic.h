@@ -51,6 +51,7 @@
 - (void).cxx_destruct;
 - (void)_fail:(id)arg1;
 - (void)_finish:(id)arg1;
+- (void)abortRecording;
 - (BOOL)allowedToWrite;
 - (void)copyVideoToPhotoLibrary;
 - (void)dealloc;

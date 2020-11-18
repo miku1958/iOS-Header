@@ -27,12 +27,12 @@
 - (id)_synchronouslyFetchAppLinkWithError:(id *)arg1;
 - (void)decideOpenStrategyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)disable;
+- (void)disableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getAppLinkAttributesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getAppLinkLabel:(id *)arg1 name:(id *)arg2 icon:(id *)arg3;
 - (id)initWithURL:(id)arg1;
 - (void)openExternally;
 - (void)openExternallyWithWebBrowserState:(id)arg1 referrerURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)openInSafari;
 - (long long)synchronouslyDecideOpenStrategy;
 
 @end

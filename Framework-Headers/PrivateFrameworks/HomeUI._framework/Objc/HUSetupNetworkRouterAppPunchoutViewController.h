@@ -13,7 +13,7 @@
 
 @interface HUSetupNetworkRouterAppPunchoutViewController : OBWelcomeController <HFSetupPairingPopupAppPunchout>
 {
-    id<HFSetupPairingPopupDelegate> _delegate;
+    id<HFSetupPairingPopupDelegate> _popupDelegate;
     HMSetupAccessoryDescription *_setupAccessoryDescription;
     HFAppPunchoutRequest *_punchoutRequest;
     HULinkedApplicationItem *_linkedApplicationItem;
@@ -21,10 +21,10 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HULinkedApplicationItem *linkedApplicationItem; // @synthesize linkedApplicationItem=_linkedApplicationItem;
+@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> popupDelegate; // @synthesize popupDelegate=_popupDelegate;
 @property (readonly, nonatomic) unsigned long long popupType;
 @property (readonly, nonatomic) OBTrayButton *punchoutButton; // @synthesize punchoutButton=_punchoutButton;
 @property (strong, nonatomic) HFAppPunchoutRequest *punchoutRequest; // @synthesize punchoutRequest=_punchoutRequest;
@@ -35,7 +35,7 @@
 - (void)_cancelPressed:(id)arg1;
 - (id)_lookUpSoftwareAndUpdateUI;
 - (void)_punchoutPressed:(id)arg1;
-- (id)initWithDelegate:(id)arg1 setupAccessoryDescription:(id)arg2;
+- (id)initWithPopupDelegate:(id)arg1 setupAccessoryDescription:(id)arg2;
 - (void)viewDidLoad;
 
 @end

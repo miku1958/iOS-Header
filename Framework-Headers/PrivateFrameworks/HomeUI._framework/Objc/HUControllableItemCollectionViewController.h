@@ -62,6 +62,7 @@
 - (void)_updateEditingStateForCell:(id)arg1;
 - (void)_updateReorderingGestureRecognizer;
 - (id)_visibleCellForItem:(id)arg1;
+- (BOOL)allowsPresentationWithOnlySettings;
 - (BOOL)alwaysAllowReordering;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;

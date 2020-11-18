@@ -42,7 +42,10 @@
 - (void)_commonInitWithAccountRepository:(id)arg1;
 - (id)_filterIDsFromMailbox:(id)arg1 withQuery:(id)arg2;
 - (id)_init;
+- (id)_mailboxesFuture;
 - (void)_prepareMailboxes:(id)arg1;
+- (id)_remoteMailboxObjectIDsForMailboxType:(long long)arg1;
+- (long long)_remoteMailboxTypeForMailboxObjectID:(id)arg1;
 - (void)_restartObservingMailboxChangesIfNecessary;
 - (void)_startObservingMailboxChangesIfNecessary;
 - (void)dealloc;

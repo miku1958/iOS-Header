@@ -12,7 +12,9 @@
 
 + (Class)homeKitRepresentationClass;
 - (id)commitItem;
+- (id)createNewAction;
 - (BOOL)isAffectedByEndEvents;
+- (id)performValidation;
 
 @end
 

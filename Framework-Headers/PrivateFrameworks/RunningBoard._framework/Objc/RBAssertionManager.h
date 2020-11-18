@@ -62,7 +62,8 @@
 - (id)_lock_activateDelayedAssertionsForTargets:(id)arg1;
 - (void)_lock_addAssertion:(id)arg1;
 - (void)_lock_clearStartTimesForUnbusyTargets:(id)arg1;
-- (void)_lock_deactivateDelayedAssertionsForTargets:(id)arg1;
+- (id)_lock_deactivateDelayedAssertionsForTargets:(id)arg1;
+- (void)_lock_deactivateDelayedAssertionsForTargetsAndUpdateStates:(id)arg1;
 - (double)_lock_delayedStartTimeForAssertion:(id)arg1;
 - (void)_lock_dumpAssertionsForTarget:(id)arg1;
 - (void)_lock_enqueueAssertionsForRemoval:(id)arg1;

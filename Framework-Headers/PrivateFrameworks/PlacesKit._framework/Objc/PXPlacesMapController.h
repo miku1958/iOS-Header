@@ -10,7 +10,7 @@
 #import <PlacesKit/MKMapViewDelegate-Protocol.h>
 #import <PlacesKit/PXPlacesGeotaggedItemDataSourceDelegate-Protocol.h>
 
-@class CLLocationManager, NSMapTable, NSMutableDictionary, NSSet, NSString, PXPlacesImageCache, PXPlacesMapPipelineExecutionContext, PXPlacesMapView;
+@class CLLocationManager, NSMapTable, NSMutableDictionary, NSOrderedSet, NSSet, NSString, PXPlacesImageCache, PXPlacesMapPipelineExecutionContext, PXPlacesMapView;
 @protocol MKAnnotation, OS_dispatch_queue, OS_dispatch_source, PXPlacesMapControllerChangeDelegate, PXPlacesMapControllerFocusDelegate, PXPlacesMapControllerLoadingStateDelegate, PXPlacesMapControllerSelectionDelegate;
 
 @interface PXPlacesMapController : NSObject <MKMapViewDelegate, CLLocationManagerDelegate, PXPlacesGeotaggedItemDataSourceDelegate>
@@ -46,6 +46,7 @@
 @property (weak) id<PXPlacesMapControllerChangeDelegate> changeDelegate; // @synthesize changeDelegate=_changeDelegate;
 @property (strong) PXPlacesMapPipelineExecutionContext *currentExecutionContext; // @synthesize currentExecutionContext=_currentExecutionContext;
 @property (nonatomic) int currentLocationAuthorizationStatus; // @synthesize currentLocationAuthorizationStatus=_currentLocationAuthorizationStatus;
+@property (readonly, nonatomic) NSOrderedSet *currentSelectedGeotaggables;
 @property (strong, nonatomic) id<MKAnnotation> currentSelection; // @synthesize currentSelection=_currentSelection;
 @property (strong) NSMapTable *dataSourceToPipelineMap; // @synthesize dataSourceToPipelineMap=_dataSourceToPipelineMap;
 @property (strong) NSSet *dataSources; // @synthesize dataSources=_dataSources;

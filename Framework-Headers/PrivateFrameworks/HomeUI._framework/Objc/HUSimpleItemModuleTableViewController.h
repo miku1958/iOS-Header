@@ -27,10 +27,13 @@
 - (void).cxx_destruct;
 - (void)_updateTitle;
 - (id)buildItemModuleControllerForModule:(id)arg1;
+- (void)dismissTextViewController;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithTableViewStyle:(long long)arg1 moduleCreator:(CDUnknownBlockType)arg2 moduleControllerBuilder:(CDUnknownBlockType)arg3;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)viewDidLayoutSubviews;
 
 @end
 

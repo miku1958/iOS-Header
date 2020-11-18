@@ -6,7 +6,7 @@
 
 #import <Transparency/GPBMessage.h>
 
-@class InclusionProof, NSData, NSMutableArray, VRFWitness;
+@class InclusionProof, NSData, NSDictionary, NSMutableArray, VRFWitness;
 
 @interface QueryResponse : GPBMessage
 {
@@ -18,12 +18,15 @@
 @property (nonatomic) BOOL hasInclusionProof; // @dynamic hasInclusionProof;
 @property (nonatomic) BOOL hasUriWitness; // @dynamic hasUriWitness;
 @property (strong, nonatomic) InclusionProof *inclusionProof; // @dynamic inclusionProof;
+@property (readonly) NSDictionary *metadata;
 @property (strong, nonatomic) NSMutableArray *pendingSmtsArray; // @dynamic pendingSmtsArray;
 @property (readonly, nonatomic) unsigned long long pendingSmtsArray_Count; // @dynamic pendingSmtsArray_Count;
 @property (nonatomic) int status; // @dynamic status;
 @property (strong, nonatomic) VRFWitness *uriWitness; // @dynamic uriWitness;
 
 + (id)descriptor;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 
 @end
 

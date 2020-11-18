@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface AXTapticChimeAsset : NSObject
 {
@@ -17,6 +17,7 @@
 }
 
 @property (readonly, nonatomic) NSString *audioFilePath; // @synthesize audioFilePath=_audioFilePath;
+@property (readonly, nonatomic) NSArray *hapticAtomEntries;
 @property (readonly, nonatomic) NSDictionary *hapticDictionary; // @synthesize hapticDictionary=_hapticDictionary;
 @property (readonly, nonatomic) double prePlayTimeInterval; // @synthesize prePlayTimeInterval=_prePlayTimeInterval;
 @property (readonly, nonatomic) float volume; // @synthesize volume=_volume;
@@ -28,7 +29,6 @@
 - (id)_initWithChimeSoundType:(long long)arg1 audioFilePath:(id)arg2 hapticsFilePath:(id)arg3;
 - (unsigned int)createSystemSoundIDForStartTime:(double)arg1;
 - (id)description;
-- (id)hapticAtomEntries;
 
 @end
 

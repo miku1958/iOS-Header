@@ -89,6 +89,7 @@
 - (id)_generateNonOptimalTimesFromTimeSpans:(id)arg1;
 - (id)_generateOpenFreeTimesFromTimeSpans:(id)arg1;
 - (id)_generateTimeSpansForResults:(id)arg1 betweenStartDate:(id)arg2 endDate:(id)arg3;
+- (void)_haltSearchWithError:(BOOL)arg1;
 - (id)_mergeAdjacentSpansWithSameConflictedParticipants:(id)arg1;
 - (id)_participantforParticipantAddress:(id)arg1;
 - (void)_processResults:(id)arg1 betweenStartDate:(id)arg2 endDate:(id)arg3;

@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *endDate;
+@property (readonly, nonatomic) unsigned short enrichmentState;
 @property (nonatomic) unsigned short enrichmentState;
 @property (readonly, nonatomic) NSArray *extendedCuratedAssets;
 @property (readonly) unsigned long long hash;

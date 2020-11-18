@@ -26,7 +26,7 @@
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)appSearchViewController:(id)arg1 didFinishWithApp:(id)arg2;
 - (void)appSearchViewControllerDidCancel:(id)arg1;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
 

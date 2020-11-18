@@ -39,6 +39,7 @@
 - (void)_generateResourceFilesForAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_generateTitleForFeedback:(id)arg1;
 - (id)_generateURLsForAssetsDBGFiles:(id)arg1;
+- (id)_keywordIDForComponent:(long long)arg1;
 - (long long)_radarComponentForFeedback:(id)arg1;
 - (id)initWithAssets:(id)arg1 delegate:(id)arg2;
 - (id)longTitleText;

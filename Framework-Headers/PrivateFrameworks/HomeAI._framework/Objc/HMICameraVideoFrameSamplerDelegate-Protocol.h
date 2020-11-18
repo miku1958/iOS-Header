@@ -11,6 +11,7 @@
 @protocol HMICameraVideoFrameSamplerDelegate <NSObject>
 
 @optional
+- (void)sampler:(HMICameraVideoFrameSampler *)arg1 didDiscardFrame:(HMICameraVideoFrame *)arg2;
 - (void)sampler:(HMICameraVideoFrameSampler *)arg1 didFindSample:(HMICameraVideoFrame *)arg2;
 - (void)sampler:(HMICameraVideoFrameSampler *)arg1 didFindSample:(HMICameraVideoFrame *)arg2 target:(HMICameraVideoFrame *)arg3;
 @end

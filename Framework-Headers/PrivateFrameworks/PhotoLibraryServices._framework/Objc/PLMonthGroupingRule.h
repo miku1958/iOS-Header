@@ -31,8 +31,8 @@
 - (id)highlightItemsSortedByImportance:(id)arg1;
 - (id)init;
 - (unsigned long long)maximumNumberOfHighlightItemsToPromote;
-- (void)titlesForHighlightItemList:(id)arg1 forceUpdateLocale:(BOOL)arg2 resultBlock:(CDUnknownBlockType)arg3;
-- (void)titlesForHighlightItemList:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
+- (void)titlesForHighlightItemList:(id)arg1 dateRangeTitleGenerator:(id)arg2 forceUpdateLocale:(BOOL)arg3 resultBlock:(CDUnknownBlockType)arg4;
+- (void)titlesForHighlightItemList:(id)arg1 dateRangeTitleGenerator:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 
 @end
 

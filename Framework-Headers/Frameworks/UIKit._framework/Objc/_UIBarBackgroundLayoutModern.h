@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (long long)bg1ImageMode;
 - (double)bg1ShadowAlpha;
 - (id)bg1ShadowColor;
+- (id)bg1ShadowEffect;
 - (id)bg1ShadowImage;
 - (id)bg1ShadowTint;
 - (double)bg2Alpha;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (long long)bg2ImageMode;
 - (double)bg2ShadowAlpha;
 - (id)bg2ShadowColor;
+- (id)bg2ShadowEffect;
 - (id)bg2ShadowImage;
 - (id)bg2ShadowTint;
 - (void)describeInto:(id)arg1;

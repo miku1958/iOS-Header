@@ -7,7 +7,7 @@
 #import <Email/EDAccount-Protocol.h>
 
 @class NSArray, NSString, NSURL;
-@protocol ECMailbox, EDDeliveryAcount;
+@protocol ECMailbox, EDDeliveryAccount;
 
 @protocol EDReceivingAccount <EDAccount>
 
@@ -19,8 +19,8 @@
 @property (readonly, nonatomic) BOOL sourceIsManaged;
 
 - (BOOL)containsMailboxWithURL:(NSURL *)arg1;
-- (id<EDDeliveryAcount>)deliveryAccount;
+- (id<EDDeliveryAccount>)deliveryAccount;
 - (id<ECMailbox>)mailboxForType:(long long)arg1;
-- (void)setDeliveryAccount:(id<EDDeliveryAcount>)arg1;
+- (void)setDeliveryAccount:(id<EDDeliveryAccount>)arg1;
 @end
 

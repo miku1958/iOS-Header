@@ -17,6 +17,7 @@
 - (NSString *)currentUserInterfaceTypeForWFApplicationContext:(WFApplicationContext *)arg1;
 - (UIWindow *)keyWindowForWFApplicationContext:(WFApplicationContext *)arg1;
 - (NSString *)notificationNameForApplicationStateEvent:(long long)arg1 applicationContext:(WFApplicationContext *)arg2;
+- (BOOL)shouldReverseLayoutDirection;
 
 @optional
 - (long long)currentApplicationStateForWFApplicationContext:(WFApplicationContext *)arg1;

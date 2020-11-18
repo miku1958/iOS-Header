@@ -26,13 +26,14 @@
     NSMutableArray *_settingProactiveReaders;
     HMFNetMonitor *_networkMonitor;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
-    HMDCameraRecordingManager *_cameraRecordingManager;
     HMDCameraProfileSettingsManager *_cameraSettingsManager;
+    CDUnknownBlockType _recordingManagerFactory;
     HMDCameraClipUserNotificationCenter *_clipUserNotificationCenter;
     HMDPredicateUtilities *_predicateUtilities;
+    HMDCameraRecordingManager *_cameraRecordingManager;
 }
 
-@property (readonly, nonatomic) HMDCameraRecordingManager *cameraRecordingManager; // @synthesize cameraRecordingManager=_cameraRecordingManager;
+@property (strong) HMDCameraRecordingManager *cameraRecordingManager; // @synthesize cameraRecordingManager=_cameraRecordingManager;
 @property (readonly) HMDCameraProfileSettingsManager *cameraSettingsManager; // @synthesize cameraSettingsManager=_cameraSettingsManager;
 @property (readonly) NSSet *cameraStreamManagers; // @synthesize cameraStreamManagers=_cameraStreamManagers;
 @property (strong) HMDCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
@@ -47,6 +48,7 @@
 @property (readonly) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property (strong) HMDPredicateUtilities *predicateUtilities; // @synthesize predicateUtilities=_predicateUtilities;
 @property (readonly) HMDService *recordingManagementService; // @synthesize recordingManagementService=_recordingManagementService;
+@property (readonly) CDUnknownBlockType recordingManagerFactory; // @synthesize recordingManagerFactory=_recordingManagerFactory;
 @property (readonly) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
 @property (readonly) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
@@ -59,6 +61,7 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_configureForRecording;
 - (id)_createCameraManagers:(id)arg1;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
 - (void)_handleStreamControlRequest:(id)arg1;
@@ -67,9 +70,9 @@
 - (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
-- (BOOL)canPostSignificantEventNotification:(id)arg1;
 - (void)clipManager:(id)arg1 didAddSignificantEventNotification:(id)arg2;
 - (void)clipManager:(id)arg1 didDeleteClip:(id)arg2;
+- (BOOL)clipManager:(id)arg1 shouldAddNotificationForSignificantEvent:(id)arg2 withHomePresence:(id)arg3;
 - (void)clipManagerDidBecomeAvailable:(id)arg1;
 - (void)clipManagerDidBecomeUnavailable:(id)arg1;
 - (void)clipManagerDidDisableCloudStorage:(id)arg1;
@@ -77,13 +80,16 @@
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleCameraProfileSettingsDidChangeNotification:(id)arg1;
+- (void)handleResidentsChanged:(id)arg1;
 - (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5 recordingManagerFactory:(CDUnknownBlockType)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (id)messageReceiverChildren;
 - (void)registerForMessages;
+- (void)removeCloudData;
 - (void)setUp;
-- (void)unconfigure;
 - (id)url;
 
 @end

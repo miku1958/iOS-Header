@@ -144,7 +144,7 @@
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(BOOL)arg4;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (double)_baselineOffsetFromBottom;
-- (void)_baselineOffsetParametersDidChange;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_commonInit;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
 - (void)_coordinateBeginTimeForMarqueeAnimations:(double)arg1;
@@ -172,6 +172,7 @@
 - (id)_image;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
+- (void)_invalidateBaselineConstraints;
 - (void)_invalidateCachedDefaultAttributes;
 - (void)_invalidateLayout;
 - (void)_invalidateSynthesizedAttributedTextAndLayout;
@@ -226,6 +227,7 @@
 - (id)_shadow;
 - (BOOL)_shouldCeilSizeToViewScale;
 - (BOOL)_shouldDrawUnderlinesLikeWebKit;
+- (BOOL)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (BOOL)_shouldShowAccessibilityButtonShapesUnderline;
 - (id)_siblingMarqueeLabels;
 - (void)_startMarquee;

@@ -88,6 +88,7 @@
 - (void)_addBulletin:(id)arg1;
 - (void)_addObserver:(id)arg1;
 - (void)_addSettingsGatewayConnection:(id)arg1;
+- (void)_addStateCaptureHandlers;
 - (void)_addSuspendedConnection:(id)arg1;
 - (id)_allBulletinsForSectionID:(id)arg1;
 - (id)_applicableSectionInfosForBulletin:(id)arg1 inSection:(id)arg2;

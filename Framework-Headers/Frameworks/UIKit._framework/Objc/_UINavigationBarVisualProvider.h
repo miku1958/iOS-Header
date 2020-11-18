@@ -98,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setupTopNavigationItem;
 - (BOOL)shouldUseHeightRangeFittingWidth;
+- (struct CGSize)sizeForRestoringFromCancelledTransition;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
 - (long long)statusBarStyle;
@@ -105,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (void)teardown;
 - (BOOL)topItemHasVariableHeight;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)traitCollectionDidChangeOnSubtree:(id)arg1;
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateArchivedSubviews:(id)arg1;
 - (void)updateBackgroundGroupName;

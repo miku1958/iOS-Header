@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityParentForFindingScrollParent;
 - (void)_accessibilitySetUnderlyingRepresentedTimePeriod:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityUnderlyingRepresentedTimePeriod;
 - (struct CGRect)accessibilityFrame;

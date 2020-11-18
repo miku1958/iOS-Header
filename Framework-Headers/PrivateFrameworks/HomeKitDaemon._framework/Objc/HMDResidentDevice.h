@@ -7,20 +7,22 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDDeviceControllerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDResidentDeviceManager, HMFUnfairLock, NSString, NSUUID;
+@class HMDDevice, HMDDeviceController, HMDHome, HMDResidentDeviceManager, HMFUnfairLock, NSString, NSUUID;
 
-@interface HMDResidentDevice : HMFObject <HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding>
+@interface HMDResidentDevice : HMFObject <HMDDeviceControllerDelegate, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding>
 {
     HMFUnfairLock *__lock;
+    HMDDevice *_device;
+    HMDDeviceController *_deviceController;
     BOOL _enabled;
     BOOL _confirmed;
     BOOL _reachable;
     BOOL _lowBattery;
-    HMDDevice *_device;
     NSUUID *_identifier;
     long long _batteryState;
     HMDHome *_home;
@@ -53,15 +55,16 @@
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)__accountAdded:(id)arg1;
-- (void)__deviceAdded:(id)arg1;
 - (void)__deviceUpdated:(id)arg1;
+- (id)__initWithDeviceController:(id)arg1;
 - (void)_handleResidentDeviceUpdateConfirmed:(BOOL)arg1;
 - (void)_handleResidentDeviceUpdateEnabled:(BOOL)arg1;
 - (void)_residentDeviceModelUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)configureWithHome:(id)arg1;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
+- (id)deviceController;
+- (void)deviceController:(id)arg1 didUpdateDevice:(id)arg2;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

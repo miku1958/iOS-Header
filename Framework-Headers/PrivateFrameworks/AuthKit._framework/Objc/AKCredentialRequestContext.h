@@ -34,6 +34,7 @@
     NSString *_callerBundleID;
     NSString *_proxiedDeviceName;
     NSString *_proxiedDeviceClass;
+    NSString *_proxiedClientServiceID;
     NSUUID *_requestIdentifier;
     AKAuthorizationRequest *_authorizationRequest;
     AKPasswordRequest *_passwordRequest;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) NSString *_proxiedClientAppID; // @synthesize _proxiedClientAppID;
 @property (strong, nonatomic) NSString *_proxiedClientAppName; // @synthesize _proxiedClientAppName;
 @property (strong, nonatomic) NSString *_proxiedClientBundleID; // @synthesize _proxiedClientBundleID;
+@property (strong, nonatomic) NSString *_proxiedClientServiceID; // @synthesize _proxiedClientServiceID;
 @property (strong, nonatomic) NSString *_proxiedClientTeamID; // @synthesize _proxiedClientTeamID;
 @property (strong, nonatomic) NSString *_proxiedDeviceClass; // @synthesize _proxiedDeviceClass;
 @property (strong, nonatomic) NSString *_proxiedDeviceName; // @synthesize _proxiedDeviceName;

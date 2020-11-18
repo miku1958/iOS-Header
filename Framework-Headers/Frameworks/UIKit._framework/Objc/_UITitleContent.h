@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (void)updateWithButton:(id)arg1;
+- (void)updateWithTitleAttributes:(id)arg1 button:(id)arg2;
 
 @end
 

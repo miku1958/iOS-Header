@@ -51,6 +51,7 @@
 + (void)getDropSessionWithUIDropSession:(id)arg1 sceneProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)_initWithUIDragDropSession:(id)arg1 application:(id)arg2 targetContentIdentifier:(id)arg3;
+- (BOOL)_isApplicationBoundToVisibleIcon;
 - (void)calculateSceneIdentityWithSceneProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 activity:(id)arg4 activityData:(id)arg5;
 - (id)initWithUIDragDropSession:(id)arg1 systemSession:(id)arg2 application:(id)arg3 targetContentIdentifier:(id)arg4;

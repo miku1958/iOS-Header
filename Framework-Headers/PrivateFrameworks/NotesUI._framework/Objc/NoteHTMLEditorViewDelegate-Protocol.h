@@ -6,7 +6,7 @@
 
 #import <NotesUI/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView, UIScrollView;
+@class NSArray, NSDictionary, NSFileWrapper, NSString, NSURL, NoteAttachmentPresentation, NoteHTMLEditorView, UIScrollView;
 
 @protocol NoteHTMLEditorViewDelegate <NSObject>
 
@@ -16,6 +16,7 @@
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 addAttachmentItemProviders:(NSArray *)arg2;
 - (NoteAttachmentPresentation *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 attachmentPresentationForContentID:(NSString *)arg2;
 - (BOOL)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 canAddAttachmentItemProviders:(NSArray *)arg2;
+- (NoteAttachmentPresentation *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 createAttachmentPresentationWithFileWrapper:(NSFileWrapper *)arg2 mimeType:(NSString *)arg3;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 didInvokeFormattingCalloutOption:(long long)arg2;
 - (void)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 didInvokeStyleFormattingOption:(long long)arg2;
 - (NSURL *)noteHTMLEditorView:(NoteHTMLEditorView *)arg1 fileURLForAttachmentWithContentID:(NSString *)arg2;

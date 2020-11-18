@@ -6,22 +6,23 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString, PXAssetCollectionReference, PXAssetReference, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView, UIBarButtonItem;
-@protocol PXCuratedLibraryViewModelPresenter;
+@class NSMutableSet, NSSet, PXAssetCollectionReference, PXAssetReference, PXCPLServiceUI, PXCuratedLibraryAssetCollectionSkimmingInfo, PXGView, UIBarButtonItem;
+@protocol PXCuratedLibraryViewModelPresenter, PXFilterState;
 
 @protocol PXMutablePhotosLibraryViewModel <NSObject>
 
 @property (nonatomic) BOOL allPhotosAspectFit;
+@property (nonatomic) BOOL allPhotosCaptionsVisible;
+@property (copy, nonatomic) id<PXFilterState> allPhotosFilterState;
 @property (nonatomic) BOOL allPhotosLayoutIsAnimating;
+@property (strong, nonatomic) PXCPLServiceUI *cplServiceUI;
 @property (nonatomic) double daysMarginScale;
 @property (copy, nonatomic) NSSet *draggedAssetReferences;
 @property (nonatomic) BOOL isAppearing;
 @property (nonatomic) BOOL isInteractiveZooming;
 @property (nonatomic) BOOL isPinching;
 @property (nonatomic) BOOL isSelecting;
-@property (nonatomic) unsigned long long libraryState;
 @property (strong, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem;
-@property (copy, nonatomic) NSString *selectModeCaption;
 @property (strong, nonatomic) PXCuratedLibraryAssetCollectionSkimmingInfo *skimmingInfo;
 @property (nonatomic) BOOL viewBasedDecorationsEnabled;
 @property (readonly, nonatomic) NSMutableSet *visibleAssetCollections;

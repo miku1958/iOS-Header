@@ -14,7 +14,7 @@
 - (void)dumpCloudRecordsForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 rawOutput:(BOOL)arg3 completion:(void (^)(NSError *, NSString *))arg4;
 - (void)dumpLocalRulesForProductGroup:(NSString *)arg1 ignoreOverrides:(BOOL)arg2 rawOutput:(BOOL)arg3 completion:(void (^)(NSError *, NSString *))arg4;
 - (void)dumpLocalRulesForProductGroup:(NSString *)arg1 productNumber:(NSString *)arg2 firmwareVersion:(HMFVersion *)arg3 ignoreOverrides:(BOOL)arg4 rawOutput:(BOOL)arg5 completion:(void (^)(NSError *, NSString *))arg6;
-- (void)fetchCloudChangesAndForceChangesFoundWithCompletion:(void (^)(NSError *))arg1;
+- (void)forceFetchCloudChangesAndForceChangeNotifications:(BOOL)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)listCloudRecordsForProductGroup:(NSString *)arg1 rawOutput:(BOOL)arg2 completion:(void (^)(NSError *, NSString *))arg3;
 - (void)removeAllLocalRulesWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeAllOverridesWithCompletion:(void (^)(NSError *))arg1;

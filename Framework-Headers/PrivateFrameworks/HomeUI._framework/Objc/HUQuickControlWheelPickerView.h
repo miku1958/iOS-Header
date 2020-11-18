@@ -10,7 +10,7 @@
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
-@class HUQuickControlWheelPickerViewProfile, NSArray, NSNumber, NSString, UIPickerView;
+@class HUQuickControlWheelPickerViewProfile, NSArray, NSNumber, NSString, UIImpactFeedbackGenerator, UIPickerView, UISelectionFeedbackGenerator;
 @protocol HUQuickControlViewInteractionDelegate;
 
 @interface HUQuickControlWheelPickerView : UIView <UIPickerViewDelegate, UIPickerViewDataSource, HUQuickControlInteractiveView>
@@ -26,12 +26,15 @@
     UIView *_selectedRowSurroundingView;
     NSNumber *_selectedRow;
     double _maxTextWidth;
+    UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
+    UIImpactFeedbackGenerator *_impactFeedbackGenerator;
 }
 
 @property (strong, nonatomic) UIView *bottomGradientView; // @synthesize bottomGradientView=_bottomGradientView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property (weak, nonatomic) id<HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (nonatomic) double maxTextWidth; // @synthesize maxTextWidth=_maxTextWidth;
@@ -41,6 +44,7 @@
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) NSNumber *selectedRow; // @synthesize selectedRow=_selectedRow;
 @property (strong, nonatomic) UIView *selectedRowSurroundingView; // @synthesize selectedRowSurroundingView=_selectedRowSurroundingView;
+@property (strong, nonatomic) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *topGradientView; // @synthesize topGradientView=_topGradientView;
 @property (nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;
@@ -48,6 +52,8 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)_actuateSelectionTapticFeedback;
+- (void)_prepareForTapticFeedback;
 - (void)_updateSelectedRowBorderView:(id)arg1;
 - (void)_updateUI;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;

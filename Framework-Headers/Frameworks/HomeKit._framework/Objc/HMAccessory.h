@@ -33,6 +33,7 @@
     BOOL _supportsTargetController;
     BOOL _targetControllerHardwareSupport;
     BOOL _supportsMultiUser;
+    BOOL _supportsCompanionInitiatedRestart;
     BOOL _suspendCapable;
     BOOL _paired;
     NSUUID *_uniqueIdentifier;
@@ -126,6 +127,7 @@
 @property (copy) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 @property (copy) NSString *storeID; // @synthesize storeID=_storeID;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsCompanionInitiatedRestart; // @synthesize supportsCompanionInitiatedRestart=_supportsCompanionInitiatedRestart;
 @property (readonly) BOOL supportsIdentify; // @synthesize supportsIdentify=_supportsIdentify;
 @property (nonatomic) BOOL supportsMediaAccessControl; // @synthesize supportsMediaAccessControl=_supportsMediaAccessControl;
 @property (nonatomic) BOOL supportsMultiUser; // @synthesize supportsMultiUser=_supportsMultiUser;
@@ -158,6 +160,7 @@
 - (void)_checkForTelevisionProfileChanges:(id)arg1;
 - (void)_configureProfilesWithContext:(id)arg1;
 - (void)_copyFrom:(id)arg1;
+- (void)_deleteSiriHistoryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)_findService:(id)arg1;
 - (id)_findServiceWithUniqueIdentifier:(id)arg1;
@@ -179,6 +182,7 @@
 - (void)_handleServiceRenamed:(id)arg1;
 - (void)_handleServiceSubtype:(id)arg1;
 - (void)_handleServiceTypeAssociated:(id)arg1;
+- (void)_handleSupportsCompanionInitiatedRestartUpdatedMessage:(id)arg1;
 - (void)_handleSymptomsHandlerUpdatedMessage:(id)arg1;
 - (void)_handleTargetControlSupportUpdatedMessage:(id)arg1;
 - (void)_identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -188,6 +192,7 @@
 - (BOOL)_mergeServices:(id)arg1 operations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_notifyClientsOfMultiUserSupportUpdate;
+- (void)_notifyClientsOfSupportsCompanionInitiatedRestartUpdate;
 - (void)_notifyClientsOfSymptomsHandlerAddedOrRemoved:(BOOL)arg1;
 - (void)_notifyClientsOfTargetControlSupportUpdate;
 - (void)_notifyDelegateOfAddedControlTarget:(id)arg1;
@@ -213,6 +218,7 @@
 - (void)addControlTargetUUIDs:(id)arg1;
 - (id)controlTargets;
 - (void)dealloc;
+- (void)deleteSiriHistoryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)device;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleRuntimeStateUpdate:(id)arg1;

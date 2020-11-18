@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NUAnimationObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NUViewDelegate-Protocol.h>
 
-@class CLKDevice, NSMutableSet, NSString, NUScene, NUView, UIImageView;
+@class CLKDevice, CLKUIQuadView, NSMutableSet, NSString, NUScene, NUView, UIImageView;
 @protocol NTKAstronomyVistaViewObserver;
 
 @interface NTKAstronomyVistaView : UIView <NUAnimationObserver, NUViewDelegate>
@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<NTKAstronomyVistaViewObserver> observer; // @synthesize observer=_observer;
+@property (readonly, nonatomic) CLKUIQuadView *quadView;
 @property (strong, nonatomic) NUScene *scene;
 @property (readonly) Class superclass;
 

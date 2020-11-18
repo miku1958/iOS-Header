@@ -8,12 +8,13 @@
 
 #import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
 #import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
+#import <MediaControls/_MCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
 @protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate>
+@interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate, _MCStateDumpPropertyListTransformable>
 {
     BOOL _allowsAutomaticResponseLoading;
     BOOL _onScreen;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_initRoutingController;
 - (void)_maybeReloadPlayerPathWithRoute:(id)arg1;
 - (void)_reloadPlayerPathWithRoute:(id)arg1;
+- (id)_stateDumpObject;
 - (void)_updateState;
 - (void)connectAllowingAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;

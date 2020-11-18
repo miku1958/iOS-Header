@@ -16,6 +16,7 @@
 - (unsigned long long)_axGetTriageActionForAnnouncement;
 - (void)_axSetTriageActionForAnnouncement:(unsigned long long)arg1;
 - (void)_configureCell:(id)arg1 itemID:(id)arg2;
+- (void)_updateBackButtonImageWithCount:(unsigned long long)arg1;
 
 @end
 

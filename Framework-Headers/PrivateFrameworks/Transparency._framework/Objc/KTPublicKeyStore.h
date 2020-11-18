@@ -6,31 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, TransparencyManagedDataStore;
 
 @interface KTPublicKeyStore : NSObject
 {
+    BOOL _forceRefresh;
     NSDictionary *_applicationKeyStores;
     NSArray *_applications;
+    TransparencyManagedDataStore *_dataStore;
 }
 
 @property (strong) NSDictionary *applicationKeyStores; // @synthesize applicationKeyStores=_applicationKeyStores;
 @property (strong) NSArray *applications; // @synthesize applications=_applications;
+@property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property BOOL forceRefresh; // @synthesize forceRefresh=_forceRefresh;
 @property (readonly) BOOL ready;
 
 - (void).cxx_destruct;
-- (BOOL)clearApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (void)clearApplicationState:(id)arg1 error:(id *)arg2;
-- (BOOL)configureApplicationKeyStore:(id)arg1 keyStoreData:(id)arg2 error:(id *)arg3;
-- (void)configureWithClient:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)clearDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (void)configureWithClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)configureWithClient:(id)arg1 ignoreCachedKeys:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)configureWithDisk:(id *)arg1;
+- (id)copyKeyStoreState;
+- (id)copyMetadata;
+- (id)createApplicationKeyStore:(id)arg1 keyStoreData:(id)arg2 error:(id *)arg3;
 - (id)createApplicationKeyStore:(id)arg1 keyStoreResponse:(id)arg2 error:(id *)arg3;
+- (void)fetchKeyStore:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)hasApplicationPublicKeyStoreOnDisk:(id)arg1 error:(id *)arg2;
-- (id)init;
+- (id)initWithDataStore:(id)arg1;
 - (id)readPublicKeyStoreFromDisk:(id *)arg1;
-- (BOOL)saveApplicationKeyStore:(id)arg1 error:(id *)arg2;
+- (BOOL)saveDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
 - (BOOL)writePublicKeyStoreToDisk:(id)arg1 error:(id *)arg2;
 
 @end

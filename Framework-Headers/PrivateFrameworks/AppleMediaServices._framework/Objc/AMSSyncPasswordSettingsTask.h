@@ -37,6 +37,8 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (unsigned long long)freePasswordSettingFromServerValue:(unsigned long long)arg1;
++ (unsigned long long)paidPasswordSettingFromServerValue:(unsigned long long)arg1;
 + (id)serverValueForFreePasswordSetting:(unsigned long long)arg1;
 + (id)serverValueForPaidPasswordSetting:(unsigned long long)arg1;
 - (void).cxx_destruct;

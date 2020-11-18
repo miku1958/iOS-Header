@@ -13,10 +13,12 @@
 @interface GEOLogMsgStateDetailLookAroundLog : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     double _durationSec;
     NSMutableArray *_lookAroundPipRecords;
     NSMutableArray *_lookAroundViewRecords;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _poisShown;
     struct {
         unsigned int has_durationSec:1;
@@ -54,6 +56,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)lookAroundPipRecordsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lookAroundPipRecordsCount;

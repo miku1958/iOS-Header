@@ -10,15 +10,12 @@
 #import <SpringBoard/SBRecentDisplayItemsControllerDelegate-Protocol.h>
 #import <SpringBoard/SBRecentDisplayItemsPersistenceDelegate-Protocol.h>
 
-@class NSMutableOrderedSet, NSOrderedSet, NSString, PTSingleTestRecipe, SBAppSuggestionManager, SBApplication, SBApplicationController, SBBestAppSuggestion, SBFAnalyticsClient, SBFloatingDockDefaults, SBIconController, SBIconListModel, SBIconModel, SBRecentDisplayItemsController, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
+@class NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSString, PTSingleTestRecipe, SBAppSuggestionManager, SBApplication, SBApplicationController, SBBestAppSuggestion, SBFAnalyticsClient, SBFloatingDockDefaults, SBIconController, SBIconListModel, SBIconModel, SBRecentDisplayItemsController, SBRecentDisplayItemsDataStore, SBRecentDisplayItemsDefaults;
 @protocol SBFloatingDockSuggestionsModelDelegate;
 
 @interface SBFloatingDockSuggestionsModel : NSObject <SBRecentDisplayItemsPersistenceDelegate, SBRecentDisplayItemsControllerDelegate, SBIconListModelObserver>
 {
     BOOL _recentsEnabled;
-    BOOL _switcherTransitioning;
-    BOOL _dockFolderTransitioning;
-    BOOL _pendingSuggestionUpdateForTransition;
     NSOrderedSet *_currentDisplayItems;
     SBBestAppSuggestion *_currentAppSuggestion;
     SBApplication *_requestedSuggestedApplication;
@@ -34,6 +31,7 @@
     SBIconModel *_iconModel;
     SBFloatingDockDefaults *_floatingDockDefaults;
     SBFAnalyticsClient *_analyticsClient;
+    NSMutableSet *_pendingSuggestionUpdateReasons;
     NSMutableOrderedSet *_currentRecentDisplayItems;
     NSMutableOrderedSet *_currentRecentDisplayItemsSortedByRecency;
     PTSingleTestRecipe *_stressTestRecipe;
@@ -49,13 +47,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBFloatingDockSuggestionsModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=_isDockFolderTransitioning) BOOL dockFolderTransitioning; // @synthesize dockFolderTransitioning=_dockFolderTransitioning;
 @property (readonly, nonatomic) SBFloatingDockDefaults *floatingDockDefaults; // @synthesize floatingDockDefaults=_floatingDockDefaults;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
 @property (strong, nonatomic) SBIconModel *iconModel; // @synthesize iconModel=_iconModel;
 @property (readonly, nonatomic) unsigned long long maxSuggestions; // @synthesize maxSuggestions=_maxSuggestions;
-@property (readonly, nonatomic, getter=_isPendingSuggestionUpdateForTransition) BOOL pendingSuggestionUpdateForTransition; // @synthesize pendingSuggestionUpdateForTransition=_pendingSuggestionUpdateForTransition;
+@property (readonly, nonatomic) NSMutableSet *pendingSuggestionUpdateReasons; // @synthesize pendingSuggestionUpdateReasons=_pendingSuggestionUpdateReasons;
 @property (readonly, nonatomic) SBRecentDisplayItemsController *recentsController; // @synthesize recentsController=_recentsController;
 @property (readonly, nonatomic) SBRecentDisplayItemsDataStore *recentsDataStore; // @synthesize recentsDataStore=_recentsDataStore;
 @property (readonly, nonatomic) SBRecentDisplayItemsDefaults *recentsDefaults; // @synthesize recentsDefaults=_recentsDefaults;
@@ -63,15 +60,11 @@
 @property (strong, nonatomic) SBApplication *requestedSuggestedApplication; // @synthesize requestedSuggestedApplication=_requestedSuggestedApplication;
 @property (readonly, nonatomic) PTSingleTestRecipe *stressTestRecipe; // @synthesize stressTestRecipe=_stressTestRecipe;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=_isSwitcherTransitioning) BOOL switcherTransitioning; // @synthesize switcherTransitioning=_switcherTransitioning;
 @property (strong, nonatomic) SBIconListModel *userDockListModel; // @synthesize userDockListModel=_userDockListModel;
 
 - (void).cxx_destruct;
 - (void)_addStateCaptureHandlers;
 - (void)_appSuggestionsChanged:(id)arg1;
-- (void)_appSwitcherDidEndTransitioning:(id)arg1;
-- (void)_appSwitcherOrDockFolderDidFinishTransitioning;
-- (void)_appSwitcherWillBeginTransitioning:(id)arg1;
 - (BOOL)_displayItemContainedInUserDock:(id)arg1;
 - (id)_displayItemForAppSuggestion:(id)arg1;
 - (id)_dockListModelFromIconController;
@@ -81,6 +74,7 @@
 - (void)_iconModelDidLayout:(id)arg1;
 - (unsigned long long)_indexForAppSuggestion:(id)arg1;
 - (void)_initializeAndObserveDefaults;
+- (BOOL)_isPendingAppSuggestionsUpdate;
 - (id)_moveOrAddRecentThenCull:(id)arg1;
 - (id)_oldestRecent;
 - (void)_performAppSuggestionChangedWithNewSuggestion:(id)arg1;
@@ -89,13 +83,13 @@
 - (void)_setRecentsEnabled:(BOOL)arg1;
 - (BOOL)_shouldProcessAppSuggestion:(id)arg1;
 - (void)_updateCurrentDisplayItemsAfterContinuityChange:(BOOL)arg1 notifyDelegate:(BOOL)arg2;
+- (void)beginPendingUpdatesForReason:(id)arg1;
 - (void)dataStore:(id)arg1 persistDisplayItems:(id)arg2;
 - (BOOL)dataStore:(id)arg1 shouldRestorePersistedDisplayItem:(id)arg2;
 - (void)dealloc;
-- (void)dockFolderDidEndTransitioning;
-- (void)dockFolderWillBeginTransitioning;
 - (void)dockViewDidBecomeVisible;
 - (void)dockViewDidResignVisible;
+- (void)endPendingUpdatesForReason:(id)arg1;
 - (void)iconList:(id)arg1 didAddIcon:(id)arg2;
 - (void)iconList:(id)arg1 didMoveIcon:(id)arg2;
 - (void)iconList:(id)arg1 didRemoveIcon:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BSTransaction, FBSystemService, SBInitialRestartState, SBRestartTransitionRequest, SBStartupTransitionController;
+@class BSTransaction, FBSystemService, NSMutableSet, SBInitialRestartState, SBRestartTransitionRequest, SBStartupTransitionController;
 @protocol SBRestartManagerDelegate, SBRestartManagerWorkspaceDataSource, SBStartupTransition;
 
 @interface SBRestartManager : NSObject
@@ -18,27 +18,29 @@
     id<SBRestartManagerWorkspaceDataSource> _workspaceDataSource;
     BOOL _isShuttingDown;
     BOOL _isRestartImminent;
-    BOOL _isUserSwitchPending;
+    NSMutableSet *_pendingExternallyControlledRestartReasons;
     FBSystemService *_systemService;
 }
 
 @property (weak, nonatomic) id<SBRestartManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=_isUserSwitchPending, setter=_setUserSwitchPending:) BOOL isUserSwitchPending; // @synthesize isUserSwitchPending=_isUserSwitchPending;
 @property (readonly, nonatomic, getter=isPendingExit) BOOL pendingExit; // @dynamic pendingExit;
 @property (readonly, nonatomic) SBRestartTransitionRequest *pendingRestartTransitionRequest; // @synthesize pendingRestartTransitionRequest=_pendingRestartTransitionRequest;
 @property (readonly, nonatomic) BSTransaction<SBStartupTransition> *startupTransition; // @dynamic startupTransition;
 
 - (void).cxx_destruct;
 - (void)___waitForeverForRunningBoardKill;
+- (void)_addPendingExternallyControlledRestartReason:(id)arg1;
 - (void)_doRestartForTransition:(int)arg1;
 - (void)_exitIsImminent;
 - (id)_initWithWorkspaceDataSource:(id)arg1 initialRestartState:(id)arg2 startupController:(id)arg3 systemService:(id)arg4;
+- (BOOL)_isPendingExitIncludingExternallyControlledReasons:(BOOL)arg1;
 - (void)_killAllAppsForPendingExitWithReason:(long long)arg1 description:(id)arg2 expiration:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_persistStartupTransitionContextFromRebootContext:(id)arg1;
 - (void)_persistStartupTransitionContextFromRestartRequest:(id)arg1;
 - (void)_persistStartupTransitionContextFromShutdownContext:(id)arg1;
 - (void)_postShutdownNotification;
 - (void)_reallyRestartWithTransitionRequest:(id)arg1;
+- (void)_removePendingExternallyControlledRestartReason:(id)arg1;
 - (void)_restartWithTransitionRequest:(id)arg1;
 - (void)_shutdownWithOptions:(unsigned long long)arg1 byUser:(BOOL)arg2 description:(id)arg3;
 - (id)description;

@@ -21,6 +21,7 @@
     BOOL _ignoreNextEntitlementStatusChange;
     PSSpecifier *_personalHotspotSpecifier;
     PSSpecifier *_fauxCardSpecifier;
+    BOOL _shouldCalculateDataUsage;
     PSUICellularDataSpecifier *_cellularDataSpecifier;
     PSUICellularDataOptionsController *_cellularDataOptionsController;
     PSUICellularDataPlanSetupGroup *_cellularDataPlanSetupGroup;
@@ -52,7 +53,9 @@
 
 - (void).cxx_destruct;
 - (id)_deadTelephonySpecifiers;
+- (id)activeDataPlanLabel;
 - (void)airplaneModeChanged;
+- (id)appUsageGroupTitle;
 - (void)carrierItemsChanged;
 - (id)cellularDataOptionsDetailText:(id)arg1;
 - (void)cellularDataSettingChanged;

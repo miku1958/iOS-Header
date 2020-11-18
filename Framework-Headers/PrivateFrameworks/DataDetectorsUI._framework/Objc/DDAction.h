@@ -82,6 +82,7 @@
 - (void)performFromView:(id)arg1;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (struct __DDResult *)result;
+- (void)setupPopoverPresentationController:(id)arg1 view:(id)arg2;
 - (id)url;
 
 @end

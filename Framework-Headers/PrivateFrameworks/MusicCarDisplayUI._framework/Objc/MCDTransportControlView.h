@@ -11,7 +11,6 @@
 @interface MCDTransportControlView : UIView
 {
     BOOL _progressActive;
-    unsigned long long _controlStyle;
     UIButton *_leftButton;
     UIButton *_playPauseButton;
     UIButton *_fastForwardButton;
@@ -27,11 +26,9 @@
 
 @property (nonatomic) struct CGSize buttonSize; // @synthesize buttonSize=_buttonSize;
 @property (strong, nonatomic) NSLayoutConstraint *containerHeightConstraint; // @synthesize containerHeightConstraint=_containerHeightConstraint;
-@property (nonatomic) unsigned long long controlStyle; // @synthesize controlStyle=_controlStyle;
 @property (strong, nonatomic) UIImage *defaultFastForwardButtonImage; // @synthesize defaultFastForwardButtonImage=_defaultFastForwardButtonImage;
 @property (strong, nonatomic) UIImage *defaultLeftButtonImage; // @synthesize defaultLeftButtonImage=_defaultLeftButtonImage;
 @property (readonly, nonatomic) UIButton *fastForwardButton; // @synthesize fastForwardButton=_fastForwardButton;
-@property (readonly, nonatomic) double glyphSize;
 @property (readonly, nonatomic) UIButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (strong, nonatomic) NSString *pauseButtonImageName; // @synthesize pauseButtonImageName=_pauseButtonImageName;
 @property (strong, nonatomic) UIImage *pauseImage; // @synthesize pauseImage=_pauseImage;

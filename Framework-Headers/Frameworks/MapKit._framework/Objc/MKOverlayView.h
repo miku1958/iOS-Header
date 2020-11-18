@@ -42,6 +42,7 @@
 - (CDStruct_c3b9c2ee)mapPointForPoint:(struct CGPoint)arg1;
 - (CDStruct_02837cd9)mapRectForRect:(struct CGRect)arg1;
 - (BOOL)overlay:(id)arg1 canDrawKey:(const CDStruct_7523a67d *)arg2;
+- (BOOL)overlay:(id)arg1 canPossiblyDrawKey:(const CDStruct_7523a67d *)arg2;
 - (void)overlay:(id)arg1 drawKey:(const CDStruct_7523a67d *)arg2 inContext:(struct CGContext *)arg3;
 - (BOOL)overlayCanProvideVectorData:(id)arg1;
 - (struct CGPoint)pointForMapPoint:(CDStruct_c3b9c2ee)arg1;

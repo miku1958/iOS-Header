@@ -27,8 +27,6 @@
 - (void)_axRemoveVisibleItemContainerForAppLayout:(id)arg1;
 - (BOOL)_axScrollToAppElement:(id)arg1;
 - (void)_axSetElementsArray:(id)arg1 dictionary:(id)arg2;
-- (id)_axSortedElementArray:(id)arg1;
-- (void)_axUpdateElementOrderingIfNecessary;
 - (id)accessibilityElements;
 - (BOOL)accessibilityScroll:(long long)arg1;
 

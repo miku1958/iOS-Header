@@ -90,8 +90,8 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_actuateImpactTapticFeedbackIfAvailable;
-- (void)_actuateSelectionTapticFeedbackIfAvailable;
+- (void)_actuateImpactTapticFeedback;
+- (void)_actuateSelectionTapticFeedback;
 - (void)_animateToEnlargeHandleView:(id)arg1;
 - (BOOL)_areHandleViewsAnimating;
 - (double)_getAngleFrom12OClockForPoint:(struct CGPoint)arg1;
@@ -122,7 +122,7 @@
 - (BOOL)_isIncreasingOrDecreasing:(unsigned long long)arg1;
 - (BOOL)_isPoint:(struct CGPoint)arg1 withInMarginOfRing:(double)arg2;
 - (void)_maskBackgroundImageViewToRingShape;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (BOOL)_primaryHandleViewContainsPoint:(struct CGPoint)arg1;
 - (BOOL)_secondaryHandleViewContainsPoint:(struct CGPoint)arg1;
 - (void)_touchEnded;

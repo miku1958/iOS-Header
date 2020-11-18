@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)__cleanupAfterImportWithStore:(id)arg1 coordinator:(id)arg2;
 - (unsigned long long)__executeImportStepWithSourceStore:(id)arg1 sourceCoordinator:(id)arg2 destinationStore:(id)arg3 destinationCoordinator:(id)arg4 model:(id)arg5;
+- (unsigned long long)__executeVacuumStepWithStore:(id)arg1 coordinator:(id)arg2 delegate:(id)arg3 vacuumDate:(id)arg4;
 - (id)__findCandidateStoresForImportStepWithStore:(id)arg1;
 - (unsigned long long)__prepareImportStepWithSourceStore:(id)arg1 sourceCoordinator:(id)arg2 destinationStore:(id)arg3 destinationCoordinator:(id)arg4 model:(id)arg5 allowMigration:(BOOL)arg6;
 - (void)_attemptMigration;

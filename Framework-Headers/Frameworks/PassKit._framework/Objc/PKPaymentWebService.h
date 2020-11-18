@@ -165,6 +165,7 @@
 - (unsigned long long)discoveryBundleForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)discoveryManifestWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)eligibilityForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)exportTransactionDataWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)featureTermsDataWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (unsigned long long)fundingSourcesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -192,6 +193,8 @@
 - (unsigned long long)paymentsWithRequest:(id)arg1 account:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)performAction:(id)arg1 onServiceProviderPurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)performApplePayTrustRegistrationWithCompletion:(CDUnknownBlockType)arg1;
+- (unsigned long long)performInstallmentAuthorizationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)performInstallmentBindWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)performNotificationActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)performServiceProviderPayment:(id)arg1 completion:(CDUnknownBlockType)arg2;

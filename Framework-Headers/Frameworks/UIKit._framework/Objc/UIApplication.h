@@ -11,20 +11,20 @@
 #import <UIKitCore/PKPushRegistryDelegate-Protocol.h>
 #import <UIKitCore/UIActivityContinuationManagerApplicationContext-Protocol.h>
 #import <UIKitCore/UIApplicationSnapshotPreparing-Protocol.h>
+#import <UIKitCore/UIRepeatedActionDelegate-Protocol.h>
 #import <UIKitCore/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 #import <UIKitCore/_UIApplicationInitializationContextFactory-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIIdleModeController;
-@protocol BSInvalidatable, OS_dispatch_queue, UIApplicationDelegate;
+@class BKSAnimationFenceHandle, BKSProcessAssertion, BSServiceConnectionEndpointMonitor, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSSet, NSString, NSTimer, PKPushRegistry, SBSApplicationShortcutService, UIActivityContinuationManager, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIApplicationInfoParser, _UIIdleModeController;
+@protocol BSInvalidatable, FBSWorkspaceFencing, OS_dispatch_queue, UIApplicationDelegate;
 
-@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, PKPushRegistryDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIStatusBarStyleDelegate_SpringBoardOnly, _UIApplicationInitializationContextFactory>
+@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, PKPushRegistryDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIRepeatedActionDelegate, UIStatusBarStyleDelegate_SpringBoardOnly, _UIApplicationInitializationContextFactory>
 {
     id<UIApplicationDelegate> _delegate;
     long long _remoteControlEventObservers;
     NSArray *_topLevelNibObjects;
     long long _networkResourcesCurrentlyLoadingCount;
     NSTimer *_hideNetworkActivityIndicatorTimer;
-    UIAlertController *_editAlertController;
     UIStatusBar *_statusBar;
     long long _statusBarRequestedStyle;
     UIStatusBarWindow *_statusBarWindow;
@@ -164,6 +164,7 @@
 @property (copy, nonatomic, setter=__setQueuedOrientationChange:) CDUnknownBlockType __queuedOrientationChange; // @synthesize __queuedOrientationChange=___queuedOrientationChange;
 @property (readonly, nonatomic) NSSet *_canvases;
 @property (nonatomic, setter=_setExpectedViewOrientation:) long long _expectedViewOrientation; // @synthesize _expectedViewOrientation=__expectedViewOrientation;
+@property (readonly, nonatomic) id<FBSWorkspaceFencing> _fenceProvider;
 @property (readonly, nonatomic) NSSet *_openRepresentations;
 @property (readonly, nonatomic) NSString *alternateIconName;
 @property (nonatomic) long long applicationIconBadgeNumber;
@@ -291,6 +292,7 @@
 - (BOOL)_canShowTextServices;
 - (void)_cancelAllEventsOfType:(long long)arg1 onWindowScene:(id)arg2;
 - (void)_cancelAllInputs;
+- (void)_cancelAllPressesForTVOnly;
 - (void)_cancelAllTouches;
 - (void)_cancelGestureRecognizers:(id)arg1;
 - (void)_cancelGestureRecognizersForView:(id)arg1;
@@ -333,14 +335,12 @@
 - (void)_discardSceneSessions:(id)arg1;
 - (void)_discardSceneSessionsWithIdentifiers:(id)arg1;
 - (id)_discardedSceneSessionIdentifiersSinceLastRunWithContext:(id)arg1 knownSessions:(id)arg2;
-- (void)_dismissEditAlertController;
 - (BOOL)_doRestorationIfNecessary;
 - (id)_dragEvents;
 - (void)_eatCurrentTouchForWindow:(id)arg1;
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_endBackgroundTask:(unsigned long long)arg1;
 - (void)_endFenceTask:(id)arg1;
-- (void)_endNoPresentingViewControllerAlertController:(id)arg1;
 - (void)_endShowingNetworkActivityIndicator;
 - (void)_enqueueHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_event;
@@ -434,7 +434,7 @@
 - (BOOL)_isTerminating;
 - (BOOL)_isTrackingAnyTouch;
 - (BOOL)_isWindowServerHostingManaged;
-- (BOOL)_keyCommandIsCurrentlyPerformable:(id)arg1;
+- (BOOL)_keyCommandIsCurrentlyPerformable:(id)arg1 validation:(id)arg2;
 - (id)_keyCommands;
 - (id)_keyCommandsForResponder:(id)arg1;
 - (id)_keyWindowForScreen:(id)arg1;
@@ -487,7 +487,7 @@
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5 clickCount:(unsigned long long)arg6 longClick:(BOOL)arg7 contextID:(unsigned int)arg8;
 - (BOOL)_prepareButtonEvent:(id)arg1 type:(long long)arg2 phase:(long long)arg3 timestamp:(double)arg4 force:(double)arg5 contextID:(unsigned int)arg6;
 - (BOOL)_prepareButtonEvent:(id)arg1 withPressInfo:(id)arg2;
-- (void)_presentEditAlertController;
+- (void)_presentEditAlertController:(id)arg1;
 - (id)_pressesEventForWindow:(id)arg1;
 - (long long)_pureEffectiveUserInterfaceStyle;
 - (void)_purgeSharedInstances;
@@ -814,6 +814,7 @@
 - (void)removeStatusBarImageNamed:(id)arg1;
 - (void)removeStatusBarItem:(int)arg1;
 - (void)removeStatusBarStyleOverrides:(int)arg1;
+- (id)repeatedActionWillInvokeWithObject:(id)arg1 forPhase:(unsigned long long)arg2;
 - (BOOL)reportApplicationSuspended;
 - (void)requestSceneSessionActivation:(id)arg1 userActivity:(id)arg2 options:(id)arg3 errorHandler:(CDUnknownBlockType)arg4;
 - (void)requestSceneSessionDestruction:(id)arg1 options:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;

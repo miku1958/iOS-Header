@@ -6,14 +6,12 @@
 
 #import <MediaRemote/MRAVConcreteEndpoint.h>
 
-#import <MediaRemote/MROutputContextDataSourceDelegate-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
 @class MRAVOutputContext, MROutputContextController, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
-@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <NSSecureCoding, MROutputContextDataSourceDelegate>
+@interface MRAVLocalEndpoint : MRAVConcreteEndpoint <NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     MRAVOutputContext *_outputContext;
@@ -22,16 +20,14 @@ __attribute__((visibility("hidden")))
     MROutputContextController *_outputContextController;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *outputDevices;
-@property (readonly) Class superclass;
 
++ (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_ouputDevicesForOutputDeviceUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
+- (void)_registerForNotifications;
 - (void)_reloadOutputDevicesFromContext;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)canModifyGroupMembership;
@@ -43,11 +39,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithOutputContext:(id)arg1;
 - (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isProxyGroupPlayer;
-- (struct _MROriginProtobuf *)origin;
-- (void)outputContextDataSource:(id)arg1 didAddOutputDevice:(id)arg2;
-- (void)outputContextDataSource:(id)arg1 didRemoveOutputDevice:(id)arg2;
-- (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolume:(float)arg3;
-- (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolumeControlCapabilities:(unsigned int)arg3;
+- (id)origin;
+- (void)outputContextDataSourceOutputDeviceDidChangeVolume:(id)arg1;
+- (void)outputContextDataSourceOutputDeviceDidChangeVolumeControlCapabilities:(id)arg1;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)personalOutputDevices;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;

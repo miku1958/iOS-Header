@@ -31,6 +31,7 @@
     long long _productIdentifier;
     NSString *_accessoryIdentifier;
     NSString *_name;
+    NSString *_modelNumber;
     unsigned long long _parts;
     unsigned long long _accessoryCategory;
     NSString *_groupName;
@@ -50,6 +51,7 @@
 @property (nonatomic, getter=isInternal) BOOL internal; // @synthesize internal=_internal;
 @property (nonatomic, getter=isLowBattery) BOOL lowBattery; // @synthesize lowBattery=_lowBattery;
 @property (readonly, copy, nonatomic) NSString *matchIdentifier; // @synthesize matchIdentifier=_matchIdentifier;
+@property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long parts; // @synthesize parts=_parts;
 @property (nonatomic) long long percentCharge; // @synthesize percentCharge=_percentCharge;

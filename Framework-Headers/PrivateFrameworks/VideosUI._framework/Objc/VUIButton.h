@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (id)largeContentImage;
 - (id)largeContentTitle;
 - (void)layoutSubviews;

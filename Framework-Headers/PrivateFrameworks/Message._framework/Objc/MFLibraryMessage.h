@@ -40,6 +40,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
 @property (readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property (readonly, nonatomic) BOOL isServerSearchResult;
 @property (readonly) NSSet *labels;
 @property (readonly, nonatomic) long long libraryID;
 @property (readonly, nonatomic) ECAngleBracketIDHash *listIDHash;

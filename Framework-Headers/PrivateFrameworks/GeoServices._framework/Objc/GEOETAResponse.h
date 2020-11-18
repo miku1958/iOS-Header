@@ -13,7 +13,6 @@
 @interface GEOETAResponse : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
@@ -27,6 +26,9 @@
     NSMutableArray *_etaResults;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     GEOPlaceSearchResponse *_originPlaceSearchResponse;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _status;
     struct {
         unsigned int has_debugServerLatencyMs:1;
@@ -113,6 +115,8 @@
 - (unsigned long long)etaResultReferencePointDestinationsCount;
 - (unsigned long long)etaResultsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOProblemDetail)problemDetailAtIndex:(unsigned long long)arg1;

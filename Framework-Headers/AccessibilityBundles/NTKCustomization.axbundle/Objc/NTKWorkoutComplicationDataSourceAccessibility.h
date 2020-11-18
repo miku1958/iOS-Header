@@ -16,7 +16,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_noWorkoutsTemplate;
-- (id)_templateForActiveWorkout;
+- (id)_templateForActiveWorkoutInSwitcher:(BOOL)arg1;
 
 @end
 

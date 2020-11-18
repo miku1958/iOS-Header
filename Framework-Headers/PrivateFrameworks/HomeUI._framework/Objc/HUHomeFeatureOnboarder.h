@@ -6,12 +6,20 @@
 
 #import <HomeUI/HUFeatureOnboarder.h>
 
+@class HMHome;
+
 @interface HUHomeFeatureOnboarder : HUFeatureOnboarder
 {
+    HMHome *_home;
 }
 
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
+
+- (void).cxx_destruct;
 - (id)_subclass_buildAllFlowGroupsFromFeatureGroups:(id)arg1 usageOptions:(id)arg2;
 - (id)getPostProcessingFlowsForResults:(id)arg1;
+- (id)initWithFeatures:(id)arg1 home:(id)arg2 usageOptions:(id)arg3;
+- (id)initWithGroupedFeatures:(id)arg1 home:(id)arg2 usageOptions:(id)arg3;
 
 @end
 

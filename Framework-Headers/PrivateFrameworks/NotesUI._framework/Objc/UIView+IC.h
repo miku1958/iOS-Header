@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class ICAppearanceInfo, ICViewControllerManager, UIColor, UITraitCollection;
+@class ICAppearanceInfo, ICViewControllerManager, UIColor, UITraitCollection, UIWindowScene;
 
 @interface UIView (IC)
 
@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL ic_isRTL;
 @property (readonly, nonatomic) UITraitCollection *ic_platformAppearanceObject;
 @property (readonly, nonatomic) ICViewControllerManager *ic_viewControllerManager;
+@property (readonly, nonatomic) UIWindowScene *ic_windowScene;
 
 + (void)ic_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3;

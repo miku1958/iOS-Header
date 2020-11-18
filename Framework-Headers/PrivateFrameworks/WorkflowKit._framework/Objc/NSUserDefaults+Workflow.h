@@ -11,6 +11,7 @@
 + (id)systemShortcutsUserDefaults;
 + (id)workflowUserDefaults;
 - (void)setWorkflowIdentifier:(id)arg1 forToken:(id)arg2;
+- (BOOL)wf_isCurrentDeviceModelDisabledInSiri;
 - (BOOL)wf_isDeviceIdiomDisabledInSiri:(long long)arg1;
 - (id)wf_keyForDisablingDeviceIdiom:(long long)arg1;
 - (void)wf_registerDefaultDisabledDevices;

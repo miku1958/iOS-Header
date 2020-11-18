@@ -14,15 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (double)_accessibilityAllowedGeometryOverlap;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilityLoadExpandedViews;
 - (BOOL)_axInfoAction;
 - (BOOL)_axShareAction;
 - (id)accessibilityCustomActions;
 - (id)accessibilityElements;
 - (BOOL)isAccessibilityElement;
 - (void)loadExpandedViewsIfNecessary;
-- (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

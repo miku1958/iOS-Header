@@ -50,6 +50,7 @@
 @property (readonly, nonatomic) NSString *px_snapBackHistorySubtitle;
 @property (readonly, nonatomic) NSString *px_snapBackHistoryTitle;
 @property (copy, nonatomic, setter=px_setSubtitle:) NSString *px_subtitle;
+@property (readonly, nonatomic) UIViewController *px_topmostPresentedViewController;
 @property (readonly, nonatomic, getter=px_isVisible) BOOL px_visible;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -120,6 +121,7 @@
 - (BOOL)px_isDescendantOfViewController:(id)arg1;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)px_navigationBannerHelper;
+- (void)px_presentOverTopmostPresentedViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)px_presentViewControllerInNavigationController:(id)arg1 animated:(BOOL)arg2 dimissButtonLocation:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)px_removeFooterToolbar;
 - (void)px_setNeedsHDRFocusUpdate;

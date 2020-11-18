@@ -41,9 +41,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect totalFrame; // @synthesize totalFrame=_totalFrame;
 
 - (void).cxx_destruct;
-- (struct CGRect)_frameForAccessoryAtIndex:(unsigned long long)arg1 inAccessories:(id)arg2 withXOrigin:(double *)arg3;
-- (id)_framesForAccessories:(id)arg1 totalFrame:(struct CGRect *)arg2;
-- (double)_totalWidthForAccessories:(id)arg1;
+- (struct CGRect)_frameForAccessoryAtIndex:(unsigned long long)arg1 inAccessories:(id)arg2 containerSize:(struct CGSize)arg3 withXOrigin:(double *)arg4;
+- (id)_framesForAccessories:(id)arg1 withContainerSize:(struct CGSize)arg2 outTotalFrame:(struct CGRect *)arg3;
+- (double)_totalWidthForAccessories:(id)arg1 withContainerSize:(struct CGSize)arg2;
 - (struct CGRect)endLayout;
 - (double)finalAlphaForAccessory:(id)arg1;
 - (struct CGRect)finalFrameForAccessory:(id)arg1;

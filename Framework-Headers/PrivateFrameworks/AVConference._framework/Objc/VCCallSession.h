@@ -301,6 +301,7 @@ __attribute__((visibility("hidden")))
 + (id)keyPathsForValuesAffectingNetworkQuality;
 + (int)setRxPayloadList:(struct tagHANDLE *)arg1 withPayloadTypes:(id)arg2;
 + (int)setRxPayloadList:(struct tagHANDLE *)arg1 withPayloadTypes:(id)arg2 isRedEnabled:(BOOL)arg3;
++ (void)stopSecureControlChannel:(id)arg1;
 - (int)Conference_SetBWEstMode:(BOOL)arg1 bFakeLargeFrameMode:(BOOL)arg2;
 - (id)activeControlChannel;
 - (id)addAudioPayload:(int)arg1;
@@ -388,7 +389,7 @@ __attribute__((visibility("hidden")))
 - (void)handleReceivedPiggybackBlobLegacy:(id)arg1;
 - (BOOL)handshakeComplete:(struct SSLContext *)arg1 withError:(struct __CFError **)arg2;
 - (id)init;
-- (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2 isGKVoiceChat:(BOOL)arg3;
+- (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2 isGKVoiceChat:(BOOL)arg3 reportingHierarchyToken:(id)arg4;
 - (void)initWithRelevantStorebagEntries;
 - (BOOL)initializeVideoReceiver:(id *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 fecHeaderV1Enabled:(BOOL)arg3;
 - (BOOL)initializeVideoTransmitter:(id *)arg1 encodeRule:(id)arg2 captureRuleWifi:(id)arg3 captureRuleCellular:(id)arg4 unpausing:(BOOL)arg5 reportingAgent:(struct opaqueRTCReporting *)arg6 fecHeaderV1Enabled:(BOOL)arg7;
@@ -520,9 +521,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupIDSConnectionForCallID:(unsigned int)arg1 destination:(id)arg2 socket:(int)arg3 error:(id *)arg4;
 - (void)setupMessaging;
 - (void)setupMomentsMessages;
-- (void)setupPeerInfo:(id)arg1 usingInviteData:(id)arg2 isCaller:(BOOL)arg3 capabilities:(id)arg4;
+- (void)setupPeerInfo:(BOOL)arg1 capabilities:(id)arg2;
 - (void)setupPiPStateChangeMessage;
 - (void)setupPreferredInterfaceMessage;
+- (void)setupRemoteCallInfoWithParticipantID:(id)arg1 usingInviteData:(id)arg2;
 - (void)setupSecureDataChannel;
 - (void)setupSymptomEnabledMessage;
 - (void)setupVideoPauseMessages;

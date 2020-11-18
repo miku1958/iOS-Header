@@ -22,6 +22,8 @@
 - (double)distanceToLeadingEdgeOfLeadingCardFromTrailingEdgeOfScreenWithVisibleIndexToStartSearch:(unsigned long long)arg1;
 - (struct CGSize)fittedContentSize;
 - (struct CGSize)interpageSpacingForPaging;
+- (BOOL)interpolatesDuringSwipeToKill;
+- (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
 - (struct CGPoint)pagingOrigin;
 - (void)resetAdjustedScrollingState;
 - (struct CGPoint)restingOffsetForScrollOffset:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;

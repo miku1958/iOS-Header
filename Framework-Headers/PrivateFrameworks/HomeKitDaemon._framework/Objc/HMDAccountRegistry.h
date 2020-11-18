@@ -10,10 +10,12 @@
 #import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 
 @class HMDAppleAccountManager, HMDRemoteAccountManager, NSArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAccountRegistry : HMFObject <HMFLogging, NSFastEnumeration>
 {
+    id<HMFLocking> _lock;
+    BOOL _started;
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMDAppleAccountManager *_appleAccountManager;
     HMDRemoteAccountManager *_remoteAccountManager;
@@ -26,8 +28,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMDRemoteAccountManager *remoteAccountManager; // @synthesize remoteAccountManager=_remoteAccountManager;
+@property (readonly) BOOL started; // @synthesize started=_started;
 @property (readonly) Class superclass;
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)logCategory;
 + (id)sharedRegistry;
 - (void).cxx_destruct;

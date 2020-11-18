@@ -14,10 +14,10 @@
 
 @interface SBFloatingApplicationSceneLiveContentOverlayView : NSObject <SBFloatingApplicationLiveContentOverlayView, SBDeviceApplicationSceneHandleObserver, SBUISizeObservingViewDelegate>
 {
-    BOOL _rendersAsynchronously;
     BOOL _wantsMinificationFilter;
-    BOOL _asynchronousRenderingDisabled;
+    BOOL _liveContentRasterizationDisabled;
     BOOL _asynchronousRenderingTemporarilyDisabled;
+    long long _rasterizationStyle;
     SBFloatingApplicationLiveContentWindow *_window;
     SBWindowSelfHostWrapper *_windowHostWrapper;
     SBUISizeObservingView *_sizeObservingView;
@@ -27,7 +27,6 @@
     FBDisplayLayoutElement *_displayLayoutElement;
 }
 
-@property (readonly, nonatomic) BOOL asynchronousRenderingDisabled; // @synthesize asynchronousRenderingDisabled=_asynchronousRenderingDisabled;
 @property (readonly, nonatomic) BOOL asynchronousRenderingTemporarilyDisabled; // @synthesize asynchronousRenderingTemporarilyDisabled=_asynchronousRenderingTemporarilyDisabled;
 @property (readonly, nonatomic) UIView *contentOverlayView;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +35,8 @@
 @property (readonly, nonatomic) FBDisplayLayoutElement *displayLayoutElement; // @synthesize displayLayoutElement=_displayLayoutElement;
 @property (readonly, nonatomic) SBFHomeGrabberSettings *grabberSettings; // @synthesize grabberSettings=_grabberSettings;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL rendersAsynchronously; // @synthesize rendersAsynchronously=_rendersAsynchronously;
+@property (readonly, nonatomic) BOOL liveContentRasterizationDisabled; // @synthesize liveContentRasterizationDisabled=_liveContentRasterizationDisabled;
+@property (readonly, nonatomic) long long rasterizationStyle; // @synthesize rasterizationStyle=_rasterizationStyle;
 @property (readonly, nonatomic) SBUISizeObservingView *sizeObservingView; // @synthesize sizeObservingView=_sizeObservingView;
 @property (readonly, nonatomic) SBSceneViewStatusBarAssertion *statusBarAssertion; // @synthesize statusBarAssertion=_statusBarAssertion;
 @property (readonly) Class superclass;
@@ -45,8 +45,8 @@
 @property (readonly, nonatomic) SBWindowSelfHostWrapper *windowHostWrapper; // @synthesize windowHostWrapper=_windowHostWrapper;
 
 - (void).cxx_destruct;
-- (void)_updateAsynchronousRendering;
 - (void)_updateContentWindowFrameFromView:(id)arg1;
+- (void)_updateLiveContentRasterization;
 - (void)configureWithWorkspaceEntity:(id)arg1 referenceFrame:(struct CGRect)arg2 interfaceOrientation:(long long)arg3;
 - (id)contentViewController;
 - (void)dealloc;
@@ -56,9 +56,9 @@
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;
 - (void)noteNeedsLayoutUpdateFor180DegreeRotation;
 - (void)sceneHandle:(id)arg1 didCreateScene:(id)arg2;
-- (void)setAsynchronousRenderingDisabled:(BOOL)arg1;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
+- (void)setLiveContentRasterizationDisabled:(BOOL)arg1;
+- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(CDUnknownBlockType)arg3;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(BOOL)arg1;
 - (void)sizeObservingView:(id)arg1 didChangeSize:(struct CGSize)arg2;

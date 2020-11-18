@@ -13,7 +13,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDMessagePersistence, EDMessageQueryEvaluator, EDPersistenceHookRegistry, EFCancelationToken, EFQuery, NSMutableSet, NSString;
-@protocol EDMessageQueryHelperDelegate, EFScheduler;
+@protocol EDMessageQueryHelperDelegate, EDRemoteSearchProvider, EFScheduler;
 
 @interface EDMessageQueryHelper : NSObject <EDMessageChangeHookResponder, EDRemoteSearchDelegate, EFLoggable, EDMessageQueryHelperMessageSource, EFCancelable>
 {
@@ -24,6 +24,7 @@
     EFQuery *_query;
     EDMessagePersistence *_messagePersistence;
     EDPersistenceHookRegistry *_hookRegistry;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     id<EFScheduler> _scheduler;
     id<EDMessageQueryHelperDelegate> _delegate;
     EDMessageQueryEvaluator *_queryEvaluator;
@@ -45,6 +46,7 @@
 @property (readonly) NSString *pendingJournaledMessageAddsKey; // @synthesize pendingJournaledMessageAddsKey=_pendingJournaledMessageAddsKey;
 @property (readonly, nonatomic) EFQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) EDMessageQueryEvaluator *queryEvaluator; // @synthesize queryEvaluator=_queryEvaluator;
+@property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (nonatomic) BOOL shouldReconcileJournal; // @synthesize shouldReconcileJournal=_shouldReconcileJournal;
 @property (readonly) Class superclass;
@@ -57,7 +59,7 @@
 - (id)_transformAndFilterMessages:(id)arg1 includeDeleted:(BOOL)arg2;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 scheduler:(id)arg4 delegate:(id)arg5 shouldReconcileJournal:(BOOL)arg6;
+- (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 scheduler:(id)arg5 delegate:(id)arg6 shouldReconcileJournal:(BOOL)arg7;
 - (id)messagesWithAdditionalPredicates:(id)arg1 limit:(long long)arg2;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;

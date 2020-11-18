@@ -6,13 +6,14 @@
 
 #import <PassKitCore/PKAccountFeatureDescriptor.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface PKCreditAccountFeatureDescriptor : PKAccountFeatureDescriptor
 {
     unsigned long long _paymentFundingSourceTypes;
     unsigned long long _paymentPresets;
     unsigned long long _paymentFrequencies;
+    NSArray *_supportedFileFormatsForTransactionData;
     NSString *_paymentTermsIdentifier;
     NSString *_fundingSourceTermsIdentifier;
 }
@@ -22,6 +23,7 @@
 @property (nonatomic) unsigned long long paymentFundingSourceTypes; // @synthesize paymentFundingSourceTypes=_paymentFundingSourceTypes;
 @property (nonatomic) unsigned long long paymentPresets; // @synthesize paymentPresets=_paymentPresets;
 @property (copy, nonatomic) NSString *paymentTermsIdentifier; // @synthesize paymentTermsIdentifier=_paymentTermsIdentifier;
+@property (copy, nonatomic) NSArray *supportedFileFormatsForTransactionData; // @synthesize supportedFileFormatsForTransactionData=_supportedFileFormatsForTransactionData;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

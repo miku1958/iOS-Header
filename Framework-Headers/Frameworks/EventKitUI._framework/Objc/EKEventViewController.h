@@ -121,7 +121,7 @@
 + (void)adjustLayoutForCell:(id)arg1 tableViewWidth:(double)arg2 numRowsInSection:(unsigned long long)arg3 cellRow:(unsigned long long)arg4 forceLayout:(BOOL)arg5;
 + (void)setDefaultDatesForEvent:(id)arg1;
 - (void).cxx_destruct;
-- (void)_acceptProposedTime;
+- (void)_acceptProposedTimeWithSourceViewForPopover:(id)arg1;
 - (long long)_actionsMaskForOrb:(BOOL)arg1;
 - (void)_addToCalendarClicked:(id)arg1;
 - (BOOL)_backingEventAllowsEditing;
@@ -132,8 +132,10 @@
 - (void)_contactOrganizer;
 - (void)_deleteClicked:(id)arg1;
 - (void)_deleteSuggestionTapped:(id)arg1;
+- (CDUnknownBlockType)_detachSheetHandler;
 - (void)_didToggleMinimalMode;
 - (void)_dismissEditor:(BOOL)arg1 deleted:(BOOL)arg2;
+- (void)_doneButtonPressed:(id)arg1;
 - (void)_emailOrganizer;
 - (id)_footerLabelContainingText:(id)arg1;
 - (struct CGSize)_idealSize;
@@ -156,13 +158,14 @@
 - (BOOL)_performSave:(long long)arg1 animated:(BOOL)arg2;
 - (void)_pop;
 - (void)_prepareEventForEdit;
-- (void)_presentDetachSheet;
+- (void)_presentDetachSheetFromBarButtonItem:(id)arg1;
+- (void)_presentDetachSheetFromView:(id)arg1;
 - (void)_presentValidationAlert:(id)arg1;
 - (id)_proposedDate;
 - (void)_refreshEventAndReload;
 - (void)_rejectProposedTime;
 - (void)_reloadIfNeeded;
-- (void)_saveStatus:(long long)arg1;
+- (void)_saveStatus:(long long)arg1 sourceViewForPopover:(id)arg2;
 - (void)_saveStatus:(long long)arg1 span:(long long)arg2;
 - (unsigned long long)_sectionForDetailItem:(id)arg1;
 - (id)_sectionsForTableView:(id)arg1;
@@ -175,6 +178,7 @@
 - (BOOL)_shouldDisplayStatusButtons;
 - (BOOL)_shouldPopSelf;
 - (BOOL)_shouldShowEditButton;
+- (BOOL)_shouldShowInlineButtonFromDelegate;
 - (id)_statusButtons;
 - (id)_statusButtonsContainerView;
 - (id)_statusButtonsForOrb:(BOOL)arg1;
@@ -214,7 +218,7 @@
 - (id)getCurrentContext;
 - (id)initWithContext:(struct NSDictionary *)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)invokeAction:(long long)arg1;
+- (void)invokeAction:(long long)arg1 eventStatusButtonsView:(id)arg2;
 - (id)items;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

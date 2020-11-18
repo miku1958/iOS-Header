@@ -6,34 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableArray, NSString, UIView, WFAlertButton, WFAlertPresentationSource;
-@protocol WFPresentedAlert;
+@class NSArray, NSError, NSMutableArray, NSString, WFAlertButton;
+@protocol WFAlertPresenter;
 
 @interface WFAlert : NSObject
 {
+    BOOL _prefersItemPickerSheetPresentation;
     NSString *_title;
     NSString *_message;
     long long _preferredStyle;
-    id<WFPresentedAlert> _presentedAlert;
+    NSArray *_textFieldResults;
+    id<WFAlertPresenter> _presenter;
     NSMutableArray *_mutableButtons;
     NSMutableArray *_mutableTextFieldConfigurationHandlers;
 }
 
-@property (nonatomic) BOOL adaptsToAlertStyleIfPopoverNecessary;
 @property (readonly, nonatomic) NSError *associatedError;
 @property (copy, nonatomic) NSArray *buttons;
-@property (strong, nonatomic) UIView *contentView;
-@property (nonatomic) struct UIEdgeInsets contentViewPadding;
 @property (readonly, nonatomic) WFAlertButton *escapeButton;
-@property (readonly, nonatomic) NSArray *keyCommands;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) NSMutableArray *mutableButtons; // @synthesize mutableButtons=_mutableButtons;
 @property (strong, nonatomic) NSMutableArray *mutableTextFieldConfigurationHandlers; // @synthesize mutableTextFieldConfigurationHandlers=_mutableTextFieldConfigurationHandlers;
 @property (nonatomic) long long preferredStyle; // @synthesize preferredStyle=_preferredStyle;
-@property (nonatomic) BOOL prefersItemPickerSheetPresentation;
-@property (strong, nonatomic) WFAlertPresentationSource *presentationSource;
-@property (weak, nonatomic) id<WFPresentedAlert> presentedAlert; // @synthesize presentedAlert=_presentedAlert;
+@property (nonatomic) BOOL prefersItemPickerSheetPresentation; // @synthesize prefersItemPickerSheetPresentation=_prefersItemPickerSheetPresentation;
+@property (weak, nonatomic) id<WFAlertPresenter> presenter;
+@property (weak, nonatomic) id<WFAlertPresenter> presenter; // @synthesize presenter=_presenter;
 @property (readonly, nonatomic) NSArray *textFieldConfigurationHandlers;
+@property (copy, nonatomic) NSArray *textFieldResults; // @synthesize textFieldResults=_textFieldResults;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)alertWithError:(id)arg1;
@@ -41,8 +40,8 @@
 + (id)alertWithPreferredStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)addButton:(id)arg1;
-- (void)addKeyCommand:(id)arg1;
 - (void)addTextFieldWithConfigurationHandler:(CDUnknownBlockType)arg1;
+- (void)dismissWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

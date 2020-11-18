@@ -16,7 +16,7 @@
 @property (weak, nonatomic) id<BLTBulletinSendQueueDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (void)handleFileURL:(id)arg1;
+- (BOOL)handleFileURL:(id)arg1;
 - (void)queuePending;
 - (void)sendNow;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3 didQueue:(CDUnknownBlockType)arg4;

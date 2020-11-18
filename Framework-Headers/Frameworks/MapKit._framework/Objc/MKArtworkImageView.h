@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)_updateImageView;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setImage:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

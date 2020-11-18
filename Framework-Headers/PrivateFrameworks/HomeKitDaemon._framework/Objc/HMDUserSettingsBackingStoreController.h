@@ -21,7 +21,9 @@
 {
     id<HMDUserSettingsBackingStoreControllerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSString *_zoneName;
     id<HMDDatabase> _database;
+    HMDCloudShareMessenger *_shareMessenger;
     HMDCloudShareParticipantsManager *_participantsManager;
     HMBCloudZone *_cloudZone;
     HMBLocalZone *_localZone;
@@ -31,10 +33,9 @@
     NSUUID *_assistantAccessControlModelID;
     id<HMDMediaContentProfileAccessControlModelUpdateReceiver> _mediaContentProfileAccessControlModelUpdateReceiver;
     NSUUID *_mediaContentProfileAccessControlModelID;
-    HMDCloudShareMessenger *_shareMessenger;
 }
 
-@property (strong) NSUUID *assistantAccessControlModelID; // @synthesize assistantAccessControlModelID=_assistantAccessControlModelID;
+@property (copy) NSUUID *assistantAccessControlModelID; // @synthesize assistantAccessControlModelID=_assistantAccessControlModelID;
 @property (weak) id<HMDAssistantAccessControlModelUpdateReceiver> assistantAccessControlModelUpdateReceiver; // @synthesize assistantAccessControlModelUpdateReceiver=_assistantAccessControlModelUpdateReceiver;
 @property (strong) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property (readonly) id<HMDDatabase> database; // @synthesize database=_database;
@@ -43,7 +44,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) HMBLocalZone *localZone; // @synthesize localZone=_localZone;
-@property (strong) NSUUID *mediaContentProfileAccessControlModelID; // @synthesize mediaContentProfileAccessControlModelID=_mediaContentProfileAccessControlModelID;
+@property (copy) NSUUID *mediaContentProfileAccessControlModelID; // @synthesize mediaContentProfileAccessControlModelID=_mediaContentProfileAccessControlModelID;
 @property (weak) id<HMDMediaContentProfileAccessControlModelUpdateReceiver> mediaContentProfileAccessControlModelUpdateReceiver; // @synthesize mediaContentProfileAccessControlModelUpdateReceiver=_mediaContentProfileAccessControlModelUpdateReceiver;
 @property (strong) HMDCloudShareParticipantsManager *participantsManager; // @synthesize participantsManager=_participantsManager;
 @property long long runState; // @synthesize runState=_runState;
@@ -51,6 +52,7 @@
 @property (readonly) Class superclass;
 @property (strong) id<HMDSettingTransactionReceiverProtocol> transactionReceiver; // @synthesize transactionReceiver=_transactionReceiver;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, copy) NSString *zoneName; // @synthesize zoneName=_zoneName;
 
 + (id)logCategory;
 - (void).cxx_destruct;
@@ -60,9 +62,11 @@
 - (void)_startWithOwnedZone;
 - (void)_startWithSharedZone;
 - (void)_updateRunState:(long long)arg1;
+- (void)clearParticipants;
 - (void)database:(id)arg1 didCreateZoneWithName:(id)arg2;
+- (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2;
 - (void)destroyZone;
-- (id)initWithDelegate:(id)arg1 queue:(id)arg2 database:(id)arg3 home:(id)arg4 shareMessenger:(id)arg5;
+- (id)initWithDelegate:(id)arg1 queue:(id)arg2 zoneName:(id)arg3 database:(id)arg4 home:(id)arg5 shareMessenger:(id)arg6;
 - (id)loadAssistantAccessControlModelWithModelID:(id)arg1 error:(id *)arg2;
 - (id)loadMediaContentAccessControlModelWithModelID:(id)arg1 error:(id *)arg2;
 - (id)loadPrivateUserDataModelWithError:(id *)arg1;
@@ -84,6 +88,7 @@
 - (void)runTransaction:(id)arg1 waitForCloudPush:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)settingTransactionWithName:(id)arg1;
 - (void)start;
+- (void)updateParticipants;
 
 @end
 

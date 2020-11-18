@@ -25,12 +25,12 @@
 + (id)log;
 + (id)signpostLog;
 - (void).cxx_destruct;
-- (void)_processRequests:(id)arg1;
-- (void)addRequest:(struct EFPair *)arg1;
-- (void)addRequests:(id)arg1;
+- (BOOL)_processRequests:(id)arg1;
+- (BOOL)addRequest:(struct EFPair *)arg1;
+- (BOOL)addRequests:(id)arg1;
 - (id)init;
-- (void)processRequest:(struct EFPair *)arg1;
-- (void)processRequests:(id)arg1;
+- (BOOL)processRequest:(struct EFPair *)arg1;
+- (BOOL)processRequests:(id)arg1;
 - (unsigned long long)signpostID;
 
 @end

@@ -7,6 +7,15 @@
 #import <NewsArticles/_TtC12NewsArticles21ArticleViewController.h>
 
 @interface _TtC12NewsArticles21ArticleViewController (NewsArticles7)
-- (void)bundleSubscriptionDidSubscribe:(id)arg1;
+- (BOOL)canDecreaseTextSize;
+- (BOOL)canIncreaseTextSize;
+- (BOOL)canResetZoom;
+- (BOOL)canZoomIn;
+- (BOOL)canZoomOut;
+- (void)decreaseTextSize;
+- (void)increaseTextSize;
+- (void)resetZoom;
+- (void)zoomIn;
+- (void)zoomOut;
 @end
 

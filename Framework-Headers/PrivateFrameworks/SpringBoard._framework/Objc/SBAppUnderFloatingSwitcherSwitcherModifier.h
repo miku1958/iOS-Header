@@ -17,8 +17,8 @@
 - (id)initWithActiveAppLayout:(id)arg1;
 - (BOOL)isHomeGrabberVisible;
 - (long long)keyboardSuppressionMode;
+- (long long)liveContentRasterizationStyle;
 - (long long)sceneDeactivationReason;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsAsynchronousSurfaceRetentionAssertion;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;

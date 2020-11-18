@@ -12,6 +12,7 @@
 {
 }
 
+@property BOOL needsRefresh;
 @property (nonatomic) int type; // @dynamic type;
 @property (copy, nonatomic) NSData *vrfKey; // @dynamic vrfKey;
 

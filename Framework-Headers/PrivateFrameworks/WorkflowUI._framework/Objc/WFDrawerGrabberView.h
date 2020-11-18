@@ -6,17 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, WFDrawerController;
+@class NSArray, WFDrawerController, _UIGrabber;
 
 @interface WFDrawerGrabberView : UIView
 {
     NSArray *_accessibilityCustomActions;
+    _UIGrabber *_grabber;
     WFDrawerController *_drawerController;
-    struct CGSize _grabberSize;
 }
 
 @property (weak, nonatomic) WFDrawerController *drawerController; // @synthesize drawerController=_drawerController;
-@property (nonatomic) struct CGSize grabberSize; // @synthesize grabberSize=_grabberSize;
 
 - (void).cxx_destruct;
 - (BOOL)accessibilityActivate;
@@ -28,7 +27,6 @@
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (id)init;
-- (struct CGSize)intrinsicContentSize;
 - (BOOL)isAccessibilityElement;
 
 @end

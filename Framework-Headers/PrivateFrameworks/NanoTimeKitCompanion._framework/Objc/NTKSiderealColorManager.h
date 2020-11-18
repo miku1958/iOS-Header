@@ -18,7 +18,7 @@
     NTKAltitudeColorCurve *_astronomicalTwilight;
     NTKAltitudeColorCurve *_innerComplication;
     NTKAltitudeColorCurve *_outerComplication;
-    NTKAltitudeColorCurve *_solarDiskGlow;
+    NTKAltitudeColorCurve *_dayDiskBloom;
 }
 
 + (id)sharedInstance;
@@ -28,6 +28,7 @@
 - (void)addColorUpdateHandler:(CDUnknownBlockType)arg1;
 - (id)astronomicalTwilightColorCurve;
 - (id)civilTwilightColorCurve;
+- (id)dayDiskBloomColorCurve;
 - (id)dayGradientColorCurves;
 - (void)dealloc;
 - (id)dialBackgroundColorCurve;
@@ -35,7 +36,6 @@
 - (id)nauticalTwilightColorCurve;
 - (id)outerComplicationColorCurve;
 - (void)setSunAltitude:(double)arg1;
-- (id)solarDiskGlowColorCurve;
 
 @end
 

@@ -48,23 +48,23 @@
 @property (readonly, nonatomic) BOOL isSelected;
 @property (strong, nonatomic) NSNumber *isSelectedOverride; // @synthesize isSelectedOverride=_isSelectedOverride;
 @property (nonatomic) BOOL isSimStateValid; // @synthesize isSimStateValid=_isSimStateValid;
-@property (nonatomic) NSString *label; // @synthesize label=_label;
+@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) long long lockState; // @synthesize lockState=_lockState;
 @property (readonly, nonatomic) NSString *name;
-@property (nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
 @property (nonatomic) BOOL shouldAppearDisabled; // @synthesize shouldAppearDisabled=_shouldAppearDisabled;
 @property (nonatomic) BOOL shouldAutoSelectWhenInRange; // @synthesize shouldAutoSelectWhenInRange=_shouldAutoSelectWhenInRange;
 @property (readonly, nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
 @property (nonatomic) BOOL shouldDisplayType; // @synthesize shouldDisplayType=_shouldDisplayType;
 @property (nonatomic) long long type; // @synthesize type=_type;
-@property (nonatomic) CTUserLabel *userLabel; // @synthesize userLabel=_userLabel;
+@property (strong, nonatomic) CTUserLabel *userLabel; // @synthesize userLabel=_userLabel;
 @property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2;

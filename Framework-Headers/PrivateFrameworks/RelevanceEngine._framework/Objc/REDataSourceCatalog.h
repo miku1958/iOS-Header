@@ -29,7 +29,7 @@
 - (void)donatedAppIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enumerateDataSources:(CDUnknownBlockType)arg1;
 - (void)imageForApplicationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)imageForDataSourceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)imageForDataSourceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithDataSourceManager:(id)arg1;
 - (id)localAndRemoteAppIdentifiersForDataSourceIdentifiers:(id)arg1;
 - (id)localizedNameForApplicationWithIdentifier:(id)arg1;

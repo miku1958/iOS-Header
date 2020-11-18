@@ -8,7 +8,7 @@
 
 #import <UIKitCore/FBSSceneDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UISceneActivationConditions, UISceneSession, _UISceneLifecycleMonitor;
+@class BKSAnimationFenceHandle, FBSScene, FBSSceneSettings, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSPointerArray, NSString, UIApplicationSceneClientSettings, UIApplicationSceneSettings, UISceneActivationConditions, UISceneSession, _UISceneLifecycleMonitor;
 @protocol UISceneDelegate;
 
 @interface UIScene : UIResponder <FBSSceneDelegate>
@@ -51,9 +51,7 @@
         unsigned int isProcessingUpdateResponseBlocks:1;
         unsigned int readyForSuspend:1;
         unsigned int isMediaParticipant:1;
-        unsigned int isInDetachDeferringAction:1;
     } _sceneFlags;
-    NSDate *_suspensionTimeMark;
     BOOL _respondingToLifecycleEvent;
     NSNumber *__cachedInterfaceOrientation;
 }
@@ -127,7 +125,6 @@
 - (struct CGRect)_boundsForInterfaceOrientation:(long long)arg1;
 - (void)_calculateFlattenedActionsHandlers;
 - (void)_calculateFlattenedDiffActions;
-- (void)_cancelBackgroundSceneDetach;
 - (void)_compatibilityModeZoomDidChange;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_computeMetricsForWindows:(id)arg1 animated:(BOOL)arg2;
@@ -146,8 +143,6 @@
 - (void)_makeKeyAndVisibleIfNeeded;
 - (BOOL)_needsMakeKeyAndVisible;
 - (void)_openURL:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_performBackgroundSceneDetach:(id)arg1;
-- (void)_performBlockAfterCACommitPhaseDelayingBackgroundDetach:(CDUnknownBlockType)arg1;
 - (void)_performSystemSnapshotWithActions:(CDUnknownBlockType)arg1;
 - (void)_prepareForResume;
 - (void)_prepareForSuspend;
@@ -160,7 +155,6 @@
 - (void)_removeInheritingScene:(id)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
 - (id)_sceneComponentForKey:(id)arg1;
-- (void)_scheduleBackgroundSceneDetach;
 - (id)_shortDescription;
 - (BOOL)_shouldAllowFencing;
 - (void)_synchronizeDrawingWithFence:(id)arg1;

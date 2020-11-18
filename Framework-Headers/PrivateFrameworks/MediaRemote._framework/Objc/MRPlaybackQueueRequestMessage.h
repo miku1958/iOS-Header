@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) _MRPlaybackQueueRequestProtobuf *request;
 
 - (id)initWithRequest:(id)arg1 forPlayerPath:(id)arg2;
+- (unsigned long long)priority;
 - (unsigned long long)type;
 
 @end

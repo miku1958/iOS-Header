@@ -36,6 +36,7 @@
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
     id<PKExplanationViewDelegate> _delegate;
+    double _titleHyphenationFactor;
     UIImage *_image;
     UIView *_heroView;
     UIColor *_topBackgroundColor;
@@ -46,6 +47,7 @@
     NSAttributedString *_attributedBodyText;
     NSAttributedString *_attributedSecondaryBodyText;
     NSString *_bodyButtonText;
+    long long _bodyButtonNumberOfLines;
     UIView *_bodyView;
     long long _bodyTextAlignment;
     unsigned long long _bodyDataDetectorTypes;
@@ -58,6 +60,7 @@
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (copy, nonatomic) NSAttributedString *attributedBodyText; // @synthesize attributedBodyText=_attributedBodyText;
 @property (copy, nonatomic) NSAttributedString *attributedSecondaryBodyText; // @synthesize attributedSecondaryBodyText=_attributedSecondaryBodyText;
+@property (nonatomic) long long bodyButtonNumberOfLines; // @synthesize bodyButtonNumberOfLines=_bodyButtonNumberOfLines;
 @property (copy, nonatomic) NSString *bodyButtonText; // @synthesize bodyButtonText=_bodyButtonText;
 @property (nonatomic) unsigned long long bodyDataDetectorTypes; // @synthesize bodyDataDetectorTypes=_bodyDataDetectorTypes;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
@@ -82,6 +85,7 @@
 @property (nonatomic) BOOL showPrivacyView; // @synthesize showPrivacyView=_showPrivacyView;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
+@property (nonatomic) double titleHyphenationFactor; // @synthesize titleHyphenationFactor=_titleHyphenationFactor;
 @property (strong, nonatomic) UIImage *titleImage; // @synthesize titleImage=_titleImage;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) long long titleTextAlignment; // @synthesize titleTextAlignment=_titleTextAlignment;

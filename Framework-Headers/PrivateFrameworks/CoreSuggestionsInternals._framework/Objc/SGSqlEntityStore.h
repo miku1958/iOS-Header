@@ -188,6 +188,7 @@
 - (id)allContactsMasterEntityIdsLimitedTo:(unsigned long long)arg1;
 - (id)allContactsWithEntityType:(unsigned long long)arg1;
 - (id)allEntitiesOfType:(long long)arg1 limitedTo:(unsigned long long)arg2;
+- (id)allEntitiesOfType:(long long)arg1 limitedTo:(unsigned long long)arg2 onlyMLExtractions:(BOOL)arg3;
 - (id)allPseudoContacts;
 - (id)allRemindersLimitedTo:(unsigned long long)arg1;
 - (void)analyzeDatabase;
@@ -364,6 +365,7 @@
 - (long long)migration_RemoveEntityReferencesWithoutBundleIdentifier;
 - (long long)migration_deleteEmergencyExtractions;
 - (long long)migration_deleteInteractions;
+- (long long)migration_deleteInternalExtractionsFromML;
 - (long long)migration_deleteSerializedContacts;
 - (long long)migration_rebuildFTSWithDetailEntityIDDocIDs;
 - (long long)migration_reimport;

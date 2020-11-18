@@ -105,6 +105,7 @@
 - (id)notificationListComponent:(id)arg1 sectionSettingsForSectionIdentifier:(id)arg2;
 - (BOOL)notificationListComponent:(id)arg1 shouldAllowInteractionsForNotificationRequest:(id)arg2;
 - (void)notificationListComponent:(id)arg1 shouldFinishLongLookTransitionForNotificationRequest:(id)arg2 trigger:(long long)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
+- (void)notificationListComponent:(id)arg1 willDismissLongLookForCancelActionForViewController:(id)arg2;
 - (void)notificationListComponentChangedContent:(id)arg1;
 - (void)notificationListComponentDidSignificantUserInteraction:(id)arg1;
 - (void)notificationListComponentRequestsClearingAllNotificationRequests:(id)arg1;

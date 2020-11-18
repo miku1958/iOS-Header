@@ -141,6 +141,7 @@
 - (BOOL)shouldFilterServiceOfTypeFromApp:(id)arg1;
 - (BOOL)shouldHomeAppShowTileForServiceType:(id)arg1;
 - (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
+- (BOOL)shouldRefreshValueForCharacteristicWithType:(id)arg1 serviceType:(id)arg2;
 - (id)statusHAPCharacteristicTypesForServiceType;
 - (BOOL)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (BOOL)supportsLocalization:(id)arg1;

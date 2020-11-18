@@ -90,11 +90,13 @@
 - (void)_enqueueDidAuthorizeAccountServicePaymentRequestWithApplePayTrustSignature:(id)arg1;
 - (void)_enqueueDidAuthorizeDisbursementWithVoucher:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithByPassPayment:(id)arg1;
+- (void)_enqueueDidAuthorizePaymentWithInstallmentAuthorizationToken:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithPayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithRemotePayment:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithToken:(id)arg1;
 - (void)_enqueueDidAuthorizePeerPaymentQuoteWithAuthorizedQuote:(id)arg1;
 - (void)_enqueueDidRequestMerchantSession;
+- (void)_enqueueDidSelectPaymentMethodWithBindToken:(id)arg1;
 - (void)_enqueueDidSelectPaymentMethodWithQuote:(id)arg1;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1 paymentApplication:(id)arg2;
@@ -109,6 +111,7 @@
 - (void)_performAuthorizationWithParam:(id)arg1;
 - (void)_performCancelRemotePaymentRequest;
 - (void)_performDidAuthorizeCallbackWithParam:(id)arg1;
+- (void)_performInstallmentBind;
 - (void)_performNonceRequestWithParam:(id)arg1;
 - (void)_performPrepareTransactionDetailsRequestWithParam:(id)arg1;
 - (void)_performRewrapRequestWithParam:(id)arg1;
@@ -133,7 +136,7 @@
 - (id)_transactionWithPurchase:(id)arg1 paymentHash:(id)arg2;
 - (void)_unregisterForNotifications;
 - (void)_updateModelWithRemoteDevices:(id)arg1;
-- (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2;
+- (void)_updateModelWithShippingMethods:(id)arg1 paymentSummaryItems:(id)arg2 contentItems:(id)arg3;
 - (void)beginDelayingAuthorizedState;
 - (BOOL)canSelectPaymentOptions;
 - (void)centralManagerDidUpdateState:(id)arg1;

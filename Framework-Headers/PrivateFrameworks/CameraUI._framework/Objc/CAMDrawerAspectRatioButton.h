@@ -19,8 +19,11 @@
 
 - (void).cxx_destruct;
 - (id)_imageForAspectRatio:(long long)arg1;
+- (id)_titleForAspectRatio:(long long)arg1;
 - (long long)controlType;
 - (void)didSelectMenuItem:(id)arg1;
+- (id)hudItemForMenuHeader;
+- (id)hudItemForMenuItem:(id)arg1;
 - (id)imageNameForCurrentState;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (BOOL)isMenuItemSelected:(id)arg1;

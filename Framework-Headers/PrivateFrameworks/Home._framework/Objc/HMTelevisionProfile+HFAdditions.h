@@ -8,5 +8,6 @@
 
 @interface HMTelevisionProfile (HFAdditions)
 - (CDUnknownBlockType)hf_mediaSourceComparator;
+- (BOOL)hf_offersAutomation;
 @end
 

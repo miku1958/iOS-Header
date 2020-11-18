@@ -76,7 +76,7 @@
 - (void)_updateUserIntentRequired;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
 - (void)authenticatorDidEncounterMatchMiss:(id)arg1;

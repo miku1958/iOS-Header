@@ -64,7 +64,7 @@
 - (void)audioFileReaderDidStopRecording:(id)arg1 forReason:(long long)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)configureAlertBehavior:(id)arg1 audioStreamHandleId:(unsigned long long)arg2;
-- (BOOL)deactivateAudioSession:(unsigned long long)arg1 streamHandleId:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enableMiniDucking:(BOOL)arg1;
 - (id)initWithQueue:(id)arg1 error:(id *)arg2;

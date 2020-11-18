@@ -27,6 +27,7 @@
 - (float)feedbackSessionLogsSamplingRate;
 - (double)halfValuePosition;
 - (BOOL)highLevelTopicExtractionEnabled;
+- (double)highLevelTopicScoreAttenuationFactor;
 - (double)highLevelTopicScoreThreshold;
 - (id)init;
 - (double)locationDecayHalfLifeSeconds;

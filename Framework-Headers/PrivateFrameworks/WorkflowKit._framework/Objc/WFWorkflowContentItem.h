@@ -8,13 +8,13 @@
 
 #import <WorkflowKit/WFContentItemClass-Protocol.h>
 
-@class WFWorkflowRecord;
+@class WFWorkflowReference;
 
 @interface WFWorkflowContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
 }
 
-@property (readonly, nonatomic) WFWorkflowRecord *workflowRecord;
+@property (readonly, nonatomic) WFWorkflowReference *workflowReference;
 
 + (id)contentCategories;
 + (id)countDescription;

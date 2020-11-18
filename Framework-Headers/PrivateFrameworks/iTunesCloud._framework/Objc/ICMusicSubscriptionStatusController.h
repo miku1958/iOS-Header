@@ -32,12 +32,13 @@
 - (void).cxx_destruct;
 - (void)_cancelRemoteRequestingClientConnectionInvalidationTimer;
 - (void)_didEndRemoteRequestForUniqueIdentifier:(id)arg1;
+- (void)_handleSubscriptionStatusCacheDidChangeNotification:(id)arg1;
+- (void)_handleSubscriptionStatusCacheUnderlyingCachingPropertiesDidChangeNotification:(id)arg1;
 - (void)_invalidateRemoteRequestingClientConnection;
 - (id)_remoteRequestingClientConnection;
 - (void)_remoteRequestingClientConnectionInvalidationTimerDidExpire;
 - (void)_scheduleInvalidationOfRemoteRequestingClientConnection;
 - (CDUnknownBlockType)_statusHandlerForUniqueIdentifier:(id)arg1;
-- (void)_subscriptionStatusCacheDidChangeNotification:(id)arg1;
 - (void)_willBeginRemoteRequestForUniqueIdentifier:(id)arg1 statusHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deliverSubscriptionStatusResponse:(id)arg1 forUniqueIdentifier:(id)arg2 error:(id)arg3;

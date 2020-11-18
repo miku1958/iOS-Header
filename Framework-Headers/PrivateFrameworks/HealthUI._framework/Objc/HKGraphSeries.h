@@ -87,6 +87,7 @@
 - (BOOL)blockCoordinate:(id)arg1 lessThan:(id)arg2;
 - (BOOL)blockCoordinateIsVisibleInsideOfChartRect:(struct CGRect)arg1 blockCoordinate:(id)arg2;
 - (void)cancelInFlightAutoscale;
+- (void)clearCaches;
 - (id)closestXCoordinateRange;
 - (BOOL)configureYAxisAccessoryViewForDateRange:(id)arg1 timeScope:(long long)arg2;
 - (BOOL)containsCoordinatesInChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5;

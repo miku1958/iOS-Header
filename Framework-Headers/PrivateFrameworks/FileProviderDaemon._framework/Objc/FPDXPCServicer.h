@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)noteURLBecameFrontmost:(id)arg1 inWindow:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (int)pid;
 - (void)pinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)providerDomainForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providerDomainForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providerDomainsCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)providerForCurrentConnection;

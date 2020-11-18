@@ -139,6 +139,7 @@
 + (id)supportedOutputTypes;
 - (void).cxx_destruct;
 - (void)_bailFailedAnimateEnterMarkup;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancel;
 - (void)_cleanupPlaceholderImage;
 - (void)_commonInit;
@@ -165,6 +166,7 @@
 - (void)_updateAndLoadSourceContent:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_updateAppearanceForTraitCollection:(id)arg1;
 - (void)_updateConstraintsForBarPosition:(long long)arg1;
+- (void)_updateNavBarProperties;
 - (void)_updateundoBarButtonWithController:(id)arg1;
 - (BOOL)_useLegacyToolbar;
 - (BOOL)_writeToDataConsumer:(struct CGDataConsumer *)arg1 embedSourceImageAndEditModel:(BOOL)arg2 error:(id *)arg3;

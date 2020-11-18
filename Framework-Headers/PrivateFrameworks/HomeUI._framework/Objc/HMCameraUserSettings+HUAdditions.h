@@ -8,5 +8,6 @@
 
 @interface HMCameraUserSettings (HUAdditions)
 - (id)hu_indicatorColorForCurrentAccessMode;
+- (id)hu_indicatorColorForLiveStreaming;
 @end
 

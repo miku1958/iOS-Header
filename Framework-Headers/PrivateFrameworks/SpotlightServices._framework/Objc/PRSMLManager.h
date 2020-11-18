@@ -31,7 +31,6 @@
 
 + (id)createPathToSpotlightPrefFile;
 + (id)getSPMLSharedInstance;
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)addCategoryAndGroupNameToTrainCategories:(id)arg1 groupName:(id)arg2;
 - (void)dumpPredictionStatsToFlatFiles;

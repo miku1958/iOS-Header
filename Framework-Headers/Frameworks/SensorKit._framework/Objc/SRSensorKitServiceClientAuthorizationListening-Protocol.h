@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet;
+@class NSSet, NSString;
 
 @protocol SRSensorKitServiceClientAuthorizationListening
-- (void)authorizedServicesDidChange:(NSSet *)arg1;
+- (void)authorizedServicesDidChange:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
 @end
 

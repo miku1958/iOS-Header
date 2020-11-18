@@ -20,5 +20,8 @@
 - (void)searchableIndexSchedulable:(id<EDSearchableIndexSchedulable>)arg1 didGeneratePowerEventWithIdentifier:(NSString *)arg2 eventData:(NSDictionary *)arg3;
 - (void)searchableIndexSchedulable:(id<EDSearchableIndexSchedulable>)arg1 didIndexForTime:(double)arg2;
 - (void)searchableIndexSchedulable:(id<EDSearchableIndexSchedulable>)arg1 didIndexItemCount:(long long)arg2;
+
+@optional
+- (void)didCancelDataSourceUpdateRequestForSearchableIndexSchedulable:(id<EDSearchableIndexSchedulable>)arg1;
 @end
 

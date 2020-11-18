@@ -21,12 +21,14 @@
 }
 
 @property (weak, nonatomic, setter=_setCodableAttribute:) INCodableAttribute *_codableAttribute; // @synthesize _codableAttribute;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDefaultDialog) BOOL defaultDialog; // @synthesize defaultDialog=_defaultDialog;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 @property (copy, nonatomic) NSString *formatStringID; // @synthesize formatStringID=_formatStringID;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -38,7 +40,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedDialogWithIntent:(id)arg1 tokens:(id)arg2;
 - (id)localizedDialogWithIntent:(id)arg1 tokens:(id)arg2 forLanguage:(id)arg3;
 - (void)updateWithDictionary:(id)arg1;

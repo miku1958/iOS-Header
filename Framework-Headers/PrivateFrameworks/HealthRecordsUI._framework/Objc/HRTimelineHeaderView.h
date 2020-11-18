@@ -7,15 +7,18 @@
 #import <UIKit/UITableViewHeaderFooterView.h>
 
 @class MISSING_TYPE;
+@protocol HRTimelineHeaderViewDelegate;
 
 @interface HRTimelineHeaderView : UITableViewHeaderFooterView
 {
+    MISSING_TYPE *delegate;
     MISSING_TYPE *$__lazy_storage_$_titleLabel;
     MISSING_TYPE *$__lazy_storage_$_subtitleLabel;
     MISSING_TYPE *$__lazy_storage_$_backgroundEffectView;
     MISSING_TYPE *$__lazy_storage_$_separatorView;
 }
 
+@property (nonatomic, weak) id<HRTimelineHeaderViewDelegate> delegate; // @synthesize delegate;
 @property (nonatomic) BOOL floating;
 
 + (id)reuseIdentifier;
@@ -25,6 +28,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

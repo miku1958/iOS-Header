@@ -9,6 +9,9 @@
 #import <TeaUI/TSTabBarSplitViewFocusable-Protocol.h>
 
 @interface _TtC5TeaUI25TabBarSplitViewController (TeaUI3) <TSTabBarSplitViewFocusable>
+
+@property (nonatomic, readonly) long long currentSplitViewFocus;
+
 - (void)toggleSplitViewFocusTo:(long long)arg1;
 @end
 

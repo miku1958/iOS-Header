@@ -8,16 +8,18 @@
 
 #import <PhotosGraph/PGEnrichmentProfile-Protocol.h>
 
-@class NSDictionary, NSString, PGDejunkerDeduperOptions, PGManager;
+@class NSDictionary, NSString, PGDejunkerDeduperOptions, PGManager, PLDateRangeTitleGenerator;
 
 @interface PGAggregationEnrichmentProfile : NSObject <PGEnrichmentProfile>
 {
     BOOL _collectsDebugInfo;
     PGManager *_manager;
     PGDejunkerDeduperOptions *_extendedCurationOptions;
+    PLDateRangeTitleGenerator *_dateRangeTitleGenerator;
 }
 
 @property (nonatomic) BOOL collectsDebugInfo; // @synthesize collectsDebugInfo=_collectsDebugInfo;
+@property (strong, nonatomic) PLDateRangeTitleGenerator *dateRangeTitleGenerator; // @synthesize dateRangeTitleGenerator=_dateRangeTitleGenerator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) NSDictionary *debugInfos;
 @property (readonly, copy) NSString *description;

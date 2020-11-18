@@ -15,7 +15,6 @@
 
 + (id)bundle;
 - (void).cxx_destruct;
-- (BOOL)_pairedWithSiriSpeaksEnabledNanoHardware;
 - (void)languageCodeDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

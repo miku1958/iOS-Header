@@ -24,6 +24,7 @@
 + (unsigned long long)sourceForCharacteristicTriggerBuilder:(id)arg1;
 - (id)initWithCharacteristicTriggerBuilder:(id)arg1 mode:(unsigned long long)arg2 source:(unsigned long long)arg3 delegate:(id)arg4;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;
+- (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)viewDidLoad;
 
 @end

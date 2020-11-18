@@ -14,7 +14,7 @@
 @interface CNReplaySubject : CNObservable <CNObserver>
 {
     NSMutableArray *_observers;
-    _CNObservableEventBufferingStrategy *_recentEvents;
+    _CNObservableEventBufferingStrategy *_recentEventStrategy;
     id<CNSchedulerProvider> _schedulerProvider;
     id<CNScheduler> _resourceLock;
     CNObservableContractEnforcement *_enforcement;
@@ -25,13 +25,12 @@
 @property (readonly, nonatomic) CNObservableContractEnforcement *enforcement; // @synthesize enforcement=_enforcement;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
-@property (strong, nonatomic) _CNObservableEventBufferingStrategy *recentEvents; // @synthesize recentEvents=_recentEvents;
+@property (strong, nonatomic) _CNObservableEventBufferingStrategy *recentEventStrategy; // @synthesize recentEventStrategy=_recentEventStrategy;
 @property (readonly, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_addObserver:(id)arg1;
 - (void)_removeObserver:(id)arg1;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1 schedulerProvider:(id)arg2;
@@ -41,8 +40,10 @@
 - (void)observerDidFailWithError:(id)arg1;
 - (void)observerDidReceiveResult:(id)arg1;
 - (void)performWithResourceLock:(CDUnknownBlockType)arg1;
+- (id)resourceLock_removeAllObservers;
 - (void)resourceLock_scheduleReplayToObserver:(id)arg1;
 - (void)resourceLock_swapBufferingStrategiesGivenNewTerminatingEvent:(id)arg1;
+- (id)resourceLock_upToDateObserverFromObserver:(id)arg1;
 - (id)resultWithResourceLock:(CDUnknownBlockType)arg1;
 - (id)subscribe:(id)arg1;
 

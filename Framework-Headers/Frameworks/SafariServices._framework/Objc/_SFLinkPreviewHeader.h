@@ -6,29 +6,39 @@
 
 #import <UIKit/UIView.h>
 
+#import <SafariServices/SFLinkPreviewHeaderContentViewDelegate-Protocol.h>
 #import <SafariServices/_SFFluidProgressViewDelegate-Protocol.h>
 
-@class NSString, UILabel, _SFFluidProgressView;
+@class NSString, SFLinkPreviewHeaderContentView, _SFFluidProgressView;
+@protocol _SFLinkPreviewHeaderDelegate;
 
-@interface _SFLinkPreviewHeader : UIView <_SFFluidProgressViewDelegate>
+@interface _SFLinkPreviewHeader : UIView <SFLinkPreviewHeaderContentViewDelegate, _SFFluidProgressViewDelegate>
 {
-    UILabel *_domainLabel;
+    SFLinkPreviewHeaderContentView *_contentView;
     UIView *_hairline;
     BOOL _isMinimumPreviewUI;
+    id<_SFLinkPreviewHeaderDelegate> _delegate;
     NSString *_domain;
     _SFFluidProgressView *_progressView;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_SFLinkPreviewHeaderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isLinkPreviewEnabled) BOOL linkPreviewEnabled;
 @property (strong, nonatomic) _SFFluidProgressView *progressView; // @synthesize progressView=_progressView;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_initializeLayoutContraints;
 - (double)defaultHeight;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
 - (void)fluidProgressViewWillShowProgress:(id)arg1;
 - (id)initWithMinimumPreviewUI:(BOOL)arg1;
 - (void)layoutSubviews;
+- (BOOL)linkPreviewEnabled;
+- (void)linkPreviewHeaderContentView:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
 
 @end
 

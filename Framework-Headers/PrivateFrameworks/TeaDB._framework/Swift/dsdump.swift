@@ -168,7 +168,7 @@
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 
 	// Swift methods
-	0x13040  class func Database.__allocating_init(location:) // init 
+	0x13230  class func Database.__allocating_init(location:) // init 
  }
 
  enum TeaDB.Location {

@@ -12,6 +12,7 @@
 {
     unsigned long long _majorVersion;
     unsigned long long _minorVersion;
+    unsigned long long _subMinorVersion;
     NSString *_platform;
 }
 
@@ -19,16 +20,18 @@
 @property (readonly, nonatomic) unsigned long long minorVersion; // @synthesize minorVersion=_minorVersion;
 @property (readonly, copy, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (readonly, weak, nonatomic) NSString *string;
+@property (readonly, nonatomic) unsigned long long subMinorVersion; // @synthesize subMinorVersion=_subMinorVersion;
 
 + (id)versionFromString:(id)arg1;
-+ (id)versionWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 platform:(id)arg3;
++ (id)versionWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 subMinor:(unsigned long long)arg3 platform:(id)arg4;
 - (void).cxx_destruct;
+- (long long)asOrderedInteger;
 - (long long)compare:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2;
-- (id)initWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 platform:(id)arg3;
+- (id)initWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 subMinor:(unsigned long long)arg3;
+- (id)initWithMajor:(unsigned long long)arg1 minor:(unsigned long long)arg2 subMinor:(unsigned long long)arg3 platform:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAdjustmentVersion:(id)arg1;
 

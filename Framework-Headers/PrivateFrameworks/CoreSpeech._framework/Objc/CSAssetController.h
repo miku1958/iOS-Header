@@ -13,15 +13,19 @@
 
 @interface CSAssetController : NSObject <CSEventMonitorDelegate>
 {
-    NSDictionary *_csAssetsDictionary;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_assetsMigrationQueue;
+    NSDictionary *_csAssetsDictionary;
     NSMutableDictionary *_observers;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetsMigrationQueue; // @synthesize assetsMigrationQueue=_assetsMigrationQueue;
+@property (strong, nonatomic) NSDictionary *csAssetsDictionary; // @synthesize csAssetsDictionary=_csAssetsDictionary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 + (void)addKeyValuePairForQuery:(id *)arg1 assetType:(unsigned long long)arg2;
@@ -45,8 +49,6 @@
 - (id)_findLatestInstalledAsset:(id)arg1;
 - (id)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2;
 - (void)_installedAssetOfType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_installedAssetWithoutMetaDataForType:(unsigned long long)arg1 withLanguage:(id)arg2;
-- (void)_installedAssetWithoutMetaDataForType:(unsigned long long)arg1 withLanguage:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_isReadyToUse;
 - (void)_runAssetQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startDownloadingAsset:(id)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDVenueIdentifier : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _containedBys;
     CDStruct_62a50c50 _sectionIds;
@@ -26,6 +25,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _unitId;
     unsigned long long _venueGeminiId;
     unsigned long long _venueId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _levelOrdinal;
     struct {
         unsigned int has_buildingId:1;
@@ -97,9 +99,11 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2;
-- (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2 componentIdentifier:(id)arg3;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3;
+- (id)initWithVenueID:(unsigned long long)arg1 featureID:(unsigned long long)arg2 businessID:(unsigned long long)arg3 componentIdentifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

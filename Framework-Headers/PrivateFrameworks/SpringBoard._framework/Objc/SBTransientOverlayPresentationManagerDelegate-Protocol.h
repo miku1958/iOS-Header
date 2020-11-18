@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NSString, SBAppStatusBarSettings, SBPresentationObservationToken, SBTransientOverlayPresentationManager, SBTransientOverlayViewController, UIApplicationSceneDeactivationAssertion, UIWindow;
+@class BSAnimationSettings, NSString, SBAppStatusBarSettings, SBInAppStatusBarHiddenAssertion, SBPresentationObservationToken, SBTransientOverlayPresentationManager, SBTransientOverlayViewController, UIApplicationSceneDeactivationAssertion, UIWindow;
 @protocol BSInvalidatable, CSExternalBehaviorProviding;
 
 @protocol SBTransientOverlayPresentationManagerDelegate <NSObject>
@@ -21,7 +21,7 @@
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireControlCenterWindowLevelAssertionWithReason:(NSString *)arg2 windowLevel:(double)arg3;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireDeviceOrientationUpdateDeferralAssertionWithReason:(NSString *)arg2;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireDisableAutoUnlockAssertionWithReason:(NSString *)arg2;
-- (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireHideAppStatusBarAssertionWithReason:(NSString *)arg2;
+- (SBInAppStatusBarHiddenAssertion *)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireHideAppStatusBarAssertionWithReason:(NSString *)arg2 animated:(BOOL)arg3;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireInteractiveScreenshotGestureDisabledAssertionWithReason:(NSString *)arg2;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireProximitySensorEnabledAssertionWithReason:(NSString *)arg2;
 - (id<BSInvalidatable>)transientOverlayPresentationManager:(SBTransientOverlayPresentationManager *)arg1 acquireSiriWindowLevelAssertionWithReason:(NSString *)arg2 windowLevel:(double)arg3;

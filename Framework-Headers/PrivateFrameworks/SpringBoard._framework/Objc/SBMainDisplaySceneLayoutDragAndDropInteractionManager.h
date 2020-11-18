@@ -88,6 +88,7 @@
 - (id)mostRecentSceneIdentityExcludingLiveScenesForApplication:(id)arg1;
 - (id)newSceneIdentityForApplication:(id)arg1;
 - (id)preferredSceneIdentityForApplication:(id)arg1 targetContentIdentifier:(id)arg2 preferNewScene:(BOOL)arg3;
+- (BOOL)shouldBeginWindowDragGesture;
 - (void)transactionDidComplete:(id)arg1;
 
 @end

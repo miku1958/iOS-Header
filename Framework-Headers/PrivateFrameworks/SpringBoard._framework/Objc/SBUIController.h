@@ -137,7 +137,6 @@
 - (BOOL)isHeadsetBatteryCharging;
 - (BOOL)isHeadsetDocked;
 - (BOOL)isIconListViewTornDown;
-- (void)launchIcon:(id)arg1 fromLocation:(id)arg2 context:(id)arg3 activationSettings:(id)arg4 actions:(id)arg5;
 - (void)noteStatusBarHeightChanged:(id)arg1;
 - (void)nudgeIconInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)playChargingChimeIfAppropriate;

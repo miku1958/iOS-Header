@@ -9,7 +9,6 @@
 @interface NSString (SiriButtonIdentifier)
 + (id)stringWithAFActivationEvent:(long long)arg1;
 + (id)stringWithAFDirectActionEvent:(long long)arg1;
-+ (id)stringWithSASRequestState:(long long)arg1;
 + (id)stringWithSiriActivationEventType:(long long)arg1;
 + (id)stringWithSiriButtonIdentifier:(long long)arg1;
 + (id)stringWithSiriPresentationActivationCancelReason:(unsigned long long)arg1;

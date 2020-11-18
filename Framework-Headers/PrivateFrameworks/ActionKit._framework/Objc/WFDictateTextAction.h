@@ -33,7 +33,6 @@
 - (void)dictationConnection:(id)arg1 speechRecognitionDidFail:(id)arg2;
 - (void)dictationConnection:(id)arg1 speechRecordingDidFail:(id)arg2;
 - (void)finishRunningWithError:(id)arg1;
-- (id)keyCommands;
 - (id)recognitionError;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;

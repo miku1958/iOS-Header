@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)initWithConfiguration:(id)arg1;
 - (void)resumeMonitoring;
+- (void)setControlEffort:(long long)arg1;
 - (void)suspendMonitoring;
 - (void)timerDidFire:(id)arg1;
 - (void)updateControlEffortFromValue:(float)arg1;

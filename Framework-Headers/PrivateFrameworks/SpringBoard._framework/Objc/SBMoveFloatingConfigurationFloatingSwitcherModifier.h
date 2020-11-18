@@ -16,10 +16,10 @@
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
 - (id)layoutSettings;
+- (long long)liveContentRasterizationStyle;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;
 
 @end

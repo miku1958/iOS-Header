@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)_configureView;
 - (id)initWithRequest:(id)arg1 withPresentingView:(id)arg2 settingsDelegate:(id)arg3;
+- (BOOL)shouldAutorotate;
 - (void)viewDidLoad;
 
 @end

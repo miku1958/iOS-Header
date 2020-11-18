@@ -13,6 +13,8 @@
 
 @interface TransparencyLogSession : NSObject <NSURLSessionDelegate>
 {
+    unsigned long long _fetchCount;
+    unsigned long long _downloadCount;
     NSURLSession *_backgroundSession;
     NSURLSession *_foregroundSession;
     NSObject<OS_dispatch_workloop> *_workloop;
@@ -21,6 +23,8 @@
 @property (strong) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned long long downloadCount; // @synthesize downloadCount=_downloadCount;
+@property unsigned long long fetchCount; // @synthesize fetchCount=_fetchCount;
 @property (strong) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -35,7 +39,7 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (id)createAuthenticatedForegroundSession;
-- (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2;
+- (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 error:(id)arg3;
 - (BOOL)download:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)fetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithWorkloop:(id)arg1;

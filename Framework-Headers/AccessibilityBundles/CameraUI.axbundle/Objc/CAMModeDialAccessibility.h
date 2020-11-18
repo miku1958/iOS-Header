@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axAdjustValue:(BOOL)arg1;
+- (id)_axCurrentCameraMode;
 - (id)accessibilityCustomActions;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;

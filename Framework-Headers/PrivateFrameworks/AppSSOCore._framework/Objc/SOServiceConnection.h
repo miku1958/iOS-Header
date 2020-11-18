@@ -34,6 +34,7 @@
 - (void)debugHintsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAuthorizationHintsWithURL:(id)arg1 responseCode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1;
+- (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)realmsWithCompletion:(CDUnknownBlockType)arg1;
 

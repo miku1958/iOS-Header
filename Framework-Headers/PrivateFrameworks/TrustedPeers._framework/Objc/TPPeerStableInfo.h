@@ -42,7 +42,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)initWithClock:(unsigned long long)arg1 policyVersion:(unsigned long long)arg2 policyHash:(id)arg3 policySecrets:(id)arg4 recoverySigningPubKey:(id)arg5 recoveryEncryptionPubKey:(id)arg6 data:(id)arg7 sig:(id)arg8;
+- (id)initWithClock:(unsigned long long)arg1 policyVersion:(unsigned long long)arg2 policyHash:(id)arg3 policySecrets:(id)arg4 deviceName:(id)arg5 serialNumber:(id)arg6 osVersion:(id)arg7 recoverySigningPubKey:(id)arg8 recoveryEncryptionPubKey:(id)arg9 data:(id)arg10 sig:(id)arg11;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPeerStableInfo:(id)arg1;
 

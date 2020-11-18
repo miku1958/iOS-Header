@@ -116,6 +116,7 @@
 @property (nonatomic) long long characterVoicesUsageCount;
 @property (nonatomic) BOOL classicInvertColors;
 @property (strong, nonatomic) NSArray *currentVoices;
+@property (readonly, nonatomic) BOOL currentVoicesExist;
 @property (strong, nonatomic) NSArray *customPronunciationSubstitutions;
 @property (readonly, nonatomic) NSArray *deviceKeys;
 @property (nonatomic) BOOL didResetD22Preferences;
@@ -148,6 +149,7 @@
 @property (readonly, nonatomic) NSArray *gestureKeys;
 @property (nonatomic) BOOL gizmoApplicationAccessibilityEnabled;
 @property (nonatomic) BOOL guidedAccessAXFeaturesEnabled;
+@property (readonly, nonatomic) BOOL guidedAccessAllowsMultipleWindows;
 @property (nonatomic) BOOL guidedAccessAllowsUnlockWithTouchID;
 @property (nonatomic) long long guidedAccessAutoLockTimeInSeconds;
 @property (readonly, nonatomic) NSString *guidedAccessDefaultToneIdentifierForTimeRestrictionEvents;
@@ -198,7 +200,6 @@
 @property (readonly, nonatomic) NSArray *mediaControlsKeys;
 @property (strong, nonatomic) NSString *medicalPreamble;
 @property BOOL monoAudioEnabled;
-@property (strong, nonatomic) NSDictionary *pairedHearingAids;
 @property (nonatomic) BOOL phoneticFeedbackEnabled;
 @property (nonatomic) unsigned long long quickSpeakHighlightOption;
 @property (nonatomic) BOOL quickSpeakHighlightText;

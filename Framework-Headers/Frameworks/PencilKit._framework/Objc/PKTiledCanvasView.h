@@ -187,6 +187,7 @@
 - (double)layerContentsScale;
 - (void)layoutSubviews;
 - (void)resizeBackingBuffersForPixelSize:(struct CGSize)arg1 drawingScale:(double)arg2;
+- (void)schedulePurgeResourcesBlock;
 - (void)selectionBegan:(id)arg1;
 - (void)selectionCancelled;
 - (void)setCanvasBackgroundColor:(id)arg1;

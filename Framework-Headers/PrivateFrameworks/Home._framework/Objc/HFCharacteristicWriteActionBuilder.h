@@ -21,12 +21,12 @@
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
-- (id)_performValidation;
 - (id)commitItem;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
 - (BOOL)hasSameTargetAsAction:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
+- (id)performValidation;
 - (BOOL)requiresDeviceUnlock;
 - (BOOL)updateWithActionBuilder:(id)arg1;
 

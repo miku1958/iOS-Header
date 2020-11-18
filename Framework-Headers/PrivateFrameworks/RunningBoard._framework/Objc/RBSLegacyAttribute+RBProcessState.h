@@ -11,11 +11,9 @@
 - (unsigned long long)_endPolicy;
 - (BOOL)_gpuAllowed;
 - (double)_invalidationDurationExpiringTaskCompletionsQuickly:(BOOL)arg1;
-- (BOOL)_isApplicableToTargetIdentity:(id)arg1;
-- (BOOL)_isApplicableToTargetPropertiesInContext:(id)arg1 outBundleProperty:(out id *)arg2;
 - (BOOL)_isLegacyReasonFinishableTask:(unsigned long long)arg1;
-- (BOOL)_isValidForOriginatorEntitlementsInContext:(id)arg1;
-- (BOOL)_isValidViewServiceRequest:(id)arg1 withError:(id *)arg2;
+- (BOOL)_isOriginatorValidForContext:(id)arg1 errorReason:(out id *)arg2;
+- (BOOL)_isTargetValidForContext:(id)arg1 errorReason:(out id *)arg2;
 - (unsigned char)_jetsamBand;
 - (unsigned long long)_maxCPUDuration;
 - (unsigned long long)_maxCPUPercentage;

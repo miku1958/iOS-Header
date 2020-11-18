@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <ChatKit/CKEditableSearchResultCell.h>
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CKSearchAvatarSupplementryView, NSString, UIDateLabel, UIImageView, UILabel;
 
-@interface CKAttachmentSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKAttachmentSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
     BOOL _suppressAvatars;
     UIImageView *_imageView;
@@ -27,6 +27,8 @@
 @property (strong, nonatomic) UIDateLabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double editModeHorizontalOffset;
+@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;

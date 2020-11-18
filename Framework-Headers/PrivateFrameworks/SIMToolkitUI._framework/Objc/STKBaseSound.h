@@ -8,11 +8,11 @@
 
 #import <SIMToolkitUI/STKSound-Protocol.h>
 
-@class NSString, NSTimer;
+@class BSTimer, NSString;
 
 @interface STKBaseSound : NSObject <STKSound>
 {
-    NSTimer *_timer;
+    BSTimer *_timer;
     double _duration;
     BOOL _playsOnce;
     BOOL _isPlaying;
@@ -27,6 +27,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_reallyPlaySound;
+- (void)_reallyStopSound;
+- (void)_sync_playSound;
+- (void)_sync_stopSound;
 - (void)dealloc;
 - (id)initWithDuration:(double)arg1;
 - (void)playSound;

@@ -31,6 +31,7 @@
 - (BOOL)_checkIfRestoreDone;
 - (void)_handleF5Reset;
 - (void)_handleRestoreDone;
+- (void)_verifyRestoreDone;
 - (BOOL)checkSystemReady;
 - (id)gatherDiagnostics;
 - (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;

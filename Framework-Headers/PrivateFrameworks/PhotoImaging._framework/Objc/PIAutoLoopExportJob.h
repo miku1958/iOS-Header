@@ -15,7 +15,7 @@
 - (id)autoLoopExportRequest;
 - (id)initWithAutoLoopExportRequest:(id)arg1;
 - (id)initWithVideoExportRequest:(id)arg1;
-- (id)renderer;
+- (id)renderer:(out id *)arg1;
 
 @end
 

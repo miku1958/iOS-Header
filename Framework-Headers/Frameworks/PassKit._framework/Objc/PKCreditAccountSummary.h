@@ -22,6 +22,8 @@
     NSDecimalNumber *_rewardsBalance;
     NSDecimalNumber *_remainingStatementBalance;
     NSDecimalNumber *_remainingMinimumPayment;
+    NSDecimalNumber *_remainingMinimumPaymentExcludedFromInterestCalculation;
+    NSDecimalNumber *_installmentBalance;
     NSDate *_paymentDueDate;
     NSDate *_lastPaymentDate;
     long long _cyclesPastDue;
@@ -32,8 +34,10 @@
     NSDecimalNumber *_chargeOffPreventionAmount;
     NSDecimalNumber *_pastDueAmount;
     PKCreditAccountStatement *_currentStatement;
+    NSDecimalNumber *_adjustedBalance;
 }
 
+@property (copy, nonatomic) NSDecimalNumber *adjustedBalance; // @synthesize adjustedBalance=_adjustedBalance;
 @property (nonatomic) BOOL autoPayEnabled; // @synthesize autoPayEnabled=_autoPayEnabled;
 @property (copy, nonatomic) NSDecimalNumber *availableCredit; // @synthesize availableCredit=_availableCredit;
 @property (nonatomic) unsigned long long balanceStatus; // @synthesize balanceStatus=_balanceStatus;
@@ -44,10 +48,12 @@
 @property (strong, nonatomic) PKCreditAccountStatement *currentStatement; // @synthesize currentStatement=_currentStatement;
 @property (nonatomic) long long cyclesPastDue; // @synthesize cyclesPastDue=_cyclesPastDue;
 @property (nonatomic) BOOL inGrace; // @synthesize inGrace=_inGrace;
+@property (copy, nonatomic) NSDecimalNumber *installmentBalance; // @synthesize installmentBalance=_installmentBalance;
 @property (copy, nonatomic) NSDate *lastPaymentDate; // @synthesize lastPaymentDate=_lastPaymentDate;
 @property (copy, nonatomic) NSDecimalNumber *pastDueAmount; // @synthesize pastDueAmount=_pastDueAmount;
 @property (copy, nonatomic) NSDate *paymentDueDate; // @synthesize paymentDueDate=_paymentDueDate;
 @property (copy, nonatomic) NSDecimalNumber *remainingMinimumPayment; // @synthesize remainingMinimumPayment=_remainingMinimumPayment;
+@property (copy, nonatomic) NSDecimalNumber *remainingMinimumPaymentExcludedFromInterestCalculation; // @synthesize remainingMinimumPaymentExcludedFromInterestCalculation=_remainingMinimumPaymentExcludedFromInterestCalculation;
 @property (copy, nonatomic) NSDecimalNumber *remainingStatementBalance; // @synthesize remainingStatementBalance=_remainingStatementBalance;
 @property (nonatomic) BOOL requiresDebtCollectionNotices; // @synthesize requiresDebtCollectionNotices=_requiresDebtCollectionNotices;
 @property (copy, nonatomic) NSDecimalNumber *rewardsBalance; // @synthesize rewardsBalance=_rewardsBalance;

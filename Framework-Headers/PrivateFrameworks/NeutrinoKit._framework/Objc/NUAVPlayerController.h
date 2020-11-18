@@ -17,6 +17,7 @@
         BOOL registeredPlayer;
     } _playerControllerKVOFlags;
     NSMutableArray *_playerItemObservations;
+    BOOL _currentlySeeking;
     BOOL _loopsVideo;
     BOOL _muted;
     AVPlayer *_player;
@@ -64,10 +65,9 @@
 - (void)playerItemDidReachEnd:(id)arg1;
 - (BOOL)prepareWithAVAsset:(id)arg1 videoComposition:(id)arg2 audioMix:(id)arg3 loopsVideo:(BOOL)arg4;
 - (void)removeObserver:(id)arg1;
-- (void)seek:(CDStruct_198678f7)arg1;
+- (void)seek:(CDStruct_198678f7)arg1 exact:(BOOL)arg2;
 - (void)seekBack;
 - (void)seekForward;
-- (void)seekToTime:(double)arg1;
 - (void)step:(long long)arg1;
 - (void)updateAudioMix:(id)arg1;
 - (void)updateVideoComposition:(id)arg1;

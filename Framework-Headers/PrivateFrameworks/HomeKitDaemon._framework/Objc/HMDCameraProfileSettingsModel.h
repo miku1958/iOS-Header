@@ -10,7 +10,7 @@
 
 @interface HMDCameraProfileSettingsModel : HMBModel
 {
-    BOOL _cameraDisabledByThirdParty;
+    BOOL _cameraManuallyDisabled;
     unsigned long long _currentAccessMode;
 }
 
@@ -22,7 +22,7 @@
 @property (copy) NSNumber *accessModeIndicatorEnabledField; // @dynamic accessModeIndicatorEnabledField;
 @property unsigned long long accessModeNotAtHome;
 @property (copy) NSNumber *accessModeNotAtHomeField; // @dynamic accessModeNotAtHomeField;
-@property BOOL cameraDisabledByThirdParty; // @synthesize cameraDisabledByThirdParty=_cameraDisabledByThirdParty;
+@property BOOL cameraManuallyDisabled; // @synthesize cameraManuallyDisabled=_cameraManuallyDisabled;
 @property unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
 @property BOOL nightVisionModeEnabled;
 @property (copy) NSNumber *nightVisionModeEnabledField; // @dynamic nightVisionModeEnabledField;

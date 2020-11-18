@@ -6,8 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKCollectionNode.h>
 
+@class UIColor;
+
 @interface NTKTickCollectionNode : NTKCollectionNode
 {
+    UIColor *_customSmallTickColor;
     unsigned int _ticks;
     unsigned int _l1mod;
     unsigned int _l2mod;
@@ -29,6 +32,7 @@
 @property (nonatomic) struct CGSize smallSizeInPoints; // @synthesize smallSizeInPoints=_smallSizeInPoints;
 @property (nonatomic) unsigned int ticks; // @synthesize ticks=_ticks;
 
+- (void).cxx_destruct;
 - (void)colorizeBackground:(id)arg1;
 - (void)colorizeWithTickColor:(id)arg1 alternateTickColor:(id)arg2;
 - (void)createSubNodes;

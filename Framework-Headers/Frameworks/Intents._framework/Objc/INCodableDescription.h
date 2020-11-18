@@ -16,6 +16,15 @@
     NSMutableDictionary *_attributesByName;
     INCodableLocalizationTable *_localizationTable;
     INCodableLocalizationTable *_customLocalizationTable;
+    NSString *_attributeKeyPrefix;
+    NSString *_attributesKeyPrefix;
+    NSString *_attributeMetadataKeyPrefix;
+    NSString *_attributePromptDialogKeyPrefix;
+    NSString *_attributeRelationshipKeyPrefix;
+    NSString *_attributeUnsupportedReasonKeyPrefix;
+    NSMutableDictionary *_dictionaryKeysForCacheGroup;
+    NSString *_attributeTagKey;
+    NSString *_attributeDisplayPriorityKey;
     INSchema *_schema;
     NSString *_intentDefinitionNamespace;
     NSString *_className;
@@ -24,15 +33,26 @@
     NSOrderedSet *_displayOrderedAttributes;
 }
 
+@property (readonly, copy, nonatomic) NSString *_attributeDisplayPriorityKey; // @synthesize _attributeDisplayPriorityKey;
+@property (readonly, copy, nonatomic) NSString *_attributeKeyPrefix; // @synthesize _attributeKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_attributeMetadataKeyPrefix; // @synthesize _attributeMetadataKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_attributePromptDialogKeyPrefix; // @synthesize _attributePromptDialogKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_attributeRelationshipKeyPrefix; // @synthesize _attributeRelationshipKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_attributeTagKey; // @synthesize _attributeTagKey;
+@property (readonly, copy, nonatomic) NSString *_attributeUnsupportedReasonKeyPrefix; // @synthesize _attributeUnsupportedReasonKeyPrefix;
+@property (readonly, copy, nonatomic) NSString *_attributesKeyPrefix; // @synthesize _attributesKeyPrefix;
 @property (copy, nonatomic, setter=_setCustomLocalizationTable:) INCodableLocalizationTable *_customLocalizationTable; // @synthesize _customLocalizationTable;
+@property (strong, nonatomic) NSMutableDictionary *_dictionaryKeysForCacheGroup; // @synthesize _dictionaryKeysForCacheGroup;
 @property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
 @property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (copy, nonatomic) NSString *className; // @synthesize className=_className;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSOrderedSet *displayOrderedAttributes; // @synthesize displayOrderedAttributes=_displayOrderedAttributes;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *intentDefinitionNamespace; // @synthesize intentDefinitionNamespace=_intentDefinitionNamespace;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, nonatomic) NSArray *referencedCodableEnums;
 @property (weak, nonatomic) INSchema *schema; // @synthesize schema=_schema;
 @property (readonly) Class superclass;
@@ -40,9 +60,9 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_attributeKeyPrefix;
-- (id)_attributesKeyPrefix;
+- (id)_dictionaryKeyForKeyPath:(id)arg1 object:(id)arg2;
 - (id)_ignoredAttributeTags;
+- (void)_updateAttributesByName;
 - (id)attributeByKeyPath:(id)arg1;
 - (id)attributeByName:(id)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
@@ -51,9 +71,9 @@
 - (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)highestAttributeTag;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (void)updateWithDictionary:(id)arg1;
 
 @end

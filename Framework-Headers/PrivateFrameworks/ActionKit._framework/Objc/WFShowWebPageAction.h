@@ -6,23 +6,9 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/SFSafariViewControllerDelegate-Protocol.h>
-#import <ActionKit/WFWebViewControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFShowWebPageAction : WFAction <WFWebViewControllerDelegate, SFSafariViewControllerDelegate>
+@interface WFShowWebPageAction : WFAction
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
-- (void)safariViewControllerDidFinish:(id)arg1;
-- (void)webViewControllerDidFinish:(id)arg1;
 
 @end
 

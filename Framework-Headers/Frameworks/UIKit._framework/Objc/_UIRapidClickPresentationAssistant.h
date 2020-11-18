@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 {
     int _animationCount;
     BOOL _isInteractionInitiatedDismiss;
-    CDUnknownBlockType dismissalCompletion;
+    CDUnknownBlockType lifecycleCompletion;
     _UIClickPresentation *presentation;
     UITargetedPreview *_sourcePreview;
     UIViewController *_stashedParentViewController;
@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType lifecycleCompletion; // @synthesize lifecycleCompletion;
 @property (strong, nonatomic) _UIClickPresentation *presentation; // @synthesize presentation;
 @property (strong, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 @property (strong, nonatomic) UIViewController *stashedParentViewController; // @synthesize stashedParentViewController=_stashedParentViewController;
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)animationControllerForDismissedController:(id)arg1;
 - (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithClickPresentation:(id)arg1;
-- (void)presentFromViewController:(id)arg1 sourcePreview:(id)arg2 dismissalCompletion:(CDUnknownBlockType)arg3;
+- (void)presentFromSourcePreview:(id)arg1 lifecycleCompletion:(CDUnknownBlockType)arg2;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (double)transitionDuration:(id)arg1;
 

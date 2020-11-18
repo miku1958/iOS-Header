@@ -28,7 +28,6 @@
 + (id)_billPaymentFundingSourceForTransaction:(id)arg1;
 + (id)_relativeDateForTransaction:(id)arg1;
 + (id)_statusAnnotationForTransaction:(id)arg1;
-+ (id)paymentMethodNameForTransaction:(id)arg1;
 + (id)presentationInformationForTransaction:(id)arg1 pass:(id)arg2 account:(id)arg3 deviceName:(id)arg4 context:(unsigned long long)arg5;
 + (id)secondaryFundingSourceDescriptionForTransaction:(id)arg1 includeBankAccountSuffix:(BOOL)arg2 useGenericNameIfNoDescriptionAvailable:(BOOL)arg3;
 - (void).cxx_destruct;

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) FSNode *referringAliasNode;
 @property (readonly, nonatomic, getter=isRegularFile) BOOL regularFile;
 @property (readonly, nonatomic, getter=isResolvable) BOOL resolvable;
+@property (readonly, nonatomic, getter=isSideFault) BOOL sideFault;
 @property (readonly, nonatomic, getter=isSymbolicLink) BOOL symbolicLink;
 @property (readonly, nonatomic, getter=isVolume) BOOL volume;
 
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 + (id)rootVolumeNode;
 + (id)simulatorRootPath;
 + (BOOL)supportsSecureCoding;
++ (id)systemDataVolumeNode;
 - (void).cxx_destruct;
 - (struct __CFBundle *)CFBundleWithError:(id *)arg1;
 - (id)bookmarkDataRelativeToNode:(id)arg1 error:(id *)arg2;
@@ -114,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)setReferringAliasNode:(id)arg1;
 - (BOOL)setResourceValue:(id)arg1 forKey:(id)arg2 options:(unsigned char)arg3 error:(id *)arg4;
 - (void)setTemporaryResourceValue:(id)arg1 forKey:(id)arg2;
+- (id)sideFaultResourceValuesReturningError:(id *)arg1;
 - (id)temporaryDirectoryNodeWithFlags:(unsigned int)arg1 error:(id *)arg2;
 - (id)volumeNodeWithFlags:(unsigned int)arg1 error:(id *)arg2;
 

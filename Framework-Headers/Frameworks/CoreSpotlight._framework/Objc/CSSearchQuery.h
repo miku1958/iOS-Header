@@ -8,20 +8,24 @@
 
 #import <CoreSpotlight/MDSearchQueryResultProcessor-Protocol.h>
 
-@class CSSearchQueryContext, NSArray, NSMapTable, NSString;
+@class CSSearchQueryContext, NSArray, NSKnownKeysMappingStrategy, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CSSearchQuery : NSObject <MDSearchQueryResultProcessor>
 {
     unsigned long long _foundItemCount;
     short _requestedAttributeCount;
-    short _attrInfo[9];
+    short _attrInfo[12];
     BOOL _started;
     BOOL _finished;
     BOOL _cancelled;
     BOOL _gatherEnded;
+    struct os_unfair_lock_s _liveItemLock;
+    NSKnownKeysMappingStrategy *_mappingStrategy;
+    unsigned long long *_attrKeys;
     BOOL _privateIndex;
     BOOL _userFSIndex;
+    BOOL _suspended;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_queue;
@@ -39,6 +43,9 @@
     CDUnknownBlockType _resolvedAttributeNamesHandler;
     CDUnknownBlockType _completionsHandler;
     CDUnknownBlockType _foundItemHandler;
+    CDUnknownBlockType _interruptedHandler;
+    CDUnknownBlockType _restartedHandler;
+    CDUnknownBlockType _restartGatherEndedHandler;
     NSString *_privateBundleID;
 }
 
@@ -54,6 +61,7 @@
 @property (copy) CDUnknownBlockType foundItemHandler; // @synthesize foundItemHandler=_foundItemHandler;
 @property (copy) CDUnknownBlockType foundItemsHandler; // @synthesize foundItemsHandler=_foundItemsHandler;
 @property (copy) CDUnknownBlockType gatherEndedHandler; // @synthesize gatherEndedHandler=_gatherEndedHandler;
+@property (copy) CDUnknownBlockType interruptedHandler; // @synthesize interruptedHandler=_interruptedHandler;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToBundleString; // @synthesize liveIndexBundleIDToBundleString=_liveIndexBundleIDToBundleString;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToIndexItemIDMap; // @synthesize liveIndexBundleIDToIndexItemIDMap=_liveIndexBundleIDToIndexItemIDMap;
 @property (strong, nonatomic) NSMapTable *liveIndexUserFSOIDTOIdentifierMap; // @synthesize liveIndexUserFSOIDTOIdentifierMap=_liveIndexUserFSOIDTOIdentifierMap;
@@ -65,12 +73,18 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy) CDUnknownBlockType removedItemsHandler; // @synthesize removedItemsHandler=_removedItemsHandler;
 @property (copy) CDUnknownBlockType resolvedAttributeNamesHandler; // @synthesize resolvedAttributeNamesHandler=_resolvedAttributeNamesHandler;
+@property (copy) CDUnknownBlockType restartGatherEndedHandler; // @synthesize restartGatherEndedHandler=_restartGatherEndedHandler;
+@property (copy) CDUnknownBlockType restartedHandler; // @synthesize restartedHandler=_restartedHandler;
+@property (nonatomic) BOOL suspended; // @synthesize suspended=_suspended;
 @property (nonatomic) BOOL userFSIndex; // @synthesize userFSIndex=_userFSIndex;
 
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
+- (void)_removeIdentifiers:(id)arg1 withBundleID:(id)arg2 andQueryID:(long long)arg3;
+- (BOOL)addOrUpdateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
+- (void)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
 - (BOOL)attribute;
 - (id)bundleIDs;
 - (void)cancel;
@@ -79,6 +93,7 @@
 - (id)copyResultFromPlist:(id)arg1 protectionClass:(id)arg2;
 - (BOOL)counting;
 - (double)currentTime;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)description;
 - (void)didFinishWithError:(id)arg1;
@@ -100,7 +115,7 @@
 - (void)processCompletionsResultsData:(id)arg1 protectionClass:(id)arg2;
 - (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 items:(id)arg6;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7;
 - (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
 - (BOOL)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
 - (BOOL)removeUserFSLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
@@ -109,8 +124,6 @@
 - (void)setScopes:(id)arg1;
 - (void)setupFetchAttributesForSearch;
 - (void)start;
-- (void)updateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
-- (void)updateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 
 @end

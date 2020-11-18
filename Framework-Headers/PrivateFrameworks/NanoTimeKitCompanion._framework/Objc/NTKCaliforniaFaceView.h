@@ -96,6 +96,7 @@
 - (void)setCircularMaskForCircularDialFraction:(double)arg1 circleDiameter:(double)arg2;
 - (BOOL)shouldFlipColorsForSubDialRichComplicationView:(id)arg1;
 - (void)updateCircularMask;
+- (void)updateWorldClockComplicationColors:(id)arg1 fromPalette:(id)arg2 toPalette:(id)arg3 fraction:(double)arg4;
 - (id)utilityBezelComplicationView;
 - (void)utilityComplicationView:(id)arg1 didChangeTextWidth:(double)arg2;
 

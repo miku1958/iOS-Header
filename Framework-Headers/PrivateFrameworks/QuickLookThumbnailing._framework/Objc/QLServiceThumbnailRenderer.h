@@ -26,10 +26,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canCreateContextOfSize:(struct CGSize)arg1 forRequest:(id)arg2;
 - (void)_didGenerateThumbnailWithData:(id)arg1 drawingContextSize:(struct CGSize)arg2;
-- (void)_didReceiveIOSurface;
 - (void)_didReceiveThumbnailURL:(id)arg1;
 - (void)_drawInContextOfSize:(struct CGSize)arg1 drawingBlock:(CDUnknownBlockType)arg2;
 - (void)_drawInCurrentContextOfSize:(struct CGSize)arg1 drawingBlock:(CDUnknownBlockType)arg2;
+- (void)_drawInIOSurface;
 - (void)_executeCompletionHandlerWithThumbnailData:(id)arg1 thumbnailURL:(id)arg2 ioSurface:(id)arg3 drawingContextSize:(struct CGSize)arg4 didGenerateThumbnail:(BOOL)arg5 error:(id)arg6;
 - (id)_thumbnailDataDestructionConcurrenQueue;
 - (void)_thumbnailGenerationDidFailWithError:(id)arg1;

@@ -37,6 +37,7 @@
 @property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
 + (id)defaultSiriSceneConfigurationWithInitialBounds:(struct CGRect)arg1 onDisplay:(id)arg2;
++ (id)stringForDeactivationReason:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_initWithInitialBounds:(struct CGRect)arg1 displayConfiguration:(id)arg2;
 - (void)_setupPlatformSpecificDefaultSettings;

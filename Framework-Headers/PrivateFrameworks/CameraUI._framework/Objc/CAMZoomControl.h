@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMZoomButtonDelegate-Protocol.h>
 
-@class CAMFeedbackController, CAMZoomButton, CAMZoomButtonPlatter, CAMZoomControlButtonMaskView, CAMZoomDial, NSArray, NSDate, NSString, NSTimer, UIView;
+@class CAMFeedbackController, CAMZoomButton, CAMZoomButtonPlatter, CAMZoomControlButtonMaskView, CAMZoomDial, NSArray, NSDate, NSSet, NSString, NSTimer, UIView;
 @protocol CAMZoomControlDelegate;
 
 @interface CAMZoomControl : UIControl <CAMZoomButtonDelegate>
@@ -17,6 +17,7 @@
         BOOL respondsToDidChangeZoomFactor;
         BOOL respondsToCanToggleBetweenZoomFactors;
         BOOL respondsToToggleBetweenZoomFactors;
+        BOOL respondsToCanPlayHaptics;
     } _delegateFlags;
     BOOL __zoomDialEnabled;
     BOOL __shouldShowZoomDial;
@@ -44,7 +45,10 @@
     CAMFeedbackController *__feedbackController;
     NSArray *__significantHapticDisplayValues;
     NSArray *__significantHapticDisplayValueEpsilons;
+    NSSet *__significantHapticDisplayValueSwitchOverIndexes;
     long long __lastHapticZone;
+    double __snappedZoomFactor;
+    double __unsnappingProgress;
     double _leftMargin;
     double _zoomButtonMaxYWhenContracted;
     double _zoomDialRadius;
@@ -71,12 +75,17 @@
 @property (readonly, nonatomic) BOOL _shouldHideZoomButtonBackground;
 @property (readonly, nonatomic) BOOL _shouldShowButtonPlatter;
 @property (nonatomic, setter=_setShouldShowZoomDial:) BOOL _shouldShowZoomDial; // @synthesize _shouldShowZoomDial=__shouldShowZoomDial;
+@property (readonly, nonatomic) BOOL _shouldSnapDialToSwitchOverZoomFactors;
 @property (readonly, nonatomic) BOOL _shouldUpdateZoomDialContentSizeCategory;
 @property (readonly, nonatomic) BOOL _shouldUseZoomDialMask;
-@property (strong, nonatomic) NSArray *_significantHapticDisplayValueEpsilons; // @synthesize _significantHapticDisplayValueEpsilons=__significantHapticDisplayValueEpsilons;
+@property (strong, nonatomic, setter=_setSignificantHapticDisplayValueEpsilons:) NSArray *_significantHapticDisplayValueEpsilons; // @synthesize _significantHapticDisplayValueEpsilons=__significantHapticDisplayValueEpsilons;
+@property (strong, nonatomic, setter=_setSignificantHapticDisplayValueSwitchOverIndexes:) NSSet *_significantHapticDisplayValueSwitchOverIndexes; // @synthesize _significantHapticDisplayValueSwitchOverIndexes=__significantHapticDisplayValueSwitchOverIndexes;
 @property (strong, nonatomic, setter=_setSignificantHapticDisplayValues:) NSArray *_significantHapticDisplayValues; // @synthesize _significantHapticDisplayValues=__significantHapticDisplayValues;
+@property (nonatomic, setter=_setSnappedZoomFactor:) double _snappedZoomFactor; // @synthesize _snappedZoomFactor=__snappedZoomFactor;
 @property (strong, nonatomic, setter=_setStartTimeForHideAnimationInProgress:) NSDate *_startTimeForHideAnimationInProgress; // @synthesize _startTimeForHideAnimationInProgress=__startTimeForHideAnimationInProgress;
 @property (nonatomic, setter=_setStartTouchLocation:) struct CGPoint _startTouchLocation; // @synthesize _startTouchLocation=__startTouchLocation;
+@property (readonly, nonatomic) NSArray *_switchOverZoomFactors;
+@property (nonatomic, setter=_setUnsnappingProgress:) double _unsnappingProgress; // @synthesize _unsnappingProgress=__unsnappingProgress;
 @property (readonly, nonatomic) CAMZoomButton *_zoomButton; // @synthesize _zoomButton=__zoomButton;
 @property (nonatomic, setter=_setZoomControlMode:) long long _zoomControlMode; // @synthesize _zoomControlMode=__zoomControlMode;
 @property (readonly, nonatomic) CAMZoomDial *_zoomDial; // @synthesize _zoomDial=__zoomDial;
@@ -127,6 +136,7 @@
 - (BOOL)_isTouchWithinButtonPlatter:(id)arg1;
 - (BOOL)_isWithinZoomButtonBoundsWithTouch:(id)arg1;
 - (double)_normalizeValue:(double)arg1 betweenMinimumValue:(double)arg2 maximumValue:(double)arg3;
+- (void)_resetSnapping;
 - (void)_setShouldShowZoomDial:(BOOL)arg1 animationDuration:(long long)arg2;
 - (void)_setShouldShowZoomDial:(BOOL)arg1 animationDuration:(long long)arg2 afterDelay:(double)arg3;
 - (void)_setZoomDialEnabled:(BOOL)arg1 animationDuration:(long long)arg2;

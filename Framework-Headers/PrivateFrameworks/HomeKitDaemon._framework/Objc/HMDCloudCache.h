@@ -6,27 +6,28 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class CKServerChangeToken, HMDBackingStore, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDCloudZone, NSMutableDictionary, NSObject;
+@class CKServerChangeToken, HMDBackingStore, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDCloudZone, HMFUnfairLock, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMDCloudCache : HMFObject
 {
-    HMDBackingStore *_backingStore;
+    HMFUnfairLock *_lock;
+    HMDCloudZone *_homeDataInformation;
     HMDCloudLegacyZone *_legacyZone;
     HMDCloudMetadataZone *_metadataZone;
     HMDCloudHomeManagerZone *_homeManagerZone;
-    HMDCloudZone *_homeDataInformation;
     NSMutableDictionary *_homeZones;
+    HMDBackingStore *_backingStore;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (weak, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
 @property (strong, nonatomic) CKServerChangeToken *databaseServerChangeToken;
-@property (readonly, nonatomic) HMDCloudZone *homeDataInformation; // @synthesize homeDataInformation=_homeDataInformation;
-@property (readonly, nonatomic) HMDCloudHomeManagerZone *homeManagerZone; // @synthesize homeManagerZone=_homeManagerZone;
+@property (strong, nonatomic) HMDCloudZone *homeDataInformation; // @synthesize homeDataInformation=_homeDataInformation;
+@property (strong, nonatomic) HMDCloudHomeManagerZone *homeManagerZone; // @synthesize homeManagerZone=_homeManagerZone;
 @property (strong, nonatomic) NSMutableDictionary *homeZones; // @synthesize homeZones=_homeZones;
-@property (readonly, nonatomic) HMDCloudLegacyZone *legacyZone; // @synthesize legacyZone=_legacyZone;
-@property (readonly, nonatomic) HMDCloudMetadataZone *metadataZone; // @synthesize metadataZone=_metadataZone;
+@property (strong, nonatomic) HMDCloudLegacyZone *legacyZone; // @synthesize legacyZone=_legacyZone;
+@property (strong, nonatomic) HMDCloudMetadataZone *metadataZone; // @synthesize metadataZone=_metadataZone;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;

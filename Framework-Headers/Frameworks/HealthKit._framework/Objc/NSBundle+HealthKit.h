@@ -12,6 +12,7 @@
 - (id)hk_findContainedBundleWithIdentifier:(id)arg1;
 - (id)hk_localizedClinicalReadAuthorizationUsageDescription;
 - (id)hk_localizedReadAuthorizationUsageDescription;
+- (id)hk_localizedResearchStudyUsageDescription;
 - (id)hk_localizedWriteAuthorizationUsageDescription;
 - (id)hk_name;
 @end

@@ -37,7 +37,6 @@
 - (id)initWithXPCObject:(id)arg1;
 - (void)skipSamplesAtStartSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)splitAudioChunkSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)splitRemoteVADFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2 forChannel:(unsigned long long)arg3;
 

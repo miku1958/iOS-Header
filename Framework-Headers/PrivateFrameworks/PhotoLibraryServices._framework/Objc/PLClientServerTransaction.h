@@ -22,7 +22,7 @@
 + (id)_allTransactionPathsForPathManager:(id)arg1;
 + (BOOL)_archiveRecoveryHistoryForPathManager:(id)arg1 error:(id *)arg2;
 + (id)_changeScopesFromXPCDictionary:(id)arg1;
-+ (void)_checkForAndHandleExcessiveRecoveryAttemptsForPathManager:(id)arg1;
++ (void)_checkForAndHandleExcessiveRecoveryAttemptsForPathManager:(id)arg1 sqliteErrorHandler:(CDUnknownBlockType)arg2;
 + (void)_cleanupAllTransactionsScopesByPath:(id)arg1;
 + (id)_filePathForTransactionWithToken:(id)arg1 pathManager:(id)arg2;
 + (BOOL)_hasExcessiveRecoveryAttemptsForPathManager:(id)arg1;
@@ -41,7 +41,7 @@
 + (id)beginServerTransactionWithClientTransactionFromXPCDictionary:(id)arg1 pathManager:(id)arg2;
 + (id)beginServerTransactionWithToken:(id)arg1 changeScopes:(id)arg2 pathManager:(id)arg3;
 + (id)descriptionOfAllTransactionFilesForPathManager:(id)arg1;
-+ (void)handleOutstandingTransactionsForPathManager:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (void)handleOutstandingTransactionsForPathManager:(id)arg1 sqliteErrorHandler:(CDUnknownBlockType)arg2 handler:(CDUnknownBlockType)arg3;
 + (void)removeTransactionFromUserInfo:(id)arg1;
 + (unsigned long long)scopeValuesFromScopes:(id)arg1;
 + (id)scopesFromScopeValues:(unsigned long long)arg1;

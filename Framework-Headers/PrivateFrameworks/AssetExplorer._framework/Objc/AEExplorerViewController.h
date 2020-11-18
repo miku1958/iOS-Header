@@ -21,7 +21,7 @@
 #import <AssetExplorer/UINavigationControllerDelegate-Protocol.h>
 #import <AssetExplorer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AECameraAssetPackageGenerator, AEPackageTransport, AEProgressViewModel, CAMCameraReviewAdapter, NSArray, NSIndexSet, NSMutableIndexSet, NSMutableSet, NSString, PUAssetExplorerReviewScreenViewController, PXAssetsScene, PXBasicUIViewTileAnimator, PXMediaProvider, PXPhotoKitAssetsDataSourceManager, PXTilingController, PXUIScrollViewController, UIPopoverPresentationController, UIView;
+@class AECameraAssetPackageGenerator, AEPackageTransport, AEProgressViewModel, CAMCameraReviewAdapter, NSArray, NSIndexSet, NSMutableSet, NSString, PUAssetExplorerReviewScreenViewController, PXAssetsScene, PXBasicUIViewTileAnimator, PXMediaProvider, PXPhotoKitAssetsDataSourceManager, PXTilingController, PXUIScrollViewController, UIPopoverPresentationController, UIView;
 @protocol AEExplorerViewControllerDelegate, AEHostStatisticsManager;
 
 @interface AEExplorerViewController : UIViewController <PXChangeObserver, PXTileSource, PXReusableObjectPoolDelegate, PXAssetsSceneDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXPhotoLibraryUIChangeObserver, UIGestureRecognizerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PUAssetExplorerReviewScreenViewControllerDelegate, UIPopoverPresentationControllerDelegate, AEBrowserLayoutDelegate, PXPhotoLibraryPresenting>
@@ -34,9 +34,6 @@
     PXMediaProvider *__mediaProvider;
     id<AEHostStatisticsManager> __statisticsManager;
     NSArray *__clientGestureRecognizers;
-    NSIndexSet *__requiringDownloadAssetIndexes;
-    NSIndexSet *__pendingCloudAssetIndexes;
-    NSMutableIndexSet *__recentlyDownloadedAssetIndexes;
     NSIndexSet *__missingThumbnailAssetIndexes;
     NSIndexSet *__pendingMissingThumbnailAssetIndexes;
     PXBasicUIViewTileAnimator *__tileAnimator;
@@ -64,12 +61,9 @@
 @property (readonly, nonatomic) PXMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
 @property (strong, nonatomic, setter=_setMissingThumbnailAssetIndexes:) NSIndexSet *_missingThumbnailAssetIndexes; // @synthesize _missingThumbnailAssetIndexes=__missingThumbnailAssetIndexes;
 @property (readonly, nonatomic) AEPackageTransport *_packageTransport; // @synthesize _packageTransport=__packageTransport;
-@property (strong, nonatomic, setter=_setPendingCloudAssetIndexes:) NSIndexSet *_pendingCloudAssetIndexes; // @synthesize _pendingCloudAssetIndexes=__pendingCloudAssetIndexes;
 @property (strong, nonatomic, setter=_setPendingMissingThumbnailAssetIndexes:) NSIndexSet *_pendingMissingThumbnailAssetIndexes; // @synthesize _pendingMissingThumbnailAssetIndexes=__pendingMissingThumbnailAssetIndexes;
 @property (strong, nonatomic, setter=_setPreviousSuperview:) UIView *_previousSuperview; // @synthesize _previousSuperview=__previousSuperview;
 @property (readonly, nonatomic) AEProgressViewModel *_progressModel; // @synthesize _progressModel=__progressModel;
-@property (readonly, nonatomic) NSMutableIndexSet *_recentlyDownloadedAssetIndexes; // @synthesize _recentlyDownloadedAssetIndexes=__recentlyDownloadedAssetIndexes;
-@property (strong, nonatomic, setter=_setRequiringDownloadAssetIndexes:) NSIndexSet *_requiringDownloadAssetIndexes; // @synthesize _requiringDownloadAssetIndexes=__requiringDownloadAssetIndexes;
 @property (strong, nonatomic, setter=_setReviewController:) PUAssetExplorerReviewScreenViewController *_reviewController; // @synthesize _reviewController=__reviewController;
 @property (strong, nonatomic, setter=_setSceneController:) PXAssetsScene *_sceneController; // @synthesize _sceneController=__sceneController;
 @property (readonly, nonatomic) PXUIScrollViewController *_scrollViewController; // @synthesize _scrollViewController=__scrollViewController;
@@ -84,10 +78,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addCloudIndexes:(id)arg1;
 - (void)_addThumbnailIndexes:(id)arg1;
 - (void)_attachGestureRecognizersIfNeeded:(void *)arg1;
-- (id)_cloudResourcesIndexSetForAssets:(id)arg1;
 - (void)_computeInitialResourcesIndexSetAsync;
 - (void)_configureReviewControllerWithAssetReference:(id)arg1;
 - (id)_createNewLayoutForDataSource:(id)arg1;
@@ -101,6 +93,7 @@
 - (void)_handleInProgressPackageGenerator:(id)arg1 suppressLivePhotoContent:(BOOL)arg2 mediaOrigin:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleTransportStagingUpdateWithDataSource:(id)arg1;
 - (void)_immediatelyGenerateAndStagePackageFromReviewAsset:(id)arg1 suppressLivePhoto:(BOOL)arg2 mediaOrigin:(long long)arg3;
+- (BOOL)_isDownloadRequiredForAsset:(id)arg1;
 - (long long)_layoutStyleForSize:(struct CGSize)arg1;
 - (struct CGSize)_maximumThumbnailSize;
 - (void)_presentConfidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1 abortAction:(CDUnknownBlockType)arg2;

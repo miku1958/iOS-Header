@@ -8,13 +8,14 @@
 
 #import <Navigation/MNNavigationSessionObserver-Protocol.h>
 
-@class MNLocation, MNTraceRecorder, NSString;
+@class MNLocation, MNTraceRecorder, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MNTraceNavigationEventRecorder : NSObject <MNNavigationSessionObserver>
 {
     MNTraceRecorder *_traceRecorder;
     MNLocation *_lastMatchedLocation;
+    NSError *_previousSuppressedRerouteError;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)_userWentOffRoute;
 - (id)initWithTraceRecorder:(id)arg1;
 - (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4;
+- (void)navigationSession:(id)arg1 didSuppressReroute:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateDestination:(id)arg2;
 - (void)navigationSession:(id)arg1 didUpdateDisplayETA:(id)arg2 displayRemainingMinutes:(unsigned long long)arg3 forRoute:(id)arg4;
 - (void)navigationSessionDidStart:(id)arg1;

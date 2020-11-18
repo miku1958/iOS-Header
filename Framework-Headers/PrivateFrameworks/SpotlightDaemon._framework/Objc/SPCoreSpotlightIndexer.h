@@ -137,6 +137,7 @@
 - (id)initWithDelegate:(id)arg1;
 - (void)issueCleanup:(id)arg1 flags:(int)arg2;
 - (void)issueConsistencyCheck:(id)arg1;
+- (void)issueDefrag:(id)arg1 group:(id)arg2;
 - (void)issueRepair:(id)arg1;
 - (void)issueSplit:(id)arg1;
 - (double)lastUpdateTime;

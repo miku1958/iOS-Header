@@ -71,7 +71,7 @@
 - (id)playingPairedDeviceName;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (BOOL)requiresAuthorization;
-- (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (BOOL)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (void)setGroupID:(id)arg1;
 - (void)setVolume:(float)arg1;
 - (BOOL)supportsBluetoothSharing;

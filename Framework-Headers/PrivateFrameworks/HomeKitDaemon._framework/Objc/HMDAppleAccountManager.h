@@ -15,7 +15,7 @@
 #import <HomeKitDaemon/IDSAccountRegistrationDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class ACAccountStore, APSConnection, HMDAccount, HMDAppleAccountContext, HMDAppleAccountSettings, HMDBackingStore, HMDDevice, HMFExponentialBackoffTimer, HMFTimer, HMFUnfairLock, IDSService, NSObject, NSString, NSUUID;
+@class ACAccountStore, APSConnection, HMDAccount, HMDAppleAccountContext, HMDAppleAccountSettings, HMDBackingStore, HMDCloudCache, HMDDevice, HMFExponentialBackoffTimer, HMFTimer, HMFUnfairLock, IDSService, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAppleAccountManager : HMFObject <APSConnectionDelegate, HMDAccountManager, HMFLogging, HMFMessageReceiver, HMFTimerDelegate, IDSAccountDelegate, IDSAccountRegistrationDelegate, IDSServiceDelegate>
@@ -33,6 +33,7 @@
     HMFTimer *_devicesChangeBackoffTimer;
     IDSService *_service;
     HMDBackingStore *_backingStore;
+    HMDCloudCache *_cloudCache;
 }
 
 @property (strong) HMDAccount *account; // @synthesize account=_account;
@@ -41,6 +42,7 @@
 @property (readonly) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) HMDCloudCache *cloudCache; // @synthesize cloudCache=_cloudCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDDevice *device;

@@ -41,7 +41,6 @@
 
 + (void)_modifyOutputDevices:(id)arg1 inGroup:(id)arg2 queue:(id)arg3 modifyDevices:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)_notificationSerialQueue;
-+ (id)sharedLocalEndpointForRoutingContextWithUID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_callAllCompletionHandlersWithError:(id)arg1;
 - (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;

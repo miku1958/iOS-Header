@@ -41,8 +41,12 @@
 @property (readonly, nonatomic) NSArray *allSystemwideCommits; // @synthesize allSystemwideCommits=_allSystemwideCommits;
 @property (readonly, nonatomic) NSArray *allTransactionLifetimes; // @synthesize allTransactionLifetimes=_allTransactionLifetimes;
 @property (strong, nonatomic) NSArray *compositeIntervals; // @synthesize compositeIntervals=_compositeIntervals;
+@property (readonly, nonatomic) NSArray *contributedFirstFrameGlitches;
 @property (readonly, nonatomic) NSArray *contributedGlitches;
 @property (readonly, nonatomic) NSArray *contributedLongFrameLatencies; // @synthesize contributedLongFrameLatencies=_contributedLongFrameLatencies;
+@property (readonly, nonatomic) NSArray *contributedNonFirstFrameGlitches;
+@property (readonly, nonatomic) double firstFrameGlitchTimeRatio;
+@property (readonly, nonatomic) NSArray *firstFrameGlitches;
 @property (readonly, nonatomic) unsigned long long frameCount;
 @property (readonly, nonatomic) float frameRate;
 @property (readonly, nonatomic) double glitchTimeRatio;
@@ -55,6 +59,8 @@
 @property (readonly, nonatomic) NSArray *longRenderServerRenders; // @synthesize longRenderServerRenders=_longRenderServerRenders;
 @property (readonly, nonatomic) NSArray *longSystemwideCommits; // @synthesize longSystemwideCommits=_longSystemwideCommits;
 @property (readonly, nonatomic) NSArray *longTransactionLifetimes; // @synthesize longTransactionLifetimes=_longTransactionLifetimes;
+@property (readonly, nonatomic) double nonFirstFrameGlitchTimeRatio;
+@property (readonly, nonatomic) NSArray *nonFirstFrameGlitches;
 
 + (id)serializationTypeNumber;
 - (void).cxx_destruct;
@@ -66,6 +72,7 @@
 - (id)_intervalTypeString;
 - (id)_poorPerfFrameDescription;
 - (id)_statsStringForTimeIntervals:(id)arg1 label:(id)arg2;
+- (double)_timeRatioForTimeIntervalArray:(id)arg1;
 - (id)debugDescription;
 - (unsigned long long)durationToFirstBeginMachContinuousTime:(id)arg1;
 - (double)durationToFirstBeginSeconds:(id)arg1;

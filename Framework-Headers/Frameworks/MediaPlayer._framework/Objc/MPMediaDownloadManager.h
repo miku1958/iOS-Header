@@ -20,9 +20,11 @@
 - (id)activeDownloadForStoreID:(long long)arg1;
 - (void)addObserver:(id)arg1;
 - (void)cancelDownloads:(id)arg1;
+- (void)downloadLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enqueueAssetForDownload:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasActiveDownloads;
 - (id)init;
+- (id)pausedDownloadForMediaItemPersistentID:(long long)arg1;
 - (void)prioritizeDownload:(long long)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)sendKeepLocalStatusChanged:(long long)arg1 forLibraryIdentifier:(long long)arg2 entityType:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;

@@ -8,7 +8,7 @@
 
 #import <WorkflowKit/WFParameterState-Protocol.h>
 
-@class NSNumber, NSString, NSUnit;
+@class NSNumber, NSString;
 
 @interface WFConditionalSubjectParameterState : NSObject <WFParameterState>
 {
@@ -22,7 +22,7 @@
     unsigned long long _tense;
     unsigned long long _displayableTimeUnits;
     unsigned long long _comparableTimeUnits;
-    NSUnit *_unit;
+    NSString *_unitType;
     NSString *_homeIdentifier;
 }
 
@@ -42,7 +42,7 @@
 @property (readonly, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tense; // @synthesize tense=_tense;
-@property (readonly, nonatomic) NSUnit *unit; // @synthesize unit=_unit;
+@property (readonly, nonatomic) NSString *unitType; // @synthesize unitType=_unitType;
 
 + (Class)processingValueClass;
 + (id)subjectClasses;

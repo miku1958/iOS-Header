@@ -16,6 +16,7 @@
     NSString *_action;
     NSURL *_imageURL;
     NSURL *_inviteURL;
+    NSString *_overlaidTextColorString;
     NSArray *_invitees;
 }
 
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (copy, nonatomic) NSURL *inviteURL; // @synthesize inviteURL=_inviteURL;
 @property (copy, nonatomic) NSArray *invitees; // @synthesize invitees=_invitees;
+@property (copy, nonatomic) NSString *overlaidTextColorString; // @synthesize overlaidTextColorString=_overlaidTextColorString;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

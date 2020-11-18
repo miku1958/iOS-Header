@@ -20,6 +20,7 @@
 - (id)addMetadata:(id)arg1 forItemIdentifier:(id)arg2;
 - (id)initWithCacheSize:(long long)arg1;
 - (id)metadataForItemIdentifier:(id)arg1;
+- (id)metadataForItemIdentifier:(id)arg1 ignoreExpiration:(BOOL)arg2;
 - (void)removeExpiredMetadata;
 
 @end

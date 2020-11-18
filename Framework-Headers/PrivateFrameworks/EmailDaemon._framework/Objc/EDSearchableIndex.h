@@ -13,7 +13,7 @@
 #import <EmailDaemon/EFSignpostable-Protocol.h>
 #import <EmailDaemon/EMSearchableIndexInterface-Protocol.h>
 
-@class CSSearchableIndex, EFCancelationToken, EFLazyCache, EFObservable, NSArray, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
+@class CSSearchableIndex, EFCancelationToken, EFFuture, EFLazyCache, EFObservable, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
 @protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
 @interface EDSearchableIndex : NSObject <CSSearchableIndexDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
@@ -28,9 +28,11 @@
     unsigned long long _throttledDataSourceBatchSize;
     unsigned long long _currentMaximumBatchSize;
     NSObject<OS_os_activity> *_batchIndexingActivity;
+    NSMutableSet *_removedIdentifiers;
+    NSMutableArray *_preparingItems;
     NSMutableArray *_pendingItems;
     NSMutableArray *_preprocessingItems;
-    NSArray *_processingItems;
+    NSMutableArray *_processingItems;
     NSMutableSet *_pendingDomainRemovals;
     _EMSearchableIndexPendingRemovals *_pendingIdentifierRemovals;
     NSObject<OS_dispatch_queue> *_indexingQueue;
@@ -59,6 +61,8 @@
     CSSearchableIndex *_csIndex;
     NSString *_searchableIndexBundleID;
     double _coalescingDelaySeconds;
+    double _dataSourceUpdateTimeLimit;
+    EFFuture *_delayDataSourceAssignmentFuture;
 }
 
 @property (readonly, getter=isActive) BOOL active;
@@ -69,7 +73,9 @@
 @property (strong, nonatomic) CSSearchableIndex *csIndex; // @synthesize csIndex=_csIndex;
 @property (weak, nonatomic) id<EDSearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (nonatomic, getter=isDataSourceIndexingPermitted) BOOL dataSourceIndexingPermitted; // @synthesize dataSourceIndexingPermitted=_dataSourceIndexingPermitted;
+@property (nonatomic) double dataSourceUpdateTimeLimit; // @synthesize dataSourceUpdateTimeLimit=_dataSourceUpdateTimeLimit;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) EFFuture *delayDataSourceAssignmentFuture; // @synthesize delayDataSourceAssignmentFuture=_delayDataSourceAssignmentFuture;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableSpotlightVerification; // @synthesize enableSpotlightVerification=_enableSpotlightVerification;
 @property (readonly) unsigned long long hash;
@@ -111,8 +117,12 @@
 - (id)_eventDataForTransitionState:(id)arg1;
 - (void)_fetchLastClientState;
 - (void)_getDomainRemovals:(id *)arg1 identifierRemovals:(id *)arg2;
+- (void)_handleFailingTransactionIDs:(id)arg1 sampleCount:(unsigned long long)arg2;
+- (id)_identifiersForItems:(id)arg1;
+- (id)_identifiersStringForItems:(id)arg1 maxLength:(unsigned long long)arg2;
 - (void)_indexItems:(id)arg1 fromRefresh:(BOOL)arg2 immediately:(BOOL)arg3;
 - (void)_invalidateCache;
+- (void)_invalidateItemsInTransactions:(id)arg1;
 - (void)_logSignpostForIndexingBatchAssignedDomainRemovalCount:(unsigned long long)arg1;
 - (void)_logSignpostForIndexingBatchAssignedUpdatesWithItemsIndexedCount:(unsigned long long)arg1;
 - (void)_logSignpostForIndexingBatchCompletedWithItemsIndexedCount:(id)arg1;
@@ -150,12 +160,13 @@
 - (void)beginUpdatesAffectingDataSourceAndIndex;
 - (id)bundleIdentifierForSearchableIndexVerifier:(id)arg1;
 - (id)currentReasons;
-- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2;
+- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2 count:(unsigned long long)arg3;
 - (id)dataSourceRefreshReasons;
 - (void)dealloc;
 - (void)endUpdatesAffectingDataSourceAndIndex;
 - (id)exclusionReasons;
 - (id)identifiersMatchingCriterion:(id)arg1;
+- (void)indexAttachmentsForMessageWithIdentifier:(id)arg1;
 - (void)indexItems:(id)arg1;
 - (void)indexItems:(id)arg1 fromRefresh:(BOOL)arg2 immediately:(BOOL)arg3;
 - (void)indexItems:(id)arg1 immediately:(BOOL)arg2;
@@ -180,6 +191,7 @@
 - (void)removeMessages:(id)arg1;
 - (void)removeSearchQueryCancelable:(id)arg1;
 - (void)resume;
+- (void)scheduleRecurringActivity;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (id)searchableIndexForSearchableIndexVerifier:(id)arg1;

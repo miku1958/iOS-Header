@@ -10,7 +10,7 @@
 #import <ChatKit/CKDetailsSearchResultsFooterCellDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 
-@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKSearchIndexingFooterCell, NSArray, NSString;
+@class CKConversation, CKDetailsSearchResultsFooterCell, CKDetailsSearchResultsTitleHeaderCell, CKQLPreviewController, CKSearchIndexingFooterCell, NSArray, NSString, UIBarButtonItem;
 @protocol CKDetailsSearchControllerDelegate;
 
 @interface CKDetailsSearchViewController : CKSearchViewController <CKContainerSearchControllerDelegate, QLPreviewControllerDelegate, CKDetailsSearchResultsFooterCellDelegate>
@@ -23,27 +23,47 @@
     CKDetailsSearchResultsTitleHeaderCell *_titleSizingCell;
     CKDetailsSearchResultsFooterCell *_footerSizingCell;
     CKSearchIndexingFooterCell *_sizingIndexingFooterCell;
+    UIBarButtonItem *_selectButton;
+    UIBarButtonItem *_cancelButton;
+    UIBarButtonItem *_flexibleItem;
+    UIBarButtonItem *_saveButton;
+    UIBarButtonItem *_deleteButton;
 }
 
+@property (strong, nonatomic) UIBarButtonItem *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong, nonatomic) NSArray *chatGUIDs; // @synthesize chatGUIDs=_chatGUIDs;
 @property (strong, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) UIBarButtonItem *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<CKDetailsSearchControllerDelegate> detailsDelegate; // @synthesize detailsDelegate=_detailsDelegate;
+@property (strong, nonatomic) UIBarButtonItem *flexibleItem; // @synthesize flexibleItem=_flexibleItem;
 @property (strong, nonatomic) CKDetailsSearchResultsFooterCell *footerSizingCell; // @synthesize footerSizingCell=_footerSizingCell;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CKQLPreviewController *previewController; // @synthesize previewController=_previewController;
+@property (strong, nonatomic) UIBarButtonItem *saveButton; // @synthesize saveButton=_saveButton;
 @property (nonatomic) BOOL searchComplete; // @synthesize searchComplete=_searchComplete;
+@property (strong, nonatomic) UIBarButtonItem *selectButton; // @synthesize selectButton=_selectButton;
 @property (strong, nonatomic) CKSearchIndexingFooterCell *sizingIndexingFooterCell; // @synthesize sizingIndexingFooterCell=_sizingIndexingFooterCell;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CKDetailsSearchResultsTitleHeaderCell *titleSizingCell; // @synthesize titleSizingCell=_titleSizingCell;
 
 - (void).cxx_destruct;
+- (void)_cancelEditing:(id)arg1;
 - (void)_configureIndexingCell:(id)arg1;
+- (void)_deleteAttachmentsAtIndexPaths:(id)arg1;
+- (void)_deleteSelectedAttachments:(id)arg1;
 - (id)_newSnapshotForCurrentControllerState;
 - (void)_registerCells;
+- (void)_saveSelectedAttachments:(id)arg1;
+- (id)_searchControllerForIndexPath:(id)arg1;
 - (Class)_searchResultsHeaderClass;
+- (void)_selectButtonTapped:(id)arg1;
+- (id)_selectedIndexPaths;
+- (void)_updateToolbar;
+- (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)deleteMessageItem:(id)arg1;
 - (void)deleteTransferGUID:(id)arg1;
@@ -56,14 +76,18 @@
 - (void)reloadData;
 - (id)searchController:(id)arg1 conversationForChatGUID:(id)arg2;
 - (void)searchController:(id)arg1 didSelectItem:(id)arg2 inChat:(id)arg3;
+- (void)searchController:(id)arg1 requestsItemDeletionAtIndexPath:(id)arg2;
 - (id)searchControllerChatGUIDsForDetailsSearch:(id)arg1;
 - (void)searchControllerContentsDidChange:(id)arg1;
 - (void)searchControllerDidBeginDragging:(id)arg1;
 - (void)searchDetailsFooterCellShowAllTapped:(id)arg1;
 - (void)searchViewController:(id)arg1 requestsPushOfSearchController:(id)arg2;
 - (void)searchWithText:(id)arg1;
+- (void)setEditing:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

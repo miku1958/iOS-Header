@@ -48,6 +48,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)extendTimeout;
+- (void)extendTimeoutOrUpdateStopIfNeeded:(BOOL *)arg1;
 - (void)finish;
 - (id)init;
 - (id)initWithWorkerType:(short)arg1 scenario:(unsigned long long)arg2 library:(id)arg3;

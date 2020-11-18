@@ -12,7 +12,7 @@
 #import <SpringBoard/SBIdleTimerProviding-Protocol.h>
 #import <SpringBoard/SBTransientOverlayViewControllerDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerController, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
+@class NSMapTable, NSMutableArray, NSNumber, NSString, SBAlertItemsController, SBAppStatusBarSettingsAssertion, SBBannerController, SBHomeGestureArbiter, SBHomeGestureParticipant, SBIdleTimerCoordinatorHelper, SBInAppStatusBarHiddenAssertion, SBLockStateAggregator, SBReachabilityManager, SBTransientOverlayViewController, UIScreen, UIStatusBarStyleRequest, UIWindow;
 @protocol BSInvalidatable, CSExternalBehaviorProviding, SBIdleTimerCoordinating, SBTransientOverlayPresentationManagerDelegate;
 
 @interface SBTransientOverlayPresentationManager : NSObject <SBHomeGestureParticipantDelegate, SBIdleTimerCoordinating, SBTransientOverlayViewControllerDelegate, SBIdleTimerProviding, SBButtonEventsHandler>
@@ -37,7 +37,7 @@
     SBReachabilityManager *_reachabilityManager;
     UIScreen *_screen;
     SBAppStatusBarSettingsAssertion *_globalStatusBarAssertion;
-    id<BSInvalidatable> _appStatusBarAssertion;
+    SBInAppStatusBarHiddenAssertion *_appStatusBarAssertion;
     BOOL _prefersStatusBarActivityItemVisible;
     NSNumber *_preferredWhitePointAdaptivityStyleValue;
     long long _topmostViewControllerInterfaceOrientation;

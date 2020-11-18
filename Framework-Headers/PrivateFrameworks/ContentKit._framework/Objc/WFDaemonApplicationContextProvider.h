@@ -31,6 +31,7 @@
 - (id)initWithUserInterfaceType:(id)arg1;
 - (id)keyWindowForWFApplicationContext:(id)arg1;
 - (id)notificationNameForApplicationStateEvent:(long long)arg1 applicationContext:(id)arg2;
+- (BOOL)shouldReverseLayoutDirection;
 
 @end
 

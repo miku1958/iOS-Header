@@ -63,6 +63,8 @@
 - (void)_configureWithFetchZoneResult:(id)arg1 error:(id)arg2;
 - (void)_configureWithOwnedZone;
 - (void)_configureWithSharedZone;
+- (void)_didCreateZone;
+- (void)_didRemoveZone;
 - (void)_finishConfigure;
 - (void)_homeDidBecomeTrustZoneCapable:(id)arg1;
 - (void)_removeTrust;
@@ -72,6 +74,7 @@
 - (BOOL)canUseUntrustedAccountHandlesForParticipantManager:(id)arg1;
 - (void)cloudZone:(id)arg1 didRemoveParticipantWithClientIdentifier:(id)arg2;
 - (void)configure;
+- (void)database:(id)arg1 didCreateZoneWithName:(id)arg2;
 - (void)database:(id)arg1 didRemoveZoneWithName:(id)arg2;
 - (void)discoverUntrustedUsers;
 - (void)homeDidBecomeTrustZoneCapable:(id)arg1;

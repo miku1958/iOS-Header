@@ -16,6 +16,5 @@
 + (id)hmiPrivateErrorWithCode:(long long)arg1 description:(id)arg2;
 + (id)hmiPrivateErrorWithCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hmiPrivateErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
-+ (id)hmiSyntheticErrorFromPreference:(id)arg1;
 @end
 

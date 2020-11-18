@@ -11,21 +11,26 @@
 #import <EventKitUI/UIDocumentPickerDelegate-Protocol.h>
 #import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
 
-@class EKUITableViewCell, NSArray, NSString;
+@class EKEvent, EKUITableViewCell, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKEventAttachmentsEditItem : EKEventEditItem <UIDocumentPickerDelegate, UIDropInteractionDelegate, EKEventAttachmentCellControllerDelegate, EKEventAttachmentEditViewControllerDelegate>
 {
     NSArray *_cellControllers;
     EKUITableViewCell *_addAttachmentCell;
+    BOOL _attachmentsModified;
+    EKEvent *_eventToModify;
 }
 
+@property BOOL attachmentsModified; // @synthesize attachmentsModified=_attachmentsModified;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) EKEvent *eventToModify; // @synthesize eventToModify=_eventToModify;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addAttachment:(id)arg1;
 - (id)_addAttachmentCell;
 - (void)_cleanUpCellControllers;
 - (void)_loadAndAddDataAttachmentFromItem:(id)arg1;
@@ -33,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldShowAddAttachmentCell;
 - (void)_showAddAttachmentViewController;
 - (void)attachmentEditViewController:(id)arg1 attachmentDidChange:(long long)arg2;
+- (id)attachmentEvent;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;

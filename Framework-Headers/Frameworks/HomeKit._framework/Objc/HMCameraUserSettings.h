@@ -23,8 +23,8 @@
 
 @property (readonly, getter=isAccessModeChangeNotificationEnabled) BOOL accessModeChangeNotificationEnabled;
 @property (readonly, getter=isAccessModeIndicatorEnabled) BOOL accessModeIndicatorEnabled;
-@property (strong, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property (readonly, getter=isCameraDisabledByThirdParty) BOOL cameraDisabledByThirdParty;
+@property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, getter=isCameraManuallyDisabled) BOOL cameraManuallyDisabled;
 @property (strong) _HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly) unsigned long long currentAccessMode;

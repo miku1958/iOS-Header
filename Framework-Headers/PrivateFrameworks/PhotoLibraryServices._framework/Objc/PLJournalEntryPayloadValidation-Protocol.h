@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSManagedObjectModel, NSMutableArray, NSSet;
+@class NSArray, NSDictionary, NSManagedObjectModel, NSMutableArray, NSSet, NSString;
 
 @protocol PLJournalEntryPayloadValidation
 + (NSSet *)additionalEntityNames;
 + (BOOL)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (NSDictionary *)modelProperties;
++ (BOOL)shouldPersistForChangedKeys:(NSSet *)arg1 entityName:(NSString *)arg2;
++ (NSArray *)snapshotSortDescriptors;
 + (void)validatePayloadPropertiesForManagedObjectModel:(NSManagedObjectModel *)arg1;
 - (BOOL)comparePayloadToObjectDictionary:(NSDictionary *)arg1 usingModelProperties:(NSDictionary *)arg2 errorDescriptions:(NSMutableArray *)arg3;
 @end

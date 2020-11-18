@@ -33,7 +33,6 @@
 - (id)EDAMResource;
 - (id)initWithData:(id)arg1 mimeType:(id)arg2;
 - (id)initWithData:(id)arg1 mimeType:(id)arg2 filename:(id)arg3;
-- (id)initWithImage:(id)arg1;
 
 @end
 

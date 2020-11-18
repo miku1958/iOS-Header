@@ -16,6 +16,7 @@
     unsigned int _connectingServiceMask;
 }
 
+- (unsigned int)SendSetupCommand:(unsigned char)arg1;
 - (void)_clearName;
 - (BOOL)_isNameCached;
 - (void)acceptSSP:(long long)arg1;
@@ -23,6 +24,7 @@
 - (id)aclUID;
 - (id)address;
 - (int)batteryLevel;
+- (unsigned int)clickHoldMode:(int *)arg1 rightAction:(int *)arg2;
 - (BOOL)cloudPaired;
 - (long long)compare:(id)arg1;
 - (void)connect;
@@ -35,6 +37,7 @@
 - (id)description;
 - (struct BTDeviceImpl *)device;
 - (void)disconnect;
+- (int)doubleClickMode;
 - (unsigned int)doubleTapAction;
 - (unsigned int)doubleTapActionEx:(unsigned int *)arg1 rightAction:(unsigned int *)arg2;
 - (unsigned int)doubleTapCapability;
@@ -44,6 +47,7 @@
 - (int)getLowSecurityStatus;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
 - (BOOL)inEarDetectEnabled;
+- (BOOL)inEarStatusPrimary:(int *)arg1 secondary:(int *)arg2;
 - (id)initWithDevice:(struct BTDeviceImpl *)arg1 address:(id)arg2;
 - (BOOL)isAccessory;
 - (BOOL)isAppleAudioDevice;
@@ -51,6 +55,7 @@
 - (BOOL)isServiceSupported:(unsigned int)arg1;
 - (BOOL)isTemporaryPaired;
 - (unsigned int)listeningMode;
+- (unsigned int)listeningModeConfigs;
 - (BOOL)magicPaired;
 - (BOOL)magicPairedDeviceNameUpdated;
 - (unsigned int)majorClass;
@@ -60,18 +65,23 @@
 - (BOOL)paired;
 - (unsigned int)productId;
 - (id)scoUID;
+- (BOOL)setClickHoldMode:(int)arg1 rightMode:(int)arg2;
 - (void)setConnectingServicemask:(unsigned int)arg1;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;
+- (BOOL)setDoubleClickMode:(int)arg1;
 - (BOOL)setDoubleTapAction:(unsigned int)arg1;
 - (BOOL)setDoubleTapActionEx:(unsigned int)arg1 rightAction:(unsigned int)arg2;
 - (BOOL)setInEarDetectEnabled:(BOOL)arg1;
 - (BOOL)setListeningMode:(unsigned int)arg1;
+- (BOOL)setListeningModeConfigs:(unsigned int)arg1;
 - (BOOL)setMicMode:(unsigned int)arg1;
 - (void)setPIN:(id)arg1;
 - (void)setServiceSetting:(unsigned int)arg1 key:(id)arg2 value:(id)arg3;
+- (BOOL)setSingleClickMode:(int)arg1;
 - (void)setSyncGroup:(int)arg1 enabled:(BOOL)arg2;
 - (void)setSyncSettings:(CDStruct_df7f102b)arg1;
 - (BOOL)setUserName:(id)arg1;
+- (int)singleClickMode;
 - (void)startVoiceCommand;
 - (BOOL)supportsBatteryLevel;
 - (BOOL)supportsHS;

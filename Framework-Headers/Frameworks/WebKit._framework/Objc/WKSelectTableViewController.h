@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) WKSelectPopover *popover; // @synthesize popover=_popover;
+@property (readonly, nonatomic) BOOL shouldDismissWithAnimation;
 
 - (struct OptionItem *)findItemAt:(id)arg1;
 - (long long)findItemIndexAt:(id)arg1;

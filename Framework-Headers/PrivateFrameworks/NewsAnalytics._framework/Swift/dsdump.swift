@@ -592,9 +592,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x48bb0  @objc Assembly.assemblies <stripped>
-	0x48db0  @objc Assembly.init <stripped>
-	0x48f20  @objc Assembly..cxx_destruct <stripped>
+	0x49080  @objc Assembly.assemblies <stripped>
+	0x49280  @objc Assembly.init <stripped>
+	0x493f0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsAnalytics.MediaEngageCompleteEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -714,7 +714,7 @@
 
  class NewsAnalytics.TrackerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x54e90  @objc TrackerAssembly.init <stripped>
+	0x55360  @objc TrackerAssembly.init <stripped>
  }
 
  class NewsAnalytics.SessionAccess : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -723,7 +723,7 @@
 	let accessorQueue : OS_dispatch_queue // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x567e0  @objc SessionAccess.accessorQueue <stripped>
+	0x56cb0  @objc SessionAccess.accessorQueue <stripped>
 
 	// Swift methods
  }
@@ -1330,7 +1330,7 @@
 
  class NewsAnalytics.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x9ef60  @objc DebugAssembly.init <stripped>
+	0x9f430  @objc DebugAssembly.init <stripped>
  }
 
  class NewsAnalytics.ANFComponentExposureEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1448,16 +1448,9 @@
 	var window : UIWindow? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xf4e20  @objc SessionObserver.userInfoDidChangeFeldsparID:fromCloud: <stripped>
-	0xf4090  @objc SessionObserver.pushSessionData <stripped>
-	0xf1c80  @objc SessionObserver.pushUserSubscriptionContextData <stripped>
-	0x7a740  @objc SessionObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x604a0  @objc SessionObserver.pushOrientationData <stripped>
-	0x1d320  @objc SessionObserver.bundleSubscriptionDidExpire: <stripped>
-	0x1d320  @objc SessionObserver.bundleSubscriptionDidSubscribe: <stripped>
-	0xb3000  @objc SessionObserver.dealloc <stripped>
-	0xb3330  @objc SessionObserver.init <stripped>
-	0xb3020  @objc SessionObserver..cxx_destruct <stripped>
+	0xb34d0  @objc SessionObserver.dealloc <stripped>
+	0xb3800  @objc SessionObserver.init <stripped>
+	0xb34f0  @objc SessionObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }

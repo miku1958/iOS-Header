@@ -8,28 +8,30 @@
 
 #import <MessageProtection/P256PrivateKeyProtocol-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, SecKeyP256Public;
 
 __attribute__((visibility("hidden")))
 @interface SecKeyP256Private : NSObject <P256PrivateKeyProtocol>
 {
     NSData *_privateKeyBlob;
+    SecKeyP256Public *_publicKey;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *privateKeyBlob; // @synthesize privateKeyBlob=_privateKeyBlob;
+@property (strong, nonatomic) SecKeyP256Public *publicKey; // @synthesize publicKey=_publicKey;
 @property (readonly) Class superclass;
 
 + (id)generate;
++ (id)generateWithAccessControl:(struct __CFString *)arg1;
 - (void).cxx_destruct;
 - (id)getPrivateKeyRefWithError:(id *)arg1;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)keyAgreement:(id)arg1 error:(id *)arg2;
 - (id)keyAgreement:(id)arg1 error:(id *)arg2 isRetry:(BOOL)arg3;
 - (id)keychainData;
-- (id)publicKey;
 - (id)signData:(id)arg1 error:(id *)arg2;
 
 @end

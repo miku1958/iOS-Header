@@ -18,7 +18,6 @@
 - (unsigned long long)globalLevelStatus;
 - (id)initWithDefinition:(id)arg1;
 - (void)logOut;
-- (void)makeAvailableAtGlobalLevelWithUserInterface:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)protectedResourceDescription;
 - (id)resourceName;
 - (id)username;

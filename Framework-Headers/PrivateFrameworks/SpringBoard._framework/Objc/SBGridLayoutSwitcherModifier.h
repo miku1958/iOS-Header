@@ -79,8 +79,10 @@
 - (unsigned long long)indexToScrollToAfterRemovingIndex:(unsigned long long)arg1;
 - (id)initWithScrollAxis:(unsigned long long)arg1 fixedGroupingSize:(unsigned long long)arg2 cardScale:(double)arg3 alignment:(unsigned long long)arg4 layoutDirection:(unsigned long long)arg5;
 - (struct CGSize)interpageSpacingForPaging;
+- (BOOL)interpolatesDuringSwipeToKill;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)layoutUpdateMode;
+- (double)minimumTranslationToKillIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfRows;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (struct CGPoint)pagingOrigin;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void)_initializeShmemPage:(_Atomic unsigned int **)arg1;
 - (void)checkIn;
-- (void)flushDomainInAgents:(const char *)arg1;
+- (void)flushDomain:(const char *)arg1 inAgentForUser:(struct __CFString *)arg2;
 - (void)flushDomainInDaemon:(const char *)arg1;
 - (void)getShmemName:(char *)arg1 bufLen:(unsigned long long)arg2;
 - (void)handleAgentCheckInMessage:(id)arg1;

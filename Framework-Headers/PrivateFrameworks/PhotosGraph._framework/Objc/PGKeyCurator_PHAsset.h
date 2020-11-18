@@ -15,7 +15,6 @@
 
 - (void).cxx_destruct;
 - (id)initWithPhotoLibrary:(id)arg1;
-- (BOOL)item:(id)arg1 passesCriteria:(id)arg2 score:(double *)arg3;
 - (id)keyAssetWithFeeder:(id)arg1 options:(id)arg2 criteria:(id)arg3 debugInfo:(id)arg4 progressBlock:(CDUnknownBlockType)arg5;
 
 @end

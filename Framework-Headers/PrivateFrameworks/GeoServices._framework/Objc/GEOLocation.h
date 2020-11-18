@@ -13,7 +13,6 @@
 @interface GEOLocation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _courseAccuracy;
     double _course;
@@ -27,6 +26,9 @@
     double _timestamp;
     unsigned long long _transitID;
     double _verticalAccuracy;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _altitude;
     int _formOfWay;
     int _levelOrdinal;
@@ -152,6 +154,8 @@
 - (id)dictionaryRepresentation;
 - (id)formOfWayAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 floorOrdinal:(int)arg2;
 - (id)initWithGEOCoordinate:(CDStruct_c3b9c2ee)arg1 isUserLocation:(BOOL)arg2;

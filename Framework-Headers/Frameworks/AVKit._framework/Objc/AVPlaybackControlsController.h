@@ -235,6 +235,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateVolumeButtonGlyph;
 - (void)_updateVolumeSliderValueWithSystemVolume:(float)arg1 animated:(BOOL)arg2;
 - (id)_volumeButtonMicaPackageState;
+- (BOOL)_wantsRouteDetectionEnabled;
 - (void)beginChangingVolume;
 - (void)beginScrubbing;
 - (void)dealloc;

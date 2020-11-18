@@ -67,6 +67,7 @@
 - (id)init;
 - (id)initWithHome:(id)arg1 user:(id)arg2 nameStyle:(unsigned long long)arg3;
 - (BOOL)isIdentifyVoiceEnabled;
+- (BOOL)isPlaybackInfluencesForYouEnabled;
 - (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingReminderBanner:(BOOL)arg1;
 - (id)setDismissIdentifyVoiceOnboarding:(BOOL)arg1;
@@ -75,6 +76,7 @@
 - (id)setDismissTVViewingProfilesReminderBanner:(BOOL)arg1;
 - (id)setDismissUserSplitMediaAccountWarning:(BOOL)arg1;
 - (id)setEnableIdentifyVoice:(BOOL)arg1;
+- (id)setPlaybackInfluencesForYou:(BOOL)arg1;
 
 @end
 

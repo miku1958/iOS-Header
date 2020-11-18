@@ -10,16 +10,19 @@
 
 @interface WFActionDrawerAppItem : NSObject
 {
-    NSString *_appName;
-    UIImage *_appIcon;
+    NSString *_name;
+    UIImage *_icon;
+    NSString *_bundleIdentifier;
 }
 
-@property (strong, nonatomic) UIImage *appIcon; // @synthesize appIcon=_appIcon;
-@property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
-- (id)initWithAppName:(id)arg1 appIcon:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithName:(id)arg1 icon:(id)arg2 bundleIdentifier:(id)arg3;
 
 @end
 

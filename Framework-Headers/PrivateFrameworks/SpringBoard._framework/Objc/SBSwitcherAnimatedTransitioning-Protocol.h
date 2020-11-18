@@ -6,13 +6,13 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAnimationSettings, SBUIAnimationController, SBWorkspaceApplicationSceneTransitionContext;
+@class BSAnimationSettings, SBWorkspaceApplicationSceneTransitionContext;
 
 @protocol SBSwitcherAnimatedTransitioning <NSObject>
 
 @property (readonly, nonatomic) BOOL canInterruptActiveTransition;
 @property (readonly, copy, nonatomic) BSAnimationSettings *defaultTransitionAnimationSettings;
 
-- (void)performTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1 animated:(BOOL)arg2 alongsideAnimationController:(SBUIAnimationController *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)performTransitionWithContext:(SBWorkspaceApplicationSceneTransitionContext *)arg1 animated:(BOOL)arg2 alongsideAnimationHandler:(void (^)(void (^)(BOOL, BOOL) (^)(NSString *)))arg3 completion:(void (^)(BOOL))arg4;
 @end
 

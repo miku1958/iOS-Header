@@ -51,7 +51,7 @@
 - (void)getVoiceShortcutWithPhrase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsForAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)hasRunEventsInTheLast30DaysWithCompletion:(CDUnknownBlockType)arg1;
+- (void)hasRunEventsInTheLast5DaysWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithVoiceShortcutManager:(id)arg1 coreDuetListener:(id)arg2 accessSpecifier:(id)arg3 syncDataHandlers:(id)arg4;
 - (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
 - (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3;
@@ -63,6 +63,7 @@
 - (void)setInteger:(long long)arg1 forKey:(id)arg2 inDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2;
 - (void)startRunningWorkflow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateShortcutsVocabularyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 shortcut:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)validateVoiceShortcutPhrases:(id)arg1 completion:(CDUnknownBlockType)arg2;

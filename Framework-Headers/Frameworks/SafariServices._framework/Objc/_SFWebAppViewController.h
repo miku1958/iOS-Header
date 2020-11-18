@@ -29,6 +29,7 @@
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didChangeLoadingState:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;
+- (void)didDecideShouldShowLinkPreviews:(BOOL)arg1;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
 - (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;

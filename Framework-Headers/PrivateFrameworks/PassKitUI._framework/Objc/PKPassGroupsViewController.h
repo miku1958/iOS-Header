@@ -194,6 +194,8 @@
 - (void)presentGroupTable;
 - (void)presentGroupTableAnimated:(BOOL)arg1;
 - (void)presentInitialState;
+- (void)presentInstallmentPlanWithIdentifier:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentInstallmentPlansForFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentOffscreenAnimated:(BOOL)arg1 split:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)presentOffscreenAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)presentOnscreen:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

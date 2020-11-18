@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)_viewBackgroundImageNeedsUpdatingWithFrame:(struct CGRect)arg1 currentBackgroundImage:(id)arg2;
 + (id)sportsOverlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
+- (void)_cancelPendingOperation;
 - (void)_redrawScorecardViewWithDuration:(double)arg1;
 - (void)_redrawTextBadgeWithDuration:(double)arg1;
 - (void)_redrawView:(id)arg1 withDuration:(double)arg2;

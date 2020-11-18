@@ -10,8 +10,8 @@
 
 @interface HKInteractiveChartDisplayType : HKDisplayType
 {
-    UIColor *_color;
     HKGraphSeries *_graphSeries;
+    UIColor *_color;
     NSString *_specifiedDisplayName;
     NSString *_specifiedUnitName;
     HKInteractiveChartDataFormatter *_specifiedValueFormatter;

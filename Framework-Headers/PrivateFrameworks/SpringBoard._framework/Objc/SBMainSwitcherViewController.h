@@ -67,6 +67,7 @@
     BSTimer *_disableCachingAsynchronousRenderingSurfacesTimer;
     NSMutableDictionary *_recentSwipeUpToKillTimestampsForAppLayouts;
     NSHashTable *__hideStatusBarAssertions;
+    id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
 }
 
 @property (strong, nonatomic, setter=_setHideStatusBarAssertions:) NSHashTable *_hideStatusBarAssertions; // @synthesize _hideStatusBarAssertions=__hideStatusBarAssertions;
@@ -79,6 +80,7 @@
 @property (readonly, nonatomic) BOOL hasTransientOverlayAppLayouts;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 
 + (id)sharedInstance;
 + (id)sharedInstanceIfExists;
@@ -96,6 +98,7 @@
 - (void)_backgroundContrastDidChange:(id)arg1;
 - (void)_cacheAppList;
 - (void)_cacheFloatingAppList;
+- (void)_cancelPiPForDisplayItem:(id)arg1;
 - (void)_configureRequest:(id)arg1 forSwitcherTransitionRequest:(id)arg2 withEventLabel:(id)arg3;
 - (id)_contentWrapperViewForContentViewController:(id)arg1;
 - (void)_continuityAppSuggestionChanged:(id)arg1;
@@ -105,6 +108,8 @@
 - (long long)_currentUnlockedEnvironmentMode;
 - (id)_currentVisibleFloatingItem;
 - (void)_deleteAppLayout:(id)arg1 forReason:(long long)arg2;
+- (void)_deleteAppLayoutForDisplayItem:(id)arg1;
+- (void)_deleteDisplayItem:(id)arg1;
 - (void)_destroyAppListCache;
 - (void)_destroyFloatingAppListCache;
 - (BOOL)_dismissSwitcherNoninteractivelyToAppLayout:(id)arg1 dismissFloatingSwitcher:(BOOL)arg2 animated:(BOOL)arg3;
@@ -137,6 +142,8 @@
 - (void)_removeAcquiredTransientOverlayViewController:(id)arg1;
 - (void)_removeAppLayout:(id)arg1 forReason:(long long)arg2 modelMutationBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_removeCardForDisplayIdentifier:(id)arg1;
+- (void)_removeDisplayItem:(id)arg1 withNowPrimaryWorkspaceEntity:(id)arg2 currentFloatingAppLayout:(id)arg3 intent:(id)arg4;
+- (void)_removeDisplayItemsAndGoToHomeScreen:(id)arg1 removalIntent:(id)arg2;
 - (void)_reqlinquishAssertion:(id)arg1;
 - (void)_setAsynchronousRenderingEnabled:(BOOL)arg1 withMinificationFilter:(BOOL)arg2 forLayerTarget:(id)arg3 presentationManager:(id)arg4;
 - (void)_setContentOrientation:(long long)arg1 forContentViewController:(id)arg2;
@@ -146,6 +153,7 @@
 - (void)_switcherServiceRemoved:(id)arg1;
 - (CDUnknownBlockType)_toggleSwitcherTransitionValidatorAnimated:(BOOL)arg1;
 - (id)_transientOverlayPesentationManager;
+- (BOOL)_transitionRequestValidatorForRemovingDisplayItemWithRequest:(id)arg1 displayItem:(id)arg2 environmentMode:(long long)arg3;
 - (void)_updateAssertion:(id)arg1;
 - (void)_updateBestAppSuggestion;
 - (void)_updateContentViewInterfaceOrientation:(long long)arg1;
@@ -159,6 +167,7 @@
 - (id)appLayoutsForSwitcherContentController:(id)arg1;
 - (void)appSwitcherModel:(id)arg1 didRemoveAppLayoutForFallingOffList:(id)arg2;
 - (struct CGRect)applicationSceneSettingsFrameForInterfaceOrientation:(long long)arg1 floatingConfiguration:(long long)arg2;
+- (id)applicationSceneTransitionContextForDismissingFloatingInlineAppExpose;
 - (void)cancelActiveGestureForSwitcherContentController:(id)arg1;
 - (id)createWorkspaceTransientOverlayForAppLayout:(id)arg1;
 - (void)dealloc;
@@ -192,8 +201,7 @@
 - (id)recentAppLayouts;
 - (void)removeAppLayoutTransientOverlayViewController:(id)arg1;
 - (void)removedDisplayItems:(id)arg1 withDestructionIntent:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)requestInAppStatusBarHiddenAssertionForReason:(id)arg1;
-- (BOOL)requiresGrabberForControlCenterGesture;
+- (id)requestInAppStatusBarHiddenAssertionForReason:(id)arg1 animated:(BOOL)arg2;
 - (long long)sbActiveInterfaceOrientation;
 - (double)scaleForDownscaledSnapshotGenerationForSceneHandle:(id)arg1;
 - (struct CGRect)sceneEntityFrameForWorkspaceEntity:(id)arg1 inLayoutState:(id)arg2;
@@ -201,6 +209,7 @@
 - (long long)shadowStyleForSwitcherContentController:(id)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldAutorotate;
+- (BOOL)shouldPerformPreTransitionInsertionOfAppLayout:(id)arg1 forTransitionWithContext:(id)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)switcherContentController:(id)arg1 activatedBestAppSuggestion:(id)arg2;
 - (void)switcherContentController:(id)arg1 bringAppLayoutToFront:(id)arg2;

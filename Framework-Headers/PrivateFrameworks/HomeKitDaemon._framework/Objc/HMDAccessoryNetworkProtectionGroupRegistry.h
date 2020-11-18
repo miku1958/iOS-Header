@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
 @class HMDHome, HMFUnfairLock, NSMutableDictionary, NSNotificationCenter, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAccessoryNetworkProtectionGroupRegistry : NSObject <HMFMessageReceiver>
+@interface HMDAccessoryNetworkProtectionGroupRegistry : NSObject <HMFMessageReceiver, HMFLogging>
 {
     HMFUnfairLock *_lock;
     NSMutableDictionary *_groupRecords;
@@ -32,24 +33,31 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 - (void).cxx_destruct;
-- (void)_evaluateHomeForActiveGroups;
+- (BOOL)_evaluateActiveStatusForGroupWithUUID:(id)arg1;
+- (void)_registerForAccessoryChanges:(id)arg1;
 - (void)_registerForMessages;
+- (void)_setupActiveGroupsForHome;
+- (void)_setupProtectionGroupForAccessory:(id)arg1 shouldNotifyChange:(BOOL)arg2;
+- (BOOL)_updateGroupWithUUID:(id)arg1 active:(BOOL)arg2;
 - (id)accessoriesForGroupWithUUID:(id)arg1;
 - (BOOL)addActiveSurrogateGroup:(id)arg1;
-- (void)addSurrogateGroupAndNotifyForAccessory:(id)arg1;
+- (void)addActiveSurrogateGroupForAccessory:(id)arg1 shouldNotifyChange:(BOOL)arg2;
 - (void)configure;
 - (id)groupRecordWithUUID:(id)arg1;
 - (id)groupWithUUID:(id)arg1;
-- (void)handleAccessoryChangeProtectionGroup:(id)arg1;
 - (void)handleAddOrUpdateAccessoryNetworkProtectionGroupModel:(id)arg1 message:(id)arg2;
 - (void)handleAddedAccessory:(id)arg1;
 - (void)handleRemoveAccessoryNetworkProtectionGroupModel:(id)arg1 message:(id)arg2;
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleUpdateAccessoryNetworkProtectionGroupProtectionMode:(id)arg1;
+- (void)handleUpdatedAccessoryConfiguredNetworkProtectionGroup:(id)arg1;
+- (void)handleUpdatedAccessoryInitialManufacturerOrCategory:(id)arg1;
 - (id)initWithHome:(id)arg1 notificationCenter:(id)arg2;
 - (id)initWithHome:(id)arg1 notificationCenter:(id)arg2 persistedGroups:(id)arg3;
-- (id)markInactiveGroupWithUUID:(id)arg1;
+- (id)logIdentifier;
+- (id)markGroupWithUUID:(id)arg1 active:(BOOL)arg2;
 - (void)notifyClientsOfAddedGroup:(id)arg1;
 - (void)notifyClientsOfRemovedGroup:(id)arg1;
 - (id)removeGroupWithUUID:(id)arg1;

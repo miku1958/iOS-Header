@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
+#import <SpringBoard/NSCopying-Protocol.h>
 
 @class BKSDisplayRenderOverlayDescriptor, NSString, NSURL;
 
-@interface SBRestartTransitionRequest : NSObject <BSDescriptionProviding>
+@interface SBRestartTransitionRequest : NSObject <BSDescriptionProviding, NSCopying>
 {
     NSString *_requester;
     NSString *_reason;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL wantsPersistentSnapshot; // @synthesize wantsPersistentSnapshot=_wantsPersistentSnapshot;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;

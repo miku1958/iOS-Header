@@ -28,6 +28,7 @@
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)pictureInPictureActionButtonTapped;
+- (void)playbackControlsDidChangePlayerVolume:(float)arg1;
 - (void)playbackControlsDidToggleMuted:(BOOL)arg1;
 - (void)playbackControlsDidUpdateVisibilityOfLoadingIndicator:(BOOL)arg1;
 - (void)scrubToTime:(double)arg1;

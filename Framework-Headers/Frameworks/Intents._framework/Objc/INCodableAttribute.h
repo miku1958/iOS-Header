@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) Class _relationshipValueTransformerClass; // @synthesize _relationshipValueTransformerClass=__relationshipValueTransformerClass;
 @property (copy, nonatomic, setter=_setTypeString:) NSString *_typeString; // @synthesize _typeString;
 @property (readonly, nonatomic) Class _unsafeObjectClass;
+@property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDefaultAttribute) BOOL defaultAttribute; // @synthesize defaultAttribute=_defaultAttribute;
 @property (readonly, copy) NSString *description;
@@ -44,6 +45,7 @@
 @property (copy, nonatomic) NSNumber *displayPriorityRank; // @synthesize displayPriorityRank=_displayPriorityRank;
 @property (readonly, nonatomic) SEL getter;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *keyPrefix;
 @property (readonly, copy, nonatomic) NSString *localizedDisplayName;
 @property (strong, nonatomic) INCodableAttributeMetadata *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) long long modifier; // @synthesize modifier=_modifier;
@@ -69,7 +71,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)keyPrefix;
 - (id)localizedDisplayNameForLanguage:(id)arg1;
 - (id)promptDialogWithType:(unsigned long long)arg1;
 - (id)unsupportedReasonWithIndex:(unsigned long long)arg1;

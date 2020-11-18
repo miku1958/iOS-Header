@@ -13,13 +13,15 @@
 @interface GEOLogMsgEventDirections : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     struct GEONavigationAudioFeedback _navigationAudioFeedback;
     struct GEOSessionID _navSessionId;
     NSMutableArray *_directionsFeedbacks;
     NSMutableArray *_durationInNavigationModes;
     double _durationOfTrip;
     GEOLocation *_finalLocation;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _originalEta;
     BOOL _arrivedAtDestination;
     BOOL _preArrival;
@@ -84,6 +86,8 @@
 - (id)durationInNavigationModeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)durationInNavigationModesCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

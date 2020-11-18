@@ -25,6 +25,7 @@
     NSArray *_videoSegments;
 }
 
+@property (readonly) BOOL canAskForUserFeedback;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, copy) HMCameraClipEncryptionContext *encryptionContext; // @synthesize encryptionContext=_encryptionContext;

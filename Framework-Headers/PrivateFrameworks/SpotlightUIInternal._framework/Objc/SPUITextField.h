@@ -6,7 +6,7 @@
 
 #import <SearchUI/SearchUISearchField.h>
 
-@class NSArray, SPSearchEntity, SPUIHeaderBlurView, UIButton, UIImage, UIView;
+@class NSArray, NSString, SPSearchEntity, SPUIHeaderBlurView, UIButton, UIImage, UIView;
 @protocol SearchUITextFieldDelegate;
 
 @interface SPUITextField : SearchUISearchField
@@ -18,6 +18,8 @@
     long long _activeInterfaceOrientation;
     SPUIHeaderBlurView *_blurView;
     UIView *_tintView;
+    NSString *_lastSearchText;
+    SPSearchEntity *_lastSearchEntity;
     struct CGSize _imageSize;
 }
 
@@ -27,6 +29,8 @@
 @property (strong) id<SearchUITextFieldDelegate> delegate; // @dynamic delegate;
 @property BOOL ignoreTokensUpdate; // @synthesize ignoreTokensUpdate=_ignoreTokensUpdate;
 @property struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property (strong) SPSearchEntity *lastSearchEntity; // @synthesize lastSearchEntity=_lastSearchEntity;
+@property (strong) NSString *lastSearchText; // @synthesize lastSearchText=_lastSearchText;
 @property (strong) UIButton *microphoneButton; // @synthesize microphoneButton=_microphoneButton;
 @property (readonly) SPSearchEntity *searchEntity;
 @property (strong) NSArray *suggestions; // @synthesize suggestions=_suggestions;
@@ -50,7 +54,6 @@
 - (id)keyCommands;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
 - (BOOL)needsLandscapeHeight;
-- (BOOL)resignFirstResponder;
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
 - (id)textIncludingTokens;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;

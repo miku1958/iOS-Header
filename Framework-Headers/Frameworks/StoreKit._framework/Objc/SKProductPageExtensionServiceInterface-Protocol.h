@@ -12,6 +12,7 @@
 - (void)clientLookupItemDidLoad:(SSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
 - (void)setAskToBuy:(BOOL)arg1;
 - (void)setCancelButtonTitle:(NSString *)arg1;
+- (void)setPreview:(NSNumber *)arg1;
 - (void)setPromptString:(NSString *)arg1;
 - (void)setRightBarButtonTitle:(NSString *)arg1;
 - (void)setShowsRightBarButton:(BOOL)arg1;

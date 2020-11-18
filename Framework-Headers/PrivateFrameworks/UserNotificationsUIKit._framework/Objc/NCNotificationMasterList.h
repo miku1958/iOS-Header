@@ -76,6 +76,7 @@
 - (id)_sectionForNotificationRequest:(id)arg1;
 - (void)_setupNotificationSectionLists;
 - (BOOL)_shouldDNDDelayDeliveryOfNotificationRequest:(id)arg1;
+- (void)_sortNotificationGroupsIfNecessary;
 - (void)_updateVisibleRectForContentOffset:(struct CGPoint)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (void)adjustForLegibilitySettingsChange:(id)arg1;
@@ -101,6 +102,7 @@
 - (id)notificationStructuredSectionList:(id)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 isLongLook:(BOOL)arg3;
 - (void)notificationStructuredSectionList:(id)arg1 requestsScrollingToContentOffset:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)notificationStructuredSectionList:(id)arg1 shouldFilterNotificationRequest:(id)arg2;
+- (BOOL)notificationStructuredSectionList:(id)arg1 shouldScrollToTopForGroupList:(id)arg2;
 - (void)recycleView:(id)arg1;
 - (void)reloadNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;

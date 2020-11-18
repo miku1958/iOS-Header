@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EFSignpostable-Protocol.h>
 
 @class NSString;
 @protocol EDSearchableIndexVerifierDataSource, OS_os_activity;
 
-@interface EDSearchableIndexVerifier : NSObject <EFLoggable>
+@interface EDSearchableIndexVerifier : NSObject <EFLoggable, EFSignpostable>
 {
     id<EDSearchableIndexVerifierDataSource> _dataSource;
     NSObject<OS_os_activity> *_indexVerificationActivity;
@@ -22,12 +23,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_os_activity> *indexVerificationActivity; // @synthesize indexVerificationActivity=_indexVerificationActivity;
+@property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 
 + (id)log;
++ (id)signpostLog;
 - (void).cxx_destruct;
 - (void)_addFailingSamples:(id)arg1 toResultDictionary:(id)arg2;
 - (id)_failingSamples:(id)arg1 tester:(id)arg2;
+- (id)_verifyDataSamples:(id)arg1;
 - (id)_verifySamples:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
 - (void)verifyDataSamplesWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;

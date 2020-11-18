@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) BOOL _hasContentGravity;
 @property (readonly, nonatomic) BOOL _layoutShouldFlipHorizontalOrientations;
-@property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) long long contentMode;
 @property (readonly, nonatomic) double preferredContentScaleFactor;
 @property (readonly, nonatomic) long long semanticContentAttribute;

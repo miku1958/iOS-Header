@@ -11,6 +11,7 @@
 @interface PLFileSystemPersistenceAttributes : NSObject
 {
     NSDictionary *_attributes;
+    NSDictionary *_unknownAttributes;
 }
 
 - (void).cxx_destruct;
@@ -21,7 +22,7 @@
 - (BOOL)getInt32:(int *)arg1 forKey:(id)arg2;
 - (BOOL)getUInt16:(unsigned short *)arg1 forKey:(id)arg2;
 - (BOOL)getUInt64:(unsigned long long *)arg1 forKey:(id)arg2;
-- (id)initWithAttributes:(id)arg1;
+- (id)initWithAttributes:(id)arg1 unknownAttributes:(id)arg2;
 - (id)stringForKey:(id)arg1;
 
 @end

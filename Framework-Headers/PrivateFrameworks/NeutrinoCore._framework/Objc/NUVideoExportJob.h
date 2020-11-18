@@ -22,7 +22,7 @@
 - (id)videoExportRequest;
 - (BOOL)wantsOutputGeometry;
 - (BOOL)wantsOutputVideo;
-- (BOOL)writeVideoFrom:(id)arg1 toWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 error:(out id *)arg4;
+- (BOOL)writeVideoFrom:(id)arg1 toWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 createCustomMetadata:(BOOL)arg4 geometryTransform:(id)arg5 inputSize:(struct CGSize)arg6 outputSize:(struct CGSize)arg7 error:(out id *)arg8;
 
 @end
 

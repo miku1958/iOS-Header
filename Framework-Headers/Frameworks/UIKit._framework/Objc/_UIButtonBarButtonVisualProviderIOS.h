@@ -74,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (id)backgroundImageForState:(unsigned long long)arg1 compact:(BOOL)arg2;
 - (id)backgroundImageView;
 - (struct UIOffset)backgroundVerticalAdjustmentForCompact:(BOOL)arg1;
+- (void)button:(id)arg1 traitCollectionDidChange:(id)arg2;
 - (void)buttonLayoutSubviews:(id)arg1 baseImplementation:(CDUnknownBlockType)arg2;
 - (BOOL)buttonSelectionState:(id)arg1 forRequestedState:(BOOL)arg2;
 - (void)configureButton:(id)arg1 fromBarButtonItem:(id)arg2;
@@ -86,7 +87,6 @@ __attribute__((visibility("hidden")))
 - (id)textButton;
 - (id)tintColor;
 - (struct UIOffset)titlePositionOffsetForCompact:(BOOL)arg1;
-- (id)titleTextAttributesForState:(unsigned long long)arg1;
 - (void)updateActiveConstraints:(CDUnknownBlockType)arg1;
 - (void)updateButton:(id)arg1 appearance:(id)arg2;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;

@@ -36,6 +36,7 @@
 + (id)deviceBatteryPercentageStream;
 + (id)deviceBatterySaverStream;
 + (id)deviceInUseProxyStream;
++ (id)deviceIsLockedImputedStream;
 + (id)deviceIsLockedStream;
 + (id)deviceIsPluggedInStream;
 + (id)deviceIsSleepingStream;

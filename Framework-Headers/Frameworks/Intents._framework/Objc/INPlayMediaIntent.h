@@ -14,6 +14,8 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *alternativeResults;
+@property (copy, nonatomic) NSArray *audioSearchResults;
 @property (copy, nonatomic) NSArray *buckets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIAccessibilityCustomAction.h>
 
-@class NSString, NSValue, UIImage;
+@class NSString, UIImage;
 
 @interface UIAccessibilityCustomAction (Private)
 
@@ -17,7 +17,6 @@
 @property (strong, nonatomic, getter=_shortName, setter=_setShortName:) NSString *shortName;
 @property (nonatomic) BOOL shouldSuppressActionHint;
 @property (nonatomic) unsigned long long sortPriority;
-@property (strong, nonatomic, getter=_targetPoint, setter=_setTargetPoint:) NSValue *targetPoint;
 
 - (id)_accessibilityAXAttributedName;
 - (id)_accessibilityCustomActionIdentifier;

@@ -33,9 +33,11 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
+- (BOOL)ensureFrameAnalyzerWithError:(id *)arg1;
 - (id)getConfidenceThresholdPreferenceForKey:(id)arg1 defaultConfidenceThreshold:(double)arg2;
 - (id)init;
 - (double)modelTimeoutPreference;
+- (void)preAnalyze:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 - (void)warmStartModel;
 

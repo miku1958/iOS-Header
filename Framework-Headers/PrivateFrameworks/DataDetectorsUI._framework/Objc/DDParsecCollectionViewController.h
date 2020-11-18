@@ -63,7 +63,6 @@
 - (void)presentRemoteCollection:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
 - (void)presentationControllerDidDismiss:(id)arg1;
-- (id)previewActionItems;
 - (void)replaceControllerWithController:(id)arg1;
 - (void)setPreviewMode:(BOOL)arg1;
 - (void)setSheetMode:(BOOL)arg1;

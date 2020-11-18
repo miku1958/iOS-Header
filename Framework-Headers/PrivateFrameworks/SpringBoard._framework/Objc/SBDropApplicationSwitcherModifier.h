@@ -19,9 +19,9 @@
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 - (long long)keyboardSuppressionMode;
 - (long long)layoutUpdateMode;
+- (long long)liveContentRasterizationStyle;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;
 
 @end

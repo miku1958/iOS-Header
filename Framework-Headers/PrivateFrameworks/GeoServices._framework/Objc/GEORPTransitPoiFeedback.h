@@ -13,7 +13,6 @@
 @interface GEORPTransitPoiFeedback : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEORPTransitPoiCorrections *_corrections;
     NSMutableArray *_directionsRequests;
@@ -21,6 +20,9 @@
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlace *_place;
     GEORPTransitLineTileInfo *_transitLineTileInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _correctionType;
     struct {
         unsigned int has_correctionType:1;
@@ -84,6 +86,8 @@
 - (id)directionsResponseAtIndex:(unsigned long long)arg1;
 - (unsigned long long)directionsResponsesCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

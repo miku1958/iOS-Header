@@ -30,6 +30,7 @@
 + (BOOL)isSupported;
 + (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)abortRecording;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)ensureTechniqueAndCustomSensorCompatibility;
 - (void)finishRecordingWithHandler:(CDUnknownBlockType)arg1;

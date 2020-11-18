@@ -32,6 +32,7 @@
 - (void)addRollItem:(id)arg1;
 - (void)addRollItemWithStartOverallPosition:(unsigned long long)arg1 duration:(unsigned long long)arg2 metricsData:(id)arg3;
 - (long long)indexOfLastRollItemWithStartBeforePosition:(unsigned long long)arg1;
+- (id)initWithMainFeatureMetricsData:(id)arg1;
 - (id)initWithStartPosition:(unsigned long long)arg1 mainFeatureMetricsData:(id)arg2;
 - (id)itemAtOverallPosition:(unsigned long long)arg1 rangeOptions:(long long)arg2;
 - (id)itemsBetweenStartOverallPosition:(unsigned long long)arg1 endOverallPosition:(unsigned long long)arg2;

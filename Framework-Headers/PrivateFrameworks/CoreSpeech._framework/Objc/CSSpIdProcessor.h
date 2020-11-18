@@ -19,10 +19,11 @@
 
 - (void).cxx_destruct;
 - (void)endProcessing;
-- (id)initWithCSSpIdType:(unsigned long long)arg1 delegate:(id)arg2;
+- (id)initWithSpIdContext:(id)arg1 forSpIdType:(unsigned long long)arg2 delegate:(id)arg3;
 - (void)logUtteranceUnderDirectory:(id)arg1 withScores:(id)arg2 withWinner:(id)arg3;
 - (void)processAudioData:(id)arg1;
 - (void)rejectUtterance;
+- (void)setCVTTriggerPhraseDetected;
 - (void)updateModelWithBestScoreUser:(id)arg1;
 
 @end

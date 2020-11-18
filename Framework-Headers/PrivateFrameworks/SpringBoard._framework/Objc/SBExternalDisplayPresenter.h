@@ -38,6 +38,11 @@
     BOOL _presentationSceneHasActivated;
     SBSExternalDisplayLayoutElement *_presentedLayoutElement;
     id<BSInvalidatable> _presentedLayoutElementAssertion;
+    NSString *_preventIdleSleepReason;
+    SBApplication *_preventIdleSleepApp;
+    BOOL _preventIdleSleepPresenting;
+    long long _powerMode;
+    BSAtomicSignal *_idleOffTimerInvalidation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +54,7 @@
 - (id)_createUpdateTransaction;
 - (void)_enqueuePresentationUpdate;
 - (void)_ensureMode:(id)arg1 overscanCompensation:(long long)arg2;
+- (void)_setPreventIdleSleepForApp:(id)arg1 presenting:(BOOL)arg2;
 - (void)_updateHostingIfNecessary;
 - (void)dealloc;
 - (id)initWithLayoutPublisher:(id)arg1 displayConfiguration:(id)arg2;

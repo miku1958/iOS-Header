@@ -6,29 +6,12 @@
 
 #import <WorkflowKit/WFAction.h>
 
-#import <ActionKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <ActionKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <ActionKit/UINavigationControllerDelegate-Protocol.h>
-
-@class NSString;
-
-@interface WFSelectPhotoAction : WFAction <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface WFSelectPhotoAction : WFAction
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL selectMultiple;
-@property (readonly) Class superclass;
 
-- (void)imagePicker:(id)arg1 didFinishPickingMedia:(id)arg2;
-- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
-- (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
-- (void)imagePickerControllerDidCancel:(id)arg1;
-- (void)imagePickerDidCancel:(id)arg1;
-- (void)presentationControllerDidDismiss:(id)arg1;
-- (void)runWithUIKitUserInterface:(id)arg1 input:(id)arg2;
 
 @end
 

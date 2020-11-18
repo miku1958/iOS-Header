@@ -12,7 +12,7 @@
 #import <Email/NSCopying-Protocol.h>
 #import <Email/NSSecureCoding-Protocol.h>
 
-@class ECMessageFlags, ECSubject, EFQuery, EMMailboxScope, EMMessage, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
+@class ECMessageFlags, ECSubject, EFQuery, EMMailboxScope, EMMessage, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, NSArray, NSDate, NSIndexSet, NSString;
 @protocol EMCollectionItemID, EMMailboxTypeResolver;
 
 @interface EMThread : EMCollection <EMThreadBuilder, EFLoggable, NSCopying, NSSecureCoding, EMMessageListItem>
@@ -43,9 +43,12 @@
     unsigned long long _count;
     id<EMCollectionItemID> _displayMessageItemID;
     EFQuery *_originatingQuery;
+    EMMessageListChangeObserverHelper *_changeObserverHelper;
 }
 
+@property long long _internalID;
 @property (readonly, copy) NSArray *ccList;
+@property (strong, nonatomic) EMMessageListChangeObserverHelper *changeObserverHelper; // @synthesize changeObserverHelper=_changeObserverHelper;
 @property (readonly) long long conversationID;
 @property (readonly) long long conversationNotificationLevel;
 @property (readonly) unsigned long long count;
@@ -92,6 +95,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 originatingQuery:(id)arg2 builder:(CDUnknownBlockType)arg3;
 - (id)itemIDForObjectID:(id)arg1;
+- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
 - (id)query;

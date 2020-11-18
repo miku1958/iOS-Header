@@ -11,12 +11,10 @@ __attribute__((visibility("hidden")))
 {
     BOOL _addRemoveVideoLayer;
     BOOL _shouldWorkAround54502886;
-    BOOL _shouldWorkAround54505714;
 }
 
 @property (nonatomic) BOOL addRemoveVideoLayer; // @synthesize addRemoveVideoLayer=_addRemoveVideoLayer;
 @property (nonatomic) BOOL shouldWorkAround54502886; // @synthesize shouldWorkAround54502886=_shouldWorkAround54502886;
-@property (nonatomic) BOOL shouldWorkAround54505714; // @synthesize shouldWorkAround54505714=_shouldWorkAround54505714;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

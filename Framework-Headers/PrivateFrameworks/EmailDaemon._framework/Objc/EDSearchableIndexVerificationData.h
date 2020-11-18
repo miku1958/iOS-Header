@@ -15,20 +15,20 @@
     NSString *_subject;
     NSArray *_toEmailAddresses;
     NSString *_deleted;
-    NSNumber *_contentIndexTransactionId;
+    NSNumber *_transactionID;
     NSNumber *_flags;
     NSNumber *_indexedAsEmptySubject;
     NSDate *_dateReceived;
     NSDictionary *_userInfo;
 }
 
-@property (strong, nonatomic) NSNumber *contentIndexTransactionId; // @synthesize contentIndexTransactionId=_contentIndexTransactionId;
 @property (strong, nonatomic) NSDate *dateReceived; // @synthesize dateReceived=_dateReceived;
 @property (copy, nonatomic) NSString *deleted; // @synthesize deleted=_deleted;
 @property (strong, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
 @property (strong, nonatomic) NSNumber *indexedAsEmptySubject; // @synthesize indexedAsEmptySubject=_indexedAsEmptySubject;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (copy, nonatomic) NSArray *toEmailAddresses; // @synthesize toEmailAddresses=_toEmailAddresses;
+@property (strong, nonatomic) NSNumber *transactionID; // @synthesize transactionID=_transactionID;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void).cxx_destruct;

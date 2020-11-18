@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) UIItemProvider *dragItemProvider;
 @property (readonly, nonatomic) BOOL hasMessageAcknowledgment;
 @property (readonly, nonatomic) BOOL hasStickers;
+@property (readonly, nonatomic) BOOL isBlackholed;
 @property (readonly, nonatomic) BOOL isCorrupt;
 @property (readonly, nonatomic) IMMessage *message;
 @property (readonly, copy, nonatomic) NSArray *messageAcknowledgments;

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)authenticationTypeDidChange:(id)arg1;
 - (void)cancelPressed:(id)arg1;
 - (void)donePressed:(id)arg1;
+- (void)generateKeyPairAndFinish;
 - (id)init;
 - (void)keySizeDidChange:(id)arg1;
 - (void)updateVisibleItems;

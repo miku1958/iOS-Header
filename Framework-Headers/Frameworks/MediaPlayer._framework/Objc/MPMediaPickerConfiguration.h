@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class MPPlaybackArchiveConfiguration, NSArray, NSString;
 
 @interface MPMediaPickerConfiguration : NSObject <NSSecureCoding>
 {
@@ -17,23 +17,27 @@
     BOOL _showsItemsWithProtectedAssets;
     BOOL _picksSingleCollectionEntity;
     BOOL _showsCatalogContent;
+    BOOL _showsLibraryContent;
     BOOL _pickingForExternalPlayer;
     unsigned int _watchCompatibilityVersion;
     unsigned long long _mediaTypes;
     NSString *_prompt;
     NSArray *_typeIdentifiers;
     long long _selectionMode;
+    MPPlaybackArchiveConfiguration *_playbackArchiveConfiguration;
 }
 
 @property (nonatomic) BOOL allowsPickingMultipleItems; // @synthesize allowsPickingMultipleItems=_allowsPickingMultipleItems;
 @property (nonatomic) unsigned long long mediaTypes; // @synthesize mediaTypes=_mediaTypes;
 @property (nonatomic) BOOL pickingForExternalPlayer; // @synthesize pickingForExternalPlayer=_pickingForExternalPlayer;
 @property (nonatomic) BOOL picksSingleCollectionEntity; // @synthesize picksSingleCollectionEntity=_picksSingleCollectionEntity;
+@property (strong, nonatomic) MPPlaybackArchiveConfiguration *playbackArchiveConfiguration; // @synthesize playbackArchiveConfiguration=_playbackArchiveConfiguration;
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property (nonatomic) long long selectionMode; // @synthesize selectionMode=_selectionMode;
 @property (nonatomic) BOOL showsCatalogContent; // @synthesize showsCatalogContent=_showsCatalogContent;
 @property (nonatomic) BOOL showsCloudItems; // @synthesize showsCloudItems=_showsCloudItems;
 @property (nonatomic) BOOL showsItemsWithProtectedAssets; // @synthesize showsItemsWithProtectedAssets=_showsItemsWithProtectedAssets;
+@property (nonatomic) BOOL showsLibraryContent; // @synthesize showsLibraryContent=_showsLibraryContent;
 @property (copy, nonatomic) NSArray *typeIdentifiers; // @synthesize typeIdentifiers=_typeIdentifiers;
 @property (nonatomic) unsigned int watchCompatibilityVersion; // @synthesize watchCompatibilityVersion=_watchCompatibilityVersion;
 

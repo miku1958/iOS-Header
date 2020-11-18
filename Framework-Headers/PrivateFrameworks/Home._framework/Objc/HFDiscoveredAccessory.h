@@ -8,15 +8,16 @@
 
 #import <Home/HFHomeKitObject-Protocol.h>
 
-@class HMAccessory, NSDate, NSError, NSString, NSUUID, SFDevice;
+@class HMAccessory, HMAccessoryCategory, NSDate, NSError, NSString, NSUUID, SFDevice;
 
 @interface HFDiscoveredAccessory : NSObject <HFHomeKitObject>
 {
-    NSUUID *_accessoryUUID;
-    NSString *_accessoryName;
+    NSUUID *_uniqueIdentifier;
+    NSString *_name;
+    HMAccessoryCategory *_category;
     HMAccessory *_accessory;
     SFDevice *_sharingDevice;
-    NSString *_manufacturerName;
+    NSString *_manufacturer;
     NSDate *_discoveryDate;
     unsigned long long _status;
     NSError *_error;
@@ -24,28 +25,29 @@
 }
 
 @property (strong, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
-@property (copy, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
-@property (readonly, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
+@property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (nonatomic) unsigned long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
+@property (copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL requiresSetupCode;
 @property (readonly, nonatomic) BOOL requiresSoftwareUpdate;
 @property (readonly, nonatomic) SFDevice *sharingDevice; // @synthesize sharingDevice=_sharingDevice;
 @property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
++ (id)discoveredAccessoryFromSetupDescription:(id)arg1;
 - (void).cxx_destruct;
 - (id)_descriptionForStatus:(unsigned long long)arg1;
 - (id)identify;
 - (id)init;
 - (id)initWithAccessory:(id)arg1;
-- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2;
+- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 accessoryCategory:(id)arg3;
 - (id)initWithSharingDevice:(id)arg1;
 - (void)updateStatus:(unsigned long long)arg1 error:(id)arg2;
 

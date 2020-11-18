@@ -82,6 +82,7 @@
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (void)dragSelection:(id)arg1;
 - (void)duplicate:(id)arg1;
+- (long long)editingInteractionConfiguration;
 - (void)generateStrokeImageForPasteAndDND;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;

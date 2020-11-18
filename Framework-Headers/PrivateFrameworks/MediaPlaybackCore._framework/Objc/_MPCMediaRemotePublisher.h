@@ -9,15 +9,16 @@
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
-@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
+@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSArray, NSString, NSUserDefaults;
 
 @interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
     NSString *_lastContextID;
-    BOOL _allowsSubscriptionPlayback;
-    BOOL _isSubscriptionEnabled;
-    NSString *_hashedDSID;
+    NSArray *_accounts;
+    BOOL _activeAccountAllowsSubscriptionPlayback;
+    NSString *_activeAccountStoreFrontIdentifier;
+    NSUserDefaults *_ipodDefaults;
     BOOL _initializedSupportedCommands;
     BOOL _engineRestoringState;
     MPCPlaybackEngine *_playbackEngine;
@@ -42,22 +43,19 @@
 
 - (void).cxx_destruct;
 - (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_cloudLibraryEnabledDidChangeNotification:(id)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
 - (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_exportableSessionTypes;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_playbackStateIsIdle:(long long)arg1;
-- (void)_subscriptionStatusChangedNotification:(id)arg1;
 - (id)_supportedSessionTypes;
 - (void)_updateLaunchCommands;
-- (void)_updateSubscriptionStatus;
 - (void)_updateSupportedCommands;
-- (void)_userIdentityStoreChangedNotification:(id)arg1;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
-- (void)dealloc;
+- (void)engine:(id)arg1 didChangeAccounts:(id)arg2;
 - (void)engine:(id)arg1 didChangeQueueWithReason:(id)arg2;
 - (void)engine:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)engine:(id)arg1 didChangeShuffleType:(long long)arg2;
@@ -65,6 +63,7 @@
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engineDidEndStateRestoration:(id)arg1;
 - (void)engineWillBeginStateRestoration:(id)arg1;
+- (void)getShouldRestoreStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
 - (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
@@ -73,8 +72,10 @@
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDsFromOffset:(long long)arg2 toOffset:(long long)arg3 nowPlayingIndex:(long long *)arg4;
 - (void)nowPlayingInfoCenter:(id)arg1 didBeginLyricsEvent:(id)arg2;
 - (void)nowPlayingInfoCenter:(id)arg1 didEndLyricsEvent:(id)arg2;
+- (void)nowPlayingInfoCenter:(id)arg1 didEndMigrationWithIdentifier:(id)arg2 error:(id)arg3;
 - (void)nowPlayingInfoCenter:(id)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)nowPlayingInfoCenter:(id)arg1 willBeginSessionMigrationWithIdentifier:(id)arg2;
 - (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 - (void)publishIfNeeded;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;

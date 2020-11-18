@@ -18,6 +18,26 @@
 	// class method
  }
 
+ struct CryptoKitPrivate.SecureBytes {
+
+	// Properties
+	var backing : Backing // +0x0
+ }
+
+ struct CryptoKitPrivate.Index {
+
+	// Properties
+	var offset : Int // +0x0
+ }
+
+ struct CryptoKitPrivate.BackingHeader {
+
+	// Properties
+	var count : Int // +0x0
+	var capacity : Int // +0x8
+ }
+
+ class CryptoKitPrivate.Backing {
  struct CryptoKitPrivate.SymmetricKeySize {
 
 	// Properties
@@ -32,13 +52,7 @@
 
  class CryptoKitPrivate.Scrypt : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x30a0  @objc Scrypt.init <stripped>
- }
-
- struct CryptoKitPrivate.SecureBytes {
-
-	// Properties
-	var underlyingData : Data // +0x0
+	0x7fb0  @objc Scrypt.init <stripped>
  }
 
  enum CryptoKitPrivate.CryptoKitError {

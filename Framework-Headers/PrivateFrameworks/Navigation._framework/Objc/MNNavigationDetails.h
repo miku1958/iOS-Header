@@ -108,7 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)removeTrafficIncidentAlertWithDetails:(id)arg1;
+- (id)removeTrafficIncidentAlert:(id)arg1;
 - (id)routeInfoForID:(id)arg1;
 - (id)routeInfoForRoute:(id)arg1;
 - (id)routeLookupIDs;
@@ -118,7 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)updateETATrafficForRoute:(id)arg1;
 - (void)updateLocationFromDetails:(id)arg1;
 - (void)updatePossibleCommuteDestinations:(id)arg1;
-- (id)updateWithTrafficIncidentAlertDetails:(id)arg1;
+- (id)updateWithTrafficIncidentAlert:(id)arg1;
 
 @end
 

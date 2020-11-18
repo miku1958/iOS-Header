@@ -10,21 +10,17 @@
 
 @interface WLKContentRating : NSObject
 {
-    unsigned long long _contentRatingSystem;
     NSString *_displayName;
     unsigned long long _ratingValue;
-    NSString *_contentRatingSystemString;
+    NSString *_contentRatingSystem;
     NSString *_name;
 }
 
-@property (readonly, nonatomic) unsigned long long contentRatingSystem; // @synthesize contentRatingSystem=_contentRatingSystem;
-@property (readonly, copy, nonatomic) NSString *contentRatingSystemString; // @synthesize contentRatingSystemString=_contentRatingSystemString;
+@property (readonly, copy, nonatomic) NSString *contentRatingSystem; // @synthesize contentRatingSystem=_contentRatingSystem;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long ratingValue; // @synthesize ratingValue=_ratingValue;
 
-+ (Class)_classForContentRatingSystem:(unsigned long long)arg1;
-+ (unsigned long long)_ratingSystemForString:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

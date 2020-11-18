@@ -35,6 +35,7 @@
 - (void).cxx_destruct;
 - (id)calendarQueryDisplayType;
 - (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
+- (id)descriptionSpansForGraphView:(id)arg1;
 - (id)initWithDisplayTypes:(id)arg1 healthStore:(id)arg2 unitPreferenceController:(id)arg3 dateCache:(id)arg4 chartDataCacheController:(id)arg5 selectedTimeScopeController:(id)arg6 initialXValue:(id)arg7 options:(unsigned long long)arg8;
 - (id)lollipopAnnotationColor;
 - (id)makeAnnotationDataSource;

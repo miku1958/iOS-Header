@@ -43,6 +43,7 @@
     NSString *_languageCode;
     NSString *_localeIdentifier;
     NSString *_temperatureUnit;
+    int _siriDataSharingState;
     BOOL _siriDisabled;
     NSString *_siriListenLanguage;
     long long _siriVoiceGender;
@@ -80,7 +81,7 @@
 - (void)_handleSiriDialogIdentifier:(id)arg1;
 - (void)_invalidate;
 - (void)_playReadyToSetupSound;
-- (void)_setSiriLanguageInfo;
+- (void)_setSiriInfo;
 - (void)_setSystemName:(id)arg1 hostname:(id)arg2;
 - (void)_sfServiceStart;
 - (void)_siriGreetingDialogA;

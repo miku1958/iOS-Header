@@ -8,26 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPSearchFeedbackContext, PBUnknownFields;
+@class GEORPSearchFeedbackContext, GEORPSearchFeedbackCorrections, PBDataReader, PBUnknownFields;
 
 @interface GEORPSearchFeedback : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     GEORPSearchFeedbackContext *_context;
+    GEORPSearchFeedbackCorrections *_corrections;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    CDStruct_5bb8e4f8 _flags;
 }
 
 @property (strong, nonatomic) GEORPSearchFeedbackContext *context;
+@property (strong, nonatomic) GEORPSearchFeedbackCorrections *corrections;
 @property (readonly, nonatomic) BOOL hasContext;
+@property (readonly, nonatomic) BOOL hasCorrections;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readContext;
+- (void)_readCorrections;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

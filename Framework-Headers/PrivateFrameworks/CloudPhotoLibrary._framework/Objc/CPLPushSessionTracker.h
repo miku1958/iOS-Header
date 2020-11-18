@@ -63,6 +63,7 @@
 - (BOOL)computeDiff;
 - (BOOL)computeExpandedBatchWithError:(id *)arg1;
 - (id)deletedRecordIdentifiers;
+- (id)enqueuedOrStoredRecordWithLocalScopedIdentifier:(id)arg1;
 - (void)enumerateDiffWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasClientRecordWithLocalScopedIdentifier:(id)arg1;
 - (BOOL)hasCloudRecordWithLocalScopedIdentifier:(id)arg1;

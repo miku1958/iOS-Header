@@ -41,11 +41,13 @@
 + (id)_privateSourceForClinicalAccountIdentifier:(id)arg1 name:(id)arg2;
 + (id)_publicSourceForGatewayExternalIdentifier:(id)arg1 name:(id)arg2;
 + (BOOL)_representsCurrentDeviceWithBundleIdentifier:(id)arg1;
++ (id)_researchStudiesDirectoryURL;
 + (id)_sourceBundleIdentifierWithEntitlements:(id)arg1 processBundleIdentifier:(id)arg2 isExtension:(BOOL)arg3;
 + (id)_sourceNameWithRepresentsCurrentDevice:(BOOL)arg1 defaultSource:(BOOL)arg2;
 + (unsigned long long)_sourceOptionsForAppEntitlements:(id)arg1;
 + (id)_sourceWithBundleIdentifier:(id)arg1 defaultBundleIdentifier:(id)arg2 appEntitlements:(id)arg3 name:(id)arg4;
 + (id)_sourceWithBundleIdentifier:(id)arg1 name:(id)arg2 productType:(id)arg3 options:(unsigned long long)arg4;
++ (id)_studyNameForResearchStudySource:(id)arg1;
 + (id)_uncachedDefaultSource;
 + (id)_uncachedDefaultSourceWithEntitlements:(id)arg1;
 + (id)defaultSource;
@@ -66,6 +68,7 @@
 - (BOOL)_isConnectedGymSource;
 - (BOOL)_isHidden;
 - (BOOL)_isPreferredSource;
+- (BOOL)_isResearchStudy;
 - (BOOL)_requiresAuthorization;
 - (void)_setBundleIdentifier:(id)arg1;
 - (void)_setName:(id)arg1;

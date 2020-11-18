@@ -36,7 +36,7 @@
 - (id)_initialState;
 - (void)_replayStateForNewObserver:(id)arg1;
 - (unsigned long long)_stateTypeForState:(id)arg1;
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)changeSettings:(id)arg1;
 - (void)checkinForNavigationService:(CDUnknownBlockType)arg1;

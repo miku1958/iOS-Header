@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     id _accessory;
     NSMapTable *_listeners;
+    NSString *_logIdentifier;
     NSMapTable *_activeBulkSendSessions;
     NSMutableDictionary *_pendingBulkSendSessionContextBySessionIdentifier;
     CDUnknownBlockType _bulkSendSessionContextFactory;
@@ -35,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
 @property (strong, nonatomic) NSMapTable *listeners; // @synthesize listeners=_listeners;
+@property (readonly, copy, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property unsigned int nextSessionIdentifier; // @synthesize nextSessionIdentifier=_nextSessionIdentifier;
 @property (readonly) NSMutableDictionary *pendingBulkSendSessionContextBySessionIdentifier; // @synthesize pendingBulkSendSessionContextBySessionIdentifier=_pendingBulkSendSessionContextBySessionIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -73,8 +75,8 @@
 - (void)dataStream:(id)arg1 didReceiveResponse:(id)arg2 header:(id)arg3 payload:(id)arg4;
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
-- (id)initWithQueue:(id)arg1 accessory:(id)arg2;
-- (id)initWithQueue:(id)arg1 accessory:(id)arg2 bulkSendSessionContextFactory:(CDUnknownBlockType)arg3;
+- (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3;
+- (id)initWithQueue:(id)arg1 accessory:(id)arg2 logIdentifier:(id)arg3 bulkSendSessionContextFactory:(CDUnknownBlockType)arg4;
 - (void)removeListener:(id)arg1;
 - (void)startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)timerDidFire:(id)arg1;

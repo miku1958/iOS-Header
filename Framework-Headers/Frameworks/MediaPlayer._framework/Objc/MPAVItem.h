@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAlternateTracks, MPMediaItem, MPModelGenericObject, MPModelPlayEvent, MPNowPlayingContentItem, MPQueueFeeder, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
+@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, ICMusicSubscriptionLeaseStatus, MPAlternateTracks, MPMediaItem, MPModelGenericObject, MPModelPlayEvent, MPNowPlayingContentItem, MPQueueFeeder, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
 @protocol MPAVItemObserver, OS_dispatch_queue;
 
 @interface MPAVItem : NSObject
@@ -48,6 +48,7 @@
     long long _likedState;
     CDStruct_1b6d18a9 _playerItemDuration;
     long long _exportableArtworkRevision;
+    BOOL _meetsPlaybackHistoryThreshold;
     BOOL _assetLoaded;
     BOOL _didAttemptToLoadAsset;
     BOOL _canReusePlayerItem;
@@ -55,6 +56,7 @@
     BOOL _supportsLikedState;
     BOOL _prefersSeekOverSkip;
     BOOL _hasProtectedContent;
+    BOOL _tailPlaceholder;
     BOOL _startItem;
     BOOL _shouldPreventPlayback;
     BOOL _allowsAirPlayFromCloud;
@@ -82,6 +84,8 @@
     NSString *_storeFrontIdentifier;
     NSNumber *_storeAccountID;
     NSNumber *_useListeningHistory;
+    long long _leasePlaybackPreventionState;
+    ICMusicSubscriptionLeaseStatus *_leaseStatus;
     NSString *_contentItemID;
 }
 
@@ -156,6 +160,8 @@
 @property (readonly, nonatomic) BOOL isAd;
 @property BOOL isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
 @property (strong, nonatomic) NSError *itemError; // @synthesize itemError=_itemError;
+@property (readonly, nonatomic) long long leasePlaybackPreventionState; // @synthesize leasePlaybackPreventionState=_leasePlaybackPreventionState;
+@property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus; // @synthesize leaseStatus=_leaseStatus;
 @property (readonly, nonatomic) NSString *libraryLyrics;
 @property (nonatomic) long long likedState;
 @property (readonly, nonatomic, getter=isLikedStateEnabled) BOOL likedStateEnabled; // @synthesize likedStateEnabled=_likedStateEnabled;
@@ -164,12 +170,14 @@
 @property (readonly, nonatomic) NSString *mainTitle;
 @property (readonly, strong, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (readonly, nonatomic) unsigned long long mediaType;
+@property (readonly, nonatomic) BOOL meetsPlaybackHistoryThreshold; // @synthesize meetsPlaybackHistoryThreshold=_meetsPlaybackHistoryThreshold;
 @property (readonly, nonatomic) MPModelGenericObject *modelGenericObject; // @synthesize modelGenericObject=_modelGenericObject;
 @property (readonly, nonatomic) MPModelPlayEvent *modelPlayEvent;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (weak, nonatomic) id<MPAVItemObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) unsigned long long persistentID;
 @property (readonly, nonatomic) NSString *personID;
+@property (readonly, nonatomic, getter=isPlaceholder) BOOL placeholder;
 @property (readonly, nonatomic) double playableDuration;
 @property (readonly, nonatomic) double playableDurationIfAvailable;
 @property (readonly, copy, nonatomic) NSError *playbackError;
@@ -203,6 +211,7 @@
 @property (readonly, nonatomic) BOOL supportsRadioTrackActions;
 @property (readonly, nonatomic) BOOL supportsRating;
 @property (readonly, nonatomic) BOOL supportsRewindAndFastForward15Seconds;
+@property (readonly, nonatomic, getter=isTailPlaceholder) BOOL tailPlaceholder; // @synthesize tailPlaceholder=_tailPlaceholder;
 @property (readonly, nonatomic) double timeOfSeekableEnd;
 @property (readonly, nonatomic) double timeOfSeekableStart;
 @property (readonly, nonatomic) struct OpaqueCMTimebase *timebase;
@@ -263,6 +272,7 @@
 - (void)_updateSoundCheckVolumeNormalizationForPlayerItem;
 - (void)_willBecomeActivePlayerItem;
 - (void)_willResignActivePlayerItem;
+- (long long)albumYear;
 - (unsigned long long)alternatesCountForTypes:(unsigned long long)arg1;
 - (void)applyVolumeNormalizationWithSoundCheckEnabled:(BOOL)arg1;
 - (CDUnknownBlockType)artworkCatalogBlock;
@@ -272,6 +282,7 @@
 - (id)chapterTimeMarkerForTime:(double)arg1;
 - (id)closedCaptionTimeMarkerForTime:(double)arg1;
 - (void)dealloc;
+- (void)disableItemReuse;
 - (double)durationInSeconds;
 - (void)flushNowPlayingCaches;
 - (BOOL)hasAlternatesForTypes:(unsigned long long)arg1;
@@ -300,6 +311,7 @@
 - (void)setAlternateAudioTrackID:(int)arg1;
 - (void)setAlternateAudioTrackLocale:(id)arg1;
 - (void)setLikedState:(long long)arg1 forUserIdentity:(id)arg2;
+- (void)setMeetsPlaybackHistoryThresholdForElapsedTime:(double)arg1 startTime:(double)arg2;
 - (void)setOverrideDuration:(double)arg1;
 - (void)setPlaybackCheckpointCurrentTime:(double)arg1;
 - (void)setPlaybackFinishedTime:(double)arg1;

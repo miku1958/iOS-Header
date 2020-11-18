@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double contentsScaleFactor; // @synthesize contentsScaleFactor=_contentsScaleFactor;
 @property (readonly, nonatomic) struct CGAffineTransform contentsTransform; // @synthesize contentsTransform=_contentsTransform;
 
-+ (id)layoutForSource:(id)arg1 inTarget:(id)arg2;
++ (id)layoutForSource:(id)arg1 inTarget:(id)arg2 withSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
 - (struct CGImage *)CGImageContents;
 - (void)_materializeContentsIfNeeded;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (BOOL)hasCGImageContents;
 - (BOOL)hasContents;
-- (id)initWithSource:(id)arg1 target:(id)arg2;
+- (id)initWithSource:(id)arg1 target:(id)arg2 withSize:(struct CGSize)arg3;
 - (BOOL)rendersContentsAtNaturalSize;
 
 @end

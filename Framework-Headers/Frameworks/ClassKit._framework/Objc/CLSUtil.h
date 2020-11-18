@@ -22,6 +22,8 @@
 + (id)pathFromData:(id)arg1;
 + (id)percentNumberFormatter;
 + (id)percentageStringFromNumber:(id)arg1;
++ (void)postNotification:(char *)arg1;
++ (void)postNotificationAsync:(char *)arg1;
 + (id)stringFromTimeInterval:(double)arg1;
 
 @end

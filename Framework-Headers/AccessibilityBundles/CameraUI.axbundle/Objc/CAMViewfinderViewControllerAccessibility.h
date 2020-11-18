@@ -16,13 +16,18 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axUpdateForGraphConfiguration;
 - (void)_axUpdateInternalMotionManager;
+- (void)_embedCTMDescriptionOverlayView;
+- (void)_embedPortraitModeDescriptionOverlayViewWithLayoutStyle:(long long)arg1;
 - (void)_handleFilterButtonTapped:(id)arg1;
+- (void)_presentCameraRollViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2;
 - (void)_setCurrentGraphConfiguration:(id)arg1;
+- (BOOL)_shouldHideZoomControlForGraphConfiguration:(id)arg1;
 - (void)_updateBadgeVisibilityAnimated:(BOOL)arg1;
 - (void)_updateForShallowDepthOfFieldStatusChangedAnimated:(BOOL)arg1;
 - (void)_updateLevelMotionTracking;
 - (BOOL)accessibilityPerformMagicTap;
 - (void)controlStatusBar:(id)arg1 didReceiveTapInIndicatorForType:(unsigned long long)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

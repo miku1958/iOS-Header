@@ -6,12 +6,13 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSError, PKPasscodeUpgradeFlowController, UIViewController;
+@class NSError, PKFeatureApplication, PKPasscodeUpgradeFlowController, UIViewController;
 
 @protocol PKPaymentSetupViewControllerDelegate <NSObject>
 - (void)viewControllerDidTerminateSetupFlow:(UIViewController *)arg1;
 
 @optional
+- (void)viewController:(UIViewController *)arg1 canProceedWithInstallment:(BOOL)arg2 featureApplication:(PKFeatureApplication *)arg3 completion:(void (^)(void))arg4;
 - (void)viewController:(UIViewController *)arg1 didExitPasscodeUpgradeForPasscodeUpgradeFlowController:(PKPasscodeUpgradeFlowController *)arg2 withShouldContinue:(BOOL)arg3 error:(NSError *)arg4;
 - (void)viewController:(UIViewController *)arg1 didExitPasscodeUpgradeWithShouldContinue:(BOOL)arg2 error:(NSError *)arg3;
 - (void)viewController:(UIViewController *)arg1 didShowProvisioningError:(NSError *)arg2;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <ChatKit/CKEditableSearchResultCell.h>
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class CKSpotlightQueryResult, NSString, UIImageView, UILabel, UIVisualEffectView;
 
-@interface CKLocationSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKLocationSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
     UIImageView *_imageView;
     UILabel *_placeLabel;
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets;

@@ -6,7 +6,7 @@
 
 #import <Email/EMExtendedContentItem-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class EMMailDropMetadata, NSArray, NSString;
 
 @protocol EMMutableContentItem <EMExtendedContentItem>
 
@@ -16,9 +16,9 @@
 @property (nonatomic) long long dataTransferByteCount;
 @property (copy, nonatomic) NSString *displayName;
 @property (nonatomic) int exchangeEventUID;
-@property (strong, nonatomic) NSDate *expiryDate;
 @property (nonatomic) BOOL isAvailableLocally;
 @property (nonatomic) BOOL isSinglePagePDF;
+@property (copy, nonatomic) EMMailDropMetadata *mailDropMetadata;
 @property (nonatomic) long long storageByteCount;
 
 @end

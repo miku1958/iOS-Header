@@ -14,7 +14,7 @@
 #import <PhotoLibraryServices/PLCloudUserSessionHandling-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class CPLLibraryManager, NSDate, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLCacheDeleteSupport, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudPhotoLibraryUserSwitchHandler, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLLibraryServicesManager, PLPhotoLibrary, PLPhotoLibraryPathManager;
+@class CPLLibraryManager, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLCacheDeleteSupport, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudPhotoLibraryUserSwitchHandler, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLLibraryServicesManager, PLPhotoLibrary, PLPhotoLibraryPathManager;
 @protocol OS_dispatch_queue, OS_dispatch_source, PLCloudChangeTracker;
 
 @interface PLCloudPhotoLibraryManager : NSObject <PLCloudChangeTrackerDelegate, PLCloudPersistentHistoryMigratorContext, CPLResourceProgressDelegate, CPLLibraryManagerDelegate, PLForegroundMonitorDelegate, PLCloudUserSessionHandling, CPLStatusDelegate>
@@ -32,6 +32,7 @@
     BOOL _pushOnIdle;
     BOOL _pullOnIdle;
     BOOL _modeChangePending;
+    BOOL _hasSettledInitialBatch;
     CPLLibraryManager *_cplLibrary;
     int _pauseRequest;
     short _pauseReason;
@@ -39,7 +40,7 @@
     PLCloudResourceManager *_resourceManager;
     NSObject<OS_dispatch_source> *_unpauseDispatchTimer;
     NSObject<OS_dispatch_source> *_userUnpauseDispatchTimer;
-    NSDate *_pendingResetSyncDate;
+    long long _pendingResetSyncType;
     BOOL _initializedMaster;
     PFCoalescer *_coalescer;
     NSObject<OS_dispatch_queue> *_uploadDownloadCountQueue;
@@ -73,10 +74,10 @@
 @property (strong, nonatomic, setter=_setNumberOfVideosDownloaded:) NSNumber *_numberOfVideosDownloaded; // @synthesize _numberOfVideosDownloaded=__numberOfVideosDownloaded;
 @property (strong, nonatomic, setter=_setNumberOfVideosToPush:) NSNumber *_numberOfVideosToPush; // @synthesize _numberOfVideosToPush=__numberOfVideosToPush;
 @property (readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
+@property (readonly, nonatomic) long long currentResetSyncType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL inResetSync;
 @property (readonly, weak, nonatomic) PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
 @property (readonly, nonatomic) PLPhotoLibraryPathManager *pathManager;
 @property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;

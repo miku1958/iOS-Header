@@ -63,7 +63,7 @@
 - (id)statusAsDictionary;
 - (BOOL)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(id)arg1 keysToRemove:(id)arg2;
-- (void)warmup;
+- (void)warmupWithProgressBlock:(CDUnknownBlockType)arg1;
 
 @end
 

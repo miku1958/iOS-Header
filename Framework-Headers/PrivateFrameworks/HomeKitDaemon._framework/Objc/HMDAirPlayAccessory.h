@@ -37,6 +37,7 @@
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_handleUpdatedName:(id)arg1;
 - (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)advertisement;
 - (id)backingStoreObjects:(long long)arg1;
@@ -46,7 +47,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
-- (void)handleUpdatedName:(id)arg1;
 - (void)handleUpdatedPassword:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;

@@ -21,6 +21,7 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)emitDialogOutputEventWith:(id)arg1 canUseServerTTS:(BOOL)arg2 spokenDialogOutput:(id)arg3 displayedDialogOutput:(id)arg4;
 - (void)emitFinalSpeechTranscriptionEventWith:(id)arg1;
 - (void)emitInstrumentation:(id)arg1;
 - (void)emitPartialSpeechTranscriptionEventWith:(id)arg1;

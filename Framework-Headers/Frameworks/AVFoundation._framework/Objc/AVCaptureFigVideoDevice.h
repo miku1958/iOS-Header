@@ -127,6 +127,7 @@ __attribute__((visibility("hidden")))
     BOOL _nonDestructiveCropEnabled;
     long long _nonDestructiveCropAspectRatio;
     BOOL _geometricDistortionCorrectionEnabled;
+    BOOL _globalToneMappingEnabled;
 }
 
 + (BOOL)_cameraAccessIsEnabled;
@@ -189,6 +190,7 @@ __attribute__((visibility("hidden")))
 - (void)_setFlashAvailable:(BOOL)arg1;
 - (void)_setFlashSceneDetectedForPhotoOutput:(BOOL)arg1;
 - (int)_setFocusWithMode:(long long)arg1 lensPosition:(float)arg2 requestID:(int)arg3;
+- (void)_setGlobalToneMappingEnabledInternal:(BOOL)arg1;
 - (void)_setHighDynamicRangeScene:(BOOL)arg1;
 - (void)_setImageControlMode:(long long)arg1;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1;

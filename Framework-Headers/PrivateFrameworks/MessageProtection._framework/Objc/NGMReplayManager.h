@@ -17,7 +17,8 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (id)computeDestinationHashWithIdentityKey:(id)arg1 sendingIdentity:(id)arg2 outgoing:(BOOL)arg3;
+- (id)computeDestinationHashForIncomingMessageFrom:(id)arg1 toLocalKey:(id)arg2;
+- (id)computeDestinationHashForOutgoingMessageTo:(id)arg1 withLocalKey:(id)arg2;
 - (unsigned int)counterForDestinationWithIdentityKey:(id)arg1 sendingIdentity:(id)arg2 error:(id *)arg3 success:(BOOL *)arg4;
 - (id)dbNameFromProcess;
 - (BOOL)deleteExpiredSendingDestinations;

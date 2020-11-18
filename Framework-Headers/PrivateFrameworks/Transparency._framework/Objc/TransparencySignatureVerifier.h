@@ -10,11 +10,14 @@
 
 @interface TransparencySignatureVerifier : NSObject
 {
+    BOOL _needsRefresh;
     NSDictionary *_trustedKeys;
 }
 
+@property BOOL needsRefresh; // @synthesize needsRefresh=_needsRefresh;
 @property (strong) NSDictionary *trustedKeys; // @synthesize trustedKeys=_trustedKeys;
 
++ (int)protoAlgorithmForSecKeyAlgorithm:(struct __CFString *)arg1;
 + (const struct __CFString *)secKeyAlgorithmForProtoAlgorithm:(int)arg1;
 + (BOOL)verifyMessage:(id)arg1 signature:(id)arg2 spkiHash:(id)arg3 trustedKeys:(id)arg4 algorithm:(struct __CFString *)arg5 error:(id *)arg6;
 - (void).cxx_destruct;

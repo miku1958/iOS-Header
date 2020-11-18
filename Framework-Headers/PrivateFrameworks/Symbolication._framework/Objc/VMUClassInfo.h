@@ -71,7 +71,7 @@
 - (void)_demangleClassName;
 - (void)_freeLocalIvarList;
 - (void)_identifyObjCClassStructureBlocksForIsa:(unsigned long long)arg1 isMetaclass:(BOOL)arg2 withScanner:(id)arg3 addressIdentifierBlock:(CDUnknownBlockType)arg4;
-- (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(BOOL)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef)arg4 type:(unsigned int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg6 memoryReader:(CDUnknownBlockType)arg7;
+- (id)_initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 realizedOnly:(BOOL)arg3 infoMap:(id)arg4 objectIdentifier:(id)arg5 reader:(CDUnknownBlockType)arg6;
 - (void)_logDescriptionWithSuperclasses:(BOOL)arg1 indentation:(int)arg2 toLogger:(CDUnknownBlockType)arg3;
 - (void)_parseIvarsAndLayouts;
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
@@ -103,11 +103,11 @@
 - (unsigned long long)hash;
 - (void)identifyObjCClassStructureBlocksWithScanner:(id)arg1 addressIdentifierBlock:(CDUnknownBlockType)arg2;
 - (id)initSwiftClassWithName:(id)arg1 classInfoType:(unsigned int)arg2 size:(unsigned long long)arg3;
-- (id)initWithClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
+- (id)initWithClass:(unsigned long long)arg1 type:(unsigned int)arg2 infoMap:(id)arg3 objectIdentifier:(id)arg4 reader:(CDUnknownBlockType)arg5;
 - (id)initWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 - (id)initWithClosureContext:(unsigned long long)arg1 typeInfo:(struct swift_typeinfo)arg2 infoMap:(id)arg3 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRealizedClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
+- (id)initWithRealizedClass:(unsigned long long)arg1 type:(unsigned int)arg2 infoMap:(id)arg3 objectIdentifier:(id)arg4 reader:(CDUnknownBlockType)arg5;
 - (id)initWithSerializer:(id)arg1 classMap:(id)arg2 version:(unsigned int)arg3;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 memoryReader:(CDUnknownBlockType)arg3;
 - (id)instanceSpecificInfoForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 withScanner:(id)arg3 memoryReader:(CDUnknownBlockType)arg4;

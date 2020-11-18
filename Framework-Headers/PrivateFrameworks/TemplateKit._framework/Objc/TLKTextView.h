@@ -27,6 +27,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)setText:(id)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateAttributedString;
 - (void)urlify;
 
 @end

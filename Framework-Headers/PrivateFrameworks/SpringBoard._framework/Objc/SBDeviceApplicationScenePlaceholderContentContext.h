@@ -14,6 +14,7 @@
 
 @interface SBDeviceApplicationScenePlaceholderContentContext : NSObject <SBScenePlaceholderContentContext, NSMutableCopying>
 {
+    long long _layoutEnvironment;
     id<SBActivationSettings> _settings;
     NSString *_requestedLaunchIdentifier;
     NSURL *_url;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long layoutEnvironment; // @synthesize layoutEnvironment=_layoutEnvironment;
 @property (nonatomic) unsigned long long preferredContentType; // @synthesize preferredContentType=_preferredContentType;
 @property (nonatomic) BOOL prefersLiveXIB; // @synthesize prefersLiveXIB=_prefersLiveXIB;
 @property (copy, nonatomic) NSString *requestedLaunchIdentifier; // @synthesize requestedLaunchIdentifier=_requestedLaunchIdentifier;

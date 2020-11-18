@@ -45,6 +45,7 @@
 - (void)limitedUINotification:(id)arg1;
 - (void)postMessageOverlayIfNecessary;
 - (void)refreshTableViewHeaderWithSize:(struct CGSize)arg1;
+- (void)setupDataSource;
 - (void)showContactListTableView;
 - (void)showOverlayView;
 - (void)updateLimitedUI;

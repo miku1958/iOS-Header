@@ -13,14 +13,17 @@
 @interface GEOTileSet : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_baseURL;
     NSMutableArray *_countryRegionWhitelists;
+    NSMutableArray *_deviceSKUWhitelists;
     NSString *_localizationURL;
     NSString *_multiTileURL;
     NSMutableArray *_supportedLanguages;
     NSMutableArray *_validVersions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _alternativeMultipathTCPPort;
     int _checksumType;
     unsigned int _dataSet;
@@ -44,6 +47,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_baseURL:1;
         unsigned int read_countryRegionWhitelists:1;
+        unsigned int read_deviceSKUWhitelists:1;
         unsigned int read_localizationURL:1;
         unsigned int read_multiTileURL:1;
         unsigned int read_supportedLanguages:1;
@@ -51,6 +55,7 @@
         unsigned int wrote_unknownFields:1;
         unsigned int wrote_baseURL:1;
         unsigned int wrote_countryRegionWhitelists:1;
+        unsigned int wrote_deviceSKUWhitelists:1;
         unsigned int wrote_localizationURL:1;
         unsigned int wrote_multiTileURL:1;
         unsigned int wrote_supportedLanguages:1;
@@ -74,6 +79,7 @@
 @property (nonatomic) int checksumType;
 @property (strong, nonatomic) NSMutableArray *countryRegionWhitelists;
 @property (nonatomic) unsigned int dataSet;
+@property (strong, nonatomic) NSMutableArray *deviceSKUWhitelists;
 @property (nonatomic) BOOL hasAlternativeMultipathTCPPort;
 @property (readonly, nonatomic) BOOL hasBaseURL;
 @property (nonatomic) BOOL hasChecksumType;
@@ -100,6 +106,7 @@
 @property (strong, nonatomic) NSMutableArray *validVersions;
 
 + (Class)countryRegionWhitelistType;
++ (Class)deviceSKUWhitelistType;
 + (BOOL)isValid:(id)arg1;
 + (Class)supportedLanguageType;
 + (Class)validVersionType;
@@ -111,19 +118,23 @@
 - (int)StringAsStyle:(id)arg1;
 - (int)StringAsUpdateBehavior:(id)arg1;
 - (void)_addNoFlagsCountryRegionWhitelist:(id)arg1;
+- (void)_addNoFlagsDeviceSKUWhitelist:(id)arg1;
 - (void)_addNoFlagsSupportedLanguage:(id)arg1;
 - (void)_addNoFlagsValidVersion:(id)arg1;
 - (void)_readBaseURL;
 - (void)_readCountryRegionWhitelists;
+- (void)_readDeviceSKUWhitelists;
 - (void)_readLocalizationURL;
 - (void)_readMultiTileURL;
 - (void)_readSupportedLanguages;
 - (void)_readValidVersions;
 - (void)addCountryRegionWhitelist:(id)arg1;
+- (void)addDeviceSKUWhitelist:(id)arg1;
 - (void)addSupportedLanguage:(id)arg1;
 - (void)addValidVersion:(id)arg1;
 - (id)checksumTypeAsString:(int)arg1;
 - (void)clearCountryRegionWhitelists;
+- (void)clearDeviceSKUWhitelists;
 - (void)clearSupportedLanguages;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearValidVersions;
@@ -132,8 +143,12 @@
 - (id)countryRegionWhitelistAtIndex:(unsigned long long)arg1;
 - (unsigned long long)countryRegionWhitelistsCount;
 - (id)description;
+- (id)deviceSKUWhitelistAtIndex:(unsigned long long)arg1;
+- (unsigned long long)deviceSKUWhitelistsCount;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

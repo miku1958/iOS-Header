@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <ChatKit/CKEditableSearchResultCell.h>
 
 #import <ChatKit/CKSearchResultCell-Protocol.h>
 
 @class LPLinkMetadata, LPLinkView, NSString;
 
-@interface CKLinkSearchResultCell : UICollectionViewCell <CKSearchResultCell>
+@interface CKLinkSearchResultCell : CKEditableSearchResultCell <CKSearchResultCell>
 {
     NSString *_identifier;
     LPLinkView *_linkView;
@@ -20,6 +20,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEditing) BOOL editing;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;

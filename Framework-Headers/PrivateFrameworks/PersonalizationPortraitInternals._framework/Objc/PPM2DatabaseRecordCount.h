@@ -14,9 +14,7 @@
 {
     unsigned int _schemaVersion;
     NSString *_tableName;
-    struct {
-        unsigned int schemaVersion:1;
-    } _has;
+    CDStruct_278ffb8f _has;
 }
 
 @property (nonatomic) BOOL hasSchemaVersion;

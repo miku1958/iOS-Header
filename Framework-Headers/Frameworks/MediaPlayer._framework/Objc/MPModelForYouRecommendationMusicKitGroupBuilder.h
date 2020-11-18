@@ -39,8 +39,8 @@
 - (void).cxx_destruct;
 - (id)initWithRequestedGroupPropertySet:(id)arg1 requestedItemPropertySet:(id)arg2 storeItemMetadataResults:(id)arg3 flatSectionedItems:(id)arg4 storeBagDictionary:(id)arg5;
 - (void)initializeRequestedGroupProperties;
-- (id)modelObjectForRecentlyPlayedArray:(id)arg1;
-- (id)modelObjectForRecommendationDictionary:(id)arg1;
+- (id)modelObjectForRecentlyPlayedArray:(id)arg1 userIdentity:(id)arg2;
+- (id)modelObjectForRecommendationDictionary:(id)arg1 userIdentity:(id)arg2;
 
 @end
 

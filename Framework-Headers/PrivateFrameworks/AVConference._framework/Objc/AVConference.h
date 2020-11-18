@@ -79,6 +79,7 @@
 - (id)initWithClientUUID:(id)arg1 transportType:(unsigned int)arg2;
 - (long long)initializeNewCall;
 - (long long)initializeNewCallWithDeviceRole:(int)arg1;
+- (long long)initializeNewCallWithDeviceRole:(int)arg1 reportingHierarchyToken:(id)arg2;
 - (void)inviteDictionaryForCallID:(long long)arg1 remoteInviteDictionary:(id)arg2 nonCellularCandidateTimeout:(double)arg3 block:(CDUnknownBlockType)arg4 queue:(id)arg5;
 - (long long)lastActiveCallID;
 - (void)listenForNotifications;

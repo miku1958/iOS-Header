@@ -35,6 +35,7 @@
 + (id)applicationBundleIdentifier;
 + (id)bundleIdentifier;
 + (id)contentAttributes;
++ (BOOL)drivenByUserInteraction;
 + (unsigned long long)elementContentMode;
 + (CDStruct_2ec95fd7)minimumSupportedSystemVersion;
 + (id)overrideDataSourceImage;

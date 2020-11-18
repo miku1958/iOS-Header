@@ -14,6 +14,7 @@
 - (BOOL)groupView:(PKPassGroupView *)arg1 deleteButtonEnabledForPass:(PKPass *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 deleteButtonPressedForPass:(PKPass *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 didUpdatePassView:(PKPassView *)arg2;
+- (void)groupView:(PKPassGroupView *)arg1 faceViewFrameDidChangeForFrontmostPassView:(PKPassView *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 frontmostPassViewDidChange:(PKPassView *)arg2 withContext:(PKPassPresentationContext *)arg3;
 - (void)groupView:(PKPassGroupView *)arg1 panned:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (long long)groupViewContentModeForFrontmostPassWhenPiled:(PKPassGroupView *)arg1 withDefaultContentMode:(long long)arg2;

@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) struct CGPoint zoomScaleDimension; // @synthesize zoomScaleDimension=_zoomScaleDimension;
 @property (readonly, nonatomic) struct CGPoint zoomedTargetIconCenter; // @synthesize zoomedTargetIconCenter=_zoomedTargetIconCenter;
 
++ (BOOL)validateAnimationContainer:(id)arg1 targetIcon:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyIconGridFadeFraction:(double)arg1;
 - (void)_applyVisualAltitudeFraction:(double)arg1;

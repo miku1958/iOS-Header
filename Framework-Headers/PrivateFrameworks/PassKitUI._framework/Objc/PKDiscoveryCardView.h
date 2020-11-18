@@ -21,20 +21,20 @@
     PKDiscoveryCallToActionFooterView *_ctaFooterView;
     UITapGestureRecognizer *_tapRecognizer;
     PKContinuousButton *_dismissButton;
-    BOOL _dismissable;
     BOOL _removing;
     BOOL _hasSafeAreaInsetOverride;
     PKDiscoveryArticleLayout *_articleLayout;
     id<PKDiscoveryCardViewDelegate> _delegate;
     long long _displayType;
     CDUnknownBlockType _callToActionTappedOverride;
+    CDUnknownBlockType _dismissAction;
     struct UIEdgeInsets _safeAreaOverrideInsets;
 }
 
 @property (strong, nonatomic) PKDiscoveryArticleLayout *articleLayout; // @synthesize articleLayout=_articleLayout;
 @property (copy, nonatomic) CDUnknownBlockType callToActionTappedOverride; // @synthesize callToActionTappedOverride=_callToActionTappedOverride;
 @property (weak, nonatomic) id<PKDiscoveryCardViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isDismissable) BOOL dismissable; // @synthesize dismissable=_dismissable;
+@property (copy, nonatomic) CDUnknownBlockType dismissAction; // @synthesize dismissAction=_dismissAction;
 @property (nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (nonatomic) BOOL hasSafeAreaInsetOverride; // @synthesize hasSafeAreaInsetOverride=_hasSafeAreaInsetOverride;
 @property (nonatomic, getter=isRemoving) BOOL removing; // @synthesize removing=_removing;
@@ -58,7 +58,7 @@
 - (void)_updateForDisplayType;
 - (double)_yOffsetToHeadingLabel;
 - (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3;
-- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 dismissable:(BOOL)arg4 callToActionTappedOverride:(CDUnknownBlockType)arg5;
+- (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 callToActionTappedOverride:(CDUnknownBlockType)arg4;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tapGestureRecognized:(id)arg1;

@@ -8,12 +8,13 @@
 
 #import <MapsSupport/MSPCloudNotificationReceiver-Protocol.h>
 
-@class CKContainer, MSPCloudContainerCache, MSPCloudKitAccountAccess, MSPContainer, MSPJournal, NSHashTable;
+@class CKContainer, MSPCloudContainerCache, MSPCloudKitAccountAccess, MSPContainer, MSPJournal, NSError, NSHashTable, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MSPCloudContainer : NSObject <MSPCloudNotificationReceiver>
 {
     BOOL _requiresRemoteFetch;
+    BOOL _canceled;
     BOOL _hasActiveSubscription;
     BOOL _useSecureContainer;
     MSPContainer *_container;
@@ -22,6 +23,8 @@
     NSObject<OS_dispatch_queue> *_observerQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     MSPJournal *_journal;
+    NSMutableDictionary *_pendingOperations;
+    NSError *_cancelError;
     NSHashTable *_observers;
     unsigned long long _operationBatchSize;
 }
@@ -29,6 +32,8 @@
 @property (strong, nonatomic) MSPCloudKitAccountAccess *access; // @synthesize access=_access;
 @property (strong, nonatomic) MSPCloudContainerCache *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property (copy, nonatomic) NSError *cancelError; // @synthesize cancelError=_cancelError;
+@property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, nonatomic) CKContainer *ckContainer;
 @property (strong, nonatomic) MSPContainer *container; // @synthesize container=_container;
 @property (nonatomic) BOOL hasActiveSubscription; // @synthesize hasActiveSubscription=_hasActiveSubscription;
@@ -36,13 +41,17 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) unsigned long long operationBatchSize; // @synthesize operationBatchSize=_operationBatchSize;
+@property (strong, nonatomic) NSMutableDictionary *pendingOperations; // @synthesize pendingOperations=_pendingOperations;
 @property (nonatomic) BOOL useSecureContainer; // @synthesize useSecureContainer=_useSecureContainer;
 
 - (void).cxx_destruct;
 - (void)_forEachObserver:(CDUnknownBlockType)arg1;
 - (id)_modifyRecordsOperationWithRecordsToSave:(id)arg1 toDelete:(id)arg2 group:(id)arg3 modifyRecordsCompletion:(CDUnknownBlockType)arg4;
+- (void)addCKOperation:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (id)batchedOperationsFromRecords:(id)arg1 toDelete:(id)arg2 group:(id)arg3 batchSize:(unsigned long long)arg4 modifyRecordsCompletionBlock:(CDUnknownBlockType)arg5;
+- (void)cancelMergeWithError:(id)arg1;
+- (void)cancelPendingOperationsWithError:(id)arg1;
 - (void)configureCKOperation:(id)arg1 withGroup:(id)arg2;
 - (void)containerDidEraseContents;
 - (id)description;
@@ -52,6 +61,7 @@
 - (id)initWithContainer:(id)arg1 accountID:(id)arg2;
 - (id)initWithContainer:(id)arg1 cache:(id)arg2;
 - (id)initWithContainer:(id)arg1 cache:(id)arg2 access:(id)arg3;
+- (BOOL)isCanceled;
 - (void)mergeLocalChangesFromReplica:(id)arg1 withAppliedRemoteChanges:(id)arg2 group:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)mergeOptionsForEarliestKnownSyncDate:(id)arg1;
 - (void)mergeRemoteChanges:(id)arg1 withGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -59,6 +69,7 @@
 - (void)pushChanges:(id)arg1 withGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
+- (void)removePendingOperationWithID:(id)arg1;
 - (Class)replicaRecordClass;
 - (void)setupCloudContainerWithGroup:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)subscribeToChangesWithCompletion:(CDUnknownBlockType)arg1;

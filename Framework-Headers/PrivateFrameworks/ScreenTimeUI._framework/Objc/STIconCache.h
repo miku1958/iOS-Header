@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)_fetchFamilyPhotoWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_fetchImageForAppInfoIfNeeded:(id)arg1;
 - (void)_handleiTunesResponseForAppInfo:(id)arg1 response:(id)arg2 data:(id)arg3 error:(id)arg4;
-- (id)_iconForCacheKey:(id)arg1 categoryIdentifier:(id)arg2;
 - (id)_newCircleImageWithFillColor:(id)arg1 fillDiameter:(double)arg2 outlineColor:(id)arg3 outlineWidth:(double)arg4;
 - (id)_personImageWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 forceFetch:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_updateCacheWithImage:(id)arg1 bundleIdentifier:(id)arg2;
@@ -43,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)fetchPersonImageWithDSID:(id)arg1 fullName:(id)arg2 appleID:(id)arg3 forceFetch:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)imageForBundleIdentifier:(id)arg1;
-- (id)imageForCategoryIdentifier:(id)arg1 userInterfaceStyle:(long long)arg2;
+- (id)imageForCategoryIdentifier:(id)arg1;
 - (id)init;
 - (id)monogramImageForNameComponents:(id)arg1;
 - (id)personImageWithDSID:(id)arg1 fullName:(id)arg2;

@@ -6,15 +6,9 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate, NSOrderedSet, NSString;
-
 @interface _TtC16HealthExperience4Feed : NSManagedObject
 {
 }
-
-@property (nonatomic, copy) NSDate *dateUpdated; // @dynamic dateUpdated;
-@property (nonatomic, copy) NSString *kindRawValue; // @dynamic kindRawValue;
-@property (nonatomic, strong) NSOrderedSet *sections; // @dynamic sections;
 
 - (id)initWithEntity:(id)arg1 insertIntoManagedObjectContext:(id)arg2;
 

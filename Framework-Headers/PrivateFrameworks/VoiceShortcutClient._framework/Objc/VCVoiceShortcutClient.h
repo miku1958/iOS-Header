@@ -56,7 +56,7 @@
 - (void)getVoiceShortcutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleXPCConnectionInterruption;
 - (void)handleXPCConnectionInvalidation;
-- (BOOL)hasRunEventsInTheLast30DaysWithError:(id *)arg1;
+- (BOOL)hasRunEventsInTheLast5DaysWithError:(id *)arg1;
 - (id)initWithListenerEndpoint:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithXPCConnection:(id)arg1;
@@ -74,6 +74,7 @@
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 resolvedActivityItems:(id)arg2 hostBundleIdentifier:(id)arg3 error:(id *)arg4;
 - (void)subscribeToVoiceShortcutDataUpdateNotifications;
 - (id)synchronousRemoteDataStoreWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)unregisterTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)unsafePopConnectionErrorHandlers;
 - (void)unsafeSetupXPCConnection;
 - (void)unsubscribeFromVoiceShortcutDataUpdateNotifications;

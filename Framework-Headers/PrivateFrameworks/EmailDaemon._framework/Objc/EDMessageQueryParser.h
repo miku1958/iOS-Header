@@ -10,10 +10,10 @@
 
 @interface EDMessageQueryParser : NSObject
 {
-    EDMessageQueryTransformer *_transformer;
     EDSearchableIndex *_searchableIndex;
     EFSQLObjectPropertyMapper *_sqlPropertyMapper;
     EFSearchableIndexObjectPropertyMapper *_searchableIndexMapper;
+    EDMessageQueryTransformer *_transformer;
 }
 
 @property (readonly, nonatomic) EDSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;

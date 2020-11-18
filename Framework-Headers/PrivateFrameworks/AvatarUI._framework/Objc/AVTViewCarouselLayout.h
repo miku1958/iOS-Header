@@ -12,12 +12,14 @@
 
 @interface AVTViewCarouselLayout : NSObject <AVTViewCarouselLayout>
 {
+    BOOL _fillContainer;
     struct CGSize _avtViewAspectRatio;
 }
 
 @property (readonly, nonatomic) struct CGSize avtViewAspectRatio; // @synthesize avtViewAspectRatio=_avtViewAspectRatio;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL fillContainer; // @synthesize fillContainer=_fillContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFAccountLoginViewController.h>
+#import <ActionKitUI/WFAccountLoginViewController.h>
 
 #import <ActionKitUI/UITableViewDataSource-Protocol.h>
 #import <ActionKitUI/UITableViewDelegate-Protocol.h>

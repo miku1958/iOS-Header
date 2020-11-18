@@ -28,6 +28,7 @@
 - (float)computeSATScore:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)getMaxSpeakerVectorsToPersist;
+- (float)getRejectLoggingThreshold;
 - (unsigned long long)getSATVectorCount;
 - (float)getSatThreshold;
 - (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;

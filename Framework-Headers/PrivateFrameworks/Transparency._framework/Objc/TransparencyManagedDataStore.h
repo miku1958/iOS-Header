@@ -10,13 +10,12 @@
 
 @interface TransparencyManagedDataStore : NSObject
 {
-    struct os_unfair_lock_s contextLock;
     NSManagedObjectContext *_context;
     NSPersistentContainer *_persistentContainer;
     _Atomic long long _sequenceId;
 }
 
-@property (strong) NSManagedObjectContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 @property (strong) NSPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
 @property _Atomic long long sequenceId; // @synthesize sequenceId=_sequenceId;
 
@@ -26,6 +25,8 @@
 - (void).cxx_destruct;
 - (id)bundleURL;
 - (BOOL)clearState:(id *)arg1;
+- (BOOL)clearStateForApplication:(id)arg1 error:(id *)arg2;
+- (id)copyStatistics:(id *)arg1;
 - (unsigned long long)countOutstandingRequestsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countOutstandingSMTsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countOutstandingSTHsForApplication:(id)arg1 error:(id *)arg2;
@@ -34,7 +35,7 @@
 - (unsigned long long)countTotalSTHsForApplication:(id)arg1 error:(id *)arg2;
 - (id)createRequest;
 - (id)createRequestFailure;
-- (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 syncedData:(id)arg5 queryResponse:(id)arg6 type:(unsigned long long)arg7 error:(id *)arg8;
+- (id)createRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 serverData:(id)arg4 syncedData:(id)arg5 queryRequest:(id)arg6 queryResponse:(id)arg7 type:(unsigned long long)arg8 error:(id *)arg9;
 - (id)createSignedMutationTimestamp:(id)arg1 mutationMs:(unsigned long long)arg2 receiptTime:(double)arg3;
 - (id)createSignedMutationTimestampsFailure;
 - (id)createSignedTreeHeadFailure;
@@ -42,29 +43,45 @@
 - (long long)currentSequenceId:(id *)arg1;
 - (void)deleteCompletedRequest:(id)arg1;
 - (void)deleteObject:(id)arg1;
+- (void)deleteObjectSet:(id)arg1;
+- (BOOL)deleteSMTs:(id)arg1 mutationTimeLessThan:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)deleteSTHs:(id)arg1 logBeginMsLessThan:(unsigned long long)arg2 error:(id *)arg3;
 - (id)fetchCompletedRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (id)fetchPendingSMTsForUri:(id)arg1 uri:(id)arg2 accountId:(id)arg3 error:(id *)arg4;
 - (id)fetchRequestForUUID:(id)arg1 error:(id *)arg2;
-- (id)fetchRequestForUUID:(id)arg1 uri:(id)arg2 error:(id *)arg3;
+- (id)fetchRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 loggableDatas:(id)arg4 youngerThan:(id)arg5 error:(id *)arg6;
 - (id)fetchRequestsForURI:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestsWithPendingResponses:(id)arg1 error:(id *)arg2;
+- (id)fetchRequestsWithPendingSMTs:(id)arg1 error:(id *)arg2;
 - (id)fetchSMTsWithUnverifiedSignature:(id)arg1 error:(id *)arg2;
-- (id)fetchUrisWithPendingSMTs:(id)arg1 error:(id *)arg2;
 - (void)garbageCollectRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (id)init;
 - (BOOL)logMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logRequestMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSMTMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSTHMetricsForApplication:(id)arg1 error:(id *)arg2;
+- (BOOL)performAndWaitForRequestId:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
+- (void)performOnBatchesOfEntity:(id)arg1 predicate:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
+- (void)performOnRequestsForPredicate:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)persistAndRefaultObject:(id)arg1 error:(id *)arg2;
 - (BOOL)persistWithError:(id *)arg1;
 - (void)refaultObject:(id)arg1;
+- (unsigned long long)requestCount:(id *)arg1;
+- (unsigned long long)requestFailureCount:(id *)arg1;
 - (id)requestFailures:(id *)arg1;
 - (id)requests:(id *)arg1;
+- (BOOL)resetRequestsToPending:(id)arg1 error:(id *)arg2;
+- (unsigned long long)signedMutationTimestampCount:(id *)arg1;
 - (id)signedMutationTimestamps:(id *)arg1;
+- (unsigned long long)signedMutationTimestampsFailureCount:(id *)arg1;
 - (id)signedMutationTimestampsFailures:(id *)arg1;
+- (unsigned long long)signedTreeHeadFailureCount:(id *)arg1;
 - (id)signedTreeHeadFailures:(id *)arg1;
+- (unsigned long long)treeHeadCount:(id *)arg1;
 - (id)treeHeads:(id *)arg1;
+- (id)treeHeadsForApplication:(id)arg1 error:(id *)arg2;
 
 @end
 

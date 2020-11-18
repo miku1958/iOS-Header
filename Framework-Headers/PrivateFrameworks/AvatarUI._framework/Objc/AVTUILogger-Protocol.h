@@ -66,7 +66,7 @@
 - (void)logDidFinishEditingWithSuccess;
 - (void)logDidResetZoneWithSuccess:(BOOL)arg1 error:(NSString *)arg2;
 - (void)logDiscoveredDuplicates:(NSString *)arg1 count:(unsigned long long)arg2;
-- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1;
+- (void)logDispatchingRemoteChangeWithTransactionCount:(unsigned long long)arg1 handlersCount:(unsigned long long)arg2;
 - (void)logDonePreLoadingPreset:(NSString *)arg1 task:(NSString *)arg2;
 - (void)logDonePreLoadingThumbnailForPreLoadingTask:(NSString *)arg1;
 - (void)logDroppingUnsupportedAvatarRecord:(NSString *)arg1;
@@ -136,6 +136,7 @@
 - (void)logParsingMetadataDefinitionsError:(NSString *)arg1;
 - (void)logPerformTransition:(NSString *)arg1;
 - (void)logPerformedRecentStickersMigration:(BOOL)arg1;
+- (void)logPersistentChangeNotOfInterest:(NSString *)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(NSArray *)arg1;
 - (void)logPreLoadingNeededForIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)logPreLoadingPreset:(NSString *)arg1 task:(NSString *)arg2;

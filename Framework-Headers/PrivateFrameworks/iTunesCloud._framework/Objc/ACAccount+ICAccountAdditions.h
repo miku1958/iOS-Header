@@ -21,6 +21,7 @@
 @property (readonly, copy, nonatomic) NSArray *ic_homeUserIdentifiers;
 @property (copy, nonatomic, setter=ic_setLastName:) NSString *ic_lastName;
 @property (readonly, nonatomic, getter=ic_isLocalAccount) BOOL ic_localAccount;
+@property (readonly, nonatomic, getter=ic_isManageable) BOOL ic_manageable;
 @property (nonatomic, getter=ic_isManagedAppleID, setter=ic_setManagedAppleID:) BOOL ic_managedAppleID;
 @property (copy, nonatomic, setter=ic_setMergeWithCloudLibraryPreference:) NSNumber *ic_mergeWithCloudLibraryPreference;
 @property (copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;

@@ -51,10 +51,10 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailable;
+- (void)_actuateTapticFeedback;
 - (BOOL)_createDecorationIconViewIfNecessary;
 - (CDStruct_c3b9c2ee)_permittedValueRange;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateOffState;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;

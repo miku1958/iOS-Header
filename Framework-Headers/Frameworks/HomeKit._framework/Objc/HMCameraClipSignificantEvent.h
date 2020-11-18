@@ -20,6 +20,7 @@
     unsigned long long _confidenceLevel;
 }
 
+@property (readonly) BOOL canAskForUserFeedback;
 @property (readonly) unsigned long long confidenceLevel; // @synthesize confidenceLevel=_confidenceLevel;
 @property (readonly, copy) NSDate *dateOfOccurrence; // @synthesize dateOfOccurrence=_dateOfOccurrence;
 @property (readonly) unsigned long long reason; // @synthesize reason=_reason;

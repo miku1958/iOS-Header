@@ -33,6 +33,7 @@
 - (void)handleServerReconnect;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 - (void)pickRoute:(id)arg1;
+- (void)pickRouteWhenAvailableWithUniqueIdentifier:(id)arg1;
 - (void)pickRouteWithUniqueIdentifier:(id)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)requeryRoutes;

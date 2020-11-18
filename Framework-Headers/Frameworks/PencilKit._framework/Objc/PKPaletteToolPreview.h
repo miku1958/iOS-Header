@@ -68,6 +68,7 @@
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)showPreviewForToolWithInk:(id)arg1;
+- (void)showPreviewForToolWithInk:(id)arg1 animated:(BOOL)arg2;
 - (void)toggleColorSelectionPopover;
 - (void)updateConstraints;
 

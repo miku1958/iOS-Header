@@ -26,7 +26,6 @@
 @property (nonatomic) BOOL attachSetupHeader; // @synthesize attachSetupHeader=_attachSetupHeader;
 @property (strong, nonatomic) AKAppleIDAuthenticationContext *authContext; // @synthesize authContext=_authContext;
 
-+ (unsigned char)_isUsingV2Flows;
 - (void).cxx_destruct;
 - (id)_account;
 - (id)_accountStore;
@@ -38,17 +37,18 @@
 - (id)_fresnoPayloadWithAdditionalPayload:(id)arg1;
 - (id)_grandSlamAccount;
 - (id)_grandSlamSigner;
-- (id)_pushToken;
 - (void)_resourceLoadDelegate:(CDUnknownBlockType)arg1;
 - (id)_serviceOwnersManager;
-- (id)_urlForEventType:(id)arg1;
+- (id)_urlEndpointForEventType:(id)arg1;
+- (void)_urlForEventType:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addFresnoHeadersToRequest:(id)arg1;
 - (void)addFresnoHeadersToRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addFresnoPayloadToRequest:(id)arg1 additionalPayload:(id)arg2;
 - (void)addPayload:(id)arg1 toRequest:(id)arg2;
 - (id)initWithAccount:(id)arg1;
+- (void)pushTokenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
-- (id)requestForContext:(id)arg1;
+- (void)requestForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

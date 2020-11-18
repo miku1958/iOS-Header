@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (void)createBodyContentViews;
 - (void)setBottomRightItem:(long long)arg1;
 

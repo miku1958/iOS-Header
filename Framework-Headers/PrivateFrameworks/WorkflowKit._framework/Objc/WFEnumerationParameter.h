@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSArray *displayNames; // @synthesize displayNames=_displayNames;
 @property (readonly, nonatomic) BOOL hidesAccessoryIconInEditor;
 @property (readonly, nonatomic) NSArray *possibleStates;
+@property (readonly, nonatomic) NSArray *possibleStatesForLocalization;
 @property (readonly, nonatomic) BOOL preferItemPickerSheet;
 @property (readonly, nonatomic) NSArray *staticPossibleStates; // @synthesize staticPossibleStates=_staticPossibleStates;
 

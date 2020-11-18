@@ -18,7 +18,7 @@
 @property (strong, nonatomic) WFStringParameterState *stagedState; // @synthesize stagedState=_stagedState;
 
 - (void).cxx_destruct;
-- (void)beginEditingSlotWithIdentifier:(id)arg1 fromLongPressGesture:(BOOL)arg2 sourceViewController:(id)arg3 sourceView:(id)arg4 sourceRect:(struct CGRect)arg5;
+- (void)beginEditingSlotWithIdentifier:(id)arg1 sourceViewController:(id)arg2 sourceView:(id)arg3 sourceRect:(struct CGRect)arg4;
 - (void)cancelEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)textEntryDidFinish;
 - (void)textEntryTextDidChange:(id)arg1;

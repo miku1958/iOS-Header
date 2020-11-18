@@ -10,12 +10,14 @@
 #import <MediaPlaybackCore/MPCPlayerSessionResponseBuilder-Protocol.h>
 #import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
 #import <MediaPlaybackCore/MPMiddleware-Protocol.h>
+#import <MediaPlaybackCore/_MPCStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
 @protocol MPCSupportedCommands;
 
-@interface MPCMediaRemoteMiddleware : NSObject <MPCResponseMediaRemoteControllerChaining, MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, MPMiddleware>
+@interface MPCMediaRemoteMiddleware : NSObject <MPCResponseMediaRemoteControllerChaining, MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, _MPCStateDumpPropertyListTransformable, MPMiddleware>
 {
+    BOOL _skippedMetadata;
     NSArray *_invalidationObservers;
     MPCFuture *_controllerFuture;
     MPCMediaRemoteController *_controller;
@@ -47,6 +49,7 @@
 @property (strong, nonatomic) MPSectionedCollection *queueContentItems; // @synthesize queueContentItems=_queueContentItems;
 @property (copy, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property (strong, nonatomic) MPSectionedCollection *queueModelObjects; // @synthesize queueModelObjects=_queueModelObjects;
+@property (readonly, nonatomic) BOOL skippedMetadata; // @synthesize skippedMetadata=_skippedMetadata;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -55,6 +58,7 @@
 
 - (void).cxx_destruct;
 - (float)_playbackRateForContentItem:(id)arg1;
+- (id)_stateDumpObject;
 - (id)_supportedCommands:(unsigned int)arg1 infoValueForKey:(id)arg2;
 - (id)controller:(id)arg1 chain:(id)arg2;
 - (id)init;

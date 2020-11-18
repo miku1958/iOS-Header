@@ -38,6 +38,7 @@
 - (NCNotificationSectionSettings *)notificationListComponent:(id<NCNotificationListComponent>)arg1 sectionSettingsForSectionIdentifier:(NSString *)arg2;
 - (BOOL)notificationListComponent:(id<NCNotificationListComponent>)arg1 shouldAllowInteractionsForNotificationRequest:(NCNotificationRequest *)arg2;
 - (void)notificationListComponent:(id<NCNotificationListComponent>)arg1 shouldFinishLongLookTransitionForNotificationRequest:(NCNotificationRequest *)arg2 trigger:(long long)arg3 withCompletionBlock:(void (^)(BOOL))arg4;
+- (void)notificationListComponent:(id<NCNotificationListComponent>)arg1 willDismissLongLookForCancelActionForViewController:(NCNotificationViewController *)arg2;
 - (void)notificationListComponentChangedContent:(id<NCNotificationListComponent>)arg1;
 - (void)notificationListComponentDidSignificantUserInteraction:(id<NCNotificationListComponent>)arg1;
 - (void)notificationListComponentRequestsClearingAllNotificationRequests:(id<NCNotificationListComponent>)arg1;

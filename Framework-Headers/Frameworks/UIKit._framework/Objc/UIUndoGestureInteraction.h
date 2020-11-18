@@ -11,7 +11,7 @@
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/UIInteractiveUndoHUDActionDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UILongPressGestureRecognizer, UITapGestureRecognizer, UIUndoGestureObserver, UIUndoGestureRecognizer, UIUndoPinchGestureRecognizer, UIView;
+@class NSLayoutConstraint, NSString, UIDelayedAction, UIKBTextEditingTraits, UIKBUndoInteractionHUD, UIKBUndoStateHUD, UILayoutGuide, UITapGestureRecognizer, UIUndoGestureObserver, UIUndoGestureRecognizer, UIUndoLongPressGestureRecognizer, UIUndoPinchGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIUndoGestureInteraction : NSObject <UIInteractiveUndoHUDActionDelegate, UIGestureRecognizerDelegate, UIEditingOverlayInteractionWithView, UIInteraction>
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     UITapGestureRecognizer *_threeFingerSingleTap;
     UITapGestureRecognizer *_threeFingerDoubleTap;
     UIUndoGestureRecognizer *_threeFingerSlide;
-    UILongPressGestureRecognizer *_threeFingerLongPress;
+    UIUndoLongPressGestureRecognizer *_threeFingerLongPress;
     UIUndoPinchGestureRecognizer *_threeFingerPinch;
     UIKBUndoInteractionHUD *_undoInteractiveHUD;
     UIKBUndoStateHUD *_undoStateHUD;
@@ -73,7 +73,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double remainingDistanceToTravel; // @synthesize remainingDistanceToTravel=_remainingDistanceToTravel;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *threeFingerDoubleTap; // @synthesize threeFingerDoubleTap=_threeFingerDoubleTap;
-@property (strong, nonatomic) UILongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
+@property (strong, nonatomic) UIUndoLongPressGestureRecognizer *threeFingerLongPress; // @synthesize threeFingerLongPress=_threeFingerLongPress;
 @property (strong, nonatomic) UIUndoPinchGestureRecognizer *threeFingerPinch; // @synthesize threeFingerPinch=_threeFingerPinch;
 @property (strong, nonatomic) UITapGestureRecognizer *threeFingerSingleTap; // @synthesize threeFingerSingleTap=_threeFingerSingleTap;
 @property (strong, nonatomic) UIUndoGestureRecognizer *threeFingerSlide; // @synthesize threeFingerSlide=_threeFingerSlide;

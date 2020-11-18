@@ -23,6 +23,8 @@
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
+- (void)_appendSplitMediaAccountErrorForAccessory:(id)arg1 toResults:(id)arg2;
+- (void)_appendSplitMediaAccountErrorIfNeededForAccessory:(id)arg1 toResults:(id)arg2;
 - (id)_disambiguateMultipleAccessoryResponses:(id)arg1 forMediaSystem:(id)arg2;
 - (id)_parentMediaSystem;
 - (id)accessories;

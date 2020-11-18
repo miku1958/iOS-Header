@@ -62,7 +62,6 @@
 - (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (void)moreOptionsViewControllerDidToggleAutoHide:(id)arg1;
 - (struct CGRect)plusButtonFrame;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -8,15 +8,19 @@
 
 #import <MessageProtection/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NGMPBP256Key : PBCodable <NSCopying>
 {
+    NSData *_keyData;
     NSString *_keychainTag;
     int _keystore;
 }
 
+@property (readonly, nonatomic) BOOL hasKeyData;
+@property (readonly, nonatomic) BOOL hasKeychainTag;
+@property (strong, nonatomic) NSData *keyData; // @synthesize keyData=_keyData;
 @property (strong, nonatomic) NSString *keychainTag; // @synthesize keychainTag=_keychainTag;
 @property (nonatomic) int keystore; // @synthesize keystore=_keystore;
 

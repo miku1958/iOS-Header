@@ -17,6 +17,12 @@
 {
     BOOL _isScrollView;
     BOOL _delegateConformsToProtocol;
+    struct {
+        unsigned int respondsToShouldPreventDragLiftGesture:1;
+        unsigned int respondsToShouldAllowSelectionExtensionAtPoint:1;
+        unsigned int respondsToDidCancelMultiSelectInteraction:1;
+        unsigned int respondsToShouldBeginMultiSelectInteraction:1;
+    } _optionalDelegateFlags;
     _UIMultiSelectOneFingerPanGesture *_multiSelectModePan;
     UIPanGestureRecognizer *_multiFingerPan;
     UITapGestureRecognizer *_multiFingerTap;
@@ -50,12 +56,14 @@
 - (void)_didInvokeMultiSelectExtendGestureAtLocation:(struct CGPoint)arg1;
 - (void)_endCommonPan:(id)arg1;
 - (void)_endObservingScrollViewOffsetUpdates;
+- (long long)_gestureTypeForGestureInstance:(id)arg1;
 - (void)_handleCommonPanGestureStateChanged:(id)arg1;
 - (void)_handleSelectionExtensionTapGesture:(id)arg1;
 - (id)_interactionDelegate;
 - (BOOL)_isCommandKeyBeingHeldWithGesture:(id)arg1;
 - (BOOL)_isShiftKeyBeingHeldWithGesture:(id)arg1;
 - (void)_multiFingerTapGesture:(id)arg1;
+- (BOOL)_triggeredLegacyPathInsteadForGestureRecognizer:(id)arg1 velocity:(struct CGPoint)arg2 shouldBegin:(out BOOL *)arg3;
 - (void)_updateCommonPan:(id)arg1;
 - (void)_updateDelegateConformance;
 - (void)didMoveToView:(id)arg1;

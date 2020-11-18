@@ -13,7 +13,6 @@
 @interface GEOAnnouncement : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_buttonOneAppURI;
     NSString *_buttonOneMessage;
     NSString *_buttonTwoAppURI;
@@ -22,6 +21,9 @@
     GEOMapRegion *_mapRegion;
     NSString *_title;
     NSString *_userMessage;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _announcementID;
     int _announcementType;
     unsigned int _displayDestinations;
@@ -97,6 +99,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

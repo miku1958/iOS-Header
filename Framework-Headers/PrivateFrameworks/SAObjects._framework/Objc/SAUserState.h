@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *sharedUserId;
 @property (copy, nonatomic) NSString *status;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *syncSharedUserId;
 @property (copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property (copy, nonatomic) NSString *userToken;
 @property (copy, nonatomic) NSString *xpAbCookie;

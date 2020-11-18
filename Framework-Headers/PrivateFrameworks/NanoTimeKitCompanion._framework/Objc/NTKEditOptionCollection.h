@@ -25,7 +25,7 @@
 
 + (id)editOptionCollectionWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 - (void).cxx_destruct;
-- (id)filteredCollectionForOSVersion:(unsigned int)arg1;
+- (id)filteredCollectionForDevice:(id)arg1;
 - (id)filteredCollectionWithObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)initWithEditMode:(long long)arg1 localizedName:(id)arg2 options:(id)arg3 collectionType:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;

@@ -80,7 +80,7 @@
 @property (readonly) BOOL spent;
 @property unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (strong) id<PKPlugIn> supersededBy; // @synthesize supersededBy=_supersededBy;
+@property (weak) id<PKPlugIn> supersededBy; // @synthesize supersededBy=_supersededBy;
 @property (strong) NSUUID *supersedingUUID; // @synthesize supersedingUUID=_supersedingUUID;
 @property (strong) id<PKCorePlugInProtocol> syncService; // @synthesize syncService=_syncService;
 @property BOOL terminating; // @synthesize terminating=_terminating;

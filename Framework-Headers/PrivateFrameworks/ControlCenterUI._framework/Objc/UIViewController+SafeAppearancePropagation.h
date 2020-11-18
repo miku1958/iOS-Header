@@ -8,7 +8,6 @@
 
 @interface UIViewController (SafeAppearancePropagation)
 - (id)_ccui_childViewControllersForAppearancePropagation;
-- (id)ccui_overrideTraitCollectionFromAncestors;
 - (void)ccui_safelyBeginAppearanceTransition:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)ccui_safelyBeginAppearanceTransitionForChildViewControllers:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)ccui_safelyEndAppearanceTransition;

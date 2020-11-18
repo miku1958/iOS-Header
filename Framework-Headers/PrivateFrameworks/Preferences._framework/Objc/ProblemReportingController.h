@@ -19,12 +19,14 @@
     NSArray *_healthDataSpecifiers;
     NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
+    NSArray *_improveSiriSpecifiers;
 }
 
 @property (readonly) NSArray *appActivitySpecifiers;
 @property (readonly) PSSpecifier *filesystemMetadataSnapshotSpecifier;
 @property (readonly) NSArray *healthDataSpecifiers; // @synthesize healthDataSpecifiers=_healthDataSpecifiers;
 @property (readonly) NSArray *healthRecordsDataSpecifiers; // @synthesize healthRecordsDataSpecifiers=_healthRecordsDataSpecifiers;
+@property (strong, nonatomic) NSArray *improveSiriSpecifiers; // @synthesize improveSiriSpecifiers=_improveSiriSpecifiers;
 @property (nonatomic) BOOL shouldShareHealthRecordsData; // @synthesize shouldShareHealthRecordsData=_shouldShareHealthRecordsData;
 @property (readonly) PSSpecifier *spinnerSpecifier;
 @property (readonly) NSArray *wheelchairDataSpecifiers; // @synthesize wheelchairDataSpecifiers=_wheelchairDataSpecifiers;
@@ -59,6 +61,7 @@
 - (void)showAboutAppAnalyticsSheet;
 - (void)showAboutHealthDataSheet;
 - (void)showAboutHealthRecordsDataSheet;
+- (void)showAboutImproveSiriAnalyticsSheet;
 - (void)showAboutSheetWithTitle:(id)arg1 content:(id)arg2;
 - (void)showAboutWheelchairDataSheet;
 - (void)showAboutiCloudAnalyticsSheet;

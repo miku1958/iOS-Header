@@ -6,17 +6,41 @@
 
 #import <UIKit/UIView.h>
 
-@class AVPlayerLooper, AVQueuePlayer;
+@class AVPlayerLooper, AVQueuePlayer, NSMutableArray, NSObject;
+@protocol OS_dispatch_source;
 
 @interface SFMediaPlayerView : UIView
 {
     AVPlayerLooper *_avLooper;
-    AVQueuePlayer *_avPlayer;
+    AVQueuePlayer *_avQueuePlayer;
+    NSMutableArray *_mediaItems;
+    NSObject<OS_dispatch_source> *_speedUpTimer;
+    BOOL _pausesAfterEachItem;
 }
+
+@property (nonatomic) BOOL pausesAfterEachItem; // @synthesize pausesAfterEachItem=_pausesAfterEachItem;
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (void)_pause;
+- (void)addMovieItem:(id)arg1;
+- (void)advanceToNextItem;
+- (void)breakFirstEnqueuedLoop;
+- (void)dequeueNonPlayingItemsFromMediaItem:(id)arg1;
+- (void)enqueueItemsFromMediaItem:(id)arg1 afterItem:(id)arg2;
+- (BOOL)isPaused;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pause;
+- (void)play;
+- (void)playerItemDidReachEnd:(id)arg1;
+- (void)removeMovieItem:(id)arg1;
+- (void)setUpTimeRangeNotificationsForItem:(id)arg1;
+- (void)speedUpRemainderOfCurrentItem;
 - (void)startMovieLoopWithPath:(id)arg1;
+- (void)startMovieLoopWithPath:(id)arg1 assetType:(int)arg2 adjustmentsURL:(id)arg3;
+- (void)stop;
+- (void)stopSpeedUpTimer;
+- (void)updateViewForAssetType:(int)arg1 adjustmentsURL:(id)arg2;
 
 @end
 

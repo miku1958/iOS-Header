@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_requestId;
     GEORequestCounterRemoteProxy *_remoteProxy;
     NSObject<OS_nw_activity> *_nwActivity;
+    BOOL _complete;
 }
 
 @property (readonly, copy) NSString *debugDescription;

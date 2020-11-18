@@ -78,6 +78,7 @@
 @property (readonly, nonatomic, getter=isPresentingFolder) BOOL presentingFolder;
 @property (nonatomic) double requestedVerticalMargin;
 @property (strong, nonatomic) SBFTouchPassThroughView *scalingView; // @synthesize scalingView=_scalingView;
+@property (readonly, nonatomic) BOOL shouldAnimateFirstTwoViewsAsOne;
 @property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (nonatomic) BOOL shouldIndicateImpossibleDrop; // @synthesize shouldIndicateImpossibleDrop=_shouldIndicateImpossibleDrop;
 @property (strong, nonatomic) UIViewController<SBFloatingDockSuggestionsViewProviding> *suggestionsViewController; // @synthesize suggestionsViewController=_suggestionsViewController;

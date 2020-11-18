@@ -16,9 +16,11 @@
 {
     id<INUIEditVoiceShortcutViewControllerDelegate> _delegate;
     INUIVoiceShortcutHostViewController *_remoteHostViewController;
+    UIViewController *_currentChildViewController;
 }
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
+@property (strong, nonatomic) UIViewController *currentChildViewController; // @synthesize currentChildViewController=_currentChildViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<INUIEditVoiceShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,6 +35,7 @@
 - (void)remoteViewControllerDidCancel;
 - (void)remoteViewControllerDidDeleteVoiceShortcutWithIdentifier:(id)arg1;
 - (void)remoteViewControllerDidUpdateVoiceShortcut:(id)arg1 error:(id)arg2;
+- (void)setChildViewController:(id)arg1;
 
 @end
 

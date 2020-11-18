@@ -29,12 +29,14 @@
 - (void)deleteVectorAtIndex:(int)arg1;
 - (void)endAudio;
 - (double)getCombinationWeight;
+- (double)getRejectLoggingThreshold;
 - (double)getThresholdSAT;
 - (id)initWithResourcePath:(id)arg1 satDirectory:(id)arg2 assetHash:(id)arg3 shouldCreateModelDir:(BOOL)arg4 delegate:(id)arg5;
 - (void)logWithAudioFilepath:(id)arg1;
-- (void)processAudio:(const short *)arg1 numSamples:(unsigned long long)arg2;
+- (void)processAudio:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)resetForNewRequest;
 - (float)satScore;
+- (float)scoreSpeakerVector:(id)arg1 withDimensions:(unsigned long long)arg2;
 - (void)updateSAT;
 
 @end

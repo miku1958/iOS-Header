@@ -7,15 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <ChatKit/AVTAvatarEditorViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKCNSharingProfileOnboardingFlowManagerDelegate-Protocol.h>
 #import <ChatKit/CNMeCardSharingPickerViewControllerDelegate-Protocol.h>
 #import <ChatKit/IMCNMeCardSharingOnboardingAudienceViewControllerDelegate-Protocol.h>
 #import <ChatKit/IMCNMeCardSharingOnboardingEditViewControllerDelegate-Protocol.h>
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 
-@class AVPlayer, AVPlayerLooper, AVTAvatarStore, IMCNMeCardSharingResult, IMCloudKitSyncState, NSString, OBWelcomeFullCenterContentController, UINavigationController;
+@class AVPlayer, AVPlayerLooper, AVTAvatarStore, CKCNSharingProfileOnboardingFlowManager, CNSharingProfileAvatarItemProviderConfiguration, IMCNMeCardSharingResult, IMCloudKitSyncState, NSString, OBWelcomeFullCenterContentController, UINavigationController;
 @protocol AVTAvatarRecord, CKOnboardingControllerDelegate;
 
-@interface CKOnboardingController : NSObject <CNMeCardSharingPickerViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, IMCNMeCardSharingOnboardingEditViewControllerDelegate, IMCNMeCardSharingOnboardingAudienceViewControllerDelegate, UINavigationControllerDelegate>
+@interface CKOnboardingController : NSObject <CNMeCardSharingPickerViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, IMCNMeCardSharingOnboardingEditViewControllerDelegate, IMCNMeCardSharingOnboardingAudienceViewControllerDelegate, UINavigationControllerDelegate, CKCNSharingProfileOnboardingFlowManagerDelegate>
 {
     int _micLayout;
     id<CKOnboardingControllerDelegate> _delegate;
@@ -27,8 +28,11 @@
     AVTAvatarStore *_avatarStore;
     id<AVTAvatarRecord> _avatarRecord;
     IMCNMeCardSharingResult *_pendingMeCardSharingResult;
+    CKCNSharingProfileOnboardingFlowManager *_nicknameFlowManager;
+    CNSharingProfileAvatarItemProviderConfiguration *_avatarItemProviderConfiguration;
 }
 
+@property (strong, nonatomic) CNSharingProfileAvatarItemProviderConfiguration *avatarItemProviderConfiguration; // @synthesize avatarItemProviderConfiguration=_avatarItemProviderConfiguration;
 @property (strong, nonatomic) id<AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
 @property (strong, nonatomic) AVTAvatarStore *avatarStore; // @synthesize avatarStore=_avatarStore;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,6 +44,7 @@
 @property (strong, nonatomic) AVPlayerLooper *memojiVideoPlayerLooper; // @synthesize memojiVideoPlayerLooper=_memojiVideoPlayerLooper;
 @property (nonatomic) int micLayout; // @synthesize micLayout=_micLayout;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
+@property (strong, nonatomic) CKCNSharingProfileOnboardingFlowManager *nicknameFlowManager; // @synthesize nicknameFlowManager=_nicknameFlowManager;
 @property (strong, nonatomic) IMCNMeCardSharingResult *pendingMeCardSharingResult; // @synthesize pendingMeCardSharingResult=_pendingMeCardSharingResult;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) IMCloudKitSyncState *syncState; // @synthesize syncState=_syncState;
@@ -55,6 +60,7 @@
 - (id)_meCardSharingState;
 - (id)_micController;
 - (id)_nameAndPhotoSharingIntroController;
+- (id)_nicknameController;
 - (void)_onClickMiCNotNow;
 - (void)_onClickMiCOnboard;
 - (void)_presentMemojiCreationIfNeeded:(CDUnknownBlockType)arg1 skipAction:(CDUnknownBlockType)arg2;
@@ -62,6 +68,7 @@
 - (BOOL)_shouldPresentMiCWelcome;
 - (BOOL)_shouldPresentNewInMessages;
 - (BOOL)_shouldShowNicknameOnboardingFlow;
+- (BOOL)_shouldShowNicknameOnboardingFlowIgnoringVersion:(BOOL)arg1;
 - (BOOL)_shouldShowNicknameOnboardingFlowOnLaunch;
 - (void)_tryToEnableHSA2;
 - (void)_tryToEnableMOC;
@@ -69,17 +76,22 @@
 - (long long)_whatsNewLatestShippingVersion;
 - (long long)_whatsNewVersion;
 - (void)_writeDefaultMiCWelcome;
-- (void)_writeDefaultNicknameDidShow;
+- (void)_writeDefaultNicknameOnboardingVersion;
 - (void)_writeDefaultWhatsNewDidShow;
 - (BOOL)accountCanCreateNickname;
+- (BOOL)alwaysShowNicknameOnboarding;
 - (void)avatarEditorViewController:(id)arg1 didFinishWithAvatarRecord:(id)arg2;
 - (void)avatarEditorViewControllerDidCancel:(id)arg1;
 - (void)completedOnboarding;
 - (void)completedOnboardingWithCompletion:(CDUnknownBlockType)arg1;
+- (id)contactForNicknameOnboarding;
+- (void)flowManager:(id)arg1 didFinishWithResult:(id)arg2;
 - (void)meCardSharingOnboardingAudienceViewControllerDidFinish:(id)arg1 withSharingAudience:(unsigned long long)arg2;
 - (void)meCardSharingOnboardingEditController:(id)arg1 didFinishWithOnboardingResult:(id)arg2;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
+- (unsigned long long)nicknameOnboardingLastShownVersion;
 - (void)prepareForOnboarding;
 - (void)prepareForSuspend;
 - (void)presentMemojiSetup;
@@ -98,6 +110,7 @@
 - (void)sharingPicker:(id)arg1 didSelectNameFormat:(unsigned long long)arg2;
 - (void)sharingPicker:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingPickerDidFinish:(id)arg1;
+- (void)startNicknameOnboardingIfNeeded;
 
 @end
 

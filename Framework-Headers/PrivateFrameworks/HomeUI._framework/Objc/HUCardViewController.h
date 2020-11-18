@@ -8,13 +8,14 @@
 
 #import <HomeUI/HFItemManagerDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlViewControllerCoordinatorDelegate-Protocol.h>
+#import <HomeUI/HUViewControllerCustomDismissing-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFItem, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, NSMutableArray, NSString, UIButton, UIColor, UILayoutGuide, UIPanGestureRecognizer, UIScrollView;
+@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, NSMutableArray, NSString, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView;
 @protocol HUCardViewControllerDelegate;
 
-@interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, UIScrollViewDelegate>
+@interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDismissing, UIScrollViewDelegate>
 {
     BOOL _hideControls;
     BOOL _hideSettings;
@@ -33,8 +34,11 @@
     NSMutableArray *_constraints;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILayoutGuide *_quickControlLayoutGuide;
+    HUAnimationApplier *_animationApplier;
+    UIImpactFeedbackGenerator *_impactFeedbackGenerator;
 }
 
+@property (strong, nonatomic) HUAnimationApplier *animationApplier; // @synthesize animationApplier=_animationApplier;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
@@ -45,6 +49,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideControls; // @synthesize hideControls=_hideControls;
 @property (nonatomic) BOOL hideSettings; // @synthesize hideSettings=_hideSettings;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property (strong, nonatomic) HUQuickControlSummaryNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) UILayoutGuide *quickControlLayoutGuide; // @synthesize quickControlLayoutGuide=_quickControlLayoutGuide;
@@ -58,20 +63,18 @@
 @property (strong, nonatomic) HUQuickControlViewControllerCoordinator *viewControllerCoordinator; // @synthesize viewControllerCoordinator=_viewControllerCoordinator;
 
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailable;
-- (double)_adjustedFrictionForRevealAnimation;
-- (double)_adjustedTensionForRevealAnimation;
+- (void)_actuateTapticFeedback;
 - (void)_closeButtonPressed:(id)arg1;
-- (void)_endUsingTapticFeedbackIfAvailable;
+- (void)_endUsingTapticFeedback;
 - (void)_escapeKeyPressed;
 - (void)_handlePanGesture:(id)arg1;
+- (double)_hostViewHeight;
 - (void)_nudgeScrollViewToPoint:(struct CGPoint)arg1;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (double)_quickControlScrollOffsetBoundary;
 - (double)_quickControlSectionHeight;
-- (void)_requestDismissal;
 - (void)_scrollToSettings;
-- (void)_scrollToTop;
+- (id)_springAnimationSettings;
 - (void)_unlockSettings;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
@@ -82,11 +85,13 @@
 - (void)dealloc;
 - (void)dismissCardAnimated:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
 - (id)initWithQuickControlViewController:(id)arg1 settingsViewController:(id)arg2 sourceItem:(id)arg3 controlItems:(id)arg4 home:(id)arg5;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)keyCommands;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)overridingContentSizeForPresentedViewController:(id)arg1;
+- (id)requestDismissal;
 - (void)scrollToDetailsViewAnimated:(BOOL)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

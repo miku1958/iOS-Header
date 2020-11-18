@@ -9,7 +9,7 @@
 #import <ContactsUI/UICollectionViewDataSource-Protocol.h>
 #import <ContactsUI/UICollectionViewDelegate-Protocol.h>
 
-@class CNContact, CNMeCardSharingLogger, CNMeCardSharingOnboardingAvatarCarouselItem, CNMeCardSharingOnboardingAvatarCarouselLayout, NSArray, NSString, PRMonogramColor, UICollectionView;
+@class CNContact, CNMeCardSharingOnboardingAvatarCarouselItem, CNMeCardSharingOnboardingAvatarCarouselLayout, CNSharingProfileLogger, NSArray, NSString, PRMonogramColor, UICollectionView;
 @protocol AVTAvatarRecord, CNMeCardSharingOnboardingAvatarCarouselViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     CNMeCardSharingOnboardingAvatarCarouselItem *_animojiItem;
     CNMeCardSharingOnboardingAvatarCarouselItem *_photoItem;
     CNMeCardSharingOnboardingAvatarCarouselItem *_monogramItem;
-    CNMeCardSharingLogger *_logger;
+    CNSharingProfileLogger *_logger;
 }
 
 @property (strong, nonatomic) CNMeCardSharingOnboardingAvatarCarouselItem *animojiItem; // @synthesize animojiItem=_animojiItem;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) CNMeCardSharingOnboardingAvatarCarouselLayout *layout; // @synthesize layout=_layout;
-@property (readonly, nonatomic) CNMeCardSharingLogger *logger; // @synthesize logger=_logger;
+@property (readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property (strong, nonatomic) PRMonogramColor *monogramColor; // @synthesize monogramColor=_monogramColor;
 @property (strong, nonatomic) CNMeCardSharingOnboardingAvatarCarouselItem *monogramItem; // @synthesize monogramItem=_monogramItem;
 @property (strong, nonatomic) CNMeCardSharingOnboardingAvatarCarouselItem *photoItem; // @synthesize photoItem=_photoItem;

@@ -12,6 +12,8 @@
 
 @property (copy, nonatomic) NSString *albumArtist;
 @property (copy, nonatomic) NSString *albumName;
+@property (copy, nonatomic) NSString *appleTvSubtitle;
+@property (copy, nonatomic) NSString *appleTvTitle;
 @property (copy, nonatomic) NSString *artistGenre;
 @property (copy, nonatomic) NSString *artistName;
 @property (copy, nonatomic) NSString *audioBookAuthor;
@@ -22,6 +24,8 @@
 @property (copy, nonatomic) NSString *creator;
 @property (readonly, nonatomic) BOOL hasAlbumArtist;
 @property (readonly, nonatomic) BOOL hasAlbumName;
+@property (readonly, nonatomic) BOOL hasAppleTvSubtitle;
+@property (readonly, nonatomic) BOOL hasAppleTvTitle;
 @property (readonly, nonatomic) BOOL hasArtistGenre;
 @property (readonly, nonatomic) BOOL hasArtistName;
 @property (readonly, nonatomic) BOOL hasAudioBookAuthor;
@@ -34,6 +38,8 @@
 @property (readonly, nonatomic) BOOL hasITunesStoreIdentifier;
 @property (readonly, nonatomic) BOOL hasItemType;
 @property (nonatomic) BOOL hasLinkMediaType;
+@property (readonly, nonatomic) BOOL hasMovieBundleGenre;
+@property (readonly, nonatomic) BOOL hasMovieBundleName;
 @property (readonly, nonatomic) BOOL hasMovieGenre;
 @property (readonly, nonatomic) BOOL hasMovieName;
 @property (readonly, nonatomic) BOOL hasMusicVideoArtist;
@@ -63,6 +69,7 @@
 @property (readonly, nonatomic) BOOL hasTvEpisodeSeasonName;
 @property (readonly, nonatomic) BOOL hasTvSeasonGenre;
 @property (readonly, nonatomic) BOOL hasTvSeasonName;
+@property (readonly, nonatomic) BOOL hasTvShowName;
 @property (copy, nonatomic) NSString *iTunesStoreFrontIdentifier;
 @property (copy, nonatomic) NSString *iTunesStoreIdentifier;
 @property (copy, nonatomic) NSArray *iconURLs;
@@ -71,6 +78,8 @@
 @property (readonly, nonatomic) unsigned long long imageURLsCount;
 @property (copy, nonatomic) NSString *itemType;
 @property (nonatomic) int linkMediaType;
+@property (copy, nonatomic) NSString *movieBundleGenre;
+@property (copy, nonatomic) NSString *movieBundleName;
 @property (copy, nonatomic) NSString *movieGenre;
 @property (copy, nonatomic) NSString *movieName;
 @property (copy, nonatomic) NSString *musicVideoArtist;
@@ -100,6 +109,7 @@
 @property (copy, nonatomic) NSString *tvEpisodeSeasonName;
 @property (copy, nonatomic) NSString *tvSeasonGenre;
 @property (copy, nonatomic) NSString *tvSeasonName;
+@property (copy, nonatomic) NSString *tvShowName;
 
 - (int)StringAsLinkMediaType:(NSString *)arg1;
 - (void)addIconURL:(NSString *)arg1;

@@ -19,10 +19,10 @@
 + (id)_orderedValuesRestrictedByDevice:(id)arg1;
 + (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (BOOL)value:(long long)arg1 existsInOSVersion:(unsigned int)arg2;
++ (BOOL)value:(long long)arg1 existsInDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (BOOL)optionExistsInDevice:(id)arg1;
 - (long long)swatchStyle;
 
 @end

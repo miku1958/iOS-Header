@@ -53,6 +53,7 @@
 - (float)hardwareCost;
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
+- (BOOL)isDeepFusionSupported;
 - (BOOL)isDefaultActiveFormat;
 - (BOOL)isDeferredPhotoProcessingSupported;
 - (BOOL)isDigitalFlashSupported;

@@ -17,10 +17,12 @@
     INShortcut *_shortcut;
     id<INUIAddVoiceShortcutViewControllerDelegate> _delegate;
     INUIVoiceShortcutHostViewController *_remoteHostViewController;
+    UIViewController *_currentChildViewController;
 }
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (strong, nonatomic) INShortcut *_shortcut; // @synthesize _shortcut;
+@property (strong, nonatomic) UIViewController *currentChildViewController; // @synthesize currentChildViewController=_currentChildViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<INUIAddVoiceShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,6 +36,7 @@
 - (void)loadView;
 - (void)remoteViewControllerDidCancel;
 - (void)remoteViewControllerDidCreateVoiceShortcut:(id)arg1 error:(id)arg2;
+- (void)setChildViewController:(id)arg1;
 
 @end
 

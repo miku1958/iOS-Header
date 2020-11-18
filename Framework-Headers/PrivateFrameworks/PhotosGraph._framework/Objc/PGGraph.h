@@ -304,9 +304,7 @@
 - (id)hobbiesForType:(long long)arg1;
 - (id)inferredMeNode;
 - (id)init;
-- (id)initWithName:(id)arg1 parentDirectoryURL:(id)arg2;
-- (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 persistenceOptions:(long long)arg2;
+- (id)initWithURL:(id)arg1 persistenceOptions:(long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)insertAddressNodeWithPlacemark:(id)arg1 location:(id)arg2 weight:(float)arg3 duringDateInterval:(id)arg4 fromEventNode:(id)arg5;
 - (id)insertAddressNodeWithProjectedPlacemark:(id)arg1 atEventLocation:(id)arg2 usingImprovedPlacemark:(BOOL)arg3;
 - (void)insertAreasOfInterestForProjectedPlacemark:(id)arg1 fromAddressNode:(id)arg2;

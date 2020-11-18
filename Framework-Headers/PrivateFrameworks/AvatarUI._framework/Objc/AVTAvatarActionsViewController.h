@@ -92,6 +92,7 @@
 - (void)performTransitionAfterDuplicateToRecord:(id)arg1 previousRecordImage:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)presentEditorViewController:(id)arg1 forActionsModel:(id)arg2 isCreate:(BOOL)arg3;
+- (void)rebuildLayout;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

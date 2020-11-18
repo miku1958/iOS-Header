@@ -13,12 +13,14 @@
 @interface GEORPInstructionCorrection : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_comments;
     NSString *_photoId;
     GEORPPhotoWithMetadata *_photo;
     NSData *_routeStepScreenshotImageData;
     NSString *_routeStepScreenshotImageId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _routeStepIndex;
     unsigned int _routeStepSubstepIndex;
     struct {
@@ -66,6 +68,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -29,7 +29,7 @@
 #import <CoverSheet/_UISettingsKeyObserver-Protocol.h>
 
 @class BSTimer, CSAppearance, CSBehavior, CSChargingViewController, CSCoverSheetView, CSDismissableModalViewController, CSFixedFooterViewController, CSHomeButtonShowPasscodeRecognizer, CSHomeButtonSuppressAfterUnlockRecognizer, CSInterstitialTransitionSource, CSLayoutStrategy, CSLockScreenSettings, CSLocketForcePressGestureRecognizer, CSLocketTransitionSource, CSMainPageContentViewController, CSModalPresentationViewController, CSNotificationClearingTrigger, CSNotificationDispatcher, CSPowerChangeObserver, CSPresentation, CSPresentationViewController, CSProudLockViewController, CSQuickActionsViewController, CSScrollGestureController, CSTeachableMomentsContainerViewController, CSTimerViewController, CSUserPresenceMonitor, FBDisplayLayoutTransition, NSArray, NSHashTable, NSSet, NSString, SBFLockScreenActionContext, SBFLockScreenDateSubtitleView, SBFLockScreenDateViewController, SBFLockScreenWakeAnimator, SBFSteppedAnimationTimingFunctionCalculator, SBLockScreenDefaults, SBWallpaperAggdLogger, UIColor, UIGestureRecognizer, UIStatusBar, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
-@protocol CSApplicationLaunching, CSCameraPrewarming, CSCoverSheetContextProviding, CSCoverSheetViewControllerDelegate, CSCoverSheetViewPresenting, CSCoverSheetViewTransitionSource, CSEmergencyCalling, CSIdleTimerControlling, CSLegibilityProviding, CSNotificationDispatcher, CSOrientationUpdateControlling, CSSpotlightPresenting, CSWallpaperColorProvider, SBFIrisWallpaperView, SBFLockOutStatusProvider, SBFScreenWakeAnimationControlling, SBFScreenWakeAnimationTarget, SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling, SBNotificationDestination, UICoordinateSpace;
+@protocol BSInvalidatable, CSApplicationLaunching, CSCameraPrewarming, CSCoverSheetContextProviding, CSCoverSheetViewControllerDelegate, CSCoverSheetViewPresenting, CSCoverSheetViewTransitionSource, CSEmergencyCalling, CSIdleTimerControlling, CSLegibilityProviding, CSNotificationDispatcher, CSOrientationUpdateControlling, CSSpotlightPresenting, CSWallpaperColorProvider, SBFIrisWallpaperView, SBFLockOutStatusProvider, SBFScreenWakeAnimationControlling, SBFScreenWakeAnimationTarget, SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling, SBNotificationDestination, UICoordinateSpace;
 
 @interface CSCoverSheetViewController : UIViewController <CSPersistentContentLayoutProviding, CSDateTimeLayoutAggregating, CSCoverSheetViewDelegate, UIGestureRecognizerDelegate, CSLegibilityProviderDelegate, SBLockScreenActionProvider, SBFIrisWallpaperViewDelegate, CSCoverSheetViewTransitionSource, CSNotificationDestination, CSTimerViewControllerDelegate, _UISettingsKeyObserver, CSScrollGestureControllerDelegate, CSNotificationClearingTriggerDelegate, CSInterstitialTransitionDelegate, CSLocketTransitionDelegate, CSPasscodeViewControllerDelegate, CSLocketViewControllerDelegate, SBFTodayOverlayObserving, FBSDisplayLayoutPublisherObserving, CSCoverSheetViewControllerProtocol, BSDescriptionProviding>
 {
@@ -123,6 +123,7 @@
     CSInterstitialTransitionSource *_interstitialTransitionSource;
     CSLocketTransitionSource *_locketTransitionSource;
     id<SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> _todayOverlayController;
+    id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
     id<SBFScreenWakeAnimationControlling> _screenWakeAnimationController;
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
 }
@@ -206,6 +207,7 @@
 @property (weak, nonatomic) id<CSSpotlightPresenting> spotlightPresenter; // @synthesize spotlightPresenter=_spotlightPresenter;
 @property (strong, nonatomic) UIVisualEffectView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 @property (strong, nonatomic) CSTimerViewController *timerViewController; // @synthesize timerViewController=_timerViewController;
 @property (strong, nonatomic) id<SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> todayOverlayController; // @synthesize todayOverlayController=_todayOverlayController;
 @property (readonly, nonatomic) CDStruct_7238a68f transitionContext; // @synthesize transitionContext=_transitionContext;

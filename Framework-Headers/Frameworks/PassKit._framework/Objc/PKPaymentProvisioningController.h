@@ -140,6 +140,7 @@
 - (id)initWithWebService:(id)arg1;
 - (id)initWithWebService:(id)arg1 paymentSetupRequest:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)makePaymentPassDefault:(id)arg1;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
 - (void)passcodeUpgradeCompleted:(BOOL)arg1;
@@ -176,6 +177,7 @@
 - (void)validatePreconditions:(CDUnknownBlockType)arg1;
 - (void)validatePreconditionsAndRegister:(CDUnknownBlockType)arg1;
 - (void)validatePreconditionsRegisterAndAssociateRemoteCredentials:(CDUnknownBlockType)arg1;
+- (BOOL)willPassWithUniqueIdentifierAutomaticallyBecomeDefault:(id)arg1;
 
 @end
 

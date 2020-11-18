@@ -68,6 +68,7 @@
     NSNumber *_isBusiness;
     NSNumber *_isMako;
     NSNumber *_isApple;
+    BOOL _hasSuggestedName;
     BOOL _hasCheckedForSuggestions;
     NSString *_personCentricID;
     NSString *_guid;
@@ -113,6 +114,7 @@
 @property (readonly, nonatomic) BOOL hasMultiwayVideo;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasOtherSiblings;
+@property (nonatomic) BOOL hasSuggestedName; // @synthesize hasSuggestedName=_hasSuggestedName;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly, strong, nonatomic) NSString *idleString;
 @property (readonly, nonatomic) double idleTime;

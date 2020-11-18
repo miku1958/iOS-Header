@@ -26,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
-- (BOOL)_shouldUseStackedLayout;
+- (BOOL)_shouldUseStackedLayoutWithBounds:(struct CGRect)arg1;
 - (void)_updateCurrencyLabel;
 - (id)defaultPrimaryColor;
 - (id)defaultSecondaryColor;

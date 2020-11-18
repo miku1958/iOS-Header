@@ -18,8 +18,6 @@
 + (id)gallerySeparatorColor;
 + (id)moduleBorderColor;
 + (id)moduleCellBorderColor;
-+ (id)moduleCellHighlightedColor;
-+ (id)moduleCellShadowColor;
 + (id)moduleTintColor;
 + (id)settingsBackgroundColor;
 + (id)settingsCellColor;
@@ -38,6 +36,9 @@
 + (id)wf_libraryCellSelectionColor;
 + (id)wf_linkColor;
 + (id)wf_moduleCellColor;
++ (id)wf_moduleCellRunningColor;
++ (id)wf_moduleCellRunningShadowColor;
++ (id)wf_moduleCellShadowColor;
 + (id)wf_moduleCellTitleColor;
 + (id)wf_moduleCommentCellColor;
 + (id)wf_moduleCommentHeadingButtonColor;
@@ -59,6 +60,8 @@
 + (id)wf_moduleSummarySlotErrorTitleColor;
 + (id)wf_moduleSummarySlotHighlightedBackgroundColorWithTintColor:(id)arg1;
 + (id)wf_moduleSummarySlotHighlightedTitleColorWithTintColor:(id)arg1;
++ (id)wf_moduleSummarySlotRunningBackgroundColor;
++ (id)wf_moduleSummarySlotRunningTitleColor;
 + (id)wf_moduleSummarySlotSelectedBackgroundColorWithTintColor:(id)arg1;
 + (id)wf_moduleSummarySlotSelectedTitleColorWithTintColor:(id)arg1;
 + (id)wf_moduleSummarySlotTitleColorWithTintColor:(id)arg1;
@@ -79,5 +82,7 @@
 + (id)wf_tertiaryLabelColor;
 + (id)wf_usableColorWithPaletteColor:(unsigned long long)arg1;
 + (id)wf_workflowWizardRecordButtonColor;
+- (id)wf_desaturatedColorWithMagnitude:(double)arg1;
+- (id)wf_disabledColor;
 @end
 

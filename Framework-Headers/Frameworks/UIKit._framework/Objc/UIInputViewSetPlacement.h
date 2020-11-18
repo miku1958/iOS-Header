@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double extendedHeight; // @synthesize extendedHeight=_extendedHeight;
 @property (readonly, nonatomic) BOOL isFloating;
 @property (readonly, nonatomic) BOOL isInteractive;
+@property (readonly, nonatomic) BOOL isInvisible;
 @property (readonly, nonatomic) BOOL isUndocked;
 @property (readonly, nonatomic) BOOL requiresWindowBasedSafeAreaInsets;
 @property (readonly, nonatomic) BOOL showsInputViews;

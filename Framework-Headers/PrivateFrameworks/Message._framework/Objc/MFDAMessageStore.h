@@ -17,16 +17,12 @@
 @property (nonatomic) BOOL backedByVirtualAllSearchMailbox; // @synthesize backedByVirtualAllSearchMailbox=_backedByVirtualAllSearchMailbox;
 
 - (void).cxx_destruct;
-- (id)_additionalHeadersForAction:(int)arg1 ofMessage:(id)arg2;
 - (id)_downloadHeadersForMessages:(id)arg1;
 - (id)_fetchBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 downloadIfNecessary:(BOOL)arg3 partial:(BOOL *)arg4;
 - (id)_fetchBodyDataForNormalMessage:(id)arg1 format:(int)arg2 part:(id)arg3 streamConsumer:(id)arg4;
 - (id)_fetchBodyDataForSearchResult:(id)arg1 folderID:(id)arg2 format:(int)arg3 streamConsumer:(id)arg4;
 - (BOOL)_fetchDataForMimePart:(id)arg1 range:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 consumer:(id)arg4;
-- (id)_folderIDForFetching;
 - (void)_remoteIDsMatchingSearchText:(id)arg1 predicate:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 filterByDate:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
-- (id)additionalHeadersForForwardOfMessage:(id)arg1;
-- (id)additionalHeadersForReplyOfMessage:(id)arg1;
 - (BOOL)allowsAppend;
 - (id)bestAlternativeForPart:(id)arg1;
 - (BOOL)bodyFetchRequiresNetworkActivity;
@@ -38,6 +34,7 @@
 - (long long)fetchMessagesMatchingCriterion:(id)arg1 limit:(unsigned int)arg2;
 - (long long)fetchNumMessages:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)fetchWindow;
+- (id)folderIDForFetching;
 - (unsigned long long)growFetchWindow;
 - (BOOL)hasMoreFetchableMessages;
 - (id)initWithMailboxUid:(id)arg1 readOnly:(BOOL)arg2;
@@ -48,7 +45,7 @@
 - (id)messageForRemoteID:(id)arg1;
 - (id)messageForRemoteID:(id)arg1 inMailbox:(id)arg2;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
-- (BOOL)replayFlagChange:(id)arg1 forRemoteIDs:(id)arg2 error:(id *)arg3;
+- (BOOL)replayFlagChange:(id)arg1 forRemoteIDs:(id)arg2 error:(id *)arg3 completed:(BOOL *)arg4;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;

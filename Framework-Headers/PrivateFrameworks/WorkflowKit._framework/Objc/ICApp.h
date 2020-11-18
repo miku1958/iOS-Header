@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString, UIImage;
+@class NSArray, NSDictionary, NSString, WFImage;
+@protocol OS_dispatch_queue;
 
 @interface ICApp : NSObject
 {
@@ -15,10 +16,10 @@
     NSArray *_schemes;
     NSArray *_shareExtensions;
     NSString *_localizedName;
+    WFImage *_icon;
     NSString *_identifier;
     NSDictionary *_definition;
-    UIImage *_icon;
-    UIImage *_homeScreenIcon;
+    NSObject<OS_dispatch_queue> *_stateAccessQueue;
 }
 
 @property (readonly, nonatomic) NSArray *allBundleIdentifiers;
@@ -28,9 +29,8 @@
 @property (readonly, nonatomic) NSArray *documentActions;
 @property (readonly, nonatomic) NSArray *documentTypes;
 @property (readonly, nonatomic) NSArray *exportedFileTypes;
-@property (strong, nonatomic) UIImage *homeScreenIcon; // @synthesize homeScreenIcon=_homeScreenIcon;
 @property (readonly, nonatomic) NSString *iTunesIdentifier;
-@property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) WFImage *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) NSString *iconName;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isInstalled) BOOL installed; // @synthesize installed=_installed;
@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) NSArray *shareExtensions; // @synthesize shareExtensions=_shareExtensions;
 @property (readonly, nonatomic) NSString *shortName;
 @property (readonly, nonatomic) long long state;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;
 
 - (void).cxx_destruct;
 - (id)bundleIdentifiersByIdiom;

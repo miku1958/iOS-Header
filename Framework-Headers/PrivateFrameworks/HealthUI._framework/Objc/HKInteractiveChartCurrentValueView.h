@@ -39,6 +39,7 @@
 - (void)reloadData;
 - (void)scheduleDeferredDataReload;
 - (void)showNoDataStatus;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCurrentValueTextWithAttributedString:(id)arg1;
 
 @end

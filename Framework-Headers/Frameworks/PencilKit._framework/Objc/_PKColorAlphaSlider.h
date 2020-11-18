@@ -13,6 +13,7 @@
 {
     id<_PKColorAlphaSliderDelegate> _delegate;
     UIColor *_color;
+    long long _colorUserInterfaceStyle;
     double _minAlpha;
     double _maxAlpha;
     UIView *_colorView;
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) _PKCheckerGridView *alphaGridView; // @synthesize alphaGridView=_alphaGridView;
 @property (strong, nonatomic) CAGradientLayer *alphaGridViewMaskLayer; // @synthesize alphaGridViewMaskLayer=_alphaGridViewMaskLayer;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (nonatomic) long long colorUserInterfaceStyle; // @synthesize colorUserInterfaceStyle=_colorUserInterfaceStyle;
 @property (strong, nonatomic) UIView *colorView; // @synthesize colorView=_colorView;
 @property (strong, nonatomic) CAGradientLayer *colorViewMaskLayer; // @synthesize colorViewMaskLayer=_colorViewMaskLayer;
 @property (weak, nonatomic) id<_PKColorAlphaSliderDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,6 +41,7 @@
 - (struct CGRect)_knobViewFrameForColorAlpha:(double)arg1;
 - (void)_setColorNoLayout:(id)arg1;
 - (double)_sliderKnobViewWidth;
+- (long long)_uiColorUserInterfaceStyle;
 - (double)colorAlphaForSliderKnobXPosition:(double)arg1;
 - (void)didPanSliderKnob:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

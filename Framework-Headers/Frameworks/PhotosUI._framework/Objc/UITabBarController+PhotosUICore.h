@@ -26,5 +26,6 @@
 - (BOOL)px_isImageModulationEnabled;
 - (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)px_performAddToTabAnimation:(unsigned long long)arg1 withSnapshotView:(id)arg2;
+- (void)px_switchToTabForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @end
 

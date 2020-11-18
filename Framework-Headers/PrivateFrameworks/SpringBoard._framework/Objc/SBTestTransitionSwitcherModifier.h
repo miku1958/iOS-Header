@@ -8,12 +8,12 @@
 
 @interface SBTestTransitionSwitcherModifier : SBTransitionSwitcherModifier
 {
-    BOOL _asynchronouslyRendersUntilDelay;
+    BOOL _shouldRasterizeLiveContentUntilDelay;
     double _delay;
 }
 
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
-- (void)setAsynchronouslyRendersUntilDelay:(double)arg1;
+- (void)setShouldRasterizeLiveContentUntilDelay:(double)arg1;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 
 @end
 

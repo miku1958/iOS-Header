@@ -17,7 +17,7 @@
 
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
-- (void)__handleAccessoryIsReachable;
+- (void)__handleAccessoryConfigured;
 - (void)__handleNetworkAccessViolationUpdate:(id)arg1;
 - (void)__handleNetworkRouterStatusUpdate:(id)arg1;
 - (void)__handleNetworkRouterWANStatusUpdate:(id)arg1;
@@ -32,7 +32,7 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleAccessoryIsReachable:(id)arg1;
+- (void)handleAccessoryConfigured:(id)arg1;
 - (void)handleCharacteristicValuesChanged:(id)arg1;
 - (void)handleInitialState;
 - (void)handleNetworkRouterSatelliteAddedOrRemoved:(id)arg1;

@@ -85,6 +85,7 @@
 - (void)refreshContent;
 - (void)relevanceEnvironment:(id)arg1 didUpdateRelevanceProvider:(id)arg2;
 - (id)relevanceProviderEnvironment;
+- (void)reloadElement:(id)arg1 withElement:(id)arg2;
 - (void)removeElement:(id)arg1;
 - (void)resume;
 - (id)section:(id)arg1 groupForIdentifier:(id)arg2;

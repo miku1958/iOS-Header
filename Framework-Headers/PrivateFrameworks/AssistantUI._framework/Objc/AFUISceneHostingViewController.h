@@ -45,12 +45,12 @@
 - (void).cxx_destruct;
 - (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (void)_commonInit;
+- (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (BOOL)_hasScene;
-- (void)_noteSceneDidInvalidate;
 - (BOOL)_shouldDeferHIDEventsForMode;
 - (void)_transitionContentsWithView:(id)arg1 forContentState:(long long)arg2;
 - (void)_updateDeferralChainWithWindow:(id)arg1;
-- (void)deactiveSceneWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deactivateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateAndPauseDeferringHIDEvents;
@@ -59,7 +59,7 @@
 - (id)sceneConfigurationForDelegate;
 - (void)sceneController:(id)arg1 sceneContentStateDidChange:(id)arg2;
 - (void)sceneController:(id)arg1 sceneDidUpdateClientSettings:(id)arg2;
-- (void)sceneController:(id)arg1 sceneWasInvalidated:(id)arg2;
+- (void)sceneController:(id)arg1 sceneWasInvalidated:(id)arg2 forReason:(unsigned long long)arg3;
 - (void)startDeferringHIDEventsIfNeeded;
 - (void)startHostingSceneForConfiguration:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)stopHostingScene;

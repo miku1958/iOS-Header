@@ -34,7 +34,6 @@
 @property (readonly) Class superclass;
 
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
-+ (id)ruleFromFirewallRuleWan:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

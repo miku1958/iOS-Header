@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (BaseBoard)
+- (id)bs_compactMap:(CDUnknownBlockType)arg1;
 - (BOOL)bs_containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)bs_differenceWithArray:(id)arg1;
 - (void)bs_each:(CDUnknownBlockType)arg1;
@@ -21,6 +22,7 @@
 - (id)bs_map:(CDUnknownBlockType)arg1;
 - (id)bs_mapNoNulls:(CDUnknownBlockType)arg1;
 - (id)bs_objectsOfClass:(Class)arg1;
+- (id)bs_reduce:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)bs_reverse;
 @end
 

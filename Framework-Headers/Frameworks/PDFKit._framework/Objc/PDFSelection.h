@@ -59,6 +59,7 @@
 - (id)initWithDocument:(id)arg1;
 - (id)initWithPage:(id)arg1;
 - (BOOL)isEmpty;
+- (BOOL)isStandaloneGraphic;
 - (id)lastPage;
 - (struct CGRect)lastSpanBoundsForPage:(id)arg1;
 - (struct CGPoint)leftMostCharCenter;

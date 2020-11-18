@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)initWithStoreContainerToken:(id)arg1;
 - (id)name;
-- (void)resolveWithDaemon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)resolveWithDaemon:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -20,6 +20,7 @@
     int _mediaKind;
     int _presentationType;
     double _interItemSpacing;
+    double _itemCaptionSpacing;
     double _overrideAspectRatio;
     double _overrideAspectRatioAmount;
     double _aspectRatioLimit;
@@ -48,6 +49,9 @@
 @property (nonatomic) BOOL hideIncompleteLastRow;
 @property (nonatomic) double interItemSpacing;
 @property (nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
+@property (nonatomic) double itemCaptionSpacing;
+@property (nonatomic) double itemCaptionSpacing; // @synthesize itemCaptionSpacing=_itemCaptionSpacing;
+@property (readonly, nonatomic) BOOL itemCaptionsVisible;
 @property (nonatomic) BOOL loadItemsOutsideAnchorViewport;
 @property (readonly, nonatomic) struct _NSRange loadedItems;
 @property (readonly, nonatomic) struct CGRect loadedItemsRect;

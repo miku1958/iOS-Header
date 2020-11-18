@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) struct tagHANDLE *videoTransmitterHandle; // @synthesize videoTransmitterHandle=_videoTransmitterHandle;
 
++ (double)minKeyFrameGenerationIntervalForMode:(int)arg1;
 - (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)computeTimestamp:(unsigned int *)arg1 hostTime:(double *)arg2 forFrame:(struct opaqueCMSampleBuffer *)arg3;
 - (void)dealloc;

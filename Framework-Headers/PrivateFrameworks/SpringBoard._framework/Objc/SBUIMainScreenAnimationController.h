@@ -7,17 +7,23 @@
 #import <SpringBoard/SBUIWorkspaceAnimationController.h>
 
 @class NSSet, SBDeviceApplicationSceneEntity, SBWorkspaceTransitionRequest;
+@protocol BSInvalidatable;
 
 @interface SBUIMainScreenAnimationController : SBUIWorkspaceAnimationController
 {
+    id<BSInvalidatable> _colorSamplingAssertion;
+    id<BSInvalidatable> _wallpaperRequiredAssertion;
 }
 
+@property (strong, nonatomic) id<BSInvalidatable> colorSamplingAssertion; // @synthesize colorSamplingAssertion=_colorSamplingAssertion;
 @property (readonly, copy, nonatomic) NSSet *fromApplicationSceneEntities; // @dynamic fromApplicationSceneEntities;
 @property (readonly, nonatomic) SBDeviceApplicationSceneEntity *fromApplicationSceneEntity;
 @property (readonly, copy, nonatomic) NSSet *toApplicationSceneEntities; // @dynamic toApplicationSceneEntities;
 @property (readonly, nonatomic) SBDeviceApplicationSceneEntity *toApplicationSceneEntity;
 @property (readonly, nonatomic) SBWorkspaceTransitionRequest *transitionRequest;
+@property (strong, nonatomic) id<BSInvalidatable> wallpaperRequiredAssertion; // @synthesize wallpaperRequiredAssertion=_wallpaperRequiredAssertion;
 
+- (void).cxx_destruct;
 - (void)__startAnimation;
 - (BOOL)__wantsInitialProgressStateChange;
 - (void)_begin;

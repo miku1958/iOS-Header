@@ -12,7 +12,7 @@
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (id)_axFocusedWindowSubviews;
-+ (void)_axTriggerNextContextMenuInteractionInQueue:(id)arg1 forElement:(id)arg2 customAction:(id)arg3;
++ (void)_axTriggerNextContextMenuInteractionInQueue:(id)arg1 forElement:(id)arg2 targetPointValue:(id)arg3;
 + (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
@@ -29,7 +29,6 @@
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
 - (id)_accessibilityChildVendingParent;
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
-- (id)_accessibilityContextMenuActionForElement:(id)arg1;
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (void)_accessibilityFinalize;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
@@ -59,6 +58,7 @@
 - (id)_accessibilityRetrieveLabelFromTableViewCell;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (BOOL)_accessibilityShouldHitTestLayers;
+- (BOOL)_accessibilityShowContextMenuForElement:(id)arg1 targetPointValue:(id)arg2;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilitySubviewMatchingFKAView:(id)arg1;
 - (id)_accessibilitySupportGesturesAttributes;

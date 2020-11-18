@@ -6,34 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <EmailDaemon/EDAccountChangeHookResponder-Protocol.h>
+#import <EmailDaemon/EDThreadQueryHandlerDelegate-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMMessageRepositoryInterface-Protocol.h>
 
-@class EDFetchController, EDMailboxPersistence, EDMailboxPredictionController, EDMessageChangeManager, EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EMBlockedSenderManager, NSConditionLock, NSHashTable, NSMutableDictionary, NSString;
-@protocol EMUserProfileProvider, OS_dispatch_queue;
+@class EDConversationPersistence, EDFetchController, EDMailboxPersistence, EDMailboxPredictionController, EDMessageChangeManager, EDMessagePersistence, EDPersistenceHookRegistry, EDThreadPersistence, EDVIPManager, NSConditionLock, NSHashTable, NSMutableDictionary, NSString;
+@protocol EDRemoteSearchProvider, EMUserProfileProvider, OS_dispatch_queue;
 
-@interface EDMessageRepository : NSObject <EFLoggable, EMMessageRepositoryInterface>
+@interface EDMessageRepository : NSObject <EDAccountChangeHookResponder, EDThreadQueryHandlerDelegate, EMMessageRepositoryInterface, EFLoggable>
 {
     EDMailboxPredictionController *_mailboxPredictionController;
     struct os_unfair_lock_s _mailboxPredictionControllerLock;
     struct os_unfair_lock_s _handlersLock;
     NSMutableDictionary *_queryHandlers;
-    NSMutableDictionary *_messageQueryHandlers;
     NSMutableDictionary *_threadQueryHandlers;
     NSHashTable *_handlerTokens;
     EDPersistenceHookRegistry *_hookRegistry;
     EDMessagePersistence *_messagePersistence;
+    EDConversationPersistence *_conversationPersistence;
     EDThreadPersistence *_threadPersistence;
     EDMessageChangeManager *_messageChangeManager;
     NSConditionLock *_performQueryOnSerializationQueue;
     NSObject<OS_dispatch_queue> *_serializationQueue;
     EDMailboxPersistence *_mailboxPersistence;
     id<EMUserProfileProvider> _userProfileProvider;
+    EDVIPManager *_vipManager;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDFetchController *_fetchController;
-    EMBlockedSenderManager *_blockedSenderManager;
 }
 
-@property (readonly, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
+@property (readonly, nonatomic) EDConversationPersistence *conversationPersistence; // @synthesize conversationPersistence=_conversationPersistence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) EDFetchController *fetchController; // @synthesize fetchController=_fetchController;
@@ -43,19 +46,21 @@
 @property (readonly, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property (strong, nonatomic) EDMessageChangeManager *messageChangeManager; // @synthesize messageChangeManager=_messageChangeManager;
 @property (strong, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
-@property (strong, nonatomic) NSMutableDictionary *messageQueryHandlers; // @synthesize messageQueryHandlers=_messageQueryHandlers;
 @property (readonly, nonatomic) NSConditionLock *performQueryOnSerializationQueue; // @synthesize performQueryOnSerializationQueue=_performQueryOnSerializationQueue;
 @property (strong, nonatomic) NSMutableDictionary *queryHandlers; // @synthesize queryHandlers=_queryHandlers;
+@property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serializationQueue; // @synthesize serializationQueue=_serializationQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EDThreadPersistence *threadPersistence; // @synthesize threadPersistence=_threadPersistence;
 @property (strong, nonatomic) NSMutableDictionary *threadQueryHandlers; // @synthesize threadQueryHandlers=_threadQueryHandlers;
 @property (readonly, nonatomic) id<EMUserProfileProvider> userProfileProvider; // @synthesize userProfileProvider=_userProfileProvider;
+@property (readonly, nonatomic) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
 
 + (id)log;
 + (id)signpostLog;
 - (void).cxx_destruct;
 - (id)_changeFlagsForPersistedMessages:(id)arg1 flagChange:(id)arg2 returnUndoAction:(BOOL)arg3;
+- (void)_enumerateThreadsByThreadObjectIDsByScope:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_partitionObjectIDs:(id)arg1;
 - (void)_performMessageConversationFlagChangeAction:(id)arg1;
 - (void)_performMessageDeleteAction:(id)arg1;
@@ -71,12 +76,15 @@
 - (id)_persistedMessagesForMessageChangeAction:(id)arg1;
 - (id)_persistedMessagesForObjectIDs:(id)arg1;
 - (void)_resetUpdateThrottlersWithLogMessage:(id)arg1;
-- (void)_threadsByThreadObjectIDsByScope:(id)arg1 resultBlock:(CDUnknownBlockType)arg2;
+- (void)_triggerMigrationForThreadScopes:(id)arg1;
+- (void)_triggerMigrationWithThreadScopesMatcher:(CDUnknownBlockType)arg1;
 - (id)_undoActionsForMovedMessages:(id)arg1;
+- (void)accountBecameActive:(id)arg1;
+- (void)accountBecameInactive:(id)arg1;
 - (void)cancelAllHandlers;
 - (void)dealloc;
 - (void)getCachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithMessagePersistence:(id)arg1 threadPersistence:(id)arg2 messageChangeManager:(id)arg3 hookRegistry:(id)arg4 mailboxPersistence:(id)arg5 userProfileProvider:(id)arg6 fetchController:(id)arg7;
+- (id)initWithMessagePersistence:(id)arg1 conversationPersistence:(id)arg2 threadPersistence:(id)arg3 messageChangeManager:(id)arg4 hookRegistry:(id)arg5 mailboxPersistence:(id)arg6 remoteSearchProvider:(id)arg7 userProfileProvider:(id)arg8 vipManager:(id)arg9 fetchController:(id)arg10;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
 - (id)mailboxPredictionController;
 - (void)messageListItemsForObjectIDs:(id)arg1 requestID:(unsigned long long)arg2 observationIdentifier:(id)arg3 loadSummaryForAdditionalObjectIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -84,12 +92,14 @@
 - (void)performMessageChangeAction:(id)arg1 requestID:(unsigned long long)arg2 returnUndoAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performQuery:(id)arg1 limit:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performQuery:(id)arg1 withObserver:(id)arg2 observationIdentifier:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)predictMailboxForMovingMessages:(id)arg1 withObserver:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)requestRepresentationForMessageWithID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)resetPrecomputedThreadScopesForMailboxScope:(id)arg1;
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;
 - (unsigned long long)signpostID;
 - (void)startCountingQuery:(id)arg1 includingServerCountsForMailboxScope:(id)arg2 withObserver:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)tearDown;
+- (void)threadQueryHandlerStateDidChange:(id)arg1;
 
 @end
 

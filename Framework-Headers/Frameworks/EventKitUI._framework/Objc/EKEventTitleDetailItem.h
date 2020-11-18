@@ -8,13 +8,13 @@
 
 #import <EventKitUI/EKEventDetailTitleCellDelegate-Protocol.h>
 
-@class NSDate, NSObject, UIColor, UITableViewCell;
+@class EKEventDetailTitleCell, NSDate, NSObject, UIColor, UIView;
 @protocol EKEventTitleDetailItemDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventTitleDetailItem : EKEventDetailItem <EKEventDetailTitleCellDelegate>
 {
-    UITableViewCell *_cell;
+    EKEventDetailTitleCell *_cell;
     UIColor *_color;
     BOOL _showDot;
     BOOL _cellNeedsUpdate;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
 @property (nonatomic) unsigned long long numberOfTitleLines; // @synthesize numberOfTitleLines=_numberOfTitleLines;
 @property (strong, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
+@property (readonly, nonatomic) UIView *sourceViewForPopover;
 
 - (void).cxx_destruct;
 - (void)_updateCellIfNeededForWidth:(double)arg1;

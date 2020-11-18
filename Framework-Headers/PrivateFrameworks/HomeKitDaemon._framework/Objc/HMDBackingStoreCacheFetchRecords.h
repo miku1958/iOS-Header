@@ -10,6 +10,7 @@
 
 @interface HMDBackingStoreCacheFetchRecords : HMDBackingStoreOperation
 {
+    BOOL _recursive;
     HMDBackingStoreCacheGroup *_group;
     HMDBackingStoreCacheShareGroup *_share;
     CDUnknownBlockType _fetchResult;
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) HMDBackingStoreCacheGroup *group; // @synthesize group=_group;
 @property (strong, nonatomic) NSArray *parentUuids; // @synthesize parentUuids=_parentUuids;
 @property (strong, nonatomic) NSArray *recordNames; // @synthesize recordNames=_recordNames;
+@property BOOL recursive; // @synthesize recursive=_recursive;
 @property (strong, nonatomic) HMDBackingStoreCacheShareGroup *share; // @synthesize share=_share;
 @property (strong, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 

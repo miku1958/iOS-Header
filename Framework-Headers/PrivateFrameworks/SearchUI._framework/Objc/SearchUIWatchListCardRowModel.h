@@ -33,6 +33,9 @@
 
 - (void).cxx_destruct;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3 queryId:(unsigned long long)arg4;
+- (BOOL)isDraggable;
+- (BOOL)isTappable;
+- (id)punchouts;
 - (int)separatorStyle;
 - (void)toggleAddToUpNextWithFeedbackDelegate:(id)arg1;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2;

@@ -33,9 +33,11 @@
 - (id)description;
 - (void)downloadImageDataWithScale:(double)arg1 shouldWriteData:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)imageDataFromCacheWithScale:(double)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -32,7 +32,7 @@
 - (id)resourceTypesToUploadForUploadIdentifier:(id)arg1;
 - (unsigned long long)scopeType;
 - (BOOL)shouldUploadResource:(id)arg1;
-- (BOOL)storeResourcesToUpload:(id)arg1 withUploadIdentifier:(id)arg2 error:(id *)arg3;
+- (BOOL)storeResourcesToUpload:(id)arg1 withUploadIdentifier:(id)arg2 shouldCheckResources:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

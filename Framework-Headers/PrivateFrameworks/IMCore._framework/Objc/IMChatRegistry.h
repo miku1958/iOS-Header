@@ -33,6 +33,7 @@
     BOOL _wantsHistoryReload;
     BOOL _postMessageSentNotifications;
     BOOL _isInternalInstall;
+    BOOL _blackholedChatsExist;
     unsigned long long _defaultNumberOfMessagesToLoad;
     unsigned long long _daemonUnreadCount;
     long long _daemonLastFailedMessageDate;
@@ -59,6 +60,7 @@
 @property (readonly, nonatomic) NSArray *allExistingChats;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *batchProcessingQueue; // @synthesize batchProcessingQueue=_batchProcessingQueue;
 @property (strong, nonatomic) IMChatRegistry *batchProcessingRegistry; // @synthesize batchProcessingRegistry=_batchProcessingRegistry;
+@property (readonly, nonatomic) BOOL blackholedChatsExist;
 @property (strong, nonatomic) NSDictionary *chatIdToLastMessageItemMap; // @synthesize chatIdToLastMessageItemMap=_chatIdToLastMessageItemMap;
 @property (readonly, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property (readonly, copy) NSString *debugDescription;
@@ -71,6 +73,7 @@
 @property (strong, nonatomic, setter=_setSimulatedChats:) NSArray *simulatedChats; // @synthesize simulatedChats=_simulatedChats;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *updateBlocks; // @synthesize updateBlocks=_updateBlocks;
+@property (readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
 + (BOOL)hasInitializedChatFiltering;
 + (Class)messageClass;
@@ -103,6 +106,7 @@
 - (void)_chat:(id)arg1 setProperties:(id)arg2 ofParticipant:(id)arg3;
 - (void)_chat:(id)arg1 setValue:(id)arg2 forChatProperty:(id)arg3;
 - (void)_chat:(id)arg1 updateDisplayName:(id)arg2;
+- (void)_chat:(id)arg1 updateIsBlackholed:(BOOL)arg2;
 - (void)_chat:(id)arg1 updateIsFiltered:(BOOL)arg2;
 - (void)_chat:(id)arg1 updateLastAddressedHandle:(id)arg2;
 - (void)_chat:(id)arg1 updateLastAddressedSIMID:(id)arg2;
@@ -155,6 +159,9 @@
 - (void)_handleChatReconstructions:(id)arg1;
 - (void)_handleMergedChatReconstructions:(id)arg1;
 - (BOOL)_hasChat:(id)arg1 forService:(id)arg2;
+- (id)_inPersonFromIMHandle:(id)arg1 isMe:(BOOL)arg2;
+- (id)_inPersonHandleFromIMHandle:(id)arg1 contact:(id)arg2;
+- (id)_inPersonNameForContact:(id)arg1 imHandle:(id)arg2;
 - (id)_lookupExistingChatWithIMHandle:(id)arg1;
 - (void)_markHasHadSuccessfulQueryForChat:(id)arg1;
 - (double)_maxDurationForScrutinyMode;
@@ -187,6 +194,7 @@
 - (id)_transcriptRenderingMetaDictionaryForChatIdentifier:(id)arg1;
 - (void)_unregisterChat:(id)arg1;
 - (void)_unregisterChatWithGUID:(id)arg1;
+- (void)_updateBlackholedChatsExist:(BOOL)arg1;
 - (void)_updateInfo:(id)arg1 forGUID:(id)arg2 updatingUnreadCount:(BOOL)arg3;
 - (void)_updateInfo:(id)arg1 forGUID:(id)arg2 updatingUnreadCount:(BOOL)arg3 shouldPostUnreadNotification:(BOOL)arg4;
 - (void)_updatePersonCentricIDToChatMapForChat:(id)arg1 toNewPersonCentricID:(id)arg2;
@@ -205,6 +213,7 @@
 - (void)account:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 updateProperties:(id)arg5;
 - (id)activeCallForConversationUUID:(id)arg1;
 - (void)attachmentQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4;
+- (void)blackholedChatsExist:(BOOL)arg1;
 - (void)chat:(id)arg1 displayNameUpdated:(id)arg2;
 - (void)chat:(id)arg1 engramIDUpdated:(id)arg2;
 - (void)chat:(id)arg1 isFilteredUpdated:(BOOL)arg2;
@@ -263,6 +272,7 @@
 - (void)historicalMessageGUIDsDeleted:(id)arg1 chatGUIDs:(id)arg2 queryID:(id)arg3;
 - (void)historyQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4 limit:(unsigned long long)arg5;
 - (id)init;
+- (id)initAsListener:(BOOL)arg1;
 - (void)isDownloadingQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(BOOL)arg4;
 - (long long)lastFailedMessageDate;
 - (void)lastFailedMessageDateChanged:(long long)arg1;

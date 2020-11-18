@@ -9,12 +9,13 @@
 #import <AXMediaUtilities/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMAVCaptureSessionNodeFrameDelegate-Protocol.h>
 
-@class AVCaptureSession, AXMVisionAnalysisOptions, NSObject, NSString;
+@class AVCaptureSession, AXMCaptureVideoDataOutput, AXMVisionAnalysisOptions, NSObject, NSString;
 @protocol AXMAVCaptureSessionNodeDelegate, AXMAVCaptureSessionNodeFrameDelegate, OS_dispatch_queue;
 
 @interface AXMAVCaptureSessionNode : AXMSourceNode <AVCaptureVideoDataOutputSampleBufferDelegate, AXMAVCaptureSessionNodeFrameDelegate>
 {
     NSObject<OS_dispatch_queue> *_autotrigger_queue;
+    AXMCaptureVideoDataOutput *_axVideoDataOutput;
     id<AXMAVCaptureSessionNodeDelegate> _captureSessionNodeDelegate;
     id<AXMAVCaptureSessionNodeFrameDelegate> _frameDelegate;
     AVCaptureSession *_captureSession;
@@ -22,6 +23,7 @@
 }
 
 @property (strong, nonatomic) AXMVisionAnalysisOptions *analysisOptions; // @synthesize analysisOptions=_analysisOptions;
+@property (strong, nonatomic) AXMCaptureVideoDataOutput *axVideoDataOutput; // @synthesize axVideoDataOutput=_axVideoDataOutput;
 @property (weak, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;
 @property (weak, nonatomic) id<AXMAVCaptureSessionNodeDelegate> captureSessionNodeDelegate; // @synthesize captureSessionNodeDelegate=_captureSessionNodeDelegate;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,6 +36,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)title;
 - (void).cxx_destruct;
+- (void)addVideoDataOutputWithAVCaptureSession:(id)arg1 queue:(id)arg2;
 - (void)autoTriggerVideoFrameEventsWithAVCaptureSession:(id)arg1 options:(id)arg2 delegate:(id)arg3;
 - (void)beginFrameEventsWithAVCaptureSession:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
 - (void)captureOutput:(id)arg1 didDropSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;

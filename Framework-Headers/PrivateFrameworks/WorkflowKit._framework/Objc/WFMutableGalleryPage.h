@@ -19,6 +19,7 @@
     NSArray *routines;
     NSString *language;
     CKRecordID *base;
+    NSString *persistentIdentifier;
     NSArray *donations;
     NSArray *donationsGroupedByApp;
 }
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *language; // @synthesize language;
 @property (copy, nonatomic) NSNumber *minVersion; // @synthesize minVersion;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
+@property (copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property (copy, nonatomic) NSArray *routines; // @synthesize routines;
 
 - (void).cxx_destruct;

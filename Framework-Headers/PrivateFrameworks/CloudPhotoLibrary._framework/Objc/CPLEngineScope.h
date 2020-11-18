@@ -35,6 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithScopeIdentifier:(id)arg1 scopeType:(long long)arg2;
+- (id)redactedDescription;
 - (id)statusDescription;
 
 @end

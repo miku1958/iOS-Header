@@ -46,11 +46,11 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
-- (void)_actuateTapticFeedbackIfAvailableWithIntensity:(double)arg1;
+- (void)_actuateTapticFeedbackWithIntensity:(double)arg1;
 - (void)_animateToEnlargeView;
 - (void)_animateToShrinkView;
 - (void)_contentSizeCategoryDidChange;
-- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_prepareForTapticFeedback;
 - (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateUI;
 - (void)_updateUIForReachabilityState:(unsigned long long)arg1;

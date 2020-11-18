@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyPausedUpdate;
+- (void)_enumerateQuadViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_setupContentView;
 - (id)init;

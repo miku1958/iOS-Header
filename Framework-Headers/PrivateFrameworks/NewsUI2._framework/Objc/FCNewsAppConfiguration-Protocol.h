@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) long long criticalStorageThreshold;
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) BOOL disableThumbnailsForArticleRecirculation;
+@property (nonatomic, readonly) long long emailSignupRequiredAppLaunchCount;
 @property (nonatomic, readonly) NSString *embedConfigurationAssetID;
 @property (nonatomic, readonly) BOOL enableBadgeInSpotlightTabBar;
 @property (nonatomic, readonly) NSString *exploreArticleID;

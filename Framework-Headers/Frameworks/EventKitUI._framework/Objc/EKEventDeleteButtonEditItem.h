@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKEventEditItem.h>
 
-@class UITableViewCell;
+@class UITableViewCell, UIView;
 
 @interface EKEventDeleteButtonEditItem : EKEventEditItem
 {
@@ -14,6 +14,8 @@
     id _deleteButtonTarget;
     SEL _deleteButtonAction;
 }
+
+@property (readonly, nonatomic) UIView *sourceViewForPopover;
 
 - (void).cxx_destruct;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

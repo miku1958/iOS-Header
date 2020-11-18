@@ -24,7 +24,7 @@
 - (BOOL)iconManager:(SBHIconManager *)arg1 allowsBadgingForIcon:(SBIcon *)arg2;
 - (SBHIconAnimationSettings *)iconManager:(SBHIconManager *)arg1 animator:(SBHomeScreenIconTransitionAnimator *)arg2 animationSettingsForOperation:(unsigned long long)arg3 childViewController:(SBNestingViewController *)arg4;
 - (NSURL *)iconManager:(SBHIconManager *)arg1 applicationBundleURLForShortcutsWithIconView:(SBIconView *)arg2;
-- (NSArray *)iconManager:(SBHIconManager *)arg1 applicationShortcutItemsForAppIcon:(SBIcon *)arg2;
+- (NSArray *)iconManager:(SBHIconManager *)arg1 applicationShortcutItemsForIconView:(SBIconView *)arg2;
 - (NSString *)iconManager:(SBHIconManager *)arg1 applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(SBIconView *)arg2;
 - (UIView *)iconManager:(SBHIconManager *)arg1 backgroundViewForComponentsOfIconView:(SBIconView *)arg2;
 - (UIView *)iconManager:(SBHIconManager *)arg1 backgroundViewForDockForRootFolderController:(SBRootFolderController *)arg2;
@@ -65,6 +65,7 @@
 - (void)iconManager:(SBHIconManager *)arg1 possibleUserIconTapBeganAfterInformingIcon:(SBIconView *)arg2;
 - (NSString *)iconManager:(SBHIconManager *)arg1 reasonToDisallowInteractionOnIconView:(SBIconView *)arg2;
 - (NSString *)iconManager:(SBHIconManager *)arg1 reasonToDisallowTapOnIconView:(SBIconView *)arg2;
+- (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 didChangeEffectiveSidebarVisibilityProgress:(double)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 didChangeSidebarVisibilityProgress:(double)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 didEndOverscrollOnFirstPageWithVelocity:(double)arg3;
 - (void)iconManager:(SBHIconManager *)arg1 rootFolderController:(SBRootFolderController *)arg2 didOverscrollOnFirstPageByAmount:(double)arg3;

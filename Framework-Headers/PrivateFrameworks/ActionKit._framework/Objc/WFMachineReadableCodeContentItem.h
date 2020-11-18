@@ -8,7 +8,7 @@
 
 #import <ActionKit/WFContentItemClass-Protocol.h>
 
-@class AVMetadataMachineReadableCodeObject, NSString;
+@class NSString, WFMachineReadableCode;
 
 @interface WFMachineReadableCodeContentItem : WFContentItem <WFContentItemClass>
 {
@@ -16,7 +16,7 @@
     NSString *_errorCorrectionLevel;
 }
 
-@property (readonly, nonatomic) AVMetadataMachineReadableCodeObject *codeObject;
+@property (readonly, nonatomic) WFMachineReadableCode *codeObject;
 @property (strong, nonatomic) NSString *errorCorrectionLevel; // @synthesize errorCorrectionLevel=_errorCorrectionLevel;
 @property (nonatomic) BOOL prefersImage; // @synthesize prefersImage=_prefersImage;
 

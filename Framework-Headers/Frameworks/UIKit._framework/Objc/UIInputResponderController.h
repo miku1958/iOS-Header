@@ -135,7 +135,9 @@
 - (void)inputResponderControllerWillResume:(id)arg1;
 - (BOOL)maximize;
 - (BOOL)maximizeWithAnimation:(BOOL)arg1;
+- (BOOL)maximizeWithAnimationStyle:(id)arg1;
 - (BOOL)minimize;
+- (BOOL)minimizeWithAnimationStyle:(id)arg1;
 - (id)nextAnimationStyle;
 - (id)nextAnimationStyle:(BOOL)arg1;
 - (void)orderInWithAnimationStyle:(id)arg1;

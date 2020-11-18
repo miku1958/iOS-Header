@@ -14,7 +14,7 @@
 #import <HomeUI/HUServiceGridViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUSceneActionEditorItemManager, NSMutableDictionary, NSSet, NSString;
+@class HUQuickControlSummaryNavigationBarTitleView, HUSceneActionEditorItemManager, NSMutableDictionary, NSSet, NSString;
 @protocol HUPresentationDelegate, HUSceneEditorDelegate;
 
 @interface HUSceneActionEditorViewController : HUItemTableViewController <HUSwitchCellDelegate, HUSceneServicePickerViewControllerDelegate, HUNameAndIconEditorCellDelegate, HUIconPickerViewControllerDelegate, HUServiceGridViewControllerDelegate, HUMediaSelectionViewControllerDelegate, HUDetailsPresentationDelegateHost>
@@ -25,6 +25,7 @@
     id<HUPresentationDelegate> _presentationDelegate;
     unsigned long long _mode;
     id<HUSceneEditorDelegate> _sceneEditorDelegate;
+    HUQuickControlSummaryNavigationBarTitleView *_navigationBarTitleView;
     NSString *_editingName;
     NSMutableDictionary *_actionGridViewControllersByEditorType;
 }
@@ -37,6 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HUSceneActionEditorItemManager *itemManager; // @dynamic itemManager;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) HUQuickControlSummaryNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (copy, nonatomic) NSSet *prioritizedServices;
 @property (nonatomic) BOOL requiresPresentingViewControllerDismissal; // @synthesize requiresPresentingViewControllerDismissal=_requiresPresentingViewControllerDismissal;
@@ -51,7 +53,7 @@
 - (BOOL)_allowEditingNameAndIcon;
 - (void)_cancel:(id)arg1;
 - (void)_changeServices:(id)arg1;
-- (void)_deleteScene:(id)arg1;
+- (void)_deleteScene:(id)arg1 indexPath:(id)arg2;
 - (void)_done:(id)arg1;
 - (void)_presentMediaSelection;
 - (void)_testScene:(id)arg1;
@@ -59,7 +61,7 @@
 - (void)_validateDoneButton;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
-- (void)commitChanges;
+- (id)commitChanges;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (void)iconPicker:(id)arg1 didPickIconDescriptor:(id)arg2;

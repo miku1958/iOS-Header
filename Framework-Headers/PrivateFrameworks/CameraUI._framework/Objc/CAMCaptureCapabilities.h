@@ -329,7 +329,6 @@
 - (BOOL)isWideSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isWideSupportedForMode:(long long)arg1 devicePosition:(long long)arg2 videoConfiguration:(long long)arg3;
 - (BOOL)isZoomAllowedForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
-- (long long)maxSupportedPhotoQualityPrioritizationForMode:(long long)arg1;
 - (double)maximumDepthEffectApertureForDevicePosition:(long long)arg1;
 - (double)maximumZoomFactorForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3;
 - (double)minimumDepthEffectApertureForDevicePosition:(long long)arg1;

@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithProfile:(id)arg1 profileVersion:(id)arg2 data:(id)arg3 expirationDate:(id)arg4 bagKeySet:(id)arg5 cookies:(id)arg6;
 - (id)bagKeyInfoForKey:(id)arg1;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)valueForURLVariable:(id)arg1;
+- (id)valueForURLVariable:(id)arg1 account:(id)arg2;
 
 @end
 

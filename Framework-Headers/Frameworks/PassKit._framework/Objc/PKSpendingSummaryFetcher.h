@@ -50,9 +50,12 @@
 - (void)_accessObserversWithHandler:(CDUnknownBlockType)arg1;
 - (id)_cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2 withLastPeriodChange:(BOOL)arg3;
 - (void)_processNextRequest;
+- (void)_resetCurrentCalendar;
 - (void)_spendingSummaryStartingWithDate:(id)arg1 endDate:(id)arg2 type:(unsigned long long)arg3 withLastPeriodChange:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_timeZoneChanged:(id)arg1;
 - (void)availableSummaries:(CDUnknownBlockType)arg1;
 - (id)cachedSpendingSummaryStartingWithDate:(id)arg1 type:(unsigned long long)arg2;
+- (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)registerObserver:(id)arg1;

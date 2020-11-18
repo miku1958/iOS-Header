@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface STAllowanceListController : STPINListViewController <STAllowanceDetailListControllerDelegate>
 {
+    BOOL _shouldShowConfirmDeletionAlert;
     NSObject<STRootViewModelCoordinator> *_coordinator;
     NSArray *_allowanceSpecifiers;
     PSSpecifier *_enableAllAllowancesSpecifier;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong) PSSpecifier *enableAllAllowancesSpecifier; // @synthesize enableAllAllowancesSpecifier=_enableAllAllowancesSpecifier;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL shouldShowCompatibilityAlert;
+@property BOOL shouldShowConfirmDeletionAlert; // @synthesize shouldShowConfirmDeletionAlert=_shouldShowConfirmDeletionAlert;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)showStoreDemoAlert;
 - (id)specifiers;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 

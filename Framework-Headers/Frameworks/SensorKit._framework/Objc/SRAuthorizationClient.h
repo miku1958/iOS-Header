@@ -8,14 +8,14 @@
 
 #import <SensorKit/SRSensorKitServiceClientAuthorizationListening-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSSet, NSString, NSXPCConnection;
+@class NSDictionary, NSMapTable, NSSet, NSString, NSXPCConnection;
 
 @interface SRAuthorizationClient : NSObject <SRSensorKitServiceClientAuthorizationListening>
 {
     BOOL _prerequisiteMet;
     int _registrationToken;
     NSXPCConnection *_connection;
-    NSHashTable *_listeners;
+    NSMapTable *_listeners;
     NSSet *_actualAuthorizedServices;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSDictionary *bundlePathMap;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL dataCollectionEnabled;
-@property (strong, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
+@property (strong, nonatomic) NSMapTable *listeners; // @synthesize listeners=_listeners;
 @property BOOL prerequisiteMet; // @synthesize prerequisiteMet=_prerequisiteMet;
 @property int registrationToken; // @synthesize registrationToken=_registrationToken;
 @property (readonly, copy, nonatomic) NSString *requiredAppDataDeepLinkIdentifier;
@@ -39,14 +39,14 @@
 + (id)sharedInstance;
 - (void)addBundle:(id)arg1 toPendingAuthorizations:(id)arg2;
 - (void)addListener:(id)arg1;
+- (void)addListener:(id)arg1 forBundleId:(id)arg2;
 - (void)addToBundlePathMap:(id)arg1;
-- (void)authorizedServicesDidChange:(id)arg1;
+- (void)authorizedServicesDidChange:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (id)initWithEffectiveBundleId:(id)arg1;
-- (id)initWithEffectiveBundleId:(id)arg1 connection:(id)arg2;
+- (id)initWithConnection:(id)arg1;
 - (void)invalidate;
-- (void)notifyAuthorizationChange;
+- (void)notifyAuthorizationChangeForBundleIdentifier:(id)arg1;
 - (void)registerForPrerequisitesUpdated;
 - (void)removeBundle:(id)arg1 fromPendingAuthorizations:(id)arg2;
 - (void)removeFromBundlePathMap:(id)arg1;

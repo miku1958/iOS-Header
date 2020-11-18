@@ -39,6 +39,7 @@
 + (id)styleSetNameForStyleSetFromRecipeWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)_newVisualStyleSet;
+- (id)_platformColorsStyleSetName;
 - (id)_visualStyleSetDescription;
 - (id)initWithRecipeName:(id)arg1 andDescription:(id)arg2 descendantDescriptions:(id)arg3;
 - (id)settingsForConfiguration:(id)arg1;

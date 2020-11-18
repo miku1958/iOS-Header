@@ -18,11 +18,13 @@
     BOOL _inverted;
     long long _baseIdentifier;
     NSString *_charactersAddedToBase;
+    NSString *_charactersRemovedFromBase;
 }
 
 @property (readonly, nonatomic) long long baseIdentifier; // @synthesize baseIdentifier=_baseIdentifier;
 @property (readonly, nonatomic) NSCharacterSet *characterSet;
 @property (copy, nonatomic) NSString *charactersAddedToBase; // @synthesize charactersAddedToBase=_charactersAddedToBase;
+@property (copy, nonatomic) NSString *charactersRemovedFromBase; // @synthesize charactersRemovedFromBase=_charactersRemovedFromBase;
 @property (readonly, nonatomic) BOOL inverted; // @synthesize inverted=_inverted;
 
 + (BOOL)supportsSecureCoding;
@@ -33,7 +35,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBase:(long long)arg1 additionalCharacters:(id)arg2 inverted:(BOOL)arg3;
+- (id)initWithBase:(long long)arg1 additionalCharacters:(id)arg2 removedCharacters:(id)arg3 inverted:(BOOL)arg4;
 - (id)initWithBaseCharacterSet:(long long)arg1;
 - (id)initWithCharactersInString:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -37,6 +37,7 @@
 - (id)systemModel;
 - (id)systemVersion;
 - (id)userAssignedDeviceName;
+- (BOOL)usesTSCForClustering;
 - (BOOL)watchPlatform;
 
 @end

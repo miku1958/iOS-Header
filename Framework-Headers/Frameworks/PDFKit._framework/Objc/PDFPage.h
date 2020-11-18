@@ -75,6 +75,7 @@
 - (BOOL)columnAtPointIfAvailable:(struct CGPoint)arg1;
 - (struct CGRect)columnFrameAtPoint:(struct CGPoint)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (struct CGPDFPage *)createPageRefFromImage;
 - (id)ddScannerResults;
 - (void)dealloc;
 - (id)debugQuickLookObject;

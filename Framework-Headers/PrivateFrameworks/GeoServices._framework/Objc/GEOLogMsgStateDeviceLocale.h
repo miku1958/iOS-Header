@@ -13,10 +13,12 @@
 @interface GEOLogMsgStateDeviceLocale : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_deviceInputLocale;
     NSString *_deviceOutputLocale;
     NSString *_deviceSettingsLocale;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_deviceInputLocale:1;
         unsigned int read_deviceOutputLocale:1;
@@ -44,6 +46,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

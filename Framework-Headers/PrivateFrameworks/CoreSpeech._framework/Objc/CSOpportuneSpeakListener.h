@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
-#import <CoreSpeech/CSMediaPlayingMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSPGEndpointAnalyzerDelegate-Protocol.h>
 
-@class CSAudioRecordContext, CSAudioStream, CSSPGEndpointAnalyzer, NSMutableArray, NSString;
-@protocol CSAudioSessionProviding, CSAudioStreamProviding, CSOpportuneSpeakListenerDelegate;
+@class CSAudioRecordContext, CSAudioStream, CSPlainAudioFileWriter, CSSPGEndpointAnalyzer, NSMutableArray, NSString;
+@protocol CSAudioSessionProviding, CSAudioStreamProviding, CSOpportuneSpeakListenerDelegate, OS_dispatch_queue;
 
-@interface CSOpportuneSpeakListener : NSObject <CSAudioStreamProvidingDelegate, CSSPGEndpointAnalyzerDelegate, CSMediaPlayingMonitorDelegate>
+@interface CSOpportuneSpeakListener : NSObject <CSAudioStreamProvidingDelegate, CSSPGEndpointAnalyzerDelegate>
 {
     BOOL _isMediaPlayingNow;
     int _remoteVADSPGRatio;
@@ -25,8 +24,12 @@
     CSAudioRecordContext *_latestContext;
     NSMutableArray *_remoteVADAlignBuffer;
     unsigned long long _remoteVADAlignCount;
+    NSObject<OS_dispatch_queue> *_alignBufferQueue;
+    CSPlainAudioFileWriter *_audioFileWriter;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *alignBufferQueue; // @synthesize alignBufferQueue=_alignBufferQueue;
+@property (strong, nonatomic) CSPlainAudioFileWriter *audioFileWriter; // @synthesize audioFileWriter=_audioFileWriter;
 @property (strong, nonatomic) id<CSAudioSessionProviding> audioSessionProvider; // @synthesize audioSessionProvider=_audioSessionProvider;
 @property (strong, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
 @property (strong, nonatomic) id<CSAudioStreamProviding> audioStreamProvider; // @synthesize audioStreamProvider=_audioStreamProvider;
@@ -43,7 +46,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
+- (void)_addRemoteVADSignal:(BOOL)arg1;
+- (BOOL)_popRemoteVADSignal;
+- (void)_resetAlignBuffer;
+- (BOOL)_shouldReportBoron;
 - (void)_startRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)audioStreamProvider:(id)arg1 audioBufferAvailable:(id)arg2;
 - (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;

@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) HFMutableSetDiff *actionSetBuilders; // @synthesize actionSetBuilders=_actionSetBuilders;
 @property (readonly, nonatomic, getter=areActionsAffectedByEndEvents) BOOL actionsAffectedByEndEvents;
+@property (readonly, nonatomic) NSArray *allActionBuilders;
 @property (readonly, nonatomic) NSArray *allActionSets;
 @property (readonly, nonatomic) NSArray *anonymousActionBuilder;
 @property (strong, nonatomic) HFTriggerAnonymousActionSetBuilder *anonymousActionSetBuilder; // @synthesize anonymousActionSetBuilder=_anonymousActionSetBuilder;
@@ -44,6 +45,7 @@
 - (void)addAnonymousActionBuilder:(id)arg1;
 - (void)convertToHomeWorkflowActionSet:(id)arg1;
 - (void)convertToHomeWorkflowActionSetIfNeeded;
+- (void)defaultActionsForShortcut;
 - (id)initWithActionSets:(id)arg1 inHome:(id)arg2;
 - (id)initWithActionSets:(id)arg1 inHome:(id)arg2 filterEmptyActionSets:(BOOL)arg3;
 - (id)mediaAccessoriesForPlaybackAction:(id)arg1;

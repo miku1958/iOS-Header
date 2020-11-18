@@ -24,6 +24,7 @@
 - (unsigned long long)_legacyReasonForReason:(unsigned int)arg1;
 - (BOOL)acquire;
 - (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+- (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(BOOL)arg6;

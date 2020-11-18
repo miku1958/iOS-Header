@@ -12,6 +12,7 @@
 {
     UIColor *_preferredControlsTintColor;
     BOOL _backdropIsDark;
+    BOOL _backdropIsTinted;
     unsigned long long _tintStyle;
     UIColor *_controlsTintColor;
     UIColor *_preferredBarTintColor;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSArray *backdropAdjustmentEffects; // @synthesize backdropAdjustmentEffects=_backdropAdjustmentEffects;
 @property (readonly, nonatomic) UIBlurEffect *backdropEffect; // @synthesize backdropEffect=_backdropEffect;
 @property (readonly, nonatomic) BOOL backdropIsDark; // @synthesize backdropIsDark=_backdropIsDark;
+@property (readonly, nonatomic) BOOL backdropIsTinted; // @synthesize backdropIsTinted=_backdropIsTinted;
 @property (readonly, nonatomic) UIColor *controlsTintColor; // @synthesize controlsTintColor=_controlsTintColor;
 @property (readonly, nonatomic) _SFBarTheme *fallbackTheme;
 @property (readonly, nonatomic) long long overrideUserInterfaceStyle; // @synthesize overrideUserInterfaceStyle=_overrideUserInterfaceStyle;
@@ -33,6 +35,7 @@
 + (id)themeWithBarTintStyle:(unsigned long long)arg1 preferredBarTintColor:(id)arg2 controlsTintColor:(id)arg3;
 + (id)themeWithTheme:(id)arg1;
 - (void).cxx_destruct;
+- (void)applyBackdropEffectsToView:(id)arg1;
 - (id)initWithBarTintStyle:(unsigned long long)arg1 preferredBarTintColor:(id)arg2 controlsTintColor:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 

@@ -13,7 +13,6 @@
 @interface GEOMapServiceTraits : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     CDStruct_95bda58d _knownClientResolvedTypes;
@@ -48,6 +47,9 @@
     GEOTraitsTransitScheduleFilter *_transitTripStopTimeFilter;
     GEOPDVenueIdentifier *_venueIdentifier;
     GEOWalkingOptions *_walkingOptions;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _carHeadunitConnectionType;
     int _carHeadunitInteractionModel;
     int _deviceBatteryState;
@@ -70,6 +72,7 @@
     BOOL _isRefund;
     BOOL _isSettlement;
     BOOL _navigating;
+    BOOL _supportAutocompleteRapAffordance;
     BOOL _supportChildItems;
     BOOL _supportClientRankingFeatureMetadata;
     BOOL _supportDirectionIntentAutocomplete;
@@ -107,6 +110,7 @@
         unsigned int has_isRefund:1;
         unsigned int has_isSettlement:1;
         unsigned int has_navigating:1;
+        unsigned int has_supportAutocompleteRapAffordance:1;
         unsigned int has_supportChildItems:1;
         unsigned int has_supportClientRankingFeatureMetadata:1;
         unsigned int has_supportDirectionIntentAutocomplete:1;
@@ -201,6 +205,7 @@
         unsigned int wrote_isRefund:1;
         unsigned int wrote_isSettlement:1;
         unsigned int wrote_navigating:1;
+        unsigned int wrote_supportAutocompleteRapAffordance:1;
         unsigned int wrote_supportChildItems:1;
         unsigned int wrote_supportClientRankingFeatureMetadata:1;
         unsigned int wrote_supportDirectionIntentAutocomplete:1;
@@ -275,6 +280,7 @@
 @property (nonatomic) BOOL hasSessionId;
 @property (nonatomic) BOOL hasSessionRelativeTimestamp;
 @property (nonatomic) BOOL hasSource;
+@property (nonatomic) BOOL hasSupportAutocompleteRapAffordance;
 @property (nonatomic) BOOL hasSupportChildItems;
 @property (nonatomic) BOOL hasSupportClientRankingFeatureMetadata;
 @property (nonatomic) BOOL hasSupportDirectionIntentAutocomplete;
@@ -313,6 +319,7 @@
 @property (nonatomic) struct GEOSessionID sessionId;
 @property (nonatomic) double sessionRelativeTimestamp;
 @property (nonatomic) int source;
+@property (nonatomic) BOOL supportAutocompleteRapAffordance;
 @property (nonatomic) BOOL supportChildItems;
 @property (nonatomic) BOOL supportClientRankingFeatureMetadata;
 @property (nonatomic) BOOL supportDirectionIntentAutocomplete;
@@ -438,6 +445,8 @@
 - (unsigned long long)hash;
 - (id)historicalLocationsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)historicalLocationsCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (int)knownClientResolvedTypeAtIndex:(unsigned long long)arg1;
 - (id)knownClientResolvedTypesAsString:(int)arg1;

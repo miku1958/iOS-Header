@@ -29,16 +29,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL surfacesActionRadius; // @synthesize surfacesActionRadius=_surfacesActionRadius;
 
 - (void).cxx_destruct;
-- (id)_imageSizedToFitWithinRow:(id)arg1;
+- (double)_clampedCornerRadiusForGroupView:(id)arg1;
 - (id)_interfaceActionGroupForActions:(id)arg1;
 - (id)_labelFont;
+- (id)_loadingInterfaceAction;
 - (void)_performActionForPreviewAction:(id)arg1;
 - (id)_reversedActionGroupForActionGroup:(id)arg1;
 - (void)_testing_tapAnAction;
 - (id)initWithMenu:(id)arg1;
 - (void)kickstartActionScrubbingWithGesture:(id)arg1;
-- (struct CGSize)maxImageSize;
-- (void)setDisplayedMenu:(id)arg1 animated:(BOOL)arg2 alongsideAnimations:(CDUnknownBlockType)arg3;
+- (void)layoutSubviews;
+- (void)setDisplayedMenu:(id)arg1 withAnimationStyle:(unsigned long long)arg2 alongsideAnimations:(CDUnknownBlockType)arg3;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 
 @end

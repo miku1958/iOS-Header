@@ -8,14 +8,15 @@
 
 #import <Navigation/MNArrivalUpdaterDelegate-Protocol.h>
 
-@class GEONavigationMapMatcher, MNArrivalUpdater, MNLocation, NSData, NSString, NSTimer;
+@class GEONavigationMapMatcher, MNArrivalUpdater, MNLocation, NSData, NSDate, NSMutableArray, NSString, NSTimer;
 @protocol GEODirectionServiceTicket;
 
 @interface MNTurnByTurnLocationTracker : MNLocationTracker <MNArrivalUpdaterDelegate>
 {
     GEONavigationMapMatcher *_mapMatcher;
     MNArrivalUpdater *_arrivalUpdater;
-    double _startTime;
+    NSDate *_startDate;
+    CDStruct_2c43369c _originCoordinate;
     id<GEODirectionServiceTicket> _rerouteTicket;
     NSData *_serverSessionState;
     unsigned long long _rerouteReason;
@@ -23,8 +24,8 @@
     unsigned long long _responseErrorCount;
     unsigned long long _recalculationNetworkUnreachableCount;
     NSTimer *_recalculationRetryTimer;
-    unsigned long long _reroutesOnFeature;
-    MNLocation *_lastLocationUsedForReroute;
+    MNLocation *_previousRerouteLocation;
+    NSMutableArray *_rerouteDates;
     unsigned long long _consecutiveOffRouteCount;
     MNLocation *_lastKnownGoodLocationOnRoute;
     BOOL _isNavigatingInLowGuidance;
@@ -37,6 +38,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_allowRerouteForLocation:(id)arg1 outError:(out id *)arg2;
 - (BOOL)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
 - (id)_alternateRouteForOffRouteLocation:(id)arg1;
 - (int)_detectedMotionForLocation:(id)arg1;
@@ -56,7 +58,6 @@
 - (void)_sendRouteHintForLocation:(id)arg1;
 - (void)_setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (BOOL)_shouldAdvanceGuidanceToRouteMatch:(id)arg1;
-- (BOOL)_shouldThrottleRerouteForLocation:(id)arg1 lastRerouteLocation:(id)arg2;
 - (void)_submitRerouteTicketWithHandler:(CDUnknownBlockType)arg1;
 - (id)_ticketForNewDestination:(id)arg1 fromLocation:(id)arg2 transportType:(int)arg3;
 - (void)_updateForArrival;

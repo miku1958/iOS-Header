@@ -23,10 +23,10 @@
 - (void).cxx_destruct;
 - (id)appLayoutToScrollToBeforeTransitioning;
 - (id)appLayoutToScrollToDuringTransition;
-- (BOOL)asynchronouslyRendersUntilDelay:(inout double *)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)initWithTransitionID:(id)arg1 direction:(long long)arg2 fullScreenAppLayout:(id)arg3 multitaskingModifier:(id)arg4;
 - (BOOL)isEffectivelyFullScreen;
+- (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
 - (id)transitionWillBegin;
 - (BOOL)wantsMinificationFilter;
 

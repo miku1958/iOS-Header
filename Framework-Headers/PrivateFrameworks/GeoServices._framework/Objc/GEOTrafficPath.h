@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOTrafficPath : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _continuingRoadIds;
     CDStruct_5df41632 _roadIds;
     NSMutableArray *_geometrys;
     NSData *_openlr;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     float _endOffset;
     float _startOffset;
     struct {
@@ -74,6 +76,8 @@ __attribute__((visibility("hidden")))
 - (id)geometryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)geometrysCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

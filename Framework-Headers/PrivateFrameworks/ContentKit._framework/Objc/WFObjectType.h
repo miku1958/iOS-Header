@@ -6,24 +6,30 @@
 
 #import <ContentKit/WFType.h>
 
-@class NSString;
+@class NSBundle, NSString;
 
 @interface WFObjectType : WFType
 {
     Class _objectClass;
+    NSBundle *_bundle;
+    NSString *_className;
 }
 
+@property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property (readonly, nonatomic) NSString *className; // @synthesize className=_className;
 @property (readonly, nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
-@property (readonly, nonatomic) NSString *string;
+@property (readonly, copy, nonatomic) NSString *string;
 
 + (BOOL)supportsSecureCoding;
 + (id)typeWithClass:(Class)arg1;
++ (id)typeWithClassName:(id)arg1 frameworkName:(id)arg2 location:(unsigned long long)arg3;
 + (id)typesWithClasses:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)conformsToClass:(Class)arg1;
 - (BOOL)conformsToType:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithClassName:(id)arg1 inBundle:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectClass:(Class)arg1;
 - (BOOL)isEqual:(id)arg1;

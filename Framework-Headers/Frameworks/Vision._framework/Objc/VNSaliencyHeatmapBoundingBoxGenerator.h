@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)calculateSaliencyBoundingBoxesForDetectorType:(id)arg1 pixelBuffer:(struct __CVBuffer *)arg2 configurationOptions:(id)arg3 requestRevision:(unsigned long long)arg4 regionOfInterest:(struct CGRect)arg5 warningRecorder:(id)arg6 error:(id *)arg7;
 + (id)configurationOptionKeysForDetectorKey;
 + (id)keyForDetectorWithConfigurationOptions:(id)arg1;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;

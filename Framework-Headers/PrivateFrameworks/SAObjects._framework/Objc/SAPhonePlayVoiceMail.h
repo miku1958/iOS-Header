@@ -6,12 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSURL;
+@class NSURL, SARemoteDevice;
 
 @interface SAPhonePlayVoiceMail : SADomainCommand
 {
 }
 
+@property (strong, nonatomic) SARemoteDevice *targetDevice;
 @property (copy, nonatomic) NSURL *voiceMailId;
 
 + (id)playVoiceMail;

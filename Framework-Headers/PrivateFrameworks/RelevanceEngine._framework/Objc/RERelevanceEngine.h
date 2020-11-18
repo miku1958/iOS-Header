@@ -43,6 +43,7 @@
     BOOL _loading;
     REUpNextScheduler *_loadingScheduler;
     struct os_unfair_lock_s _activityTrackerLock;
+    CDUnknownBlockType _resumeCompletionBlock;
     BOOL _automaticallyResumeEngine;
     RERelevanceEngineConfiguration *_configuration;
 }
@@ -68,7 +69,7 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) REFeatureSet *rootFeatures;
-@property (readonly, nonatomic, getter=isRunning) BOOL running;
+@property (readonly, getter=isRunning) BOOL running;
 @property (readonly, nonatomic) NSArray *sectionDescriptors;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *subsystemQueue;
 @property (readonly, nonatomic) NSArray *subsystems;
@@ -81,8 +82,10 @@
 - (void)_addSubsystem:(id)arg1;
 - (void)_callbackQueue_notifyLoadingState;
 - (void)_captureAndStoreDiagnosticLogs:(CDUnknownBlockType)arg1;
+- (void)_notifyResumeCompleted;
 - (void)_queue_pauseSubsystem:(id)arg1;
 - (void)_queue_resumeSubsystem:(id)arg1;
+- (void)_queue_resumeWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeSubsystem:(id)arg1;
 - (void)activityTracker:(id)arg1 didBeginActivity:(id)arg2;
 - (void)activityTracker:(id)arg1 didEndActivity:(id)arg2;
@@ -121,6 +124,7 @@
 - (void)resetModelWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resume;
 - (void)resumeFromSimulation;
+- (void)resumeWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveModelFile;
 - (id)sectionForHistoricSection:(id)arg1;
 - (void)setPreferences:(id)arg1 forObject:(id)arg2;

@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, UIColor;
+@class NSString;
 
 @protocol AVTAvatarAttributeEditorLayout
 
 @property (readonly, nonatomic) struct CGRect attributesContentViewFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewScrollIndicatorInsets;
+@property (readonly, nonatomic) double avatarContainerAlpha;
 @property (readonly, nonatomic) struct CGRect avatarContainerFrame;
-@property (readonly, nonatomic) UIColor *backgroundColor;
 @property (readonly, nonatomic) struct CGSize containerSize;
 @property (readonly, copy, nonatomic) NSString *contentSizeCategory;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets;

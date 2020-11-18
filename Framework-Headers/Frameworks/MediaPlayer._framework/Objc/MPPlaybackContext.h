@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class MPAVItem, NSData, NSDictionary, NSString;
 
-@interface MPPlaybackContext : NSObject <NSSecureCoding>
+@interface MPPlaybackContext : NSObject <NSSecureCoding, NSCopying>
 {
     MPAVItem *_playerCurrentItem;
-    long long _startIndex;
+    BOOL _supportsAccountRectification;
     long long _actionAfterQueueLoad;
     long long _shuffleType;
     long long _repeatType;
@@ -22,25 +23,28 @@
     NSString *_siriAssetInfo;
     NSString *_siriReferenceIdentifier;
     NSDictionary *_siriWHAMetricsInfo;
+    NSString *_sessionIdentifier;
 }
 
 @property (nonatomic) long long actionAfterQueueLoad; // @synthesize actionAfterQueueLoad=_actionAfterQueueLoad;
 @property (readonly, nonatomic) BOOL containsRestorableContent;
-@property (readonly, nonatomic) BOOL containsTransportableContent;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
+@property (copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, nonatomic) BOOL shouldBecomeActive;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
-@property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 @property (readonly, nonatomic, getter=isSupported) BOOL supported;
+@property (nonatomic) BOOL supportsAccountRectification; // @synthesize supportsAccountRectification=_supportsAccountRectification;
 
 + (Class)queueFeederClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)clearStartItem;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;

@@ -7,35 +7,21 @@
 #import <PhotosUI/PUCropTransformedImageView.h>
 
 #import <PhotosUI/NUMediaViewDelegate-Protocol.h>
+#import <PhotosUI/PUCropGestureHandlerDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSObject, NSString, NUCropModel, NUMediaView, PHLivePhotoView, PLImageGeometry, PXImageLayerModulator, PXImageModulationManager;
-@protocol OS_dispatch_source;
+@class CALayer, CAShapeLayer, NSString, NUCropModel, NUMediaView, PHLivePhotoView, PLImageGeometry, PUCropGestureHandler, PXImageLayerModulator, PXImageModulationManager;
 
 __attribute__((visibility("hidden")))
-@interface PUCropPerspectiveView : PUCropTransformedImageView <NUMediaViewDelegate, UIGestureRecognizerDelegate>
+@interface PUCropPerspectiveView : PUCropTransformedImageView <NUMediaViewDelegate, UIGestureRecognizerDelegate, PUCropGestureHandlerDelegate>
 {
     PLImageGeometry *_imageGeometry;
-    long long _lastGestureType;
     PHLivePhotoView *_livePhotoView;
     NUMediaView *_mediaView;
     PXImageModulationManager *_imageModulationManager;
     PXImageLayerModulator *_imageLayerModulator;
     CDStruct_1b6d18a9 _cachedVideoSeekTime;
-    double _zoomOverflow;
-    CDStruct_0de14bd3 _panState;
-    struct {
-        struct CGRect startCropRect;
-        double scale;
-    } _pinchState;
-    CDStruct_0de14bd3 _pitchYawRollState;
-    double _gestureStartPitch;
-    double _gestureStartYaw;
-    double _gestureStartRoll;
-    struct CGVector _panRubberBandDelta;
-    struct CGVector _panRubberBandOffset;
-    struct CGPoint _panSlideVelocity;
-    NSObject<OS_dispatch_source> *_panSlideTimer;
+    PUCropGestureHandler *_gestureHandler;
     BOOL _muted;
     BOOL _needsLayerTransformUpdate;
     BOOL _layerTransformUpdateAnimated;
@@ -57,6 +43,7 @@ __attribute__((visibility("hidden")))
     double _lastImageZoomScale;
     struct CGVector _lastPanRubberBandOffset;
     struct CGPoint _lastModelCropCenter;
+    struct CGPoint _lastViewCropCenter;
     double _lastUICroppingRectToImageScale;
     struct CGRect _imageCropRect;
 }
@@ -69,8 +56,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_animateValueFromValue:(double)arg1 toValue:(double)arg2 interpolation:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_clearGestureTypePan;
-- (void)_clearGestureTypePinch;
 - (struct CGRect)_croppingRect;
 - (struct CGRect)_fullCropRect;
 - (struct CATransform3D)_imageOrientationTransform;
@@ -81,9 +66,6 @@ __attribute__((visibility("hidden")))
 - (struct CGAffineTransform)_modelSpaceToViewSpaceTransformWithModelCropRect:(struct CGRect)arg1 currentViewCropRect:(struct CGRect)arg2;
 - (void)_resetCropRect;
 - (void)_setCropModel:(id)arg1;
-- (void)_setGestureType:(long long)arg1;
-- (void)_setGestureTypePan;
-- (void)_setGestureTypePinch;
 - (void)_setLivePhotoView:(id)arg1;
 - (void)_setupMediaWithComposition:(id)arg1;
 - (struct CGSize)_sizeRotatedIfNeeded:(struct CGSize)arg1;
@@ -91,8 +73,10 @@ __attribute__((visibility("hidden")))
 - (double)_viewScaleWithModelCropRect:(struct CGRect)arg1;
 - (double)_zoomScaleForCurrentCropRectAndModelRect;
 - (double)_zoomScaleForModelCropRect:(struct CGRect)arg1;
-- (void)constrainedMoveCropRectBy:(struct CGVector)arg1 startRect:(struct CGRect)arg2 rubberband:(BOOL)arg3;
 - (id)cropModel;
+- (void)didBeginTrackingWithCropGestureHandler:(id)arg1;
+- (void)didEndTrackingWithCropGestureHandler:(id)arg1;
+- (void)didTrackWithCropGestureHandler:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handlePanGesture:(id)arg1;
 - (void)handlePinchGesture:(id)arg1;
@@ -125,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)validateViewCropRectAgainstModelCropRect:(struct CGRect)arg1;
 - (struct CGRect)viewCropRectForImageRect:(struct CGRect)arg1;
 - (struct CGRect)viewOrientedViewCropRect:(struct CGRect)arg1;
+- (void)willBeginTrackingWithCropGestureHandler:(id)arg1;
 
 @end
 

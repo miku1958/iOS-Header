@@ -20,6 +20,8 @@
     NSDate *_periodEndDate;
     NSDecimalNumber *_periodStartingBalance;
     NSDecimalNumber *_remainingPeriodStartingBalance;
+    NSDecimalNumber *_remainingPeriodMinimumPayment;
+    NSDecimalNumber *_remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
     NSDecimalNumber *_currentBalance;
     NSDecimalNumber *_unpostedInterest;
     NSDate *_unpostedInterestTimestamp;
@@ -40,6 +42,8 @@
 @property (strong, nonatomic) NSDecimalNumber *periodStartingBalance; // @synthesize periodStartingBalance=_periodStartingBalance;
 @property (copy, nonatomic) NSArray *periodTransactions; // @synthesize periodTransactions=_periodTransactions;
 @property (strong, nonatomic) NSTimeZone *productTimeZone; // @synthesize productTimeZone=_productTimeZone;
+@property (strong, nonatomic) NSDecimalNumber *remainingPeriodMinimumPayment; // @synthesize remainingPeriodMinimumPayment=_remainingPeriodMinimumPayment;
+@property (strong, nonatomic) NSDecimalNumber *remainingPeriodMinimumPaymentExcludedFromInterestCalculation; // @synthesize remainingPeriodMinimumPaymentExcludedFromInterestCalculation=_remainingPeriodMinimumPaymentExcludedFromInterestCalculation;
 @property (strong, nonatomic) NSDecimalNumber *remainingPeriodStartingBalance; // @synthesize remainingPeriodStartingBalance=_remainingPeriodStartingBalance;
 @property (strong, nonatomic) NSDecimalNumber *unpostedInterest; // @synthesize unpostedInterest=_unpostedInterest;
 @property (strong, nonatomic) NSDate *unpostedInterestTimestamp; // @synthesize unpostedInterestTimestamp=_unpostedInterestTimestamp;

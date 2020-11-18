@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)mouseUp:(struct __GSEvent *)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBackgroundColor;
 
 @end

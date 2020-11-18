@@ -15,5 +15,7 @@
 - (void)toggleBetweenZoomFactorsForZoomControl:(CAMZoomControl *)arg1;
 - (void)zoomControl:(CAMZoomControl *)arg1 didChangeSelectedButtonIndex:(unsigned long long)arg2 displayZoomFactor:(double)arg3;
 - (void)zoomControl:(CAMZoomControl *)arg1 didChangeZoomFactor:(double)arg2 interactionType:(long long)arg3;
+- (BOOL)zoomControlCanPlayHaptics:(CAMZoomControl *)arg1;
+- (BOOL)zoomControlShouldSnapDialToSwitchOverZoomFactors:(CAMZoomControl *)arg1;
 @end
 

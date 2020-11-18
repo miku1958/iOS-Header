@@ -40,8 +40,10 @@
 + (id)twoFingerTaps;
 - (void).cxx_destruct;
 - (BOOL)containsGesture:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithGestures:(id)arg1 localizedCategoryName:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

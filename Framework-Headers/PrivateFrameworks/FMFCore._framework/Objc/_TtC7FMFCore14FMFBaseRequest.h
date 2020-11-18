@@ -15,6 +15,7 @@
     MISSING_TYPE *clientContext;
     MISSING_TYPE *serverContext;
     MISSING_TYPE *dataContext;
+    MISSING_TYPE *lastActiveTimestamp;
 }
 
 @end

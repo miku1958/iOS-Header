@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDOfflineArea : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_displayMapRegions;
     GEOMapRegion *_mapRegion;
     GEOMapRegion *_maximumAllowedMapRegion;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_displayMapRegions:1;
@@ -55,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (id)displayMapRegionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)displayMapRegionsCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)deviceMessengerProxyWithDelegate:(id)arg1;
 - (id)init;
+- (id)pushNotificationService;
 - (id)securityServiceProxyWithDelegate:(id)arg1;
 
 @end

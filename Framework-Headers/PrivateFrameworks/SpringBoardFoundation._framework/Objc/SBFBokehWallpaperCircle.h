@@ -14,23 +14,24 @@
     long long _fillColor;
     BOOL _shouldBlink;
     BOOL _isFading;
-    BOOL _shouldPause;
-    BOOL _isPulsating;
     long long _direction;
     double _velocity;
     struct CGRect _originalFrame;
     BOOL _fadingOut;
+    BOOL _shouldPause;
+    BOOL _isPulsating;
     struct CGRect _superviewBounds;
 }
 
 @property (nonatomic, getter=isFadingOut) BOOL fadingOut; // @synthesize fadingOut=_fadingOut;
+@property (nonatomic) BOOL isPulsating; // @synthesize isPulsating=_isPulsating;
+@property (nonatomic) BOOL shouldPause; // @synthesize shouldPause=_shouldPause;
 @property (nonatomic) struct CGRect superviewBounds; // @synthesize superviewBounds=_superviewBounds;
 
 - (void).cxx_destruct;
 - (void)_animateInNewCircle;
 - (void)_pauseAnimations;
 - (void)_resumeAnimations;
-- (void)_startPulsatingCircle;
 - (void)_timerFired;
 - (double)desiredOpacity;
 - (struct CGPoint)desiredPositionDeltaForX:(double)arg1 y:(double)arg2 lockScreen:(BOOL)arg3;
@@ -39,6 +40,7 @@
 - (double)randomOpacity;
 - (void)setAnimationsEnabled:(BOOL)arg1;
 - (void)setCircleColor:(long long)arg1;
+- (void)startPulsatingCircle;
 
 @end
 

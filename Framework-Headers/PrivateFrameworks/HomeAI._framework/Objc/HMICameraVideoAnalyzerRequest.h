@@ -6,9 +6,11 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMICameraVideoAnalyzer, HMICameraVideoAnalyzerRequestLog, HMICameraVideoAssetReader, HMICameraVideoEncoderSession, HMICameraVideoFragment, HMICameraVideoFrameSelector, HMICameraVideoPosterFrameGenerator, HMICameraVideoResourceAttributes, NSDate, NSMutableArray;
+#import <HomeAI/HMICameraVideoFrameSelectorDelegate-Protocol.h>
 
-@interface HMICameraVideoAnalyzerRequest : HMFObject
+@class HMICameraVideoAnalyzer, HMICameraVideoAnalyzerRequestLog, HMICameraVideoAssetReader, HMICameraVideoEncoderSession, HMICameraVideoFragment, HMICameraVideoFrameSelector, HMICameraVideoPosterFrameGenerator, HMICameraVideoResourceAttributes, NSArray, NSDate, NSMutableArray, NSString;
+
+@interface HMICameraVideoAnalyzerRequest : HMFObject <HMICameraVideoFrameSelectorDelegate>
 {
     NSDate *_analysisSubmissionTime;
     NSDate *_analysisStartTime;
@@ -24,9 +26,10 @@
     long long _events;
     long long _eventTypes;
     NSMutableArray *_videoFrameResults;
+    NSMutableArray *_significantEventsInternal;
     HMICameraVideoAnalyzerRequestLog *_log;
     long long _phase;
-    long long _flags;
+    long long _flag;
 }
 
 @property (readonly) double analysisFPS; // @synthesize analysisFPS=_analysisFPS;
@@ -35,18 +38,24 @@
 @property (readonly) HMICameraVideoAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
 @property (readonly) HMICameraVideoAssetReader *assetReader; // @synthesize assetReader=_assetReader;
 @property (readonly) HMICameraVideoResourceAttributes *attributes; // @synthesize attributes=_attributes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) HMICameraVideoEncoderSession *encoderSession; // @synthesize encoderSession=_encoderSession;
 @property (readonly) long long eventTypes; // @synthesize eventTypes=_eventTypes;
 @property long long events; // @synthesize events=_events;
-@property long long flags; // @synthesize flags=_flags;
+@property long long flag; // @synthesize flag=_flag;
 @property (readonly) HMICameraVideoFragment *fragment; // @synthesize fragment=_fragment;
 @property (readonly) HMICameraVideoFrameSelector *frameSelector; // @synthesize frameSelector=_frameSelector;
+@property (readonly) unsigned long long hash;
 @property (readonly) HMICameraVideoAnalyzerRequestLog *log; // @synthesize log=_log;
 @property (readonly) double maxAnalysisFPS; // @synthesize maxAnalysisFPS=_maxAnalysisFPS;
 @property long long phase; // @synthesize phase=_phase;
 @property (readonly) HMICameraVideoPosterFrameGenerator *posterFrameGenerator; // @synthesize posterFrameGenerator=_posterFrameGenerator;
 @property (readonly) BOOL shouldFailAnalysis;
 @property (readonly) BOOL shouldSkipAnalysis;
+@property (readonly) NSArray *significantEvents;
+@property (readonly) NSMutableArray *significantEventsInternal; // @synthesize significantEventsInternal=_significantEventsInternal;
+@property (readonly) Class superclass;
 @property (readonly) double timeSinceAnalysisStart;
 @property (readonly) double timeSinceAnalysisSubmission;
 @property (strong) NSMutableArray *videoFrameResults; // @synthesize videoFrameResults=_videoFrameResults;
@@ -54,6 +63,7 @@
 + (id)logCategory;
 + (id)videoAnnotationScoresForFrameResult:(id)arg1;
 - (void).cxx_destruct;
+- (void)addSignificantEvent:(id)arg1;
 - (void)cancel;
 - (id)finishEncoderSession;
 - (id)initWithVideoFragment:(id)arg1 analyzer:(id)arg2 maxAnalysisFPS:(double)arg3;
@@ -61,6 +71,8 @@
 - (id)loadAttributesFromVideoFragment:(id)arg1;
 - (id)makeDidAnalyzeResult;
 - (id)makeDidNotAnalyzeResultWithResultCode:(long long)arg1;
+- (void)markForPrediction;
+- (void)selector:(id)arg1 maySelectFrame:(id)arg2;
 - (void)startAnalysis;
 - (BOOL)startAssetReaderWithWorkQueue:(id)arg1 logIdentifier:(id)arg2;
 - (BOOL)startEncodingSessionWithError:(id *)arg1;

@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) double baselineToBaselineSpacingInConversationForMailActionHeader;
 @property (readonly, nonatomic) double baselineToBaselineSpacingInMailActionCardHorizontalGroup;
 @property (readonly, nonatomic) double bottomSpacingInMailActionCardHorizontalGroup;
-@property (readonly, nonatomic) double bottomSpacingInMailActionCardVerticalGroup;
+@property (readonly, nonatomic) double bottomToLastBaselineInMailActionCardVerticalGroup;
 @property (readonly, nonatomic) double cellHeightToStartScroll;
 @property (readonly, nonatomic) double conversationHeaderViewCollapsedSuperTitleTopToFirstBaseline;
 @property (readonly, nonatomic) double conversationHeaderViewCollapsedTitleBottomToLastBaseline;
@@ -58,7 +58,7 @@
 @property (nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (readonly, nonatomic) double statusIndicatorHorizontalSpacing;
 @property (readonly, nonatomic) double statusIndicatorVerticalSpacing; // @synthesize statusIndicatorVerticalSpacing=_statusIndicatorVerticalSpacing;
-@property (readonly, nonatomic) double topToBaselineSpacingInMailActionCardVerticalGroup;
+@property (readonly, nonatomic) double topToFirstBaselineSpacingInMailActionCardVerticalGroup;
 @property (readonly, nonatomic) double topToGlyphBaselineInMailActionCardHorizontalGroup;
 @property (readonly, nonatomic) double topToSenderBaseline; // @synthesize topToSenderBaseline=_topToSenderBaseline;
 @property (readonly, nonatomic) double topToSenderBaselineInConversation;

@@ -13,10 +13,12 @@
 @interface GEOLogMsgEventMapsWidgetsInteractionSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOMapsDestinationsWidget *_mapsDestinationsWidget;
     GEOMapsNearbyWidget *_mapsNearbyWidget;
     GEOMapsTransitWidget *_mapsTransitWidget;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _duration;
     int _endState;
     int _localDayOfWeek;
@@ -77,6 +79,8 @@
 - (id)dictionaryRepresentation;
 - (id)endStateAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mapsWidgetTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

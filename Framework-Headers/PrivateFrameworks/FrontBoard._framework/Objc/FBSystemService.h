@@ -36,12 +36,11 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_activateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
-- (BOOL)_isTrustedRequestToOpenApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4;
+- (BOOL)_isTrustedRequest:(id)arg1 forCaller:(id)arg2 fromClient:(id)arg3 forApplication:(id)arg4 withOptions:(id)arg5 fatalError:(out id *)arg6;
 - (BOOL)_isWhitelistedLaunchSuspendedApp:(id)arg1;
 - (unsigned long long)_mapShutdownOptionsToOptions:(id)arg1;
 - (void)_performExitTasksForRelaunch:(BOOL)arg1;
 - (void)_reallyActivateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 isTrusted:(BOOL)arg6 sequenceNumber:(unsigned long long)arg7 cacheGUID:(id)arg8 ourSequenceNumber:(unsigned long long)arg9 ourCacheGUID:(id)arg10 withResult:(CDUnknownBlockType)arg11;
-- (BOOL)_requireEntitlementToOpenURL:(id)arg1 options:(id)arg2;
 - (void)_setInfoProvider;
 - (BOOL)_shouldPendRequestForClientSequenceNumber:(unsigned long long)arg1 clientCacheGUID:(id)arg2 ourSequenceNumber:(unsigned long long)arg3 ourCacheGUID:(id)arg4;
 - (void)_terminateProcesses:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;

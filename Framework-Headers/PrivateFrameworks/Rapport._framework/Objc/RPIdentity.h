@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString;
 
 @interface RPIdentity : NSObject <NSSecureCoding>
 {
@@ -16,6 +16,8 @@
     BOOL _disabled;
     BOOL _present;
     int _type;
+    unsigned int _revisionID;
+    NSArray *_accessGroups;
     NSString *_accountID;
     NSString *_contactID;
     NSDate *_dateAdded;
@@ -35,6 +37,7 @@
     NSDate *_dateRequested;
 }
 
+@property (copy, nonatomic) NSArray *accessGroups; // @synthesize accessGroups=_accessGroups;
 @property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (copy, nonatomic) NSDate *dateAcknowledged; // @synthesize dateAcknowledged=_dateAcknowledged;
@@ -53,6 +56,7 @@
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
+@property (nonatomic) unsigned int revisionID; // @synthesize revisionID=_revisionID;
 @property (copy, nonatomic) NSString *sendersKnownAlias; // @synthesize sendersKnownAlias=_sendersKnownAlias;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) BOOL userAdded; // @synthesize userAdded=_userAdded;
@@ -70,6 +74,7 @@
 - (id)signData:(id)arg1 error:(id *)arg2;
 - (BOOL)signDataPtr:(const void *)arg1 dataLen:(unsigned long long)arg2 signatureBytes:(unsigned char [64])arg3 error:(id *)arg4;
 - (unsigned int)updateWithKeychainItem:(id)arg1 error:(id *)arg2;
+- (unsigned int)updateWithRPMessage:(id)arg1 error:(id *)arg2;
 - (BOOL)verifyAuthTag:(id)arg1 data:(id)arg2 type:(int)arg3 error:(id *)arg4;
 - (BOOL)verifyAuthTagPtr:(const void *)arg1 authTagLen:(unsigned long long)arg2 dataPtr:(const void *)arg3 dataLen:(unsigned long long)arg4 type:(int)arg5 error:(id *)arg6;
 - (BOOL)verifySignature:(id)arg1 data:(id)arg2 error:(id *)arg3;

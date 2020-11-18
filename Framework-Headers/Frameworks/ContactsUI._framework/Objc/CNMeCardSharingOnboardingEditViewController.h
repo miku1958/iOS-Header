@@ -14,7 +14,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNAvatarEditingManager, CNContact, CNContactStore, CNMeCardSharingLogger, CNMeCardSharingOnboardingAvatarCarouselViewController, CNMeCardSharingOnboardingHeaderViewController, CNMeCardSharingPickerLayoutAttributes, CNMutableContact, CNPhotoPickerVariantsManager, CNPhotoPickerViewController, NSString, UITextField;
+@class CNAvatarEditingManager, CNContact, CNContactStore, CNMeCardSharingOnboardingAvatarCarouselViewController, CNMeCardSharingOnboardingHeaderViewController, CNMeCardSharingPickerLayoutAttributes, CNMutableContact, CNPhotoPickerVariantsManager, CNPhotoPickerViewController, CNSharingProfileLogger, NSString, UITextField;
 @protocol AVTAvatarRecord, CNMeCardSharingNameProvider, CNMeCardSharingOnboardingEditViewControllerDelegate;
 
 @interface CNMeCardSharingOnboardingEditViewController : CNMeCardSharingOnboardingViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNMeCardSharingOnboardingAvatarCarouselViewControllerDelegate, CNPhotoPickerViewControllerDelegate, CNAvatarEditingManagerDelegate, CNPhotoPickerVariantListControllerDelegate>
@@ -39,7 +39,7 @@
     CNPhotoPickerViewController *_photoPickerViewController;
     CNPhotoPickerVariantsManager *_variantsManager;
     CNAvatarEditingManager *_posePicker;
-    CNMeCardSharingLogger *_logger;
+    CNSharingProfileLogger *_logger;
 }
 
 @property (strong, nonatomic) CNMutableContact *avatarCarouselEditingContact; // @synthesize avatarCarouselEditingContact=_avatarCarouselEditingContact;
@@ -59,7 +59,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CNMeCardSharingOnboardingHeaderViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property (strong, nonatomic) CNMeCardSharingPickerLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
-@property (readonly, nonatomic) CNMeCardSharingLogger *logger; // @synthesize logger=_logger;
+@property (readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property (nonatomic) long long nameOrder; // @synthesize nameOrder=_nameOrder;
 @property (strong, nonatomic) id<CNMeCardSharingNameProvider> nameProvider; // @synthesize nameProvider=_nameProvider;
 @property (strong, nonatomic) CNPhotoPickerViewController *photoPickerViewController; // @synthesize photoPickerViewController=_photoPickerViewController;

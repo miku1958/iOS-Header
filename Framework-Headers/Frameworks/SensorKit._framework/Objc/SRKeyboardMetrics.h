@@ -64,8 +64,8 @@
 - (id)initWithInterval:(id)arg1 metaInformation:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)longWordDownErrorDistance;
+- (id)longWordTouchDownDown;
 - (id)longWordTouchDownUp;
-- (id)longWordTouchUpDown;
 - (id)longWordUpErrorDistance;
 - (id)pathErrorDistanceRatio;
 - (id)pathToDelete;
@@ -108,9 +108,10 @@
 - (long long)totalSubstitutionCorrections;
 - (long long)totalTaps;
 - (long long)totalTranspositionCorrections;
+- (double)totalTypingDuration;
 - (long long)totalWords;
+- (id)touchDownDown;
 - (id)touchDownUp;
-- (id)touchUpDown;
 - (id)upErrorDistance;
 
 @end

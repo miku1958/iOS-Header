@@ -186,6 +186,7 @@ __attribute__((visibility("hidden")))
 - (void)showOverlayWithProductPage:(id)arg1 metricsPageEvent:(id)arg2;
 - (void)skuiCollectionViewWillLayoutSubviews:(id)arg1;
 - (void)skui_viewWillAppear:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

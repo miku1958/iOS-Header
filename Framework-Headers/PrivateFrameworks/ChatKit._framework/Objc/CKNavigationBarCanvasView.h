@@ -14,6 +14,8 @@
     BOOL _enforceLeftItemViewsAlignmentToCenter;
     BOOL _keepTitleViewCentered;
     BOOL _isBusinessChat;
+    BOOL _videoEnabled;
+    BOOL _audioEnabled;
     BOOL _shouldAnimateAvatarLayoutChanges;
     BOOL _isInEditingMode;
     BOOL _isShowingControls;
@@ -34,6 +36,7 @@
     UIImageView *_statusIndicatorImageView;
 }
 
+@property (nonatomic) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewFaceTimeAudio; // @synthesize buttonViewFaceTimeAudio=_buttonViewFaceTimeAudio;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewFaceTimeVideo; // @synthesize buttonViewFaceTimeVideo=_buttonViewFaceTimeVideo;
 @property (strong, nonatomic) CKNavigationButtonView *buttonViewInfo; // @synthesize buttonViewInfo=_buttonViewInfo;
@@ -55,6 +58,7 @@
 @property (strong, nonatomic) UIImageView *statusIndicatorImageView; // @synthesize statusIndicatorImageView=_statusIndicatorImageView;
 @property (nonatomic) long long statusIndicatorType; // @synthesize statusIndicatorType=_statusIndicatorType;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
+@property (nonatomic) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 
 + (double)heightWithButtonViews;
 + (double)heightWithButtonViewsContactless;
@@ -77,6 +81,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 preferredHeight:(double)arg2;
 - (void)layoutSubviews;
 - (void)layoutTitleViewIfNeeded:(struct CGRect)arg1;
+- (void)removeButtonViewsIfNeeded;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

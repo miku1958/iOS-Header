@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_setRequest:(id)arg1;
-- (id)availableVoicesForLanguageCode:(id)arg1;
+- (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(BOOL)arg2;
 - (void)continueCurrentSpeechRequest;
 - (void)dealloc;
 - (id)init;

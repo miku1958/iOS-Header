@@ -16,6 +16,7 @@
     ICUserIdentity *_userIdentity;
 }
 
+@property (readonly, copy, nonatomic) NSString *featureName;
 @property (nonatomic) long long replaceIntent;
 @property (nonatomic, getter=isRequestingImmediatePlayback) BOOL requestingImmediatePlayback;
 @property (nonatomic) BOOL shouldOverrideManuallyCuratedQueue;

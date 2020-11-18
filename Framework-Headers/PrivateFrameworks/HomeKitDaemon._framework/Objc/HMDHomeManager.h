@@ -244,6 +244,7 @@
 + (BOOL)isThisDeviceAdminOfHome:(id)arg1;
 + (id)remotePeerDeviceAddress:(id)arg1;
 + (id)saltForDeviceSpecificIdentifier;
++ (BOOL)shouldIgnoreExpectedConfigurationVersionUpdateForReason:(id)arg1;
 - (void).cxx_destruct;
 - (void)__accountAddedDevice:(id)arg1;
 - (void)__accountRegistryAddedAccount:(id)arg1;
@@ -312,6 +313,8 @@
 - (id)_findHomeConfigurationModelChange:(id)arg1;
 - (id)_findHomeModel:(id)arg1;
 - (id)_findHomeModelChange:(id)arg1;
+- (id)_findHomeOwnerModelChange:(id)arg1;
+- (id)_findHomeSharedUserModelChange:(id)arg1;
 - (void)_findRemotePeerContainingAccessories:(id)arg1 forHome:(id)arg2;
 - (void)_fragmentationStream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)_fragmentationStream:(id)arg1 didReceiveData:(id)arg2 transactionIdentifier:(unsigned short)arg3 error:(id)arg4;
@@ -400,6 +403,7 @@
 - (void)_migrateUniqueIdentifierPrefsIfNeeded;
 - (void)_monitorReachability;
 - (unsigned short)_nextTransactionIdentifier;
+- (id)_nominateCurrentHomeUUID;
 - (void)_notifyClientsOfUpdatedStatus;
 - (void)_notifyCurrentHomeUpdated;
 - (void)_notifyCurrentHomeUpdated:(id)arg1 isLocalUpdate:(BOOL)arg2;
@@ -585,7 +589,6 @@
 - (void)mobileAssetManager:(id)arg1 didReceiveMetadata:(id)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
-- (id)nominateCurrentHomeUUID;
 - (void)notifyAboutAddAccessoryRequest;
 - (void)notifyClientsResidentCapable:(BOOL)arg1;
 - (void)notifyPrimaryHomeUpdated;

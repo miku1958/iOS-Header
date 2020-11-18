@@ -16,10 +16,12 @@
 @property (readonly, getter=isXPCTransport) BOOL xpcTransport;
 
 - (id)applicationBundleIdentifier;
+- (long long)dataVersion;
 - (id)decodeArrayOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (id)decodeSetOfConditionalObjects:(Class)arg1 forKey:(id)arg2;
 - (void)encodeArrayOfConditionalObjects:(id)arg1 forKey:(id)arg2;
 - (void)encodeSetOfConditionalObjects:(id)arg1 forKey:(id)arg2;
+- (BOOL)isAtLeastDataVersion4;
 - (BOOL)isAuthorizedForLocationAccess;
 - (BOOL)isEntitledForHomeLocationAccess;
 - (BOOL)isEntitledForSPIAccess;

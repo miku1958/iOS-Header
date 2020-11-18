@@ -64,7 +64,7 @@
 
 + (id)_containerIdentifierForFetchType:(id)arg1 predicate:(id)arg2 outRelationship:(id *)arg3;
 + (id)_defaultFetchOptionsForIdentifiedAssetsQuery;
-+ (id)_fetchOptionsForFetchingAssetsFromAssetCollection:(id)arg1 options:(id)arg2;
++ (id)_fetchOptionsForFetchingAssetsFromAssetCollection:(id)arg1 options:(id)arg2 changeDetectionCriteria:(id)arg3;
 + (id)_fetchOptionsForFetchingAssetsFromImportSessions:(id)arg1 options:(id)arg2;
 + (id)_fetchTypeForLocalIdentifiers:(id)arg1;
 + (id)_filterPredicateFromFetchOptionsPredicate:(id)arg1 options:(id)arg2 phClass:(Class)arg3;

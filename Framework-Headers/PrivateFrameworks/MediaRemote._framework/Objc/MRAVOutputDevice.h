@@ -69,7 +69,7 @@
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) NSString *capabilitiesDescription;
 @property (readonly, nonatomic) NSString *composedTypeDescription;
-@property (strong, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
+@property (readonly, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
 @property (readonly, nonatomic) NSString *debugName;
 @property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic, getter=isDeviceGroupable) BOOL deviceGroupable; // @synthesize deviceGroupable=_deviceGroupable;

@@ -64,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (int)shortTermAverageSARBRForSegment:(id)arg1;
 - (int)shortTermAverageSATXBRForSegment:(id)arg1;
 - (int)shortTermAverageTBRForSegment:(id)arg1;
-- (void)throwNotSupportedExceptionForMethod:(id)arg1;
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 
 @end

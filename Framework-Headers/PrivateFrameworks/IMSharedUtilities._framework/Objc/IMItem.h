@@ -78,6 +78,7 @@
 
 + (Class)classForIMItemType:(long long)arg1;
 + (Class)classForMessageItemDictionary:(id)arg1;
++ (id)stringGUID;
 + (BOOL)supportsSecureCoding;
 - (id)associatedMessageGUID;
 - (struct _NSRange)associatedMessageRange;

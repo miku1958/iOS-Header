@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
 @class NSArray;
 
-@interface PKPaymentTransactionRewards : NSObject <NSSecureCoding, PKCloudStoreCoding>
+@interface PKPaymentTransactionRewards : NSObject <NSSecureCoding, PKCloudStoreCoding, NSCopying>
 {
     NSArray *_rewardsItems;
 }
@@ -21,6 +22,7 @@
 + (id)_rewardsItemsSetFromJsonString:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;

@@ -39,12 +39,12 @@
 - (void)_queue_setNewLocalStateFromRemote:(BOOL)arg1;
 - (void)_queue_setUpdatingLocalStateFromRemote;
 - (void)_queue_synchronizeSettingsWithLocalEnabled:(BOOL)arg1;
-- (void)_queue_updateLocalGlobalSpokenSettingEnabledFromUser:(BOOL)arg1;
-- (void)_queue_updateLocalSetting;
+- (BOOL)_queue_updateLocalGlobalSpokenSettingEnabledFromUser:(BOOL)arg1;
+- (BOOL)_queue_updateLocalSetting;
 - (void)_queue_writeLocalSetting;
 - (void)_queue_writeRemoteSetting;
 - (id)_remoteSettingStoreURL;
-- (void)bbUpdateLocalGlobalSpokenSettingEnabled:(BOOL)arg1;
+- (void)bbUpdateLocalGlobalSpokenSettingEnabled:(long long)arg1;
 - (id)initWithSettingsGateway:(id)arg1 syncServer:(id)arg2;
 - (void)transportUpdateRemoteGlobalSpokenSettingEnabled:(BOOL)arg1 date:(id)arg2;
 

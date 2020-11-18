@@ -15,7 +15,6 @@
 + (id)getAvailableTaskingRoutings;
 + (id)getDefaultTasking;
 + (id)getInstalledTaskIds;
-+ (void)initialize;
 + (id)normalizeInstructions:(id)arg1;
 + (BOOL)preference:(id)arg1 alreadySetInInstructions:(id)arg2;
 + (id)proxyTasking:(id)arg1 taskId:(id)arg2 usingConfig:(id)arg3 fromBlob:(id)arg4;

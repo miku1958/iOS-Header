@@ -12,7 +12,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class CLLocation, HMApplicationData, HMFMessageDestination, HMFUnfairLock, HMHomeManager, HMMutableArray, HMRoom, HMSetupViewController, HMUser, NSArray, NSDate, NSOperationQueue, NSString, NSUUID, _HMContext;
+@class CLLocation, HMApplicationData, HMFMessageDestination, HMFUnfairLock, HMHomeManager, HMMutableArray, HMRoom, HMSetupViewController, HMUser, NSArray, NSDate, NSOperationQueue, NSSet, NSString, NSUUID, _HMContext;
 @protocol HMHomeDelegate, HMSetupRemoteService, OS_dispatch_queue;
 
 @interface HMHome : NSObject <HMFLogging, NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
@@ -41,6 +41,7 @@
     long long _homeLocationStatus;
     unsigned long long _networkRouterSupport;
     unsigned long long _networkRouterSupportDisableReason;
+    NSSet *_supportedFeatures;
     unsigned long long _homeHubState;
     HMSetupViewController *_setupViewController;
     id<HMSetupRemoteService> _setupRemoteViewController;
@@ -127,6 +128,8 @@
 @property (weak, nonatomic) HMSetupViewController *setupViewController; // @synthesize setupViewController=_setupViewController;
 @property (strong, nonatomic) NSOperationQueue *shareWithHomeOwnerOperationQueue; // @synthesize shareWithHomeOwnerOperationQueue=_shareWithHomeOwnerOperationQueue;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSSet *supportedFeatures; // @synthesize supportedFeatures=_supportedFeatures;
+@property (readonly, nonatomic) BOOL supportsAddingNetworkRouter;
 @property (readonly, copy, nonatomic) NSArray *triggerOwnedActionSets; // @dynamic triggerOwnedActionSets;
 @property (readonly, copy, nonatomic) NSArray *triggers;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -141,6 +144,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 homeManager:(id)arg2;
+- (CDUnknownBlockType)__defaultProgressHandlerForAddAccessory;
 - (void)__locationAuthorizationUpdated:(id)arg1;
 - (void)__updateLocation:(id)arg1 mergeOperations:(id)arg2;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -246,6 +250,7 @@
 - (void)_notifyDelegateOfTriggerRemoved:(id)arg1;
 - (void)_notifyDelegateOfTriggerUpdated:(id)arg1;
 - (void)_notifyDelegateOfUpdatedHomeLocationStatus;
+- (void)_notifyUpdatedSupportedFeatures;
 - (void)_performBatchCharacteristicRequest:(id)arg1;
 - (id)_privateDelegate;
 - (void)_queryRemoteAccessWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -264,6 +269,7 @@
 - (void)_reprovisionAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_retrieveLocation;
 - (void)_setHasAnyUserAcknowledgedCameraRecordingOnboardingWithCompleteionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)_setSupportedFeature:(long long)arg1 enabled:(BOOL)arg2;
 - (void)_setupBuiltinActionSets:(id)arg1;
 - (void)_startPairingWithAccessoryDescription:(id)arg1 setupRemoteViewController:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_startSearchForAccessoriesNeedingReprovisioning;
@@ -281,7 +287,6 @@
 - (void)addAccessory:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addAccessory:(id)arg1 password:(id)arg2 progress:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addAccessoryWithAccessorySetupPayload:(id)arg1 progress:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)addAccessoryWithAccesssorySetupPayload:(id)arg1 progress:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addAccessoryWithPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addAccessoryWithSetupPayload:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -347,7 +352,6 @@
 - (id)profileWithUniqueIdentifier:(id)arg1;
 - (void)queryRemoteAccessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reEnableNotifications;
-- (void)registerSetupProgressHandler:(CDUnknownBlockType)arg1 forAccessory:(id)arg2;
 - (void)removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeMediaSystem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -373,7 +377,6 @@
 - (void)setNetworkRouterSupportMinimumHomeKitVersion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)shareWithHomeOwner:(id)arg1 container:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startDiscoveringSymptomsForNearbyDevices;
-- (void)startPairingWithAccessory:(id)arg1 accessorySetupDescription:(id)arg2 setupRemoteViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startPairingWithAccessory:(id)arg1 accessorySetupDescription:(id)arg2 setupRemoteViewController:(id)arg3 progress:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)startPairingWithAccessoryDescription:(id)arg1 setupRemoteViewController:(id)arg2 progress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startPairingWithAccessoryDescription:(id)arg1 setupRemoteViewController:(id)arg2 progressHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;

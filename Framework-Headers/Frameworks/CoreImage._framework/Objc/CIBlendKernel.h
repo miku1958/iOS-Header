@@ -57,10 +57,18 @@
 + (id)vividLight;
 - (id)applyWithForeground:(id)arg1 background:(id)arg2;
 - (id)applyWithForeground:(id)arg1 background:(id)arg2 colorSpace:(struct CGColorSpace *)arg3;
-- (BOOL)clearForegroundPreservesBackground;
+- (BOOL)getBlendBehaviorBit:(int)arg1;
 - (id)initWithString:(id)arg1;
 - (id)initWithString:(id)arg1 extentType:(int)arg2;
-- (void)setClearForegroundPreservesBackground:(BOOL)arg1;
+- (BOOL)isBackIfForeIsClear;
+- (BOOL)isClearIfBackIsClear;
+- (BOOL)isClearIfForeIsClear;
+- (BOOL)isForeIfBackIsClear;
+- (void)setBlendBehaviorBit:(int)arg1 value:(BOOL)arg2;
+- (void)setIsBackIfForeIsClear:(BOOL)arg1;
+- (void)setIsClearIfBackIsClear:(BOOL)arg1;
+- (void)setIsClearIfForeIsClear:(BOOL)arg1;
+- (void)setIsForeIfBackIsClear:(BOOL)arg1;
 
 @end
 

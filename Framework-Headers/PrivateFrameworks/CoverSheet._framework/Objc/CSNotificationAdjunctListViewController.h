@@ -31,8 +31,8 @@
 @property (strong, nonatomic) NSMutableArray *dismissingItems; // @synthesize dismissingItems=_dismissingItems;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *identifiersToItems; // @synthesize identifiersToItems=_identifiersToItems;
-@property (readonly, nonatomic) double listViewContentAnimationFriction;
-@property (readonly, nonatomic) double listViewContentAnimationTension;
+@property (readonly, nonatomic) double listViewContentAnimationDampingRatio;
+@property (readonly, nonatomic) double listViewContentAnimationDuration;
 @property (strong, nonatomic) CSNowPlayingController *nowPlayingController; // @synthesize nowPlayingController=_nowPlayingController;
 @property (readonly, nonatomic, getter=isPresentingContent) BOOL presentingContent;
 @property (nonatomic) BOOL respondingToSubviewLayoutChange; // @synthesize respondingToSubviewLayoutChange=_respondingToSubviewLayoutChange;

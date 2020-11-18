@@ -11,6 +11,7 @@
 @protocol VCRateControlAlgorithm <NSObject>
 
 @property (readonly, nonatomic) unsigned int actualBitrate;
+@property (nonatomic) BOOL didMBLRampDown;
 @property (readonly, nonatomic) BOOL isCongested;
 @property (readonly, nonatomic) BOOL isNewRateSentOut;
 @property (nonatomic) unsigned int localBandwidthEstimation;

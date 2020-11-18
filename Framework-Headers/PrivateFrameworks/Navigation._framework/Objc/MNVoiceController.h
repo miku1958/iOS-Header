@@ -43,11 +43,11 @@
 - (void)_updateCurrentVoiceLanguage;
 - (void)addObserver:(id)arg1;
 - (void)beepIfNecessaryForShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
+- (void)cacheAnnouncement:(id)arg1;
 - (void)clearAllEvents;
 - (void)dealloc;
 - (double)durationToSpeak:(id)arg1;
 - (void)endAnnounce;
-- (void)exactDurationToSpeak:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)isPlayingAudio;
 - (BOOL)isSpeaking;

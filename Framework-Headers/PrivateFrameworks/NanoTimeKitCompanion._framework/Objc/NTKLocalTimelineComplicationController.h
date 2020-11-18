@@ -47,7 +47,7 @@
 - (void)_cancelDelayedBlocks;
 - (void)_completeExtendLeftOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
 - (void)_completeExtendRightOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
-- (void)_completeSetupOperationWithDirections:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 currentEntry:(id)arg4;
+- (void)_completeSetupOperationWithDirections:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 currentEntry:(id)arg4 priority:(long long)arg5;
 - (id)_currentEntry;
 - (void)_deactivate;
 - (void)_extendTimelineIfNecessaryAndPossible;
@@ -57,7 +57,7 @@
 - (void)_startExtendLeftOperationFromDate:(id)arg1;
 - (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
 - (void)_startExtendRightOperationFromDate:(id)arg1;
-- (void)_startSetupOperationIfPossible;
+- (void)_startSetupOperationIfPossibleWithPriority:(long long)arg1;
 - (void)_suspendLeftBoundaryDate:(id)arg1;
 - (void)_suspendRightBoundaryDate:(id)arg1;
 - (void)_updateCurrentTemplateWithReason:(long long)arg1;
@@ -68,13 +68,15 @@
 - (void)addDisplayWrapper:(id)arg1;
 - (id)alwaysOnTemplate;
 - (void)appendEntries:(id)arg1;
+- (void)appendEntries:(id)arg1 withTritiumUpdatePriority:(long long)arg2;
 - (id)complicationApplicationIdentifier;
 - (void)didTouchDownInView:(id)arg1;
 - (void)didTouchUpInsideView:(id)arg1;
-- (void)entriesDidChangeInTimeline:(id)arg1;
+- (void)entriesDidChangeInTimeline:(id)arg1 withTritiumUpdatePriority:(long long)arg2;
 - (BOOL)hasTapAction;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)invalidateEntries;
+- (void)invalidateEntriesWithTritiumUpdatePriority:(long long)arg1;
 - (void)invalidateSwitcherTemplate;
 - (id)lockedTemplate;
 - (double)minimumIntervalBetweenTimelineEntries;

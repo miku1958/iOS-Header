@@ -56,6 +56,8 @@
 - (id)expressPassesInformationWithCardType:(long long)arg1;
 - (id)init;
 - (id)initWithPaymentService:(id)arg1 secureElement:(id)arg2;
+- (void)installmentPlansWithTransactionReferenceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)mapsMerchantsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

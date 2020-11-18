@@ -24,7 +24,6 @@
 - (id)init;
 - (BOOL)isCollectionValidForItem:(id)arg1;
 - (id)scopedSearchQuery;
-- (void)stopObserving;
 
 @end
 

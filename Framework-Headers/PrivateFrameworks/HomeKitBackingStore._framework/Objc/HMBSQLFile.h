@@ -16,6 +16,7 @@
 + (id)open:(id)arg1;
 + (id)open:(id)arg1 readOnly:(BOOL)arg2 error:(id *)arg3 initializer:(CDUnknownBlockType)arg4;
 + (id)open:(id)arg1 readOnly:(BOOL)arg2 using:(Class)arg3 error:(id *)arg4;
++ (void)removeDatastoreAtURL:(id)arg1;
 
 @end
 

@@ -34,6 +34,7 @@
 - (struct CGRect)_titleLabelBoundsForSize:(struct CGSize)arg1 withNumberOfLines:(double)arg2;
 - (double)headerHeightForWidth:(double)arg1;
 - (id)initWithPlatterHeaderContentView:(id)arg1;
+- (void)invalidateCachedSizeInfo;
 - (void)layoutDateLabelWithScale:(double)arg1;
 - (void)layoutIconButtonsWithScale:(double)arg1;
 - (void)layoutTitleLabelWithTrailingXLimit:(double)arg1 scale:(double)arg2;

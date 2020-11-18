@@ -6,7 +6,7 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class MPNowPlayingContentItem, MPNowPlayingInfoCenter, NSArray, NSProgress, NSString;
+@class MPNowPlayingContentItem, MPNowPlayingInfoCenter, NSArray, NSError, NSProgress, NSString;
 @protocol MPNowPlayingInfoTransportableSessionRequest;
 
 @protocol MPNowPlayingPlaybackQueueDataSource <NSObject>
@@ -20,10 +20,12 @@
 - (NSString *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 childContentItemIDAtIndex:(long long)arg2 ofItem:(MPNowPlayingContentItem *)arg3;
 - (NSArray *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 contentItemIDsFromOffset:(long long)arg2 toOffset:(long long)arg3 nowPlayingIndex:(long long *)arg4;
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 currentLanguageOptionsForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 didEndMigrationWithIdentifier:(NSString *)arg2 error:(NSError *)arg3;
 - (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 getTransportablePlaybackSessionRepresentationForRequest:(id<MPNowPlayingInfoTransportableSessionRequest>)arg2 completion:(void (^)(MPNowPlayingInfoTransportableSessionResponse *, NSError *))arg3;
 - (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 getTransportablePlaybackSessionRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg2;
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 infoForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (NSProgress *)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 lyricsForContentItem:(MPNowPlayingContentItem *)arg2 completion:(void (^)(MPNowPlayingInfoLyricsItem *, NSError *))arg3;
+- (void)nowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1 willBeginSessionMigrationWithIdentifier:(NSString *)arg2;
 - (NSString *)playbackQueueIdentifierForNowPlayingInfoCenter:(MPNowPlayingInfoCenter *)arg1;
 @end
 

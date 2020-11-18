@@ -78,7 +78,6 @@
     BOOL _otherActivityViewPresented;
     BOOL _darkStyleOnLegacyApp;
     BOOL _multipleRows;
-    BOOL _includePeopleSuggestions;
     BOOL _manuallyManageBrowsing;
     NSObject<SFAirDropActivityViewControllerDelegate> *_delegate;
     NSArray *_urlsBeingShared;
@@ -95,7 +94,6 @@
 @property (weak, nonatomic) NSObject<SFAirDropActivityViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL includePeopleSuggestions; // @synthesize includePeopleSuggestions=_includePeopleSuggestions;
 @property (nonatomic) BOOL manuallyManageBrowsing; // @synthesize manuallyManageBrowsing=_manuallyManageBrowsing;
 @property (nonatomic) BOOL multipleRows; // @synthesize multipleRows=_multipleRows;
 @property (nonatomic) BOOL otherActivityViewPresented; // @synthesize otherActivityViewPresented=_otherActivityViewPresented;

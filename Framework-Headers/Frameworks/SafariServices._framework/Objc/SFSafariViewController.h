@@ -9,11 +9,12 @@
 #import <SafariServices/SFBrowserRemoteViewControllerDelegate-Protocol.h>
 #import <SafariServices/SFInteractiveDismissControllerDelegate-Protocol.h>
 #import <SafariServices/SFQueueingServiceViewControllerProxyDelegate-Protocol.h>
+#import <SafariServices/_SFLinkPreviewHeaderDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, SFQueueingServiceViewControllerProxy, SFSafariLaunchPlaceholderView, SFSafariViewControllerConfiguration, UIColor, _UIAsyncInvocation, _WKActivatedElementInfo;
+@class NSArray, NSMutableDictionary, NSString, NSURL, SFBrowserRemoteViewController, SFInteractiveDismissController, SFQueueingServiceViewControllerProxy, SFSafariLaunchPlaceholderView, SFSafariViewControllerConfiguration, UIColor, UIView, _SFURLTextPreviewViewController, _UIAsyncInvocation, _WKActivatedElementInfo;
 @protocol SFSafariViewControllerDelegate, SFServiceViewControllerProtocol;
 
-@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate>
+@interface SFSafariViewController : UIViewController <SFBrowserRemoteViewControllerDelegate, SFInteractiveDismissControllerDelegate, SFQueueingServiceViewControllerProxyDelegate, _SFLinkPreviewHeaderDelegate>
 {
     SFBrowserRemoteViewController *_remoteViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
@@ -32,6 +33,8 @@
     BOOL _viewSizeIsTransitioning;
     struct UIEdgeInsets _verticalScrollIndicatorBaseInsets;
     struct UIEdgeInsets _horizontalScrollIndicatorBaseInsets;
+    _SFURLTextPreviewViewController *_textPreviewViewController;
+    UIView *_linkPreviewHitTestView;
     BOOL _defersAddingRemoteViewController;
     id<SFSafariViewControllerDelegate> _delegate;
     UIColor *_preferredBarTintColor;
@@ -61,16 +64,19 @@
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_addRemoteViewControllerIfNeeded;
+- (BOOL)_allowsUserInteractionWhenPreviewedInContextMenu;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
 - (void)_connectToService;
 - (id)_defaultPreviewActionItems;
 - (id)_fetchCustomActivitiesForURL:(id)arg1 title:(id)arg2;
 - (id)_fetchExcludedActivityTypesForURL:(id)arg1 title:(id)arg2;
 - (void)_forwardNotificationToViewService:(id)arg1;
-- (void)_removeRemoteView;
+- (void)_removeRemoteViewController;
 - (void)_restartServiceViewController;
 - (void)_setEdgeSwipeDismissalEnabled:(BOOL)arg1;
 - (void)_setUpWithURL:(id)arg1 configuration:(id)arg2;
+- (void)_updateLinkPreviewHitTestView;
+- (void)_updatePreviewViewControllerWithLinkPreviewEnabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_updateScrollViewIndicatorInsets;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarStyle;
@@ -83,8 +89,10 @@
 - (void)interactiveDismissControllerDidBegin:(id)arg1;
 - (void)interactiveDismissControllerDidCancel:(id)arg1;
 - (void)interactiveDismissControllerDidEnd:(id)arg1;
+- (void)linkPreviewHeader:(id)arg1 didEnableLinkPreview:(BOOL)arg2;
 - (void)loadView;
 - (id)previewActionItems;
+- (void)remoteViewController:(id)arg1 didDecideShouldShowLinkPreviews:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 didFinishInitialLoad:(BOOL)arg2;
 - (void)remoteViewController:(id)arg1 executeCustomActivityProxyID:(id)arg2;
 - (void)remoteViewController:(id)arg1 fetchActivityViewControllerInfoForURL:(id)arg2 title:(id)arg3;

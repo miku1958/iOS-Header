@@ -9,7 +9,7 @@
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
 #import <SplashBoard/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBSnapshotContainerIdentity, XBStatusBarSettings;
+@class NSDate, NSDictionary, NSMutableDictionary, NSString, UIImage, XBApplicationSnapshotGenerationContext, XBDisplayEdgeInsetsWrapper, XBSnapshotContainerIdentity, XBStatusBarSettings;
 @protocol XBSnapshotManifestStore;
 
 @interface XBApplicationSnapshot : NSObject <NSSecureCoding, BSDescriptionProviding>
@@ -55,6 +55,7 @@
     BOOL _keepImageAccessForPreHeat;
     BOOL _hasProtectedContent;
     struct os_unfair_lock_s _loadImageLock;
+    XBDisplayEdgeInsetsWrapper *_customSafeAreaInsets;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
 }
@@ -73,6 +74,7 @@
 @property (nonatomic) struct CGRect contentFrame;
 @property (nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (strong, nonatomic) XBDisplayEdgeInsetsWrapper *customSafeAreaInsets; // @synthesize customSafeAreaInsets=_customSafeAreaInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;

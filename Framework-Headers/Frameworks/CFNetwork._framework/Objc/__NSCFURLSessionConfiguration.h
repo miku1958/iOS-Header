@@ -185,6 +185,7 @@
 - (BOOL)_forcesNewConnections;
 - (BOOL)_ignoreDidReceiveResponseDisposition;
 - (BOOL)_infersDiscretionaryFromOriginatingClient;
+- (BOOL)_isEqual2:(id)arg1;
 - (BOOL)_isProxySession;
 - (double)_longLivedConnectionCacheCellPurgeTimeout;
 - (double)_longLivedConnectionCachePurgeTimeout;

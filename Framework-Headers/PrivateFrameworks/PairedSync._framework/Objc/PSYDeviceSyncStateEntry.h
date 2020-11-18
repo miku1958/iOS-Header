@@ -33,7 +33,6 @@
 - (BOOL)hasCompletedInitialOrMigrationSync;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPairingID:(id)arg1;
 - (id)initWithPairingID:(id)arg1 syncState:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 

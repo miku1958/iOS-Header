@@ -6,9 +6,26 @@
 
 #import <Message/MFAccount.h>
 
-@interface DeliveryAccount : MFAccount
+#import <Message/EDDeliveryAccount-Protocol.h>
+
+@class ACAccount, NSArray, NSString;
+
+@interface DeliveryAccount : MFAccount <EDDeliveryAccount>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSArray *emailAddressStrings;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostname;
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) unsigned long long maximumMessageBytes;
+@property (copy, nonatomic) NSString *password;
+@property (readonly, nonatomic) BOOL primaryiCloudAccount;
+@property (readonly, copy, nonatomic) NSString *statisticsKind;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) ACAccount *systemAccount;
 
 + (void)_postDeliveryAccountsHaveChanged;
 + (id)accountTypeIdentifier;
@@ -32,9 +49,7 @@
 - (id)displayHostname;
 - (BOOL)hasEnoughInformationForEasySetup;
 - (BOOL)hasNoReferences;
-- (id)identifier;
 - (id)mailAccountIfAvailable;
-- (unsigned long long)maximumMessageBytes;
 - (id)newDeliveryWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
 - (id)newDeliveryWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(BOOL)arg3;
 - (id)newDeliveryWithMessage:(id)arg1;

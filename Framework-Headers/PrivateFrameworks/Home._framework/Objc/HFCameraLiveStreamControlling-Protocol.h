@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) HMCameraSource *liveCameraSource;
 @property (nonatomic, getter=isMicrophoneEnabled) BOOL microphoneEnabled;
 @property (nonatomic, getter=isStreamAudioEnabled) BOOL streamAudioEnabled;
+@property (nonatomic) float streamAudioVolume;
 @property (readonly, nonatomic) NSError *streamError;
 @property (readonly, nonatomic) unsigned long long streamState;
 @property (readonly, nonatomic, getter=isStreamingEnabled) BOOL streamingEnabled;

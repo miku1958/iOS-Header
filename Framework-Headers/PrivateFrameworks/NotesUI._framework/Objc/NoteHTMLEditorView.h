@@ -79,8 +79,8 @@
 - (void)adoptEditableState;
 - (id)attachmentInfoDictionaryForAttachmentPresentation:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (id)contentAsPasteboardItems;
 - (id)contextMenuConfigurationForElement:(id)arg1 presentation:(id)arg2;
+- (void)copyNoteHTMLToPasteboard;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)insertBulletedList:(id)arg1;

@@ -15,6 +15,7 @@
 + (id)baseScriptExecutorCacheKey;
 + (id)defaultWarmupScriptsExtension;
 + (BOOL)isByteCodeCacheEnabled;
++ (id)scripterInactivityTimerInSeconds;
 + (BOOL)shouldOverrideScripts;
 + (BOOL)shouldRunNodeFlow:(BOOL)arg1;
 + (BOOL)shouldSkipUpdateScriptsOnBoot;

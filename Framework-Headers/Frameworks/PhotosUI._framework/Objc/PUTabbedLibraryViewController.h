@@ -142,6 +142,7 @@
 - (struct CGRect)px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
 - (id)px_gridPresentation;
 - (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
+- (void)px_switchToTabForDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setImportViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)setSelectedViewController:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;

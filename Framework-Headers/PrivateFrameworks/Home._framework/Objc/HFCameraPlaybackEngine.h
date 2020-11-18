@@ -11,21 +11,22 @@
 #import <Home/HMCameraClipManagerObserver-Protocol.h>
 
 @class AVPlayer, HFCameraPlaybackPosition, HMCameraClip, HMCameraClipManager, HMCameraProfile, HMCameraSource, HMHome, NADelegateDispatcher, NSArray, NSDate, NSError, NSMapTable, NSString;
-@protocol HFCameraClipPlaying, HFCameraClipScrubbing, HFCameraLiveStreamControlling;
+@protocol HFCameraClipPlaying, HFCameraClipScrubbing, HFCameraLiveStreamControlling, OS_dispatch_queue;
 
 @interface HFCameraPlaybackEngine : NSObject <HMCameraClipManagerObserver, HFCameraClipPlayerDelegate, HFCameraLiveStreamControllerDelegate>
 {
     BOOL _prefersAudioEnabled;
     BOOL _microphoneEnabled;
     BOOL _streamAudioEnabled;
+    BOOL _userScrubbing;
     BOOL _pictureInPictureModeActive;
+    BOOL _shouldBypassVideoFetchRequest;
     BOOL _wantsToPlay;
     BOOL _scrubbing;
+    float _streamAudioVolume;
     HMCameraProfile *_cameraProfile;
     HMCameraClipManager *_clipManager;
     HMCameraSource *_liveCameraSource;
-    unsigned long long _timelineState;
-    NSDate *_currentEngineDate;
     unsigned long long _timeControlStatus;
     NSError *_playbackError;
     HMHome *_home;
@@ -38,16 +39,18 @@
     unsigned long long _engineMode;
     NSDate *_lastRequestedClipPlaybackDate;
     unsigned long long _scrubbingInProgressCount;
+    NSObject<OS_dispatch_queue> *_clipQueue;
     id<HFCameraClipPlaying> _clipPlayer;
+    unsigned long long _timelineState;
 }
 
-@property (readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+@property (strong, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (strong, nonatomic) HMCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
 @property (readonly, nonatomic) id<HFCameraClipPlaying> clipPlayer; // @synthesize clipPlayer=_clipPlayer;
 @property (readonly, copy, nonatomic) CDUnknownBlockType clipPlayerBuilder; // @synthesize clipPlayerBuilder=_clipPlayerBuilder;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clipQueue; // @synthesize clipQueue=_clipQueue;
 @property (readonly, nonatomic) id<HFCameraClipScrubbing> clipScrubber; // @synthesize clipScrubber=_clipScrubber;
 @property (readonly, nonatomic) HMCameraClip *currentClip;
-@property (strong, nonatomic) NSDate *currentEngineDate; // @synthesize currentEngineDate=_currentEngineDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long engineMode; // @synthesize engineMode=_engineMode;
@@ -68,16 +71,20 @@
 @property (nonatomic) BOOL prefersAudioEnabled; // @synthesize prefersAudioEnabled=_prefersAudioEnabled;
 @property (nonatomic, getter=isScrubbing) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
 @property (nonatomic) unsigned long long scrubbingInProgressCount; // @synthesize scrubbingInProgressCount=_scrubbingInProgressCount;
+@property (nonatomic) BOOL shouldBypassVideoFetchRequest; // @synthesize shouldBypassVideoFetchRequest=_shouldBypassVideoFetchRequest;
 @property (nonatomic, getter=isStreamAudioEnabled) BOOL streamAudioEnabled; // @synthesize streamAudioEnabled=_streamAudioEnabled;
+@property (nonatomic) float streamAudioVolume; // @synthesize streamAudioVolume=_streamAudioVolume;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timeControlStatus; // @synthesize timeControlStatus=_timeControlStatus;
 @property (nonatomic) unsigned long long timelineState; // @synthesize timelineState=_timelineState;
+@property (nonatomic, getter=isUserScrubbing) BOOL userScrubbing; // @synthesize userScrubbing=_userScrubbing;
 @property (nonatomic) BOOL wantsToPlay; // @synthesize wantsToPlay=_wantsToPlay;
 
 - (void).cxx_destruct;
 - (id)_derivedPlaybackError;
 - (unsigned long long)_derivedTimeControlStatus;
 - (void)_setMicrophoneEnabled:(BOOL)arg1 notifyObservers:(BOOL)arg2;
+- (void)_setPlayerVolume:(float)arg1 notifyObservers:(BOOL)arg2;
 - (void)_setStreamAudioEnabled:(BOOL)arg1 notifyObservers:(BOOL)arg2;
 - (void)_setupClipPlayerWithClipManager:(id)arg1;
 - (void)_setupLiveStreamController:(id)arg1;
@@ -104,6 +111,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)streamControllerStateDidUpdate:(id)arg1;
 - (void)updateLiveStreamForCameraProfile:(id)arg1;
+- (void)updatePlaybackPositionToDate:(id)arg1 usingClip:(id)arg2;
 
 @end
 

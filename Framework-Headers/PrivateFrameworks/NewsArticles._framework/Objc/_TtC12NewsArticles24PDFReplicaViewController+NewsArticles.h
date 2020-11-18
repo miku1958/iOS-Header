@@ -8,6 +8,7 @@
 
 @interface _TtC12NewsArticles24PDFReplicaViewController (NewsArticles)
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

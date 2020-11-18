@@ -8,7 +8,7 @@
 
 #import <ContentKit/WFContentItemClass-Protocol.h>
 
-@class UIImage, WFFileType;
+@class WFFileType, WFImage;
 
 @interface WFImageContentItem : WFGenericFileContentItem <WFContentItemClass>
 {
@@ -16,7 +16,7 @@
     WFFileType *_preferredFileType;
 }
 
-@property (readonly, nonatomic) UIImage *image;
+@property (readonly, nonatomic) WFImage *image;
 @property (nonatomic) BOOL imageIsAnimated; // @synthesize imageIsAnimated=_imageIsAnimated;
 @property (strong, nonatomic) WFFileType *preferredFileType; // @synthesize preferredFileType=_preferredFileType;
 @property (readonly, nonatomic) struct CGSize size;
@@ -45,6 +45,7 @@
 - (id)height;
 - (id)imageFile;
 - (BOOL)isContent;
+- (BOOL)isObjectBacked;
 - (BOOL)isScreenshot;
 - (id)location;
 - (id)make;

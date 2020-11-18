@@ -6,11 +6,12 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class NAFuture, NSMutableDictionary, UIViewController;
+@class HMHome, NAFuture, NSMutableDictionary, UIViewController;
 @protocol HUConfigurationViewController;
 
 @protocol HUFeatureOnboardingFlow <NSObject>
 
+@property (strong, nonatomic) HMHome *home;
 @property (strong, nonatomic) UIViewController<HUConfigurationViewController> *initialViewController;
 @property (strong, nonatomic) NAFuture *onboardingFuture;
 @property (readonly, nonatomic) BOOL shouldAbortAllOnboarding;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MCDPlayModeControlView, MCDProgressView, MCDShadowImageView, MCDSongDetailsView, MCDTransportControlView, NSArray, NSMutableDictionary, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILayoutGuide, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
+@class MCDPlayModeControlView, MCDProgressView, MCDShadowImageView, MCDSongDetailsView, MCDTransportControlView, NSArray, NSMutableDictionary, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
 @protocol MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate;
 
 @interface _MCDNowPlayingViewController : UIViewController
@@ -44,8 +44,6 @@
     NSString *_playPauseTransportButtonImageIdentifier;
     long long _layoutType;
     MCDShadowImageView *_artworkViewBrick;
-    UILayoutGuide *_topSpacer;
-    UILayoutGuide *_bottomSpacer;
     NSArray *_activeConstraints;
     struct CGRect _nowPlayingContentRect;
 }
@@ -55,7 +53,6 @@
 @property (readonly, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
 @property (readonly, nonatomic) MCDShadowImageView *artworkViewBrick; // @synthesize artworkViewBrick=_artworkViewBrick;
 @property (readonly, nonatomic) UITapGestureRecognizer *backPressRecognizer; // @synthesize backPressRecognizer=_backPressRecognizer;
-@property (strong, nonatomic) UILayoutGuide *bottomSpacer; // @synthesize bottomSpacer=_bottomSpacer;
 @property (strong, nonatomic) UIFocusContainerGuide *controlsFocusContainerGuide; // @synthesize controlsFocusContainerGuide=_controlsFocusContainerGuide;
 @property (weak, nonatomic) id<MCDNowPlayingViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (weak, nonatomic) id<MCDNowPlayingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -74,7 +71,6 @@
 @property (strong, nonatomic) UILongPressGestureRecognizer *rightNudgeLongPressRecognizer; // @synthesize rightNudgeLongPressRecognizer=_rightNudgeLongPressRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *rightNudgePressRecognizer; // @synthesize rightNudgePressRecognizer=_rightNudgePressRecognizer;
 @property (readonly, nonatomic) MCDSongDetailsView *songDetailsView; // @synthesize songDetailsView=_songDetailsView;
-@property (strong, nonatomic) UILayoutGuide *topSpacer; // @synthesize topSpacer=_topSpacer;
 @property (readonly, nonatomic) MCDTransportControlView *transportControlView; // @synthesize transportControlView=_transportControlView;
 
 - (void).cxx_destruct;
@@ -109,20 +105,18 @@
 - (void)_updateRepeatStateWithType:(long long)arg1;
 - (void)_updateShuffleStateWithType:(long long)arg1;
 - (void)_updateTransportControl:(id)arg1 withDefaultImage:(id)arg2 actionType:(long long)arg3;
-- (double)bottomPadding;
 - (id)constraintsForLayoutType:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (double)innerSpacing;
 - (BOOL)isCompactHeight;
 - (BOOL)isCompactWidth;
 - (void)layoutStyleDidChange;
+- (void)loadView;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)reloadData;
 - (void)setNowPlayingLayout:(long long)arg1 forceChange:(BOOL)arg2;
-- (double)topPadding;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayoutStyle;
 - (void)updateLayoutStyle:(BOOL)arg1;
@@ -131,7 +125,6 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

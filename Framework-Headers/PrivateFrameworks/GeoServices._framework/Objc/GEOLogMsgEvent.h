@@ -13,7 +13,6 @@
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     GEOLogMsgEventBatchTrafficProbe *_batchTrafficProbeCollection;
     GEOLogMsgEventClientACSuggestions *_clientAcSuggestions;
     GEOLogMsgEventCommuteWindow *_commuteWindow;
@@ -52,6 +51,9 @@
     double _usageEventTime;
     GEOLogMsgEventUserAction *_userActionEvent;
     GEOLogMsgEventWifiConnectionQualityProbe *_wifiConnectionQualityProbeEvent;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _eventType;
     struct {
         unsigned int has_usageEventTime:1;
@@ -263,6 +265,8 @@
 - (id)dictionaryRepresentation;
 - (id)eventTypeAsString:(int)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)logMsgStateAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logMsgStatesCount;

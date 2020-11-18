@@ -63,6 +63,8 @@
     double _averageBWE;
     unsigned int _minBWE;
     unsigned int _maxBWE;
+    unsigned int _totalSuddenBandwidthDropCount;
+    unsigned int _totalMBLRampDownCount;
     double _averageRTT;
     unsigned int _poorConnectionFrequency;
     unsigned int _BBQueueTooLargeCount;
@@ -194,8 +196,10 @@
 @property unsigned long long totalCellTxDataBytes; // @synthesize totalCellTxDataBytes=_totalCellTxDataBytes;
 @property unsigned int totalFIRCounter; // @synthesize totalFIRCounter=_totalFIRCounter;
 @property unsigned int totalFIRDemandCounter; // @synthesize totalFIRDemandCounter=_totalFIRDemandCounter;
+@property unsigned int totalMBLRampDownCount; // @synthesize totalMBLRampDownCount=_totalMBLRampDownCount;
 @property double totalMediaStallTime; // @synthesize totalMediaStallTime=_totalMediaStallTime;
 @property double totalNoRemotePacketsTime; // @synthesize totalNoRemotePacketsTime=_totalNoRemotePacketsTime;
+@property unsigned int totalSuddenBandwidthDropCount; // @synthesize totalSuddenBandwidthDropCount=_totalSuddenBandwidthDropCount;
 @property unsigned int totalUsedCellBudgetRxDataBytes; // @synthesize totalUsedCellBudgetRxDataBytes=_totalUsedCellBudgetRxDataBytes;
 @property unsigned int totalUsedCellBudgetTxDataBytes; // @synthesize totalUsedCellBudgetTxDataBytes=_totalUsedCellBudgetTxDataBytes;
 @property unsigned int totalVideoPacketsExpected; // @synthesize totalVideoPacketsExpected=_totalVideoPacketsExpected;

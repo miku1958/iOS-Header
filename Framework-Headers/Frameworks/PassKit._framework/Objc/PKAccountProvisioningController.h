@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKAccountCredential, PKAccountService, PKPaymentProvisioningController;
+@class NSString, PKAccountCredential, PKPaymentProvisioningController;
 @protocol OS_dispatch_source, PKAccountProvisioningControllerDelegate;
 
 @interface PKAccountProvisioningController : NSObject
 {
-    PKAccountService *_accountService;
     PKAccountCredential *_accountCredential;
     PKPaymentProvisioningController *_provisioningController;
     BOOL _makeDefaultInAMP;
     NSObject<OS_dispatch_source> *_activationTimer;
+    BOOL _usingRemoteLibrary;
+    BOOL _passIsActivated;
     BOOL _didAddToAMP;
     double _passActivationTimeout;
     id<PKAccountProvisioningControllerDelegate> _delegate;
@@ -44,6 +45,7 @@
 - (void)_handlePassActiviated;
 - (void)_informDelegateOfError:(id)arg1;
 - (void)_informDelegateOfStateUpdate;
+- (id)_notificationDidChangeNames;
 - (void)_passLibraryDidChange:(id)arg1;
 - (void)_processRemainingTasks;
 - (void)_provisionAccountCredenital:(id)arg1 provisoningController:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -53,6 +55,7 @@
 - (void)addToIDMS;
 - (void)dealloc;
 - (id)initWithAccountCredential:(id)arg1 provisioningController:(id)arg2 accountService:(id)arg3;
+- (id)initWithAccountCredential:(id)arg1 provisioningController:(id)arg2 usingRemoteLibrary:(BOOL)arg3;
 - (void)makeAccountPassDefaultOnLocalDevice;
 - (void)provisionAccountPassToLocalDevice;
 - (void)provisionAccountPassToWatchAsDefault:(BOOL)arg1;

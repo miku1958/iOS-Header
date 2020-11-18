@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityDismissModalGroup;
+- (BOOL)_accessibilityDismissModalGroup;
 - (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_axIsBackFacing;
 - (BOOL)_axIsCardFirstInPile;

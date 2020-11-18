@@ -43,6 +43,7 @@
 + (void)presentViewController:(id)arg1 withFeedbackDelegate:(id)arg2 fromView:(id)arg3;
 + (void)requestDeviceUnlock:(CDUnknownBlockType)arg1;
 + (void)requestDeviceUnlockWithSuccessHandler:(CDUnknownBlockType)arg1;
++ (BOOL)resultBlockedForScreenTime:(id)arg1;
 + (BOOL)resultIsSiriAction:(id)arg1;
 + (id)sendFeedbackForPunchout:(id)arg1 toListener:(id)arg2 fromCardSection:(id)arg3 triggerEvent:(unsigned long long)arg4 queryId:(unsigned long long)arg5;
 + (BOOL)shouldHandleCardSectionEngagement:(id)arg1 feedbackListener:(id)arg2;

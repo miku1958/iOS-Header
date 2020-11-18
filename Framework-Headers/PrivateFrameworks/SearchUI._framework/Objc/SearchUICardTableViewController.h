@@ -24,7 +24,10 @@
 - (double)offScreenContentScrollDistance;
 - (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
 - (void)setTableModel:(id)arg1;
+- (BOOL)shouldDrawTopAndBottomSeparators;
 - (void)showViewController:(id)arg1;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;
 
 @end

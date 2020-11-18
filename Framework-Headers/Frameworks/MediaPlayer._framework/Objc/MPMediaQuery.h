@@ -129,9 +129,11 @@
 - (id)initWithFilterPredicates:(id)arg1;
 - (id)initWithFilterPredicates:(id)arg1 library:(id)arg2;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
+- (id)initWithProtobufferDecodableObject:(id)arg1 library:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)predicateForProperty:(id)arg1;
 - (id)protobufferEncodableObject;
+- (id)protobufferEncodableObjectFromLibrary:(id)arg1;
 - (void)removeFilterPredicate:(id)arg1;
 - (void)removePredicatesForProperty:(id)arg1;
 - (void)setCriteria:(id)arg1;

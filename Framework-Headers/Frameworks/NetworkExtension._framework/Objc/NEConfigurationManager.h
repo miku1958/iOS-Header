@@ -78,6 +78,7 @@
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)filterIndexWithFilter:(id)arg1;
+- (id)getConfigurationUserUUID:(id)arg1;
 - (void)getCurrentIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getCurrentUserUUIDForConfigurationID:(id)arg1 fromIndex:(id)arg2;
 - (void)handleApplicationsRemoved:(id)arg1 completionQueue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -87,6 +88,7 @@
 - (id)initForAllUsers;
 - (id)initWithPluginType:(id)arg1;
 - (id)initWithUserUUID:(id)arg1;
+- (void)loadConfigurationAndUserWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)loadConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)loadConfigurations:(id)arg1 withFilter:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)loadConfigurationsInternal:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

@@ -40,6 +40,7 @@
 - (void)selectWordWithoutShowingCommands;
 - (UITextSelectionView *)selectionView;
 - (void)setFirstResponderIfNecessary;
+- (void)setFirstResponderIfNecessaryActivatingSelection:(BOOL)arg1;
 - (void)setGestureRecognizers;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)setSuppressSystemUI:(BOOL)arg1;

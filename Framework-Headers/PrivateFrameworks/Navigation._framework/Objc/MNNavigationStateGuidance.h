@@ -16,7 +16,7 @@
 
 + (id)guidanceStateForStartDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
 - (void).cxx_destruct;
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(id)arg2;
 - (id)currentDestination;
 - (unsigned long long)desiredLocationProviderType;
 - (void)enterState;

@@ -14,7 +14,6 @@
     struct __SFBrowser *_browser;
     NSMutableDictionary *_nodes;
     BOOL _shouldDeliverEmptyUpdates;
-    BOOL _includePeopleSuggestions;
     NSString *_sessionID;
     NSArray *_people;
     id<SFAirDropBrowserDelegate> _delegate;
@@ -29,7 +28,6 @@
 @property (weak) id<SFAirDropBrowserBatchDelegate> batchDelegate; // @synthesize batchDelegate=_batchDelegate;
 @property (weak) id<SFAirDropBrowserDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak) id<SFAirDropBrowserDiffableDelegate> diffableDelegate; // @synthesize diffableDelegate=_diffableDelegate;
-@property (nonatomic) BOOL includePeopleSuggestions; // @synthesize includePeopleSuggestions=_includePeopleSuggestions;
 @property (readonly, nonatomic) NSMutableDictionary *nodeIDToNode; // @synthesize nodeIDToNode=_nodeIDToNode;
 @property (readonly, nonatomic) NSArray *people; // @synthesize people=_people;
 @property (copy, nonatomic) NSArray *photosAssetIDs; // @synthesize photosAssetIDs=_photosAssetIDs;

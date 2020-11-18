@@ -36,7 +36,6 @@
 + (id)dateFormatter;
 + (id)dateFromFileURL:(id)arg1;
 + (id)engagementCountKeyForBundle:(id)arg1;
-+ (void)initialize;
 + (id)logURLForCurrentTimeAndBundle:(id)arg1;
 + (id)relativePositionKey;
 + (id)sharedManager;

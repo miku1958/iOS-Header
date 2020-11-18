@@ -20,14 +20,13 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_getTopicScoreArrayForText:(id)arg1;
 - (id)_init;
 - (id)_initWithVocabulary:(id)arg1 weights:(id)arg2;
 - (id)_payloadForTopic:(unsigned int)arg1;
 - (void)_updateFromAssetData;
 - (void)dealloc;
-- (void)enumerateTopicsForText:(id)arg1 threshold:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)iterateTopicsForText:(id)arg1 threshold:(double)arg2 scoreAttenuationFactor:(double)arg3 block:(CDUnknownBlockType)arg4;
 
 @end
 

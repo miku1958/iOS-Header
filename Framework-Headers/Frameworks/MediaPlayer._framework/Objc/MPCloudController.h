@@ -106,6 +106,7 @@
 - (void)createPlaylistWithPersistentID:(unsigned long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)deprioritizeArtworkRequestForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4;
+- (id)description;
 - (void)disableCloudLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enableCloudLibraryWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enableICMLErrorReasonChange:(id)arg1;

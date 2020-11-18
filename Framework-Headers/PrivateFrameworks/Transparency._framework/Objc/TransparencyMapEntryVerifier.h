@@ -6,23 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary;
+@class NSData, TransparencyTrustedKeyStore;
 
 @interface TransparencyMapEntryVerifier : NSObject
 {
-    NSDictionary *_trustedKeys;
+    TransparencyTrustedKeyStore *_trustedKeyStore;
     NSData *_entryPosition;
 }
 
 @property (strong) NSData *entryPosition; // @synthesize entryPosition=_entryPosition;
-@property (strong) NSDictionary *trustedKeys; // @synthesize trustedKeys=_trustedKeys;
+@property (strong) TransparencyTrustedKeyStore *trustedKeyStore; // @synthesize trustedKeyStore=_trustedKeyStore;
 
 + (id)emptyAtDepth:(unsigned long long)arg1 leafIndex:(id)arg2 treeId:(unsigned long long)arg3;
 + (id)interiorNodeForLeftData:(id)arg1 rightData:(id)arg2;
 + (id)leafHash:(id)arg1 index:(id)arg2 treeId:(unsigned long long)arg3;
 + (id)peerIndexAtDepth:(unsigned long long)arg1 leafIndex:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithPositon:(id)arg1 trustedKeys:(id)arg2;
+- (id)initWithPositon:(id)arg1 trustedKeyStore:(id)arg2;
 - (BOOL)verifyInclusionOfMapLeaf:(id)arg1 position:(id)arg2 treeHead:(id)arg3 treeId:(unsigned long long)arg4 hashPath:(id)arg5 error:(id *)arg6;
 - (BOOL)verifyMapEntryWithMapLeaf:(id)arg1 hashesToRoot:(id)arg2 signedMapHead:(id)arg3 error:(id *)arg4;
 

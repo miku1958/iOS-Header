@@ -14,6 +14,7 @@
 @interface WFSlotTemplateTypingTextView : UITextView <WFSlotTemplateTextEntry>
 {
     BOOL _clearsZeroWhenTyping;
+    UIView *_inputHintView;
     UIFont *_emojiOverrideFont;
 }
 
@@ -27,10 +28,12 @@
 @property (strong, nonatomic) UIFont *emojiOverrideFont; // @synthesize emojiOverrideFont=_emojiOverrideFont;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
+@property (readonly, nonatomic) UIFont *font;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *inputAccessoryView;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
+@property (strong, nonatomic) UIView *inputHintView; // @synthesize inputHintView=_inputHintView;
 @property (strong, nonatomic) UIView *inputView;
 @property (readonly, nonatomic) id insertDictationResultPlaceholder;
 @property (nonatomic) long long keyboardAppearance;
@@ -53,9 +56,10 @@
 
 - (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
+- (void)copy:(id)arg1;
+- (void)cut:(id)arg1;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (void)insertTextAttachment:(id)arg1;
 - (void)paste:(id)arg1;
 - (void)wf_applyEmojiOverrideFont;
 

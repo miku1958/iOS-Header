@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (Class)queueFeederClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)containsTransportableContent;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

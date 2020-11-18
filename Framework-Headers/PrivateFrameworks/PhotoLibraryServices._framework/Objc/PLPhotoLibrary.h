@@ -55,6 +55,8 @@
 + (void)_assetsLibrary_disableSharedPhotoStreamsSupport;
 + (BOOL)_assetsLibrary_isSharedPhotoStreamsSupportEnabled;
 + (void)_context:(id)arg1 saveFailedWithError:(id)arg2;
++ (void)_contextSaveFailedDueToChangingSPL:(id)arg1;
++ (void)_contextSaveFailedDueToClientRequestedShutdown:(id)arg1;
 + (void)_contextSaveFailedWithError:(id)arg1;
 + (void)_contextSaveFailedWithNoPersistentStores:(id)arg1;
 + (void)_contextSaveFailedWithSQLiteError:(id)arg1;
@@ -120,7 +122,7 @@
 - (id)_initWithPathManager:(id)arg1;
 - (void)_inq_createPhotoStreamAlbumStreamID:(id)arg1;
 - (id)_loadClientDatabaseContext:(id *)arg1;
-- (id)_loadClientDatabaseContextFastPath;
+- (id)_loadClientDatabaseContextFastPathAndReturnAbortAfterOpen:(BOOL *)arg1;
 - (id)_loadDatabaseContext:(id *)arg1;
 - (id)_loadServerDatabaseContext:(id *)arg1;
 - (void)_photoLibraryCorruptNotification;
@@ -131,6 +133,7 @@
 - (void)_reportExpungedAssets:(id)arg1;
 - (void)_safeSave:(id)arg1;
 - (void)_setManagedObjectContext:(id)arg1;
+- (BOOL)_shouldTryFastPath;
 - (void)_updateAssetCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 - (void)_updateMemoryCountKeyPath:(id)arg1 withPendingCountKeyPath:(id)arg2 inContext:(id)arg3;
 - (void)_userApplyTrashedState:(short)arg1 toAlbums:(id)arg2;
@@ -139,7 +142,7 @@
 - (void)_userDeleteAssets:(id)arg1 withReason:(id)arg2;
 - (void)_withDispatchGroup:(id)arg1 synchronously:(BOOL)arg2 name:(id)arg3 shouldSave:(BOOL)arg4 performTransaction:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)addCompletionHandlerToCurrentTransaction:(CDUnknownBlockType)arg1;
-- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(struct NSObject *)arg7 thumbnailImage:(struct NSObject *)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15;
+- (id)addDCIMEntryAtFileURL:(id)arg1 toEvent:(struct NSObject *)arg2 sidecarFileInfo:(id)arg3 progress:(id)arg4 importSessionIdentifier:(id)arg5 isImported:(BOOL)arg6 previewImage:(struct NSObject *)arg7 thumbnailImage:(struct NSObject *)arg8 savedAssetType:(short)arg9 replacementUUID:(id)arg10 publicGlobalUUID:(id)arg11 extendedInfo:(id)arg12 withUUID:(id)arg13 ignoreEmbeddedMetadata:(BOOL)arg14 isPlaceholder:(BOOL)arg15 placeholderFileURL:(id)arg16;
 - (struct NSObject *)albumFromGroupURL:(id)arg1;
 - (id)albumListForAlbumOfKind:(int)arg1;
 - (id)albumListForContentMode:(int)arg1;

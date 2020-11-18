@@ -81,10 +81,13 @@
     unsigned int _testOptions;
     BOOL _isDisconnecting;
     double _triggeredCheckTime;
+    BOOL _isRealloc;
+    NSObject<OS_dispatch_source> *_allocbindFailoverTimer;
 }
 
 @property (nonatomic) double allocateTime; // @synthesize allocateTime=_allocateTime;
 @property (nonatomic) long long allocateType; // @synthesize allocateType=_allocateType;
+@property (strong) NSObject<OS_dispatch_source> *allocbindFailoverTimer; // @synthesize allocbindFailoverTimer=_allocbindFailoverTimer;
 @property (readonly) NSString *appName; // @synthesize appName=_appName;
 @property (readonly, nonatomic) unsigned long long capabilityFlags; // @synthesize capabilityFlags=_capabilityFlags;
 @property (nonatomic) unsigned short channelNumber; // @synthesize channelNumber=_channelNumber;
@@ -102,6 +105,7 @@
 @property (nonatomic) BOOL isDisconnecting; // @synthesize isDisconnecting=_isDisconnecting;
 @property (readonly, nonatomic) BOOL isInitiator; // @synthesize isInitiator=_isInitiator;
 @property (nonatomic) BOOL isNominated; // @synthesize isNominated=_isNominated;
+@property (nonatomic) BOOL isRealloc; // @synthesize isRealloc=_isRealloc;
 @property (nonatomic) double lastIncomingPacketTime; // @synthesize lastIncomingPacketTime=_lastIncomingPacketTime;
 @property (nonatomic) double lastOutgoingPacketTime; // @synthesize lastOutgoingPacketTime=_lastOutgoingPacketTime;
 @property (nonatomic) BOOL linkID; // @synthesize linkID=_linkID;

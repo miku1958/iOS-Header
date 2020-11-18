@@ -65,11 +65,11 @@
 - (void)_removePlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removePlacesForLocationOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removePlacesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_removePlacesWithoutVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_removeRecordsExpiredBeforeDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeTransitionsReferencingVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeTransitionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
+- (void)_removeUnreferencedPlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_removeVisitWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeVisitsWithHandler:(CDUnknownBlockType)arg1;
@@ -82,7 +82,7 @@
 - (void)clearWithHandler:(CDUnknownBlockType)arg1;
 - (id)createFetchRequestForOverlappingVisits:(id)arg1 entityName:(id)arg2 entryDatePropertyName:(id)arg3 exitDatePropertyName:(id)arg4 context:(id)arg5 error:(id *)arg6;
 - (BOOL)deletePlacesWithinIdentifierSet:(id)arg1 tombstoneContext:(id)arg2 error:(id *)arg3;
-- (BOOL)deletePlacesWithinIdentifierSetWithZeroVisits:(id)arg1 tombstoneContext:(id)arg2 error:(id *)arg3;
+- (BOOL)deletePlacesWithinIdentifierSetWithZeroVisits:(id)arg1 context:(id)arg2 tombstoneContext:(id)arg3 error:(id *)arg4;
 - (BOOL)deleteTransitionsReferencingVisitIdentifiers:(id)arg1 context:(id)arg2 tombstoneContext:(id)arg3 error:(id *)arg4;
 - (BOOL)deleteVisitsUsingCloudFetchRequest:(id)arg1 localFetchRequest:(id)arg2 context:(id)arg3 tombstoneContext:(id)arg4 error:(id *)arg5;
 - (void)enumerateStoredLocationsOfInterestWithOptions:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
@@ -144,11 +144,11 @@
 - (void)removePlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removePlacesForLocationOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removePlacesWithHandler:(CDUnknownBlockType)arg1;
-- (void)removePlacesWithoutVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeRecordsExpiredBeforeDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeTransitionsReferencingVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeTransitionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
+- (void)removeUnreferencedPlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeVisitWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeVisitsWithHandler:(CDUnknownBlockType)arg1;
@@ -158,6 +158,7 @@
 - (void)storeTransitions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)submitMetricsOnExtendingLifetimeOfObjectsWithIdentifiers:(id)arg1 context:(id)arg2;
 - (void)updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateLocationOfInterestWithIdentifier:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;

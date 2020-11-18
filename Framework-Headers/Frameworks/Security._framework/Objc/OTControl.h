@@ -49,7 +49,7 @@
 - (void)preflightBottledPeer:(id)arg1 dsid:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)removeFriendsInClique:(id)arg1 context:(id)arg2 peerIDs:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)reset:(CDUnknownBlockType)arg1;
-- (void)resetAndEstablish:(id)arg1 context:(id)arg2 altDSID:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)resetAndEstablish:(id)arg1 context:(id)arg2 altDSID:(id)arg3 resetReason:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)restore:(id)arg1 contextID:(id)arg2 bottleSalt:(id)arg3 entropy:(id)arg4 bottleID:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)restore:(id)arg1 dsid:(id)arg2 secret:(id)arg3 escrowRecordID:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)rpcEpochWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;

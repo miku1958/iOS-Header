@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileURLEnumerable-Protocol.h>
+#import <Intents/INFileEnumerable-Protocol.h>
 #import <Intents/INGenericIntent-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentExport-Protocol.h>
@@ -18,15 +18,18 @@
 
 @class INImage, INIntentCodableDescription, INIntentKeyParameter, INParameterContexts, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSString, NSUUID, PBCodable, _INPBIntentMetadata;
 
-@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INFileURLEnumerable, INKeyImageProducing, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INKeyImageProducing, INFileEnumerable, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_intentInstanceDescriptionMapping;
     NSArray *_parameterImages;
+    BOOL _hasLoadedKeyParameter;
+    struct os_unfair_lock_s _keyParameterLock;
     BOOL _shouldForwardToAppOnSucccess;
     NSDictionary *_parameterCombinations;
     NSDictionary *_configurableParameterCombinations;
     INParameterContexts *_parameterContexts;
     unsigned long long _indexingHash;
+    INIntentKeyParameter *_keyParameter;
     NSString *_identifier;
     PBCodable *_backingStore;
     NSArray *_airPlayRouteIds;
@@ -54,7 +57,7 @@
 @property (readonly) long long _intents_toggleState;
 @property (strong, nonatomic, setter=_setIsOwnedByCurrentUser:) NSNumber *_isOwnedByCurrentUser;
 @property (readonly) INImage *_keyImage;
-@property (readonly, nonatomic) INIntentKeyParameter *_keyParameter;
+@property (readonly, nonatomic) INIntentKeyParameter *_keyParameter; // @synthesize _keyParameter;
 @property (readonly, copy, nonatomic) NSString *_localizedVerb;
 @property (strong, nonatomic, setter=_setMetadata:) _INPBIntentMetadata *_metadata;
 @property (strong, nonatomic, setter=_setNanoLaunchId:) NSString *_nanoLaunchId;
@@ -126,7 +129,7 @@
 - (id)_dictionaryRepresentation;
 - (id)_displayOrderedNonNilParameters;
 - (id)_emptyCopy;
-- (void)_enumerateFileURLsWithMutatingBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 - (id)_imageForParameter:(id)arg1;
 - (id)_inCodable;
 - (id)_init;
@@ -141,12 +144,14 @@
 - (id)_intents_bestBundleIdentifier;
 - (id)_intents_bundleIdForDisplay;
 - (id)_intents_bundleIdForLaunching;
+- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
 - (id)_intents_launchIdForCurrentPlatform;
 - (BOOL)_isValidKey:(id)arg1;
 - (BOOL)_isValueValidForKey:(id)arg1 unsupportedReason:(id *)arg2;
 - (id)_keyCodableAttributes;
 - (id)_keyImageWithIntentDescriptionStrategy;
-- (id)_localizedCombinationStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 bundleURL:(id)arg4 language:(id)arg5;
+- (id)_localizedCombinationStringForKey:(id)arg1 value:(id)arg2 localizationTable:(id)arg3 bundleURL:(id)arg4 language:(id)arg5;
 - (id)_nonNilParameters;
 - (id)_querySchemaWithBlock:(CDUnknownBlockType)arg1 contentOptions:(unsigned long long)arg2;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
@@ -157,6 +162,7 @@
 - (id)_spotlightContentType;
 - (id)_subtitleForLanguage:(id)arg1;
 - (id)_subtitleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (BOOL)_supportsBackgroundExecutionWithOptions:(unsigned long long)arg1;
 - (id)_titleForLanguage:(id)arg1;
 - (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;

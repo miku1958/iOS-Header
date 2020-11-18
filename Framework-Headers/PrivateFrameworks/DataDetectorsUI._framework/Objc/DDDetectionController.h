@@ -8,7 +8,7 @@
 
 #import <DataDetectorsUI/UIActionSheetDelegate-Protocol.h>
 
-@class DDActionController, NSMapTable, NSOperationQueue, NSString;
+@class BCSBusinessQueryService, DDActionController, NSMapTable, NSOperationQueue, NSString;
 @protocol DDDetectionControllerDelegate, OS_dispatch_queue;
 
 @interface DDDetectionController : NSObject <UIActionSheetDelegate>
@@ -20,9 +20,11 @@
     NSMapTable *_containerToResultsTable;
     NSMapTable *_containerToContextsTable;
     DDActionController *_actionController;
+    BCSBusinessQueryService *_bizService;
     NSObject<DDDetectionControllerDelegate> *_delegate;
 }
 
+@property (strong, nonatomic) BCSBusinessQueryService *_bizService; // @synthesize _bizService;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<DDDetectionControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -39,6 +41,7 @@
 - (void).cxx_destruct;
 - (id)_URLForLinkAttributeValue:(id)arg1;
 - (id)_applyBlock:(CDUnknownBlockType)arg1 withResultsAtIndex:(unsigned long long)arg2 ofStorage:(id)arg3 context:(id)arg4;
+- (id)_businessItemForNumber:(id)arg1 messageable:(BOOL *)arg2;
 - (void)_cacheBusinessPhoneNumber:(id)arg1;
 - (BOOL)_checkIfBusinessWithResult:(struct __DDResult *)arg1 messageable:(BOOL *)arg2;
 - (BOOL)_checkIfBusinessWithURL:(id)arg1 messageable:(BOOL *)arg2;

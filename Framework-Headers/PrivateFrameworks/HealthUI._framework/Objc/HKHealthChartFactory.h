@@ -42,6 +42,7 @@
 - (id)_displayTypeForTypeIdentifier:(id)arg1;
 - (id)_mapTypeIdentifierToDisplayType:(id)arg1;
 - (long long)_resolvedTimeScopeForTypeIdentifier:(id)arg1 displayDateInterval:(id)arg2;
+- (id)activityChartForDisplayDate:(id)arg1;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3;
 - (id)chartForTypeIdentifier:(id)arg1 dateRange:(id)arg2 minimumSize:(struct CGSize)arg3 disableXAxis:(BOOL)arg4;
 - (id)init;

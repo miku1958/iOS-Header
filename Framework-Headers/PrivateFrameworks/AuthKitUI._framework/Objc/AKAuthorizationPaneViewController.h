@@ -10,12 +10,12 @@
 #import <AuthKitUI/UITableViewDelegate-Protocol.h>
 
 @class AKAuthorizationPaneContext, NSLayoutConstraint, NSMutableArray, NSString, UIStackView, UITableView, UIVisualEffectView;
-@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneViewControllerDelegate;
+@protocol AKAuthorizationEditableDataSources, AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate;
 
 @interface AKAuthorizationPaneViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
-    id<AKAuthorizationPaneViewControllerDelegate> _paneDelegate;
+    id<AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate> _paneDelegate;
     id<AKAuthorizationEditableDataSources> _editableDataSources;
     UIStackView *_paneHeaderStackView;
     UIStackView *_paneFooterStackView;
@@ -37,7 +37,7 @@
 @property (strong, nonatomic) AKAuthorizationPaneContext *headerPaneContext; // @synthesize headerPaneContext=_headerPaneContext;
 @property (readonly, nonatomic) NSLayoutConstraint *headerWidthConstraint; // @synthesize headerWidthConstraint=_headerWidthConstraint;
 @property (strong, nonatomic) NSMutableArray *mutableConstraints; // @synthesize mutableConstraints=_mutableConstraints;
-@property (weak, nonatomic) id<AKAuthorizationPaneViewControllerDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
+@property (weak, nonatomic) id<AKAuthorizationPaneViewControllerDelegate><AKAuthorizationPaneAutomaticResizeDelegate> paneDelegate; // @synthesize paneDelegate=_paneDelegate;
 @property (readonly, nonatomic) UIStackView *paneFooterStackView; // @synthesize paneFooterStackView=_paneFooterStackView;
 @property (readonly, nonatomic) UIStackView *paneHeaderStackView; // @synthesize paneHeaderStackView=_paneHeaderStackView;
 @property (readonly) Class superclass;

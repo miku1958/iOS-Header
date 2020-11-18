@@ -21,6 +21,7 @@
 - (void)play;
 - (void)removeObserver:(id)arg1;
 - (void)seekToTime:(CDStruct_198678f7)arg1;
+- (void)seekToTime:(CDStruct_198678f7)arg1 exact:(BOOL)arg2;
 - (void)stepByCount:(long long)arg1;
 @end
 

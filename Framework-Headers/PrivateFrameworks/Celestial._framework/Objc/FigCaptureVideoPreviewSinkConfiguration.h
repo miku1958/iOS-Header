@@ -18,6 +18,7 @@
     BOOL _primaryCaptureRectModificationEnabled;
     double _primaryCaptureRectAspectRatio;
     struct CGPoint _primaryCaptureRectCenter;
+    long long _primaryCaptureRectUniqueID;
 }
 
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
@@ -27,6 +28,7 @@
 @property (nonatomic) double primaryCaptureRectAspectRatio; // @synthesize primaryCaptureRectAspectRatio=_primaryCaptureRectAspectRatio;
 @property (nonatomic) struct CGPoint primaryCaptureRectCenter; // @synthesize primaryCaptureRectCenter=_primaryCaptureRectCenter;
 @property (nonatomic) BOOL primaryCaptureRectModificationEnabled; // @synthesize primaryCaptureRectModificationEnabled=_primaryCaptureRectModificationEnabled;
+@property (nonatomic) long long primaryCaptureRectUniqueID; // @synthesize primaryCaptureRectUniqueID=_primaryCaptureRectUniqueID;
 @property (nonatomic) float simulatedAperture; // @synthesize simulatedAperture=_simulatedAperture;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

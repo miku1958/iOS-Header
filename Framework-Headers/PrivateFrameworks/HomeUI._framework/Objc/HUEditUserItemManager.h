@@ -21,6 +21,7 @@
     HFItem *_personalRequestsFooterItem;
     HFItem *_tvViewingProfilesItem;
     HUAccessorySettingsItemModule *_userSettingsItemModule;
+    NSArray *_supportedMULanguageCodes;
     HMHome *_homeForUser;
     HFItem *_removeItem;
     NSArray *_sectionOrderArrayWhenViewingSelf;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) NSArray *sectionOrderArrayWhenViewingSelf; // @synthesize sectionOrderArrayWhenViewingSelf=_sectionOrderArrayWhenViewingSelf;
 @property (strong, nonatomic) HFUserItem *sourceItem; // @dynamic sourceItem;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *supportedMULanguageCodes; // @synthesize supportedMULanguageCodes=_supportedMULanguageCodes;
 @property (strong, nonatomic) HFItem *tvViewingProfilesItem; // @synthesize tvViewingProfilesItem=_tvViewingProfilesItem;
 @property (readonly, nonatomic) HMUser *userBeingEdited;
 @property (strong, nonatomic) HUAccessorySettingsItemModule *userSettingsItemModule; // @synthesize userSettingsItemModule=_userSettingsItemModule;

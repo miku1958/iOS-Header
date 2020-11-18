@@ -39,6 +39,7 @@
 - (BOOL)_canSelectRow:(long long)arg1;
 - (void)_commonInit;
 - (void)_dequeuePickerCellForRow:(long long)arg1;
+- (void)_refreshPickerCellIfNeededForSelectedRow:(long long)arg1;
 - (void)complicationPickerCell:(id)arg1 didSelectComplication:(id)arg2;
 - (void)didSelectRow:(long long)arg1;
 - (void)faceDidChange;

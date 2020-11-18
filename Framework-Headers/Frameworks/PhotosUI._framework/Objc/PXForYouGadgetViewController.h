@@ -41,6 +41,7 @@
 - (void)_calendarDayChanged;
 - (void)_lastSeenBadgeDateChanged;
 - (id)_suggestionDumpURL;
+- (void)_userDidViewCloudFeedContent;
 - (void)configureSectionHeader:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)initWithBadgeManager:(id)arg1;

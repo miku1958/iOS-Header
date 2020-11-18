@@ -6,18 +6,26 @@
 
 #import <MediaPlayer/MPModelRequest.h>
 
-@class MPSectionedCollection, NSDictionary, NSMutableDictionary;
+#import <MediaPlayer/MPUserIdentityConsuming-Protocol.h>
 
-@interface MPStoreLibraryPersonalizationRequest : MPModelRequest
+@class ICUserIdentity, MPSectionedCollection, NSDictionary, NSMutableDictionary, NSString;
+
+@interface MPStoreLibraryPersonalizationRequest : MPModelRequest <MPUserIdentityConsuming>
 {
     NSMutableDictionary *_itemIndexPathToOverridePropertySet;
+    ICUserIdentity *_userIdentity;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
     MPSectionedCollection *_representedObjects;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSDictionary *itemIndexPathToOverridePropertySet;
 @property (strong, nonatomic) MPSectionedCollection *representedObjects; // @synthesize representedObjects=_representedObjects;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
+@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
 + (id)libraryViewWithUserIdentity:(id)arg1;
 + (id)personalizedResponseForContentDescriptor:(id)arg1 requestedProperties:(id)arg2;

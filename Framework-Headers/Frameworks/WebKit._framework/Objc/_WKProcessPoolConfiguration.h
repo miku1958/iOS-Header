@@ -9,11 +9,12 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSSet, NSString, NSURL;
 
 @interface _WKProcessPoolConfiguration : NSObject <WKObject, NSCopying>
 {
     struct ObjectStorage<API::ProcessPoolConfiguration> _processPoolConfiguration;
+    BOOL _configureJSCForTesting;
 }
 
 @property (copy, nonatomic) NSString *CTDataConnectionServiceType;
@@ -25,6 +26,8 @@
 @property (nonatomic) BOOL alwaysRunsAtBackgroundPriority;
 @property (nonatomic) BOOL attrStyleEnabled;
 @property (copy, nonatomic) NSArray *cachePartitionedURLSchemes;
+@property (nonatomic) BOOL configureJSCForTesting; // @synthesize configureJSCForTesting=_configureJSCForTesting;
+@property (copy, nonatomic) NSSet *customClassesForParameterCoder;
 @property (copy, nonatomic) NSString *customWebContentServiceBundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

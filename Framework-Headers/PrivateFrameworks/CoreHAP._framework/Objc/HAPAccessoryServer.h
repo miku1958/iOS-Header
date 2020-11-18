@@ -33,6 +33,7 @@
     NSHashTable *_internalDelegates;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    unsigned long long _stateNumber;
     id<HAPKeyStore> _keyStore;
     unsigned long long _pairSetupType;
 }
@@ -60,6 +61,7 @@
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 @property (copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
+@property (nonatomic) unsigned long long stateNumber; // @synthesize stateNumber=_stateNumber;
 @property (nonatomic) BOOL supportsTimedWrite; // @synthesize supportsTimedWrite=_supportsTimedWrite;
 @property (copy) HMFVersion *version; // @synthesize version=_version;
 
@@ -89,7 +91,7 @@
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (BOOL)stopPairingWithError:(id *)arg1;
-- (void)tearDownSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)tearDownAndRestablishSession;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

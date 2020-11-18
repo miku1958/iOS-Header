@@ -6,12 +6,13 @@
 
 #import <HomeKitDaemon/HMDSettingGroupProtocol-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol HMDSettingGroupOwnerProtocol, HMDSettingProtocol;
 
 @protocol HMDSettingGroupOwnerProtocol <HMDSettingGroupProtocol>
 
 @property (readonly, copy) NSArray *groups;
+@property (copy) NSString *keyPath;
 @property (readonly, copy) NSArray *settings;
 
 - (void)addGroup:(id<HMDSettingGroupOwnerProtocol>)arg1;

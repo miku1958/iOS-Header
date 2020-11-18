@@ -22,14 +22,14 @@
 @property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 @property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
-@property (copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
+@property (readonly, copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 
 - (void).cxx_destruct;
 - (void)abortClientSide;
 - (void)cancel;
 - (id)description;
-- (id)initWithAssetObjectID:(id)arg1;
 - (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
+- (id)initWithTaskIdentifier:(id)arg1 assetObjectID:(id)arg2;
 - (BOOL)isCancelled;
 - (id)plistDictionary;
 - (void)runDaemonSide;

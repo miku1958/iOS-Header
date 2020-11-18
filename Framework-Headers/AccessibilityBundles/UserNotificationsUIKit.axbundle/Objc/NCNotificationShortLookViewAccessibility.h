@@ -21,6 +21,8 @@
 - (id)_axNCNotificationViewController;
 - (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
 - (id)accessibilityCustomActions;
+- (void)accessibilityElementDidBecomeFocused;
+- (void)accessibilityElementDidLoseFocus;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;

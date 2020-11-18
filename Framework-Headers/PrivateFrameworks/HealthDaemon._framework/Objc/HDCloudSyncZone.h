@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSMutableArray, NSUUID;
+@class CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSArray, NSMutableArray, NSUUID;
 
 @interface HDCloudSyncZone : NSObject
 {
     NSMutableArray *_sequenceRecords;
+    NSMutableArray *_records;
     BOOL _hasFutureSchemaRecord;
     BOOL _validatedForSharing;
     HDCloudSyncRepository *_repository;
@@ -30,6 +31,8 @@
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) HDCloudSyncMasterRecord *masterRecord; // @synthesize masterRecord=_masterRecord;
 @property (nonatomic) long long purpose; // @synthesize purpose=_purpose;
+@property (readonly, nonatomic) long long recordCount;
+@property (readonly, copy, nonatomic) NSArray *recordNames;
 @property (readonly, weak, nonatomic) HDCloudSyncRepository *repository; // @synthesize repository=_repository;
 @property (strong, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
 @property (readonly, copy, nonatomic) NSUUID *storeIdentifier;

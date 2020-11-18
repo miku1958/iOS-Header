@@ -17,6 +17,7 @@
 - (double)externalDockHeightForRootFolderView:(SBRootFolderView *)arg1;
 - (double)maxExternalDockHeightForRootFolderView:(SBRootFolderView *)arg1;
 - (double)preferredExternalDockVerticalMarginForRootFolderView:(SBRootFolderView *)arg1;
+- (void)rootFolderView:(SBRootFolderView *)arg1 didChangeEffectiveSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didChangeSidebarVisibilityProgress:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didEndOverscrollOnFirstPageWithVelocity:(double)arg2;
 - (void)rootFolderView:(SBRootFolderView *)arg1 didOverscrollOnFirstPageByAmount:(double)arg2;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_providesConcreteBacking;
 - (BOOL)_tryRetain;
 - (const void *)bytes;
+- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

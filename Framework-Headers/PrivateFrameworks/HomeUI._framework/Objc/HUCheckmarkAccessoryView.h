@@ -20,7 +20,6 @@
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 
 + (double)borderWidth;
-+ (id)checkmarkImage;
 + (id)grayBorderColor;
 - (void).cxx_destruct;
 - (void)_updateColors;

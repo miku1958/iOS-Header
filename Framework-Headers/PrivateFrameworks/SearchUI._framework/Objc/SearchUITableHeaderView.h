@@ -17,6 +17,7 @@
     BOOL _shouldUseStandardSectionInsets;
     BOOL _useShorterHeaders;
     BOOL _usesInsetRoundedSections;
+    BOOL _isExpanded;
     id<SearchUITableHeaderViewDelegate> _delegate;
     id<SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
@@ -35,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKTextButton *headerOptionButton; // @synthesize headerOptionButton=_headerOptionButton;
 @property (nonatomic) unsigned long long headerType; // @synthesize headerType=_headerType;
+@property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
 @property (strong, nonatomic) SFResultSection *section; // @synthesize section=_section;
 @property (nonatomic) BOOL shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
 @property (nonatomic) BOOL shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;

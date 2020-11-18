@@ -54,8 +54,10 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithURLRequestHelper:(id)arg1 asset:(id)arg2;
+- (id)initWithURLRequestHelper:(id)arg1 asset:(id)arg2 remoteCustomURLHandlerContext:(id)arg3;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
+- (id)remoteCustomURLHandlerContextForPID:(int)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (id)stateQueue;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;

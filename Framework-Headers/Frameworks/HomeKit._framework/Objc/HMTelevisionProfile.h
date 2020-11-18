@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)initWithTelevisionService:(id)arg1 linkedServices:(id)arg2;
 - (void)televisionProfileDidUpdateSourceDisplayOrder:(id)arg1;
 - (void)updateMediaSourceDisplayOrder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (void)_continue;
 - (id)hu_preloadContent;
-- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1;
+- (id)initWithHomeAssistantDevicesHavingLanguageMismatch:(id)arg1 home:(id)arg2;
 - (void)loadView;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;

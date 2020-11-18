@@ -23,6 +23,7 @@
 + (BOOL)fileExistsAtURL:(id)arg1;
 + (BOOL)moveURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (BOOL)removeURL:(id)arg1 error:(id *)arg2;
++ (BOOL)writeData:(id)arg1 toURL:(id)arg2 atomically:(BOOL)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (BOOL)appendEntries:(id)arg1 error:(id *)arg2;
 - (BOOL)createEmptyFileWithError:(id *)arg1;

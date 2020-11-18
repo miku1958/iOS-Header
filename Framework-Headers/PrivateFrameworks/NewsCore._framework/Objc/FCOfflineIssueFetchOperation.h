@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSString;
+@class FCCachePolicy, NSString;
 @protocol FCContentContext, FCFlintHelper;
 
 @interface FCOfflineIssueFetchOperation : FCOperation
@@ -20,6 +20,7 @@
     id<FCFlintHelper> _flintHelper;
     NSString *_issueID;
     id _resultHoldToken;
+    FCCachePolicy *_issueRecordCachePolicy;
 }
 
 @property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly=_cachedOnly;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
 @property (strong, nonatomic) id<FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
 @property (copy, nonatomic) NSString *issueID; // @synthesize issueID=_issueID;
+@property (strong, nonatomic) FCCachePolicy *issueRecordCachePolicy; // @synthesize issueRecordCachePolicy=_issueRecordCachePolicy;
 @property (copy, nonatomic) CDUnknownBlockType layeredCoverHandlesProvider; // @synthesize layeredCoverHandlesProvider=_layeredCoverHandlesProvider;
 @property double progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
@@ -46,11 +48,14 @@
 - (id)_promiseReplicaAdPagesForIssue:(id)arg1 withDownloadProgressMin:(double)arg2 downloadProgressMax:(double)arg3;
 - (id)_resourceIDsFromMetadataJSONData:(id)arg1;
 - (void)_updateProgress:(double)arg1;
+- (BOOL)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1 flintHelper:(id)arg2 issue:(id)arg3;
 - (id)initWithContext:(id)arg1 flintHelper:(id)arg2 issueID:(id)arg3;
+- (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (void)resetForRetry;
 - (BOOL)validateOperation;
 
 @end

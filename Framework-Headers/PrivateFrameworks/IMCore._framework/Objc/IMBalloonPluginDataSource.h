@@ -12,6 +12,7 @@
 {
     BOOL _payloadInShelf;
     BOOL _initialMessageIsFromMe;
+    BOOL _allowedByScreenTime;
     BOOL _isLast;
     BOOL _isShowingLatestMessageAsBreadcrumb;
     BOOL _hasInvalidatedSize;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) NSURL *URLToOpenOnTapAction; // @synthesize URLToOpenOnTapAction=_URLToOpenOnTapAction;
 @property (strong, nonatomic) NSString *_imMessageGUID; // @synthesize _imMessageGUID=__imMessageGUID;
 @property (readonly, nonatomic) NSArray *allPayloads;
+@property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property (strong, nonatomic) NSArray *attachmentGUIDs; // @synthesize attachmentGUIDs=_attachmentGUIDs;
 @property (readonly, strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) IMChat *chat; // @synthesize chat=_chat;
@@ -87,6 +89,7 @@
 - (void)_updateTemporaryAttachmentURLsForPluginPayload;
 - (unsigned long long)_updateWithPluginPayload:(id)arg1 messageID:(long long)arg2 messageGUID:(id)arg3;
 - (void)beginShowingLastConsumedBreadcrumbForOutgoingPayload:(id)arg1;
+- (void)checkForAllowedByScreenTime;
 - (void)datasourceWasMovedToNewGuid:(id)arg1;
 - (id)description;
 - (void)didTapStatusItem;

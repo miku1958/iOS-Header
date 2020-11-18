@@ -12,7 +12,6 @@
 - (void)getChipInfo:(void (^)(PRChipInfo *))arg1;
 - (void)getPowerStatsSync:(unsigned long long)arg1 reply:(void (^)(PRGetPowerStatsResponse *))arg2;
 - (void)getPreflightInfo:(void (^)(NSDictionary *))arg1;
-- (void)hasFailedRoseUpdate:(void (^)(BOOL))arg1;
 - (void)sendHelloSync:(unsigned long long)arg1 reply:(void (^)(PRHelloResponse *))arg2;
 - (void)setRegulatoryAccessoryState:(NSNumber *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)setRegulatoryIsoCountry:(NSString *)arg1 reply:(void (^)(BOOL))arg2;

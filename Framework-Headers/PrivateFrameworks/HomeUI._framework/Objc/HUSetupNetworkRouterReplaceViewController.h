@@ -13,14 +13,14 @@
 
 @interface HUSetupNetworkRouterReplaceViewController : HUImageOBWelcomeController <HFSetupPairingPopup>
 {
-    id<HFSetupPairingPopupDelegate> _delegate;
+    id<HFSetupPairingPopupDelegate> _popupDelegate;
     HMSetupAccessoryDescription *_setupAccessoryDescription;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> popupDelegate; // @synthesize popupDelegate=_popupDelegate;
 @property (readonly, nonatomic) unsigned long long popupType;
 @property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription; // @synthesize setupAccessoryDescription=_setupAccessoryDescription;
 @property (readonly) Class superclass;
@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (void)_cancelPressed:(id)arg1;
 - (void)_replacePressed:(id)arg1;
-- (id)initWithDelegate:(id)arg1 setupAccessoryDescription:(id)arg2;
+- (id)initWithPopupDelegate:(id)arg1 setupAccessoryDescription:(id)arg2;
 - (void)viewDidLoad;
 
 @end

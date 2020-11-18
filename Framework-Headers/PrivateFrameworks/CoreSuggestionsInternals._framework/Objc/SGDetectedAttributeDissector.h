@@ -6,15 +6,18 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class SGContactPipelineHelper, SGDetectedAttributeML, SGQuickResponsesML;
+@class NSSet, SGContactPipelineHelper, SGDetectedAttributeML, SGHKHealthStore, SGQuickResponsesML;
 
 @interface SGDetectedAttributeDissector : SGPipelineDissector
 {
     SGDetectedAttributeML *_ml;
     SGQuickResponsesML *_mlQR;
     SGContactPipelineHelper *_contactsHelper;
+    SGHKHealthStore *_healthStore;
     BOOL _filterWithAddressBook;
     float _unlikelyPhoneSamplingRate;
+    NSSet *_hmmTrustedLanguages;
+    NSSet *_ddTrustedLanguages;
     unsigned long long _selfIdentificationMessageCount;
 }
 
@@ -45,11 +48,11 @@
 - (id)filterDangerousSigEmailDetections:(id)arg1 onEntity:(id)arg2 inContext:(id)arg3;
 - (id)filterDangerousSigPhoneDetections:(id)arg1 onEntity:(id)arg2;
 - (id)getLineContaining:(struct _NSRange)arg1 inText:(id)arg2;
-- (void)handleTextMessageBirthdayCongratulation:(id)arg1;
+- (void)handleTextMessageBirthdayCongratulation:(id)arg1 withConversationHistory:(id)arg2;
 - (void)handleTextMessageSelfIdentification:(id)arg1 withConversationHistory:(id)arg2;
 - (id)init;
-- (id)initWithML:(id)arg1 withMLQR:(id)arg2;
-- (void)logBirthdayExtractionMetricForPerson:(id)arg1 forDate:(id)arg2 isFromCongratulation:(unsigned char)arg3;
+- (id)initWithML:(id)arg1 withMLQR:(id)arg2 andHealthStore:(id)arg3;
+- (void)logBirthdayExtractionMetricForPerson:(id)arg1 forDate:(id)arg2 isFromCongratulation:(unsigned char)arg3 withModelVersion:(id)arg4 didRegexTrigger:(unsigned char)arg5;
 - (id)processTextMessageConversation:(id)arg1 threadLength:(unsigned long long)arg2;
 
 @end

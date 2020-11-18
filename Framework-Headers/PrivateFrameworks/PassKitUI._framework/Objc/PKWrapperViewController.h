@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (void)_updatePreferredContentSize;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (id)childViewControllerForStatusBarHidden;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowKit/WFOAuth2Account.h>
+#import <ActionKit/WFOAuth2Account.h>
 
 @class NSString;
 

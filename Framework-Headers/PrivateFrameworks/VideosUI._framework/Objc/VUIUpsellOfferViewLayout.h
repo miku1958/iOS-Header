@@ -26,7 +26,8 @@ __attribute__((visibility("hidden")))
 - (double)descriptionTopMargin;
 - (id)init;
 - (struct UIEdgeInsets)safeAreaInsets;
-- (double)titleTopMargin;
+- (double)titleTopMarginPad;
+- (double)titleTopMarginPhone;
 
 @end
 

@@ -71,6 +71,7 @@
 - (BOOL)_convertManagedAdjustmentsInStore:(id)arg1;
 - (BOOL)_convertNameSourceFromBoolToIntForDeferredRebuildFaceInStore:(id)arg1;
 - (BOOL)_createImportSessionAlbums:(id)arg1;
+- (BOOL)_createManualIndexesDropBeforeCreate:(BOOL)arg1;
 - (void)_createPhotoDataDirectoryFailedWithNoPermission:(id)arg1;
 - (BOOL)_createPhotoDataDirectoryIfNecessary;
 - (id)_dateForFirstCRVSPhoto;
@@ -144,6 +145,7 @@
 - (BOOL)_fixIncorrectHeifMetadataInStore:(id)arg1;
 - (BOOL)_fixIncorrectThumbnailTables;
 - (BOOL)_fixInitialSyncMarker;
+- (BOOL)_fixInvalidPostMigrationFileSystemImportedAssets:(id)arg1;
 - (BOOL)_fixItemIdentifierForVideoCmplInStore:(id)arg1;
 - (BOOL)_fixKeywordsInStagedStore:(id)arg1;
 - (BOOL)_fixKindSubtypeForLoopingVideoLivePhotosInStore:(id)arg1;
@@ -194,8 +196,7 @@
 - (BOOL)_fixupSyncedAssetAttributesInStore:(id)arg1;
 - (BOOL)_flattenUnknownCustomRenderedValues:(id)arg1;
 - (BOOL)_forceAlbumMetadataToDiskInStore:(id)arg1;
-- (void)_forceCreateIndexOnOrderedAssets:(BOOL)arg1;
-- (BOOL)_forceDupeAnalysis;
+- (void)_forceDupeAnalysis;
 - (BOOL)_forceSoftResetSync;
 - (BOOL)_generateAddedDateForAssetsInStore:(id)arg1;
 - (void)_generateAlbumMetadataFromLastiTunesSyncedPlist;
@@ -297,11 +298,14 @@
 - (BOOL)_renumberLocalAvailabilityAndLocalAvailabilityTargetsInStore:(id)arg1;
 - (void)_repairCloudPlaceholderKindForVideoAsset:(id)arg1;
 - (void)_repairMetadataAndSingletonsForMigrationType:(long long)arg1 forced:(BOOL)arg2;
+- (BOOL)_repairOrphanedProjectAlbumsInStore:(id)arg1;
 - (void)_repairPotentialModelCorruption;
 - (void)_repairRootFolderFixedOrderKeysInContext:(id)arg1;
 - (BOOL)_repairSingletonObjectsInDatabaseForOfflineStore:(id)arg1;
 - (BOOL)_repairSingletonObjectsInDatabaseUsingContext:(id)arg1 error:(id *)arg2;
+- (BOOL)_repairTableThumbFragmentation;
 - (BOOL)_repersistDuplicatedAssets:(id)arg1;
+- (BOOL)_repushAllUserSmartAlbum:(id)arg1;
 - (BOOL)_repushAssetsMatchingPredicate:(id)arg1 inStore:(id)arg2 withMaster:(BOOL)arg3;
 - (BOOL)_repushAssetsWithAnyUserConfirmedFaceInStore:(id)arg1;
 - (BOOL)_repushAssetsWithNewGroupingPropertiesInStore:(id)arg1;
@@ -321,7 +325,9 @@
 - (BOOL)_revalidateImportSessionDates:(id)arg1;
 - (BOOL)_runMigrationStepWithName:(id)arg1 fetchRequest:(id)arg2 store:(id)arg3 migrationHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_runMigrationStepWithPrettyFunction:(const char *)arg1 store:(id)arg2 migrationHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_runPairingForAssetsInStore:(id)arg1;
 - (BOOL)_saveChangesToPhotoIrisInStore:(id)arg1 matchingPredicate:(id)arg2 countChanged:(unsigned long long *)arg3 error:(id *)arg4 changeBlock:(CDUnknownBlockType)arg5;
+- (BOOL)_scavengeSnowplowMetadataForAssetsInStore:(id)arg1;
 - (BOOL)_setImportedByInPLCloudMaster:(id)arg1;
 - (void)_setIsPostProcessingLightWeightMigration:(BOOL)arg1;
 - (void)_setLastWelcomedDBVersion;
@@ -349,6 +355,7 @@
 - (BOOL)_updateMissingFileSystemVolumeUuidInStore:(id)arg1;
 - (BOOL)_updatePlaybackStylesAndVariationsInStore:(id)arg1;
 - (BOOL)_updatePlaybackWithBatchUpdateRequest:(id)arg1 targetDescription:(id)arg2 inContext:(id)arg3;
+- (BOOL)_updateQualitySortForResourcesWithCPLResourceTypeVideoFullSizeInStore:(id)arg1;
 - (BOOL)_updateSuggestionStartAndEndDatesInStore:(id)arg1;
 - (void)_validateCurrentModelVersionAttempt:(long long)arg1;
 - (void)_validateCurrentModelVersionFailedWithMismatchedVersion:(long long)arg1;
@@ -411,7 +418,6 @@
 - (BOOL)rebuildAllMomentsInStore:(id)arg1;
 - (BOOL)rebuildRequired;
 - (BOOL)relocateOriginalUBFPaths:(id)arg1;
-- (void)removeForceRebuildIndicatorFile;
 - (void)repairSingletonObjectsInDatabase;
 - (BOOL)resetAnalysisStateForVideosWithMoc:(id)arg1;
 - (BOOL)resetFaceQualityInStore:(id)arg1;

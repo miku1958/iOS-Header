@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _contentType;
     TVImageLayout *_logoImageLayout;
     VUITextLayout *_logoTextLayout;
+    TVImageLayout *_decorationImageLayout;
     VUITextLayout *_subTextLayout;
     VUITextLayout *_episodeInfoTextLayout;
     VUITextLayout *_descriptionTextLayout;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUITextLayout *availabilityTextLayout; // @synthesize availabilityTextLayout=_availabilityTextLayout;
 @property (readonly, nonatomic) unsigned long long contentType;
 @property (strong, nonatomic) TVImageLayout *coverArtImageLayout; // @synthesize coverArtImageLayout=_coverArtImageLayout;
+@property (readonly, nonatomic) TVImageLayout *decorationImageLayout; // @synthesize decorationImageLayout=_decorationImageLayout;
 @property (readonly, nonatomic) VUITextLayout *descriptionTextLayout; // @synthesize descriptionTextLayout=_descriptionTextLayout;
 @property (readonly, nonatomic) VUITextLayout *descriptionTitleTextLayout; // @synthesize descriptionTitleTextLayout=_descriptionTitleTextLayout;
 @property (readonly, nonatomic) VUITextLayout *disclaimerTextLayout; // @synthesize disclaimerTextLayout=_disclaimerTextLayout;

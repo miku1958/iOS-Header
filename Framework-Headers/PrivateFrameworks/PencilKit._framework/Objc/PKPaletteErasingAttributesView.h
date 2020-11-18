@@ -17,6 +17,7 @@
 @property (strong, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 

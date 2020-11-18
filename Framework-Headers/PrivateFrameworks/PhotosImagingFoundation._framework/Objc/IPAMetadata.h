@@ -36,11 +36,15 @@
 @property (strong, nonatomic) NSDictionary *audioVideoProperties; // @synthesize audioVideoProperties=_audioVideoProperties;
 @property (strong, nonatomic) NSMutableDictionary *basicProperties; // @synthesize basicProperties=_basicProperties;
 @property (readonly, nonatomic) NSString *burstUuid;
+@property (readonly, nonatomic) NSString *cameraMake;
+@property (readonly, nonatomic) NSString *cameraModel;
 @property (strong, nonatomic) NSArray *cgImageMetadataProperties; // @synthesize cgImageMetadataProperties=_cgImageMetadataProperties;
 @property (strong, nonatomic) NSMutableDictionary *cgImageProperties; // @synthesize cgImageProperties=_cgImageProperties;
+@property (readonly, nonatomic) NSString *codecFourCharCode;
 @property (strong, nonatomic) NSMutableDictionary *customInfo; // @synthesize customInfo=_customInfo;
 @property (readonly, nonatomic) long long customRendered;
 @property (readonly, nonatomic) NSString *deferredPhotoProcessingIdentifer;
+@property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) NSString *exifImageDateTimeString;
 @property (strong, nonatomic) CLLocation *exifLocation; // @synthesize exifLocation=_exifLocation;
 @property (strong, nonatomic) NSMutableDictionary *exifProperties; // @synthesize exifProperties=_exifProperties;
@@ -64,6 +68,7 @@
 @property (readonly, nonatomic) BOOL isSpatialOverCapture;
 @property (strong, nonatomic) NSString *jsonFormattedDescription; // @synthesize jsonFormattedDescription=_jsonFormattedDescription;
 @property (readonly, nonatomic) NSString *mediaGroupUUID;
+@property (readonly, nonatomic) double nominalFrameRate;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long originalOrientation; // @synthesize originalOrientation=_originalOrientation;
 @property (nonatomic) struct CGSize originalUnrotatedSize; // @synthesize originalUnrotatedSize=_originalUnrotatedSize;

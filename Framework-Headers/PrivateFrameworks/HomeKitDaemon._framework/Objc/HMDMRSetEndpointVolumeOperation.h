@@ -35,6 +35,7 @@
 
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (BOOL)cancelOnSetup;
 - (id)initWithRouteIDs:(id)arg1 volume:(id)arg2;
 - (void)main;
 

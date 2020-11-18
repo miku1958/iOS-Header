@@ -63,6 +63,7 @@
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
 - (long long)keyboardSuppressionMode;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
@@ -70,7 +71,6 @@
 - (BOOL)shouldRubberbandHomeGrabberView;
 - (double)unconditionalDistanceThresholdForHome;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;
 

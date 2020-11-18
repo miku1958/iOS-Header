@@ -60,6 +60,7 @@
 @property (strong, nonatomic) ISPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
 @property (nonatomic, setter=_setStatus:) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL videoLayersReadyForDisplay;
 @property (readonly, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
 - (void).cxx_destruct;
@@ -73,6 +74,7 @@
 - (void)_invalidateWillPlayToEndObserver;
 - (void)_invalidateWillPlayToPhotoObserver;
 - (BOOL)_needsUpdate;
+- (void)_outputVideoReadyForDisplayDidChange:(id)arg1;
 - (void)_setForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)_setVideoPlayer:(id)arg1;
 - (void)_updateContentFromPlayerItemIfNeeded;
@@ -102,6 +104,7 @@
 - (void)behavior:(id)arg1 setVideoForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg2;
 - (void)behavior:(id)arg1 setVideoPlayRate:(float)arg2;
 - (void)behavior:(id)arg1 setVideoVolume:(float)arg2;
+- (BOOL)behaviorIsVideoReadyForDisplay:(id)arg1;
 - (void)configurePlayerItem;
 - (void)dealloc;
 - (void)didAddOutput:(id)arg1;

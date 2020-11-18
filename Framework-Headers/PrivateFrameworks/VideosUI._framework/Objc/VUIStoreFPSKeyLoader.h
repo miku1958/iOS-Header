@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDate, NSMutableArray, NSNumber, NSURL, TVPContentKeyRequest, TVPContentKeySession, TVPPlaybackReportingEventCollection;
+@class NSData, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSURL, TVPContentKeyRequest, TVPContentKeySession, TVPPlaybackReportingEventCollection;
 @protocol VUIStoreFPSKeyLoaderDelegate;
 
 @interface VUIStoreFPSKeyLoader : NSObject
 {
     BOOL _didSkipRentalCheckout;
     BOOL _hasLoadedAnyStreamingKeyRequests;
+    BOOL _usesKeyIdentifierPenaltyBox;
     NSURL *_secureInvalidationNonceURL;
     NSNumber *_secureInvalidationDSID;
     NSObject<VUIStoreFPSKeyLoaderDelegate> *_delegate;
@@ -27,6 +28,7 @@
     NSDate *_keyExpirationDate;
     NSDate *_rentalPlaybackStartDate;
     TVPContentKeySession *_contentKeySession;
+    NSMutableDictionary *_keyIdentifierPenaltyBox;
 }
 
 @property (strong, nonatomic) NSData *certificateData; // @synthesize certificateData=_certificateData;
@@ -37,6 +39,7 @@
 @property (strong, nonatomic) TVPPlaybackReportingEventCollection *eventCollection; // @synthesize eventCollection=_eventCollection;
 @property (nonatomic) BOOL hasLoadedAnyStreamingKeyRequests; // @synthesize hasLoadedAnyStreamingKeyRequests=_hasLoadedAnyStreamingKeyRequests;
 @property (strong, nonatomic) NSDate *keyExpirationDate; // @synthesize keyExpirationDate=_keyExpirationDate;
+@property (strong, nonatomic) NSMutableDictionary *keyIdentifierPenaltyBox; // @synthesize keyIdentifierPenaltyBox=_keyIdentifierPenaltyBox;
 @property (copy, nonatomic) NSURL *keyServerURL; // @synthesize keyServerURL=_keyServerURL;
 @property (strong, nonatomic) NSNumber *rentalID; // @synthesize rentalID=_rentalID;
 @property (strong, nonatomic) NSDate *rentalPlaybackStartDate; // @synthesize rentalPlaybackStartDate=_rentalPlaybackStartDate;
@@ -45,6 +48,7 @@
 @property (strong, nonatomic) NSNumber *secureInvalidationDSID; // @synthesize secureInvalidationDSID=_secureInvalidationDSID;
 @property (strong, nonatomic) NSURL *secureInvalidationNonceURL; // @synthesize secureInvalidationNonceURL=_secureInvalidationNonceURL;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (nonatomic) BOOL usesKeyIdentifierPenaltyBox; // @synthesize usesKeyIdentifierPenaltyBox=_usesKeyIdentifierPenaltyBox;
 
 + (void)_loadAndCacheCertificateDataForValidURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)_loadFPSURLsFromStoreBagWithCompletion:(CDUnknownBlockType)arg1;
@@ -70,6 +74,7 @@
 - (id)initWithCertificateURL:(id)arg1 keyServerURL:(id)arg2;
 - (void)invalidateKeysWithRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeAllEntriesFromKeyIdentifierPenaltyBox;
 - (void)sendStopRequest;
 
 @end

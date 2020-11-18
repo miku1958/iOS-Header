@@ -14,7 +14,6 @@
 
 + (Class)_configurationClass;
 - (id)_clickConfiguration;
-- (void)dragged;
 - (id)initWithCoordinateSpace:(id)arg1;
 - (void)pressedDown;
 - (void)pressedUp;

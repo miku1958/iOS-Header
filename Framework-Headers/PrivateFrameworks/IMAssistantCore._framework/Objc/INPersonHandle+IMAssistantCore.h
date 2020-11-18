@@ -8,7 +8,7 @@
 
 @interface INPersonHandle (IMAssistantCore)
 + (id)__im_assistant_extractIntentHandleLabelAndTypeFromContact:(id)arg1 forNormalizedID:(id)arg2;
-- (id)__im_assistant_initWithUnstructuredValue:(id)arg1;
-- (BOOL)__im_assistant_isEqualIgnoringFormatting:(id)arg1 ignoringLabel:(BOOL)arg2;
++ (long long)__im_assistant_handleTypeForString:(id)arg1;
+- (long long)__im_assistant_handleType;
 @end
 

@@ -9,12 +9,13 @@
 #import <HomeUI/HUConfigurationViewController-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class NSString, OBTrayButton;
+@class HMHome, NSString, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUUpgradeMultiUserDevicesViewController : HUImageOBWelcomeController <HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
+    HMHome *_home;
     OBTrayButton *_continueButton;
 }
 
@@ -23,13 +24,14 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_continueButtonTapped:(id)arg1;
 - (id)hu_preloadContent;
-- (id)initWithUpgradeRequirements:(unsigned long long)arg1;
+- (id)initWithUpgradeRequirements:(unsigned long long)arg1 home:(id)arg2;
 - (void)viewDidLoad;
 
 @end

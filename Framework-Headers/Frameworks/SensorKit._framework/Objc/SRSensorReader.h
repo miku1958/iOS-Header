@@ -51,6 +51,7 @@
 @property (copy) NSString *sensor; // @synthesize sensor=_sensor;
 @property (readonly) Class superclass;
 
++ (void)authorizationRequestStatusForBundle:(id)arg1 sensors:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)clientInterface;
 + (id)connectionToDaemon;
 + (CDUnknownBlockType)createExportDataWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -62,7 +63,7 @@
 + (void)requestAuthorizationForSensors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)authorizedServices;
-- (void)authorizedServicesDidChange:(id)arg1;
+- (void)authorizedServicesDidChange:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)continueFetch:(id)arg1;
 - (void)continueFetchRequest:(id)arg1 from:(double)arg2 to:(double)arg3 withDatastoreFiles:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)daemonNotificationDaemonDidStart:(id)arg1;
@@ -70,7 +71,6 @@
 - (void)didCompleteFetch:(id)arg1;
 - (void)didFetchDevices:(id)arg1;
 - (void)fetch:(id)arg1;
-- (void)fetchDeviceIds:(CDUnknownBlockType)arg1;
 - (void)fetchDevices;
 - (void)fetchDevices:(CDUnknownBlockType)arg1;
 - (void)fetchDevicesDidFailWithError:(id)arg1;

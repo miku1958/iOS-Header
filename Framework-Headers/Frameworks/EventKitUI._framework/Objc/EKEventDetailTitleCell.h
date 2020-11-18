@@ -9,7 +9,7 @@
 #import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
 #import <EventKitUI/UITextViewDelegate-Protocol.h>
 
-@class EKEventDetailPredictedLocationCell, NSMutableArray, NSObject, NSString, UIButton, UILabel;
+@class EKEventDetailPredictedLocationCell, NSMutableArray, NSObject, NSString, UIButton, UILabel, UIView;
 @protocol EKEventDetailTitleCellDelegate;
 
 @interface EKEventDetailTitleCell : EKEventDetailCell <UITextViewDelegate, EKEventDetailPredictedLocationCellDelegate>
@@ -40,6 +40,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long numberOfTitleLines; // @synthesize numberOfTitleLines=_numberOfTitleLines;
 @property (nonatomic) BOOL showingInlineDayView; // @synthesize showingInlineDayView=_showingInlineDayView;
+@property (readonly, nonatomic) UIView *sourceViewForPopover;
 @property (readonly) Class superclass;
 
 + (void)_geocodeEventIfNeeded:(id)arg1;
@@ -53,7 +54,7 @@
 - (id)_editButton;
 - (double)_layoutForWidth:(double)arg1;
 - (id)_predictedLocationView;
-- (void)_promptForSpanWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)_promptForSpanWithSourceView:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)_recurrenceView;
 - (void)_saveEventWithSpan:(long long)arg1;
 - (void)_setDateTimeString:(id)arg1 line:(unsigned long long)arg2;

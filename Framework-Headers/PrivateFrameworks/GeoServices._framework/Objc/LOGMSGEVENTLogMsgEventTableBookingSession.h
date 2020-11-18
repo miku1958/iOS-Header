@@ -13,7 +13,6 @@
 @interface LOGMSGEVENTLogMsgEventTableBookingSession : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     long long _blurredBookingTimestamp;
     long long _blurredReservationTimestamp;
     NSString *_bookTableAppId;
@@ -22,6 +21,9 @@
     NSMutableArray *_errorMessages;
     NSString *_installNeededTappedAppId;
     unsigned long long _muid;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _endState;
     int _endView;
     unsigned int _tableSize;
@@ -119,6 +121,8 @@
 - (id)errorMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)errorMessagesCount;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -7,15 +7,18 @@
 #import <ControlCenterUIKit/CCUISliderModuleBackgroundViewController.h>
 
 #import <MediaControls/MediaControlsVolumeControllerObserver-Protocol.h>
+#import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MediaControlsExpandableButton, MediaControlsVolumeController, NSString, _MediaControlsRouteView;
+@class MediaControlsBluetoothListeningModeButton, MediaControlsRouteView, MediaControlsVolumeController, NSString, NSTimer;
 
-@interface MediaControlsVolumeBackgroundViewController : CCUISliderModuleBackgroundViewController <MediaControlsVolumeControllerObserver>
+@interface MediaControlsVolumeBackgroundViewController : CCUISliderModuleBackgroundViewController <UIGestureRecognizerDelegate, MediaControlsVolumeControllerObserver>
 {
-    _MediaControlsRouteView *_primaryRouteView;
-    _MediaControlsRouteView *_secondaryRouteView;
-    MediaControlsExpandableButton *_primaryExpandableButton;
-    MediaControlsExpandableButton *_secondaryExpandableButton;
+    MediaControlsRouteView *_primaryRouteView;
+    MediaControlsRouteView *_secondaryRouteView;
+    MediaControlsBluetoothListeningModeButton *_primaryBluetoothListeningModeButton;
+    MediaControlsBluetoothListeningModeButton *_secondaryBluetoothListeningModeButton;
+    NSTimer *_primaryUpdateTimer;
+    NSTimer *_secondaryUpdateTimer;
     MediaControlsVolumeController *_volumeController;
 }
 
@@ -26,18 +29,27 @@
 @property (strong, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 
 - (void).cxx_destruct;
+- (void)_configureOptionsButton:(id)arg1 forRouteType:(unsigned long long)arg2;
+- (void)_configurePrimaryOptionsButtonIfNeeded;
+- (void)_configureRouteView:(id)arg1 forRouteType:(unsigned long long)arg2;
 - (void)_configureRouteViews;
+- (void)_configureSecondaryOptionsButtonIfNeeded;
 - (double)_horizontalPadding;
 - (void)_performLayoutWithAnimation:(CDUnknownBlockType)arg1;
+- (void)_springAnimate:(CDUnknownBlockType)arg1;
+- (void)_updateButton:(id)arg1 routeType:(unsigned long long)arg2;
+- (void)_updateButtonAxis;
+- (void)_updateVisibility;
 - (double)_verticalPadding;
-- (void)configureOptionsButtion:(id)arg1 forRouteType:(unsigned long long)arg2;
-- (void)didTapPrimaryExpandableButton:(id)arg1;
-- (void)didTapSecondaryExpandableButton:(id)arg1;
-- (id)expandableButtonOptionsForAvailableBluetoothListeningMode:(id)arg1;
+- (void)collapseBluetoothListeningModeButtons;
+- (void)didTapPrimaryBluetoothListeningModeButton:(id)arg1;
+- (void)didTapSecondaryBluetoothListeningModeButton:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(BOOL)arg2;
-- (void)primaryExpandableButtonDidChangeValue:(id)arg1;
-- (void)secondaryExpandableButtonDidChangeValue:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)primaryBluetoothListeningModeButtonDidChangeValue:(id)arg1;
+- (void)secondaryBluetoothListeningModeButtonDidChangeValue:(id)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;

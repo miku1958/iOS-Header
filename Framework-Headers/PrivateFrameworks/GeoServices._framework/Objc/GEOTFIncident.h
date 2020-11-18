@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOTFIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoids;
     NSString *_crossStreet;
     unsigned long long _durationMin;
@@ -29,6 +28,9 @@ __attribute__((visibility("hidden")))
     NSString *_street;
     long long _updateTime;
     NSData *_zilch;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     unsigned int _alertCCode;
     int _color;
     float _delay;
@@ -200,6 +202,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)infoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)infosCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)laneClosureTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;

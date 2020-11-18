@@ -24,13 +24,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_computeBoundingBoxes;
-- (BOOL)calculateSaliencyBoundingBoxesForDetectorType:(id)arg1 configurationOptions:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct __CVBuffer *)createSaliencyImageAndReturnError:(id *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 rawSaliencyImage:(struct __CVBuffer *)arg2 originalImageSize:(struct CGSize)arg3;
+- (id)initWithRequestRevision:(unsigned long long)arg1 rawSaliencyImage:(struct __CVBuffer *)arg2 originalImageSize:(struct CGSize)arg3 salientObjectBoundingBoxes:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)salientObjectsAndReturnError:(id *)arg1;
 

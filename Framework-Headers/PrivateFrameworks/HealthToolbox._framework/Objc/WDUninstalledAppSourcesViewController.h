@@ -8,7 +8,7 @@
 
 #import <HealthToolbox/HKSourceListDataSourceObserver-Protocol.h>
 
-@class HKSourceListDataSource, NSArray, NSString, UIImage, WDProfile;
+@class HKSourceListDataSource, NSArray, UIImage, WDProfile;
 
 __attribute__((visibility("hidden")))
 @interface WDUninstalledAppSourcesViewController : HKTableViewController <HKSourceListDataSourceObserver>
@@ -19,11 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) HKSourceListDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WDProfile *profile; // @synthesize profile=_profile;
-@property (readonly) Class superclass;
 @property (readonly) UIImage *uninistalledAppImage;
 @property (copy, nonatomic) NSArray *uninstalledSources; // @synthesize uninstalledSources=_uninstalledSources;
 

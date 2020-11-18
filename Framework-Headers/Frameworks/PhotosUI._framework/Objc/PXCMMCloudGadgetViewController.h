@@ -55,7 +55,7 @@
 - (void)completeMyMomentCloudPhotoViewDismissTapped:(id)arg1;
 - (void)completeMyMomentCloudPhotoViewLearnMoreTapped:(id)arg1;
 - (struct NSObject *)contentViewController;
-- (id)init;
+- (id)initWithSourceType:(unsigned long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)viewDidLoad;
 

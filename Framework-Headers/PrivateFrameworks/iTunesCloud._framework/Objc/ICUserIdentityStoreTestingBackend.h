@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/ICUserIdentityStoreBackend-Protocol.h>
 
-@class NSMutableDictionary, NSNumber, NSString;
+@class ICLocalStoreAccountProperties, NSMutableDictionary, NSNumber, NSString;
 @protocol ICUserIdentityStoreBackendDelegate;
 
 @interface ICUserIdentityStoreTestingBackend : NSObject <ICUserIdentityStoreBackend>
@@ -16,6 +16,7 @@
     NSNumber *_activeAccountDSID;
     NSNumber *_activeLockerAccountDSID;
     NSMutableDictionary *_identityProperties;
+    ICLocalStoreAccountProperties *_localStoreAccountProperties;
     id<ICUserIdentityStoreBackendDelegate> _delegate;
 }
 
@@ -27,6 +28,7 @@
 
 + (void)setDefaultActiveAccountDSID:(id)arg1;
 + (void)setDefaultActiveLockerAccountDSID:(id)arg1;
++ (void)setDefaultStorefrontIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_propertiesToSaveForProperties:(id)arg1;
@@ -38,9 +40,12 @@
 - (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)localStoreAccountPropertiesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)localStoreAccountPropertiesWithError:(id *)arg1;
 - (void)removeIdentityForDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)replaceIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setIdentityProperties:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setLocalStoreAccountProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateActiveLockerAccountDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;

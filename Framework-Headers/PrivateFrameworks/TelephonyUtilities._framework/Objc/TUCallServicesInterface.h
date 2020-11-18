@@ -94,7 +94,7 @@
 - (id)joinConversationWithRequest:(id)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1 andWait:(BOOL)arg2;
-- (void)pickRouteWithUniqueIdentifier:(id)arg1 forRouteController:(id)arg2;
+- (void)pickRouteWithUniqueIdentifier:(id)arg1 shouldWaitUntilAvailable:(BOOL)arg2 forRouteController:(id)arg3;
 - (oneway void)playDTMFToneForCallWithUniqueProxyIdentifier:(id)arg1 key:(unsigned char)arg2;
 - (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (oneway void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;

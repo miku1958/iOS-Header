@@ -28,7 +28,7 @@
 - (id)_circularTemplateForAlarm:(BOOL)arg1;
 - (id)_extraLargeAlarmInactiveImageProvider;
 - (id)_largeUtilityInactiveImageProvider;
-- (void)_makeAlarmStackTextTimeProvider:(id *)arg1 designatorProvider:(id *)arg2 designatorLeads:(BOOL *)arg3;
+- (void)_makeAlarmStackTextTimeProvider:(id *)arg1 designatorProvider:(id *)arg2 designatorExists:(BOOL *)arg3 designatorLeads:(BOOL *)arg4;
 - (id)_modularSmallAlarmInactiveImageProvider;
 - (id)_newCircularMediumTemplate;
 - (id)_newCircularSmallTemplate;

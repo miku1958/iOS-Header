@@ -9,7 +9,7 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class EDActivityPersistence, EDConversationPersistence, EDGmailLabelPersistence, EDLocalActionPersistence, EDMailboxPersistence, EDMessageChangeManager, EDMessagePersistence, EDPersistenceDatabase, EDPersistenceHookRegistry, EDSearchableIndexManager, EDServerMessagePersistenceFactory, EDThreadPersistence, EDVIPManager, EMBlockedSenderManager, NSString;
-@protocol EDAccountsProvider, EMUserProfileProvider;
+@protocol EDAccountsProvider, EDRemoteSearchProvider, EMUserProfileProvider;
 
 @interface EDPersistence : NSObject <EFLoggable>
 {
@@ -19,6 +19,7 @@
     EDPersistenceHookRegistry *_hookRegistry;
     id<EDAccountsProvider> _accountsProvider;
     id<EMUserProfileProvider> _userProfileProvider;
+    id<EDRemoteSearchProvider> _remoteSearchProvider;
     EDVIPManager *_vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     EDActivityPersistence *_activityPersistence;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) EDMailboxPersistence *mailboxPersistence; // @synthesize mailboxPersistence=_mailboxPersistence;
 @property (readonly) EDMessageChangeManager *messageChangeManager;
 @property (readonly) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
+@property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly) EDSearchableIndexManager *searchableIndexManager;
 @property (readonly) EDServerMessagePersistenceFactory *serverMessagePersistenceFactory;
 @property (readonly) Class superclass;

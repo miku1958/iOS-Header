@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSArray *multiUserPitchComposition;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL voiceProfilesAreInFlight;
 
 + (id)multiUserInfo;
 + (id)multiUserInfoWithDictionary:(id)arg1 context:(id)arg2;

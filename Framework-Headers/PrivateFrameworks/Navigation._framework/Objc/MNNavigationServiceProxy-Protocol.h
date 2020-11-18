@@ -6,10 +6,10 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlertDetails, NSArray, NSData, NSString, NSUUID;
+@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlert, NSArray, NSData, NSString, NSUUID;
 
 @protocol MNNavigationServiceProxy <NSObject>
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(MNTrafficIncidentAlertDetails *)arg2;
+- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlert:(MNTrafficIncidentAlert *)arg2;
 - (void)changeSettings:(MNSettings *)arg1;
 - (void)checkinForNavigationService:(void (^)(char *))arg1;
 - (void)interfaceHashesWithHandler:(void (^)(unsigned long long, unsigned long long))arg1;

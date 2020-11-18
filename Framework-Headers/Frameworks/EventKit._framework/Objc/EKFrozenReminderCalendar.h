@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPublished;
 - (id)publishedURL;
 - (id)remObjectID;
+- (id)sharedOwnerName;
 - (id)sharees;
 - (unsigned long long)sharingStatus;
 - (id)source;

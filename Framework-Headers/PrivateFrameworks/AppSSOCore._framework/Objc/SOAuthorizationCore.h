@@ -27,6 +27,7 @@
 + (BOOL)_doAKshouldProcessURL:(id)arg1;
 + (BOOL)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2;
 + (BOOL)canPerformAuthorizationWithURL:(id)arg1 responseCode:(long long)arg2 useInternalExtensions:(BOOL)arg3;
++ (void)isExtensionProcessWithAuditToken:(CDStruct_6ad76789)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_cancelAuthorization;
 - (void)_finishAuthorizationWithCredential:(id)arg1 error:(id)arg2;

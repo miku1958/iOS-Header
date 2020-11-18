@@ -24,6 +24,7 @@
     BOOL _shouldTrace;
 }
 
+@property (readonly, copy, nonatomic) NSString *_trace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long fenceName;
@@ -37,7 +38,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned int)CAPort;
-- (id)_initWithFence:(id)arg1;
 - (id)_initWithFenceName:(unsigned long long)arg1 fence:(id)arg2 preFence:(id)arg3 preFenceTrigger:(id)arg4 shouldTrace:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

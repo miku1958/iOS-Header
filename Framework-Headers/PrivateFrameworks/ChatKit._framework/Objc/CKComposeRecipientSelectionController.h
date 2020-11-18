@@ -8,11 +8,12 @@
 
 #import <ChatKit/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIView;
 @protocol CKComposeRecipientSelectionControllerDelegate;
 
 @interface CKComposeRecipientSelectionController : CKRecipientSelectionController <UITextFieldDelegate>
 {
+    UIView *_pillContainerView;
     CDUnknownBlockType _sendBlock;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *expandedRecipients;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *pillContainerView; // @synthesize pillContainerView=_pillContainerView;
 @property (readonly, nonatomic) NSArray *proposedRecipients;
 @property (copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
 @property (readonly) Class superclass;

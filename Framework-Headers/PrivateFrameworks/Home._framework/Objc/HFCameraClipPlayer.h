@@ -53,6 +53,7 @@
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)createQueueableItemForClipManager:(id)arg1 clip:(id)arg2;
 - (void)dealloc;
+- (void)endScrubbingWithOffset:(double)arg1;
 - (id)init;
 - (id)initWithCameraProfile:(id)arg1 clips:(id)arg2;
 - (id)initWithCameraProfile:(id)arg1 clips:(id)arg2 queuePlayer:(id)arg3;

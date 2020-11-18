@@ -11,10 +11,10 @@
 
 @protocol HFSetupPairingPopup <NSObject>
 
-@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> delegate;
+@property (readonly, weak, nonatomic) id<HFSetupPairingPopupDelegate> popupDelegate;
 @property (readonly, nonatomic) unsigned long long popupType;
 @property (readonly, nonatomic) HMSetupAccessoryDescription *setupAccessoryDescription;
 
-- (id)initWithDelegate:(id<HFSetupPairingPopupDelegate>)arg1 setupAccessoryDescription:(HMSetupAccessoryDescription *)arg2;
+- (id)initWithPopupDelegate:(id<HFSetupPairingPopupDelegate>)arg1 setupAccessoryDescription:(HMSetupAccessoryDescription *)arg2;
 @end
 

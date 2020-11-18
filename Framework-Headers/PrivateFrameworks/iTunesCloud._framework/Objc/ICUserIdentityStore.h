@@ -9,7 +9,7 @@
 #import <iTunesCloud/ICUserIdentityStoreBackendDelegate-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ACAccountStore, ICDelegateAccountStore, ICDelegateAccountStoreOptions, ICUserIdentityStoreCoding, ICValueHistory, NSOperationQueue, NSString;
+@class ACAccountStore, ICDelegateAccountStore, ICDelegateAccountStoreOptions, ICLocalStoreAccountProperties, ICUserIdentityStoreCoding, ICValueHistory, NSOperationQueue, NSString;
 @protocol ICUserIdentityStoreBackend, OS_dispatch_queue;
 
 @interface ICUserIdentityStore : NSObject <ICUserIdentityStoreBackendDelegate, NSSecureCoding>
@@ -21,6 +21,7 @@
     ICUserIdentityStoreCoding *_codingHelper;
     ICDelegateAccountStore *_delegateAccountStore;
     ICDelegateAccountStoreOptions *_delegateAccountStoreOptions;
+    ICLocalStoreAccountProperties *_localStoreAccountProperties;
     NSOperationQueue *_operationQueue;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) ICLocalStoreAccountProperties *localStoreAccountProperties;
 @property (readonly) Class superclass;
 
 + (void)_claimSingleWriterStatus;
@@ -45,12 +47,15 @@
 - (id)_dsidForTimestamp:(unsigned long long)arg1 history:(id)arg2;
 - (void)_dsidForUserIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_existingIdentityPropertiesForUserIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_icValidStoreAccountsFromACAccounts:(id)arg1;
 - (void)_importValuesFromCodingHelper:(id)arg1;
 - (id)_initCommon;
 - (id)_initWithStyle:(long long)arg1 delegateAccountStoreOptions:(id)arg2;
+- (void)_initializeLocalStoreAccountProperties;
 - (void)_openDelegateAccountStoreForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_openDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_prepareDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_refreshLocalStoreAccountPropertiesAllowingDidChangeNotification:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_registerForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_reloadForExternalChange;
 - (void)_resetDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -66,8 +71,9 @@
 - (void)getDelegationUUIDsForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPropertiesForActiveICloudAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPropertiesForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getUserIdentitiesForAuthenticatedAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getUserIdentitiesForManageableAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getVerificationContextForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getuserIdentitiesForAllStoreAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)insertPropertiesForUserIdentity:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)insertPropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -81,9 +87,11 @@
 - (void)setActiveLockerAccountWithDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)synchronize;
 - (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updatePropertiesForLocalStoreAccountUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)updatePropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)userIdentitiesForAuthenticatedAccountsWithError:(id *)arg1;
+- (id)userIdentitiesForAllStoreAccountsWithError:(id *)arg1;
+- (id)userIdentitiesForManageableAccountsWithError:(id *)arg1;
 - (void)userIdentityStoreBackendDidChange:(id)arg1;
 
 @end

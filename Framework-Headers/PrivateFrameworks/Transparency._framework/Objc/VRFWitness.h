@@ -17,6 +17,7 @@
 @property (strong) NSData *message;
 @property (copy, nonatomic) NSData *output; // @dynamic output;
 @property (copy, nonatomic) NSData *proof; // @dynamic proof;
+@property (strong) NSData *salt;
 @property (nonatomic) int type; // @dynamic type;
 @property (strong) TransparencyVRFVerifier *verifier;
 

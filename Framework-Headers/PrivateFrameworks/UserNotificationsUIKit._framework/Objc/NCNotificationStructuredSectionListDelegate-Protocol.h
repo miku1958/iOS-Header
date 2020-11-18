@@ -6,12 +6,13 @@
 
 #import <UserNotificationsUIKit/NCNotificationListComponentDelegate-Protocol.h>
 
-@class NCNotificationRequest, NCNotificationStructuredSectionList;
+@class NCNotificationGroupList, NCNotificationRequest, NCNotificationStructuredSectionList;
 @protocol NCAuxiliaryOptionsProviding;
 
 @protocol NCNotificationStructuredSectionListDelegate <NCNotificationListComponentDelegate>
 - (id<NCAuxiliaryOptionsProviding>)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 requestsAuxiliaryOptionsContentProviderForNotificationRequest:(NCNotificationRequest *)arg2 isLongLook:(BOOL)arg3;
 - (void)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 requestsScrollingToContentOffset:(double)arg2 withCompletion:(void (^)(void))arg3;
 - (BOOL)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 shouldFilterNotificationRequest:(NCNotificationRequest *)arg2;
+- (BOOL)notificationStructuredSectionList:(NCNotificationStructuredSectionList *)arg1 shouldScrollToTopForGroupList:(NCNotificationGroupList *)arg2;
 @end
 

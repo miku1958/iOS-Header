@@ -205,6 +205,7 @@
 - (BOOL)isNews;
 - (BOOL)isTable;
 - (BOOL)isURL;
+- (BOOL)isUnsupported;
 - (BOOL)isVisible;
 - (BOOL)isiTunes;
 - (void)loadFromArchive:(const struct Attachment *)arg1 dataPersister:(id)arg2 withIdentifierMap:(id)arg3;

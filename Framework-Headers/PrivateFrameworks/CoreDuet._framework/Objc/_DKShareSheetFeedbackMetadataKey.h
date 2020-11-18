@@ -13,6 +13,8 @@
 + (id)attachments;
 + (id)derivedIntentIdentifier;
 + (id)extensionContextUUID;
++ (id)locationUUIDs;
++ (id)photoSuggestedContacts;
 + (id)targetBundleID;
 
 @end

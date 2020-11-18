@@ -16,6 +16,7 @@
 - (void)_notifyObserver:(id)arg1 withEnabled:(BOOL)arg2;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;
+- (BOOL)fetchIsEnabled;
 - (id)init;
 - (BOOL)isEnabled;
 

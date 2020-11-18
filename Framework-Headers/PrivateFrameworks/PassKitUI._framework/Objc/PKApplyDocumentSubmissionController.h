@@ -15,19 +15,19 @@
     PKBusinessChatController *_businessChatController;
     PKApplyDocumentUploadPage *_documentPage;
     BOOL _isLoading;
+    BOOL _isCancelling;
 }
 
 - (void).cxx_destruct;
+- (void)_cancelledConfirmed;
 - (void)_featureApplicationUpdated;
-- (void)_withdrawWithNextStepHandler:(CDUnknownBlockType)arg1;
 - (void)contactApplePressed;
 - (void)dealloc;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 documentPage:(id)arg3;
 - (id)nextViewController;
 - (void)removeApplicationUpdateObserver;
 - (void)uploadID;
-- (void)userWantsToCancelFromViewController:(id)arg1;
-- (void)userWantsToWithdraw;
+- (void)userWantsToCancel;
 
 @end
 

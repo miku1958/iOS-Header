@@ -54,6 +54,7 @@
 - (id)_madridSettingsController;
 - (unsigned long long)_meCardSharingAudience;
 - (BOOL)_meCardSharingEnabled;
+- (void)_setUpBusinessChatGroupSpecifiers:(id)arg1;
 - (void)_setupAccountHandlers;
 - (void)_setupAccountHandlersForDisabling;
 - (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(BOOL)arg2;
@@ -61,7 +62,8 @@
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showMadridSetupIfNecessary;
 - (void)_showMadridSetupIfNecessary:(BOOL)arg1;
-- (void)_showPrivacySheet:(id)arg1;
+- (void)_showPrivacySheetForBusinessChat:(id)arg1;
+- (void)_showPrivacySheetForiMessageFaceTime:(id)arg1;
 - (void)_showSetupMeCardAlert;
 - (void)_showSignInController;
 - (id)_smsRelayDevicesController;
@@ -91,6 +93,7 @@
 - (id)getAccountSummaryForSpecifier:(id)arg1;
 - (id)getAudioMessageAutoKeep:(id)arg1;
 - (id)getKeepMessages:(id)arg1;
+- (id)getNameAndPhotoSharingFooterText;
 - (id)getNameAndPhotoSharingSpecifierSummary:(id)arg1;
 - (id)getPreviewTranscodingEnabled:(id)arg1;
 - (id)getRaiseToListenEnabled:(id)arg1;
@@ -103,6 +106,7 @@
 - (id)isMadridEnabled:(id)arg1;
 - (BOOL)isPersonalCompanionEnabled;
 - (id)isSiriToneNotificationEnabled:(id)arg1;
+- (id)junkConversationsRowIdentifier;
 - (id)logName;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
@@ -142,6 +146,7 @@
 - (BOOL)shouldShowContactPhotoSettings;
 - (BOOL)shouldShowDeliveryReceipts;
 - (BOOL)shouldShowGenericSettings;
+- (BOOL)shouldShowJunkConversationsRow;
 - (BOOL)shouldShowMadridAccounts;
 - (BOOL)shouldShowMadridSignin;
 - (BOOL)shouldShowMadridSwitch;

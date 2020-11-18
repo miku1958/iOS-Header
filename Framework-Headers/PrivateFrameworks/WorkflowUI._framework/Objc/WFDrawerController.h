@@ -16,6 +16,7 @@
     BOOL _inTransition;
     id<WFDrawerControllerDelegate> _delegate;
     NSArray *_viewControllers;
+    double _bottomInset;
     NSArray *_paneContainers;
     NSMapTable *_paneContainersByViewControllers;
     UIViewController *_initializationViewController;
@@ -23,6 +24,7 @@
     unsigned long long _previousVisibilityOfCoveredPaneContainer;
 }
 
+@property (nonatomic) double bottomInset; // @synthesize bottomInset=_bottomInset;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFDrawerControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -42,6 +44,7 @@
 @property (readonly, nonatomic) unsigned long long visibility;
 
 - (void).cxx_destruct;
+- (double)bottomInsetForPaneContainer:(id)arg1;
 - (id)coveredPaneContainer;
 - (void)drawerPaneContainer:(id)arg1 didTransitionToVisibility:(unsigned long long)arg2;
 - (void)drawerPaneContainer:(id)arg1 willTransitionToVisibility:(unsigned long long)arg2;

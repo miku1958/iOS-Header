@@ -20,11 +20,11 @@
     BOOL _waitingToPrepare;
     PXCuratedLibraryAssetsDataSourceManager *_assetsDataSourceManager;
     id<PXCuratedLibraryEventLogger> _eventLogger;
-    CDStruct_9bad6f47 _counts;
+    CDStruct_aa0b146f _counts;
 }
 
 @property (readonly, nonatomic) PXCuratedLibraryAssetsDataSourceManager *assetsDataSourceManager; // @synthesize assetsDataSourceManager=_assetsDataSourceManager;
-@property (readonly, nonatomic) CDStruct_9bad6f47 counts; // @synthesize counts=_counts;
+@property (readonly, nonatomic) CDStruct_aa0b146f counts; // @synthesize counts=_counts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<PXCuratedLibraryEventLogger> eventLogger; // @synthesize eventLogger=_eventLogger;
@@ -43,7 +43,7 @@
 - (id)initWithAssetsDataSourceManager:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareCountsIfNeeded;
-- (void)setCounts:(CDStruct_9bad6f47)arg1;
+- (void)setCounts:(CDStruct_aa0b146f)arg1;
 
 @end
 

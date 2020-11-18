@@ -40,7 +40,6 @@
 - (id)_descriptionLabelWithLocalizedDescription:(id)arg1;
 - (id)_editorialDescriptionLabelFont;
 - (struct CGSize)_iconSize;
-- (void)_layoutLabelsForBounds:(struct CGRect)arg1;
 - (void)_loadImageData;
 - (id)_titleLabelColor;
 - (id)_titleLabelFont;

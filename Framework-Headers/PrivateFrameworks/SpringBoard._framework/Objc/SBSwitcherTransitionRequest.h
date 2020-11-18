@@ -20,6 +20,7 @@
     long long _floatingSwitcherVisible;
     long long _dismissInlineAppExpose;
     long long _animationDisabled;
+    long long _source;
 }
 
 @property (nonatomic) long long animationDisabled; // @synthesize animationDisabled=_animationDisabled;
@@ -32,6 +33,7 @@
 @property (nonatomic) long long floatingSwitcherVisible; // @synthesize floatingSwitcherVisible=_floatingSwitcherVisible;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long preferredInterfaceOrientation; // @synthesize preferredInterfaceOrientation=_preferredInterfaceOrientation;
+@property (nonatomic) long long source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (nonatomic) long long unlockedEnvironmentMode; // @synthesize unlockedEnvironmentMode=_unlockedEnvironmentMode;
 

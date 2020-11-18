@@ -8,16 +8,19 @@
 
 @interface CAMLowLightStatusIndicator : CAMControlStatusIndicator
 {
+    BOOL _lowLightDisabled;
     double _duration;
     long long _lowLightMode;
 }
 
 @property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic, getter=isLowLightDisabled) BOOL lowLightDisabled; // @synthesize lowLightDisabled=_lowLightDisabled;
 @property (nonatomic) long long lowLightMode; // @synthesize lowLightMode=_lowLightMode;
 
 - (BOOL)canShowValue;
 - (id)imageNameForCurrentState;
 - (BOOL)shouldFillOutlineForCurrentState;
+- (BOOL)shouldShowOutlineForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (id)valueText;
 

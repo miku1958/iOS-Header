@@ -54,7 +54,7 @@
 - (void)_updateStateOnSender:(id)arg1 segment:(long long)arg2;
 - (BOOL)_updateStateOnSender:(id)arg1 segment:(long long)arg2 fromSelectedAnnotations:(id)arg3;
 - (void)_updateStateOnSenderFromSelf:(id)arg1 segment:(long long)arg2;
-- (void)annotationEditingDidEnd;
+- (void)annotationEditingDidEndWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beganDrawingStroke;
 - (void)didEndOrCancelStroke;
 - (void)forceHideRuler;

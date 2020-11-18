@@ -15,19 +15,18 @@
 #import <SpringBoard/SBTodayOverlayViewControllerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class FBDisplayLayoutElement, NSHashTable, NSString, SBBarSwipeAffordanceViewController, SBHomeGesturePanGestureRecognizer, SBMainScreenActiveInterfaceOrientationWindow, SBMainStatusBarContentAssertion, SBTodayOverlayViewController;
-@protocol SBTodayOverlayWindow;
+@class FBDisplayLayoutElement, NSHashTable, NSString, SBAppStatusBarDateTimeAssertion, SBBarSwipeAffordanceViewController, SBHomeGesturePanGestureRecognizer, SBMainScreenActiveInterfaceOrientationWindow, SBTodayOverlayViewController;
 
 @interface SBTodayOverlayController : NSObject <SBBarSwipeAffordanceObserver, SBTodayOverlayViewControllerDelegate, UIGestureRecognizerDelegate, SBFTodayOverlayControlling, SBFIdleTimerBehaviorProviding, CSExternalBehaviorProviding, CSExternalEventHandling, BSDescriptionProviding>
 {
     NSHashTable *_observers;
     BOOL _dismissing;
-    SBMainScreenActiveInterfaceOrientationWindow<SBTodayOverlayWindow> *_window;
+    SBMainScreenActiveInterfaceOrientationWindow *_window;
     SBBarSwipeAffordanceViewController *_homeAffordanceViewController;
     SBTodayOverlayViewController *_overlayViewController;
     SBHomeGesturePanGestureRecognizer *_dismissHomeGestureRecognizer;
     FBDisplayLayoutElement *_displayLayoutElement;
-    SBMainStatusBarContentAssertion *_statusBarContentAssertion;
+    SBAppStatusBarDateTimeAssertion *_statusBarContentAssertion;
     unsigned long long _systemGestureType;
 }
 
@@ -53,10 +52,10 @@
 @property (readonly, nonatomic) long long proximityDetectionMode;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (readonly, nonatomic) long long scrollingStrategy;
-@property (strong, nonatomic) SBMainStatusBarContentAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
+@property (strong, nonatomic) SBAppStatusBarDateTimeAssertion *statusBarContentAssertion; // @synthesize statusBarContentAssertion=_statusBarContentAssertion;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long systemGestureType; // @synthesize systemGestureType=_systemGestureType;
-@property (readonly, nonatomic) SBMainScreenActiveInterfaceOrientationWindow<SBTodayOverlayWindow> *window; // @synthesize window=_window;
+@property (readonly, nonatomic) SBMainScreenActiveInterfaceOrientationWindow *window; // @synthesize window=_window;
 
 - (void).cxx_destruct;
 - (void)_addSystemGestureRecognizer;

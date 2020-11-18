@@ -45,6 +45,7 @@
 - (void)_loadScene;
 - (void)_loadSnapshotContentViews;
 - (struct CGRect)_lowerComplicationFrameForStyle:(unsigned long long)arg1;
+- (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (double)_numbersAlphaForEditMode:(long long)arg1;
 - (void)_prepareForStatusChange:(BOOL)arg1;

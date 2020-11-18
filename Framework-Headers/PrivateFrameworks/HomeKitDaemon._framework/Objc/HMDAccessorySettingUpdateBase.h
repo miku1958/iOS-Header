@@ -45,6 +45,7 @@
 - (void)saveLocally:(unsigned long long)arg1;
 - (void)update;
 - (id)updateValueWithPayload:(id)arg1 setting:(id)arg2;
+- (void)updateWithAdditionalModel:(id)arg1;
 
 @end
 

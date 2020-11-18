@@ -6,7 +6,7 @@
 
 #import <HomeKitBackingStore/HMBModel.h>
 
-@class CKStreamingAsset, NSArray, NSData, NSDate, NSNumber, NSString;
+@class HMBStreamingAsset, NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface HMDCameraClipModel : HMBModel
 {
@@ -16,18 +16,29 @@
 @property (strong, nonatomic) NSData *encryptionKey; // @dynamic encryptionKey;
 @property (strong, nonatomic) NSNumber *encryptionScheme; // @dynamic encryptionScheme;
 @property (strong, nonatomic) NSNumber *isComplete; // @dynamic isComplete;
+@property (strong, nonatomic) NSNumber *maximumClipDuration; // @dynamic maximumClipDuration;
 @property (strong, nonatomic) NSArray *posterFramesMetadata; // @dynamic posterFramesMetadata;
 @property (strong, nonatomic) NSArray *posterFramesMetadataArray; // @dynamic posterFramesMetadataArray;
-@property (strong, nonatomic) CKStreamingAsset *posterFramesStreamingAsset; // @dynamic posterFramesStreamingAsset;
+@property (strong, nonatomic) HMBStreamingAsset *posterFramesStreamingAsset; // @dynamic posterFramesStreamingAsset;
+@property (strong, nonatomic) NSNumber *recordedLocally; // @dynamic recordedLocally;
 @property (strong, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property (strong, nonatomic) NSString *streamingAssetVersion; // @dynamic streamingAssetVersion;
 @property (strong, nonatomic) NSNumber *targetFragmentDuration; // @dynamic targetFragmentDuration;
 @property (strong, nonatomic) NSArray *videoMetadata; // @dynamic videoMetadata;
 @property (strong, nonatomic) NSArray *videoMetadataArray; // @dynamic videoMetadataArray;
-@property (strong, nonatomic) CKStreamingAsset *videoStreamingAsset; // @dynamic videoStreamingAsset;
+@property (strong, nonatomic) HMBStreamingAsset *videoStreamingAsset; // @dynamic videoStreamingAsset;
 
++ (id)clipsAfterDateQuery;
++ (id)clipsBeforeDateQuery;
++ (id)clipsBetweenDatesQuery;
++ (id)countOfClipsAfterDateQuery;
++ (id)countOfClipsBeforeDateQuery;
++ (id)countOfClipsBetweenDatesQuery;
++ (id)countOfClipsQuery;
 + (id)hmbExternalRecordType;
 + (id)hmbProperties;
++ (id)hmbQueries;
++ (id)incompleteClipsQuery;
 + (id)sentinelParentUUID;
 - (id)createClip;
 - (id)createClipWithSignificantEvents:(id)arg1;

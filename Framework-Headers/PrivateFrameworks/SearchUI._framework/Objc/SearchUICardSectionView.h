@@ -39,6 +39,7 @@
 - (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void)presentViewController:(id)arg1;
+- (void)requestRemovalFromEnclosingView;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (id)setupContentView;
 - (void)tlk_updateForAppearance:(id)arg1;

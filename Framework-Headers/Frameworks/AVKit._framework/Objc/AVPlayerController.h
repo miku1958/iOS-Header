@@ -72,7 +72,6 @@
     BOOL _hasBegunInspection;
     BOOL _touchBarRequiresLinearPlayback;
     AVPlayer *_player;
-    long long _status;
     AVObservationController *_observationController;
     AVAsset *_currentAssetIfReady;
     NSObject<OS_dispatch_queue> *_assetInspectionQueue;
@@ -134,7 +133,7 @@
 @property CDStruct_1b6d18a9 seekToTimeInternal; // @synthesize seekToTimeInternal=_seekToTimeInternal;
 @property (nonatomic, getter=isSeeking) BOOL seeking; // @synthesize seeking=_seeking;
 @property (getter=isSeekingInternal) BOOL seekingInternal; // @synthesize seekingInternal=_seekingInternal;
-@property (nonatomic) long long status; // @synthesize status=_status;
+@property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) BOOL supportsVolumeAnimation;
 @property (strong, nonatomic) AVTimecodeController *timecodeController; // @synthesize timecodeController=_timecodeController;
 @property (strong, nonatomic) AVValueTiming *timing; // @synthesize timing=_timing;
@@ -191,6 +190,7 @@
 + (id)keyPathsForValuesAffectingReadyToPlay;
 + (id)keyPathsForValuesAffectingReversePlaybackEndTime;
 + (id)keyPathsForValuesAffectingSeekableTimeRanges;
++ (id)keyPathsForValuesAffectingStatus;
 + (id)keyPathsForValuesAffectingStreaming;
 + (id)keyPathsForValuesAffectingTimeControlStatus;
 + (id)keyPathsForValuesAffectingUsesExternalPlaybackWhileExternalScreenIsActive;
@@ -219,7 +219,6 @@
 - (void)_updateRateForScrubbingAndSeeking;
 - (void)_updateScanningBackwardRate;
 - (void)_updateScanningForwardRate;
-- (void)_updateStatus;
 - (void)actuallySeekToTime;
 - (BOOL)allowsExternalPlayback;
 - (id)audioMediaSelectionOptions;

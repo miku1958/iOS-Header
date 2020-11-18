@@ -57,6 +57,7 @@
 - (id)offlineJSURL;
 - (void)reload;
 - (void)setupWithBootURL:(id)arg1;
+- (BOOL)shouldBeForcedLeftToRight;
 - (void)updateIdleModeVisualEffectsStatus:(BOOL)arg1;
 
 @end

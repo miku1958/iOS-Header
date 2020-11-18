@@ -70,6 +70,7 @@
 - (void)_performDeferredIconUpdates;
 - (void)_performOrDefer:(BOOL)arg1 iconUpdate:(CDUnknownBlockType)arg2;
 - (void)_placeholdersDidChange:(id)arg1;
+- (void)_pruneCachedIcons;
 - (BOOL)_shouldDeferUpdateInvolvingContinuity:(BOOL)arg1;
 - (void)_swapIcon:(BOOL)arg1 forPlaceholders:(id)arg2;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
@@ -101,6 +102,7 @@
 - (BOOL)isIconViewRecycled:(id)arg1;
 - (BOOL)isPresentingIconLocation:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
+- (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)loadView;
 - (void)recycleIconView:(id)arg1;
 

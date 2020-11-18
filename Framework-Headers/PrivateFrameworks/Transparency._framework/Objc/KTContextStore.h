@@ -18,25 +18,27 @@
 
 @property (strong) KTLogClient *configClient; // @synthesize configClient=_configClient;
 @property (strong) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
-@property (readonly, strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property (strong) TransparencyManagedDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (strong) KTPublicKeyStore *keyStore; // @synthesize keyStore=_keyStore;
 
 - (void).cxx_destruct;
 - (void)clearApplicationState:(id)arg1 logClient:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)configure:(CDUnknownBlockType)arg1;
 - (void)configureWithClient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)configureWithClient:(id)arg1 force:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)contextForApplication:(id)arg1 logClient:(id)arg2 fetchState:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)createKeyStoreForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)createContextForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)forcedConfigure:(BOOL)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithDataStore:(id)arg1 keyStore:(id)arg2 configClient:(id)arg3;
 - (BOOL)logSharedMetrics;
 - (void)runDutyCycleConfigurationStepForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
 - (BOOL)runDutyCycleForActivity:(id)arg1 logClient:(id)arg2 resumptionWorkloop:(id)arg3;
 - (void)runDutyCycleProcessingStepForActivity:(id)arg1 context:(id)arg2 logClient:(id)arg3;
-- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryResponse:(id)arg4 error:(id *)arg5;
-- (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 transparentData:(id *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)serializeTranscripts;
+- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 error:(id *)arg6;
+- (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

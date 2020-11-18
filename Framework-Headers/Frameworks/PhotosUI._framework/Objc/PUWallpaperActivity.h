@@ -26,12 +26,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activityBundleImageConfiguration;
 - (id)_activityImageName;
 - (void)_fetchImageForWallPaperAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_handleSetWallpaperActionWithController:(id)arg1 locations:(long long)arg2;
 - (void)_restrictionsChanged:(id)arg1;
 - (void)_updateWallpaperModificationAllowedIfNeeded;
+- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

@@ -30,6 +30,7 @@
 - (void)_customizePressed:(id)arg1;
 - (void)_disablePressed:(id)arg1;
 - (BOOL)_hasNetworkCustomizableAccessories;
+- (void)_learnMorePressed:(id)arg1;
 - (void)_updateNetworkProtection:(long long)arg1 andFinishWithActionResult:(unsigned long long)arg2;
 - (id)initWithProfile:(id)arg1 configurationDelegate:(id)arg2;
 - (void)viewDidLoad;

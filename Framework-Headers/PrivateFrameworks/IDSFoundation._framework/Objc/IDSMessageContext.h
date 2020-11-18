@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSCertifiedDeliveryContext, NSData, NSDate, NSError, NSNumber, NSString;
+@class IDSCertifiedDeliveryContext, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString;
 @protocol OS_os_transaction;
 
 @interface IDSMessageContext : NSObject
@@ -28,6 +28,9 @@
     NSNumber *_originalTimestamp;
     NSError *_wpConnectionError;
     NSString *_senderCorrelationIdentifier;
+    NSString *_resourceTransferURLString;
+    NSString *_resourceTransferSandboxExtension;
+    NSDictionary *_resourceTransferMetadata;
     NSNumber *_broadcastTime;
     NSNumber *_priority;
     NSNumber *_messageSequenceNumber;
@@ -71,6 +74,9 @@
 @property (copy, nonatomic) NSNumber *originalTimestamp;
 @property (copy, nonatomic) NSString *outgoingResponseIdentifier;
 @property (strong, nonatomic) NSNumber *priority;
+@property (copy, nonatomic) NSDictionary *resourceTransferMetadata;
+@property (copy, nonatomic) NSString *resourceTransferSandboxExtension;
+@property (copy, nonatomic) NSString *resourceTransferURLString;
 @property (copy, nonatomic) NSString *senderCorrelationIdentifier;
 @property (readonly, nonatomic) NSDate *serverReceivedTime;
 @property (copy, nonatomic) NSNumber *serverTimestamp;

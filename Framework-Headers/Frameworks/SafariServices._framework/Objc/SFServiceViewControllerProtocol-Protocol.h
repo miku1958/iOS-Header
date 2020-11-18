@@ -13,6 +13,7 @@
 - (void)didDetectRemoteViewControllerViewIsHidden;
 - (void)didDetectUserInteractionFromHostApp;
 - (void)didFetchCustomActivities:(NSArray *)arg1 excludedActivityTypes:(NSArray *)arg2;
+- (void)didRequestShowLinkPreviews:(BOOL)arg1;
 - (void)loadURL:(NSURL *)arg1;
 - (void)openCurrentURLInSafari;
 - (void)repostNotificationInViewService:(NSString *)arg1;

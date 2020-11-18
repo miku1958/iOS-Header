@@ -178,6 +178,7 @@
 - (id)initWithGraphMLURL:(id)arg1;
 - (id)initWithPersistenceOptions:(long long)arg1 cacheMode:(long long)arg2;
 - (id)initWithPersistentStoreURL:(id)arg1 options:(long long)arg2 cacheMode:(long long)arg3;
+- (id)initWithPersistentStoreURL:(id)arg1 options:(long long)arg2 cacheMode:(long long)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (void)invalidateMemoryCaches;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned int)lastEdgeIdentifier;

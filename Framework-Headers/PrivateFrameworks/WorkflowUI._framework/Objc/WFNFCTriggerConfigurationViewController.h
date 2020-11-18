@@ -8,11 +8,10 @@
 
 #import <WorkflowUI/UITableViewDataSource-Protocol.h>
 #import <WorkflowUI/UITableViewDelegate-Protocol.h>
-#import <WorkflowUI/WFTriggerTextConfigurationViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UITableView;
 
-@interface WFNFCTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate, WFTriggerTextConfigurationViewControllerDelegate>
+@interface WFNFCTriggerConfigurationViewController : WFTriggerConfigurationViewController <UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
     NSArray *_sections;
@@ -26,6 +25,7 @@
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)alertTextFieldDidChange:(id)arg1;
 - (id)infoForSection:(long long)arg1;
 - (id)initWithTrigger:(id)arg1 triggerManager:(id)arg2 mode:(unsigned long long)arg3;
 - (void)loadView;
@@ -36,8 +36,6 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)triggerTextConfigurationViewController:(id)arg1 didSelectText:(id)arg2;
-- (void)triggerTextConfigurationViewControllerDidCancel:(id)arg1;
 - (void)updateUI;
 - (void)viewWillAppear:(BOOL)arg1;
 

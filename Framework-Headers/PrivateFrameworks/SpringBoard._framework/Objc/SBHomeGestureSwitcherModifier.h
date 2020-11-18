@@ -141,6 +141,7 @@
 - (struct CGPoint)liftOffTranslationForGestureEnd;
 - (struct CGPoint)liftOffVelocityForGestureEnd;
 - (double)lighteningAlphaForIndex:(unsigned long long)arg1;
+- (long long)liveContentRasterizationStyle;
 - (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
@@ -152,7 +153,6 @@
 - (double)wallpaperOverlayAlphaForIndex:(unsigned long long)arg1;
 - (double)wallpaperScale;
 - (long long)wallpaperStyle;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsMinificationFilter;
 - (BOOL)wantsResignActiveAssertion;
 

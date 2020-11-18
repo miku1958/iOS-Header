@@ -14,6 +14,7 @@
 @interface HMDDataStreamControlProtocol : NSObject <HMFLogging, HMDDataStreamProtocol>
 {
     BOOL _helloMessageResponseReceived;
+    NSString *_logIdentifier;
     NSNumber *_pendingHelloMessageIdentifier;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL helloMessageResponseReceived; // @synthesize helloMessageResponseReceived=_helloMessageResponseReceived;
+@property (readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong, nonatomic) NSNumber *pendingHelloMessageIdentifier; // @synthesize pendingHelloMessageIdentifier=_pendingHelloMessageIdentifier;
 @property (readonly) Class superclass;
 
@@ -32,7 +34,7 @@
 - (void)dataStream:(id)arg1 didReceiveResponse:(id)arg2 header:(id)arg3 payload:(id)arg4;
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
-- (id)init;
+- (id)initWithLogIdentifier:(id)arg1;
 - (BOOL)isExpectedHelloControlMessage:(id)arg1 header:(id)arg2;
 
 @end

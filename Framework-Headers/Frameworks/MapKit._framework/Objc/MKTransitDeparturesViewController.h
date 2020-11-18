@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (BOOL)_isCompressedWidthTraits:(id)arg1;
 - (int)currentTransitCategory;
 - (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
@@ -45,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithMapItem:(id)arg1 allowTransitLineSelection:(BOOL)arg2;
 - (id)separatorColorForTransitDeparturesDataSource:(id)arg1;
 - (struct UIEdgeInsets)separatorInsetsForTransitDeparturesDataSource:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)traitsForTransitDeparturesDataSource:(id)arg1;
 - (BOOL)transitDeparturesDataSource:(id)arg1 canSelectDepartureSequence:(id)arg2 transitStationMapItem:(id)arg3 transitLine:(id)arg4 fromCell:(id)arg5;
 - (void)transitDeparturesDataSource:(id)arg1 didSelectConnectionInformation:(id)arg2;
@@ -58,8 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

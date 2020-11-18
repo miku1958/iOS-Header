@@ -13,8 +13,8 @@
 @interface NEFilterManager : NSObject <NEPrettyDescription>
 {
     BOOL _hasLoaded;
-    NEConfiguration *_configuration;
     NEConfigurationManager *_configurationManager;
+    NEConfiguration *_configuration;
 }
 
 @property (strong) NEConfiguration *configuration; // @synthesize configuration=_configuration;

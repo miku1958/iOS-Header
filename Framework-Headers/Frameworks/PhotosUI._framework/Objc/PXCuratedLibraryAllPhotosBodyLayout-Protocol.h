@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL fillSafeAreaTopInset;
 @property (nonatomic) BOOL hideIncompleteLastRow;
 @property (nonatomic) double interItemSpacing;
+@property (nonatomic) double itemCaptionSpacing;
+@property (readonly, nonatomic) BOOL itemCaptionsVisible;
 @property (nonatomic) BOOL loadItemsOutsideAnchorViewport;
 @property (readonly, nonatomic) struct _NSRange loadedItems;
 @property (readonly, nonatomic) struct CGRect loadedItemsRect;

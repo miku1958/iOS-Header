@@ -19,11 +19,13 @@
     NSArray *_availableHearingAids;
     NSArray *_availableControllers;
     NSString *_hearingDeviceName;
+    NSString *_connectedDeviceName;
     NSMutableDictionary *_updates;
 }
 
 @property (strong, nonatomic) NSArray *availableControllers; // @synthesize availableControllers=_availableControllers;
 @property (copy, nonatomic) NSArray *availableHearingAids; // @synthesize availableHearingAids=_availableHearingAids;
+@property (strong, nonatomic) NSString *connectedDeviceName; // @synthesize connectedDeviceName=_connectedDeviceName;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AXHAServerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
@@ -37,6 +39,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_registerListener:(id)arg1 forAvailableDeviceHandler:(CDUnknownBlockType)arg2 beginSearching:(BOOL)arg3;
 - (void)availableDevicesDidUpdate:(id)arg1;
 - (void)cancelHearingAidConnectionRequest;
 - (void)connectToControllerWithID:(id)arg1;
@@ -49,6 +52,7 @@
 - (void)registerListener:(id)arg1 forLiveDosimetryUpdates:(BOOL)arg2 withDoseHandler:(CDUnknownBlockType)arg3;
 - (void)registerListener:(id)arg1 forLiveListenLevelsHandler:(CDUnknownBlockType)arg2;
 - (void)registerListener:(id)arg1 forPropertyUpdateHandler:(CDUnknownBlockType)arg2;
+- (void)registerPassiveListener:(id)arg1 forAvailableDeviceHandler:(CDUnknownBlockType)arg2;
 - (void)registerResponseBlock:(CDUnknownBlockType)arg1 forUUID:(id)arg2;
 - (void)registerUpdateBlock:(id)arg1 forIdentier:(unsigned long long)arg2 withListener:(id)arg3;
 - (void)requestHearingAidConnectionWithReason:(long long)arg1;
@@ -60,7 +64,6 @@
 - (void)unregisterDoseHandler:(id)arg1;
 - (void)unregisterUpdateListener:(id)arg1;
 - (void)updateProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
-- (BOOL)updateReachabilityAndWait:(BOOL)arg1;
 - (void)writeValue:(id)arg1 forProperty:(unsigned long long)arg2 andDeviceID:(id)arg3;
 
 @end

@@ -45,13 +45,9 @@
 @property (nonatomic) BOOL showsLockedContent; // @synthesize showsLockedContent=_showsLockedContent;
 @property (readonly) Class superclass;
 
-+ (void)_purgeGLContexts;
-+ (void)initialize;
 + (id)prelaunchApplicationIdentifiers;
 + (void)prewarmForDevice:(id)arg1;
-+ (void)registerRingsView:(id)arg1;
-+ (id)registeredRingsViews;
-+ (void)unregisterRingsView:(id)arg1;
++ (id)sharedRingsViewRenderer;
 + (BOOL)userActiveEnergyIsCalories;
 + (id)userActiveEnergyUnit;
 - (void).cxx_destruct;

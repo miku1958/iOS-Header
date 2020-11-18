@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, NSUUID, REMObjectID, REMStoreContainerToken;
+@class NSString, NSURL, NSUUID, REMObjectID, REMStoreContainerToken;
 
 @protocol REMXPCDebugPerformer
 - (void)addGeofenceWithLatitude:(double)arg1 longitude:(double)arg2 radius:(double)arg3 uuid:(NSUUID *)arg4 completion:(void (^)(void))arg5;
@@ -13,6 +13,7 @@
 - (void)daemonVersion:(void (^)(NSString *))arg1;
 - (void)dataAccessStatusReports:(void (^)(NSArray *, NSError *))arg1;
 - (void)destroyIsolatedStoreContainerWithToken:(REMStoreContainerToken *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)downloadContainerToOutputDir:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)fetchContactsMatching:(NSString *)arg1 completion:(void (^)(NSArray *))arg2;
 - (void)fetchGeofencesWithCompletion:(void (^)(NSArray *))arg1;
 - (void)fireDebugNotificationWithText:(NSString *)arg1 identifier:(NSString *)arg2 categoryIdentifier:(NSString *)arg3 reference:(NSString *)arg4 isRemove:(BOOL)arg5 completion:(void (^)(NSError *))arg6;

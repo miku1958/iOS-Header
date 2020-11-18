@@ -623,13 +623,13 @@
 	let rightMarginView : UIView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x305c0  @objc ColumnDebugView.initWithCoder: <stripped>
-	0x31050  @objc ColumnDebugView.layoutSubviews <stripped>
-	0x31130  @objc ColumnDebugView.initWithFrame: <stripped>
-	0x311b0  @objc ColumnDebugView..cxx_destruct <stripped>
+	0x30700  @objc ColumnDebugView.initWithCoder: <stripped>
+	0x31190  @objc ColumnDebugView.layoutSubviews <stripped>
+	0x31270  @objc ColumnDebugView.initWithFrame: <stripped>
+	0x312f0  @objc ColumnDebugView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2fe10  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x2ff50  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {

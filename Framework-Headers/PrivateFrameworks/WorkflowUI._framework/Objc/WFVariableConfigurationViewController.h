@@ -60,10 +60,11 @@
 + (BOOL)shouldShowOnInsertionOfVariable:(id)arg1;
 - (void).cxx_destruct;
 - (void)availableVariablesDidChange;
-- (id)currentPropertyMeasurementUnit;
+- (id)currentPropertyMeasurementUnitType;
 - (void)dealloc;
 - (struct CGRect)frameForConfigurationCell:(id)arg1 withProposedFrame:(struct CGRect)arg2;
 - (void)generateUpdatedVariable;
+- (BOOL)hasMeasurementUnit;
 - (void)headerViewTypeTapped:(id)arg1;
 - (id)initWithVariable:(id)arg1;
 - (void)loadView;
@@ -72,6 +73,7 @@
 - (Class)postCoercionContentClass;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)updateHeaderView;
 - (void)updateVisibleAggrandizements;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSUUID *requestId; // @dynamic requestId;
 @property (nonatomic) double requestTime; // @dynamic requestTime;
 @property (nonatomic) long long sequenceId; // @dynamic sequenceId;
+@property (copy, nonatomic) NSString *serverHint; // @dynamic serverHint;
 @property (strong, nonatomic) NSData *serverLoggableDatas; // @dynamic serverLoggableDatas;
 @property (strong, nonatomic) NSSet *smts; // @dynamic smts;
 @property (nonatomic) long long type; // @dynamic type;

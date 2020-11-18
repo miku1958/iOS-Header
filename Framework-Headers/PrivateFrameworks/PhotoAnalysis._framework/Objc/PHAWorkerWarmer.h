@@ -22,7 +22,7 @@
 + (unsigned long long)stateCode;
 - (void).cxx_destruct;
 - (BOOL)_cooldownWorkerIfWarmed:(id)arg1;
-- (void)_warmupWorkerIfCooled:(id)arg1;
+- (void)_warmupWorkerIfCooled:(id)arg1 withProgressBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)recordConstraintChange:(id)arg1;
 - (void)reportNoMoreJobsExpected;

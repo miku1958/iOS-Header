@@ -130,6 +130,7 @@
 - (id)_activePressesEvent;
 - (id)_activeTouchesEvent;
 - (id)_activeTouchesForEvent:(id)arg1;
+- (void)_addActiveEvent:(id)arg1;
 - (void)_addFailureDependent:(id)arg1;
 - (void)_addForceTarget:(id)arg1 action:(SEL)arg2;
 - (void)_addTouch:(id)arg1 forEvent:(id)arg2;

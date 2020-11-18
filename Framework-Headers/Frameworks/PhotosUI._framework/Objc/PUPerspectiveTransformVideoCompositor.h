@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsWideColorSourceFrames;
 
++ (double)greatestNormalizedInsetForPerspectiveTransform:(CDStruct_8e0628e6)arg1 dimensions:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (id)_imageContext;
 - (void)cancelAllPendingVideoCompositionRequests;

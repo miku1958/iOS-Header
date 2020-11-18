@@ -27,6 +27,7 @@
 - (id)initWithContactStore:(id)arg1;
 - (id)initWithContactStore:(id)arg1 applicationWorkspace:(id)arg2;
 - (id)initWithContactStore:(id)arg1 applicationWorkspace:(id)arg2 interactionDonor:(id)arg3;
+- (id)makeActivityAdvertisingViewingList;
 - (id)makeActivityAdvertisingViewingOfContact:(id)arg1;
 - (void)publishRequestToCreateContact:(id)arg1;
 - (void)publishRequestToEditContact:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKSourceListDataModel, HKSynchronousObserverSet, NSMutableArray;
+@class HKHealthStore, HKSourceListDataModel, HKSynchronousObserverSet, NSArray, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface HKSourceListDataSource : NSObject
@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_resultsQueue;
     NSMutableArray *_transformers;
     NSMutableArray *_followupTransformers;
+    NSArray *_rawSources;
     HKSynchronousObserverSet *_observers;
     int _notifyToken;
     BOOL _hasInitiatedFetch;
@@ -42,17 +43,21 @@
 - (CDUnknownBlockType)_builtinPurposeStringsFetchTransformer;
 - (void)_didFetchSources:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fakeSourceForInstalledAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_notifyObserversForDataSourceUpdate;
 - (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prependBuiltinTransformers;
 - (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_specialAppBundleIdentifiers;
+- (void)_throttledNotificationOfDataSourceUpdate;
 - (void)addFetchTransformer:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
+- (void)fetchIconForSource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchModelForSources:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSources;
 - (id)initWithHealthStore:(id)arg1;
 - (id)initWithHealthStore:(id)arg1 queue:(id)arg2;
+- (id)initWithHealthStore:(id)arg1 sources:(id)arg2 queue:(id)arg3;
 - (void)invalidate;
 - (void)removeObserver:(id)arg1;
 

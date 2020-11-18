@@ -15,9 +15,9 @@
     BOOL _smartDashesDisabled;
     BOOL _multiline;
     BOOL _processesIntoContentItems;
+    NSString *_textContentType;
     NSString *_prefix;
     long long _keyboardType;
-    NSString *_textContentType;
     long long _autocapitalizationType;
     long long _autocorrectionType;
     long long _textAlignment;
@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) long long autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
 @property (readonly, nonatomic) unsigned long long hintDisplayMode; // @synthesize hintDisplayMode=_hintDisplayMode;
 @property (readonly, nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
-@property (copy, nonatomic) NSString *localizedPlaceholder;
 @property (readonly, nonatomic, getter=isMultiline) BOOL multiline; // @synthesize multiline=_multiline;
 @property (copy, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property (readonly, nonatomic) BOOL processesIntoContentItems; // @synthesize processesIntoContentItems=_processesIntoContentItems;
@@ -45,6 +44,7 @@
 - (id)defaultSupportedVariableTypes;
 - (id)hintForState:(id)arg1;
 - (id)initWithDefinition:(id)arg1;
+- (void)setLocalizedPlaceholder:(id)arg1;
 - (BOOL)shouldAlignLabels;
 - (Class)singleStateClass;
 

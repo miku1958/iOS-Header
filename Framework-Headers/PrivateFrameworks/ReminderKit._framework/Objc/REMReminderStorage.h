@@ -15,6 +15,10 @@
 
 @interface REMReminderStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
+    BOOL _hasDeserializedTitleDocument;
+    BOOL _hasDeserializedNotesDocument;
+    REMCRMergeableStringDocument *_deserializedTitleDocumentCache;
+    REMCRMergeableStringDocument *_deserializedNotesDocumentCache;
     unsigned long long _storeGeneration;
     unsigned long long _copyGeneration;
     BOOL _completed;
@@ -27,7 +31,8 @@
     REMObjectID *_objectID;
     REMObjectID *_listID;
     REMObjectID *_parentReminderID;
-    REMCRMergeableStringDocument *_titleDocument;
+    NSData *_titleDocumentData;
+    NSData *_notesDocumentData;
     NSDate *_completionDate;
     REMResolutionTokenMap *_resolutionTokenMap;
     NSSet *_subtaskIDsToUndelete;
@@ -38,7 +43,6 @@
     NSDate *_creationDate;
     NSDate *_lastModifiedDate;
     NSArray *_recurrenceRules;
-    REMCRMergeableStringDocument *_notesDocument;
     NSArray *_attachments;
     NSArray *_alarms;
     REMContactRepresentation *_contactHandles;
@@ -77,7 +81,7 @@
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, copy, nonatomic) NSString *legacyNotificationIdentifier;
 @property (strong, nonatomic) REMObjectID *listID; // @synthesize listID=_listID;
-@property (strong, nonatomic) REMCRMergeableStringDocument *notesDocument; // @synthesize notesDocument=_notesDocument;
+@property (strong, nonatomic) NSData *notesDocumentData; // @synthesize notesDocumentData=_notesDocumentData;
 @property (strong, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
 @property (strong, nonatomic) REMObjectID *parentReminderID; // @synthesize parentReminderID=_parentReminderID;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
@@ -89,7 +93,7 @@
 @property (copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
 @property (strong, nonatomic) NSSet *subtaskIDsToUndelete; // @synthesize subtaskIDsToUndelete=_subtaskIDsToUndelete;
 @property (copy, nonatomic) NSString *timeZone; // @synthesize timeZone=_timeZone;
-@property (strong, nonatomic) REMCRMergeableStringDocument *titleDocument; // @synthesize titleDocument=_titleDocument;
+@property (strong, nonatomic) NSData *titleDocumentData; // @synthesize titleDocumentData=_titleDocumentData;
 @property (copy, nonatomic) REMUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
 + (id)cdEntityName;
@@ -108,9 +112,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 listID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)notesDocument;
 - (id)notesReplicaIDSource;
+- (void)setNotesDocument:(id)arg1;
 - (void)setStoreGenerationIfNeeded:(unsigned long long)arg1;
+- (void)setTitleDocument:(id)arg1;
 - (unsigned long long)storeGeneration;
+- (id)titleDocument;
 - (id)titleReplicaIDSource;
 - (void)updateDisplayDate;
 

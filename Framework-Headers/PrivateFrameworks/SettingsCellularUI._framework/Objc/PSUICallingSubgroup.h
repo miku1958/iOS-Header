@@ -8,18 +8,17 @@
 
 #import <SettingsCellularUI/PSSpecifierGroup-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PSListController, PSSpecifier;
+@class NSArray, NSString, PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
 @interface PSUICallingSubgroup : NSObject <PSSpecifierGroup>
 {
+    BOOL _supportsWiFiCalling;
     PSListController *_listController;
     PSSpecifier *_parentSpecifier;
     NSArray *_wifiCallingSpecifiers;
-    NSMutableArray *_bundleControllers;
 }
 
-@property (strong, nonatomic) NSMutableArray *bundleControllers; // @synthesize bundleControllers=_bundleControllers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

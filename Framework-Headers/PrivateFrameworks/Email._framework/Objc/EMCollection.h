@@ -64,6 +64,7 @@
 - (id)iterateItemIDsStartingAtItemID:(id)arg1 inReverse:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
 - (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
 - (BOOL)observerContainsObjectID:(id)arg1;
@@ -72,7 +73,7 @@
 - (void)queryDidStartRecovery;
 - (void)queryMatchedAddedObjectIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
 - (void)queryMatchedAddedObjectIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
-- (void)queryMatchedChangedObjectIDs:(id)arg1;
+- (void)queryMatchedChangesByObjectIDs:(id)arg1;
 - (void)queryMatchedDeletedObjectIDs:(id)arg1;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 after:(id)arg2;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;

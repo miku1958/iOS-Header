@@ -47,6 +47,7 @@
 - (id)init;
 - (id)inputForItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)itemIndexPathsForSections:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;

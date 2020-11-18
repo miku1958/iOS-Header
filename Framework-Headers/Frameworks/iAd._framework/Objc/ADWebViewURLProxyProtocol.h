@@ -30,8 +30,10 @@
 @property (readonly) Class superclass;
 @property (strong) NSURLSessionDataTask *task; // @synthesize task=_task;
 
++ (unsigned long long)basicProxyAuthHeaderSizeForUser:(id)arg1 withPassword:(id)arg2;
 + (BOOL)canInitWithRequest:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
++ (void)createLongProxyAuthHeaderRecordForRequest:(id)arg1 proxyAuthHeaderSize:(unsigned long long)arg2;
 + (void)initialize;
 + (void)registerProtocol;
 + (void)unregister;

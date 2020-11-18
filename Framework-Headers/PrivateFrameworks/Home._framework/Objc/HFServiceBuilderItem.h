@@ -9,7 +9,7 @@
 #import <Home/HFItemBuilderItem-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HFServiceBuilder, HFServiceItem, NSSet, NSString;
+@class HFServiceBuilder, HFServiceItem, HMHome, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFServiceBuilderItem : HFItem <HFItemBuilderItem, HFServiceLikeItem>
@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) HFServiceBuilder *serviceBuilder; // @synthesize serviceBuilder=_serviceBuilder;
 @property (readonly, nonatomic) HFServiceItem *serviceItem; // @synthesize serviceItem=_serviceItem;

@@ -15,7 +15,7 @@
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableArray, NSString, PHImageRequestOptions, PUOneUpPresentationHelper, PUOneUpViewController, PUVideoListContentUnavailableView, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource, PXPhotosDataSourceConfiguration, UIBarButtonItem, UITableView, UITableViewCell, UIViewController;
+@class NSIndexPath, NSMutableArray, NSString, PHImageRequestOptions, PUOneUpPresentationHelper, PUVideoListContentUnavailableView, PXPhotoKitAssetsDataSourceManager, PXPhotosDataSource, PXPhotosDataSourceConfiguration, UIBarButtonItem, UITableView, UITableViewCell, UIViewController;
 
 @interface PUVideoListViewController : PUStorageManagementBaseController <UITableViewDataSource, UITableViewDelegate, PXPhotosDataSourceChangeObserver, PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate, PUDeletePhotosActionControllerDelegate, PUVideoListAssetExpungeActionPerformerDelegate, UIScrollViewDelegate>
 {
@@ -29,7 +29,6 @@
     BOOL __assetsFetchResultIsValid;
     PHImageRequestOptions *__imageRequestOptions;
     PUOneUpPresentationHelper *__oneUpPresentationHelper;
-    PUOneUpViewController *__pushedOneUpViewController;
     PXPhotosDataSource *__dataSource;
     PXPhotosDataSourceConfiguration *__dataSourceManagerConfiguration;
     PXPhotoKitAssetsDataSourceManager *__photoKitDataSourceManager;
@@ -49,7 +48,6 @@
 @property (strong, nonatomic, setter=_setMainTableView:) UITableView *_mainTableView; // @synthesize _mainTableView=__mainTableView;
 @property (strong, nonatomic, setter=_setOneUpPresentationHelper:) PUOneUpPresentationHelper *_oneUpPresentationHelper; // @synthesize _oneUpPresentationHelper=__oneUpPresentationHelper;
 @property (strong, nonatomic) PXPhotoKitAssetsDataSourceManager *_photoKitDataSourceManager; // @synthesize _photoKitDataSourceManager=__photoKitDataSourceManager;
-@property (strong, nonatomic, setter=_setPushedOneUpViewController:) PUOneUpViewController *_pushedOneUpViewController; // @synthesize _pushedOneUpViewController=__pushedOneUpViewController;
 @property (nonatomic, getter=_isViewInSyncWithModel, setter=_setViewInSyncWithModel:) BOOL _viewInSyncWithModel; // @synthesize _viewInSyncWithModel=__viewInSyncWithModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -98,7 +96,6 @@
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 - (long long)oneUpPresentationHelper:(id)arg1 transitionTypeWithProposedTransitionType:(long long)arg2;
-- (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
@@ -106,7 +103,6 @@
 - (id)photoCollectionAtIndex:(unsigned long long)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (long long)preferredAlertControllerStyleForDeletePhotosActionController:(id)arg1;
-- (id)presentingViewControllerForActionPerformer:(id)arg1;
 - (void)processDataSourceChange:(id)arg1;
 - (void)selectVideoItems:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

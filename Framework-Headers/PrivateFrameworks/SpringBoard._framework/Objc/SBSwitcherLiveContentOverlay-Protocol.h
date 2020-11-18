@@ -14,9 +14,9 @@
 
 - (void)disableAsynchronousRenderingForNextCommit;
 - (void)noteKeyboardFocusDidChangeToSceneID:(NSString *)arg1;
-- (BOOL)rendersAsynchronously;
+- (long long)rasterizationStyle;
 - (void)setHomeGrabberHidden:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setRendersAsynchronously:(BOOL)arg1 withMinificationFilterEnabled:(BOOL)arg2;
+- (void)setRasterizationStyle:(long long)arg1 withMinificationFilterEnabled:(BOOL)arg2;
 - (void)setStatusBarHidden:(BOOL)arg1 nubViewHidden:(BOOL)arg2 animator:(void (^)(void (^)(void), void (^)(BOOL, BOOL)))arg3;
 - (void)setUsesBrightSceneViewBackgroundMaterial:(BOOL)arg1;
 

@@ -16,6 +16,7 @@
     NSArray *_voices;
     AFVoiceInfo *_selectedVoice;
     id<AFSettingsDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (weak, nonatomic, setter=_setDelegate:) id<AFSettingsDelegate> _delegate;
@@ -45,11 +46,14 @@
 - (id)accounts;
 - (void)addMultiUserUser:(id)arg1 sharedId:(id)arg2 loggableSharedId:(id)arg3 enrollmentName:(id)arg4 isPrimary:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)barrier;
+- (void)clearOpportuneSpeakingEdgeDetectorSignalOverride;
 - (void)clearSpokenNotificationTemporarilyDisabledStatus;
 - (void)configOverrides:(CDUnknownBlockType)arg1;
 - (void)createOfflineSpeechProfileWithLanguage:(id)arg1 JSONData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)deleteAccountWithIdentifier:(id)arg1;
+- (void)deleteSiriHistoryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)deleteSiriHistoryWithContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)disableAndDeleteCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissUI;
 - (void)fetchAccountsWithCompletion:(CDUnknownBlockType)arg1;
@@ -72,10 +76,12 @@
 - (void)getDevicesWithAvailablePHSAssetsOnDeviceCheck:(CDUnknownBlockType)arg1;
 - (void)getHomeUserIdForSharedUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getHorsemanSupplementalLanguageDictionary:(CDUnknownBlockType)arg1;
+- (void)getMeCard:(CDUnknownBlockType)arg1;
 - (void)getOfflineDictationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPairedBluetoothDeviceInfoArrayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPeerIdentifiers:(CDUnknownBlockType)arg1;
 - (void)getSharedUserIdForHomeUserId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSiriDataSharingOptInStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSiriOutputVolumeForAudioRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSiriOutputVolumeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(CDUnknownBlockType)arg1;
@@ -88,6 +94,7 @@
 - (void)getSupplementalLanguagesDictionary:(CDUnknownBlockType)arg1;
 - (void)getSupplementalLanguagesForProduct:(id)arg1 forBuildVersion:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getSupplementalLanguagesModificationDate:(CDUnknownBlockType)arg1;
+- (void)homeOnboardingFlowInvoked:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)killDaemon;
 - (void)purgeAnalyticsStoreWithCompletion:(CDUnknownBlockType)arg1;
@@ -113,11 +120,17 @@
 - (void)setNanoOutputVoice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setNanoPhraseSpotterEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setNanoRaiseToSpeakEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)setNanoSiriDataSharingOptInStatus:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setNanoTTSSpeakerVolume:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setNanoUseDeviceSpeakerForTTS:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)setOfflineDictationProfileOverridePath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setOpportuneSpeakingEdgeDetectorSignalOverride:(long long)arg1;
 - (void)setOutputVoice:(id)arg1;
 - (void)setOutputVoice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)setSiriDataSharingOptInAlertPresented:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setSiriDataSharingOptInStatus:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setSiriDesignModeEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setSiriGradingEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSiriOutputVolume:(float)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSiriOutputVolume:(float)arg1 forAudioRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSpokenNotificationShouldAlwaysSpeakNotifications:(BOOL)arg1;
@@ -126,7 +139,12 @@
 - (void)setSpokenNotificationTemporarilyDisabledUntil:(id)arg1;
 - (void)setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setSupplementalLanguages:(id)arg1 forProduct:(id)arg2 forBuildVersion:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setXPCConnectionManagementQueue:(id)arg1;
+- (void)shouldSuppressSiriDataSharingOptInAlert:(CDUnknownBlockType)arg1;
 - (void)showMultiUsers:(CDUnknownBlockType)arg1;
+- (void)shutdownSessionIfIdle;
+- (void)siriDesignModeIsEnabled:(CDUnknownBlockType)arg1;
+- (void)siriGradingIsEnabled:(CDUnknownBlockType)arg1;
 - (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startObservingWirelessSplitterSession;
 - (void)startRemoteRequest:(id)arg1 onPeer:(id)arg2 completion:(CDUnknownBlockType)arg3;

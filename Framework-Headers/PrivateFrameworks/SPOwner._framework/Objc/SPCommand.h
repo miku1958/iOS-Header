@@ -35,15 +35,11 @@
 @property (readonly, copy, nonatomic) NSString *taskName;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)acceptShareWithBeaconUUID:(id)arg1;
-+ (id)declineShareWithBeaconUUID:(id)arg1;
 + (id)disableNotifyWhenFound:(id)arg1;
 + (id)enableNotifyWhenFound:(id)arg1;
 + (id)locate:(id)arg1;
 + (id)startNotifyWhenFound:(id)arg1;
-+ (id)startSharingWithBeaconUUID:(id)arg1 handle:(id)arg2 expiration:(id)arg3;
 + (id)stopNotifyWhenFound:(id)arg1;
-+ (id)stopSharingWithBeaconUUID:(id)arg1 handle:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

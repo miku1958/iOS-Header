@@ -15,19 +15,24 @@ __attribute__((visibility("hidden")))
 @interface EKEventDetailExtendedNotesViewController : UIViewController <EKEditItemViewControllerProtocol>
 {
     UITextView *_textView;
+    NSString *_notes;
 }
 
 @property (weak, nonatomic) id<EKEditItemViewControllerDelegate> editDelegate;
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
-@property (copy, nonatomic) NSString *notes;
+@property (copy, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (nonatomic) BOOL presentModally;
 @property (nonatomic) BOOL useCustomBackButton;
 
 - (void).cxx_destruct;
-- (id)_textView;
+- (void)_updateConstraints;
 - (id)init;
+- (void)loadTextView;
 - (void)loadView;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)updateTextView;
+- (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end
 

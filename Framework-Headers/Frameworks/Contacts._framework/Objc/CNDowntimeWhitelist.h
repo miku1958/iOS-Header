@@ -23,7 +23,6 @@
 - (id)allWhitelistedContacts;
 - (id)allWhitelistedHandleStrings;
 - (BOOL)anyContactIsWhitelisted:(id)arg1;
-- (void)contactStoreDidChange;
 - (void)dealloc;
 - (id)init;
 - (id)initWithContactStore:(id)arg1;

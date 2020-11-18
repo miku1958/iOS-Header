@@ -14,6 +14,7 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
+- (id)cacheGroup;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryKeyForKeyPath:(id)arg1;
 - (id)dictionaryRepresentationForLanguage:(id)arg1;

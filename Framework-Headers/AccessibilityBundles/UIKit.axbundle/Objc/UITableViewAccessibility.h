@@ -10,6 +10,8 @@
 {
 }
 
+@property (nonatomic, setter=_accessibilitySetShouldConsiderSwipeDeletionCommitted:) BOOL _accessibilityShouldConsiderSwipeDeletionCommitted;
+
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
@@ -85,6 +87,7 @@
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
 - (id)_delegateViewForFooterInSection:(long long)arg1;
 - (id)_delegateViewForHeaderInSection:(long long)arg1;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_endReorderingForCell:(id)arg1 wasCancelled:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_fkaScrollToNextRow;
 - (void)_fkaScrollToPreviousRow;
@@ -94,6 +97,7 @@
 - (void)_setAccessibilitySearchControllerDimmingViewVisible;
 - (void)_setAccessibilitySearchTableViewHidden;
 - (void)_setAccessibilitySearchTableViewVisible;
+- (BOOL)_swipeDeletionCommitted;
 - (void)_updateDropTargetAppearanceWithTargetIndexPath:(id)arg1 dropProposal:(id)arg2 dropSession:(id)arg3;
 - (id)accessibilityCellForRowAtIndexPath:(id)arg1;
 - (long long)accessibilityContainerType;
@@ -125,6 +129,7 @@
 - (void)insertSections:(id)arg1 withRowAnimation:(long long)arg2;
 - (BOOL)isAccessibilityElement;
 - (BOOL)isAccessibilityOpaqueElementProvider;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (void)reloadData;
 - (void)reloadRowsAtIndexPaths:(id)arg1 withRowAnimation:(long long)arg2;

@@ -26,11 +26,11 @@
 	var _threadHandle : UnsafeMutablePointer<_opaque_pthread_t>?
 
 	// Swift methods
-	0x1260  class func PThread.__allocating_init(_:) // init 
-	0x1400  class func static PThread.exit() // method 
-	0x1410  func PThread.exit() // method 
-	0x1450  func PThread.detach() // method 
-	0x14a0  func PThread.join() // method 
+	0x18b0  class func PThread.__allocating_init(_:) // init 
+	0x1a50  class func static PThread.exit() // method 
+	0x1a60  func PThread.exit() // method 
+	0x1aa0  func PThread.detach() // method 
+	0x1af0  func PThread.join() // method 
  }
 
  class CoreUtilsSwift.ClosureWrapper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -47,7 +47,13 @@
 	var _pthreadMutex : _opaque_pthread_mutex_t
 
 	// Swift methods
-	0x1550  class func PThreadMutex.__allocating_init() // init 
-	0x17a0  func PThreadMutex.lock() // method 
-	0x17c0  func PThreadMutex.unlock() // method 
+	0x1ba0  class func PThreadMutex.__allocating_init() // init 
+	0x1df0  func PThreadMutex.lock() // method 
+	0x1e10  func PThreadMutex.unlock() // method 
+ }
+
+ enum CoreUtilsSwift.PrintUtilsTimeDuration {
+
+	// Properties
+	case duration  
  }

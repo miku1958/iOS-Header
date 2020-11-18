@@ -143,6 +143,7 @@
 - (void)_protectedDataQueue_mergeJournalAsynchronously;
 - (long long)_protectedDataState;
 - (void)_reportDatabaseSizes;
+- (void)_reportMigrationResultIfNecessaryForStatus:(long long)arg1 database:(id)arg2 protectedDatabase:(BOOL)arg3 error:(id)arg4;
 - (BOOL)_runPostMigrationUpdatesWithDatabase:(id)arg1 error:(id *)arg2;
 - (id)_threadLocalTransaction;
 - (id)_threadLocalTransactionContext;

@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (id)identityData;
 - (id)initTicketWithSigningKey:(id)arg1 error:(id *)arg2;
-- (BOOL)persistEphemeralWithError:(id *)arg1;
 - (id)prekeyData;
 - (id)publicDeviceIdentity;
 

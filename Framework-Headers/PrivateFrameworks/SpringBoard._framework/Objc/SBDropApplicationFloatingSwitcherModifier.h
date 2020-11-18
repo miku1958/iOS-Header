@@ -18,10 +18,10 @@
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
 - (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (long long)keyboardSuppressionMode;
+- (long long)liveContentRasterizationStyle;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsAsynchronousRenderingAssertion;
 - (BOOL)wantsResignActiveAssertion;
 
 @end

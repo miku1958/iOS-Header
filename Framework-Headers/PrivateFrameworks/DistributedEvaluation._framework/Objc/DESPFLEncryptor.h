@@ -22,6 +22,7 @@
 + (void)initialize;
 + (BOOL)privatizationSupported;
 - (void).cxx_destruct;
+- (id)_encryptedDataWithPublicKey:(id)arg1 noiseable:(id)arg2 error:(id *)arg3;
 - (id)encryptedAndPrivatizedDataWithPublicKey:(id)arg1 inPlaceNumbers:(float *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptedAndPrivatizedDataWithPublicKey:(id)arg1 numbers:(const float *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptedDataWithPublicKey:(id)arg1 data:(id)arg2 error:(id *)arg3;

@@ -11,6 +11,7 @@
 + (id)_sf_backgroundColor;
 + (id)_sf_barHairlineShadowColor;
 + (id)_sf_browserSystemColor;
++ (id)_sf_colorNamed:(id)arg1;
 + (id)_sf_defaultBookmarkFolderBackgroundColor;
 + (id)_sf_defaultWebAppStatusBarBackgroundColor;
 + (id)_sf_defaultWebContentBackgroundColor;

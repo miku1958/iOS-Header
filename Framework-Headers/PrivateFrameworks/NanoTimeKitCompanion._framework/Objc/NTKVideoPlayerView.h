@@ -53,6 +53,7 @@
 - (void)_createPosterImageView;
 - (void)_createVideoPlayerViewIfNeeded;
 - (void)_fadeFromCurtainViewIfVisible;
+- (void)_fadeFromPosterImageAndCurtainViewIfVisible;
 - (void)_fadeFromPosterImageIfVisible:(CDUnknownBlockType)arg1;
 - (void)_fadeToCurtainView:(CDUnknownBlockType)arg1;
 - (void)_fadeToPosterImage;

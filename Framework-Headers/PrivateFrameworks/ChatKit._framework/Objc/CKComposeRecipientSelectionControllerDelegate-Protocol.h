@@ -11,5 +11,6 @@
 
 @protocol CKComposeRecipientSelectionControllerDelegate <NSObject, CKRecipientSelectionControllerDelegate>
 - (void)recipientSelectionController:(CKComposeRecipientSelectionController *)arg1 didSelectConversation:(CKConversation *)arg2 isiMessagable:(BOOL)arg3;
+- (void)recipientSelectionControllerDidLoadPillView;
 @end
 

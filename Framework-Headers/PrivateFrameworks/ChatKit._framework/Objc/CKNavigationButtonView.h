@@ -12,6 +12,7 @@
 {
     BOOL _wantsLongPress;
     BOOL _buttonEnabled;
+    BOOL _wantsVibrancy;
     CDUnknownBlockType _buttonTappedCallback;
     CDUnknownBlockType _buttonLongPressCallback;
     long long _joinButtonStyle;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) UIVisualEffect *vibrancyEffect; // @synthesize vibrancyEffect=_vibrancyEffect;
 @property (strong, nonatomic) UIVisualEffectView *vibrancyView; // @synthesize vibrancyView=_vibrancyView;
 @property (nonatomic) BOOL wantsLongPress; // @synthesize wantsLongPress=_wantsLongPress;
+@property (nonatomic) BOOL wantsVibrancy; // @synthesize wantsVibrancy=_wantsVibrancy;
 
 - (void).cxx_destruct;
 - (void)_buttonLongPressed:(id)arg1;

@@ -6,13 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <WorkflowUI/WFWorkflowWizardFooterViewDelegate-Protocol.h>
 #import <WorkflowUI/WFWorkflowWizardNameCellDelegate-Protocol.h>
+#import <WorkflowUI/WFWorkflowWizardNameSuggestionCellDelegate-Protocol.h>
 
 @class NSString, WFIconComposeViewController, WFWorkflow, WFWorkflowWizardNameConfiguration;
 @protocol WFWorkflowWizardNameViewControllerDelegate;
 
-@interface WFWorkflowWizardNameViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, WFWorkflowWizardFooterViewDelegate>
+@interface WFWorkflowWizardNameViewController : UITableViewController <WFWorkflowWizardNameCellDelegate, WFWorkflowWizardNameSuggestionCellDelegate>
 {
     id<WFWorkflowWizardNameViewControllerDelegate> _delegate;
     WFWorkflow *_workflow;
@@ -32,27 +32,27 @@
 @property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 
 - (void).cxx_destruct;
+- (id)dequeueNameCellAtIndexPath:(id)arg1;
+- (id)dequeueNameSuggestionCellAtIndexPath:(id)arg1;
 - (void)didTapDone;
-- (id)footerView;
 - (void)iconComposeViewControllerDidTapDone;
 - (id)infoText;
 - (id)initWithWorkflow:(id)arg1 configuration:(id)arg2;
 - (id)nameCell;
+- (id)nameSuggestionCell;
 - (id)suggestedPhrases;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)updateDoneButtonForName:(id)arg1;
 - (void)updateNameCell:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (id)workflowName;
-- (void)workflowWizardFooterViewDidSelectSuggestedPhrase:(id)arg1;
 - (void)workflowWizardNameCell:(id)arg1 didUpdateName:(id)arg2;
 - (void)workflowWizardNameCellDidFinishEditing:(id)arg1;
 - (void)workflowWizardNameCellDidSelectEditIcon:(id)arg1;
+- (void)workflowWizardNameSuggestionCellDidSelectSuggestedPhrase:(id)arg1;
 
 @end
 

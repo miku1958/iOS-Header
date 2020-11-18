@@ -27,6 +27,7 @@
 - (void)_activateIfPossible;
 - (void)_deactivateIfPossible;
 - (void)_dismissRemoteOverlayVC:(id)arg1;
+- (void)_handleAppSwitcherWillPresent:(id)arg1;
 - (void)_handleCoverSheetDidPresent:(id)arg1;
 - (id)_realOverlayViewController;
 - (void)dealloc;

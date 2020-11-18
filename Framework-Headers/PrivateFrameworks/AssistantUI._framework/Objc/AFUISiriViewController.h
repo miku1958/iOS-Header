@@ -218,14 +218,13 @@
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldNonLocalDelegateHandlePunchouts;
-- (void)showPasscodeUnlockScreenThen:(CDUnknownBlockType)arg1;
+- (void)showPasscodeUnlockScreenForRequest:(id)arg1 unlockCompletion:(CDUnknownBlockType)arg2;
 - (void)showPresentationWithIdentifier:(id)arg1 properties:(id)arg2 lockState:(unsigned long long)arg3;
 - (void)siriDidActivateFromSource:(long long)arg1;
 - (void)siriDidDeactivate;
 - (id)siriRemoteViewController:(id)arg1 bulletinWithIdentifier:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 didChangePresentationPeekMode:(unsigned long long)arg2;
 - (void)siriRemoteViewController:(id)arg1 didDismissViewControllerWithStatusBarStyle:(long long)arg2;
-- (void)siriRemoteViewController:(id)arg1 didEncounterUnexpectedServiceError:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 didFinishTest:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 didPresentViewControllerWithStatusBarStyle:(long long)arg2;
 - (void)siriRemoteViewController:(id)arg1 didReadBulletinWithIdentifier:(id)arg2;
@@ -235,6 +234,7 @@
 - (void)siriRemoteViewController:(id)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 failTest:(id)arg2 withReason:(id)arg3;
 - (void)siriRemoteViewController:(id)arg1 handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg2;
+- (void)siriRemoteViewController:(id)arg1 invalidatedForReason:(unsigned long long)arg2 explanation:(id)arg3;
 - (void)siriRemoteViewController:(id)arg1 launchApplicationWithBundleIdentifier:(id)arg2 withURL:(id)arg3 launchOptions:(long long)arg4 replyHandler:(CDUnknownBlockType)arg5;
 - (BOOL)siriRemoteViewController:(id)arg1 openURL:(id)arg2 appBundleID:(id)arg3 allowSiriDismissal:(BOOL)arg4;
 - (void)siriRemoteViewController:(id)arg1 openURL:(id)arg2 delaySessionEndForTTS:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -244,7 +244,6 @@
 - (void)siriRemoteViewController:(id)arg1 requestsPresentation:(CDUnknownBlockType)arg2;
 - (void)siriRemoteViewController:(id)arg1 setBugReportingAvailable:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 setCarDisplaySnippetMode:(long long)arg2;
-- (void)siriRemoteViewController:(id)arg1 setCarDisplaySnippetVisible:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 setHelpButtonEmphasized:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)siriRemoteViewController:(id)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
@@ -254,7 +253,6 @@
 - (void)siriRemoteViewController:(id)arg1 setTypeToSiriViewHidden:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 siriIdleAndQuietStatusDidChange:(BOOL)arg2;
 - (void)siriRemoteViewController:(id)arg1 startRequestWithOptions:(id)arg2;
-- (void)siriRemoteViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)siriRemoteViewController:(id)arg1 willDismissViewControllerWithStatusBarStyle:(long long)arg2;
 - (void)siriRemoteViewController:(id)arg1 willPresentViewControllerWithStatusBarStyle:(long long)arg2;
 - (void)siriRemoteViewController:(id)arg1 willStartTest:(id)arg2;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *barCompressionManager;
     MISSING_TYPE *alertPresenter;
     MISSING_TYPE *offlineAlertControllerFactory;
+    MISSING_TYPE *sharingActivityProviderFactory;
     MISSING_TYPE *heightChangeRelayoutThreshold;
     MISSING_TYPE *viewportFromLastRelayout;
     MISSING_TYPE *isBeingUsedAsPlugin;

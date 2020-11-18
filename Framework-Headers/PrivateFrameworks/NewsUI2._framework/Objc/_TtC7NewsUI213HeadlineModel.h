@@ -15,6 +15,7 @@
     MISSING_TYPE *savedState;
     MISSING_TYPE *offensiveState;
     MISSING_TYPE *draggableState;
+    MISSING_TYPE *accessLevel;
 }
 
 @end

@@ -36,6 +36,8 @@
 @property (readonly, nonatomic) BOOL hf_fakeStereoPairVersionMismatchSymptom;
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) HMHome *hf_home;
+@property (readonly, nonatomic) BOOL hf_homePodIsCapableOfShowingSplitAccountError;
+@property (readonly, nonatomic) BOOL hf_homePodSupportsMultiUser;
 @property (readonly, nonatomic) BOOL hf_isAccessorySettingsReachable;
 @property (readonly, nonatomic) BOOL hf_isAppleMusicReachable;
 @property (readonly, nonatomic) BOOL hf_isCurrentAccessory;
@@ -55,6 +57,7 @@
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
+@property (readonly, nonatomic) NSSet *mediaProfiles;
 @property (readonly, copy) HMMediaSession *mediaSession;
 @property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property (readonly) HMAccessorySettings *settings;
@@ -71,6 +74,8 @@
 - (BOOL)hf_fake8021xNetworkSymptom;
 - (id)hf_fetchLog:(id)arg1 timeout:(double)arg2;
 - (id)hf_fetchLogListWithTimeout:(double)arg1;
+- (id)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
+- (id)hf_homePodSupportsMultiUserLanguage;
 - (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
 - (BOOL)hf_isValidObject;
 - (id)hf_roleForAccessory:(id)arg1;

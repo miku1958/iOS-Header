@@ -35,6 +35,7 @@
 + (id)atlasBackingWithBytes:(const void *)arg1 length:(unsigned long long)arg2 mmapFile:(id)arg3 uuid:(id)arg4;
 + (id)atlasBackingWithImage:(id)arg1 uuid:(id)arg2;
 + (id)atlasBackingWithImage:(id)arg1 uuid:(id)arg2 mipmap:(BOOL)arg3;
++ (id)atlasBackingWithUuid:(id)arg1 structure:(struct CLKUIAtlasBackingStructure)arg2 data:(id)arg3;
 - (void).cxx_destruct;
 - (id)initWithUuid:(id)arg1 structure:(struct CLKUIAtlasBackingStructure)arg2 data:(id)arg3;
 - (id)initWithUuid:(id)arg1 structure:(struct CLKUIAtlasBackingStructure)arg2 mmapFile:(id)arg3;

@@ -27,6 +27,8 @@
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)initWithItem:(id)arg1 home:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (BOOL)shouldHideFooterBelowSection:(long long)arg1;
+- (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (id)userHandle;

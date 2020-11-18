@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface GEOPDLinkedService : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDEntity *_entity;
     NSMutableArray *_hours;
     GEOPDPlaceInfo *_placeInfo;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     struct {
         unsigned int read_unknownFields:1;
         unsigned int read_entity:1;
@@ -56,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)hoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)hoursCount;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

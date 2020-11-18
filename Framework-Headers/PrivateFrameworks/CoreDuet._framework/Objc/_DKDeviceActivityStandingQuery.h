@@ -9,12 +9,15 @@
 #import <CoreDuet/_DKStandingQuery-Protocol.h>
 
 @class NSString;
+@protocol OS_xpc_object;
 
 @interface _DKDeviceActivityStandingQuery : NSObject <_DKStandingQuery>
 {
     NSString *queryIdentifier;
+    NSObject<OS_xpc_object> *activity;
 }
 
+@property (strong, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity;
 @property (strong, nonatomic) NSString *queryIdentifier; // @synthesize queryIdentifier;
 
 - (void).cxx_destruct;
@@ -22,6 +25,7 @@
 - (id)_customIdentifierForDayOfWeek:(long long)arg1;
 - (double)_deviceActivityEphemerality;
 - (id)_predicateForDeletedEventsWithReferenceDate:(id)arg1;
+- (BOOL)_shouldDefer;
 - (void)executeWithStorage:(id)arg1;
 - (void)executeWithStorage:(id)arg1 referenceDate:(id)arg2;
 - (id)fetchResult;

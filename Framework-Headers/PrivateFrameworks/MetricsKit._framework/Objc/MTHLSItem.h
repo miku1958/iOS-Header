@@ -13,6 +13,7 @@
 @interface MTHLSItem : NSObject <MTMediaPlaylistItem>
 {
     unsigned long long _startOverallPosition;
+    long long _startPosition;
     NSArray *_eventData;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long overallPosition;
 @property (nonatomic) unsigned long long startOverallPosition; // @synthesize startOverallPosition=_startOverallPosition;
+@property (nonatomic) long long startPosition; // @synthesize startPosition=_startPosition;
 @property (readonly) Class superclass;
 
 + (CDUnknownBlockType)comparator;

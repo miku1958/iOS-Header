@@ -23,12 +23,15 @@
 
 + (id)_getIDfromURLQueryParameters:(id)arg1 idKeyName:(id)arg2;
 + (void)_handleDeeplinkAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)_insertPageBehindTop:(id)arg1 viewController:(id)arg2 clearStack:(BOOL)arg3;
++ (void)_insertPageBehindTop:(id)arg1 viewControllers:(id)arg2 clearStack:(BOOL)arg3;
++ (void)_pushPageViewControllers:(id)arg1 viewControllers:(id)arg2 skipLastViewController:(BOOL)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_fetchLocalMediaWithAdamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleOpenURLRouterDataSource:(id)arg1 appContext:(id)arg2 clearStack:(BOOL)arg3 startDate:(id)arg4;
 - (void)_processLocalLibraryLink:(id)arg1 playbackInitiationDate:(id)arg2 openURLCompletionDate:(id)arg3;
+- (void)_processLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_processNonLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleDeferredURLWithAppContext:(id)arg1;
 - (void)parseURL:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processEntityWithContextData:(id)arg1 appContext:(id)arg2;

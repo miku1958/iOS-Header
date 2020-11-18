@@ -104,11 +104,11 @@
 
 - (void).cxx_destruct;
 - (void)_addToAMPButtonTappedForPass:(id)arg1;
-- (void)_callIssuer;
 - (BOOL)_canDisplayBalance;
 - (BOOL)_canShowTransactions;
 - (id)_contactResolver;
 - (void)_deleteButtonTapped;
+- (id)_downloadMessageIconURLAndReloadIfNecessary:(id)arg1;
 - (void)_educationMessagesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchAMPEnrollmentEligibility;
 - (void)_localeDidChangeNotification:(id)arg1;
@@ -125,12 +125,12 @@
 - (void)_messageFromPaymentServiceSuppressingPassStateChanges:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_messageImageWithName:(id)arg1 extension:(id)arg2;
 - (void)_messagesForAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_openBusinessChatWithContext:(id)arg1;
+- (id)_messagesForInstallmentPlans;
 - (BOOL)_passAvailableForAMPEnrollment;
 - (void)_peerPaymentAccountChanged:(id)arg1;
 - (CDStruct_0e648023)_peerPaymentDashboardCondition;
 - (void)_peerPaymentResolutionTappedWithResolution:(unsigned long long)arg1;
-- (void)_presentContactViewControllerWithBusinessChatContext:(id)arg1;
+- (void)_presentAccountResolution:(unsigned long long)arg1 forBusinessChatContext:(id)arg2;
 - (void)_presentPassDetailsWithAction:(unsigned long long)arg1;
 - (void)_presentPassWithPassUniqueIdentifier:(id)arg1;
 - (void)_presentPhysicalCardActivation;

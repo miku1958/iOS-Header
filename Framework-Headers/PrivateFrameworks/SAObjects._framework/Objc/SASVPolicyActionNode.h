@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SASVSpeechMetadata;
 
 @interface SASVPolicyActionNode : AceObject <SAAceSerializable>
 {
@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name;
+@property (strong, nonatomic) SASVSpeechMetadata *speechMetadata;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type;
 

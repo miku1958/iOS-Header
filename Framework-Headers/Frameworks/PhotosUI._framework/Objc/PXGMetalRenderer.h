@@ -15,6 +15,7 @@
 
 @interface PXGMetalRenderer : NSObject <MTKViewDelegate, PXGMetalTextureConverterDelegate, PXGRenderer>
 {
+    struct os_unfair_lock_s _metalLock;
     id<MTLDevice> _device;
     MTKView *_metalView;
     id<MTLLibrary> _library;
@@ -72,10 +73,10 @@
 - (id)_currentOffscreenTexture;
 - (long long)_drawRenderTexture:(CDStruct_dcc83465 *)arg1 withCommandEncoder:(id)arg2;
 - (void)_drawSpriteTextures:(id)arg1 renderState:(id)arg2 withCommandEncoder:(id)arg3 passingTest:(CDUnknownBlockType)arg4;
-- (void)_handleCompiledRenderPipelineSate:(id)arg1 forPipeline:(CDStruct_39b4dbd3 *)arg2;
+- (CDStruct_39b4dbd3)_handleCompiledRenderPipelineState:(id)arg1 forColorProgram:(id)arg2 shaderFlags:(int)arg3 colorPixelFormat:(unsigned long long)arg4 pipelineIndex:(long long)arg5;
 - (void)_loadOffscreenTexture:(BOOL)arg1;
 - (void)_parseSpriteTextures:(id)arg1 willPerformOffscreenPass:(BOOL)arg2 renderState:(id)arg3;
-- (CDStruct_39b4dbd3 *)_pipelineForRenderTexture:(const CDStruct_dcc83465 *)arg1 waitForCompilation:(BOOL)arg2;
+- (CDStruct_39b4dbd3)_pipelineForRenderTexture:(const CDStruct_dcc83465 *)arg1 waitForCompilation:(BOOL)arg2;
 - (void)_pipelinesLock_resizePipelinesStorageIfNeeded;
 - (void)_render:(id)arg1 withCompletionCompletion:(CDUnknownBlockType)arg2;
 - (double)_screenScale;

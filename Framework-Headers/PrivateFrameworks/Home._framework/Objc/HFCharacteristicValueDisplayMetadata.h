@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HFCharacteristicValueDisplayError, HFServiceState, NSString;
+@class HFCharacteristicValueDisplayError, HFServiceState, NAFuture, NSString;
 
 @interface HFCharacteristicValueDisplayMetadata : NSObject
 {
@@ -16,6 +16,7 @@
     long long _transitioningPrimaryState;
     HFCharacteristicValueDisplayError *_error;
     HFServiceState *_serviceState;
+    NAFuture *_splitAccountFuture;
 }
 
 @property (strong, nonatomic) HFCharacteristicValueDisplayError *error; // @synthesize error=_error;
@@ -23,14 +24,18 @@
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) HFServiceState *serviceState; // @synthesize serviceState=_serviceState;
 @property (copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;
+@property (strong, nonatomic) NAFuture *splitAccountFuture; // @synthesize splitAccountFuture=_splitAccountFuture;
 @property (nonatomic) long long transitioningPrimaryState; // @synthesize transitioningPrimaryState=_transitioningPrimaryState;
 
++ (void)_displayAppleIDSplitErrorForMediaProfile:(id)arg1 havingMetadata:(id)arg2 withContextProvider:(id)arg3;
 + (id)_errorForSymptomHandler:(id)arg1 isFixingCurrently:(BOOL)arg2 withContextProvider:(id)arg3;
++ (void)_populateSplitMediaAccountErrorForMedatadata:(id)arg1 withContextProvider:(id)arg2;
 + (long long)_unknownStatePriorityForServiceType:(id)arg1;
 + (id)displayMetadataForAccessory:(id)arg1 withContextProvider:(id)arg2;
 + (id)displayMetadataForMediaProfile:(id)arg1 withContextProvider:(id)arg2;
 + (id)displayMetadataForServiceDescriptor:(id)arg1 characteristicReadResponse:(id)arg2;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)parseActiveStateForServiceType:(id)arg1 response:(id)arg2;
 - (void)parseAirPurifierResponse:(id)arg1;
 - (void)parseCurrentTargetPositionForServiceType:(id)arg1 response:(id)arg2;

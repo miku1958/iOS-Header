@@ -6,7 +6,9 @@
 
 #import <UIKit/UIView.h>
 
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 #import <CameraUI/CAMAdditiveAnimatorDelegate-Protocol.h>
+#import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMControlDrawerPresentationDelegate-Protocol.h>
 #import <CameraUI/CAMInstructionLabelDelegate-Protocol.h>
 #import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
@@ -15,11 +17,12 @@
 @class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
 @protocol CAMFullscreenViewfinderDelegate;
 
-@interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable>
+@interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
 {
     BOOL _controlDrawerAllowed;
     BOOL _modeUIAllowed;
     BOOL _controlDrawerExpanded;
+    BOOL _flipButtonVisible;
     BOOL _zoomControlVisible;
     BOOL _elapsedTimeViewVisible;
     BOOL _timerIndicatorVisible;
@@ -91,6 +94,7 @@
 @property (nonatomic, getter=isElapsedTimeViewVisible) BOOL elapsedTimeViewVisible; // @synthesize elapsedTimeViewVisible=_elapsedTimeViewVisible;
 @property (readonly, nonatomic) CAMFilterNameBadge *filterNameBadge; // @synthesize filterNameBadge=_filterNameBadge;
 @property (readonly, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
+@property (nonatomic, getter=isFlipButtonVisible) BOOL flipButtonVisible; // @synthesize flipButtonVisible=_flipButtonVisible;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CAMImageWell *imageWell; // @synthesize imageWell=_imageWell;
 @property (readonly, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
@@ -139,6 +143,7 @@
 - (CDStruct_d54ccef3)_geometryForInstructionLabel:(id)arg1;
 - (CDStruct_d54ccef3)_geometryForLandscapeLightingBadge;
 - (void)_handleDirectionIndicatorTapped;
+- (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
 - (void)_layoutPanoramaView;
 - (void)_layoutZoomControl;
 - (void)_loadFilterControlsIfNeeded;
@@ -164,6 +169,7 @@
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
 - (void)controlDrawer:(id)arg1 didChangeExpanded:(BOOL)arg2 forControlType:(long long)arg3 animated:(BOOL)arg4;
 - (void)dismissModalControlDrawerIfNeeded;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)initWithMetalContext:(id)arg1 useCreativeCameraControls:(BOOL)arg2;
 - (void)instructionLabelDidChangeIntrinsicContentSize:(id)arg1;
 - (BOOL)isControlDrawerPresentedModallyWithControlType:(long long)arg1;
@@ -172,9 +178,11 @@
 - (void)prepareForResumingUsingCrossfade;
 - (void)presentControlDrawerModally:(BOOL)arg1 withControlType:(long long)arg2;
 - (void)removeInflightBlurAnimations;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setControlDrawerAllowed:(BOOL)arg1 modeUIAllowed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setControlDrawerExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setElapsedTimeViewVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setFlipButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLowLightInstructionLabelVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setPortraitControlsAllowed:(BOOL)arg1 animated:(BOOL)arg2;
@@ -185,6 +193,8 @@
 - (void)setTimerIndicatorVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setViewportAspectRatio:(long long)arg1 animated:(BOOL)arg2;
 - (void)setZoomControlVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldAccessibilityGestureBeginForHUDManager:(id)arg1;
+- (id)touchingRecognizersToCancel;
 
 @end
 

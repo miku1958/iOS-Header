@@ -12,14 +12,19 @@
 {
     BOOL _isSystemHostedPresentation;
     long long _flamesViewFidelity;
+    long long _siriViewMode;
 }
 
 @property (readonly, nonatomic) long long flamesViewFidelity; // @synthesize flamesViewFidelity=_flamesViewFidelity;
 @property (readonly, nonatomic) BOOL isSystemHostedPresentation; // @synthesize isSystemHostedPresentation=_isSystemHostedPresentation;
+@property (readonly, nonatomic) long long siriViewMode; // @synthesize siriViewMode=_siriViewMode;
 
+- (id)_NSStringFromSiriViewMode:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)init;
 - (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2;
+- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2 siriViewMode:(long long)arg3;
 
 @end
 

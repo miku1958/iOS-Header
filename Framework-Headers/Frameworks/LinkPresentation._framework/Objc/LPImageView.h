@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)setCornerRadius:(double)arg1 continuous:(BOOL)arg2;
 - (BOOL)shouldApplyBackground;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateShadowPath;
 
 @end
 

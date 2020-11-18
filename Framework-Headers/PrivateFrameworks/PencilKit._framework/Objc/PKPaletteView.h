@@ -32,6 +32,7 @@
     BOOL _supportsOpacityEditing;
     BOOL _wantsClearBackgroundColorInCompactSize;
     BOOL _toolPreviewMinimized;
+    BOOL _settingSelectedColor;
     unsigned long long _autoHideCorner;
     double _scalingFactor;
     UIViewController *_presentationController;
@@ -110,6 +111,7 @@
 @property (weak, nonatomic) UIViewController *presentationController; // @synthesize presentationController=_presentationController;
 @property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property (strong, nonatomic) PKInk *selectedToolInk;
+@property (nonatomic, getter=isSettingSelectedColor) BOOL settingSelectedColor; // @synthesize settingSelectedColor=_settingSelectedColor;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsOpacityEditing; // @synthesize supportsOpacityEditing=_supportsOpacityEditing;
 @property (strong, nonatomic) PKPaletteToolPreview *toolPreview; // @synthesize toolPreview=_toolPreview;
@@ -150,6 +152,8 @@
 - (void)_updateToolPreviewScalingAnimated:(BOOL)arg1;
 - (void)_updateToolPreviewVisibility;
 - (void)_updateUIForAnnotationSupportIfNeeded;
+- (void)_willDockPaletteToCorner:(unsigned long long)arg1;
+- (void)_willDockPaletteToEdge:(unsigned long long)arg1 prepareForExpansion:(BOOL)arg2;
 - (void)additionalOptionsView:(id)arg1 didToggleAutoHideOption:(BOOL)arg2;
 - (void)additionalOptionsViewDidSelectPlusButton:(id)arg1;
 - (void)colorPickerDidChangeSelectedColor:(id)arg1;
@@ -162,10 +166,8 @@
 - (unsigned long long)edgeLocationToDockFromCorner:(unsigned long long)arg1;
 - (void)endOpacityEditing;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)hostView:(id)arg1 didDockPaletteToCorner:(unsigned long long)arg2;
-- (void)hostView:(id)arg1 didDockPaletteToEdge:(unsigned long long)arg2;
-- (void)hostView:(id)arg1 willDockPaletteToCorner:(unsigned long long)arg2;
-- (void)hostView:(id)arg1 willDockPaletteToEdge:(unsigned long long)arg2 prepareForExpansion:(BOOL)arg3;
+- (void)hostView:(id)arg1 didDockPaletteToPosition:(long long)arg2;
+- (void)hostView:(id)arg1 willDockPaletteToPosition:(long long)arg2 prepareForExpansion:(BOOL)arg3;
 - (id)initWithInternalDelegate:(id)arg1;
 - (BOOL)isPalettePresentingPopover;
 - (BOOL)isToolDictionary:(id)arg1 ofTypeIdentifier:(id)arg2;

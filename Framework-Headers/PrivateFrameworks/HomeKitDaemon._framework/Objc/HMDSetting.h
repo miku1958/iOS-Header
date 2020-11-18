@@ -17,6 +17,7 @@
     NSUUID *_parentIdentifier;
     NSString *_name;
     NSMutableArray *_constraints;
+    NSString *_keyPath;
     NSNumber *_type;
     NSNumber *_properties;
     HMSettingValue *_internalValue;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy) HMSettingValue *internalValue; // @synthesize internalValue=_internalValue;
+@property (readonly, copy) NSString *keyPath;
 @property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) NSUUID *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
 @property (copy) NSNumber *properties; // @synthesize properties=_properties;
@@ -47,6 +49,7 @@
 - (id)initWithModel:(id)arg1;
 - (BOOL)isValidValue:(id)arg1;
 - (id)logIdentifier;
+- (void)setKeyPath:(id)arg1;
 - (BOOL)updateWithSettingValue:(id)arg1;
 - (BOOL)wouldValueUpdate:(id)arg1;
 

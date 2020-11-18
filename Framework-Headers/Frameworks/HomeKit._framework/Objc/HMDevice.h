@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFObject-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMFKey, HMFUnfairLock, NSString, NSUUID;
+@class HMFKey, HMFUnfairLock, NSArray, NSString, NSUUID;
 
-@interface HMDevice : NSObject <HMObjectMerge, NSSecureCoding>
+@interface HMDevice : NSObject <HMFObject, HMObjectMerge, NSSecureCoding>
 {
     HMFUnfairLock *_lock;
     BOOL _currentDevice;
@@ -22,17 +23,22 @@
     NSUUID *_uuid;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, getter=isCurrentDevice) BOOL currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (copy) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
 @property (copy) HMFKey *rapportIRK; // @synthesize rapportIRK=_rapportIRK;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)IDSDeviceForIDSService:(id)arg1;

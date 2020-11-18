@@ -59,7 +59,7 @@
 - (id)originalSettings;
 - (id)overriddenSettings;
 - (void)performInitialSyncWithProgress:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)performSyncIfNeededForSectionID:(id)arg1 gizmoSectionInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (unsigned long long)performSyncIfNeededForSectionID:(id)arg1 gizmoSectionInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeSectionWithSectionID:(id)arg1;
 - (void)sectionConfiguration:(id)arg1 addedSectionIDs:(id)arg2 removedSectionIDs:(id)arg3;
 - (BOOL)sectionInfoList:(id)arg1 override:(id)arg2 shouldApplyToSectionInfoForSectionID:(id)arg3;

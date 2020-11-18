@@ -48,7 +48,8 @@
     BOOL _keyboardVisible;
     struct CGRect _keyboardFrame;
     struct CGRect _lastKeyboardFrame;
-    long long _internalPearlState;
+    unsigned short _layoutRecursionCounter;
+    long long _internalFaceIDState;
     unsigned int _pearlCameraEdge;
     long long _internalCoachingState;
     UIViewController *_passcodeViewController;
@@ -117,6 +118,7 @@
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1 animated:(BOOL)arg2;
 - (void)_selectOptionsForDataItem:(id)arg1;
 - (void)_sendDidEncounterAuthorizationEventIfNecessary:(unsigned long long)arg1;
+- (void)_setAMPBarItem;
 - (void)_setAuthenticating:(BOOL)arg1;
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setPassphraseViewController:(id)arg1;
@@ -128,7 +130,7 @@
 - (void)_setupShippingAddress;
 - (void)_setupShippingContact;
 - (void)_setupShippingMethods;
-- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
+- (void)_setupWithPaymentRequest:(id)arg1 relevantPassUniqueID:(id)arg2 fromAppWithLocalizedName:(id)arg3 applicationIdentifier:(id)arg4 bundleIdentifier:(id)arg5 teamIdentifier:(id)arg6;
 - (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_startEvaluation;
 - (void)_startSimulatorHIDListener;
@@ -153,7 +155,7 @@
 - (Class)_viewPresenterClassForDataItem:(id)arg1;
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
-- (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
+- (void)authenticator:(id)arg1 didTransitionToFaceIDState:(long long)arg2;
 - (void)authenticatorDidEncounterBiometricLockout:(id)arg1;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
@@ -183,7 +185,7 @@
 - (void)handleHostApplicationDidCancel;
 - (void)handleHostApplicationWillResignActive:(BOOL)arg1;
 - (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
-- (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
+- (id)handlePaymentRequest:(id)arg1 relevantPassUniqueID:(id)arg2 fromAppWithLocalizedName:(id)arg3 applicationIdentifier:(id)arg4 bundleIdentifier:(id)arg5 teamIdentifier:(id)arg6;
 - (id)initWithLayout:(id)arg1;
 - (void)invalidate;
 - (void)keyboardWillChange:(id)arg1;

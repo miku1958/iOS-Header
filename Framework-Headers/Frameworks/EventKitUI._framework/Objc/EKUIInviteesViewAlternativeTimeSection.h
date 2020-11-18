@@ -16,6 +16,7 @@
     BOOL _availabilityRequestInProgress;
     BOOL _initialSearchInProgress;
     BOOL _searchExhausted;
+    BOOL _searcherHasError;
     CDUnknownBlockType _showMoreAlternativeTimesTapped;
     NSTimeZone *_timeZone;
     NSString *_cachedTimeCellReuseIdentifier;
@@ -49,6 +50,7 @@
 @property (nonatomic) unsigned long long reuseIdentifierVersion; // @synthesize reuseIdentifierVersion=_reuseIdentifierVersion;
 @property (strong, nonatomic) NSMutableSet *rowsShowingAllParticipants; // @synthesize rowsShowingAllParticipants=_rowsShowingAllParticipants;
 @property (nonatomic) BOOL searchExhausted; // @synthesize searchExhausted=_searchExhausted;
+@property (nonatomic) BOOL searcherHasError; // @synthesize searcherHasError=_searcherHasError;
 @property (readonly, nonatomic) NSArray *searcherTimeSlots;
 @property (readonly, nonatomic) BOOL searchingForMoreTimes;
 @property (copy, nonatomic) CDUnknownBlockType showMoreAlternativeTimesTapped; // @synthesize showMoreAlternativeTimesTapped=_showMoreAlternativeTimesTapped;

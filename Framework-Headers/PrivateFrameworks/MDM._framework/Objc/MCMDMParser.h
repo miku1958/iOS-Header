@@ -106,6 +106,7 @@
 - (id)_performSetting:(id)arg1 outAdditionalResponseKeys:(id *)arg2 outRestartAppleTVApp:(BOOL *)arg3;
 - (void)_playLostModeSound:(id)arg1 assertion:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_processRequest:(id)arg1 accessRights:(int)arg2 assertion:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (unsigned long long)_profileInstallationStyleForRequest:(id)arg1;
 - (id)_profileList:(id)arg1;
 - (id)_profileList:(id)arg1 filterFlags:(int)arg2;
 - (id)_provisioningProfileList:(id)arg1;

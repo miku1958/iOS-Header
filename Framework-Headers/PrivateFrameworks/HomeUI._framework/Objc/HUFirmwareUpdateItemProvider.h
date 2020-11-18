@@ -16,8 +16,8 @@
     CDUnknownBlockType _filter;
     unsigned long long _style;
     HUInstructionsItem *_instructionsItem;
-    HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
     NSSet *_linkedApplicationItems;
+    HULinkedApplicationItemProvider *_linkedApplicationItemProvider;
     NSString *_instructionsTitle;
     NSString *_instructionsDescription;
 }

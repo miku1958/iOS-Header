@@ -33,7 +33,7 @@
 - (void)dealloc;
 - (BOOL)deleteAll;
 - (BOOL)deleteAll:(id *)arg1;
-- (long long)deleteCallsWithPredicate:(id)arg1 error:(id *)arg2;
+- (long long)deleteCallsWithPredicate:(id)arg1;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;

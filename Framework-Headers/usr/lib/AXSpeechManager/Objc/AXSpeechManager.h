@@ -8,7 +8,7 @@
 
 #import <AXSpeechManager/TTSSpeechSynthesizerDelegate-Protocol.h>
 
-@class AVAudioSession, AXDispatchTimer, AXSpeechAction, AXSpeechThread, NSArray, NSMutableArray, NSNumber, NSString, TTSSpeechSynthesizer;
+@class AVAudioSession, AXDispatchTimer, AXSpeechAction, AXSpeechThread, NSArray, NSLock, NSMutableArray, NSNumber, NSString, TTSSpeechSynthesizer;
 @protocol OS_dispatch_queue;
 
 @interface AXSpeechManager : NSObject <TTSSpeechSynthesizerDelegate>
@@ -19,6 +19,9 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     BOOL _isSpeaking;
     BOOL _speechEnabled;
+    BOOL _audioSessionObserversEnabled;
+    BOOL _speechThreadFinished;
+    NSLock *_speechThreadQueueLock;
     BOOL _isPaused;
     BOOL _isInAudioInterruption;
     BOOL _supportsAccurateWordCallbacks;
@@ -35,6 +38,7 @@
     NSString *_audioSessionCategory;
     unsigned long long _setActiveOptions;
     AVAudioSession *_audioSession;
+    double _audioSessionInactiveTimeout;
     CDUnknownBlockType _requestWillStart;
     NSNumber *_originalSpeechRateForJobOverride;
     AXDispatchTimer *_audioDeactivatorTimer;
@@ -47,6 +51,7 @@
 @property (strong, nonatomic) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property (strong, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property (nonatomic) unsigned long long audioSessionCategoryOptions; // @synthesize audioSessionCategoryOptions=_audioSessionCategoryOptions;
+@property (nonatomic) double audioSessionInactiveTimeout; // @synthesize audioSessionInactiveTimeout=_audioSessionInactiveTimeout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRequestPauseSpeakingDuringAudioInterruption; // @synthesize didRequestPauseSpeakingDuringAudioInterruption=_didRequestPauseSpeakingDuringAudioInterruption;
@@ -77,6 +82,7 @@
 + (id)availableVoices:(BOOL)arg1;
 + (struct URegularExpression *)createRegularExpressionFromString:(id)arg1;
 + (id)currentLanguageCode;
++ (BOOL)currentProcessAllowedToSaveVoiceInfo;
 + (id)matchedRangesForString:(id)arg1 withRegularExpression:(struct URegularExpression *)arg2;
 + (id)pauseMarkupString:(id)arg1;
 + (id)remapLanguageCode:(id)arg1;
@@ -85,12 +91,15 @@
 + (void)test_setAvailableVoices:(id)arg1;
 + (void)test_setUnitTestMode:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)__activeAudioRouteChanged:(id)arg1;
 - (void)__speechJobFinished:(id)arg1;
+- (void)_activeAudioRouteChanged:(id)arg1;
 - (void)_clearSpeechQueue;
 - (void)_continueSpeaking;
 - (void)_didBeginInterruption;
 - (void)_didEndInterruption;
 - (void)_dispatchSpeechAction:(id)arg1;
+- (BOOL)_enqueueSelectorOnSpeechThread:(SEL)arg1 object:(id)arg2 waitUntilDone:(BOOL)arg3;
 - (void)_handleAudioInterruption:(id)arg1;
 - (void)_handleMediaServicesWereLost:(id)arg1;
 - (void)_handleMediaServicesWereReset:(id)arg1;
@@ -98,6 +107,7 @@
 - (void)_isSpeaking:(id)arg1;
 - (void)_pauseSpeaking:(id)arg1;
 - (id)_phonemeSubstitutionsForAction:(id)arg1;
+- (void)_processDidStartCallback:(id)arg1;
 - (void)_resetInterruptionTracking;
 - (void)_speechJobFinished:(BOOL)arg1 action:(id)arg2;
 - (void)_startNextSpeechJob;
@@ -105,12 +115,14 @@
 - (void)_tearDown;
 - (void)_updateAudioSessionProperties;
 - (void)_updateAuxiliarySession;
+- (void)_updateAuxiliarySession:(BOOL)arg1;
 - (void)_updateUserSubstitutions;
 - (void)clearSpeechQueue;
 - (void)continueSpeaking;
 - (void)dealloc;
 - (void)dispatchSpeechAction:(id)arg1;
 - (id)externalVoiceIdentifierUsedForLanguage:(id)arg1;
+- (void)handleAudioSessionObservers:(BOOL)arg1;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseSpeaking:(int)arg1;

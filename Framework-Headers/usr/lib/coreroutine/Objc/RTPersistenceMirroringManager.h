@@ -18,7 +18,6 @@
 @interface RTPersistenceMirroringManager : NSObject <RTPersistenceMirroringMetricsDelegate, RTPersistenceMirroringRequestDelegate, RTPersistenceMirroringDelegate, RTPurgable, RTDiagnosticProvider>
 {
     RTDefaultsManager *_defaultsManager;
-    RTInvocationDispatcher *_dispatcher;
     RTTimerManager *_timerManager;
     RTAccountManager *_accountManager;
     RTReachabilityManager *_reachabilityManager;
@@ -37,6 +36,7 @@
     RTXPCActivityManager *_xpcActivityManager;
     RTPlatform *_platform;
     RTPersistenceCloudDeletionEnforcer *_persistenceCloudDeletionEnforcer;
+    RTInvocationDispatcher *_dispatcher;
 }
 
 @property (strong, nonatomic) RTPersistenceMirroringRequest *activeMirroringRequest; // @synthesize activeMirroringRequest=_activeMirroringRequest;
@@ -44,6 +44,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (weak) id<RTPersistenceMirroringMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
@@ -60,7 +61,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (BOOL)_authorizedToMirror;
 - (BOOL)_dataAvailableToMirror;

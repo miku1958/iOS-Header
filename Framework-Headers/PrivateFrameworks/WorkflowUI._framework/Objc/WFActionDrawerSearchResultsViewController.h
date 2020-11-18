@@ -33,7 +33,7 @@
 
 - (void).cxx_destruct;
 - (void)actionCell:(id)arg1 infoButtonTappedForAction:(id)arg2;
-- (void)appsTableViewCell:(id)arg1 didSelectSection:(id)arg2;
+- (void)appsTableViewCell:(id)arg1 didSelectAppWithBundleIdentifier:(id)arg2;
 - (void)loadView;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

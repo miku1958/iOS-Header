@@ -13,7 +13,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMDAccessoryNetworkAccessViolation, HMDAccessoryVersion, HMDApplicationData, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, NSArray, NSData, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class HMAccessoryCategory, HMDAccessoryNetworkAccessViolation, HMDAccessoryVersion, HMDApplicationData, HMDHome, HMDRoom, HMDVendorModelEntry, HMFMessageDispatcher, HMFVersion, NSArray, NSData, NSMutableSet, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDAccessory : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMDHomeMessageReceiver, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging>
@@ -31,7 +31,9 @@
     NSString *_identifier;
     HMDRoom *_room;
     NSString *_model;
+    NSString *_initialModel;
     NSString *_manufacturer;
+    NSString *_initialManufacturer;
     HMDAccessoryVersion *_firmwareVersion;
     NSString *_serialNumber;
     HMDApplicationData *_appData;
@@ -47,6 +49,8 @@
     NSData *_wiFiUniquePreSharedKey;
     NSUUID *_configuredNetworkProtectionGroupUUID;
     NSUUID *_defaultNetworkProtectionGroupUUID;
+    HMFVersion *_primaryProfileVersion;
+    NSNumber *_initialCategoryIdentifier;
     NSUUID *_uuid;
     HMAccessoryCategory *_category;
     HMDHome *_home;
@@ -84,6 +88,9 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSNumber *initialCategoryIdentifier; // @synthesize initialCategoryIdentifier=_initialCategoryIdentifier;
+@property (readonly, copy, nonatomic) NSString *initialManufacturer; // @synthesize initialManufacturer=_initialManufacturer;
+@property (readonly, copy, nonatomic) NSString *initialModel; // @synthesize initialModel=_initialModel;
 @property (readonly, copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -96,7 +103,9 @@
 @property (nonatomic) long long networkClientLAN; // @synthesize networkClientLAN=_networkClientLAN;
 @property (strong, nonatomic) NSUUID *networkRouterUUID; // @synthesize networkRouterUUID=_networkRouterUUID;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
+@property (strong, nonatomic) HMFVersion *primaryProfileVersion; // @synthesize primaryProfileVersion=_primaryProfileVersion;
 @property (readonly, nonatomic) NSString *productData; // @synthesize productData=_productData;
+@property (readonly, nonatomic) NSString *productGroup;
 @property (copy, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (readonly, nonatomic) long long reachableTransports;
@@ -106,6 +115,7 @@
 @property (strong, nonatomic) HMDRoom *room; // @synthesize room=_room;
 @property (readonly, copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsCompanionInitiatedRestart;
 @property (readonly, nonatomic) BOOL supportsMediaContentProfile;
 @property (readonly, nonatomic) BOOL supportsMultiUser;
 @property (readonly, nonatomic) BOOL supportsPersonalRequests;
@@ -124,6 +134,7 @@
 + (id)logCategory;
 + (BOOL)splitProductDataIntoProductGroupAndProductNumber:(id)arg1 productGroup:(id *)arg2 productNumber:(id *)arg3;
 + (BOOL)supportsSecureCoding;
++ (BOOL)validateProductData:(id)arg1;
 - (void).cxx_destruct;
 - (void)__handleGetAccessoryAdvertisingParams:(id)arg1;
 - (void)__handleIdentify:(id)arg1;
@@ -133,13 +144,14 @@
 - (void)__handleSetAppData:(id)arg1;
 - (void)__handleUpdateRoom:(id)arg1;
 - (void)_handleUpdateNetworkProtection:(id)arg1;
+- (void)_handleUpdatedName:(id)arg1;
 - (void)_notifyConnectivityChangedWithReachabilityState:(BOOL)arg1 remoteAccessChanged:(BOOL)arg2;
 - (void)_registerForMessages;
 - (void)_relayIdentifyAccessorytoResidentForMessage:(id)arg1;
 - (void)_remoteAccessEnabled:(BOOL)arg1;
 - (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (id)_updateCategory:(id)arg1 notifyClients:(BOOL)arg2;
-- (BOOL)_updateRoom:(id)arg1 error:(id *)arg2;
+- (BOOL)_updateRoom:(id)arg1;
 - (void)addAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
 - (void)appDataRemoved:(id)arg1 message:(id)arg2;
@@ -155,9 +167,7 @@
 - (id)dumpSimpleState;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)findProductData;
 - (id)getConfiguredName;
-- (void)handleUpdatedName:(id)arg1;
 - (id)hashRouteID;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -178,6 +188,7 @@
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)removeAccessoryProfile:(id)arg1;
 - (void)removeAdvertisement:(id)arg1;
+- (void)removeCloudData;
 - (id)runtimeState;
 - (void)saveCurrentNetworkProtectionMode:(long long)arg1 assignedLAN:(long long)arg2 appliedFirewallWANRules:(id)arg3;
 - (void)saveNetworkAccessViolation:(id)arg1;
@@ -185,6 +196,9 @@
 - (void)saveWiFiUniquePreSharedKey:(id)arg1 credentialType:(long long)arg2;
 - (void)setAccessoryProfiles:(id)arg1;
 - (void)setFirmwareVersion:(id)arg1;
+- (void)setInitialCategoryIdentifier:(id)arg1;
+- (void)setInitialManufacturer:(id)arg1;
+- (void)setInitialModel:(id)arg1;
 - (void)setManufacturer:(id)arg1;
 - (void)setModel:(id)arg1;
 - (void)setProductData:(id)arg1;

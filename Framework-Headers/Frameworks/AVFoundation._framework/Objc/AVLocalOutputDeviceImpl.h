@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
-@property (copy, nonatomic) NSString *currentBluetoothListeningMode;
+@property (readonly, nonatomic) NSString *currentBluetoothListeningMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long deviceFeatures;
@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)setCurrentBluetoothListeningMode:(id)arg1 error:(id *)arg2;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 

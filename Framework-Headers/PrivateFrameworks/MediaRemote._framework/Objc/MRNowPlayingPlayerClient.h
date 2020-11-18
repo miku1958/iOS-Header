@@ -30,6 +30,7 @@
     NSMutableDictionary *_coelscingTransactionPackets;
     NSMutableArray *_transactionSources;
     NSMutableDictionary *_cachedContentItemUpdates;
+    NSMutableDictionary *_pendingPlaybackSessionMigrateEvents;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
     MRPlaybackQueueSubscriptionController *_subscriptionController;
     MRNowPlayingPlayerClientCallbacks *_clientCallbacks;
@@ -49,10 +50,9 @@
 @property (copy, nonatomic) NSArray *supportedCommands;
 
 - (void).cxx_destruct;
-- (void)_handePlaybackSessionMigrateRequest:(struct _MRPlaybackSessionProtobuf *)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_invokePlaybackSessionMigrateRequestOperations:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_onQueue_nowPlayingContentItem;
+- (void)_handePlaybackSessionMigrateRequest:(id)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
+- (void)addPendingPlaybackSessionMigrateEvent:(id)arg1;
 - (void)addPendingRequest:(id)arg1;
 - (void)beginSendingTransactions;
 - (void)cacheContentItemChangesForPendingRequests:(id)arg1;
@@ -60,8 +60,10 @@
 - (id)debugDescription;
 - (id)description;
 - (void)endSendingTransactions;
+- (void)flushPendingPlaybackSessionMigrateEvents:(CDUnknownBlockType)arg1;
 - (id)initWithPlayerPath:(id)arg1;
 - (void)preProcessChangePlaybackRateCommandWithOptions:(id)arg1;
+- (BOOL)removePendingPlaybackSessionMigrateEvent:(id)arg1;
 - (unsigned int)resolveCommand:(unsigned int)arg1;
 - (id)resolveCommandOptions:(unsigned int)arg1 options:(id)arg2;
 - (void)restoreNowPlayingClientState;

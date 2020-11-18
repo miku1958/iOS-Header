@@ -42,6 +42,7 @@
 - (BOOL)deleteAllMomentsWithError:(id *)arg1;
 - (NSSet *)deletedObjects;
 - (void)enumerateAssetsWithIDs:(NSArray *)arg1 usingBlock:(void (^)(id<PLMomentAssetData>, unsigned long long, BOOL *))arg2;
+- (void)fetchLocationsOfInterestIfNeeded;
 - (unsigned long long)hardGenerationBatchSizeLimit;
 - (BOOL)hasChanges;
 - (NSArray *)highlightsIntersectingDateInterval:(NSDateInterval *)arg1 ofKind:(unsigned short)arg2;

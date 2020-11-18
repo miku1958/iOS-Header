@@ -6,13 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
+#import <AssistantSettingsSupport/AssistantHistoryDelegate-Protocol.h>
 #import <AssistantSettingsSupport/AssistantVoiceSettingsConnectionProvider-Protocol.h>
 #import <AssistantSettingsSupport/CNContactPickerDelegate-Protocol.h>
 #import <AssistantSettingsSupport/DevicePINControllerDelegate-Protocol.h>
 
 @class AFSettingsConnection, CNContactPickerViewController, CNContactStore, NSArray, NSMutableSet, NSSet, NSString, PSSpecifier, SUICAssistantVoiceSettingsConnection;
 
-@interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate>
+@interface AssistantController : PSListController <CNContactPickerDelegate, AssistantVoiceSettingsConnectionProvider, DevicePINControllerDelegate, AssistantHistoryDelegate>
 {
     NSArray *_assistantSettings;
     SUICAssistantVoiceSettingsConnection *_settingsConnection;
@@ -43,12 +44,14 @@
 + (void)presentAssistantEnableAlertForState:(BOOL)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
 + (id)shortTitlesForLanguageIdentifiers:(id)arg1;
 - (void).cxx_destruct;
+- (id)_confirmationPromptDisableHeySiri:(BOOL)arg1 disableMultiUser:(BOOL)arg2 disableSpokenFeedback:(BOOL)arg3;
 - (BOOL)_isAssistantLockScreenAccessRestricted;
 - (BOOL)_isHeySiriAlwaysOn;
 - (BOOL)_isIncompatibleWithWatchLanguage:(id)arg1;
 - (BOOL)_isVoiceTriggerEnabled;
 - (BOOL)_languageWillDisableHeySiri:(id)arg1;
 - (id)_localizeTriggerString:(id)arg1;
+- (BOOL)_pairedWithSiriSpeaksEnabledNanoHardware;
 - (void)_setAccessibleFromLockScreen:(BOOL)arg1;
 - (void)_setAssistantEnabled:(id)arg1 forSpecifier:(id)arg2 presentingViewController:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)_setAssistantLanguageCancelled:(id)arg1;
@@ -57,7 +60,7 @@
 - (void)_setAssistantLanguageWatchMismatchConfirmed:(id)arg1;
 - (void)_showIncompatibleWatchLanguageAlert;
 - (void)_showMeCardPopover;
-- (void)_showWillDisableHeySiriAlert;
+- (void)_showWillDisableAlertWillDisableHeySiri:(BOOL)arg1 disableMultiUser:(BOOL)arg2 disableSpokenFeedbackOnWatch:(BOOL)arg3;
 - (void)_updateSpecifiersForLanguage:(id)arg1;
 - (id)accessibleFromLockScreen:(id)arg1;
 - (void)assistantAboutDonePressed:(id)arg1;
@@ -76,10 +79,12 @@
 - (void)configurePersonalizationSpecifiersFor:(id)arg1;
 - (void)confirmDisableForMultiUserVoiceIdentificationWithSpecifier:(id)arg1 pairedWatch:(BOOL)arg2 presentingViewController:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)confirmDisableWithSpecifier:(id)arg1 pairedWatch:(BOOL)arg2 presentingViewController:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
+- (id)confirmationSpecifierWillDisableHeySiri:(BOOL)arg1 disableMultiUser:(BOOL)arg2 disableSpokenFeedbackOnWatch:(BOOL)arg3;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)contactsDidChange;
 - (void)dealloc;
+- (void)deleteHistorySuccessfulFromViewController:(id)arg1;
 - (void)didAcceptEnteredPIN;
 - (void)didBecomeActive;
 - (void)didCancelEnteringPIN;
@@ -112,6 +117,7 @@
 - (void)showAboutAssistantSheet:(id)arg1;
 - (void)showAboutSearchSuggestionsSheet:(id)arg1;
 - (void)showAssistantConfirmationViewForSpecifier:(id)arg1 presentingViewController:(id)arg2 actionHandler:(CDUnknownBlockType)arg3;
+- (void)showAssistantHistoryViewController:(id)arg1;
 - (void)showMeCardPicker:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

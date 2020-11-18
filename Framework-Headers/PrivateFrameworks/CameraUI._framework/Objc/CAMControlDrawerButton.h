@@ -4,34 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKit/UIControl.h>
+
+#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 
 @class NSString, UIImageView;
 
-@interface CAMControlDrawerButton : UIButton
+@interface CAMControlDrawerButton : UIControl <CAMAccessibilityHUDItemProvider>
 {
     long long _layoutStyle;
     NSString *_contentSize;
     long long _orientation;
+    UIImageView *__imageView;
     UIImageView *__backgroundView;
 }
 
 @property (readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
+@property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
 @property (nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) long long controlType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isExpandable) BOOL expandable;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (readonly) Class superclass;
 
 + (id)_backgroundImage;
 + (struct CGSize)buttonSize;
 - (void).cxx_destruct;
 - (void)didChangeContentSize;
 - (void)handleButtonReleased:(id)arg1;
+- (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (id)imageNameForCurrentState;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldScaleImageWhileHighlighted;

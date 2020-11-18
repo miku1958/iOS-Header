@@ -98,6 +98,7 @@
 - (void)_remote_fetchSeedsForCoordinatorsWithIntent:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)_remote_killDaemonForTestingWithCompletion:(void (^)(NSError *))arg1;
 - (void)_remote_pingDaemonWithCompletion:(void (^)(int, NSError *))arg1;
+- (void)_remote_postNSCurrentLocaleDidChangeNotification:(void (^)(NSError *))arg1;
 - (void)_remote_prioritizeCoordinatorForAppWithBundleID:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_purgeRegisteredCoordinatorsAndPromisesForCreator:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_registerObserverMachServiceName:(NSString *)arg1 forClientIdentifiers:(NSSet *)arg2 respondingToSelectors:(unsigned long long)arg3;

@@ -50,6 +50,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAccessory:(id)arg1;
+- (id)assistantAccessControlModelWithRemovedAccessories:(id)arg1;
 - (void)configure;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -11,7 +11,7 @@
 #import <SpringBoard/CSExternalEventHandling-Protocol.h>
 #import <SpringBoard/SBLockScreenApplicationLaunching-Protocol.h>
 
-@class CSCoverSheetViewController, NSString, SBInProcessSecureAppAction;
+@class CSCoverSheetViewController, NSString, SBInProcessSecureAppAction, SBSecureAppManager;
 
 @interface SBDashBoardApplicationLauncher : NSObject <CSExternalEventHandling, SBLockScreenApplicationLaunching, CSApplicationLaunching, CSCameraPrewarming>
 {
@@ -19,6 +19,7 @@
     BOOL _cameraIsPrewarming;
     BOOL _cameraPrewarmSucceeded;
     CSCoverSheetViewController *_coverSheetViewController;
+    SBSecureAppManager *_secureAppManager;
 }
 
 @property (readonly, copy, nonatomic) NSString *coverSheetIdentifier;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long participantState;
+@property (weak, nonatomic) SBSecureAppManager *secureAppManager; // @synthesize secureAppManager=_secureAppManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

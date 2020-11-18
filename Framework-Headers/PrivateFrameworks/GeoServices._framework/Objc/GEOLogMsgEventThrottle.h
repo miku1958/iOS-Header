@@ -13,11 +13,13 @@
 @interface GEOLogMsgEventThrottle : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     NSString *_manifestEnv;
     NSString *_requestAppIdentifier;
     double _throttleDuration;
     NSString *_throttleReqType;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _networkService;
     unsigned int _throttleCount;
     int _throttleMode;
@@ -87,6 +89,8 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)networkServiceAsString:(int)arg1;

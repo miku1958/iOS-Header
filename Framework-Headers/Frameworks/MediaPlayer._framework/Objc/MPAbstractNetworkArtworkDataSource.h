@@ -44,6 +44,7 @@
 - (BOOL)_isRepresentationSize:(struct CGSize)arg1 validForCatalog:(id)arg2;
 - (void)_performAsyncBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)_performSyncBlock:(CDUnknownBlockType)arg1;
+- (id)_requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (BOOL)areRepresentationsAvailableForCatalog:(id)arg1;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;

@@ -37,9 +37,8 @@
 - (id)_defaultSettings;
 - (long long)behavior;
 - (double)endTimeOffset;
+- (double)maxVitalityDelay;
 - (double)maximumDelayBeforePlayback;
-- (double)minimumColorAdjustedPhotoTransitionDuration;
-- (double)minimumDurationForColorMismatch;
 - (double)minimumPhotoTransitionDuration;
 - (double)minimumVisibilityFactor;
 - (double)playbackRate;

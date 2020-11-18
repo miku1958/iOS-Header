@@ -64,6 +64,7 @@
 @property (nonatomic, getter=isInteractionEnabled) BOOL interactionEnabled; // @synthesize interactionEnabled=_interactionEnabled;
 @property (readonly, nonatomic, getter=isLookStyleLongLook) BOOL lookStyleLongLook;
 @property (strong, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
+@property (readonly, nonatomic, getter=isNotPresentingOrHasCommittedToDismissingCustomContentProvidingViewController) BOOL notPresentingOrHasCommittedToDismissingCustomContentProvidingViewController;
 @property (nonatomic, getter=isNotificationContentViewHidden) BOOL notificationContentViewHidden; // @synthesize notificationContentViewHidden=_notificationContentViewHidden;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
 @property (readonly, nonatomic, getter=_notificationViewControllerView) NCNotificationViewControllerView *notificationViewControllerView;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, UIColor;
+@class NSData, WFColor;
 
 @interface WFWorkflowIconDrawer : NSObject
 {
@@ -14,19 +14,19 @@
     BOOL _useCustomImage;
     BOOL _rounded;
     unsigned short _glyphCharacter;
-    UIColor *_backgroundColor;
+    WFColor *_backgroundColor;
     NSData *_customImageData;
-    UIColor *_glyphColor;
+    WFColor *_glyphColor;
     double _cornerRadius;
     struct CGSize _glyphSize;
 }
 
-@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (strong, nonatomic) WFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (copy, nonatomic) NSData *customImageData; // @synthesize customImageData=_customImageData;
 @property (nonatomic) BOOL drawBackground; // @synthesize drawBackground=_drawBackground;
 @property (nonatomic) unsigned short glyphCharacter; // @synthesize glyphCharacter=_glyphCharacter;
-@property (strong, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
+@property (strong, nonatomic) WFColor *glyphColor; // @synthesize glyphColor=_glyphColor;
 @property (nonatomic) struct CGSize glyphSize; // @synthesize glyphSize=_glyphSize;
 @property (nonatomic) BOOL rounded; // @synthesize rounded=_rounded;
 @property (nonatomic) BOOL useCustomImage; // @synthesize useCustomImage=_useCustomImage;
@@ -35,7 +35,7 @@
 + (id)imageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 + (id)pngDataForImageWithIcon:(id)arg1 size:(struct CGSize)arg2;
 - (void).cxx_destruct;
-- (void)drawInRect:(struct CGRect)arg1;
+- (void)drawInContext:(id)arg1 inRect:(struct CGRect)arg2;
 - (id)imageWithSize:(struct CGSize)arg1;
 - (id)init;
 - (id)initWithHomeScreenIcon:(id)arg1;

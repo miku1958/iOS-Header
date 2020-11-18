@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_allowanceDetailText:(id)arg1;
 - (void)_allowancesByIdentifierDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_didFetchAppInfo:(id)arg1;
 - (void)_showAllowanceDetailListController:(id)arg1;
 - (void)_showAllowanceSetupListController:(id)arg1;
 - (id)_specifierForAllowance:(id)arg1;

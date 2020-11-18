@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
+@class C2RequestOptions, CKDDecryptRecordsOperation, CKDProtocolTranslator, CKDRecordCache, NSArray, NSData, NSDictionary, NSMapTable, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_assetUUIDToExpectedProperties;
     NSDictionary *_packageUUIDToExpectedProperties;
     NSArray *_userPublicKeys;
+    C2RequestOptions *_streamingAssetRequestOptions;
 }
 
 @property (strong, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldModifyRecordsInDatabase; // @synthesize shouldModifyRecordsInDatabase=_shouldModifyRecordsInDatabase;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
+@property (copy, nonatomic) C2RequestOptions *streamingAssetRequestOptions; // @synthesize streamingAssetRequestOptions=_streamingAssetRequestOptions;
 @property (strong, nonatomic) CKDProtocolTranslator *translator; // @synthesize translator=_translator;
 @property (nonatomic) BOOL trustProtectionData; // @synthesize trustProtectionData=_trustProtectionData;
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;

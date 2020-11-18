@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <HomeKitDaemon/HMDDataStreamBulkSendSession-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDDataStreamBulkSendProtocol, NSError, NSMutableArray, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDDataStreamBulkSendSession : NSObject <HMDDataStreamBulkSendSession>
+@interface HMDDataStreamBulkSendSession : NSObject <HMFLogging, HMDDataStreamBulkSendSession>
 {
     BOOL _isClosed;
     BOOL _hasReceivedEof;
@@ -21,6 +22,7 @@
     CDUnknownBlockType _activeReadHandler;
     NSMutableArray *_pendingReads;
     NSError *_receivedFailure;
+    NSString *_logIdentifier;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType activeReadHandler; // @synthesize activeReadHandler=_activeReadHandler;
@@ -29,12 +31,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) BOOL hasMoreData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong, nonatomic) NSMutableArray *pendingReads; // @synthesize pendingReads=_pendingReads;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSError *receivedFailure; // @synthesize receivedFailure=_receivedFailure;
 @property (readonly, nonatomic) NSNumber *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly) Class superclass;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_closeSession;
 - (void)_pumpReadDataIfPossible;
@@ -42,7 +46,7 @@
 - (void)asyncHandleRemoteCloseWithError:(id)arg1;
 - (void)cancelWithReason:(unsigned short)arg1;
 - (void)dealloc;
-- (id)initWithProtocol:(id)arg1 sessionIdentifier:(id)arg2 queue:(id)arg3;
+- (id)initWithProtocol:(id)arg1 sessionIdentifier:(id)arg2 queue:(id)arg3 logIdentifier:(id)arg4;
 - (void)read:(CDUnknownBlockType)arg1;
 
 @end

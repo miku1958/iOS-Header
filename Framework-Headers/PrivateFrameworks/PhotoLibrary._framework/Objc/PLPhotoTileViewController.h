@@ -124,6 +124,7 @@
 - (void)_centerImageInScrollView;
 - (BOOL)_clientIsWallpaper;
 - (void)_configureViews;
+- (void)_getFullScreenImageData:(id *)arg1 forImage:(id)arg2 fullSize:(struct CGSize)arg3 imageView:(id)arg4 screenScaleTransform:(struct CGAffineTransform)arg5;
 - (void)_handleDoubleTap:(id)arg1;
 - (void)_handleFullSizeImageRequestResult:(id)arg1 dataUTI:(id)arg2 orientation:(long long)arg3;
 - (void)_handleSingleTap:(id)arg1;
@@ -188,7 +189,7 @@
 - (void)loadView;
 - (double)minRotatedScale;
 - (double)minZoomScale;
-- (id)newImageWithCropRect:(struct CGRect)arg1 minimalCropDimension:(double)arg2 croppedImageData:(id *)arg3 fullScreenImageData:(id *)arg4 fullScreenImage:(struct CGImage **)arg5 imageCropRect:(struct CGRect *)arg6 intersectCropWithFullRect:(BOOL)arg7;
+- (id)newImageWithCropRect:(struct CGRect)arg1 minimalCropDimension:(double)arg2 croppedImageData:(id *)arg3 fullScreenImageData:(id *)arg4 imageCropRect:(struct CGRect *)arg5 intersectCropWithFullRect:(BOOL)arg6;
 - (void)noteParentViewControllerDidDisappear;
 - (BOOL)photoShouldHaveAvalancheBadge;
 - (BOOL)photoShouldHaveHDRBadge;

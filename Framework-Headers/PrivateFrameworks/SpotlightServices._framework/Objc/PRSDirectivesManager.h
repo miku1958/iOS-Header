@@ -132,7 +132,6 @@
 @property (nonatomic) double weightX; // @synthesize weightX=_weightX;
 @property (nonatomic) double weightY; // @synthesize weightY=_weightY;
 
-+ (id)descriptorsForModelInputScore;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)cleanup;

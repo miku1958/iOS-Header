@@ -13,7 +13,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingLogger, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, NSArray, NSString, UISwitch, UITableView, UITextField;
+@class CNContact, CNContactImage, CNContactStore, CNMeCardSharingAudienceDataSource, CNMeCardSharingContactAvatarProvider, CNMeCardSharingEnabledDataSource, CNMeCardSharingPickerLayoutAttributes, CNMeCardSharingSettingsHeaderViewController, CNMeCardSharingSettingsNameDataSource, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileLogger, NSArray, NSString, UISwitch, UITableView, UITextField;
 @protocol CNMeCardSharingAvatarProvider, CNMeCardSharingNameProvider, CNMeCardSharingSettingsViewControllerDelegate;
 
 @interface CNMeCardSharingSettingsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNMeCardSharingSettingsHeaderViewControllerDelegate, CNMeCardSharingEnabledDelegate, CNPhotoPickerViewControllerDelegate>
@@ -41,7 +41,7 @@
     UITextField *_givenNameField;
     UITextField *_familyNameField;
     CNMeCardSharingContactAvatarProvider *_editingContactAvatarProvider;
-    CNMeCardSharingLogger *_logger;
+    CNSharingProfileLogger *_logger;
     double _keyboardHeight;
 }
 
@@ -63,7 +63,7 @@
 @property (strong, nonatomic) CNMeCardSharingSettingsHeaderViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property (nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property (readonly, nonatomic) CNMeCardSharingPickerLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
-@property (readonly, nonatomic) CNMeCardSharingLogger *logger; // @synthesize logger=_logger;
+@property (readonly, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) CNMeCardSharingSettingsNameDataSource *nameDataSource; // @synthesize nameDataSource=_nameDataSource;
 @property (nonatomic) long long nameOrder; // @synthesize nameOrder=_nameOrder;
 @property (readonly, nonatomic) id<CNMeCardSharingNameProvider> nameProvider; // @synthesize nameProvider=_nameProvider;

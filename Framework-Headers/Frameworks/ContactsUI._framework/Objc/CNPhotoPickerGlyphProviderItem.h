@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)backgroundColorWithTintColor:(id)arg1;
 - (id)imageForImageNamed:(id)arg1 withTintColor:(id)arg2;
+- (unsigned long long)imageType;
 - (id)initWithSymbolImageNamed:(id)arg1;
 - (long long)scaleForImageNamed:(id)arg1;
 - (void)thumbnailViewWithCompletion:(CDUnknownBlockType)arg1;

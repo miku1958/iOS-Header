@@ -27,7 +27,6 @@
 + (id)pocketAppURLScheme;
 + (id)sharedAPI;
 - (unsigned long long)appID;
-- (void)applicationDidEnterBackground:(id)arg1;
 - (void)callAPIMethod:(id)arg1 withHTTPMethod:(int)arg2 arguments:(id)arg3 delegate:(id)arg4;
 - (void)callAPIMethod:(id)arg1 withHTTPMethod:(int)arg2 arguments:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)dealloc;

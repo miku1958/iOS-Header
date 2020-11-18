@@ -69,7 +69,6 @@
 - (id)_messageGroupsDescription;
 - (id)_relationshipsDescription;
 - (id)_socialGroupsDescription;
-- (id)_stringForGenderMatch;
 - (id)_stringsForRelationshipMatch;
 - (id)description;
 - (id)edgeProperties;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDDatabaseDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMBCloudDatabase, NSString;
 
-@interface HMDCameraClipsQuotaManager : NSObject <HMFLogging>
+@interface HMDCameraClipsQuotaManager : NSObject <HMDDatabaseDelegate, HMFLogging>
 {
     BOOL _enabled;
     HMBCloudDatabase *_cloudDatabase;
@@ -24,15 +25,15 @@
 @property (readonly) Class superclass;
 
 + (id)_quotaErrorFromServerError:(id)arg1;
-+ (id)_underlyingQuotaServerErrorFromServerError:(id)arg1;
++ (id)_quotaServerErrorFromServerError:(id)arg1;
 + (id)defaultManager;
 + (id)logCategory;
 - (void).cxx_destruct;
 - (id)_addFunctionInvokeOperationWithFunctionName:(id)arg1 serializedRequest:(id)arg2;
+- (id)database:(id)arg1 willRemoveOwnedZoneWithName:(id)arg2;
 - (id)disableCloudStorageForZoneWithName:(id)arg1;
 - (id)enableCloudStorageForZoneWithName:(id)arg1;
-- (id)initWithCloudDatabase:(id)arg1;
-- (id)initWithCloudDatabase:(id)arg1 isEnabled:(BOOL)arg2;
+- (id)initWithDatabase:(id)arg1 isEnabled:(BOOL)arg2;
 - (id)logIdentifier;
 
 @end

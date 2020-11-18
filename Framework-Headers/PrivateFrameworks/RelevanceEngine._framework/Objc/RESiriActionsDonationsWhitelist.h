@@ -6,10 +6,18 @@
 
 #import <objc/NSObject.h>
 
+@class NSSet;
+
 @interface RESiriActionsDonationsWhitelist : NSObject
 {
     struct NSDictionary *_whitelist;
+    struct os_unfair_lock_s _lock;
+    NSSet *_intentWhitelistBundleIDs;
+    NSSet *_userActivityWhitelistBundleIDs;
 }
+
+@property (readonly, nonatomic) NSSet *intentWhitelistBundleIDs; // @synthesize intentWhitelistBundleIDs=_intentWhitelistBundleIDs;
+@property (readonly, nonatomic) NSSet *userActivityWhitelistBundleIDs; // @synthesize userActivityWhitelistBundleIDs=_userActivityWhitelistBundleIDs;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

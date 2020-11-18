@@ -66,8 +66,10 @@
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
 @property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (copy, nonatomic) NSString *sceneHostViewMinificationFilter;
 @property (nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
+@property (nonatomic) BOOL shouldRasterizeSceneHostView;
 @property (readonly, nonatomic) double statusBarAlpha;
 @property (readonly) Class superclass;
 

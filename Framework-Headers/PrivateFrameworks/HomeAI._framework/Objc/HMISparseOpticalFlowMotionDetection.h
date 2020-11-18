@@ -11,14 +11,18 @@
 @interface HMISparseOpticalFlowMotionDetection : HMIMotionDetection
 {
     NSArray *_motionVectors;
+    struct CGSize _size;
 }
 
 @property (readonly) NSArray *motionVectors; // @synthesize motionVectors=_motionVectors;
+@property (readonly) struct CGSize size; // @synthesize size=_size;
 
 - (void).cxx_destruct;
-- (id)initWithBoundingBox:(struct CGRect)arg1 motionVectors:(id)arg2;
-- (BOOL)isSubBoundingBoxStatic:(struct CGRect)arg1 forMetric:(long long)arg2;
-- (float)scoreForSubBoundingBox:(struct CGRect)arg1 forMetric:(long long)arg2;
+- (BOOL)applyEventTypeAndCheckIfSubBoundingIsStatic:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
+- (id)classMotionScoreMap;
+- (id)classPaddingMap;
+- (id)initWithBoundingBox:(struct CGRect)arg1 size:(struct CGSize)arg2 motionVectors:(id)arg3;
+- (float)scoreForSubBoundingBox:(struct CGRect)arg1 forMetric:(long long)arg2 eventType:(long long)arg3 confidence:(float)arg4;
 
 @end
 

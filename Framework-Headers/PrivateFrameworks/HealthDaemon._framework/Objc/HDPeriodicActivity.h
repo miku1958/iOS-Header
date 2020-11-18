@@ -22,6 +22,7 @@
     NSString *_errorCountUserDefaultsKey;
     NSString *_minimumIntervalDefaultsKey;
     BOOL _unitTest_shouldDeferOverride;
+    BOOL _hasUpdatedCriteria;
     NSString *_name;
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;

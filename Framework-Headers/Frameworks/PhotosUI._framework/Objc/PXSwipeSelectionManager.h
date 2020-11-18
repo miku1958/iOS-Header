@@ -25,6 +25,7 @@
         BOOL respondsToShouldAutomaticallyTransitionToMultiSelectModeAtPoint;
         BOOL respondsToAutomaticallyTransitionToMultiSelectMode;
         BOOL respondsToIndexPathSetFromIndexPathToIndexPath;
+        BOOL respondsToDidAutoScroll;
     } _delegateFlags;
     id<PXSwipeSelectionManagerDelegate> _delegate;
     unsigned long long _state;
@@ -67,6 +68,7 @@
 - (void)_updateSelectedIndexPaths;
 - (void)_updateSelectionWithHitIndexPath:(struct PXSimpleIndexPath)arg1 leadingClosestIndexPath:(struct PXSimpleIndexPath)arg2 aboveClosestIndexPath:(struct PXSimpleIndexPath)arg3;
 - (void)_updateWithDataSource:(id)arg1 changeHistory:(id)arg2;
+- (void)autoScroller:(id)arg1 didAutoscrollWithTimestamp:(double)arg2;
 - (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(BOOL)arg1;
 - (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)init;

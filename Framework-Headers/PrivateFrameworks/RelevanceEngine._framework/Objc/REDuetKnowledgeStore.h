@@ -28,6 +28,7 @@
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)executeQuerySynchronouslyWithBatching:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)queryForAllDonatedActions;
+- (id)queryForAllDonatedActionsWithIdentifier:(id)arg1;
 - (id)queryForAllRelevantShortcuts;
 - (id)queryForDeletedActionsAfterDate:(id)arg1;
 - (id)queryForDonatedActionsAfterDate:(id)arg1;

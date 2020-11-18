@@ -12,6 +12,7 @@
 
 @interface ICInlineDrawingTextAttachment : ICBaseTextAttachment <PKTextAttachment>
 {
+    BOOL _isHandlingDrawingDidChange;
     ICInlineDrawingChangeCoalescer *_changeCoalescer;
     NSHashTable *_inlineDrawingViews;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSHashTable *inlineDrawingViews; // @synthesize inlineDrawingViews=_inlineDrawingViews;
+@property (nonatomic) BOOL isHandlingDrawingDidChange; // @synthesize isHandlingDrawingDidChange=_isHandlingDrawingDidChange;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -31,7 +33,7 @@
 - (id)contents;
 - (void)detachView;
 - (void)detachView:(struct UIView *)arg1 fromParentView:(struct UIView *)arg2;
-- (void)drawingDataDidChange:(id)arg1;
+- (void)drawingDataDidChange:(id)arg1 view:(id)arg2;
 - (void)placeView:(struct UIView *)arg1 withFrame:(struct CGRect)arg2 inParentView:(struct UIView *)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
 - (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)resetZoom;

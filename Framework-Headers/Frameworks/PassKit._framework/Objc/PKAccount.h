@@ -51,6 +51,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)exportTransactionDataFeatureDescriptor;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
@@ -67,6 +68,7 @@
 - (id)showNotificationsFeatureDescriptor;
 - (id)showVirtualCardFeatureDescriptor;
 - (BOOL)supportsAddFundingSource;
+- (BOOL)supportsExportTransactionData;
 - (BOOL)supportsExtendedFetch;
 - (BOOL)supportsRedeemRewards;
 - (BOOL)supportsRequestPhysicalCard;

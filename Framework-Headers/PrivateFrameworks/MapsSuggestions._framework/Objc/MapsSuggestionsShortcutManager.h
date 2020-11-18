@@ -45,7 +45,11 @@
 - (id)initWithStorage:(id)arg1 suggestor:(id)arg2 contacts:(id)arg3 routine:(id)arg4;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
-- (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)moveShortcut:(id)arg1 afterShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)moveShortcut:(id)arg1 beforeShortcut:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)moveShortcut:(id)arg1 toIndex:(long long)arg2 withSnapshot:(struct NSArray *)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)moveShortcutToBack:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)moveShortcutToFront:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)proposeAdditionalShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)readMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeMeCardObserver:(id)arg1;

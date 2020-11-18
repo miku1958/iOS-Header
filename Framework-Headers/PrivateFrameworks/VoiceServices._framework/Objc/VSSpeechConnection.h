@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)continueCurrentSpeechRequest;
 - (void)dealloc;
 - (void)endAudioPowerUpdate;
+- (void)estimateDurationWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forwardStreamObject:(id)arg1;
 - (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;

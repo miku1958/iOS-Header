@@ -30,6 +30,7 @@
 + (id)sharedAccess;
 + (BOOL)useLongLivedOperations;
 - (void).cxx_destruct;
+- (id)containerForAccount;
 - (id)containerWithZoneWidePCS:(BOOL)arg1;
 - (id)description;
 - (void)fetchAccountIdentifierWithCompletion:(CDUnknownBlockType)arg1;

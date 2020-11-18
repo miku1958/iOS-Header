@@ -43,6 +43,8 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 
++ (id)_destructiveActivities;
++ (id)activityWithActionTitle:(id)arg1 actionType:(id)arg2 activityType:(id)arg3 systemImageName:(id)arg4;
 - (void).cxx_destruct;
 - (id)_systemImageName;
 - (id)activityTitle;

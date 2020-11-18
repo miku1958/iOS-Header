@@ -11,6 +11,7 @@
 @protocol EMAccountBuilder <NSObject>
 
 @property (copy, nonatomic) NSString *hostname;
+@property (nonatomic, getter=isPrimaryiCloudAccount) BOOL primaryiCloudAccount;
 @property (copy, nonatomic) NSString *username;
 
 @end

@@ -53,6 +53,7 @@
 - (void)_reloadNotificationsAfterFirstUnlock;
 - (void)_reloadNotificationsFromUnprotectedStorage:(id)arg1 intoProtectedStorage:(id)arg2 withStorageWrapper:(id)arg3 forNotificationServer:(id)arg4;
 - (void)_removeNotificationsFromUnprotectedStorage:(id)arg1;
+- (void)_updateSourceClientIdentifiersIfNeeded;
 - (void)activate;
 - (void)deactivate;
 - (void)didRegisterForAlarms;

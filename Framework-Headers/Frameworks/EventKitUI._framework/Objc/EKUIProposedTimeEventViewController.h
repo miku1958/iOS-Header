@@ -29,7 +29,7 @@
 - (void).cxx_destruct;
 - (id)_statusButtons;
 - (id)initWithProposedTimeAttendee:(id)arg1;
-- (void)invokeAction:(long long)arg1;
+- (void)invokeAction:(long long)arg1 eventStatusButtonsView:(id)arg2;
 - (id)items;
 - (id)proposedTime;
 - (id)viewTitle;

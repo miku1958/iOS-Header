@@ -34,10 +34,11 @@
 + (id)sharedController;
 - (void).cxx_destruct;
 - (BOOL)_ensureTelephonyHandlesAreReady;
+- (void)_handleActiveSubscriptionsDidChange;
 - (id)_init;
-- (void)_invalidatePhoneNumber;
 - (id)_telephonyClient;
 - (id)_telephonySubscriptionContext;
+- (void)_updatePhoneNumberAllowingDidChangeNotification:(BOOL)arg1;
 - (void)activeSubscriptionsDidChange;
 - (void)dealloc;
 - (void)phoneNumberAvailable:(id)arg1;

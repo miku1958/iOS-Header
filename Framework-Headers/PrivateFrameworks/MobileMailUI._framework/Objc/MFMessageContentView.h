@@ -155,6 +155,7 @@
 - (void)_adjustHeaderOffsetForZoom;
 - (double)_adjustWebViewInsetsToAccomodateHeaderAndFooter;
 - (void)_alertMailDropDownloadIsTooLargeForCell:(BOOL)arg1;
+- (BOOL)_allAttachmentsArePhotosOrVideos;
 - (id)_attachmentPreviewsFromData:(id)arg1;
 - (void)_beginObservingContentHeight;
 - (void)_clearAllBannersAnimated:(BOOL)arg1;
@@ -175,7 +176,6 @@
 - (void)_foundImageCIDAttachments:(id)arg1;
 - (void)_handleAttachmentTapMessage:(id)arg1;
 - (void)_handleBlockSenderListChanged:(id)arg1;
-- (BOOL)_isAllowedToSaveAttachmentsToPhotos;
 - (void)_layoutFooterView;
 - (void)_layoutLoadingView;
 - (id)_libraryMessage;
@@ -183,6 +183,7 @@
 - (void)_loadBlockedMessageContactWarningWithRepresentation:(id)arg1;
 - (void)_logRequestFinishWithSuccess:(BOOL)arg1;
 - (id)_mailboxForBanner:(id)arg1;
+- (BOOL)_mayShareToUnmanaged;
 - (void)_notifyDelegateScrollViewSizeChanged:(struct CGSize)arg1;
 - (BOOL)_objectContainsNonEmptyString:(id)arg1;
 - (void)_observeBlockedSenderListChangedNotification;
@@ -253,6 +254,7 @@
 - (void)scrollViewDidZoom:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)selectAll:(id)arg1;
+- (void)setAutomaticallyCollapseQuotedContent:(BOOL)arg1 reloadIfNeeded:(BOOL)arg2;
 - (void)setCachedMetadata:(id)arg1 forKey:(id)arg2;
 - (void)setCachedMetadataBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setFrame:(struct CGRect)arg1;

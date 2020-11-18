@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
+
 @class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSMutableArray, NSSet, NSString;
 @protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate;
 
-@interface MPAVRoutingController : NSObject
+@interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable>
 {
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
@@ -39,11 +41,14 @@
 @property (readonly, copy, nonatomic) NSArray *availableRoutes;
 @property (copy, nonatomic) NSString *category; // @synthesize category=_category;
 @property (readonly, nonatomic) MPAVRoutingDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPAVRoutingControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property (readonly, nonatomic) long long externalScreenType;
 @property (nonatomic) BOOL fetchAvailableRoutesSynchronously; // @synthesize fetchAvailableRoutesSynchronously=_fetchAvailableRoutesSynchronously;
 @property (readonly, nonatomic) BOOL hasPendingPickedRoutes;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPAVRoute *legacyCachedRoute; // @synthesize legacyCachedRoute=_legacyCachedRoute;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) MPAVRoute *pendingPickedRoute;
@@ -55,12 +60,14 @@
 @property (copy, nonatomic) NSString *representedBundleID; // @synthesize representedBundleID=_representedBundleID;
 @property (readonly, nonatomic) BOOL representsLongFormVideoContent; // @synthesize representsLongFormVideoContent=_representsLongFormVideoContent;
 @property (nonatomic) long long routeTypes; // @synthesize routeTypes=_routeTypes;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsMultipleSelection;
 @property (readonly, nonatomic) BOOL volumeControlIsAvailable;
 
 + (id)_currentDeviceRoutingIconImage;
 + (id)_currentDeviceRoutingIconImageName;
 + (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (id)_iconImageForIdentifier:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
 + (BOOL)bundleIdRepresentsLongFormVideoContent:(id)arg1;
@@ -91,6 +98,7 @@
 - (void)_sendDelegatePickedRoutesChanged;
 - (void)_setExternalScreenType:(long long)arg1;
 - (void)_setVolumeControlStateForPickedRoute:(long long)arg1;
+- (id)_stateDumpObject;
 - (void)_unregisterNotifications;
 - (void)_updateCachedRoutes;
 - (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;
@@ -100,7 +108,6 @@
 - (BOOL)airtunesRouteIsPicked;
 - (void)clearCachedRoutes;
 - (void)dealloc;
-- (id)description;
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchAvailableRoutesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;

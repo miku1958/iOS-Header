@@ -32,7 +32,6 @@
 - (void)_filterControlTapped:(id)arg1;
 - (double)_internalInterGroupSpacing;
 - (id)_pasteboardItemsForResult:(id)arg1;
-- (void)_saveAttachmentForResult:(id)arg1;
 - (struct NSDirectionalEdgeInsets)additionalGroupInsets;
 - (BOOL)applyLayoutMarginsToLayoutGroup;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
@@ -48,6 +47,7 @@
 - (id)previewViewControllerForResult:(id)arg1;
 - (id)queryAttributesForText:(id)arg1;
 - (id)queryResultsForItems:(id)arg1;
+- (void)saveAttachmentForResult:(id)arg1;
 - (void)updateSupplementryViewIfNeeded:(id)arg1 atIndexPath:(id)arg2;
 - (BOOL)wantsHeaderSection;
 

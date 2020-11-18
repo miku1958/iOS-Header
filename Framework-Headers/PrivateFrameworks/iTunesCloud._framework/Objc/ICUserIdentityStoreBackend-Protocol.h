@@ -8,7 +8,7 @@
 #import <iTunesCloud/NSObject-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICUserIdentityProperties, NSNumber;
+@class ICLocalStoreAccountProperties, ICUserIdentityProperties, NSNumber;
 @protocol ICUserIdentityStoreBackendDelegate;
 
 @protocol ICUserIdentityStoreBackend <NSObject, NSCopying, NSSecureCoding>
@@ -19,9 +19,12 @@
 - (void)activeLockerAccountDSIDWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)identityPropertiesForDSID:(NSNumber *)arg1 completion:(void (^)(ICUserIdentityProperties *, NSError *))arg2;
 - (void)identityPropertiesForPrimaryICloudAccountWithCompletion:(void (^)(ICUserIdentityProperties *, NSError *))arg1;
+- (void)localStoreAccountPropertiesWithCompletion:(void (^)(ICLocalStoreAccountProperties *, NSError *))arg1;
+- (ICLocalStoreAccountProperties *)localStoreAccountPropertiesWithError:(id *)arg1;
 - (void)removeIdentityForDSID:(NSNumber *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)replaceIdentityProperties:(ICUserIdentityProperties *)arg1 forDSID:(NSNumber *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)setIdentityProperties:(ICUserIdentityProperties *)arg1 forDSID:(NSNumber *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)setLocalStoreAccountProperties:(ICLocalStoreAccountProperties *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)synchronize;
 - (void)updateActiveAccountDSID:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateActiveLockerAccountDSID:(NSNumber *)arg1 completion:(void (^)(NSError *))arg2;

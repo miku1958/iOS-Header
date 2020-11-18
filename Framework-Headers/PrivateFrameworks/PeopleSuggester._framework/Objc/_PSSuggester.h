@@ -25,6 +25,7 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithDaemonUsingConfiguration:(id)arg1;
+- (void)provideFeedbackForMessagesZkwSuggestions:(id)arg1;
 - (void)provideFeedbackForSuggestions:(id)arg1;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedGlobalSuggestionsFromContext:(id)arg1 contactsOnly:(BOOL)arg2;

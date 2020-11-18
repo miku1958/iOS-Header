@@ -8,10 +8,11 @@
 
 #import <SafariServices/WBUFormAutoFillWebView-Protocol.h>
 
-@class NSString, UIViewController, _SFSecurityInfo;
+@class NSString, UIView, UIViewController, _SFSecurityInfo;
 
 @interface WKWebView (SafariServicesExtras) <WBUFormAutoFillWebView>
 
+@property (readonly, nonatomic) UIView *_sf_effectiveViewToLayOut;
 @property (strong, nonatomic, setter=_sf_setSecurityInfo:) _SFSecurityInfo *_sf_securityInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

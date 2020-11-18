@@ -16,6 +16,7 @@
 @property (strong) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 feedbackDelegate:(id)arg3 sourceView:(id)arg4;
 - (void)sendFeedbackForResult:(id)arg1 cardSection:(id)arg2 selectedPunchout:(id)arg3;
 - (void)viewWillDisappear:(BOOL)arg1;

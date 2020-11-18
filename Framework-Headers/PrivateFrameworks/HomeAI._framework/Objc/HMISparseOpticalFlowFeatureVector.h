@@ -8,10 +8,12 @@
 
 @interface HMISparseOpticalFlowFeatureVector : HMFObject
 {
+    long long _eventType;
     struct CGPoint _origin;
     struct CGVector _motion;
 }
 
+@property long long eventType; // @synthesize eventType=_eventType;
 @property (readonly) struct CGVector motion; // @synthesize motion=_motion;
 @property (readonly) struct CGPoint origin; // @synthesize origin=_origin;
 @property (readonly) struct CGPoint target;

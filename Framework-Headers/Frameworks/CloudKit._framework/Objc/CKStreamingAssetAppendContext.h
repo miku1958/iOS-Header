@@ -9,7 +9,7 @@
 #import <CloudKit/C2RequestDelegate-Protocol.h>
 
 @class CKStreamingAsset, NSString, NSURLSessionDataTask;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_activity;
 
 @interface CKStreamingAssetAppendContext : NSObject <C2RequestDelegate>
 {
@@ -21,6 +21,8 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
     unsigned long long _currentSegmentLength;
     NSURLSessionDataTask *_dataTask;
+    NSString *_requestUUID;
+    NSObject<OS_os_activity> *_osActivity;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -35,10 +37,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fakeMissingUploadReceipt; // @synthesize fakeMissingUploadReceipt=_fakeMissingUploadReceipt;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_os_activity> *osActivity; // @synthesize osActivity=_osActivity;
+@property (strong, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property (strong, nonatomic) CKStreamingAsset *streamingAsset; // @synthesize streamingAsset=_streamingAsset;
 @property (readonly) Class superclass;
 
-+ (id)requestToAppendSegmentData:(id)arg1 uploadURL:(id)arg2 offset:(unsigned long long)arg3;
++ (id)requestToAppendSegmentData:(id)arg1 uploadURL:(id)arg2 requestUUID:(id)arg3 offset:(unsigned long long)arg4;
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (void)URLSession:(id)arg1 _taskIsWaitingForConnection:(id)arg2;

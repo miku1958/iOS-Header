@@ -8,12 +8,14 @@
 
 #import <ClassKit/CLSRelationable-Protocol.h>
 
-@class NSString, NSURL;
+@class NSObject, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface CLSAsset : CLSObject <CLSRelationable>
 {
     NSURL *_url;
     BOOL _uploaded;
+    NSObject<OS_dispatch_queue> *_shareQueue;
     BOOL _original;
     NSString *_ownerPersonID;
     NSString *_brItemID;
@@ -43,6 +45,7 @@
 + (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_createShareIfNeeded:(CDUnknownBlockType)arg1;
 - (BOOL)_deleteFileAtURL:(id)arg1 error:(id *)arg2;
 - (id)_init;
 - (id)_initWithFileURL:(id)arg1;

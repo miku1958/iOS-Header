@@ -45,7 +45,6 @@
 - (void).cxx_destruct;
 - (id)_currentFirstResponder;
 - (BOOL)_currentFirstResponderWantsToolPickerVisible;
-- (void)_forceSetVisible:(BOOL)arg1;
 - (BOOL)_internalClassWantsToolPickerVisibleForResponder:(id)arg1;
 - (id)_internalClassesAcceptingFirstResponder;
 - (id)_paletteView;
@@ -67,7 +66,6 @@
 - (id)paletteViewUndoManager:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setVisible:(BOOL)arg1 forFirstResponder:(id)arg2;
-- (void)visibilityDidChange:(BOOL)arg1;
 
 @end
 

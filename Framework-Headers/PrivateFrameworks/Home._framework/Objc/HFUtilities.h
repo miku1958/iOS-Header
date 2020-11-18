@@ -10,9 +10,10 @@
 {
 }
 
-+ (void)acceptCameraFeedbackConsent;
++ (void)acceptEmployeeCameraFeedbackConsent;
 + (id)applicationSupportDirectoryURL;
 + (id)cachesDirectoryURL;
++ (id)cameraFeedbackQueryString;
 + (BOOL)cameraFeedbackSupported;
 + (CDUnknownBlockType)comparatorWithSortedClasses:(id)arg1 secondaryComparator:(CDUnknownBlockType)arg2;
 + (CDUnknownBlockType)comparatorWithSortedObjects:(id)arg1;

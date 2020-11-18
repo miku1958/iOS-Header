@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class VRFPublicKey;
 
 @interface TransparencyVRFVerifier : NSObject
 {
-    NSData *_key;
+    VRFPublicKey *_key;
 }
 
-@property (strong) NSData *key; // @synthesize key=_key;
+@property (strong) VRFPublicKey *key; // @synthesize key=_key;
 @property (readonly) int vrfType;
 
++ (id)saltMessage:(id)arg1 salt:(id)arg2;
 + (id)verifierOfType:(int)arg1 key:(id)arg2;
 + (BOOL)verifyMessage:(id)arg1 output:(id)arg2 proof:(id)arg3 key:(id)arg4 error:(id *)arg5;
++ (BOOL)verifyMessage:(id)arg1 salt:(id)arg2 output:(id)arg3 proof:(id)arg4 key:(id)arg5 error:(id *)arg6;
 - (void).cxx_destruct;
 - (id)initWithKey:(id)arg1;
 - (BOOL)verifyMessage:(id)arg1 output:(id)arg2 proof:(id)arg3 error:(id *)arg4;
+- (BOOL)verifyMessage:(id)arg1 salt:(id)arg2 output:(id)arg3 proof:(id)arg4 error:(id *)arg5;
 
 @end
 

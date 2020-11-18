@@ -11,6 +11,7 @@
 @interface _TtC7FMFCore24FMFSystemStateController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
+    MISSING_TYPE *refreshSerialQueue;
     MISSING_TYPE *isFMFRestricted;
 }
 

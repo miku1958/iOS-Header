@@ -36,6 +36,7 @@
 - (void)accessoryDidUpdateControllable:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateMultiUserSupport:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateReachableTransports:(HMAccessory *)arg1;
+- (void)accessoryDidUpdateSupportsCompanionInitiatedRestart:(HMAccessory *)arg1;
 - (void)accessoryDidUpdateTargetControlSupport:(HMAccessory *)arg1;
 @end
 

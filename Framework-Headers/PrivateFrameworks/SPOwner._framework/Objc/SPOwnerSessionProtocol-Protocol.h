@@ -15,6 +15,7 @@
 @property (copy, nonatomic) CDUnknownBlockType beaconRemovedBlock;
 @property (copy, nonatomic) CDUnknownBlockType beaconsChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType latestLocationsUpdatedBlock;
+@property (copy, nonatomic) NSSet *locationSources;
 
 - (void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
 - (FMFuture *)executeCommand:(SPCommand *)arg1;

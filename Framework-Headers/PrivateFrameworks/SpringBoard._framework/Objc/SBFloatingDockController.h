@@ -157,6 +157,7 @@
 - (id)succinctDescriptionBuilder;
 - (id)viewForSystemGestureRecognizer:(id)arg1;
 - (unsigned long long)viewMap:(id)arg1 maxRecycledViewsOfClass:(Class)arg2;
+- (BOOL)viewMap:(id)arg1 shouldRecycleView:(id)arg2;
 
 @end
 

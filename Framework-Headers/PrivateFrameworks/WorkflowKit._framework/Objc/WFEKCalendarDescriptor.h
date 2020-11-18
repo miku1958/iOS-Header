@@ -30,7 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithAllCalendars;
-- (id)initWithCalendarTitle:(id)arg1 identifier:(id)arg2 rgbaValue:(id)arg3;
+- (id)initWithCalendarTitle:(id)arg1 identifier:(id)arg2 RGBAValue:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)matchingCalendarsFromArray:(id)arg1;

@@ -6,28 +6,43 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, UIColor;
+#import <WorkflowUI/WFActionEventObserver-Protocol.h>
 
-@interface WFMaskedShadowView : UIView
+@class CAShapeLayer, NSString, UIColor, WFAction;
+
+@interface WFMaskedShadowView : UIView <WFActionEventObserver>
 {
     BOOL _attributesChanged;
+    BOOL _actionRunning;
     long long _mode;
     double _cornerRadius;
+    UIColor *_shadowColor;
+    UIColor *_runningShadowColor;
     UIColor *_borderColor;
     double _borderWidth;
     CAShapeLayer *_borderLayer;
+    WFAction *_action;
 }
 
+@property (weak, nonatomic) WFAction *action; // @synthesize action=_action;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
 @property (weak, nonatomic) CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
 @property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) UIColor *runningShadowColor; // @synthesize runningShadowColor=_runningShadowColor;
+@property (strong, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)actionRunningStateDidChange:(id)arg1;
 - (void)applyAttributes;
 - (void)attributesDidChange;
 - (void)layoutSubviews;
+- (void)updateShadowColorAnimated:(BOOL)arg1;
 
 @end
 

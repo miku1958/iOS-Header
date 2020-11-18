@@ -6,12 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SKRemoteDismissingViewController-Protocol.h>
 #import <StoreKit/SKScreenTrackingDelegate-Protocol.h>
+#import <StoreKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSDictionary, NSString, SKInvocationQueueProxy, SKRemoteProductViewController, SKScrollDetector, _UIAsyncInvocation;
 @protocol SKStoreProductViewControllerDelegate, SKStoreProductViewControllerDelegatePrivate, SKUIServiceProductPageViewController;
 
-@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate>
+@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate, UIViewControllerTransitioningDelegate, SKRemoteDismissingViewController>
 {
     NSString *_additionalBuyParameters;
     NSString *_affiliateIdentifier;
@@ -77,11 +79,13 @@
 - (void)_sk_applicationWillEnterForeground:(id)arg1;
 - (void)_throwUnsupportedPresentationException;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
 - (void)dealloc;
-- (void)dismissModalViewControllerAnimated:(BOOL)arg1;
+- (BOOL)dismissRemoteViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)finishImmediately;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)interactionControllerForDismissal:(id)arg1;
 - (void)loadProductWithPageDictionary:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithParameters:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -92,6 +96,7 @@
 - (long long)preferredStatusBarStyle;
 - (void)setParentViewController:(id)arg1;
 - (void)setPresentationStyleIfNeeded;
+- (BOOL)shouldAutorotate;
 - (void)sk_didBecomeOffScreen:(id)arg1;
 - (void)sk_didBecomeOnScreen:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

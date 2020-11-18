@@ -54,6 +54,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 
++ (id)chooserQueue;
 + (id)contentEditingInputRequestContextWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 options:(id)arg4 useRAWAsUnadjustedBase:(BOOL)arg5 resultHandler:(CDUnknownBlockType)arg6;
 + (id)imageRequestContextWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 imageRequestOptions:(id)arg4 displaySpec:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 + (void)initialize;

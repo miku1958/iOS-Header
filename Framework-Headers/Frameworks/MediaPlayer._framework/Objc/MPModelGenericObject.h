@@ -44,6 +44,7 @@
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)anyObject;
 - (id)artworkCatalog;
+- (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)flattenedGenericObject;
 - (id)humanDescription;
 - (id)identifiers;
@@ -51,8 +52,6 @@
 - (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
 - (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (id)relativeModelObjectForStoreLibraryPersonalization;
-- (id)storeItemMetadataRequestItemIdentifier;
-- (BOOL)storeItemMetadataRequestNeedsPersonalization;
 - (long long)type;
 
 @end

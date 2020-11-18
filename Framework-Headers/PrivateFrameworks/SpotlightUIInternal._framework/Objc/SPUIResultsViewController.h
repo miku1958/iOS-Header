@@ -42,7 +42,7 @@
 - (void)searchAgentClearedResults:(id)arg1;
 - (void)searchAgentFinishedQueryWithoutAdditionalResults:(id)arg1;
 - (void)searchAgentUpdatedResults:(id)arg1;
-- (void)searchStringUpdated:(id)arg1 wantsCompletions:(BOOL)arg2 withQueryId:(unsigned long long)arg3;
+- (void)searchUpdatedWithString:(id)arg1 tokenEntity:(id)arg2 queryId:(unsigned long long)arg3 wantsCompletions:(BOOL)arg4;
 
 @end
 

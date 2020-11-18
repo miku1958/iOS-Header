@@ -26,6 +26,7 @@
 @property (copy, nonatomic) UNNotificationIcon *icon; // @dynamic icon;
 @property (copy, nonatomic) NSString *launchImageName; // @dynamic launchImageName;
 @property (copy, nonatomic) NSArray *peopleIdentifiers; // @dynamic peopleIdentifiers;
+@property (nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property (nonatomic) BOOL shouldAuthenticateDefaultAction; // @dynamic shouldAuthenticateDefaultAction;
 @property (nonatomic) BOOL shouldBackgroundDefaultAction; // @dynamic shouldBackgroundDefaultAction;
 @property (nonatomic) BOOL shouldHideDate; // @dynamic shouldHideDate;

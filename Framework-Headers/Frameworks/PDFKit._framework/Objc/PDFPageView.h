@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)_rotateActiveAnnotation;
 - (struct CGAffineTransform)_rotationTransformForPageView;
 - (void)_setAttributedStringForAnnotation:(id)arg1 stringValue:(id)arg2 textView:(id)arg3;
-- (void)_setPageLayerEffectForID:(id)arg1 hidden:(BOOL)arg2;
 - (void)_setupBookmarkLayer;
 - (void)_setuppageAnnotationEffects;
 - (BOOL)_shouldReplaceStringOnAnnotation:(id)arg1 withTextView:(id)arg2;

@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <ReminderKit/REMDaemonController-Protocol.h>
+#import <ReminderKit/REMXPCClient-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSXPCConnection, REMStoreContainerToken;
+@protocol REMXPCDaemonControllerCloudKitNetworkActivityDelegate;
 
-@interface REMXPCDaemonController : NSObject <REMDaemonController>
+@interface REMXPCDaemonController : NSObject <REMDaemonController, REMXPCClient>
 {
     struct os_unfair_lock_s _ivarLock;
+    id<REMXPCDaemonControllerCloudKitNetworkActivityDelegate> _cloudKitNetworkActivityDelegate;
     NSMutableDictionary *_l_performersByName;
     NSString *_serviceName;
     NSXPCConnection *_xpcConnection;
     REMStoreContainerToken *_storeContainerToken;
 }
 
+@property (weak, nonatomic) id<REMXPCDaemonControllerCloudKitNetworkActivityDelegate> cloudKitNetworkActivityDelegate; // @synthesize cloudKitNetworkActivityDelegate=_cloudKitNetworkActivityDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,26 +36,29 @@
 + (id)userInteractiveDaemonController;
 + (id)weakSharedInstance;
 - (void).cxx_destruct;
-- (void)_asyncPerformerWithResolver:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
-- (void)_asyncResolveAndCachePerformerWithResolver:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_asyncResolvePerformerWithResolver:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_resolveAndCachePerformerWithResolver:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (id)_resolvePerformerWithResolver:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (id)_syncPerformerWithResolver:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)_asyncPerformerWithResolver:(id)arg1 reason:(id)arg2 loadHandler:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;
+- (void)_asyncResolveAndCachePerformerWithResolver:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_asyncResolvePerformerWithResolver:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_resolveAndCachePerformerWithResolver:(id)arg1 reason:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (id)_resolvePerformerWithResolver:(id)arg1 reason:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (id)_syncPerformerWithResolver:(id)arg1 reason:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)_xpcConnectionDidInterrupt;
+- (void)_xpcConnectionDidInvalidate;
 - (id)_xpcConnectionReconnectingIfNecessary;
-- (void)asyncIndexingPerformerWithLoadHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)asyncStorePerformerWithLoadHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)asyncSyncInterfacePerformerWithLoadHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)asyncIndexingPerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)asyncStorePerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)asyncSyncInterfacePerformerWithReason:(id)arg1 loadHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)cloudKitNetworkActivityDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithStoreContainerToken:(id)arg1;
 - (id)initWithStoreContainerToken:(id)arg1 userInteractive:(BOOL)arg2;
 - (void)invalidate;
-- (id)syncChangeTrackingPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)syncDebugPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)syncIndexingPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)syncStorePerformerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)syncSyncInterfacePerformerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)syncChangeTrackingPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)syncDebugPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)syncIndexingPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)syncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)syncSyncInterfacePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 
 @end
 

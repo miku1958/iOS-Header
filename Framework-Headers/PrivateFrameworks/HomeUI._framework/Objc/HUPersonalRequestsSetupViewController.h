@@ -11,15 +11,17 @@
 #import <HomeUI/HUItemTableModuleControllerHosting-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HULocationDevice, HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSString, OBLinkTrayButton, OBTrayButton;
+@class HMHome, HULocationDevice, HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSArray, NSString, OBLinkTrayButton, OBTrayButton;
 @protocol HUConfigurationViewControllerDelegate;
 
 @interface HUPersonalRequestsSetupViewController : HUImageOBWelcomeController <HFItemManagerDelegate, HUItemTableModuleControllerHosting, HUConfigurationViewController, HUPreloadableViewController>
 {
     id<HUConfigurationViewControllerDelegate> _delegate;
+    HMHome *_home;
     OBTrayButton *_usePRButton;
     OBLinkTrayButton *_customizeButton;
     HULocationDevice *_locationDevice;
+    NSArray *_supportedMultiUserLanguages;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
     HUPersonalRequestsDevicesModuleController *_prDevicesModuleController;
 }
@@ -29,20 +31,23 @@
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (nonatomic) BOOL isFinalStep;
 @property (strong, nonatomic) HULocationDevice *locationDevice; // @synthesize locationDevice=_locationDevice;
 @property (strong, nonatomic) HUPersonalRequestsDevicesModuleController *prDevicesModuleController; // @synthesize prDevicesModuleController=_prDevicesModuleController;
 @property (strong, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
 @property (strong, nonatomic) OBTrayButton *usePRButton; // @synthesize usePRButton=_usePRButton;
 
 - (void).cxx_destruct;
+- (BOOL)_allPersonalRequestsDevicesSupportVoiceRecognition;
 - (void)_customizePersonalRequests:(id)arg1;
 - (void)_dontUsePersonalRequests:(id)arg1;
 - (void)_setupPersonalRequestsItemInfrastructure;
 - (void)_turnOnAllPersonalRequests:(id)arg1;
 - (id)hu_preloadContent;
-- (id)init;
+- (id)initWithHome:(id)arg1;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;

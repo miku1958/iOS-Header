@@ -114,6 +114,7 @@
 - (id)transportableAuthKitAccount:(id)arg1;
 - (void)updateSatoriWarmUpTimestampForAccount:(id)arg1;
 - (void)updateUsername:(id)arg1 forAccountsWithAltDSID:(id)arg2;
+- (void)updateVerifiedEmail:(BOOL)arg1 forAccountWithAltDSID:(id)arg2;
 - (BOOL)userUnderAgeForAccount:(id)arg1;
 - (BOOL)verifiedPrimaryEmailForAccount:(id)arg1;
 

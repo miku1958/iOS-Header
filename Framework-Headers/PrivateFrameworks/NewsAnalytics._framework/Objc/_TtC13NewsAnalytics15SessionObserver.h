@@ -6,12 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsAnalytics/FCBundleSubscriptionChangeObserver-Protocol.h>
-#import <NewsAnalytics/FCUserInfoObserving-Protocol.h>
-
 @class MISSING_TYPE;
 
-@interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving>
+@interface _TtC13NewsAnalytics15SessionObserver : NSObject
 {
     MISSING_TYPE *sessionManager;
     MISSING_TYPE *cloudContext;
@@ -19,15 +16,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)bundleSubscriptionDidExpire:(id)arg1;
-- (void)bundleSubscriptionDidSubscribe:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)pushOrientationData;
-- (void)pushSessionData;
-- (void)pushUserSubscriptionContextData;
-- (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(BOOL)arg2;
 
 @end
 

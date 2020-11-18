@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSString *feldsparID;
 @property (nonatomic) BOOL hasShownProgressivePersonalizationWelcomeBrick;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *lastAppLaunchUpsellInstanceID;
 @property (nonatomic) BOOL marketingNotificationsEnabled;
 @property (readonly, nonatomic) BOOL mightNeedToUpdateOnboardingVersion;
 @property (copy, nonatomic) NSNumber *monthlyALaCarteSubscriptionMeteredCount;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL shouldShowDefaultForYou;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
+@property (copy, nonatomic) NSNumber *upsellAppLaunchCount;
 @property (readonly, nonatomic) BOOL useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property (nonatomic) BOOL userHasCompletedFavoritesSetup;
 @property (strong, nonatomic) FCMTWriterLock *userInfoLock; // @synthesize userInfoLock=_userInfoLock;

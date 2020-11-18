@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DeliveryAccount, ECHTMLStringAndMIMECharset, MFDeliveryResult, MFMailMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary;
+@class DeliveryAccount, ECHTMLStringAndMIMECharset, EMMessageObjectID, MFDeliveryResult, MFMailMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary;
 
 @interface MFMailDelivery : NSObject
 {
@@ -25,13 +25,23 @@
     unsigned int _threaded:1;
     unsigned int _useCellDataOnly:1;
     BOOL _isUserRequested;
+    BOOL _shouldSign;
+    BOOL _shouldEncrypt;
     unsigned long long _conversationFlags;
+    EMMessageObjectID *_originalMessageObjectID;
+    MFMailMessage *_originalMessage;
+    long long _action;
 }
 
+@property (nonatomic) long long action; // @synthesize action=_action;
 @property (strong, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
 @property (nonatomic) unsigned long long conversationFlags; // @synthesize conversationFlags=_conversationFlags;
 @property (weak, nonatomic) id delegate;
 @property (nonatomic) BOOL isUserRequested; // @synthesize isUserRequested=_isUserRequested;
+@property (strong, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
+@property (strong, nonatomic) EMMessageObjectID *originalMessageObjectID; // @synthesize originalMessageObjectID=_originalMessageObjectID;
+@property (nonatomic) BOOL shouldEncrypt; // @synthesize shouldEncrypt=_shouldEncrypt;
+@property (nonatomic) BOOL shouldSign; // @synthesize shouldSign=_shouldSign;
 
 + (BOOL)deliverMessage:(id)arg1;
 + (id)newWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
@@ -58,8 +68,7 @@
 - (void)setAccount:(id)arg1;
 - (void)setArchiveAccount:(id)arg1;
 - (void)setCellDataOnly:(BOOL)arg1;
-- (BOOL)shouldEncryptMessage;
-- (BOOL)shouldSignMessage;
+- (void)updateOriginalMessageFromHeaders:(id)arg1;
 
 @end
 

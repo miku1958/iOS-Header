@@ -106,6 +106,7 @@
 - (void)setVolumeDataSource:(id)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (void)updateVolume;
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 EUVolumeLimitEnforcedDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;

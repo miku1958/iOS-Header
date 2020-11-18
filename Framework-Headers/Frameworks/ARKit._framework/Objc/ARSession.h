@@ -173,7 +173,6 @@
 - (CDStruct_14d5dc5e)predictedDeviceTransformAtTimestamp:(double)arg1;
 - (void)presentation:(id)arg1 didTransitionToMode:(long long)arg2;
 - (void)presentation:(id)arg1 willTransitionToMode:(long long)arg2;
-- (void)pushCollaborationData:(id)arg1;
 - (id)raycast:(id)arg1;
 - (void)removeAnchor:(id)arg1;
 - (id)replaySensor;

@@ -57,6 +57,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (void)registerForMessages;
+- (void)removeCloudData;
 - (id)runtimeState;
 - (void)unconfigure;
 

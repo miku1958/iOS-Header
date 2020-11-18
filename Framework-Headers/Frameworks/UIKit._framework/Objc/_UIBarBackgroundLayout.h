@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSArray, UIColor, UIImage;
+@class NSArray, UIColor, UIImage, UIVibrancyEffect;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarBackgroundLayout : NSObject <NSCopying>
@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
     BOOL _useExplicitGeometry;
     BOOL _disableTinting;
     BOOL _shadowHidden;
+    UIVibrancyEffect *_bg1ShadowEffect;
+    UIVibrancyEffect *_bg2ShadowEffect;
 }
 
 @property (nonatomic) double backgroundAlpha; // @synthesize backgroundAlpha=_backgroundAlpha;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long bg1ImageMode;
 @property (readonly, nonatomic) double bg1ShadowAlpha;
 @property (readonly, nonatomic) UIColor *bg1ShadowColor;
+@property (readonly, nonatomic) UIVibrancyEffect *bg1ShadowEffect; // @synthesize bg1ShadowEffect=_bg1ShadowEffect;
 @property (readonly, nonatomic) UIImage *bg1ShadowImage;
 @property (readonly, nonatomic) UIColor *bg1ShadowTint;
 @property (readonly, nonatomic) double bg2Alpha;
@@ -49,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long bg2ImageMode;
 @property (readonly, nonatomic) double bg2ShadowAlpha;
 @property (readonly, nonatomic) UIColor *bg2ShadowColor;
+@property (readonly, nonatomic) UIVibrancyEffect *bg2ShadowEffect; // @synthesize bg2ShadowEffect=_bg2ShadowEffect;
 @property (readonly, nonatomic) UIImage *bg2ShadowImage;
 @property (readonly, nonatomic) UIColor *bg2ShadowTint;
 @property (readonly, nonatomic) double bgInset;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double topInset;
 @property (nonatomic) BOOL useExplicitGeometry; // @synthesize useExplicitGeometry=_useExplicitGeometry;
 
+- (void).cxx_destruct;
 - (BOOL)bg2HasHeight;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)describeInto:(id)arg1;

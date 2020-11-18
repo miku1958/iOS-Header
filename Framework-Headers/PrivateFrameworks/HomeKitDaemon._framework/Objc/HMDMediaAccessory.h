@@ -33,6 +33,7 @@
 - (id)dumpSimpleState;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
 - (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;

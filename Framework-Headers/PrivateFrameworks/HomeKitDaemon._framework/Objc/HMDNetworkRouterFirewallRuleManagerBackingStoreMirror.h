@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMDNetworkRouterFirewallRuleManagerBackingStoreMirror-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMBCloudDatabase, HMBLocalDatabase, HMBLocalZone, HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel, NAFuture, NAPromise, NSMutableSet, NSObject, NSString;
+@class HMBCloudDatabase, HMBLocalDatabase, HMBLocalZone, HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel, NAFuture, NAPromise, NSObject, NSSet, NSString;
 @protocol HMBLocalZoneID, NAScheduler, OS_dispatch_queue;
 
 @interface HMDNetworkRouterFirewallRuleManagerBackingStoreMirror : HMFObject <HMFLogging, HMDNetworkRouterFirewallRuleManagerBackingStoreMirror, HMBMirrorProtocol>
@@ -20,7 +20,7 @@
     id<HMBLocalZoneID> _zoneID;
     HMBLocalZone *_localZone;
     NAFuture *_lastAsyncFuture;
-    NSMutableSet *_watchedRecordIDs;
+    NSSet *_watchedRecordIDs;
     HMDNetworkRouterFirewallRuleManagerBackingStoreMirrorInternalStateModel *_internalState;
     HMBCloudDatabase *_cloudDatabase;
     HMBLocalDatabase *_localDatabase;
@@ -47,7 +47,7 @@
 @property (readonly, nonatomic) NAPromise *startupPromise; // @synthesize startupPromise=_startupPromise;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useAnonymousRequests; // @synthesize useAnonymousRequests=_useAnonymousRequests;
-@property (readonly, nonatomic) NSMutableSet *watchedRecordIDs; // @synthesize watchedRecordIDs=_watchedRecordIDs;
+@property (strong, nonatomic) NSSet *watchedRecordIDs; // @synthesize watchedRecordIDs=_watchedRecordIDs;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (readonly, nonatomic) id<NAScheduler> workQueueScheduler; // @synthesize workQueueScheduler=_workQueueScheduler;
 @property (readonly, nonatomic) id<HMBLocalZoneID> zoneID; // @synthesize zoneID=_zoneID;
@@ -99,9 +99,7 @@
 - (void)__shutdownWithActivity:(id)arg1;
 - (void)__startQueryOperation:(id)arg1 operation:(id)arg2;
 - (void)__startUpCloudZonesWithFetchInfo:(id)arg1;
-- (void)__startWatchingRecords:(id)arg1 activity:(id)arg2;
 - (void)__startupWithLocalZone:(id)arg1 activity:(id)arg2;
-- (void)__stopWatchingRecords:(id)arg1 activity:(id)arg2;
 - (void)__updateChangeTokenWithFetchInfo:(id)arg1;
 - (void)_fetchCloudRecordsForZoneID:(id)arg1 recordID:(id)arg2 options:(id)arg3 desiredKeys:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (struct NSDictionary *)_fetchNetworkDeclarationDataForZoneName:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -111,7 +109,7 @@
 - (id)destroy;
 - (struct NSDictionary *)fetchAllNetworkDeclarationDataWithOptions:(id)arg1 error:(id *)arg2;
 - (struct NSDictionary *)fetchAllOverridesWithOptions:(id)arg1 error:(id *)arg2;
-- (void)fetchCloudChangesWithOptions:(id)arg1 xpcActivity:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)fetchCloudChangesWithOptions:(id)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 xpcActivity:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)fetchCloudRecordIDsForZoneID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchCloudRecordsForZoneID:(id)arg1 recordID:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct NSDictionary *)fetchNetworkDeclarationDataForRecordIDs:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -126,8 +124,6 @@
 - (BOOL)removeOverridesForZoneName:(id)arg1 recordName:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)shutdown;
 - (void)startUpWithLocalZone:(id)arg1;
-- (void)startWatchingRecordsWithIDs:(id)arg1;
-- (void)stopWatchingRecordsWithIDs:(id)arg1;
 - (id)triggerOutputForOutputRow:(unsigned long long)arg1 options:(id)arg2;
 
 @end

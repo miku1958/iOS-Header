@@ -24,6 +24,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (weak, nonatomic) MTVPAFKit *vpafKit; // @synthesize vpafKit=_vpafKit;
 
++ (unsigned long long)startOverallPositionForItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)eventDataForTransitioningEvents;
 - (id)initWithType:(long long)arg1 playlistItem:(id)arg2 vpafKit:(id)arg3;

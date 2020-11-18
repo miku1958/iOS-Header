@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)notifyDidStartEditing;
 - (void)notifySubitemDidSave:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;
+- (void)refreshCopiedEvents;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;
 - (void)setEvent:(id)arg1 store:(id)arg2;

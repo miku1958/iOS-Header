@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 + (void)setPrincipalClass:(Class)arg1;
 - (void).cxx_destruct;
 - (void)URLForItemID:(id)arg1 creatingPlaceholderIfMissing:(BOOL)arg2 ignoreAlternateContentsURL:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 bounce:(BOOL)arg5 bounceIndex:(unsigned long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 contents:(id)arg3 options:(unsigned long long)arg4 targetName:(id)arg5 bounce:(BOOL)arg6 bounceNumber:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)_deleteIndexInDomainContexts:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_persistedDocumentURLForURL:(id)arg1 itemID:(id)arg2 extension:(id)arg3 creatingPlaceholderIfMissing:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_proxyWithCancellationHandler:(id)arg1 forClientOperation:(id)arg2;

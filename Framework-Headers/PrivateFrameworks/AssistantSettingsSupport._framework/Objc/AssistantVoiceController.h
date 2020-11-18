@@ -42,6 +42,7 @@
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (id)bundle;
++ (BOOL)gryphonAssetsExistForLanguage:(id)arg1;
 + (BOOL)selectedLanguageHasGryphonAssets;
 - (void).cxx_destruct;
 - (id)_languageSpecifiersForLanguage:(id)arg1;

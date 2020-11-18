@@ -94,7 +94,7 @@
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
-+ (BOOL)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accInfoChanged:(BOOL *)arg8;
++ (BOOL)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accessoryTransactionChanged:(BOOL *)arg8;
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateProvidedName:(id)arg1;
 - (void).cxx_destruct;

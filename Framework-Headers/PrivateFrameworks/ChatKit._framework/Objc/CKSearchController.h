@@ -59,7 +59,9 @@
 - (id)cellForItemInCollectionView:(id)arg1 atIndex:(long long)arg2 withIdentifier:(id)arg3;
 - (id)cellForSupplementryItemInCollectionView:(id)arg1 atIndexPath:(id)arg2 supplementryViewKind:(id)arg3;
 - (id)chatGUIDForSearchableItem:(id)arg1;
+- (void)deleteAttachmentForResult:(id)arg1;
 - (id)detailsFilterQueriesForChatGUIDs:(id)arg1;
+- (void)didSelectResult:(id)arg1;
 - (id)fetchAttributes;
 - (id)filterQueries;
 - (Class)footerClass;
@@ -76,6 +78,7 @@
 - (id)queryResultsForItems:(id)arg1;
 - (unsigned long long)queryTypeForSearchText:(id)arg1;
 - (id)rankingQueriesWithText:(id)arg1;
+- (void)saveAttachmentForResult:(id)arg1;
 - (void)searchEnded;
 - (void)searchWithText:(id)arg1 mode:(unsigned long long)arg2;
 - (BOOL)shouldStartMenuInteractionForResult:(id)arg1;

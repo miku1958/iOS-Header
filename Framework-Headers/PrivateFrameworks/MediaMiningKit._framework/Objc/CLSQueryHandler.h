@@ -39,7 +39,7 @@
 - (unsigned long long)_cacheMapItems:(id)arg1;
 - (void)_cancel;
 - (void)_forwardToGeoThread;
-- (void)_handleError:(id)arg1;
+- (void)_handleError:(id)arg1 numberOfItems:(unsigned long long)arg2;
 - (void)_handleQueryResultsForQuery:(id)arg1 items:(id)arg2 error:(id)arg3;
 - (void)_heartBeat;
 - (void)_startQuery;

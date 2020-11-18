@@ -8,7 +8,7 @@
 
 #import <WorkflowUI/WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate-Protocol.h>
 
-@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIImageView, UILabel, UIViewController, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager;
+@class INIntent, NSLayoutConstraint, UIButton, UICollectionView, UIImage, UIViewController, WFActionDrawerSection, WFActionDrawerSiriSuggestionsCollectionViewManager, WFModuleTitleView;
 @protocol WFActionDrawerSiriSuggestionsTableViewCellDelegate;
 
 @interface WFActionDrawerSiriSuggestionsTableViewCell : UITableViewCell <WFActionDrawerSiriSuggestionsCollectionViewManagerDelegate>
@@ -17,8 +17,7 @@
     WFActionDrawerSection *_section;
     id<WFActionDrawerSiriSuggestionsTableViewCellDelegate> _delegate;
     UIViewController *_containingViewController;
-    UIImageView *_iconImageView;
-    UILabel *_titleLabel;
+    WFModuleTitleView *_titleView;
     UIButton *_infoButton;
     UICollectionView *_donationsCollectionView;
     INIntent *_intent;
@@ -34,11 +33,10 @@
 @property (weak, nonatomic) UICollectionView *donationsCollectionView; // @synthesize donationsCollectionView=_donationsCollectionView;
 @property (strong, nonatomic) WFActionDrawerSiriSuggestionsCollectionViewManager *donationsCollectionViewManager; // @synthesize donationsCollectionViewManager=_donationsCollectionViewManager;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
-@property (weak, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (weak, nonatomic) UIButton *infoButton; // @synthesize infoButton=_infoButton;
 @property (strong, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 @property (strong, nonatomic) WFActionDrawerSection *section; // @synthesize section=_section;
-@property (weak, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (weak, nonatomic) WFModuleTitleView *titleView; // @synthesize titleView=_titleView;
 
 - (void).cxx_destruct;
 - (void)configureLoading;

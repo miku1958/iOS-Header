@@ -11,10 +11,11 @@
 - (id)IDSCanonicalAddressForAddress:(id)arg1;
 - (id)canonicalAddress;
 - (struct __CFPhoneNumber *)copyPhoneNumber;
-- (BOOL)isDuetPredictionForNonGroup;
 - (BOOL)isEmail;
 - (BOOL)isNamedGroup;
+- (BOOL)isNotAChildOfUnifiedRecipient;
 - (BOOL)isPhone;
+- (BOOL)isUnnamedGroup;
 - (id)rawAddress;
 - (void)setCanonicalAddress:(id)arg1;
 @end

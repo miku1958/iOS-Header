@@ -27,7 +27,7 @@
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
-@property (copy, nonatomic) NSString *currentBluetoothListeningMode;
+@property (readonly, nonatomic) NSString *currentBluetoothListeningMode;
 @property (readonly, nonatomic) unsigned long long deviceFeatures;
 @property (readonly, nonatomic) long long deviceSubType;
 @property (readonly, nonatomic) long long deviceType;
@@ -57,6 +57,7 @@
 @property (readonly) float volume;
 
 - (void)configureUsingBlock:(void (^)(id<AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(long long, id<AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
+- (BOOL)setCurrentBluetoothListeningMode:(NSString *)arg1 error:(id *)arg2;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 @end

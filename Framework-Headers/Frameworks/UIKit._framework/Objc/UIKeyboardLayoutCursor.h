@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIKBAlertControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView;
+@class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar <UIKBAlertControllerDelegate>
@@ -29,11 +29,13 @@ __attribute__((visibility("hidden")))
     UIAlertController *_recentInputsAlert;
     NSString *_keyplaneBeforeDictation;
     long long _selectedKeyBeforeDictation;
+    UIWindow *_focusWindow;
 }
 
 @property (readonly, nonatomic) UIKBTree *currentKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIWindow *focusWindow; // @synthesize focusWindow=_focusWindow;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *keyplaneBeforeDictation; // @synthesize keyplaneBeforeDictation=_keyplaneBeforeDictation;
 @property (strong, nonatomic) UIAlertController *recentInputsAlert; // @synthesize recentInputsAlert=_recentInputsAlert;

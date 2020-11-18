@@ -31,6 +31,7 @@
 - (void)_hideMenuAnimated:(BOOL)arg1;
 - (BOOL)_menuHidden;
 - (void)_removeWindowWillRotateObserver;
+- (void)_reparentCalloutBarIfNeeded;
 - (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
 - (void)_showMenuAnimated:(BOOL)arg1;
 - (struct CGRect)_targetRect;

@@ -13,13 +13,15 @@
 #import <CoreSpeech/CSAudioSessionProviding-Protocol.h>
 #import <CoreSpeech/CSAudioStreamProviding-Protocol.h>
 #import <CoreSpeech/CSAudioTimeConversionProviding-Protocol.h>
+#import <CoreSpeech/CSBargeInModeProviding-Protocol.h>
+#import <CoreSpeech/CSFallbackAudioSessionReleaseProviding-Protocol.h>
 #import <CoreSpeech/CSSmartSiriVolumeProviding-Protocol.h>
 #import <CoreSpeech/CSTriggerInfoProviding-Protocol.h>
 
 @class CSAudioStream, NSHashTable, NSMutableSet, NSString;
 @protocol CSAudioAlertProvidingDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSXPCClientDelegate, OS_xpc_object;
 
-@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSSmartSiriVolumeProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding>
+@interface CSXPCClient : NSObject <CSAudioSessionProviding, CSFallbackAudioSessionReleaseProviding, CSAudioStreamProviding, CSAudioAlertProviding, CSAudioSessionInfoProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSSmartSiriVolumeProviding, CSAudioTimeConversionProviding, CSTriggerInfoProviding, CSBargeInModeProviding>
 {
     id<CSAudioSessionProvidingDelegate> _audioSessionProvidingDelegate;
     id<CSAudioStreamProvidingDelegate> _audioStreamProvidingDelegate;
@@ -29,6 +31,7 @@
     CSAudioStream *_audioStream;
     NSMutableSet *_activationAssertions;
     NSHashTable *_audioSessionInfoObservers;
+    unsigned long long _xpcClientType;
 }
 
 @property (strong, nonatomic) NSMutableSet *activationAssertions; // @synthesize activationAssertions=_activationAssertions;
@@ -42,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long xpcClientType; // @synthesize xpcClientType=_xpcClientType;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
@@ -74,23 +78,30 @@
 - (BOOL)_sendMessageAndReplySync:(id)arg1 connection:(id)arg2 error:(id *)arg3;
 - (BOOL)activateAudioSessionWithReason:(unsigned long long)arg1 error:(id *)arg2;
 - (unsigned long long)alertStartTime;
+- (id)audioChunkFrom:(unsigned long long)arg1 to:(unsigned long long)arg2;
+- (id)audioChunkToEndFrom:(unsigned long long)arg1;
 - (id)audioMetric;
 - (unsigned int)audioSessionID;
 - (void)audioStreamWithRequest:(id)arg1 streamName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)audioStreamWithRequest:(id)arg1 streamName:(id)arg2 error:(id *)arg3;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
+- (void)cancelAudioStreamHold:(id)arg1;
 - (void)configureAlertBehavior:(id)arg1;
 - (void)connect;
 - (BOOL)deactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)disconnect;
 - (BOOL)duckOthersOption;
+- (void)enableBargeInMode:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enableMiniDucking:(BOOL)arg1;
 - (void)enableVoiceTrigger:(BOOL)arg1 withAssertion:(id)arg2;
+- (BOOL)fallbackDeactivateAudioSession:(unsigned long long)arg1 error:(id *)arg2;
 - (float)getEstimatedTTSVolume;
+- (id)holdAudioStreamWithDescription:(id)arg1 timeout:(double)arg2;
 - (unsigned long long)hostTimeFromSampleCount:(unsigned long long)arg1;
-- (id)init;
+- (id)initWithType:(unsigned long long)arg1;
 - (BOOL)isNarrowBand;
+- (BOOL)isRecording;
 - (float)peakPowerForChannel:(unsigned long long)arg1;
 - (void)pingpong:(CDUnknownBlockType)arg1;
 - (BOOL)playAlertSoundForType:(long long)arg1;
@@ -105,6 +116,9 @@
 - (id)recordSettings;
 - (void)registerObserver:(id)arg1;
 - (unsigned long long)sampleCountFromHostTime:(unsigned long long)arg1;
+- (void)saveRecordingBufferFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 toURL:(id)arg3;
+- (void)saveRecordingBufferToEndFrom:(unsigned long long)arg1 toURL:(id)arg2;
+- (void)sendXPCClientType;
 - (BOOL)setAlertSoundFromURL:(id)arg1 forType:(long long)arg2;
 - (void)setAudioAlertDelegate:(id)arg1;
 - (void)setAudioSessionDelegate:(id)arg1;

@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBusinessHours : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _end;
     GEOPDHoursThreshold *_hoursThreshold;
@@ -22,6 +21,9 @@ __attribute__((visibility("hidden")))
     GEOLocalizedString *_shortMessage;
     unsigned long long _start;
     NSMutableArray *_weeklyHours;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _hoursType;
     struct {
         unsigned int has_end:1;
@@ -77,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)hoursTypeAsString:(int)arg1;
+- (id)init;
+- (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

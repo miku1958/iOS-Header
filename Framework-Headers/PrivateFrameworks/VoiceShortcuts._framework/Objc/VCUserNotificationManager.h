@@ -26,8 +26,9 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)postNotificationOfType:(unsigned long long)arg1 forTrigger:(id)arg2 workflowReference:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)postNotificationOfType:(unsigned long long)arg1 forTrigger:(id)arg2 workflowReference:(id)arg3 actionIcons:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)postNotificationThatTrigger:(id)arg1 failedWithError:(id)arg2;
+- (void)removeNotificationsWithTriggerIdentifier:(id)arg1;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end

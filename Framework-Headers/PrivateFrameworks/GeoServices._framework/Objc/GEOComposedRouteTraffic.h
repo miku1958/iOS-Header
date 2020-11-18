@@ -26,11 +26,12 @@
 @property (readonly, nonatomic) unsigned long long trafficColorOffsetsCount;
 @property (readonly, nonatomic) unsigned int *trafficColors;
 @property (readonly, nonatomic) unsigned long long trafficColorsCount;
-@property (readonly, nonatomic) NSArray *trafficIncidentOffsets; // @synthesize trafficIncidentOffsets=_trafficIncidentOffsets;
-@property (readonly, nonatomic) NSArray *trafficIncidents; // @synthesize trafficIncidents=_trafficIncidents;
+@property (strong, nonatomic) NSArray *trafficIncidentOffsets; // @synthesize trafficIncidentOffsets=_trafficIncidentOffsets;
+@property (strong, nonatomic) NSArray *trafficIncidents; // @synthesize trafficIncidents=_trafficIncidents;
 
 + (BOOL)supportsSecureCoding;
 + (id)trafficForGEORoute:(id)arg1 routeInitializerData:(id)arg2 route:(id)arg3;
++ (id)trafficForNewAlternateRoute:(id)arg1 existingAlternateRoute:(id)arg2 incidents:(id)arg3;
 - (void).cxx_destruct;
 - (id)_colorStringForIndex:(unsigned long long)arg1;
 - (void)createTrafficIncidentsForRoute:(id)arg1 initializerData:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HDDatabaseTransactionContext, HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
+@class HDDatabaseTransactionContext, HDProfile, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
@@ -15,7 +15,7 @@
     BOOL _useLeftJoin;
     BOOL _ignoreEntityClassAdditionalPredicateForEnumeration;
     BOOL _improveJoinOrderingForStartDateIndexSelection;
-    HKObjectType *_objectType;
+    NSSet *_objectTypes;
     _HKFilter *_filter;
     NSSet *_restrictedSourceEntities;
     CDUnknownBlockType _authorizationFilter;
@@ -34,7 +34,7 @@
 @property (nonatomic) BOOL ignoreEntityClassAdditionalPredicateForEnumeration; // @synthesize ignoreEntityClassAdditionalPredicateForEnumeration=_ignoreEntityClassAdditionalPredicateForEnumeration;
 @property (nonatomic) BOOL improveJoinOrderingForStartDateIndexSelection; // @synthesize improveJoinOrderingForStartDateIndexSelection=_improveJoinOrderingForStartDateIndexSelection;
 @property (readonly, copy, nonatomic) NSString *lastSQL; // @synthesize lastSQL=_lastSQL;
-@property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (readonly, nonatomic) NSSet *objectTypes; // @synthesize objectTypes=_objectTypes;
 @property (strong, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
@@ -42,6 +42,7 @@
 - (BOOL)_enumerateObjectsOnDatabase:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_initWithEntityClass:(Class)arg1 profile:(id)arg2;
 - (id)_initWithObjectType:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
+- (id)_initWithObjectTypes:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
 - (id)_joinClauseForProperties:(id)arg1;
 - (BOOL)_prepareDeletedObjectsAndSamplesDescriptor:(id)arg1 error:(id *)arg2;
 - (BOOL)_prepareDescriptor:(id)arg1 error:(id *)arg2;

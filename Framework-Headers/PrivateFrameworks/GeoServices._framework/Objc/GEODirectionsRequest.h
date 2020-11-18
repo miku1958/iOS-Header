@@ -13,7 +13,6 @@
 @interface GEODirectionsRequest : PBRequest <NSCopying>
 {
     PBDataReader *_reader;
-    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionID;
     GEOPDABClientDatasetMetadata *_abClientMetadata;
@@ -40,6 +39,9 @@
     NSMutableArray *_trafficSnapshotIds;
     GEOTFTrafficSnapshot *_trafficSnapshot;
     NSMutableArray *_waypointTypeds;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
     int _departureTime;
     unsigned int _mainTransportTypeMaxRouteCount;
     int _nonRecommendedRoutesOption;
@@ -248,6 +250,8 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)init;
+- (void)initDefaultFeedbackInfo;
+- (id)initWithData:(id)arg1;
 - (id)initWithFeedback:(id)arg1;
 - (id)initWithFeedback:(id)arg1 sessionID:(struct GEOSessionID)arg2;
 - (id)initWithQuickETARequest:(id)arg1 withFeedback:(id)arg2;

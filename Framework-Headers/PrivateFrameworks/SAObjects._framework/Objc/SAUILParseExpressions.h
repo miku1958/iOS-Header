@@ -6,13 +6,14 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray;
+@class NSArray, SARemoteDevice;
 
 @interface SAUILParseExpressions : SABaseClientBoundCommand
 {
 }
 
 @property (copy, nonatomic) NSArray *expressions;
+@property (strong, nonatomic) SARemoteDevice *targetDevice;
 
 + (id)parseExpressions;
 + (id)parseExpressionsWithDictionary:(id)arg1 context:(id)arg2;

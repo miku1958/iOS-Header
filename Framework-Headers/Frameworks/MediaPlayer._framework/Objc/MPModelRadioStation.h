@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (copy, nonatomic) NSString *providerName; // @dynamic providerName;
 @property (copy, nonatomic) NSString *shortEditorNotes; // @dynamic shortEditorNotes;
+@property (nonatomic, getter=isSubscriptionRequired) BOOL subscriptionRequired; // @dynamic subscriptionRequired;
 @property (nonatomic) long long subtype; // @dynamic subtype;
 @property (nonatomic) long long type; // @dynamic type;
 
@@ -33,9 +34,9 @@
 + (id)__name_KEY;
 + (id)__providerName_KEY;
 + (id)__shortEditorNotes_KEY;
++ (id)__subscriptionRequired_KEY;
 + (id)__subtype_KEY;
 + (id)__type_KEY;
-+ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
 - (id)contentItemCollectionInfo;
 - (id)humanDescription;

@@ -18,8 +18,10 @@
     NSData *_clientDataVRFOutput;
     NSDate *_markedForDeletion;
     NSDate *_deletionEscrowExpiry;
+    NSDate *_addedDate;
 }
 
+@property (strong) NSDate *addedDate; // @synthesize addedDate=_addedDate;
 @property unsigned long long applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property (strong) NSData *clientData; // @synthesize clientData=_clientData;
 @property (strong) NSData *clientDataVRFOutput; // @synthesize clientDataVRFOutput=_clientDataVRFOutput;

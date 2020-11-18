@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     BOOL _wantsAppearanceConfigValues;
     BOOL _beingPresented;
     BOOL _beingDismissed;
-    BOOL _isBeingTransitionedToADifferentOrientation;
     BOOL _willBeginOrientationChange;
     UIView *_presentationContainerContentView;
     long long _fromOrientation;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isBeingPresented) BOOL beingPresented; // @synthesize beingPresented=_beingPresented;
 @property (nonatomic, getter=isCounterRotatingContentView) BOOL counterRotatingContentView; // @synthesize counterRotatingContentView=_counterRotatingContentView;
 @property (nonatomic) long long fromOrientation; // @synthesize fromOrientation=_fromOrientation;
-@property (readonly, nonatomic) BOOL isBeingTransitionedToADifferentOrientation; // @synthesize isBeingTransitionedToADifferentOrientation=_isBeingTransitionedToADifferentOrientation;
 @property (readonly, nonatomic) AVPresentationContainerViewLayer *layer; // @dynamic layer;
 @property (weak, nonatomic) UIView *presentationContainerContentView; // @synthesize presentationContainerContentView=_presentationContainerContentView;
 @property (nonatomic) long long toOrientation; // @synthesize toOrientation=_toOrientation;
@@ -42,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (double)_radiansForCounterRotation;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerRadius:(double)arg1;
+- (BOOL)avkit_isBeingDismissed;
+- (BOOL)avkit_isCounterRotatedForTransition;
 - (BOOL)avkit_isVideoGravityFrozen;
 - (struct UIEdgeInsets)avkit_overrideLayoutMarginsForCounterRotation;
 - (struct UIEdgeInsets)avkit_overrideLayoutMarginsForInterfaceOrientation:(long long)arg1;

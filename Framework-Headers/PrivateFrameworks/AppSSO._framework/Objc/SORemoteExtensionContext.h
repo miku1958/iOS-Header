@@ -6,13 +6,14 @@
 
 #import <Foundation/NSExtensionContext.h>
 
+#import <AppSSO/SOExtensionContext-Protocol.h>
 #import <AppSSO/SORemoteExtensionContextProtocol-Protocol.h>
 
 @class ASAuthorizationProviderExtensionAuthorizationRequest, NSString, NSValue, SOExtensionServiceConnection, SOExtensionViewService;
 @protocol ASAuthorizationProviderExtensionAuthorizationRequestHandler;
 
 __attribute__((visibility("hidden")))
-@interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol>
+@interface SORemoteExtensionContext : NSExtensionContext <SORemoteExtensionContextProtocol, SOExtensionContext>
 {
     SOExtensionServiceConnection *_extensionServiceConnection;
     SOExtensionViewService *_viewService;
@@ -35,8 +36,11 @@ __attribute__((visibility("hidden")))
 - (void)_disableAppSSOInCFNetwork;
 - (void)beginAuthorizationWithRequestParameters:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationWithServiceXPCEndpoint:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)canOpenURL:(id)arg1;
 - (void)cancelAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)hostContextWithError:(id *)arg1;
+- (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)synchronousHostContextWithError:(id *)arg1;
 
 @end
 

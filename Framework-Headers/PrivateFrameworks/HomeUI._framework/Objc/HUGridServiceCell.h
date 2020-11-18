@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UILabel, UIView, UIVisualEffectView;
+@class HFItem, HUGridServiceCellLayoutOptions, HUGridServiceCellTextView, HUIconView, HUVisualEffectContainerView, NSString, UIActivityIndicatorView, UIColor, UILabel, UIView, UIVisualEffectView;
 @protocol NACancelable;
 
 @interface HUGridServiceCell : HUGridCell <HUAccessoryViewCellProtocol>
@@ -21,6 +21,7 @@
     BOOL _showingProgressIndicator;
     HFItem *_serviceItem;
     UIView *_accessoryView;
+    UIColor *_defaultDescriptionColor;
     HUIconView *_iconView;
     HUGridServiceCellTextView *_serviceTextView;
     UILabel *_coloredDescriptionLabel;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (strong, nonatomic) UILabel *coloredDescriptionLabel; // @synthesize coloredDescriptionLabel=_coloredDescriptionLabel;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) UIColor *defaultDescriptionColor; // @synthesize defaultDescriptionColor=_defaultDescriptionColor;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIVisualEffectView *descriptionLabelEffectView; // @synthesize descriptionLabelEffectView=_descriptionLabelEffectView;
 @property (nonatomic) BOOL disableContinuousIconAnimation;

@@ -35,7 +35,9 @@
 + (void)createShareGroupWithRootRecordName:(id)arg1 owner:(id)arg2 cloudGroup:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (void)_cloudRecordsForParentIDs:(id)arg1 recursive:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addCloudRecord:(id)arg1;
+- (void)allDescendentsCloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cloudRecordWithName:(id)arg1;
 - (void)cloudRecordWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -57,6 +59,7 @@
 - (void)shareOnlyUpdateCloudRecord:(id)arg1;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateCloudRecord:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

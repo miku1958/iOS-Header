@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSError, NSString, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
-@protocol NUDevice, NUExtentPolicy, NURenderStatistics, NURenderer, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
+@protocol NUDevice, NUExtentPolicy, NURenderStatistics, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NURenderJob : NSObject
 {
@@ -69,7 +69,6 @@
 @property (strong, nonatomic) NURenderNode *renderNode; // @synthesize renderNode=_renderNode;
 @property (strong, nonatomic) NURenderPipeline *renderPipeline; // @synthesize renderPipeline=_renderPipeline;
 @property (nonatomic) CDStruct_912cb5d2 renderScale; // @synthesize renderScale=_renderScale;
-@property (readonly, nonatomic) id<NURenderer> renderer;
 @property (readonly, nonatomic) int rendererType; // @synthesize rendererType=_rendererType;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *replyGroup; // @synthesize replyGroup=_replyGroup;
 @property (readonly) NURenderRequest *request; // @synthesize request=_request;
@@ -140,6 +139,7 @@
 - (id)renderImage:(id)arg1 into:(id)arg2 colorSpace:(id)arg3 roi:(id)arg4 imageSize:(CDStruct_912cb5d2)arg5 error:(out id *)arg6;
 - (id)renderNodeWithPipelineState:(id)arg1 error:(out id *)arg2;
 - (BOOL)renderVideoFrames:(id)arg1 intoPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 colorSpace:(id)arg4 error:(out id *)arg5;
+- (id)renderer:(out id *)arg1;
 - (void)reply:(id)arg1;
 - (BOOL)requiresVideoComposition;
 - (long long)resolvedSampleMode:(long long)arg1;

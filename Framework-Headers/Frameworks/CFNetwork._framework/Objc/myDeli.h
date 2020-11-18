@@ -8,13 +8,14 @@
 
 #import <CFNetwork/NSURLSessionDelegate-Protocol.h>
 
-@class NSError, NSString;
+@class NSData, NSError, NSString;
 
 @interface myDeli : NSObject <NSURLSessionDelegate>
 {
     NSError *_errorResult;
     BOOL _receivedResponse;
     BOOL _hasCanceled;
+    NSData *resumeData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,7 @@
 @property BOOL hasCanceled; // @synthesize hasCanceled=_hasCanceled;
 @property (readonly) unsigned long long hash;
 @property BOOL receivedResponse; // @synthesize receivedResponse=_receivedResponse;
+@property (copy) NSData *resumeData; // @synthesize resumeData;
 @property (strong) NSError *someError; // @synthesize someError=_errorResult;
 @property (readonly) Class superclass;
 

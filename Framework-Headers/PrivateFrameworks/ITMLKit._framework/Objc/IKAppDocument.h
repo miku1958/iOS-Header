@@ -93,6 +93,8 @@
 - (void)recordImpressionsForViewElements:(id)arg1;
 - (id)recordedImpressions;
 - (id)recordedImpressions:(BOOL)arg1;
+- (void)recordedImpressions:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)recordedImpressionsMatching:(id)arg1 reset:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)retrieveJSElementForViewElement:(id)arg1 jsContext:(id)arg2;
 - (void)runTestWithName:(id)arg1 options:(id)arg2;
 - (void)scrollToTop;

@@ -11,13 +11,13 @@
 #import <MediaPlaybackCore/MPShuffleableSectionedIdentifierListDelegate-Protocol.h>
 #import <MediaPlaybackCore/MSVSegmentedCoding-Protocol.h>
 
-@class MPAVItem, MPShuffleableSectionedIdentifierList, NSError, NSMutableDictionary, NSString;
-@protocol MPAVQueueControllerDelegate, MPAVQueueCoordinating, OS_dispatch_group;
+@class MPAVItem, MPShuffleableSectionedIdentifierList, NSError, NSMutableDictionary, NSString, NSUserDefaults;
+@protocol MPAVQueueControllerDelegate, MPAVQueueCoordinating;
 
 @interface MPCQueueController : NSObject <MPShuffleableSectionedIdentifierListDelegate, MPSectionedIdentifierListAnnotationDelegate, MPAVQueueController, MSVSegmentedCoding>
 {
-    NSObject<OS_dispatch_group> *_restorationGroup;
     unsigned long long _stateHandle;
+    NSUserDefaults *_defaults;
     BOOL _hasUserMutations;
     BOOL _allowsQueueModifications;
     MPAVItem *_currentItem;
@@ -29,7 +29,7 @@
     NSString *_deferredNextContentItemAnchorID;
     NSError *_restorationError;
     NSMutableDictionary *_coderVersions;
-    long long _nextContentItemIDContext;
+    long long _nextContentItemIDReason;
     long long _state;
     MPShuffleableSectionedIdentifierList *_identifierList;
     NSMutableDictionary *_dataSources;
@@ -49,7 +49,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPShuffleableSectionedIdentifierList *identifierList; // @synthesize identifierList=_identifierList;
 @property (copy, nonatomic) NSString *nextContentItemID; // @synthesize nextContentItemID=_nextContentItemID;
-@property (nonatomic) long long nextContentItemIDContext; // @synthesize nextContentItemIDContext=_nextContentItemIDContext;
+@property (nonatomic) long long nextContentItemIDReason; // @synthesize nextContentItemIDReason=_nextContentItemIDReason;
 @property (strong, nonatomic) id<MPAVQueueCoordinating> queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (copy, nonatomic) NSError *restorationError; // @synthesize restorationError=_restorationError;
@@ -64,9 +64,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addPlaybackContext:(id)arg1 atPosition:(long long)arg2 afterContentItemID:(id)arg3 sectionIdentifier:(id)arg4 actions:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)_allDataSourcesSupportInsertionPositionLast;
 - (void)_applyVolumeNormalizationForQueuedItems;
-- (BOOL)_containsLiveStreamDataSource;
 - (id)_firstContentItemID;
+- (id)_firstContentItemIDInSectionWithIdentifier:(id)arg1;
+- (void)_highQualityMusicStreamingOnCellularDidChange:(id)arg1;
 - (id)_itemForContentItemID:(id)arg1 allowReuse:(BOOL)arg2;
 - (id)_itemForPair:(id)arg1;
 - (id)_nextValidIdentifierPairStartingAtContentItemID:(id)arg1 wasInvalid:(BOOL *)arg2;
@@ -75,6 +77,7 @@
 - (void)addPlaybackContext:(id)arg1 afterContentItemID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)addPlaybackContext:(id)arg1 atPosition:(long long)arg2 jumpToIt:(BOOL)arg3 userModification:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)canSkipItem:(id)arg1;
 - (id)contentItemIDWithCurrentItemOffset:(long long)arg1 mode:(long long)arg2 didReachEnd:(BOOL *)arg3;
 - (id)contentItemIDsFromOffset:(long long)arg1 toOffset:(long long)arg2 nowPlayingIndex:(long long *)arg3;
@@ -85,7 +88,7 @@
 - (void)didRestoreVersion:(long long)arg1 forSegment:(id)arg2;
 - (long long)displayIndexForContentItemID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalizeStateRestorationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)finalizeStateRestorationWithAccountManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;
 - (void)handlePlaybackFailureForItem:(id)arg1;
 - (void)incrementVersionForSegment:(id)arg1;
@@ -104,9 +107,11 @@
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeContentItemID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reset;
+- (void)resetWithIdentifier:(id)arg1;
 - (void)reshuffle;
 - (void)sectionedIdentifierList:(id)arg1 dataSourceDidAddItems:(id)arg2 toSection:(id)arg3;
 - (void)sectionedIdentifierList:(id)arg1 dataSourceDidChangeItems:(id)arg2 inSection:(id)arg3;
+- (void)sectionedIdentifierList:(id)arg1 dataSourceDidUpdateSection:(id)arg2;
 - (id)segmentForCodingKey:(id)arg1;
 - (void)updateLocationDependentPropertiesForItem:(id)arg1;
 - (long long)versionForSegment:(id)arg1;

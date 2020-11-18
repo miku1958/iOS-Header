@@ -18,6 +18,7 @@
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
     long long _minimumSeriesSize;
     long long _maximumSeriesSize;
+    long long _deletedSamplesThreshold;
     HDProfile *_profile;
     _HDWorkoutCondenserAnalyticsAccumulator *_analyticsAccumulator;
 }
@@ -67,6 +68,7 @@
 - (id)initWithProfile:(id)arg1;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
+- (void)setDeletedSamplesThreshold:(long long)arg1;
 - (void)setMaximumSeriesSize:(long long)arg1;
 - (void)setMinimumSeriesSize:(long long)arg1;
 

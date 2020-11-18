@@ -26,6 +26,7 @@
     double _startTime;
     NSString *_albumArtistName;
     NSString *_albumName;
+    NSString *_albumYear;
     NSData *_appMetricsData;
     int _artworkDataHeightDeprecated;
     int _artworkDataWidthDeprecated;
@@ -148,6 +149,7 @@
 
 @property (strong, nonatomic) NSString *albumArtistName; // @synthesize albumArtistName=_albumArtistName;
 @property (strong, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
+@property (strong, nonatomic) NSString *albumYear; // @synthesize albumYear=_albumYear;
 @property (strong, nonatomic) NSData *appMetricsData; // @synthesize appMetricsData=_appMetricsData;
 @property (nonatomic) BOOL artworkAvailable; // @synthesize artworkAvailable=_artworkAvailable;
 @property (nonatomic) int artworkDataHeightDeprecated; // @synthesize artworkDataHeightDeprecated=_artworkDataHeightDeprecated;
@@ -180,6 +182,7 @@
 @property (strong, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (readonly, nonatomic) BOOL hasAlbumArtistName;
 @property (readonly, nonatomic) BOOL hasAlbumName;
+@property (readonly, nonatomic) BOOL hasAlbumYear;
 @property (readonly, nonatomic) BOOL hasAppMetricsData;
 @property (nonatomic) BOOL hasArtworkAvailable;
 @property (nonatomic) BOOL hasArtworkDataHeightDeprecated;

@@ -6,7 +6,7 @@
 
 #import <ImageCaptureCore/ICDevice.h>
 
-@class NSArray, NSMutableArray, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSObject, NSProgress, NSString;
+@class NSArray, NSMutableArray, NSMutableIndexSet, NSMutableOrderedSet, NSMutableSet, NSNumber, NSObject, NSProgress, NSString, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface ICCameraDevice : ICDevice
@@ -15,15 +15,16 @@
     struct os_unfair_lock_s _contentsLock;
     NSObject<OS_dispatch_queue> *_devCommandQueue;
     NSObject<OS_dispatch_queue> *_devNotificationQueue;
+    NSXPCConnection *_devConnection;
     unsigned long long _contentCatalogPercentCompleted;
     BOOL _ejectable;
     BOOL _locked;
-    BOOL _accessRestrictedAppleDevice;
     BOOL _iCloudPhotosEnabled;
-    BOOL _tetheredCaptureEnabled;
     BOOL _batteryLevelAvailable;
+    BOOL _tetheredCaptureEnabled;
     BOOL _contentReceived;
     BOOL _basicMediaModel;
+    BOOL _accessRestrictedAppleDevice;
     BOOL _allowsSyncingClock;
     BOOL _isEnumeratingContent;
     BOOL _preheatMetadata;
@@ -31,6 +32,7 @@
     NSString *_mountPoint;
     double _timeOffset;
     unsigned long long _batteryLevel;
+    CDUnknownBlockType _ptpEventHandler;
     double _downloadCancelTimestamp;
     NSMutableIndexSet *_enumeratedObjectIndexes;
     NSMutableArray *_originalMediaFiles;
@@ -43,14 +45,16 @@
     NSMutableArray *_devMediaFiles;
     unsigned long long _devMediaPresentation;
     unsigned long long _devFailureCount;
+    NSMutableSet *_devCapabilities;
     unsigned long long _mediaObjectCount;
     unsigned long long _estMediaObjectCount;
+    NSString *_devProductType;
+    NSXPCListenerEndpoint *_devEndpoint;
     NSString *_buildVersion;
     NSString *_deviceClass;
     NSString *_deviceColor;
     NSString *_deviceEnclosureColor;
     NSNumber *_devicePairedState;
-    NSString *_productType;
     NSString *_productVersion;
     NSArray *_supportedSidecarFiles;
     long long _enumerationOrder;
@@ -69,10 +73,14 @@
 @property (nonatomic) BOOL contentReceived; // @synthesize contentReceived=_contentReceived;
 @property (readonly, nonatomic) NSArray *contents; // @dynamic contents;
 @property (strong, nonatomic) NSMutableArray *convertedMediaFiles; // @synthesize convertedMediaFiles=_convertedMediaFiles;
+@property (strong, nonatomic) NSMutableSet *devCapabilities; // @synthesize devCapabilities=_devCapabilities;
+@property (strong, nonatomic) NSXPCConnection *devConnection; // @synthesize devConnection=_devConnection;
 @property (strong, nonatomic) NSMutableArray *devContents; // @synthesize devContents=_devContents;
+@property (strong, nonatomic) NSXPCListenerEndpoint *devEndpoint; // @synthesize devEndpoint=_devEndpoint;
 @property unsigned long long devFailureCount; // @synthesize devFailureCount=_devFailureCount;
 @property (strong, nonatomic) NSMutableArray *devMediaFiles; // @synthesize devMediaFiles=_devMediaFiles;
 @property unsigned long long devMediaPresentation; // @synthesize devMediaPresentation=_devMediaPresentation;
+@property (copy, nonatomic) NSString *devProductType; // @synthesize devProductType=_devProductType;
 @property (readonly) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (readonly) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *deviceCommandQueue; // @dynamic deviceCommandQueue;
@@ -96,9 +104,10 @@
 @property (readonly, nonatomic) unsigned long long numberOfDownloadableItems;
 @property (strong, nonatomic) NSMutableArray *originalMediaFiles; // @synthesize originalMediaFiles=_originalMediaFiles;
 @property (nonatomic) BOOL preheatMetadata; // @synthesize preheatMetadata=_preheatMetadata;
-@property (readonly) NSString *productType; // @synthesize productType=_productType;
+@property (readonly) NSString *productType;
 @property (readonly) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property (copy, nonatomic) CDUnknownBlockType ptpEventHandler; // @synthesize ptpEventHandler=_ptpEventHandler;
 @property (readonly) NSArray *supportedSidecarFiles; // @synthesize supportedSidecarFiles=_supportedSidecarFiles;
 @property (readonly, nonatomic) BOOL tetheredCaptureEnabled; // @synthesize tetheredCaptureEnabled=_tetheredCaptureEnabled;
 @property (readonly) double timeOffset; // @synthesize timeOffset=_timeOffset;
@@ -126,19 +135,21 @@
 - (void)grindMedia:(id [10])arg1 index:(int *)arg2 file:(id)arg3;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
+- (void)handlePTPEvent:(id)arg1;
 - (unsigned long long)increaseDeviceFailureCount;
 - (id)init;
 - (BOOL)legacyDevice;
 - (void)lockContents;
 - (void)lockMediaFiles;
 - (void)notifyDelegateOfAddedItem:(id)arg1;
-- (void)notifyDelegateOfAddedItems:(id)arg1;
+- (void)notifyDelegateOfAddedItems:(id)arg1 progress:(id)arg2;
 - (id)ownerMedia:(id)arg1 withMedia:(id)arg2;
 - (void)popMediaFiles:(id)arg1;
 - (void)pushMediaFiles:(id)arg1;
 - (id)relateGroupedMedia:(id)arg1;
 - (id)relateLegacyMedia:(id)arg1;
 - (id)relateMedia:(id)arg1;
+- (id)remoteCamera;
 - (void)removeCameraFileFromIndex:(id)arg1;
 - (void)removeCameraFolderFromIndex:(id)arg1;
 - (void)removeFolder:(id)arg1;
@@ -152,8 +163,11 @@
 - (void)requestOpenSession;
 - (void)requestOpenSessionWithOptions:(id)arg1;
 - (void)requestOpenSessionWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestSendPTPCommand:(id)arg1 outData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestSyncClock;
 - (void)setContentCatalogPercentCompleted:(unsigned long long)arg1;
+- (void)setProductType:(id)arg1;
+- (void)setPtpEventForwarding:(BOOL)arg1;
 - (long long)stitchMedia:(id)arg1 withMedia:(id)arg2;
 - (BOOL)supportsMediaFormatCatalog;
 - (void)unlockContents;

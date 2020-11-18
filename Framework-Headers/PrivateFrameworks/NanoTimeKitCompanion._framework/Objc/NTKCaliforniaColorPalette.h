@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) UIColor *hourHandInlayColor;
 @property (readonly, nonatomic) UIColor *hourHandStrokeColor;
 @property (readonly, nonatomic) UIColor *hourMarkerColor;
+@property (readonly, nonatomic) BOOL isBlackBackground;
 @property (readonly, nonatomic) UIColor *largeTickColor;
 @property (readonly, nonatomic) UIColor *platterTextColor;
 @property (readonly, nonatomic) long long richComplicationViewTheme;
@@ -53,6 +54,12 @@
 @property (readonly, nonatomic) UIColor *simpleTextComplicationColor;
 @property (readonly, nonatomic) UIColor *smallTickColor;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIColor *worldClockDaytimeBackgrounColor;
+@property (readonly, nonatomic) UIColor *worldClockDaytimeHandsColors;
+@property (readonly, nonatomic) UIColor *worldClockDaytimeHandsDotColors;
+@property (readonly, nonatomic) UIColor *worldClockNighttimeBackgrounColor;
+@property (readonly, nonatomic) UIColor *worldClockNighttimeHandsColors;
+@property (readonly, nonatomic) UIColor *worldClockNighttimeHandsDotColors;
 
 + (id)paletteForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -61,6 +68,7 @@
 - (id)circularDialTickColor;
 - (id)initWithColor:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isLightColor;
 - (id)swatchBackgroundColor;
 - (id)swatchImage;
 

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCloudKitMirroringRequest, NSDate, NSMutableArray, NSUUID, RTPersistenceMirroringPolicy;
-@protocol OS_dispatch_queue, RTPersistenceMirroringRequestDelegate;
+@protocol OS_dispatch_queue, OS_os_transaction, RTPersistenceMirroringRequestDelegate;
 
 @interface RTPersistenceMirroringRequest : NSObject
 {
@@ -23,6 +23,7 @@
     unsigned long long _attemptCount;
     unsigned long long _maxRetryCount;
     RTPersistenceMirroringPolicy *_mirroringPolicy;
+    NSObject<OS_os_transaction> *_mirrorTransaction;
     long long _requestType;
 }
 
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) NSDate *enqueueDate; // @synthesize enqueueDate=_enqueueDate;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *mirrorTransaction; // @synthesize mirrorTransaction=_mirrorTransaction;
 @property (strong, nonatomic) RTPersistenceMirroringPolicy *mirroringPolicy; // @synthesize mirroringPolicy=_mirroringPolicy;
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
 @property (readonly, nonatomic) NSCloudKitMirroringRequest *request; // @synthesize request=_request;

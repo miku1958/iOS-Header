@@ -9,7 +9,7 @@
 #import <SearchUI/ChartUpdaterDelegate-Protocol.h>
 #import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class ChartUpdater, NSMutableArray, NSString, NUIContainerBoxView, NUIContainerStackView, SearchUIDashedLineView, StockChartData, StockChartDisplayMode, StockGraphView, TLKLabel, UIView;
+@class ChartUpdater, NSMutableArray, NSString, NUIContainerBoxView, NUIContainerStackView, SearchUIDashedLineView, SearchUIStockGraphSectionRowModel, StockChartData, StockChartDisplayMode, StockGraphView, TLKLabel, UIView;
 
 @interface SearchUIStocksCardSectionView : SearchUICardSectionView <ChartUpdaterDelegate, NUIContainerViewDelegate>
 {
@@ -39,6 +39,7 @@
 @property (strong) TLKLabel *highLabel; // @synthesize highLabel=_highLabel;
 @property (strong) TLKLabel *lowLabel; // @synthesize lowLabel=_lowLabel;
 @property (strong) SearchUIDashedLineView *previousCloseLine; // @synthesize previousCloseLine=_previousCloseLine;
+@property (strong) SearchUIStockGraphSectionRowModel *rowModel; // @dynamic rowModel;
 @property (strong) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property (strong) StockGraphView *stockGraphView; // @synthesize stockGraphView=_stockGraphView;
 @property (readonly) Class superclass;
