@@ -156,6 +156,8 @@ __attribute__((visibility("hidden")))
 + (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
 + (void)logCorrectionStatisticsForDelegate:(id)arg1;
 + (void)logDictationString:(id)arg1;
++ (void)onDidBecomeActive;
++ (void)onWillResignActive;
 + (void)performOperations:(CDUnknownBlockType)arg1 keyboardShifted:(BOOL)arg2;
 + (void)poppedLastStreamingOperation;
 + (BOOL)remoteCanDictateCurrentInputMode;
@@ -187,6 +189,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)usingServerManualEndpointingThreshold;
 + (BOOL)usingTypeAndTalk;
 + (int)viewMode;
++ (void)viewServiceDidBecomeActive;
++ (void)viewServiceWillResignActive;
 + (id)whitelistedDictationDictionariesFromMetadataDictionaries:(id)arg1;
 + (id)whitelistedDictationDictionaryFromMetadata:(id)arg1;
 + (id)whitelistedDictationMetadataKeys;
